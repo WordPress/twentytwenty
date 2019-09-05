@@ -547,8 +547,9 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		if ( 'single-top' === $location ) {
 
 			$post_meta = apply_filters( 'twentytwenty_post_meta_location_single_top', array(
+				'author',
 				'post-date',
-				'categories',
+				'comments',
 			) );
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
 
@@ -591,23 +592,6 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 					// Allow output of additional meta items to be added by child themes and plugins
 					do_action( 'twentytwenty_start_of_post_meta_list', $post_meta, $post_id );
 
-					// Post date
-					if ( in_array( 'post-date', $post_meta ) ) : 
-						$has_meta = true;
-						?>
-						<li class="post-date">
-							<a class="meta-wrapper" href="<?php the_permalink(); ?>">
-								<span class="meta-icon">
-									<span class="screen-reader-text"><?php esc_html_e( 'Post date', 'twentytwenty' ); ?></span>
-									<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
-								</span>
-								<span class="meta-text">
-									<?php the_time( get_option( 'date_format' ) ); ?>
-								</span>
-							</a>
-						</li>
-					<?php endif;
-
 					// Author
 					if ( in_array( 'author', $post_meta ) ) : 
 						$has_meta = true;
@@ -625,6 +609,23 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						</li>
 						<?php
 					endif;
+
+					// Post date
+					if ( in_array( 'post-date', $post_meta ) ) : 
+						$has_meta = true;
+						?>
+						<li class="post-date">
+							<a class="meta-wrapper" href="<?php the_permalink(); ?>">
+								<span class="meta-icon">
+									<span class="screen-reader-text"><?php esc_html_e( 'Post date', 'twentytwenty' ); ?></span>
+									<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
+								</span>
+								<span class="meta-text">
+									<?php the_time( get_option( 'date_format' ) ); ?>
+								</span>
+							</a>
+						</li>
+					<?php endif;
 
 					// Categories
 					if ( in_array( 'categories', $post_meta ) && has_category() ) : 
