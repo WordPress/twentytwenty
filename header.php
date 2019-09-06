@@ -15,13 +15,13 @@
 
 	<body <?php body_class(); ?>>
 
-		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
-
-		<?php 
+		<?php
 		if ( function_exists( 'wp_body_open' ) ) {
-			wp_body_open(); 
+			wp_body_open();
 		}
 		?>
+
+		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
 
 		<header id="site-header">
 
