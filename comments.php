@@ -15,6 +15,8 @@ if ( $comments ) : ?>
 
 		<?php
 
+		$comments_number = absint( get_comments_number() );
+
 		// Translators: %s = the number of comments
 		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
 		
