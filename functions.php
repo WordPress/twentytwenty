@@ -118,6 +118,9 @@ require get_template_directory() . '/parts/classes/class-theme-customizer.php';
 // Custom comment walker
 require get_template_directory() . '/parts/classes/class-comment-walker.php';
 
+// Handle JavaScript loading
+require get_template_directory() . '/parts/classes/class-script-loader.php';
+
 /**
  * Register and Enqueue Styles
  */
@@ -159,6 +162,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 		$js_dependencies = array( 'jquery' );
 
 		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version );
+		wp_script_add_data( 'twentytwenty-construct', 'async', true );
 
 	}
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
