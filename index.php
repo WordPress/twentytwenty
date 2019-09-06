@@ -17,23 +17,27 @@
 		} else {
 			$archive_subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'twentytwenty' );
 		}
-	} else {
+	} elseif ( ! is_home() ) {
 		$archive_title = get_the_archive_title();
 		$archive_subtitle = get_the_archive_description( '<div>', '</div>' ); 
 	}
 	
 	if ( $archive_title || $archive_subtitle ) : ?>
 		
-		<header class="archive-header section-inner medium has-text-align-center">
+		<header class="archive-header has-text-align-center">
 
-			<?php if ( $archive_title ) : ?>
-				<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-			<?php endif; ?>
+			<div class="archive-header-inner section-inner medium">
 
-			<?php if ( $archive_subtitle ) : ?>
-				<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
-			<?php endif; ?>
+				<?php if ( $archive_title ) : ?>
+					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
+				<?php endif; ?>
+
+				<?php if ( $archive_subtitle ) : ?>
+					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
+				<?php endif; ?>
 			
+			</div><!-- .archive-header-inner -->
+
 		</header><!-- .archive-header -->
 
 	<?php endif; ?>

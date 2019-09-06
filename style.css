@@ -481,7 +481,7 @@ samp {
 code,
 kbd,
 samp {
-	background: #F1F1F3;
+	background: rgba( 0, 0, 0, .075 );
 	border-radius: .2rem;
 }
 
@@ -1090,8 +1090,7 @@ ul.social-icons li {
 
 
 #site-header {
-	background: transparent;
-	margin-bottom: 5rem;
+	background: #fff;
 }
 
 .header-inner {
@@ -1736,36 +1735,23 @@ button.sub-menu-toggle.active svg {
 /* To The Content ---------------------------- */
 
 .to-the-content-wrapper {
+	display: flex;
+	justify-content: center;
 	margin-top: 2.5rem;
 }
 
 .to-the-content {
-	align-items: center;
-	display: flex;
 	text-decoration: none;
 }
 
-.to-the-content .icon {
-	transition: transform .1s linear;
-}
-
-.to-the-content .icon svg {
+.to-the-content svg {
 	height: 3.2rem;
+	transition: transform .1s linear;
 	width: 3.2rem;
-}
-
-.to-the-content .text {
-	font-size: 1.5rem;
-	font-weight: 500;
-	margin-left: 1.5rem;
 }
 
 .to-the-content:hover .icon {
 	transform: scale( 1.1 );
-}
-
-.to-the-content:hover .text {
-	text-decoration: underline;
 }
 
 
@@ -1781,12 +1767,17 @@ button.sub-menu-toggle.active svg {
 
 /* Archive Header ---------------------------- */
 
+.archive-header {
+	background-color: #fff;
+	padding: 4rem 0;
+}
+
 .archive-title {
 	margin: 0;
 }
 
-.archive-header {
-	margin-bottom: 5rem;
+.posts {
+	padding: 4rem 0;
 }
 
 
@@ -1797,9 +1788,23 @@ button.sub-menu-toggle.active svg {
 
 /* Post Header ------------------------------- */
 
+.singular .entry-header {
+	background-color: #fff;
+	padding: 4rem 0;
+}
+
 h1.entry-title,
 .entry-title.faux-heading {
 	margin: 0;
+}
+
+.entry-title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.entry-title a:hover {
+	text-decoration: underline;
 }
 
 .intro-text {
@@ -1807,6 +1812,10 @@ h1.entry-title,
 }
 
 /* POST META */
+
+.post-meta-single-top .post-meta {
+	justify-content: center;
+}
 
 .post-meta-wrapper {
 	margin-top: 2rem;
@@ -2681,7 +2690,8 @@ div.comment:first-of-type {
 
 
 #site-footer {
-	margin-top: 6rem;
+	background-color: #fff;
+	margin-top: 5rem;
 }
 
 
@@ -2859,11 +2869,6 @@ div.comment:first-of-type {
 
 	/* Site Header --------------------------- */
 
-	#site-header {
-		margin-bottom: 9rem;
-		padding: 4.5rem 0;
-	}
-
 	.header-inner {
 		min-height: 9rem;
 	}
@@ -3002,12 +3007,20 @@ div.comment:first-of-type {
 	/* Post: Archive ------------------------- */
 
 	.archive-header {
-		margin-bottom: 8rem;
+		padding: 8rem 0;
+	}
+
+	.posts {
+		padding: 8rem 0;
 	}
 
 	/* Post: Single -------------------------- */
 
 	/* POST HEADER */
+
+	.singular .entry-header {
+		padding: 8rem 0;
+	}
 
 	.intro-text {
 		font-size: 2rem;

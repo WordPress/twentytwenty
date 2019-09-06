@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main id="site-content" class="section-inner">
+<main id="site-content">
 
 	<?php
 

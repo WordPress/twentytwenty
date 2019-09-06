@@ -1,4 +1,4 @@
-<article <?php post_class( 'section-inner' ); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php 
 	
@@ -62,21 +62,34 @@
 	
 		get_template_part( 'parts/page-header' );
 		
-		if ( has_post_thumbnail() && ! post_password_required() ) : ?>
+		if ( has_post_thumbnail() && ! post_password_required() ) : 
+
+			$featured_media_inner_classes = '';
+
+			// Make the featured media thinner on archive pages
+			if ( ! is_singular() ) {
+				$featured_media_inner_classes .= ' medium';
+			}
+		
+			?>
 
 			<figure class="featured-media">
 
-				<?php 
-				
-				the_post_thumbnail();
+				<div class="featured-media-inner section-inner<?php esc_attr_e( $featured_media_inner_classes ); ?>">
 
-				$caption = get_the_post_thumbnail_caption();
-				
-				if ( $caption ) : ?>
+					<?php 
+					
+					the_post_thumbnail();
 
-					<figcaption class="wp-caption-text"><?php echo esc_html( $caption ); ?></figcaption>
+					$caption = get_the_post_thumbnail_caption();
+					
+					if ( $caption ) : ?>
 
-				<?php endif; ?>
+						<figcaption class="wp-caption-text"><?php echo esc_html( $caption ); ?></figcaption>
+
+					<?php endif; ?>
+
+				</div><!-- .featured-media-inner -->
 
 			</figure><!-- .featured-media -->
 
@@ -84,7 +97,7 @@
 
 	<?php endif; ?>
 
-	<div class="post-inner section-inner thin max-percentage" id="post-inner">
+	<div class="post-inner section-inner thin" id="post-inner">
 
 		<div class="entry-content">
 
@@ -104,67 +117,71 @@
 		</div><!-- .entry-content -->
 
 		<?php 
-
 		// Single bottom post meta
 		twentytwenty_the_post_meta( $post->ID, 'single-bottom' );
+		?>
 
-		if ( is_single() ) : 
+	</div><!-- .post-inner -->
 
-			// Single pagination
-			$next_post = get_next_post();
-			$prev_post = get_previous_post();
+	<?php
 
-			if ( $next_post || $prev_post ) :
+	if ( is_single() ) : 
 
-				$pagination_classes = '';
+		// Single pagination
+		$next_post = get_next_post();
+		$prev_post = get_previous_post();
 
-				if ( ! $next_post ) {
-					$pagination_classes = ' only-one only-prev';
-				} elseif ( ! $prev_post ) {
-					$pagination_classes = ' only-one only-next';
-				}
+		if ( $next_post || $prev_post ) :
 
-				?>
+			$pagination_classes = '';
 
-				<nav class="pagination-single<?php echo esc_attr( $pagination_classes ); ?>">
+			if ( ! $next_post ) {
+				$pagination_classes = ' only-one only-prev';
+			} elseif ( ! $prev_post ) {
+				$pagination_classes = ' only-one only-next';
+			}
 
-					<?php if ( $prev_post ) : ?>
+			?>
 
-						<a class="previous-post" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">
-							<span class="arrow">&larr;</span>
-							<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $prev_post->ID ) ); ?></span></span>
-						</a>
+			<nav class="pagination-single section-inner<?php echo esc_attr( $pagination_classes ); ?>">
 
-					<?php endif; ?>
+				<?php if ( $prev_post ) : ?>
 
-					<?php if ( $next_post ) : ?>
+					<a class="previous-post" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">
+						<span class="arrow">&larr;</span>
+						<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $prev_post->ID ) ); ?></span></span>
+					</a>
 
-						<a class="next-post" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">
-							<span class="arrow">&rarr;</span>
-							<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $next_post->ID ) ); ?></span></span>
-						</a>
+				<?php endif; ?>
 
-					<?php endif; ?>
+				<?php if ( $next_post ) : ?>
 
-				</nav><!-- .single-pagination -->
+					<a class="next-post" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">
+						<span class="arrow">&rarr;</span>
+						<span class="title"><span class="title-inner"><?php echo wp_kses_post( get_the_title( $next_post->ID ) ); ?></span></span>
+					</a>
 
-				<?php
+				<?php endif; ?>
 
-			endif;
+			</nav><!-- .single-pagination -->
+
+			<?php
 
 		endif;
 
-		// Output comments wrapper if it's a post, or if comments are open, or if there's a comment number – and check for password
-		if ( ( $post->post_type == 'post' || comments_open() || get_comments_number() ) && ! post_password_required() ) : ?>
+	endif;
 
-			<div class="comments-wrapper">
+	// Output comments wrapper if it's a post, or if comments are open, or if there's a comment number – and check for password
+	if ( ( $post->post_type == 'post' || comments_open() || get_comments_number() ) && ! post_password_required() ) : ?>
 
-				<?php comments_template(); ?>
+		<div class="comments-wrapper section-inner thin">
 
-			</div><!-- .comments-wrapper -->
+			<?php comments_template(); ?>
 
-		<?php endif; ?>
+		</div><!-- .comments-wrapper -->
 
-	</div><!-- .post-inner -->
+	<?php endif; ?>
+
+</div><!-- .post-inner -->
 
 </article><!-- .post -->

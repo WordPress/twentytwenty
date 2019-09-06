@@ -159,6 +159,11 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		global $post;
 		$post_type = isset( $post ) ? $post->post_type : false;
 
+		// Check whether we're singular
+		if ( is_singular() ) {
+			$classes[] = 'singular';
+		}
+
 		// Check whether the current page should have an overlay header
 		if ( is_page_template( array( 'template-cover.php' ) ) ) {
 			$classes[] = 'overlay-header';
@@ -339,50 +344,6 @@ if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
 		
 	}
 	add_action( 'init', 'twentytwenty_add_excerpt_support_to_pages' );
-endif;
-
-
-/*	-----------------------------------------------------------------------------------------------
-	FILTER ARCHIVE TITLE
-
-	@param	$title string		The initial title
---------------------------------------------------------------------------------------------------- */
-
-if ( ! function_exists( 'twentytwenty_filter_archive_title' ) ) :
-	function twentytwenty_filter_archive_title( $title ) {
-
-		// Use the blog page title on home
-		$blog_page_id = get_option( 'page_for_posts' );
-		if ( is_home() && $blog_page_id && get_the_title( $blog_page_id ) ) {
-			$title = get_the_title( $blog_page_id );
-		}
-
-		return $title;
-		
-	}
-	add_filter( 'get_the_archive_title', 'twentytwenty_filter_archive_title' );
-endif;
-
-
-/*	-----------------------------------------------------------------------------------------------
-	FILTER ARCHIVE DESCRIPTION
-
-	@param	$description string		The initial description
---------------------------------------------------------------------------------------------------- */
-
-if ( ! function_exists( 'twentytwenty_filter_archive_description' ) ) :
-	function twentytwenty_filter_archive_description( $description ) {
-
-		// Use the blog page manual excerpt on home
-		$blog_page_id = get_option( 'page_for_posts' );
-		if ( is_home() && $blog_page_id && has_excerpt( $blog_page_id ) ) {
-			$description = get_the_excerpt( $blog_page_id );
-		}
-
-		return $description;
-		
-	}
-	add_filter( 'get_the_archive_description', 'twentytwenty_filter_archive_description' );
 endif;
 
 
