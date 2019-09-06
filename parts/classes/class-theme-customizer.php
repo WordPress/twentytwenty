@@ -278,9 +278,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 	// Setup the Theme Customizer settings and controls
 	add_action( 'customize_register', array( 'TwentyTwenty_Customize', 'twentytwenty_register' ) );
 
-	// Enqueue customize controls javascript in Theme Customizer admin screen
-	add_action( 'customize_controls_init', array( 'TwentyTwenty_Customize', 'twentytwenty_customize_controls' ) );
-
 endif;
 
 
