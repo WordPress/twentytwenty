@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WordPress Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+
+  <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/.phpcs.xml.dist -->
+
+  <!-- Set a description for this ruleset. -->
+  <description>Coding standards used for checking the Twenty Twenty theme.</description>
+
+  <!-- Exclude patterns -->
+  <exclude-pattern>/vendor/*</exclude-pattern>
+  <exclude-pattern>/node_modules/*</exclude-pattern>
+
+  <!-- Include the WordPress ruleset, with space for exclusions if necessary. -->
+  <rule ref="WordPress-Extra">
+    <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+    <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+
+    <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+
+    <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+    <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+    <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
+  </rule>
+  <rule ref="WordPress-Docs" />
+  <rule ref="WPThemeReview" />
+
+  <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
+    <severity>0</severity>
+  </rule>
+</ruleset>

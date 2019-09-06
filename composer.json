@@ -1,0 +1,30 @@
+{
+  "name": "wordpress/twentytwenty",
+  "description": "Twenty Twenty is designed with flexibility at its core.",
+  "type": "package",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Themes"
+  ],
+  "authors": [
+    {
+      "name": "the WordPress team",
+      "homepage": "https://github.com/WordPress/twentytwenty"
+    }
+  ],
+  "require-dev": {
+      "wptrt/wpthemereview": "^0.2.0",
+      "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+  },
+  "scripts": {
+    "phpcs-i": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -i",
+    "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -s",
+    "lint-summary": "@lint --report=summary,source",
+    "format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
+  },
+  "support"    : {
+    "issues": "https://github.com/WordPress/twentytwenty/issues",
+    "source": "https://github.com/WordPress/twentytwenty"
+  }
+}
