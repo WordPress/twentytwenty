@@ -14,7 +14,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 
 		// Custom background color
 		add_theme_support( 'custom-background', array(
-			'default-color'	=> 'FFFFFF'
+			'default-color'	=> 'F5EFE0'
 		) );
 
 		// Set content-width
