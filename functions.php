@@ -518,9 +518,9 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 		$page_template = get_page_template_slug( $post_id );
 
-		// Check that the post type should be able to output post meta
-		$allowed_post_types = apply_filters( 'twentytwenty_allowed_post_types_for_meta_output', array( 'post' ) );
-		if ( ! in_array( get_post_type( $post_id ), $allowed_post_types ) ) {
+		// Check whether the post type is allowed to output post meta
+		$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
+		if ( in_array( get_post_type( $post_id ), $disallowed_post_types ) ) {
 			return;
 		}
 
