@@ -1,21 +1,34 @@
 <?php
-
-
-/*	-----------------------------------------------------------------------------------------------
-	THEME SUPPORTS
-	Default setup, some features excluded
---------------------------------------------------------------------------------------------------- */
+/**
+ * Twenty Twenty functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
 if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
     function twentytwenty_theme_support()  {
 
-        // Automatic feed
+		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
 		// Custom background color
-		add_theme_support( 'custom-background', array(
-			'default-color'	=> 'F5EFE0'
-		) );
+		add_theme_support(
+			'custom-background',
+			array(
+				'default-color'	=> 'F5EFE0'
+			)
+		);
 
 		// Set content-width
 		global $content_width;
@@ -23,46 +36,78 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 			$content_width = 580;
 		}
 
-		// Post thumbnails
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
 		add_theme_support( 'post-thumbnails' );
 
 		// Set post thumbnail size
-		$low_res_images = get_theme_mod( 'twentytwenty_activate_low_resolution_images', false );
 		set_post_thumbnail_size( 1200, 9999 );
 
-		// Add image sizes
+		$low_res_images = get_theme_mod( 'twentytwenty_activate_low_resolution_images', false );
+
+		// Add custom image sizes
 		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
 
 		// Custom logo
-		add_theme_support( 'custom-logo', array(
-			'height'      => 240,
-			'width'       => 320,
-			'flex-height' => true,
-			'flex-width'  => true,
-			'header-text' => array( 'site-title', 'site-description' ),
-		) );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 240,
+				'width'       => 320,
+				'flex-height' => true,
+				'flex-width'  => true,
+				'header-text' => array( 'site-title', 'site-description' ),
+			)
+		);
 
-		// Title tag
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
 		add_theme_support( 'title-tag' );
 
-		// HTML5 semantic markup
-		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption'
+			)
+		);
 
-		// Make the theme translation ready
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on Twenty Nineteen, use a find and replace
+		 * to change 'twentynineteen' to the name of your theme in all the template files.
+		 */
 		load_theme_textdomain( 'twentytwenty', get_template_directory() . '/languages' );
 
-		// Alignwide and alignfull classes in the block editor
+		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
         
     }
+
     add_action( 'after_setup_theme', 'twentytwenty_theme_support' );
+
 endif;
 
 
-/*	-----------------------------------------------------------------------------------------------
-	REQUIRED FILES
-	Include required files
---------------------------------------------------------------------------------------------------- */
+/**
+ * REQUIRED FILES
+ * Include required files
+ */
 
 // Handle SVG icons
 require get_template_directory() . '/parts/classes/class-svg-icons.php';
@@ -73,12 +118,9 @@ require get_template_directory() . '/parts/classes/class-theme-customizer.php';
 // Custom comment walker
 require get_template_directory() . '/parts/classes/class-comment-walker.php';
 
-
-/*	-----------------------------------------------------------------------------------------------
-	REGISTER STYLES
-	Register and enqueue CSS
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Register and Enqueue Styles
+ */
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 	function twentytwenty_register_styles() {
 
@@ -102,12 +144,9 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	REGISTER SCRIPTS
-	Register and enqueue JavaScript
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Register and Enqueue Scripts
+ */
 if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 	function twentytwenty_register_scripts() {
 
@@ -125,12 +164,9 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	MENUS
-	Register navigational menus (wp_nav_menu)
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Register navigation menus uses wp_nav_menu in three places
+ */
 if ( ! function_exists( 'twentytwenty_menus' ) ) :
     function twentytwenty_menus() {
 
@@ -147,12 +183,9 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) :
     add_action( 'init', 'twentytwenty_menus' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	BODY CLASSES
-	Conditional addition of classes to the body element
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Add conditional body classes
+ */
 if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 	function twentytwenty_body_classes( $classes ) {
 
@@ -222,11 +255,10 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 endif;
 
 
-/*	-----------------------------------------------------------------------------------------------
-	NO-JS CLASS
-	If we're missing JavaScript support, the HTML element will have a no-js class
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Add No-JS Class
+ * If we're missing JavaScript support, the HTML element will have a no-js class
+ */
 if ( ! function_exists( 'twentytwenty_no_js_class' ) ) :
 	function twentytwenty_no_js_class() {
 
@@ -238,11 +270,9 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) :
 	add_action( 'wp_head', 'twentytwenty_no_js_class' );
 endif;
 
-
-/* ------------------------------------------------------------------------------------------------
-   CUSTOM LOGO OUTPUT
-   ------------------------------------------------------------------------------------------------ */
-
+/**
+ * Add and Output Custom Logo
+ */
 if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) :
 	function twentytwenty_the_custom_logo( $logo_theme_mod = 'custom_logo' ) {
 
@@ -298,11 +328,11 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 	}
 endif;
 
-
-/* ---------------------------------------------------------------------------------------------
-   REGISTER SIDEBAR
-   --------------------------------------------------------------------------------------------- */
-
+/**
+ * Register widget areas.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
 if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 	function twentytwenty_sidebar_registration() {
 
@@ -332,11 +362,9 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	ADD EXCERPT SUPPORT TO PAGES
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Add Excerpt Support to Pages
+ */
 if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
 	function twentytwenty_add_excerpt_support_to_pages() {
 
@@ -346,12 +374,10 @@ if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
 	add_action( 'init', 'twentytwenty_add_excerpt_support_to_pages' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	OUTPUT AND GET THEME SVG
-	Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Output and Get Theme SVG
+ * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
+ */
 if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
 	function twentytwenty_the_theme_svg( $svg_name, $color = '' ) {
 
@@ -402,12 +428,9 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 	}
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	IS COMMENT BY POST AUTHOR?
-	Check if the specified comment is written by the author of the post commented on.
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Check if the specified comment is written by the author of the post commented on.
+ */
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
 	function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
@@ -423,13 +446,11 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
 	}
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	FILTER COMMENT REPLY LINK TO NOT JS SCROLL
-	Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
-	makes it scroll to the wrong position on the page
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Filter comment reply link to not JS scroll
+ * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
+ * makes it scroll to the wrong position on the page
+ */
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
 	function twentytwenty_filter_comment_reply_link( $link ) {
 
@@ -440,13 +461,11 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
 	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	FILTER CLASSES OF WP_LIST_PAGES ITEMS TO MATCH MENU ITEMS
-	Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify 
-	styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Filter Classes of wp_list_pages items to match menu items
+ * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify 
+ * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
+ */
 if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
 	function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
 
@@ -473,15 +492,13 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
 	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
 endif;
 
-
-/* ------------------------------------------------------------------------------------------------
-   OUTPUT & GET POST META
-   If it's a single post, output the post meta values specified in the Customizer settings.
-
-   @param	$post_id int		The ID of the post for which the post meta should be output
-   @param	$location string	Which post meta location to output – single or preview
-   --------------------------------------------------------------------------------------------- */
-
+/**
+ * Get and Output Post Meta
+ * If it's a single post, output the post meta values specified in the Customizer settings.
+ *
+ * @param	$post_id int		The ID of the post for which the post meta should be output
+ * @param	$location string	Which post meta location to output – single or preview
+ */
 if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) :
 	function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' ) {
 
@@ -678,11 +695,9 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 	}
 endif;
 
-
-/* 	-----------------------------------------------------------------------------------------------
-	ADD A SUB NAV TOGGLE TO THE MAIN MENU
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Add a Sub Nav Toggle to the Main Menu
+ */
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
@@ -723,11 +738,9 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 	add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
 endif;
 
-
-/*	-----------------------------------------------------------------------------------------------
-	EDITOR STYLES FOR THE BLOCK EDITOR
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Enqueue supplemental block editor styles.
+ */
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
 	function twentytwenty_block_editor_styles() {
 
@@ -743,11 +756,9 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
 	add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
 endif;
 
-
-/* ---------------------------------------------------------------------------------------------
-   EDITOR STYLES FOR THE CLASSIC EDITOR
-   --------------------------------------------------------------------------------------------- */
-
+/**
+ * Enqueue classic editor styles.
+ */
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
 	function twentytwenty_classic_editor_styles() {
 
@@ -761,12 +772,10 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
 	add_action( 'init', 'twentytwenty_classic_editor_styles' );
 endif;
 
-
-/* ---------------------------------------------------------------------------------------------
-   OUTPUT OF CUSTOMIZER SETTINGS IN THE CLASSIC EDITOR
-   Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
-   --------------------------------------------------------------------------------------------- */
-
+/**
+ * Output Customizer Settings in the Classic Editor
+ * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
+ */
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) :
 	function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 		
@@ -785,16 +794,14 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 endif;
 
 
-/* ---------------------------------------------------------------------------------------------
-   BLOCK EDITOR SETTINGS
-   Add custom colors and font sizes to the block editor
------------------------------------------------------------------------------------------------- */
-
+/**
+ * Block Editor Settings
+ * Add custom colors and font sizes to the block editor
+ */
 if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 	function twentytwenty_block_editor_settings() {
 
-		/* Block Editor Palette --------------------------------------- */
-
+		// Block Editor Palette
 		$editor_color_palette = array();
 
 		// Get the color options
@@ -828,8 +835,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 			add_theme_support( 'editor-color-palette', $editor_color_palette );
 		}
 
-		/* Gutenberg Font Sizes --------------------------------------- */
-
+		// Gutenberg Font Sizes
 		add_theme_support( 'editor-font-sizes', array(
 			array(
 				'name' 		=> _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
@@ -862,10 +868,9 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 endif;
 
 
-/*	-----------------------------------------------------------------------------------------------
-	GENERATE CSS
---------------------------------------------------------------------------------------------------- */
-
+/**
+ * Generate CSS
+ */
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 		$return = '';
@@ -881,18 +886,17 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 endif;
 
 
-/*	-----------------------------------------------------------------------------------------------
-	GET CSS BUILT FROM CUSTOMIZER OPTIONS
-	Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
-
-	@param		$type string	Whether to return CSS for the "front-end", "block-editor" or "classic-editor"
---------------------------------------------------------------------------------------------------- */
+/**
+ * Get CSS Built from Customizer Options
+ * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
+ *
+ * @param	$type string 	Whether to return CSS for the "front-end", "block-editor" or "classic-editor"
+ */
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
-		/* Get variables --------------------- */
-	
+		// Get variables
 		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
 		$accent_default = '#007c89';
 		
@@ -907,24 +911,22 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 			have a higher priority than the base element styles
 		*/
 
-		/* FRONT-END STYLES */
-
+		// Front-End Styles
 		if ( $type == 'front-end' ) {
 
-			/* Helper Variables ------------------ */
-
+			// Helper Variables
 			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
-			/* Colors ---------------------------- */
+			// Colors
 
-			/* ELEMENT SPECIFIC */
+			// Element Specific
 			if ( $accent && $accent !== $accent_default ) : 
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 			endif;
 
-			/* HELPER CLASSES */
+			// Helper Classes
 			if ( $accent && $accent !== $accent_default ) : 
 				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
 				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
@@ -932,11 +934,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
 			endif;
 
-		/* BLOCK EDITOR STYLES */
-
+		// Block Editor Styles
 		} else if ( $type == 'block-editor' ) {
 
-			/* Colors ------------------------ */
+			// Colors
 
 			// Accent color
 			if ( $accent && $accent !== $accent_default ) : 
@@ -950,7 +951,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 		} else if ( $type == 'classic-editor' ) {
 
-			/* Colors ------------------------ */
+			// Colors
 
 			// Accent color
 			if ( $accent && $accent !== $accent_default ) : 
@@ -961,8 +962,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 		}
 
-		/* Return the results ---------------- */
-
+		// Return the results
 		return ob_get_clean();
 
 	}
