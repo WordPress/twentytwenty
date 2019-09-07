@@ -755,7 +755,7 @@ twentytwenty.focusManagement = {
 	},
 
 	focusLoop: function() {
-		$( '*' ).on( 'focus', function() {
+		$( '.cover-modal *:not(.svg):not(.path)' ).on( 'focus', function() {
 			if ( $( '.menu-modal' ).is( '.active' ) ) {
 				if ( ! $( this ).parents( '.menu-modal' ).length && ! $( this ).parents( '.header-toggles' ).length ) {
 					$( '.nav-toggle' ).focus();
