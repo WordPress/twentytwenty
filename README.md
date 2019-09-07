@@ -1,4 +1,4 @@
-**Theme Name:** Twenty Twenty
+**Theme Name:** Twenty Twenty  
 **Theme URI:** https://wordpress.org/themes/twentytwenty/  
 **Contributors:** the WordPress team  
 **Requires at least:** WordPress 4.9.6  
