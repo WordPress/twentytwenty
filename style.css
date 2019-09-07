@@ -685,7 +685,7 @@ textarea {
 
 select {
 	background-repeat: no-repeat;
-	background-image: url( 'data:image/svg+xml;utf8,<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12"><polygon fill="#000000" fill-rule="evenodd" points="1319.899 365.778 1327.678 358 1329.799 360.121 1319.899 370.021 1310 360.121 1312.121 358" transform="translate(-1310 -358)" /></svg>');
+	background-image: url( 'data:image/svg+xml;utf8,<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12"><polygon fill="color( display-p3 0.102 0.106 0.122 / 1 )" fill-rule="evenodd" points="1319.899 365.778 1327.678 358 1329.799 360.121 1319.899 370.021 1310 360.121 1312.121 358" transform="translate(-1310 -358)" /></svg>');
 	background-position: calc( 100% - 2rem ) center;
 	background-size: 1.4rem .9rem;
 	line-height: 1.3;
