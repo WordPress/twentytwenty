@@ -782,9 +782,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	empty-cells: show;
+	font-size: 1.6rem;
 	margin: 4rem 0;
 	max-width: 100%;
 	overflow: hidden;
+	table-layout: fixed;
 	width: 100%;
 }
 
@@ -3016,6 +3018,10 @@ ul.footer-social li {
 		margin: 8rem 0;
 	}
 
+	table {
+		font-size: 1.8rem;
+	}
+
 	/* VANILLA GALLERIES */
 
 	.gallery-columns-2 .gallery-item { max-width: 50%; }
@@ -3343,10 +3349,6 @@ ul.footer-social li {
 	.entry-content p,
 	.entry-content li {
 		line-height: 1.476;
-	}
-
-	.entry-content table {
-		font-size: 1.8rem;
 	}
 
 	.entry-content h1,  
