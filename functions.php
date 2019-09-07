@@ -174,7 +174,7 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) :
         $locations = array(
             'footer-menu' 		=> __( 'Footer Menu', 'twentytwenty' ),
             'main-menu' 		=> __( 'Main Menu', 'twentytwenty' ),
-            'shortcuts-menu' 	=> __( 'Shortcuts Menu', 'twentytwenty' ),
+			'shortcuts-menu' 	=> __( 'Shortcuts Menu', 'twentytwenty' ),
             'social-menu' 		=> __( 'Social Menu', 'twentytwenty' ),
 		);
 		
