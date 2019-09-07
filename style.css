@@ -1288,7 +1288,7 @@ ul.social-icons li {
 .header-inner .toggle:hover svg,
 .header-inner .toggle:focus svg {
 	outline: none;
-	transform: scale( 1.25 );
+	transform: scale( 1.125 );
 }
 
 .header-inner .toggle path {
