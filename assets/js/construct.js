@@ -165,9 +165,6 @@ twentytwenty.toggles = {
 					$( '*[data-toggle-target="' + targetString + '"]' ).toggleClass( 'active' );
 				}
 
-				// Toggle aria-expanded on the target
-				twentytwentyToggleAttribute( $target, 'aria-expanded', 'true', 'false' );
-
 				// Toggle aria-expanded on the toggle
 				twentytwentyToggleAttribute( $toggle, 'aria-expanded', 'true', 'false' );
 
