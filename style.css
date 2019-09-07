@@ -1443,7 +1443,8 @@ ul.shortcuts-menu {
 	top: -1rem;
 }
 
-.shortcuts-menu ul li.menu-item-has-children:hover > ul {
+.shortcuts-menu ul li.menu-item-has-children:hover > ul,
+.shortcuts-menu ul li.menu-item-has-children a:focus ~ ul {
 	right: calc( 100% + 2rem );
 }
 
