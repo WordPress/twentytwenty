@@ -1236,6 +1236,16 @@ ul.social-icons li {
 		top: 0;
 }
 
+.admin-bar.overlay-header #site-header {
+	top: 32px;
+}
+
+@media (max-width: 782px) {
+	.admin-bar.overlay-header #site-header {
+		top: 46px;
+	}
+}
+
 .overlay-header:not(.showing-menu-modal):not(.overlay-header-has-text-color) .header-inner {
 	color: #fff;
 }
