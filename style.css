@@ -1202,6 +1202,12 @@ ul.social-icons li {
 	text-decoration: none;
 }
 
+.site-title a:hover,
+.site-title a:focus {
+	outline: none;
+	text-decoration: underline;
+}
+
 .site-description {
 	margin-top: 1rem;
 }
@@ -1252,30 +1258,40 @@ ul.social-icons li {
 
 
 /* Header Navigation ------------------------- */
+
+.header-navigation-wrapper {
+	display: none;
+}
+
 /* Header Toggles ---------------------------- */
 
 .header-toggles {
-	display: block;
+	display: none;
 	overflow: hidden;
 }
 
-.header-toggles .toggle {
+.header-inner .toggle {
 	align-items: center;
 	display: flex;
+	outline: none;
 	padding: 0 2rem;
 	text-decoration: none;
 }
 
-.header-toggles .toggle svg {
+.header-inner .toggle svg {
+	display: block;
+	position: relative;
 	transition: transform .15s linear;
+	z-index: 1;
 }
 
-.header-toggles .toggle:hover svg,
-.header-toggles .toggle:focus svg {
-	transform: scale( 1.1 );
+.header-inner .toggle:hover svg,
+.header-inner .toggle:focus svg {
+	outline: none;
+	transform: scale( 1.25 );
 }
 
-.header-toggles .toggle path {
+.header-inner .toggle path {
 	fill: currentColor;
 }
 
@@ -1365,7 +1381,11 @@ ul.shortcuts-menu {
 }
 
 .shortcuts-menu a:hover,
-.shortcuts-menu a:focus,
+.shortcuts-menu a:focus {
+	outline: none;
+	text-decoration: underline;
+}
+
 .shortcuts-menu li.current-menu-item > a,
 .shortcuts-menu li.current-menu-item > .link-icon-wrapper > a {
 	text-decoration: underline;
@@ -3599,6 +3619,11 @@ ul.footer-social li {
 
 	/* HEADER TOGGLES */
 
+	.mobile-search-toggle,
+	.mobile-nav-toggle {
+		display: none !important;
+	}
+
 	.shortcuts-menu-wrapper + .header-toggles {
 		margin-left: 3rem;
 	}
@@ -3609,7 +3634,7 @@ ul.footer-social li {
 		margin-right: -3rem;
 	}
 
-	.header-toggles .toggle {
+	.header-inner .toggle {
 		height: 4.4rem;
 		padding: 0 3rem;
 		position: relative;
@@ -3620,11 +3645,11 @@ ul.footer-social li {
 		width: auto;
 	}
 
-	.header-toggles .toggle-wrapper {
+	.header-inner .toggle-wrapper {
 		position: relative;
 	}
 
-	.header-toggles .toggle-wrapper:before {
+	.header-inner .toggle-wrapper:before {
 		background: #DEDFDF;
 		content: "";
 		display: block;
@@ -3637,7 +3662,7 @@ ul.footer-social li {
 
 	/* OVERLAY HEADer */
 
-	.overlay-header .header-toggles .toggle-wrapper:before {
+	.overlay-header .toggle-wrapper:before {
 		background: rgba( 255, 255, 255, .33 );
 	}
 
