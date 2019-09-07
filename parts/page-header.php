@@ -1,13 +1,13 @@
 <header class="entry-header has-text-align-center">
 
-	<div class="entry-header-inner section-inner thin max-percentage">
+	<div class="entry-header-inner section-inner medium">
 
 		<?php 
 
-		if ( is_front_page() ) {
-			the_title( '<div class="entry-title faux-heading heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></div>' );
-		} else {
+		if ( is_singular() ) {
 			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h1>' );
+		} else {
+			the_title( '<h2 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
 		}
 
 		if ( has_excerpt() ) : ?>
