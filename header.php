@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div class="menu-modal cover-modal">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>
 
@@ -17,9 +30,9 @@
 
 		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
 
-		<?php 
+		<?php
 		if ( function_exists( 'wp_body_open' ) ) {
-			wp_body_open(); 
+			wp_body_open();
 		}
 		?>
 
@@ -33,19 +46,20 @@
 
 						<?php
 
-						$logo = twentytwenty_get_custom_logo();
-						$site_title = get_bloginfo( 'name' );
+						$logo             = twentytwenty_get_custom_logo();
+						$site_title       = get_bloginfo( 'name' );
 						$site_description = get_bloginfo( 'description' );
 
 						if ( $logo ) {
 							$home_link_contents = $logo . '<span class="screen-reader-text">' . esc_html( $site_title ) . '</span>';
-							$site_title_class = 'site-logo';
+							$site_title_class   = 'site-logo';
 						} else {
-							$site_title_class = 'site-title';
+							$site_title_class   = 'site-title';
 							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
 						}
 
-						if ( is_front_page() ) : ?>
+						if ( is_front_page() ) :
+							?>
 							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; ?></h1>
 						<?php else : ?>
 							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; ?></div>
@@ -66,16 +80,20 @@
 							<ul class="main-menu-alt reset-list-style">
 								<?php
 								if ( has_nav_menu( 'main-menu' ) ) {
-									wp_nav_menu( array(
-										'container' 		=> '',
-										'items_wrap' 		=> '%3$s',
-										'theme_location' 	=> 'main-menu',
-									) );
+									wp_nav_menu(
+										array(
+											'container'  => '',
+											'items_wrap' => '%3$s',
+											'theme_location' => 'main-menu',
+										)
+									);
 								} else {
-									wp_list_pages( array( 
-										'match_menu_classes' 	=> true,
-										'title_li' 				=> false, 
-									) );
+									wp_list_pages(
+										array(
+											'match_menu_classes' => true,
+											'title_li' => false,
+										)
+									);
 								}
 								?>
 							</ul><!-- .main-menu-alt -->
@@ -84,13 +102,14 @@
 
 						<div class="header-toggles hide-no-js">
 
-							<?php 
-							
-							// Check whether the header search is deactivated in the customizer
-							$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false ); 
-							
-							if ( ! $disable_header_search ) : ?>
-							
+							<?php
+
+							// Check whether the header search is deactivated in the customizer.
+							$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
+
+							if ( ! $disable_header_search ) :
+								?>
+
 								<a href="#" class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-pressed="false">
 									<div class="toggle-text">
 										<?php esc_html_e( 'Search', 'twentytwenty' ); ?>
@@ -120,8 +139,8 @@
 
 			</div><!-- .header-inner -->
 
-			<?php 
-			// Output the search modal (if it isn't deactivated in the customizer)
+			<?php
+			// Output the search modal (if it isn't deactivated in the customizer).
 			if ( ! $disable_header_search ) {
 				get_template_part( 'parts/modal-search' );
 			}
@@ -129,7 +148,7 @@
 
 		</header><!-- #site-header -->
 
-		<?php 
-		// Output the menu modal
-		get_template_part( 'parts/modal-menu' ); 
+		<?php
+		// Output the menu modal.
+		get_template_part( 'parts/modal-menu' );
 		?>

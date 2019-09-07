@@ -1,9 +1,23 @@
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 		<footer id="site-footer" role="contentinfo">
 
 			<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) : ?>
 
 				<div class="footer-widgets-outer-wrapper section-inner">
-				
+
 					<div class="footer-widgets-wrapper">
 
 						<?php if ( is_active_sidebar( 'footer-one' ) ) : ?>
@@ -19,10 +33,11 @@
 						<?php endif; ?>
 
 					</div><!-- .footer-widgets-wrapper -->
-					
+
 				</div><!-- .footer-widgets-outer-wrapper -->
 
-			<?php endif; 
+				<?php
+			endif;
 
 			$has_footer_menu = has_nav_menu( 'footer-menu' );
 
@@ -31,7 +46,7 @@
 			if ( $has_footer_menu ) {
 				$footer_inner_classes .= ' has-footer-menu';
 			}
-			
+
 			?>
 
 			<div class="footer-inner section-inner<?php echo esc_attr( $footer_inner_classes ); ?>">
@@ -40,12 +55,14 @@
 
 					<ul class="footer-menu reset-list-style">
 						<?php
-						wp_nav_menu( array(
-							'container' 		=> '',
-							'depth'				=> 1,
-							'items_wrap' 		=> '%3$s',
-							'theme_location' 	=> 'footer-menu',
-						) );
+						wp_nav_menu(
+							array(
+								'container'      => '',
+								'depth'          => 1,
+								'items_wrap'     => '%3$s',
+								'theme_location' => 'footer-menu',
+							)
+						);
 						?>
 					</ul><!-- .site-nav -->
 
@@ -58,7 +75,8 @@
 					<p class="theme-credits color-secondary">
 						<?php
 						/* Translators: $s = WordPress */
-						printf( esc_html_x( 'Powered by %s', 'Translators: $s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+						printf( esc_html_x( 'Powered by %s', 'Translators: $s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
+						?>
 					</p><!-- .theme-credits -->
 
 				</div><!-- .footer-credits -->
@@ -69,5 +87,5 @@
 
 		<?php wp_footer(); ?>
 
-    </body>
+	</body>
 </html>
