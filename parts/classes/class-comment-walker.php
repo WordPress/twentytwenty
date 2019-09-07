@@ -1,9 +1,13 @@
 <?php
-
-/* ---------------------------------------------------------------------------------------------
-   CUSTOM COMMENT WALKER
-   A custom walker for comments, based on the walker in TwentyNineteen
-   --------------------------------------------------------------------------------------------- */
+/**
+ * Twenty Twenty: Custom Comment Walker
+ *
+ * A custom walker for comments, based on the walker in TwentyTwenty
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
 if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 	class TwentyTwenty_Walker_Comment extends Walker_Comment {
@@ -17,7 +21,6 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 		 * @param int        $depth   Depth of the current comment.
 		 * @param array      $args    An array of arguments.
 		 */
-		
 		protected function html5_comment( $comment, $depth, $args ) {
 
 			$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
@@ -28,10 +31,10 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 					<footer class="comment-meta">
 						<div class="comment-author vcard">
 							<?php
-							$comment_author_url  = get_comment_author_url( $comment );
-							$comment_author      = get_comment_author( $comment );
-							$avatar              = get_avatar( $comment, $args['avatar_size'] );
-							if ( 0 != $args['avatar_size'] ) {
+							$comment_author_url = get_comment_author_url( $comment );
+							$comment_author     = get_comment_author( $comment );
+							$avatar             = get_avatar( $comment, $args['avatar_size'] );
+							if ( 0 !== $args['avatar_size'] ) {
 								if ( empty( $comment_author_url ) ) {
 									echo $avatar;
 								} else {
@@ -68,11 +71,12 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 					<div class="comment-content">
 
-						<?php 
+						<?php
 
 						comment_text();
 
-						if ( '0' == $comment->comment_approved ) : ?>
+						if ( '0' === $comment->comment_approved ) :
+							?>
 							<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'twentytwenty' ); ?></p>
 						<?php endif; ?>
 
@@ -80,25 +84,31 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 					<?php
 
-					$comment_reply_link = get_comment_reply_link( array_merge( $args, array(
-						'add_below' => 'div-comment',
-						'depth'     => $depth,
-						'max_depth' => $args['max_depth'],
-						'before'    => '<span class="comment-reply">',
-						'after'     => '</span>',
-					) ) );
+					$comment_reply_link = get_comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<span class="comment-reply">',
+								'after'     => '</span>',
+							)
+						)
+					);
 
 					$by_post_author = twentytwenty_is_comment_by_post_author( $comment );
 
 					$edit_comment_link = get_edit_comment_link() ? '<a class="edit-comment-link" href="' . get_edit_comment_link() . '">' . __( 'Edit', 'twentytwenty' ) . '</a>' : '';
 
-					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) : ?>
+					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) :
+						?>
 
 						<footer class="comment-footer-meta color-secondary">
 
-							<?php 
+							<?php
 							if ( $comment_reply_link ) {
-								echo $comment_reply_link; 
+								echo $comment_reply_link;
 							}
 							if ( $edit_comment_link ) {
 								echo $edit_comment_link;

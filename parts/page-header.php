@@ -1,8 +1,18 @@
+<?php
+/**
+ * Twenty Twenty: Page Header
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 <header class="entry-header has-text-align-center">
 
 	<div class="entry-header-inner section-inner thin max-percentage">
 
-		<?php 
+		<?php
 
 		if ( is_front_page() ) {
 			the_title( '<div class="entry-title faux-heading heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></div>' );
@@ -10,16 +20,17 @@
 			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h1>' );
 		}
 
-		if ( has_excerpt() ) : ?>
+		if ( has_excerpt() ) :
+			?>
 
 			<div class="intro-text section-inner thin max-percentage">
 				<?php the_excerpt(); ?>
 			</div>
 
-			<?php 
+			<?php
 		endif;
 
-		// On pages with the cover template, display a "To the content" link
+		// On pages with the cover template, display a "To the content" link.
 		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) {
 			?>
 
@@ -36,7 +47,7 @@
 
 		} else {
 
-			// Default to displaying the post meta
+			// Default to displaying the post meta.
 			twentytwenty_the_post_meta( $post->ID, 'single-top' );
 
 		}
