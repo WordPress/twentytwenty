@@ -109,7 +109,7 @@ body#tinymce.wp-editor h6 { font-size: 1em; }
 body#tinymce.wp-editor blockquote {
 	border-style: solid;
 	border: none;
-	border-left: 4px solid #007C89;
+	border-left: 4px solid #CD2653;
 	margin: 0 0 1.6em 0;
 	padding: .25em 0 .25em 1em;
 }
@@ -363,7 +363,7 @@ body#tinymce.wp-editor input[type="reset"],
 body#tinymce.wp-editor input[type="submit"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background: #007C89;
+	background: #CD2653;
 	border: none;
 	border-radius: 3px;
 	color: #fff;
