@@ -156,7 +156,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Background Color ------ */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_background_color', array(
-				'default' 			=> get_theme_mod( 'twentytwenty_accent_color', '#007C89' ),
+				'default' 			=> get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
 				'type' 				=> 'theme_mod',
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
@@ -266,7 +266,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 		public static function twentytwenty_get_color_options() {
 			return apply_filters( 'twentytwenty_accent_color_options', array(
 				'twentytwenty_accent_color' => array(
-					'default'	=> '#007C89',
+					'default'	=> '#CD2653',
 					'label'		=> __( 'Accent Color', 'twentytwenty' ),
 					'slug'		=> 'accent',
 				),
