@@ -1,0 +1,36 @@
+{
+  "name": "twentytwenty",
+  "version": "1.0.0",
+  "description": "Default WP Theme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wordpress/twentytwenty.git"
+  },
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/wordpress/twentytwenty/issues"
+  },
+  "homepage": "https://github.com/wordpress/twentytwenty#readme",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^3.0.0",
+    "eslint": "^6.3.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-wordpress": "^14.0.0"
+  },
+  "eslintConfig": {
+    "extends": "plugin:@wordpress/eslint-plugin/recommended",
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "globals": {
+      "jQuery": "readonly",
+      "wp": "readonly"
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-wordpress"
+  }
+}
