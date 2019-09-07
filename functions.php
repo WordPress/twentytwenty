@@ -400,9 +400,8 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 				'height' 		=> true,
 				'viewbox' 		=> true,
 				'aria-hidden'	=> true,
-				'role'			=> true,				
-				'focusable'		=> true,				
-				'tabindex'		=> true,
+				'role'			=> true,
+				'focusable'		=> true,
 			),
 			'path' => array(
 				'fill' 		=> true,
@@ -415,8 +414,7 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 				'fill-rule' => true,
 				'points'	=> true,
 				'transform' => true,
-				'focusable'	=> true,				
-				'tabindex'	=> true,
+				'focusable'	=> true,
 			),
 		) );
 
