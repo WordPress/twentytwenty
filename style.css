@@ -1745,7 +1745,7 @@ button.sub-menu-toggle.active svg {
 }
 
 .cover-header-inner {
-	padding: 10rem 0 4rem 0;
+	padding: 10rem 0 5rem 0;
 	width: 100%;
 }
 
@@ -1771,6 +1771,11 @@ button.sub-menu-toggle.active svg {
 	z-index: 1;
 }
 
+body.template-cover .entry-header {
+	background: transparent;
+	padding: 0;
+}
+
 .cover-header h1, .cover-header h2, .cover-header h3, .cover-header h4, .cover-header h5, .cover-header h6, .cover-header .faux-heading {
 	color: inherit;
 }
@@ -1782,23 +1787,29 @@ button.sub-menu-toggle.active svg {
 /* To The Content ---------------------------- */
 
 .to-the-content-wrapper {
-	display: flex;
-	justify-content: center;
-	margin-top: 2.5rem;
+	position: absolute;
+		left: 0;
+		right: 0;
+		top: calc( 100% + .5rem );
 }
 
 .to-the-content {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	height: 4rem;
 	text-decoration: none;
 }
 
 .to-the-content svg {
-	height: 3.2rem;
-	transition: transform .1s linear;
-	width: 3.2rem;
+	height: 2rem;
+	transition: transform .15s linear;
+	transform: translateY( 0 );
+	width: 1.767rem;
 }
 
-.to-the-content:hover .icon {
-	transform: scale( 1.1 );
+.to-the-content:hover svg {
+	transform: translateY( 20% );
 }
 
 
@@ -3203,7 +3214,20 @@ ul.footer-social li {
 	}
 
 	.cover-header-inner {
-		padding: 20rem 0 6rem 0;
+		padding: 20rem 0 8rem 0;
+	}
+
+	.to-the-content-wrapper {
+		top: calc( 100% + 1.8rem );
+	}
+
+	.to-the-content {
+		height: 6rem;
+	}
+
+	.to-the-content svg {
+		height: 2.4rem;
+		width: 2.12rem;
 	}
 
 	/* Post: Archive ------------------------- */

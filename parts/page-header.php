@@ -26,7 +26,7 @@
 			<div class="to-the-content-wrapper">
 
 				<a href="#post-inner" class="to-the-content fill-children-current-color">
-					<?php twentytwenty_the_theme_svg( 'arrow-down-circled' ); ?>
+					<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
 					<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
 				</a><!-- .to-the-content -->
 
