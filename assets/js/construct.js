@@ -168,8 +168,8 @@ twentytwenty.toggles = {
 				// Toggle aria-expanded on the target
 				twentytwentyToggleAttribute( $target, 'aria-expanded', 'true', 'false' );
 
-				// Toggle aria-pressed on the toggle
-				twentytwentyToggleAttribute( $toggle, 'aria-pressed', 'true', 'false' );
+				// Toggle aria-expanded on the toggle
+				twentytwentyToggleAttribute( $toggle, 'aria-expanded', 'true', 'false' );
 
 				// Toggle body class
 				if ( $toggle.data( 'toggle-body-class' ) ) {
@@ -208,8 +208,6 @@ twentytwenty.toggles = {
 				}
 
 			}, timeOutTime );
-
-			return false;
 
 		} );
 	},
