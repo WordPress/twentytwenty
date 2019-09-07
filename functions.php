@@ -89,8 +89,8 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Twenty Nineteen, use a find and replace
-		 * to change 'twentynineteen' to the name of your theme in all the template files.
+		 * If you're building a theme based on Twenty Twenty, use a find and replace
+		 * to change 'twentytwenty' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'twentytwenty', get_template_directory() . '/languages' );
 
@@ -316,8 +316,8 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 
 		?>
 
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>" class="custom-logo-link <?php echo esc_attr( $logo_theme_mod_class ); ?>">
-			<img src="<?php echo esc_url( $logo_url ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" />
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link <?php echo esc_attr( $logo_theme_mod_class ); ?>">
+			<img src="<?php echo esc_url( $logo_url ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
 		</a>
 
 		<?php
@@ -517,6 +517,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		}
 
 		$page_template = get_page_template_slug( $post_id );
+
+		// Check whether the post type is allowed to output post meta.
+		$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
+		if ( in_array( get_post_type( $post_id ), $disallowed_post_types ) ) {
+			return;
+		}
 
 		$post_meta_wrapper_classes = '';
 		$post_meta_classes = '';
