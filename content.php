@@ -182,6 +182,4 @@
 
 	<?php endif; ?>
 
-</div><!-- .post-inner -->
-
 </article><!-- .post -->
