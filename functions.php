@@ -905,6 +905,8 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 		// Get variables
 		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
 		$accent_default = '#007c89';
+		$text 		= get_theme_mod( 'twentytwenty_text_color' );
+		$text_default = '#1A1B1F';
 		
 		ob_start();
 
@@ -926,6 +928,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 			// Colors
 
 			// Element Specific
+			if ( $text && $text !== $text_default ) : 
+				twentytwenty_generate_css( '#site-content > div *, #site-content .post-inner *, #site-content .pagination-single *', 'color', $text );
+			endif;
+
 			if ( $accent && $accent !== $accent_default ) : 
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );

@@ -270,6 +270,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 					'label'		=> __( 'Accent Color', 'twentytwenty' ),
 					'slug'		=> 'accent',
 				),
+				'twentytwenty_text_color' => array(
+					'default'	=> '#1A1B1F',
+					'label'		=> __( 'Text Color', 'twentytwenty' ),
+					'slug'		=> 'text',
+				),
 			) );
 		}
 
