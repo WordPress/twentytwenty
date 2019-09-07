@@ -549,13 +549,6 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output
 		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) :
 
-			// Make sure the right color is used for the post meta
-			if ( in_array( $page_template, array( 'template-cover.php' ) ) && $location == 'single-top' ) {
-				$post_meta_classes .= ' color-inherit';
-			} else {
-				$post_meta_classes .= ' color-accent';
-			}
-
 			// Make sure we don't output an empty container
 			$has_meta = false;
 
@@ -904,7 +897,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 		// Get variables
 		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
-		$accent_default = '#007c89';
+		$accent_default = '#CD2653';
 		
 		ob_start();
 

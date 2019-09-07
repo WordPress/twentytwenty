@@ -7,5 +7,6 @@ Version 1.0:
 | @ianbelanger79 | @ianbelanger |
 | @audrasjb | @audrasjb |
 | @andersnoren | @anlino |
+| @nielslange | @nielslange |
 
 
