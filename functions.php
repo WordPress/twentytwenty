@@ -518,6 +518,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 		$page_template = get_page_template_slug( $post_id );
 
+		// Check whether the post type is allowed to output post meta.
+		$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
+		if ( in_array( get_post_type( $post_id ), $disallowed_post_types ) ) {
+			return;
+		}
+
 		$post_meta_wrapper_classes = '';
 		$post_meta_classes = '';
 
