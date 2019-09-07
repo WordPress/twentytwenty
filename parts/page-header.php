@@ -10,14 +10,14 @@
 ?>
 <header class="entry-header has-text-align-center">
 
-	<div class="entry-header-inner section-inner thin max-percentage">
+	<div class="entry-header-inner section-inner medium">
 
 		<?php
 
-		if ( is_front_page() ) {
-			the_title( '<div class="entry-title faux-heading heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></div>' );
-		} else {
+		if ( is_singular() ) {
 			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h1>' );
+		} else {
+			the_title( '<h2 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
 		}
 
 		if ( has_excerpt() ) :
@@ -37,7 +37,7 @@
 			<div class="to-the-content-wrapper">
 
 				<a href="#post-inner" class="to-the-content fill-children-current-color">
-					<?php twentytwenty_the_theme_svg( 'arrow-down-circled' ); ?>
+					<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
 					<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
 				</a><!-- .to-the-content -->
 

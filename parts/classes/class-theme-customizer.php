@@ -220,6 +220,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 
 			/* Overlay Background Color ------ */
 
+<<<<<<< HEAD
 			$wp_customize->add_setting(
 				'twentytwenty_cover_template_overlay_background_color',
 				array(
@@ -241,6 +242,20 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 					)
 				)
 			);
+=======
+			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_background_color', array(
+				'default' 			=> get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
+				'type' 				=> 'theme_mod',
+				'sanitize_callback' => 'sanitize_hex_color',
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'twentytwenty_cover_template_overlay_background_color', array(
+				'label' 		=> __( 'Image Overlay Background Color', 'twentytwenty' ),
+				'description'	=> __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
+				'section' 		=> 'twentytwenty_cover_template_options',
+				'settings' 		=> 'twentytwenty_cover_template_overlay_background_color',
+			) ) );
+>>>>>>> f5ef9ec21e0342956ac8b655844a27cd57cba0d2
 
 			/* Overlay Text Color ------------ */
 
@@ -358,6 +373,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 		// Return the sitewide color options included.
 		// Note: These values are shared between the block editor styles and the customizer, and abstracted to this function.
 		public static function twentytwenty_get_color_options() {
+<<<<<<< HEAD
 			return apply_filters(
 				'twentytwenty_accent_color_options',
 				array(
@@ -368,6 +384,15 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 					),
 				)
 			);
+=======
+			return apply_filters( 'twentytwenty_accent_color_options', array(
+				'twentytwenty_accent_color' => array(
+					'default'	=> '#CD2653',
+					'label'		=> __( 'Accent Color', 'twentytwenty' ),
+					'slug'		=> 'accent',
+				),
+			) );
+>>>>>>> f5ef9ec21e0342956ac8b655844a27cd57cba0d2
 		}
 
 	}

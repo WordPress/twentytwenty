@@ -36,6 +36,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) :
 			return null;
 		}
 
+<<<<<<< HEAD
 		/**
 		 * ICON STORAGE
 		 *
@@ -46,6 +47,16 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) :
 		public static $icons = array(
 			'arrow-down'         => '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16">
   <polygon fill="#1A1A1B" points="7.793 0 7.793 13.53 13.192 8.124 14.116 9.041 7.141 16 .182 9.041 1.083 8.124 6.489 13.53 6.489 0"/>
+=======
+		/* --------------------------------------------------------------------
+		   ICON STORAGE
+		   Store the code for all SVGs in an array
+		   -------------------------------------------------------------------- */
+		
+		static $icons = array(
+			'arrow-down'	=> '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24">
+  <polygon fill="#FFF" points="721.105 856 721.105 874.315 728.083 867.313 730.204 869.41 719.59 880 709 869.41 711.074 867.313 718.076 874.315 718.076 856" transform="translate(-709 -856)"/>
+>>>>>>> f5ef9ec21e0342956ac8b655844a27cd57cba0d2
 </svg>',
 			'arrow-down-circled' => '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <path fill="#FFF" fill-rule="evenodd" d="M16,32 C7.163444,32 0,24.836556 0,16 C0,7.163444 7.163444,0 16,0 C24.836556,0 32,7.163444 32,16 C32,24.836556 24.836556,32 16,32 Z M16.7934656,8 L15.4886113,8 L15.4886113,21.5300971 L10.082786,16.1242718 L9.18181515,17.0407767 L16.1410384,24 L23.1157957,17.0407767 L22.1915239,16.1242718 L16.7934656,21.5300971 L16.7934656,8 Z"/>
