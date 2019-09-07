@@ -408,7 +408,7 @@ hr {
 }
 
 a {
-	color: #007C89;
+	color: #CD2653;
 	text-decoration: underline;
 }
 
@@ -465,7 +465,7 @@ dd + dt { margin-top: 1.5rem; }
 /* Quotes ------------------------------------ */
 
 blockquote {
-	border-color: #007C89;
+	border-color: #CD2653;
 	border-style: solid;
 	border-width: 0 0 0 .2rem;
 	color: inherit;
@@ -714,7 +714,7 @@ input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background: #007C89;
+	background: #CD2653;
 	border: none;
 	border-radius: 0;
 	color: #fff;
@@ -907,21 +907,26 @@ button.toggle {
 
 /* Colors ------------------------------------ */
 
+/* COLOR */
+
+.color-accent,
+.color-accent:hover { color: #CD2653; }
+
 /* BACKGROUND COLOR */
 
 .bg-accent,
-.bg-accent-hover:hover { background: #007C89; }
+.bg-accent-hover:hover { background-color: #CD2653; }
 
 /* BORDER COLOR */
 
 .border-color-accent,
-.border-color-accent-hover:hover { border-color: #007C89; }
+.border-color-accent-hover:hover { border-color: #CD2653; }
 
 /* FILL COLOR */
 
 .fill-children-accent,
 .fill-children-accent * {
-	fill: #007C89;
+	fill: #CD2653;
 }
 
 .fill-children-current-color,
@@ -1880,6 +1885,7 @@ body.template-cover .entry-header {
 }
 
 .post-meta {
+	color: #6d6d6d;
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.5rem;
@@ -2034,8 +2040,8 @@ body.template-cover .entry-header {
 
 /* CUSTOM COLORS */
 
-.has-accent-color { color: #007C89; }
-.has-accent-background-color { background-color: #007C89; }
+.has-accent-color { color: #CD2653; }
+.has-accent-background-color { background-color: #CD2653; }
 
 
 /* Block Typography Classes ------------------ */
@@ -2112,8 +2118,6 @@ body.template-cover .entry-header {
 }
 
 
-
-
 /* Block: Shared Media Styles ---------------- */
 
 .wp-block-embed figcaption,
@@ -2130,6 +2134,12 @@ body.template-cover .entry-header {
     width: 100%;
 }
 
+
+/* Block: Button ----------------------------- */
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	color: inherit;
+}
 
 /* Block: Embed ------------------------------ */
 /* Block: Image ------------------------------ */
@@ -2923,7 +2933,7 @@ ul.footer-social li {
 }
 
 .footer-social a {
-	background-color: #007C89;
+	background-color: #CD2653;
 	height: 3.6rem;
 	width: 3.6rem;
 }
