@@ -15,7 +15,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
+		<a class="skip-link screen-reader-text faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
 
 		<?php 
 		if ( function_exists( 'wp_body_open' ) ) {
