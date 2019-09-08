@@ -71,7 +71,7 @@
 
 			<figure class="featured-media">
 
-				<div class="featured-media-inner section-inner<?php esc_attr( $featured_media_inner_classes ); ?>">
+				<div class="featured-media-inner section-inner<?php echo esc_attr( $featured_media_inner_classes ); ?>">
 
 					<?php 
 					
