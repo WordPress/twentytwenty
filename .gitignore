@@ -1,1 +1,4 @@
 /vendor
+
+.phpcs.xml
+phpcs.xml
