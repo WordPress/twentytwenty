@@ -1978,6 +1978,7 @@ body.template-cover .entry-header {
 
 .featured-media figcaption {
 	margin: 1.5rem auto 0 auto;
+	text-align: center;
 	width: calc( 100% - 5rem );
 }
 
