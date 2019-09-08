@@ -172,10 +172,10 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) :
 
         // Register menus
         $locations = array(
-            'footer-menu' 		=> __( 'Footer Menu', 'twentytwenty' ),
-            'main-menu' 		=> __( 'Main Menu', 'twentytwenty' ),
-			'shortcuts-menu' 	=> __( 'Shortcuts Menu', 'twentytwenty' ),
-            'social-menu' 		=> __( 'Social Menu', 'twentytwenty' ),
+            'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
+            'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
+			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
+            'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
 		);
 		
         register_nav_menus( $locations );
@@ -347,16 +347,16 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 
 		// Footer #1
 		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #1', 'twentytwenty' ),
-			'id' 			=> 'footer-one',
-			'description' 	=> __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+			'name'        => __( 'Footer #1', 'twentytwenty' ),
+			'id'          => 'footer-one',
+			'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
 		) ) );
 
 		// Footer #2
 		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #2', 'twentytwenty' ),
-			'id' 			=> 'footer-two',
-			'description' 	=> __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
+			'name'        => __( 'Footer #2', 'twentytwenty' ),
+			'id'          => 'footer-two',
+			'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
 		) ) );
 
 	}
@@ -393,17 +393,17 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 
 		// Make sure that only our allowed tags and attributes are included
 		$svg = wp_kses( TwentyTwenty_SVG_Icons::get_svg( $svg_name, $color ), array(
-			'svg' => array(
-				'class' 		=> true,
-				'xmlns' 		=> true,
-				'width' 		=> true,
-				'height' 		=> true,
-				'viewbox' 		=> true,
-				'aria-hidden'	=> true,
-				'role'			=> true,
-				'focusable'		=> true,
+			'svg'     => array(
+				'class'       => true,
+				'xmlns'       => true,
+				'width'       => true,
+				'height'      => true,
+				'viewbox'     => true,
+				'aria-hidden' => true,
+				'role'        => true,
+				'focusable'   => true,
 			),
-			'path' => array(
+			'path'    => array(
 				'fill' 		=> true,
 				'fill-rule' => true,
 				'd' 		=> true,
