@@ -61,19 +61,8 @@
 
 /* CUSTOM COLORS */
 
-.has-accent-color { color: #1A1B1F; }
-.has-primary-color { color: #747579; }
-.has-secondary-color { color: #007C89; }
-.has-border-color { color: #E1E1E3; }
-.has-light-background-color { color: #F1F1F3; }
-.has-background-color { color: #FFF; }
-
-.has-accent-background-color { background-color: #1A1B1F; }
-.has-primary-background-color { background-color: #747579; }
-.has-secondary-background-color { background-color: #007C89; }
-.has-border-background-color { background-color: #E1E1E3; }
-.has-light-background-background-color { background-color: #F1F1F3; }
-.has-background-background-color { background-color: #FFF; }
+.has-accent-color { color: #CD2653; }
+.has-accent-background-color { background-color: #CD2653; }
 
 /* GENERAL COLORS */
 
@@ -87,7 +76,7 @@
 /* Typography -------------------------------- */
 
 .editor-styles-wrapper a {
-	color: #007C89;
+	color: #CD2653;
 	text-decoration: underline;
 }
 
@@ -342,7 +331,7 @@
 }
 
 .editor-styles-wrapper .wp-block-quote {
-	border-color: #007C89 !important;
+	border-color: #CD2653 !important;
 	border-style: solid;
 	border-width: 0 0 0 4px;
 	color: inherit;
@@ -487,7 +476,7 @@
 
 .editor-styles-wrapper .wp-block-button__link,
 .editor-styles-wrapper .wp-block-file__button {
-	background: #007C89;
+	background: #CD2653;
 	border-radius: 3px;
 	color: #fff;
 	font-size: 16px;
@@ -627,7 +616,7 @@
 }
 
 .editor-styles-wrapper .wp-block-file .wp-block-file__textlink {
-	color: #007C89;
+	color: #CD2653;
 	font-weight: 700;
 	text-decoration: none;
 }
