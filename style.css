@@ -1951,14 +1951,25 @@ body.template-cover .entry-header {
 	position: relative;
 }
 
-.single .featured-media {
+.singular .featured-media {
 	margin-top: 0;
 }
 
-.single .featured-media-inner {
+.singular .featured-media-inner {
 	position: relative;
 		left: calc( 50% - 50vw );
 	width: 100vw;
+}
+
+.singular .featured-media:before {
+	background: #fff;
+	content: "";
+	display: block;
+	position: absolute;
+		bottom: 50%;
+		left: 0;
+		right: 0;
+		top: 0;
 }
 
 .featured-media img {
@@ -3725,18 +3736,6 @@ ul.footer-social li {
 	/* Template: [Template Name] ------------- */
 	/* Post: Archive ------------------------- */
 	/* Post: Single -------------------------- */
-
-	.single .featured-media:before {
-		background: #fff;
-		content: "";
-		display: block;
-		position: absolute;
-			bottom: 50%;
-			left: 0;
-			right: 0;
-			top: 0;
-	}
-
 	/* Blocks -------------------------------- */
 	/* Entry Content ------------------------- */
 
