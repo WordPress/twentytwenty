@@ -521,6 +521,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 		$page_template = get_page_template_slug( $post_id );
 
+		// Check whether the post type is allowed to output post meta.
+		$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
+		if ( in_array( get_post_type( $post_id ), $disallowed_post_types ) ) {
+			return;
+		}
+
 		$post_meta_wrapper_classes = '';
 		$post_meta_classes = '';
 
@@ -545,13 +551,6 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output
 		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) :
-
-			// Make sure the right color is used for the post meta
-			if ( in_array( $page_template, array( 'template-cover.php' ) ) && $location == 'single-top' ) {
-				$post_meta_classes .= ' color-inherit';
-			} else {
-				$post_meta_classes .= ' color-accent';
-			}
 
 			// Make sure we don't output an empty container
 			$has_meta = false;
@@ -901,7 +900,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 		// Get variables
 		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
-		$accent_default = '#007c89';
+		$accent_default = '#CD2653';
 		
 		ob_start();
 
