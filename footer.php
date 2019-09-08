@@ -19,10 +19,10 @@
 						<ul class="footer-menu reset-list-style">
 							<?php
 							wp_nav_menu( array(
-								'container' 		=> '',
-								'depth'				=> 1,
-								'items_wrap' 		=> '%3$s',
-								'theme_location' 	=> 'footer-menu',
+								'container'         => '',
+								'depth'             => 1,
+								'items_wrap'        => '%3$s',
+								'theme_location'    => 'footer-menu',
 							) );
 							?>
 						</ul><!-- .site-nav -->
@@ -35,16 +35,16 @@
 
 									<?php
 									wp_nav_menu( array(
-										'theme_location'	=> 'social-menu',
-										'container'			=> '',
-										'container_class'	=> '',
-										'items_wrap'		=> '%3$s',
-										'menu_id'			=> '',
-										'menu_class'		=> '',
-										'depth'				=> 1,
-										'link_before'		=> '<span class="screen-reader-text">',
-										'link_after'		=> '</span>',
-										'fallback_cb'		=> '',
+										'theme_location'    => 'social-menu',
+										'container'         => '',
+										'container_class'   => '',
+										'items_wrap'        => '%3$s',
+										'menu_id'           => '',
+										'menu_class'        => '',
+										'depth'             => 1,
+										'link_before'       => '<span class="screen-reader-text">',
+										'link_after'        => '</span>',
+										'fallback_cb'       => '',
 									) );
 									?>
 
