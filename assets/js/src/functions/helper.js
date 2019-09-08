@@ -18,6 +18,14 @@ export const getQueryStringValue = () => {
 	return vars;
 };
 
+/**
+ * slideUp
+ *
+ * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
+ *
+ * @param {HTMLElement} target
+ * @param {number} duration
+ */
 const slideUp = ( target, duration ) => {
 	target.style.transitionProperty = 'height, margin, padding'; /* [1.1] */
 	target.style.transitionDuration = duration + 'ms'; /* [1.2] */
@@ -42,6 +50,14 @@ const slideUp = ( target, duration ) => {
 	}, duration );
 };
 
+/**
+ * slideDown
+ *
+ * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
+ *
+ * @param {HTMLElement} target
+ * @param {number} duration
+ */
 const slideDown = ( target, duration ) => {
 	target.style.removeProperty( 'display' ); /* [1] */
 	let display = window.getComputedStyle( target ).display;
@@ -75,12 +91,21 @@ const slideDown = ( target, duration ) => {
 	}, duration );
 };
 
+/**
+ * slideToggle
+ *
+ * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
+ *
+ * @param {HTMLElement} target
+ * @param {number} duration
+ */
 export const slideToggle = ( target, duration = 500 ) => {
 	if ( window.getComputedStyle( target ).display === 'none' ) {
 		return slideDown( target, duration );
 	}
 	return slideUp( target, duration );
 };
+
 /**
  * traverses the DOM up to find elements matching the query
  *
