@@ -12,8 +12,8 @@
     "url": "git+https://github.com/WordPress/twentytwenty.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "the WordPress team",
+  "license": "GPLv2",
   "bugs": {
     "url": "https://github.com/WordPress/twentytwenty/issues"
   },
