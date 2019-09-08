@@ -1,7 +1,6 @@
 dist: trusty
 
 cache:
-  apt: true
   directories:
     # Cache directory for older Composer versions.
     - $HOME/.composer/cache/files
@@ -16,30 +15,26 @@ php:
   - 7.0
   - 7.1
   - 7.2
-  - 7.3
   - "7.4snapshot"
 
 matrix:
   fast_finish: true
   include:
     - php: 7.3
-    - php: 7.2
-    - php: 7.1
-    - php: 7.0
-    - php: 5.6
+      env: PHPCS=1
 
-  allow_failures:
-    # Allow failures for unstable builds.
-    - php: "7.4snapshot"
+allow_failures:
+  # Allow failures for unstable builds.
+  - php: "7.4snapshot"
 
 before_install:
-    - composer install --dev
+    - composer install
 
 script:
-  # Lint the PHP files against parse errors.
-  - if find . -path ./vendor -prune -o -path ./bin -prune -o -name "*.php" -exec php -l {} \; | grep "^[Parse error|Fatal error]"; then exit 1; fi
-
   # Validate the composer.json file.
   # @link https://getcomposer.org/doc/03-cli.md#validate
   - composer validate --no-check-all --strict
-  - composer lint .
+
+  # Lint the PHP files against parse errors.
+  - composer lint
+  - if [[ "$PHPCS" == 1 ]]; then composer checkcs; fi
