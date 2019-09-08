@@ -172,9 +172,10 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) :
 
         // Register menus
         $locations = array(
-            'main-menu' 	=> __( 'Main Menu', 'twentytwenty' ),
-            'footer-menu' 	=> __( 'Footer Menu', 'twentytwenty' ),
-            'social-menu' 	=> __( 'Social Menu', 'twentytwenty' ),
+            'footer-menu' 		=> __( 'Footer Menu', 'twentytwenty' ),
+            'main-menu' 		=> __( 'Main Menu', 'twentytwenty' ),
+			'shortcuts-menu' 	=> __( 'Shortcuts Menu', 'twentytwenty' ),
+            'social-menu' 		=> __( 'Social Menu', 'twentytwenty' ),
 		);
 		
         register_nav_menus( $locations );
@@ -399,9 +400,8 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 				'height' 		=> true,
 				'viewbox' 		=> true,
 				'aria-hidden'	=> true,
-				'role'			=> true,				
-				'focusable'		=> true,				
-				'tabindex'		=> true,
+				'role'			=> true,
+				'focusable'		=> true,
 			),
 			'path' => array(
 				'fill' 		=> true,
@@ -414,8 +414,7 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 				'fill-rule' => true,
 				'points'	=> true,
 				'transform' => true,
-				'focusable'	=> true,				
-				'tabindex'	=> true,
+				'focusable'	=> true,
 			),
 		) );
 
@@ -720,13 +719,11 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 			// Close the wrapper
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
-		// Add sub menu icons to the main menu without toggles (the fallback menu)
-		} elseif ( $args->theme_location == 'main-menu' ) {
+		// Add sub menu icons to the main menu without toggles (the shortcuts menu)
+		} elseif ( $args->theme_location == 'shortcuts-menu' ) {
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
-				$args->before = '<div class="link-icon-wrapper fill-children-current-color">';
-				$args->after = twentytwenty_get_theme_svg( 'chevron-down' ) . '</div>';
+				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
-				$args->before = '';
 				$args->after = '';
 			}
 		}
