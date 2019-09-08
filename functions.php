@@ -330,6 +330,26 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 endif;
 
 /**
+ * Shim for wp_body_open, ensuring backwards compatibility with versions of WordPress older than 5.2.
+ */
+if ( ! function_exists( 'wp_body_open' ) ) {
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
+
+/**
+ * Include a skip to content link at the top of the page so that users can bypass the menu.
+ */
+if ( ! function_exists( 'twentytwenty_skip_link' ) ) :
+	function twentytwenty_skip_link() {
+		echo '<a class="skip-link faux-button" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
+	}
+	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
+endif;
+
+
+/**
  * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
