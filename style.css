@@ -142,7 +142,7 @@ path {
 	height: .1rem;
 	overflow: hidden;
 	position: absolute !important;
-		left: -999999rem;
+	left: -999999rem;
 	width: .1rem;
 }
 
@@ -2649,6 +2649,44 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
+.pagination .nav-links {
+	display: block;
+	font-size: 1.8rem;
+	margin-top: 5rem;
+	padding: 3rem 0;
+
+	font-weight: 600;
+}
+
+.pagination a {
+	text-decoration: none;
+	margin: 2rem;
+}
+
+.pagination a:hover {
+	text-decoration: underline;
+}
+
+.pagination .current {
+	margin: 2rem;
+}
+
+.pagination .dots {
+	display: inline-block;
+	vertical-align: middle;
+	color:#6D6D6D;
+	margin: -1rem 2rem 0 2rem;
+}
+
+.pagination .next,
+.pagination .prev {
+	display: block;
+	margin: 4rem 0;
+}
+
+.pagination-wrapper.only-prev {
+	margin-bottom: 2.2em;
+}
 
 /* --------------------------------------------------------------------------------------------- */
 /*	14. Error 404
@@ -3006,6 +3044,20 @@ ul.footer-social li {
 /*	17. Media Queries
 /* --------------------------------------------------------------------------------------------- */
 
+@media ( min-width: 900px ) {
+	/* SITE PAGINATION */
+	.pagination a,
+	.pagination .current,
+	.pagination .dots {
+		margin: 0 4rem;
+	}
+
+	.pagination .dots {
+		margin-top: -.3em;
+	}
+
+}
+
 
 @media ( min-width: 700px ) {
 
@@ -3340,6 +3392,54 @@ ul.footer-social li {
 
 	.pagination-single .next-post .arrow {
 		margin: 0 0 0 2rem;
+	}
+
+	/* SITE PAGINATION */
+	.pagination .nav-links {
+		display: flex;
+		flex-direction: row;
+		font-size: 2.4rem;
+		padding: 3.5rem 0;
+		margin-top: 8rem;
+		justify-content: center;
+		letter-spacing: -0.9px;
+	}
+
+	.pagination a,
+	.pagination .current,
+	.pagination .dots {
+		margin: 0 3rem;
+	}
+
+	.pagination .dots {
+		margin-top: -.3em;
+	}
+
+	.pagination .next,
+	.pagination .prev {
+		display: initial;
+		margin: initial;
+	}
+	
+	.pagination .prev {
+		left: 0;
+		justify-self: flex-start;
+		margin-right: auto;
+	}
+
+	.pagination .next {
+		right: 0;
+		text-align: right;
+		justify-self: flex-end;
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-next .page-numbers:first-child {
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-prev .page-numbers:last-child {
+		margin-right: auto;
 	}
 
 	/* Blocks -------------------------------- */
