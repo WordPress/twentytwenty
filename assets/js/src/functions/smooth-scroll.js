@@ -54,18 +54,18 @@ export default {
 		if ( scrollToElement ) {
 			scrollToElement.addEventListener( 'click', ( event ) => {
 				// Figure out element to scroll to
-				const target = event.target.data( 'scroll-to' );
+				const target = event.target.dataset.scrollTo;
 
 				// Make sure said element exists
-				if ( target.length ) {
+				if ( target ) {
 					event.preventDefault();
 
 					// Get options
-					const additionalOffset = event.target.data( 'additional-offset' ),
-						scrollSpeed = event.target.data( 'scroll-speed' ) ? event.target.data( 'scroll-speed' ) : 500;
+					const additionalOffset = event.target.dataset.additionalOffset,
+						scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
 
 					// Determine offset
-					const originalOffset = target.offset().top,
+					const originalOffset = target.getBoundingClientRect().top + window.pageYOffset,
 						scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
 					scrollTo( scrollOffset, null, scrollSpeed );

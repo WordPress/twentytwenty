@@ -14,7 +14,7 @@ export default {
 				didScroll = false;
 
 				// When this triggers, we know that we have scrolled
-				window.dispatchEvent( 'did-interval-scroll' );
+				window.dispatchEvent( new Event( 'did-interval-scroll' ) );
 			}
 		}, 250 );
 	},

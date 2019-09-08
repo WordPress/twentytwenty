@@ -12,14 +12,14 @@ import focusManagement from './functions/focus-management';
 import dynamicScreenHeight from './functions/dynamic-screen-height';
 
 domReady( () => {
-	// intervalScroll.init();
-	resizeEnd.init(); //done
-	toggles.init(); // done
-	coverModals.init(); // done
-	instrinsicRatioVideos.init(); //done
+	intervalScroll.init();
+	resizeEnd.init();
+	toggles.init();
+	coverModals.init();
+	instrinsicRatioVideos.init();
 	smoothScroll.init();
-	scrollLock.init(); // done
-	mainMenu.init(); // done
-	focusManagement.init(); // seems done
-	dynamicScreenHeight.init(); // done
+	scrollLock.init();
+	mainMenu.init();
+	focusManagement.init();
+	dynamicScreenHeight.init();
 } );

@@ -296,7 +296,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./assets/js/src/functions/helper.js ***!
   \*******************************************/
-/*! exports provided: twentytwentyToggleAttribute, getQueryStringValue, slideToggle, findParents, scrollTo */
+/*! exports provided: twentytwentyToggleAttribute, getQueryStringValue, slideToggle, findParents, easing, scrollTo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -305,6 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQueryStringValue", function() { return getQueryStringValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideToggle", function() { return slideToggle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findParents", function() { return findParents; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "easing", function() { return easing; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollTo", function() { return scrollTo; });
 function twentytwentyToggleAttribute(element, attribute) {
   var trueVal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
@@ -497,45 +498,43 @@ var findParents = function findParents(target, query) {
 
   traverse(target);
   return parents;
-};
+}; // easing functions http://goo.gl/5HLl8
 
-Math.easeInOutQuad = function (t, b, c, d) {
-  t /= d / 2;
+var easing = {
+  easeInOutQuad: function easeInOutQuad(t, b, c, d) {
+    t /= d / 2;
 
-  if (t < 1) {
-    return c / 2 * t * t + b;
+    if (t < 1) {
+      return c / 2 * t * t + b;
+    }
+
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  },
+  easeInCubic: function easeInCubic(t, b, c, d) {
+    var tc = (t /= d) * t * t;
+    return b + c * tc;
+  },
+  inOutQuintic: function inOutQuintic(t, b, c, d) {
+    var ts = (t /= d) * t,
+        tc = ts * t;
+    return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
   }
-
-  t--;
-  return -c / 2 * (t * (t - 2) - 1) + b;
 };
-
-Math.easeInCubic = function (t, b, c, d) {
-  var tc = (t /= d) * t * t;
-  return b + c * tc;
-};
-
-Math.inOutQuintic = function (t, b, c, d) {
-  var ts = (t /= d) * t,
-      tc = ts * t;
-  return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
-};
-
 var scrollTo = function scrollTo(to, callback, duration) {
-  // because it's so fucking difficult to detect the scrolling element, just move them all
-  function move(amount) {
+  var move = function move(amount) {
     document.documentElement.scrollTop = amount;
     document.body.parentNode.scrollTop = amount;
     document.body.scrollTop = amount;
-  }
+  };
 
-  function position() {
+  var position = function position() {
     return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
-  }
+  };
 
-  var start = position(),
-      change = to - start,
-      increment = 20;
+  var start = position();
+  var change = to - start;
+  var increment = 20;
   var currentTime = 0;
   duration = typeof duration === 'undefined' ? 500 : duration;
 
@@ -543,7 +542,7 @@ var scrollTo = function scrollTo(to, callback, duration) {
     // increment the time
     currentTime += increment; // find the value with the quadratic in-out easing function
 
-    var val = Math.easeInOutQuad(currentTime, start, change, duration); // move the document.body
+    var val = easing.easeInOutQuad(currentTime, start, change, duration); // move the document.body
 
     move(val); // do the animation unless its over
 
@@ -628,7 +627,7 @@ __webpack_require__.r(__webpack_exports__);
       if (didScroll) {
         didScroll = false; // When this triggers, we know that we have scrolled
 
-        window.dispatchEvent('did-interval-scroll');
+        window.dispatchEvent(new Event('did-interval-scroll'));
       }
     }, 250);
   }
@@ -857,15 +856,15 @@ __webpack_require__.r(__webpack_exports__);
     if (scrollToElement) {
       scrollToElement.addEventListener('click', function (event) {
         // Figure out element to scroll to
-        var target = event.target.data('scroll-to'); // Make sure said element exists
+        var target = event.target.dataset.scrollTo; // Make sure said element exists
 
-        if (target.length) {
+        if (target) {
           event.preventDefault(); // Get options
 
-          var additionalOffset = event.target.data('additional-offset'),
-              scrollSpeed = event.target.data('scroll-speed') ? event.target.data('scroll-speed') : 500; // Determine offset
+          var additionalOffset = event.target.dataset.additionalOffset,
+              scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500; // Determine offset
 
-          var originalOffset = target.offset().top,
+          var originalOffset = target.getBoundingClientRect().top + window.pageYOffset,
               scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
           Object(_helper__WEBPACK_IMPORTED_MODULE_1__["scrollTo"])(scrollOffset, null, scrollSpeed);
         }
@@ -1062,23 +1061,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  // intervalScroll.init();
-  _functions_resize_end__WEBPACK_IMPORTED_MODULE_2__["default"].init(); //done
-
-  _functions_toggles__WEBPACK_IMPORTED_MODULE_3__["default"].init(); // done
-
-  _functions_cover_modals__WEBPACK_IMPORTED_MODULE_4__["default"].init(); // done
-
-  _functions_instrinsic_ratio_videos__WEBPACK_IMPORTED_MODULE_5__["default"].init(); //done
-
+  _functions_interval_scroll__WEBPACK_IMPORTED_MODULE_1__["default"].init();
+  _functions_resize_end__WEBPACK_IMPORTED_MODULE_2__["default"].init();
+  _functions_toggles__WEBPACK_IMPORTED_MODULE_3__["default"].init();
+  _functions_cover_modals__WEBPACK_IMPORTED_MODULE_4__["default"].init();
+  _functions_instrinsic_ratio_videos__WEBPACK_IMPORTED_MODULE_5__["default"].init();
   _functions_smooth_scroll__WEBPACK_IMPORTED_MODULE_6__["default"].init();
-  _functions_scroll_lock__WEBPACK_IMPORTED_MODULE_7__["default"].init(); // done
-
-  _functions_main_menu__WEBPACK_IMPORTED_MODULE_8__["default"].init(); // done
-
-  _functions_focus_management__WEBPACK_IMPORTED_MODULE_9__["default"].init(); // seems done
-
-  _functions_dynamic_screen_height__WEBPACK_IMPORTED_MODULE_10__["default"].init(); // done
+  _functions_scroll_lock__WEBPACK_IMPORTED_MODULE_7__["default"].init();
+  _functions_main_menu__WEBPACK_IMPORTED_MODULE_8__["default"].init();
+  _functions_focus_management__WEBPACK_IMPORTED_MODULE_9__["default"].init();
+  _functions_dynamic_screen_height__WEBPACK_IMPORTED_MODULE_10__["default"].init();
 });
 
 /***/ }),
