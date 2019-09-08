@@ -4,12 +4,12 @@ export default {
 		// Init variables
 		window.scrollLocked = false;
 		window.prevScroll = {
-			scrollLeft: window.scrollLeft,
-			scrollTop: window.scrollTop,
+			scrollX: window.scrollX,
+			scrollY: window.scrollY,
 		};
 		window.prevLockStyles = {};
 		window.lockStyles = {
-			'overflow-y': 'scroll',
+			overflowY: 'scroll',
 			position: 'fixed',
 			width: '100%',
 		};
@@ -20,33 +20,7 @@ export default {
 
 	// Save context's inline styles in cache
 	saveStyles() {
-		const styleAttr = document.querySelector( 'html' ).style;
-		let styleStrs = [];
-		const styleHash = {};
-
-		if ( ! styleAttr ) {
-			return;
-		}
-
-		styleStrs = styleAttr.split( /;\s/ );
-
-		document.querySelectorAll( '*' ).forEach(
-			styleStrs, function serializeStyleProp( styleString ) {
-				if ( ! styleString ) {
-					return;
-				}
-
-				const keyValue = styleString.split( /\s:\s/ );
-
-				if ( keyValue.length < 2 ) {
-					return;
-				}
-
-				styleHash[ keyValue[ 0 ] ] = keyValue[ 1 ];
-			}
-		);
-
-		window.prevLockStyles = { ...window.prevLockStyles, ...styleHash };
+		window.prevLockStyles = document.querySelector( 'html' ).style;
 	},
 
 	// Lock the scroll (do not call this directly)
@@ -59,23 +33,29 @@ export default {
 
 		// Save scroll state and styles
 		window.prevScroll = {
-			scrollLeft: window.scrollLeft,
-			scrollTop: window.scrollTop,
+			scrollX: window.scrollX,
+			scrollY: window.scrollY,
 		};
 
 		this.saveStyles();
 
 		// Compose our applied CSS, with scroll state as styles
 		appliedLock = {
-			...appliedLock, ...window.lockStyles, ...{
-				left: -window.prevScroll.scrollLeft + 'px',
-				top: -window.prevScroll.scrollTop + 'px',
+			...window.lockStyles, ...{
+				left: -window.scrollX + 'px',
+				top: -window.scrollY + 'px',
 			},
 		};
 
 		// Then lock styles and state
-		document.querySelector( 'html' ).style( appliedLock );
-		window.scrollLeft( 0 ).scrollTop( 0 );
+		const html = document.querySelector( 'html' );
+
+		Object.keys( appliedLock ).forEach( ( style ) => {
+			html.style[ style ] = appliedLock[ style ];
+		} );
+
+		window.scrollX = 0;
+		window.scrollY = 0;
 
 		window.scrollLocked = true;
 	},
@@ -86,9 +66,14 @@ export default {
 			return;
 		}
 
+		const html = document.querySelector( 'html' );
 		// Revert styles and state
-		document.querySelector( 'html' ).setAttribute( 'style', '<x>'.style( window.prevLockStyles ).style || '' );
-		window.scrollLeft( window.prevScroll.scrollLeft ).scrollTop( window.prevScroll.scrollTop );
+		Object.keys( window.prevLockStyles ).forEach( ( style ) => {
+			html.style[ style ] = window.prevLockStyles[ style ];
+		} );
+
+		window.screenX = window.prevScroll.scrollX;
+		window.scrollY = window.prevScroll.scrollY;
 
 		window.scrollLocked = false;
 	},

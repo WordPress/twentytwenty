@@ -30,7 +30,8 @@ export default {
 			if ( modal.classList.contains( 'active' ) ) {
 				body.classList.add( 'showing-modal' );
 			} else {
-				body.classList.remove( 'showing-modal' ).addClass( 'hiding-modal' );
+				body.classList.remove( 'showing-modal' );
+				body.classList.add( 'hiding-modal' );
 
 				// Remove the hiding class after a delay, when animations have been run
 				setTimeout( () => {
@@ -54,9 +55,10 @@ export default {
 
 	// Close modal on escape key press
 	closeOnEscape() {
-		document.addEventListener( 'keyup', ( event ) => {
-			if ( event.key === 'Escape' ) {
-				document.querySelector( '.cover-modal.active' ).forEach( ( element ) => {
+		document.addEventListener( 'keydown', ( event ) => {
+			if ( event.keyCode === 27 ) {
+				event.preventDefault();
+				document.querySelectorAll( '.cover-modal.active' ).forEach( ( element ) => {
 					this.untoggleModal( element );
 				} );
 			}
@@ -139,7 +141,7 @@ export default {
 		}
 
 		// If a modal toggle exists, trigger it so all of the toggle options are included
-		if ( modalToggle && modalToggle.length ) {
+		if ( modalToggle ) {
 			modalToggle.click();
 
 			// If one doesn't exist, just hide the modal

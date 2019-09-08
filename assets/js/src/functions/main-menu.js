@@ -1,3 +1,5 @@
+import { findParents } from './helper';
+
 export default {
 
 	init() {
@@ -10,9 +12,9 @@ export default {
 		const activeMenuItem = mainMenu.querySelector( '.current-menu-item' );
 
 		if ( activeMenuItem ) {
-			mainMenu.querySelector( 'li' ).forEach( ( element ) => {
+			findParents( activeMenuItem, 'li' ).forEach( ( element ) => {
 				const subMenuToggle = element.querySelector( '.sub-menu-toggle' );
-				if ( subMenuToggle.length ) {
+				if ( subMenuToggle ) {
 					subMenuToggle.click();
 				}
 			} );

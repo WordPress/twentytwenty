@@ -15,7 +15,7 @@ export default {
 	setScreenHeight() {
 		const screenHeight = document.querySelector( '.screen-height' );
 		if ( screenHeight ) {
-			screenHeight.style.minHeight = window.innerHeight();
+			screenHeight.style.minHeight = window.innerHeight;
 		}
 	},
 

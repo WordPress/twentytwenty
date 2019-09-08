@@ -106,7 +106,8 @@ __webpack_require__.r(__webpack_exports__);
       if (modal.classList.contains('active')) {
         body.classList.add('showing-modal');
       } else {
-        body.classList.remove('showing-modal').addClass('hiding-modal'); // Remove the hiding class after a delay, when animations have been run
+        body.classList.remove('showing-modal');
+        body.classList.add('hiding-modal'); // Remove the hiding class after a delay, when animations have been run
 
         setTimeout(function () {
           body.classList.remove('hiding-modal');
@@ -131,9 +132,10 @@ __webpack_require__.r(__webpack_exports__);
   closeOnEscape: function closeOnEscape() {
     var _this2 = this;
 
-    document.addEventListener('keyup', function (event) {
-      if (event.key === 'Escape') {
-        document.querySelector('.cover-modal.active').forEach(function (element) {
+    document.addEventListener('keydown', function (event) {
+      if (event.keyCode === 27) {
+        event.preventDefault();
+        document.querySelectorAll('.cover-modal.active').forEach(function (element) {
           _this2.untoggleModal(element);
         });
       }
@@ -211,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
     } // If a modal toggle exists, trigger it so all of the toggle options are included
 
 
-    if (modalToggle && modalToggle.length) {
+    if (modalToggle) {
       modalToggle.click(); // If one doesn't exist, just hide the modal
     } else {
       modal.classList.remove('active');
@@ -246,7 +248,7 @@ __webpack_require__.r(__webpack_exports__);
     var screenHeight = document.querySelector('.screen-height');
 
     if (screenHeight) {
-      screenHeight.style.minHeight = window.innerHeight();
+      screenHeight.style.minHeight = window.innerHeight;
     }
   }
 });
@@ -272,14 +274,14 @@ __webpack_require__.r(__webpack_exports__);
     document.addEventListener('focusin', function (event) {
       var element = event.target;
       var menuModal = document.querySelector('.menu-modal');
-      var headerToggles = document.querySelector('header-toggles');
+      var headerToggles = document.querySelector('.header-toggles');
       var searchModal = document.querySelector('.search-modal');
 
       if (menuModal.classList.contains('.active')) {
         if (!menuModal.contains(element) && !headerToggles.contains(element)) {
           document.querySelector('.nav-toggle').focus();
         }
-      } else if (searchModal.classList.contains('.active')) {
+      } else if (!searchModal.classList.contains('.active')) {
         if (!searchModal.contains(element)) {
           searchModal.querySelector('.search-field').focus();
         }
@@ -294,13 +296,16 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./assets/js/src/functions/helper.js ***!
   \*******************************************/
-/*! exports provided: twentytwentyToggleAttribute, getQueryStringValue */
+/*! exports provided: twentytwentyToggleAttribute, getQueryStringValue, slideToggle, findParents, scrollTo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "twentytwentyToggleAttribute", function() { return twentytwentyToggleAttribute; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQueryStringValue", function() { return getQueryStringValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideToggle", function() { return slideToggle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findParents", function() { return findParents; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollTo", function() { return scrollTo; });
 function twentytwentyToggleAttribute(element, attribute) {
   var trueVal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
   var falseVal = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
@@ -323,6 +328,234 @@ var getQueryStringValue = function getQueryStringValue() {
   }
 
   return vars;
+};
+
+var slideUp = function slideUp(target, duration) {
+  target.style.transitionProperty = 'height, margin, padding';
+  /* [1.1] */
+
+  target.style.transitionDuration = duration + 'ms';
+  /* [1.2] */
+
+  target.style.boxSizing = 'border-box';
+  /* [2] */
+
+  target.style.height = target.offsetHeight + 'px';
+  /* [3] */
+
+  target.style.height = 0;
+  /* [4] */
+
+  target.style.paddingTop = 0;
+  /* [5.1] */
+
+  target.style.paddingBottom = 0;
+  /* [5.2] */
+
+  target.style.marginTop = 0;
+  /* [6.1] */
+
+  target.style.marginBottom = 0;
+  /* [7.2] */
+
+  target.style.overflow = 'hidden';
+  /* [7] */
+
+  window.setTimeout(function () {
+    target.style.display = 'none';
+    /* [8] */
+
+    target.style.removeProperty('height');
+    /* [9] */
+
+    target.style.removeProperty('padding-top');
+    /* [10.1] */
+
+    target.style.removeProperty('padding-bottom');
+    /* [10.2] */
+
+    target.style.removeProperty('margin-top');
+    /* [11.1] */
+
+    target.style.removeProperty('margin-bottom');
+    /* [11.2] */
+
+    target.style.removeProperty('overflow');
+    /* [12] */
+
+    target.style.removeProperty('transition-duration');
+    /* [13.1] */
+
+    target.style.removeProperty('transition-property');
+    /* [13.2] */
+  }, duration);
+};
+
+var slideDown = function slideDown(target, duration) {
+  target.style.removeProperty('display');
+  /* [1] */
+
+  var display = window.getComputedStyle(target).display;
+
+  if (display === 'none') {
+    /* [2] */
+    display = 'block';
+  }
+
+  target.style.display = display;
+  var height = target.offsetHeight;
+  /* [3] */
+
+  target.style.height = 0;
+  /* [4] */
+
+  target.style.paddingTop = 0;
+  /* [5.1] */
+
+  target.style.paddingBottom = 0;
+  /* [5.2] */
+
+  target.style.marginTop = 0;
+  /* [6.1] */
+
+  target.style.marginBottom = 0;
+  /* [6.2] */
+
+  target.style.overflow = 'hidden';
+  /* [7] */
+
+  target.style.boxSizing = 'border-box';
+  /* [8] */
+
+  target.style.transitionProperty = 'height, margin, padding';
+  /* [9.1] */
+
+  target.style.transitionDuration = duration + 'ms';
+  /* [9.2] */
+
+  target.style.height = height + 'px';
+  /* [10] */
+
+  target.style.removeProperty('padding-top');
+  /* [11.1] */
+
+  target.style.removeProperty('padding-bottom');
+  /* [11.2] */
+
+  target.style.removeProperty('margin-top');
+  /* [12.1] */
+
+  target.style.removeProperty('margin-bottom');
+  /* [12.2] */
+
+  window.setTimeout(function () {
+    target.style.removeProperty('height');
+    /* [13] */
+
+    target.style.removeProperty('overflow');
+    /* [14] */
+
+    target.style.removeProperty('transition-duration');
+    /* [15.1] */
+
+    target.style.removeProperty('transition-property');
+    /* [15.2] */
+  }, duration);
+};
+
+var slideToggle = function slideToggle(target) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+
+  if (window.getComputedStyle(target).display === 'none') {
+    return slideDown(target, duration);
+  }
+
+  return slideUp(target, duration);
+};
+/**
+ * traverses the DOM up to find elements matching the query
+ *
+ * @param {HTMLElement} target
+ * @param {string} query
+ * @return {NodeList} parents matching query
+ */
+
+var findParents = function findParents(target, query) {
+  var parents = []; // recursively go up the DOM adding matches to the parents array
+
+  var traverse = function traverse(item) {
+    var parent = item.parentNode;
+
+    if (parent instanceof HTMLElement) {
+      if (parent.matches(query)) {
+        parents.push(parent);
+      }
+
+      traverse(parent);
+    }
+  };
+
+  traverse(target);
+  return parents;
+};
+
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d / 2;
+
+  if (t < 1) {
+    return c / 2 * t * t + b;
+  }
+
+  t--;
+  return -c / 2 * (t * (t - 2) - 1) + b;
+};
+
+Math.easeInCubic = function (t, b, c, d) {
+  var tc = (t /= d) * t * t;
+  return b + c * tc;
+};
+
+Math.inOutQuintic = function (t, b, c, d) {
+  var ts = (t /= d) * t,
+      tc = ts * t;
+  return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
+};
+
+var scrollTo = function scrollTo(to, callback, duration) {
+  // because it's so fucking difficult to detect the scrolling element, just move them all
+  function move(amount) {
+    document.documentElement.scrollTop = amount;
+    document.body.parentNode.scrollTop = amount;
+    document.body.scrollTop = amount;
+  }
+
+  function position() {
+    return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
+  }
+
+  var start = position(),
+      change = to - start,
+      increment = 20;
+  var currentTime = 0;
+  duration = typeof duration === 'undefined' ? 500 : duration;
+
+  var animateScroll = function animateScroll() {
+    // increment the time
+    currentTime += increment; // find the value with the quadratic in-out easing function
+
+    var val = Math.easeInOutQuad(currentTime, start, change, duration); // move the document.body
+
+    move(val); // do the animation unless its over
+
+    if (currentTime < duration) {
+      window.requestAnimationFrame(animateScroll);
+    } else if (callback && typeof callback === 'function') {
+      // the animation is done so lets callback
+      callback();
+    }
+  };
+
+  animateScroll();
 };
 
 /***/ }),
@@ -412,6 +645,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helper */ "./assets/js/src/functions/helper.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   init: function init() {
     // If the current menu item is in a sub level, expand all the levels higher up on load
@@ -422,10 +657,10 @@ __webpack_require__.r(__webpack_exports__);
     var activeMenuItem = mainMenu.querySelector('.current-menu-item');
 
     if (activeMenuItem) {
-      mainMenu.querySelector('li').forEach(function (element) {
+      Object(_helper__WEBPACK_IMPORTED_MODULE_0__["findParents"])(activeMenuItem, 'li').forEach(function (element) {
         var subMenuToggle = element.querySelector('.sub-menu-toggle');
 
-        if (subMenuToggle.length) {
+        if (subMenuToggle) {
           subMenuToggle.click();
         }
       });
@@ -447,11 +682,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   init: function init() {
     var resizeTimer;
-    window.addEventListener('resize', function (event) {
+    window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
         // Trigger this at the end of screen resizing
-        window.dispatchEvent('resize-end');
+        window.dispatchEvent(new Event('resize-end'));
       }, 250);
     });
   }
@@ -481,12 +716,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     // Init variables
     window.scrollLocked = false;
     window.prevScroll = {
-      scrollLeft: window.scrollLeft,
-      scrollTop: window.scrollTop
+      scrollX: window.scrollX,
+      scrollY: window.scrollY
     };
     window.prevLockStyles = {};
     window.lockStyles = {
-      'overflow-y': 'scroll',
+      overflowY: 'scroll',
       position: 'fixed',
       width: '100%'
     }; // Instantiate cache in case someone tries to unlock before locking
@@ -495,29 +730,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
   },
   // Save context's inline styles in cache
   saveStyles: function saveStyles() {
-    var styleAttr = document.querySelector('html').style;
-    var styleStrs = [];
-    var styleHash = {};
-
-    if (!styleAttr) {
-      return;
-    }
-
-    styleStrs = styleAttr.split(/;\s/);
-    document.querySelectorAll('*').forEach(styleStrs, function serializeStyleProp(styleString) {
-      if (!styleString) {
-        return;
-      }
-
-      var keyValue = styleString.split(/\s:\s/);
-
-      if (keyValue.length < 2) {
-        return;
-      }
-
-      styleHash[keyValue[0]] = keyValue[1];
-    });
-    window.prevLockStyles = _objectSpread({}, window.prevLockStyles, {}, styleHash);
+    window.prevLockStyles = document.querySelector('html').style;
   },
   // Lock the scroll (do not call this directly)
   lock: function lock() {
@@ -529,29 +742,37 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
     window.prevScroll = {
-      scrollLeft: window.scrollLeft,
-      scrollTop: window.scrollTop
+      scrollX: window.scrollX,
+      scrollY: window.scrollY
     };
     this.saveStyles(); // Compose our applied CSS, with scroll state as styles
 
-    appliedLock = _objectSpread({}, appliedLock, {}, window.lockStyles, {}, {
-      left: -window.prevScroll.scrollLeft + 'px',
-      top: -window.prevScroll.scrollTop + 'px'
+    appliedLock = _objectSpread({}, window.lockStyles, {}, {
+      left: -window.scrollX + 'px',
+      top: -window.scrollY + 'px'
     }); // Then lock styles and state
 
-    document.querySelector('html').style(appliedLock);
-    window.scrollLeft(0).scrollTop(0);
+    var html = document.querySelector('html');
+    Object.keys(appliedLock).forEach(function (style) {
+      html.style[style] = appliedLock[style];
+    });
+    window.scrollX = 0;
+    window.scrollY = 0;
     window.scrollLocked = true;
   },
   // Unlock the scroll (do not call this directly)
   unlock: function unlock() {
     if (!window.scrollLocked) {
       return;
-    } // Revert styles and state
+    }
 
+    var html = document.querySelector('html'); // Revert styles and state
 
-    document.querySelector('html').setAttribute('style', '<x>'.style(window.prevLockStyles).style || '');
-    window.scrollLeft(window.prevScroll.scrollLeft).scrollTop(window.prevScroll.scrollTop);
+    Object.keys(window.prevLockStyles).forEach(function (style) {
+      html.style[style] = window.prevLockStyles[style];
+    });
+    window.screenX = window.prevScroll.scrollX;
+    window.scrollY = window.prevScroll.scrollY;
     window.scrollLocked = false;
   },
   // Call this to lock or unlock the scroll
@@ -585,6 +806,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./assets/js/src/functions/helper.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   init: function init() {
@@ -595,8 +818,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   // Scroll to anchor
   scrollToAnchor: function scrollToAnchor() {
-    _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll('a[href*="#"]')).filter(function (element) {
-      if (element.href === ('#' || '#0') || element.classList.contains('.do-not-scroll') || !element.classList.contains('skip-link')) {
+    var anchorElements = document.querySelectorAll('a[href*="#"]');
+
+    _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(anchorElements).filter(function (element) {
+      if (element.href === '#' || element.href === '#0' || element.classList.contains('.do-not-scroll') || element.classList.contains('skip-link')) {
         return false;
       }
 
@@ -604,23 +829,22 @@ __webpack_require__.r(__webpack_exports__);
     }).forEach(function (element) {
       element.addEventListener('click', function (event) {
         // On-page links
-        if (window.location.pathname.replace(/^\//, '') === event.target.pathname.replace(/^\//, '') && window.location.hostname === event.target.hostname) {
+        if (window.location.hostname === event.target.hostname) {
           // Figure out element to scroll to
-          var target = document.querySelector(window.location.hash);
-          target = target.length ? target : document.querySelector('[name=' + event.target.hash.slice(1) + ']'); // Does a scroll target exist?
+          var target = window.location.hash !== '' && document.querySelector(window.location.hash);
+          target = target ? target : document.querySelector(event.target.hash); // Does a scroll target exist?
 
-          if (target.length) {
+          if (target) {
             // Only prevent default if animation is actually gonna happen
             event.preventDefault(); // Get options
 
-            var additionalOffset = document.querySelector(event.target).data('additional-offset'),
-                scrollSpeed = document.querySelector(event.target).data('scroll-speed') ? document.querySelector(event.target).data('scroll-speed') : 500; // Determine offset
+            var additionalOffset = event.target.dataset.additionalOffset;
+            var scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500; // Determine offset
 
-            var originalOffset = target.offset().top,
-                scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
-            document.querySelectorAll('html, body').animate({
-              scrollTop: scrollOffset
-            }, scrollSpeed);
+            var originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
+            var scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["scrollTo"])(scrollOffset, null, scrollSpeed);
+            window.location.hash = event.target.hash.slice(1);
           }
         }
       });
@@ -628,10 +852,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   // Scroll to element
   scrollToElement: function scrollToElement() {
-    var scrollTo = document.querySelector('*[data-scroll-to]');
+    var scrollToElement = document.querySelector('*[data-scroll-to]');
 
-    if (scrollTo) {
-      scrollTo.addEventListener('click', function (event) {
+    if (scrollToElement) {
+      scrollToElement.addEventListener('click', function (event) {
         // Figure out element to scroll to
         var target = event.target.data('scroll-to'); // Make sure said element exists
 
@@ -643,9 +867,7 @@ __webpack_require__.r(__webpack_exports__);
 
           var originalOffset = target.offset().top,
               scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
-          document.querySelectorAll('html, body').animate({
-            scrollTop: scrollOffset
-          }, scrollSpeed);
+          Object(_helper__WEBPACK_IMPORTED_MODULE_1__["scrollTo"])(scrollOffset, null, scrollSpeed);
         }
       });
     }
@@ -679,7 +901,7 @@ __webpack_require__.r(__webpack_exports__);
   // Do the toggle
   toggle: function toggle() {
     document.querySelectorAll('*[data-toggle-target]').forEach(function (element) {
-      element.addEventListener('click', function (event) {
+      element.addEventListener('click', function () {
         // Get our targets
         var toggle = element;
         var targetString = toggle.dataset.toggleTarget;
@@ -693,9 +915,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
         if (target.classList.contains('active')) {
-          target.dispatchEvent(new CustomEvent('toggle-target-before-active'));
+          target.dispatchEvent(new Event('toggle-target-before-active'));
         } else {
-          target.dispatchEvent(new CustomEvent('toggle-target-before-inactive'));
+          target.dispatchEvent(new Event('toggle-target-before-inactive'));
         } // Get the class to toggle, if specified
 
 
@@ -711,7 +933,7 @@ __webpack_require__.r(__webpack_exports__);
           // Toggle the target of the clicked toggle
           if (toggle.dataset.toggleType === 'slidetoggle') {
             var duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
-            target.slideToggle(duration);
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["slideToggle"])(target, duration);
           } else {
             target.classList.toggle(classToToggle);
           } // If the toggle target is 'next', only give the clicked toggle the active class
@@ -743,7 +965,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
           if (toggle.dataset.setFocus) {
-            var focusElement = toggle.dataset.setFocus;
+            var focusElement = document.querySelector(toggle.dataset.setFocus);
 
             if (focusElement.length) {
               if (toggle.classList.contains('.active')) {
@@ -755,12 +977,12 @@ __webpack_require__.r(__webpack_exports__);
           } // Trigger the toggled event on the toggle target
 
 
-          target.triggerHandler('toggled'); // Trigger events on the toggle targets after they are toggled
+          target.dispatchEvent(new Event('toggled')); // Trigger events on the toggle targets after they are toggled
 
           if (target.classList.contains('active')) {
-            target.dispatchEvent(new CustomEvent('toggle-target-after-active'));
+            target.dispatchEvent(new Event('toggle-target-after-active'));
           } else {
-            target.dispatchEvent(new CustomEvent('toggle-target-after-inactive'));
+            target.dispatchEvent(new Event('toggle-target-after-inactive'));
           }
         }, timeOutTime);
         return false;
@@ -841,14 +1063,22 @@ __webpack_require__.r(__webpack_exports__);
 
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(function () {
   // intervalScroll.init();
-  // resizeEnd.init();
-  _functions_toggles__WEBPACK_IMPORTED_MODULE_3__["default"].init();
-  _functions_cover_modals__WEBPACK_IMPORTED_MODULE_4__["default"].init(); // instrinsicRatioVideos.init();
-  // smoothScroll.init();
-  // scrollLock.init();
+  _functions_resize_end__WEBPACK_IMPORTED_MODULE_2__["default"].init(); //done
 
-  _functions_main_menu__WEBPACK_IMPORTED_MODULE_8__["default"].init(); // focusManagement.init();
-  // dynamicScreenHeight.init();
+  _functions_toggles__WEBPACK_IMPORTED_MODULE_3__["default"].init(); // done
+
+  _functions_cover_modals__WEBPACK_IMPORTED_MODULE_4__["default"].init(); // done
+
+  _functions_instrinsic_ratio_videos__WEBPACK_IMPORTED_MODULE_5__["default"].init(); //done
+
+  _functions_smooth_scroll__WEBPACK_IMPORTED_MODULE_6__["default"].init();
+  _functions_scroll_lock__WEBPACK_IMPORTED_MODULE_7__["default"].init(); // done
+
+  _functions_main_menu__WEBPACK_IMPORTED_MODULE_8__["default"].init(); // done
+
+  _functions_focus_management__WEBPACK_IMPORTED_MODULE_9__["default"].init(); // seems done
+
+  _functions_dynamic_screen_height__WEBPACK_IMPORTED_MODULE_10__["default"].init(); // done
 });
 
 /***/ }),

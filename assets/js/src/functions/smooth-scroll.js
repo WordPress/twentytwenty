@@ -1,3 +1,5 @@
+import { scrollTo } from './helper';
+
 export default {
 
 	init() {
@@ -10,34 +12,35 @@ export default {
 
 	// Scroll to anchor
 	scrollToAnchor() {
-		[ ...document.querySelectorAll( 'a[href*="#"]' ) ].filter( ( element ) => {
-			if ( ( element.href === ( '#' || '#0' ) ) || element.classList.contains( '.do-not-scroll' ) || ! element.classList.contains( 'skip-link' ) ) {
+		const anchorElements = document.querySelectorAll( 'a[href*="#"]' );
+		[ ...anchorElements ].filter( ( element ) => {
+			if ( element.href === '#' || element.href === '#0' || element.classList.contains( '.do-not-scroll' ) || element.classList.contains( 'skip-link' ) ) {
 				return false;
 			}
 			return true;
 		} ).forEach( ( element ) => {
 			element.addEventListener( 'click', ( event ) => {
 				// On-page links
-				if ( window.location.pathname.replace( /^\//, '' ) === event.target.pathname.replace( /^\//, '' ) && window.location.hostname === event.target.hostname ) {
+				if ( window.location.hostname === event.target.hostname ) {
 					// Figure out element to scroll to
-					let target = document.querySelector( window.location.hash );
-					target = target.length ? target : document.querySelector( '[name=' + event.target.hash.slice( 1 ) + ']' );
+					let target = window.location.hash !== '' && document.querySelector( window.location.hash );
+					target = target ? target : document.querySelector( event.target.hash );
 					// Does a scroll target exist?
-					if ( target.length ) {
+					if ( target ) {
 						// Only prevent default if animation is actually gonna happen
 						event.preventDefault();
 
 						// Get options
-						const additionalOffset = document.querySelector( event.target ).data( 'additional-offset' ),
-							scrollSpeed = document.querySelector( event.target ).data( 'scroll-speed' ) ? document.querySelector( event.target ).data( 'scroll-speed' ) : 500;
+						const additionalOffset = event.target.dataset.additionalOffset;
+						const scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
 
 						// Determine offset
-						const originalOffset = target.offset().top,
-							scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+						const originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
+						const scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
-						document.querySelectorAll( 'html, body' ).animate( {
-							scrollTop: scrollOffset,
-						}, scrollSpeed );
+						scrollTo( scrollOffset, null, scrollSpeed );
+
+						window.location.hash = event.target.hash.slice( 1 );
 					}
 				}
 			} );
@@ -46,10 +49,10 @@ export default {
 
 	// Scroll to element
 	scrollToElement() {
-		const scrollTo = document.querySelector( '*[data-scroll-to]' );
+		const scrollToElement = document.querySelector( '*[data-scroll-to]' );
 
-		if ( scrollTo ) {
-			scrollTo.addEventListener( 'click', ( event ) => {
+		if ( scrollToElement ) {
+			scrollToElement.addEventListener( 'click', ( event ) => {
 				// Figure out element to scroll to
 				const target = event.target.data( 'scroll-to' );
 
@@ -65,9 +68,7 @@ export default {
 					const originalOffset = target.offset().top,
 						scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
-					document.querySelectorAll( 'html, body' ).animate( {
-						scrollTop: scrollOffset,
-					}, scrollSpeed );
+					scrollTo( scrollOffset, null, scrollSpeed );
 				}
 			} );
 		}

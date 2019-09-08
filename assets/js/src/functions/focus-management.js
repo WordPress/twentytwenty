@@ -10,13 +10,13 @@ export default {
 		document.addEventListener( 'focusin', ( event ) => {
 			const element = event.target;
 			const menuModal = document.querySelector( '.menu-modal' );
-			const headerToggles = document.querySelector( 'header-toggles' );
+			const headerToggles = document.querySelector( '.header-toggles' );
 			const searchModal = document.querySelector( '.search-modal' );
 			if ( menuModal.classList.contains( '.active' ) ) {
 				if ( ! menuModal.contains( element ) && ! headerToggles.contains( element ) ) {
 					document.querySelector( '.nav-toggle' ).focus();
 				}
-			} else if ( searchModal.classList.contains( '.active' ) ) {
+			} else if ( ! searchModal.classList.contains( '.active' ) ) {
 				if ( ! searchModal.contains( element ) ) {
 					searchModal.querySelector( '.search-field' ).focus();
 				}

@@ -1,5 +1,5 @@
 import scrollLock from './scroll-lock';
-import { twentytwentyToggleAttribute } from './helper';
+import { twentytwentyToggleAttribute, slideToggle } from './helper';
 
 export default {
 
@@ -17,7 +17,7 @@ export default {
 	// Do the toggle
 	toggle() {
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( ( element ) => {
-			element.addEventListener( 'click', function( event ) {
+			element.addEventListener( 'click', () => {
 				// Get our targets
 				const toggle = element;
 				const targetString = toggle.dataset.toggleTarget;
@@ -31,9 +31,9 @@ export default {
 
 				// Trigger events on the toggle targets before they are toggled
 				if ( target.classList.contains( 'active' ) ) {
-					target.dispatchEvent( new CustomEvent( 'toggle-target-before-active' ) );
+					target.dispatchEvent( new Event( 'toggle-target-before-active' ) );
 				} else {
-					target.dispatchEvent( new CustomEvent( 'toggle-target-before-inactive' ) );
+					target.dispatchEvent( new Event( 'toggle-target-before-inactive' ) );
 				}
 
 				// Get the class to toggle, if specified
@@ -50,7 +50,7 @@ export default {
 					// Toggle the target of the clicked toggle
 					if ( toggle.dataset.toggleType === 'slidetoggle' ) {
 						const duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
-						target.slideToggle( duration );
+						slideToggle( target, duration );
 					} else {
 						target.classList.toggle( classToToggle );
 					}
@@ -86,7 +86,7 @@ export default {
 
 					// Check whether to set focus
 					if ( toggle.dataset.setFocus ) {
-						const focusElement = toggle.dataset.setFocus;
+						const focusElement = document.querySelector( toggle.dataset.setFocus );
 						if ( focusElement.length ) {
 							if ( toggle.classList.contains( '.active' ) ) {
 								focusElement.focus();
@@ -97,13 +97,13 @@ export default {
 					}
 
 					// Trigger the toggled event on the toggle target
-					target.triggerHandler( 'toggled' );
+					target.dispatchEvent( new Event( 'toggled' ) );
 
 					// Trigger events on the toggle targets after they are toggled
 					if ( target.classList.contains( 'active' ) ) {
-						target.dispatchEvent( new CustomEvent( 'toggle-target-after-active' ) );
+						target.dispatchEvent( new Event( 'toggle-target-after-active' ) );
 					} else {
-						target.dispatchEvent( new CustomEvent( 'toggle-target-after-inactive' ) );
+						target.dispatchEvent( new Event( 'toggle-target-after-inactive' ) );
 					}
 				}, timeOutTime );
 
