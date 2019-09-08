@@ -1,32 +1,36 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WordPress Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="TwentyTwenty Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
 
   <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
   <!-- See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/.phpcs.xml.dist -->
 
   <!-- Set a description for this ruleset. -->
-  <description>Coding standards used for checking the Twenty Twenty theme.</description>
+  <description>Coding standards used for checking the TwentyTwenty theme.</description>
 
-  <!-- Exclude patterns -->
+  <!-- Check the entire theme. -->
+  <file>.</file>
+
+  <!-- Exclude patterns. -->
   <exclude-pattern>/vendor/*</exclude-pattern>
   <exclude-pattern>/node_modules/*</exclude-pattern>
 
-  <!-- Include the WordPress ruleset, with space for exclusions if necessary. -->
-  <rule ref="WordPress-Extra">
-    <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-    <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+  <!-- Additional arguments. -->
+  <arg value="sp"/>
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="8"/>
+  <arg name="cache"/>
+  <arg name="extensions" value="php"/>
 
-    <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+  <!-- Include the WordPress rulesets. -->
+  <rule ref="WordPress-Extra"/>
+  <rule ref="WordPress-Docs"/>
+  <rule ref="WPThemeReview"/>
 
-    <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
-    <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-    <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
-  </rule>
-  <rule ref="WordPress-Docs" />
-  <rule ref="WPThemeReview" />
-
-  <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
-    <severity>0</severity>
+  <!-- We want to allow exceptions for the filename naming, since we are working with a theme. -->
+  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#themes-allow-filename-exceptions -->
+  <rule ref="WordPress.Files.FileName">
+    <properties>
+      <property name="is_theme" value="true"/>
+    </properties>
   </rule>
 </ruleset>
