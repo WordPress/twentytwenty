@@ -26,7 +26,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		add_theme_support(
 			'custom-background',
 			array(
-				'default-color'	=> 'F5EFE0'
+				'default-color' => 'F5EFE0'
 			)
 		);
 
@@ -172,10 +172,10 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) :
 
         // Register menus
         $locations = array(
-            'footer-menu' 		=> __( 'Footer Menu', 'twentytwenty' ),
-            'main-menu' 		=> __( 'Main Menu', 'twentytwenty' ),
-			'shortcuts-menu' 	=> __( 'Shortcuts Menu', 'twentytwenty' ),
-            'social-menu' 		=> __( 'Social Menu', 'twentytwenty' ),
+            'footer-menu'       => __( 'Footer Menu', 'twentytwenty' ),
+            'main-menu'         => __( 'Main Menu', 'twentytwenty' ),
+			'shortcuts-menu'    => __( 'Shortcuts Menu', 'twentytwenty' ),
+            'social-menu'       => __( 'Social Menu', 'twentytwenty' ),
 		);
 		
         register_nav_menus( $locations );
@@ -339,24 +339,24 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 
 		// Arguments used in all register_sidebar() calls
 		$shared_args = array(
-			'before_title' 	=> '<h2 class="widget-title subheading heading-size-3">',
-			'after_title' 	=> '</h2>',
+			'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
+			'after_title'   => '</h2>',
 			'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
-			'after_widget' 	=> '</div></div>',
+			'after_widget'  => '</div></div>',
 		);
 
 		// Footer #1
 		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #1', 'twentytwenty' ),
-			'id' 			=> 'footer-one',
-			'description' 	=> __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+			'name'          => __( 'Footer #1', 'twentytwenty' ),
+			'id'            => 'footer-one',
+			'description'   => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
 		) ) );
 
 		// Footer #2
 		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #2', 'twentytwenty' ),
-			'id' 			=> 'footer-two',
-			'description' 	=> __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
+			'name'          => __( 'Footer #2', 'twentytwenty' ),
+			'id'            => 'footer-two',
+			'description'   => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
 		) ) );
 
 	}
@@ -394,27 +394,27 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 		// Make sure that only our allowed tags and attributes are included
 		$svg = wp_kses( TwentyTwenty_SVG_Icons::get_svg( $svg_name, $color ), array(
 			'svg' => array(
-				'class' 		=> true,
-				'xmlns' 		=> true,
-				'width' 		=> true,
-				'height' 		=> true,
-				'viewbox' 		=> true,
-				'aria-hidden'	=> true,
-				'role'			=> true,
-				'focusable'		=> true,
+				'class'         => true,
+				'xmlns'         => true,
+				'width'         => true,
+				'height'        => true,
+				'viewbox'       => true,
+				'aria-hidden'   => true,
+				'role'          => true,
+				'focusable'     => true,
 			),
 			'path' => array(
-				'fill' 		=> true,
+				'fill'      => true,
 				'fill-rule' => true,
-				'd' 		=> true,
+				'd'         => true,
 				'transform' => true,
 			),
 			'polygon' => array(
-				'fill' 		=> true,
+				'fill'      => true,
 				'fill-rule' => true,
-				'points'	=> true,
+				'points'    => true,
 				'transform' => true,
-				'focusable'	=> true,
+				'focusable' => true,
 			),
 		) );
 
@@ -495,8 +495,8 @@ endif;
  * Get and Output Post Meta
  * If it's a single post, output the post meta values specified in the Customizer settings.
  *
- * @param	$post_id int		The ID of the post for which the post meta should be output
- * @param	$location string	Which post meta location to output – single or preview
+ * @param   $post_id int        The ID of the post for which the post meta should be output
+ * @param   $location string    Which post meta location to output – single or preview
  */
 if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) :
 	function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' ) {
@@ -807,8 +807,8 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 		if ( $twentytwenty_accent_color_options ) {
 			foreach( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
 				$editor_color_palette[] = array(
-					'name' 	=> $color_option['label'],
-					'slug' 	=> $color_option['slug'],
+					'name'  => $color_option['label'],
+					'slug'  => $color_option['slug'],
 					'color' => get_theme_mod( $color_option_name, $color_option['default'] ),
 				);
 			}
@@ -821,8 +821,8 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 			$background_color = $background_color_arr[0]['default-color'];
 		}
 		$editor_color_palette[] = array(
-			'name' 	=> __( 'Background Color', 'twentytwenty' ),
-			'slug' 	=> 'background',
+			'name'  => __( 'Background Color', 'twentytwenty' ),
+			'slug'  => 'background',
 			'color' => '#' . $background_color,
 		);
 
@@ -834,28 +834,28 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 		// Gutenberg Font Sizes
 		add_theme_support( 'editor-font-sizes', array(
 			array(
-				'name' 		=> _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
+				'name'      => _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
 				'shortName' => _x( 'S', 'Short name of the small font size in the Gutenberg editor.', 'twentytwenty' ),
-				'size' 		=> 16,
-				'slug' 		=> 'small',
+				'size'      => 16,
+				'slug'      => 'small',
 			),
 			array(
-				'name' 		=> _x( 'Regular', 'Name of the regular font size in Gutenberg', 'twentytwenty' ),
+				'name'      => _x( 'Regular', 'Name of the regular font size in Gutenberg', 'twentytwenty' ),
 				'shortName' => _x( 'M', 'Short name of the regular font size in the Gutenberg editor.', 'twentytwenty' ),
-				'size' 		=> 18,
-				'slug' 		=> 'regular',
+				'size'      => 18,
+				'slug'      => 'regular',
 			),
 			array(
-				'name' 		=> _x( 'Large', 'Name of the large font size in Gutenberg', 'twentytwenty' ),
+				'name'      => _x( 'Large', 'Name of the large font size in Gutenberg', 'twentytwenty' ),
 				'shortName' => _x( 'L', 'Short name of the large font size in the Gutenberg editor.', 'twentytwenty' ),
-				'size' 		=> 24,
-				'slug' 		=> 'large',
+				'size'      => 24,
+				'slug'      => 'large',
 			),
 			array(
-				'name' 		=> _x( 'Larger', 'Name of the larger font size in Gutenberg', 'twentytwenty' ),
+				'name'      => _x( 'Larger', 'Name of the larger font size in Gutenberg', 'twentytwenty' ),
 				'shortName' => _x( 'XL', 'Short name of the larger font size in the Gutenberg editor.', 'twentytwenty' ),
-				'size' 		=> 32,
-				'slug' 		=> 'larger',
+				'size'      => 32,
+				'slug'      => 'larger',
 			),
 		) );
 
@@ -886,14 +886,14 @@ endif;
  * Get CSS Built from Customizer Options
  * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
  *
- * @param	$type string 	Whether to return CSS for the "front-end", "block-editor" or "classic-editor"
+ * @param   $type string    Whether to return CSS for the "front-end", "block-editor" or "classic-editor"
  */
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables
-		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
+		$accent         = get_theme_mod( 'twentytwenty_accent_color' );
 		$accent_default = '#CD2653';
 		
 		ob_start();
