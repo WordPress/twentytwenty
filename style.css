@@ -3140,6 +3140,16 @@ ul.footer-social li {
 		padding-top: 13.1rem;
 	}
 
+	@media ( max-width: 782px ) {
+		.admin-bar .menu-modal.active {
+			margin-top: 46px;
+		}
+	}
+
+	.admin-bar .menu-modal {
+		margin-top: 32px;
+	}
+
 	.main-menu {
 		left: auto;
 		width: 100%;

@@ -672,6 +672,15 @@ twentytwenty.scrollLock = {
 
 		// Then lock styles and state
 		$( 'html' ).css( appliedLock );
+
+		const htmlEl = document.querySelector( 'html' );
+
+		// Add marginTop and paddingTop to html element on small screens
+		if ( document.body.classList.contains( 'admin-bar' ) && ( 782 > window.innerWidth ) ) {
+			htmlEl.style.setProperty('margin-top', '0', 'important');
+			htmlEl.style.setProperty('padding-top', '46px' );
+		}
+
 		$win.scrollLeft( 0 ).scrollTop( 0 );
 
 		window.scrollLocked = true;
