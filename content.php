@@ -11,8 +11,6 @@
 		$color_overlay_style = '';
 		$color_overlay_classes = '';
 
-		$section_inner_classes = '';
-
 		$image_url = ! post_password_required() ? get_the_post_thumbnail_url( $post->ID, 'twentytwenty_fullscreen' ) : '';
 
 		if ( $image_url ) {
@@ -48,9 +46,7 @@
 			<div class="cover-header-inner-wrapper">
 				<div class="cover-header-inner">
 					<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; ?>></div>
-					<div class="section-inner<?php echo esc_attr( $section_inner_classes ); ?>">
-						<?php get_template_part( 'parts/page-header' ); ?>
-					</div><!-- .section-inner -->
+					<?php get_template_part( 'parts/page-header' ); ?>
 				</div><!-- .cover-header-inner -->
 			</div><!-- .cover-header-inner-wrapper -->
 		</div><!-- .cover-header -->
