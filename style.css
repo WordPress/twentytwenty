@@ -1962,7 +1962,7 @@ body.template-cover .entry-header {
 }
 
 .featured-media img {
-	width: 100%;
+	margin: 0 auto;
 }
 
 .featured-media figcaption {
