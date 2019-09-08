@@ -7,21 +7,25 @@
     "WordPress",
     "Themes"
   ],
+  "homepage": "https://github.com/WordPress/twentytwenty",
   "authors": [
     {
-      "name": "the WordPress team",
-      "homepage": "https://github.com/WordPress/twentytwenty"
+      "name": "Contributors",
+      "homepage": "https://github.com/WordPress/twentytwenty/graphs/contributors"
     }
   ],
+  "require": {
+    "php": "^5.6"
+  },
   "require-dev": {
-      "wptrt/wpthemereview": "^0.2.0",
-      "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+    "jakub-onderka/php-parallel-lint": "^1.0",
+    "wptrt/wpthemereview": "^0.2.0"
   },
   "scripts": {
-    "phpcs-i": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -i",
-    "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -s",
-    "lint-summary": "@lint --report=summary,source",
-    "format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
+    "lint": "@php ./vendor/bin/parallel-lint --exclude app --exclude vendor .",
+    "checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.6-",
+    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source --runtime-set testVersion 5.6-"
   },
   "support"    : {
     "issues": "https://github.com/WordPress/twentytwenty/issues",
