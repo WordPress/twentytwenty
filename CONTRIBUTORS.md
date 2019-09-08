@@ -8,5 +8,6 @@ Version 1.0:
 | @audrasjb | @audrasjb |
 | @andersnoren | @anlino |
 | @nielslange | @nielslange |
+| @fabiankaegy | @fabiankaegy |
 
 
