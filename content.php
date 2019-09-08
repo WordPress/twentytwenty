@@ -103,10 +103,12 @@
 			} else {
 				the_content();
 			}
-			wp_link_pages( array(
+			wp_link_pages(
+                array(
 				'before'           => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
 				'after'            => '</nav>',
-			) );
+                ) 
+            );
 			edit_post_link();
 			?>
 

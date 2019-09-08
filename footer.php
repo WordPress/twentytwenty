@@ -18,12 +18,14 @@
 
 						<ul class="footer-menu reset-list-style">
 							<?php
-							wp_nav_menu( array(
+							wp_nav_menu(
+                                array(
 								'container' 		=> '',
 								'depth'				=> 1,
 								'items_wrap' 		=> '%3$s',
 								'theme_location' 	=> 'footer-menu',
-							) );
+                                ) 
+                            );
 							?>
 						</ul><!-- .site-nav -->
 
@@ -34,7 +36,8 @@
 								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
 									<?php
-									wp_nav_menu( array(
+									wp_nav_menu(
+                                        array(
 										'theme_location'	=> 'social-menu',
 										'container'			=> '',
 										'container_class'	=> '',
@@ -45,7 +48,8 @@
 										'link_before'		=> '<span class="screen-reader-text">',
 										'link_after'		=> '</span>',
 										'fallback_cb'		=> '',
-									) );
+                                        ) 
+                                    );
 									?>
 
 								</ul><!-- .social-menu -->

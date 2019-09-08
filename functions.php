@@ -346,18 +346,28 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 		);
 
 		// Footer #1
-		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #1', 'twentytwenty' ),
-			'id' 			=> 'footer-one',
-			'description' 	=> __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
-		) ) );
+		register_sidebar(
+            array_merge(
+                $shared_args,
+                array(
+                'name' 			=> __( 'Footer #1', 'twentytwenty' ),
+                'id' 			=> 'footer-one',
+                'description' 	=> __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+                ) 
+            ) 
+        );
 
 		// Footer #2
-		register_sidebar( array_merge( $shared_args, array(
-			'name' 			=> __( 'Footer #2', 'twentytwenty' ),
-			'id' 			=> 'footer-two',
-			'description' 	=> __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
-		) ) );
+		register_sidebar(
+            array_merge(
+                $shared_args,
+                array(
+                'name' 			=> __( 'Footer #2', 'twentytwenty' ),
+                'id' 			=> 'footer-two',
+                'description' 	=> __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
+                ) 
+            ) 
+        );
 
 	}
 	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
@@ -392,7 +402,9 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 	function twentytwenty_get_theme_svg( $svg_name, $color = '' ) {
 
 		// Make sure that only our allowed tags and attributes are included
-		$svg = wp_kses( TwentyTwenty_SVG_Icons::get_svg( $svg_name, $color ), array(
+		$svg = wp_kses(
+            TwentyTwenty_SVG_Icons::get_svg( $svg_name, $color ),
+            array(
 			'svg' => array(
 				'class' 		=> true,
 				'xmlns' 		=> true,
@@ -416,7 +428,8 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 				'transform' => true,
 				'focusable'	=> true,
 			),
-		) );
+            ) 
+        );
 
 		if ( ! $svg ) {
 			return false;
@@ -529,18 +542,24 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		// Get the post meta settings for the location specified
 		if ( 'single-top' === $location ) {
 
-			$post_meta = apply_filters( 'twentytwenty_post_meta_location_single_top', array(
+			$post_meta = apply_filters(
+                'twentytwenty_post_meta_location_single_top',
+                array(
 				'author',
 				'post-date',
 				'comments',
-			) );
+                ) 
+            );
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
 
 		} elseif ( 'single-bottom' === $location ) {
 
-			$post_meta = apply_filters( 'twentytwenty_post_meta_location_single_bottom', array(
+			$post_meta = apply_filters(
+                'twentytwenty_post_meta_location_single_bottom',
+                array(
 				'tags',
-			) );
+                ) 
+            );
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-bottom';
 
 		}
@@ -832,7 +851,9 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 		}
 
 		// Gutenberg Font Sizes
-		add_theme_support( 'editor-font-sizes', array(
+		add_theme_support(
+            'editor-font-sizes',
+            array(
 			array(
 				'name' 		=> _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
 				'shortName' => _x( 'S', 'Short name of the small font size in the Gutenberg editor.', 'twentytwenty' ),
@@ -857,7 +878,8 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 				'size' 		=> 32,
 				'slug' 		=> 'larger',
 			),
-		) );
+            ) 
+        );
 
 	}
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );

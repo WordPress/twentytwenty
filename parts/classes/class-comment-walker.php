@@ -80,13 +80,18 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 					<?php
 
-					$comment_reply_link = get_comment_reply_link( array_merge( $args, array(
-						'add_below' => 'div-comment',
-						'depth'     => $depth,
-						'max_depth' => $args['max_depth'],
-						'before'    => '<span class="comment-reply">',
-						'after'     => '</span>',
-					) ) );
+					$comment_reply_link = get_comment_reply_link(
+                        array_merge(
+                            $args,
+                            array(
+                            'add_below' => 'div-comment',
+                            'depth'     => $depth,
+                            'max_depth' => $args['max_depth'],
+                            'before'    => '<span class="comment-reply">',
+                            'after'     => '</span>',
+                            ) 
+                        ) 
+                    );
 
 					$by_post_author = twentytwenty_is_comment_by_post_author( $comment );
 

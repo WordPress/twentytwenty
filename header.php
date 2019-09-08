@@ -79,11 +79,13 @@
 
 							<ul class="shortcuts-menu color-accent reset-list-style">
 								<?php
-								wp_nav_menu( array(
+								wp_nav_menu(
+                                    array(
 									'container' 		=> '',
 									'items_wrap' 		=> '%3$s',
 									'theme_location' 	=> 'shortcuts-menu',
-								) );
+                                    ) 
+                                );
 								?>
 							</ul><!-- .shortcuts-menu -->
 

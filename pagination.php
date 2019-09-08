@@ -1,6 +1,7 @@
 <?php
 
-$posts_pagination = get_the_posts_pagination( array(
+$posts_pagination = get_the_posts_pagination(
+    array(
 	'mid_size'  => 2,
 	'prev_text' => sprintf(
 		'%s <span class="nav-prev-text">%s</span>',
@@ -12,7 +13,8 @@ $posts_pagination = get_the_posts_pagination( array(
 		__( 'Older Posts', 'twentytwenty' ),
 		'&rarr;'
 	),
-) );
+    ) 
+);
 
 if ( $posts_pagination ) : ?>
 
