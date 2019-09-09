@@ -912,7 +912,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables
-		$accent         = get_theme_mod( 'twentytwenty_accent_color' );
+		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
 		$accent_default = '#CD2653';
 
 		ob_start();
