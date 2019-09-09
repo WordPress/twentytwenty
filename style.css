@@ -2656,7 +2656,7 @@ div.comment:first-of-type {
 
 .pagination a {
 	text-decoration: none;
-	margin: 0 2rem;
+	margin: 0 2rem 2rem 2rem;
 }
 
 .pagination a:hover {
@@ -2664,7 +2664,7 @@ div.comment:first-of-type {
 }
 
 .pagination .current {
-	margin: 0 2rem;
+	margin: 0 2rem 2rem 2rem;
 }
 
 .pagination .dots {
@@ -2673,16 +2673,16 @@ div.comment:first-of-type {
 	color:#6D6D6D;
 }
 
-.pagination .next {
-	margin: 2rem 0 0 0;
-}
-
 .pagination .prev {
 	margin: 0 0 2rem 0;
 }
 
 .pagination-wrapper.only-prev {
 	margin-bottom: 2.2em;
+}
+
+.nav-short {
+	display: none;
 }
 
 /* --------------------------------------------------------------------------------------------- */
@@ -3520,6 +3520,12 @@ ul.footer-social li {
 	}
 
 	/* Site Pagination ----------------------- */
+
+	/* Display the full text for Newer and Older Posts. */
+	.nav-short {
+		display: initial;
+	}
+
 	/* Widgets ------------------------------- */
 
 	.widget-title {
