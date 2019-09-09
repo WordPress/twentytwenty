@@ -154,9 +154,9 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 			wp_enqueue_script( 'comment-reply' );
 		}
 
-		$js_dependencies = array( 'jquery' );
+		$js_dependencies = array( 'wp-polyfill', 'wp-dom-ready' );
 
-		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version );
+		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/index.js', $js_dependencies, $theme_version );
 
 	}
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
