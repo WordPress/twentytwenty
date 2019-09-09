@@ -926,11 +926,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 			have a higher priority than the base element styles
 		*/
 
+		// Helper Variables
+		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
+
 		// Front-End Styles
 		if ( $type == 'front-end' ) {
-
-			// Helper Variables
-			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
 			// Colors
 
