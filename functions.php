@@ -376,18 +376,6 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 endif;
 
 /**
- * Add Excerpt Support to Pages
- */
-if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
-	function twentytwenty_add_excerpt_support_to_pages() {
-
-		add_post_type_support( 'page', 'excerpt' );
-
-	}
-	add_action( 'init', 'twentytwenty_add_excerpt_support_to_pages' );
-endif;
-
-/**
  * Output and Get Theme SVG
  * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
  */
