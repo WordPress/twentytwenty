@@ -210,11 +210,6 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 			$classes[] = 'disable-search-modal';
 		}
 
-		// Check for disabled menu modal on desktop
-		if ( get_theme_mod( 'twentytwenty_disable_menu_modal_on_desktop', false ) ) {
-			$classes[] = 'disable-menu-modal-on-desktop';
-		}
-
 		// Check for post thumbnail
 		if ( is_singular() && has_post_thumbnail() ) {
 			$classes[] = 'has-post-thumbnail';
