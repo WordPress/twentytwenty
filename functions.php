@@ -899,7 +899,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 		$accent 		= get_theme_mod( 'twentytwenty_accent_color' );
 		$accent_default = '#CD2653';
 		$text 		= get_theme_mod( 'twentytwenty_text_color' );
-		$text_default = '#1A1B1F';
+		$text_default = '#1a1b1f';
 		
 		ob_start();
 
