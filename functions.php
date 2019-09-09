@@ -251,7 +251,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		return $classes;
 
 	}
-	add_action( 'body_class', 'twentytwenty_body_classes' );
+	add_filter( 'body_class', 'twentytwenty_body_classes' );
 endif;
 
 
