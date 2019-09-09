@@ -1657,6 +1657,12 @@ button.sub-menu-toggle.active svg {
 	margin-top: 32px;
 }
 
+@media screen and (max-width: 782px) {
+	.admin-bar .search-modal-inner {
+		margin-top: 46px;
+	}
+}
+
 .search-modal-inner .section-inner {
 	display: flex;
 	justify-content: space-between;
