@@ -420,9 +420,8 @@ if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
 	 * Output and Get Theme SVG
 	 * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
 	 *
-	 * @param  [type] $svg_name [description].
-	 * @param  string $color    [description].
-	 * @return void            [description].
+	 * @param  string $svg_name SVG Icon name.
+	 * @param  string $color    Color code.
 	 */
 	function twentytwenty_the_theme_svg( $svg_name, $color = '' ) {
 
@@ -434,11 +433,10 @@ endif;
 
 if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 	/**
-	 * [twentytwenty_get_theme_svg description]
+	 * Get the SVG icon from TwentyTwenty_SVG_Icons.
 	 *
-	 * @param  [type] $svg_name [description].
-	 * @param  string $color    [description].
-	 * @return [type]           [description]
+	 * @param  string $svg_name SVG Icon name.
+	 * @param  string $color    Color code.
 	 */
 	function twentytwenty_get_theme_svg( $svg_name, $color = '' ) {
 
@@ -485,8 +483,8 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
 	/**
 	 * Check if the specified comment is written by the author of the post commented on.
 	 *
-	 * @param  [type] $comment [description].
-	 * @return [type]          [description]
+	 * @param  array $comment Comments object.
+	 * @return int            Post Author ID
 	 */
 	function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
@@ -508,8 +506,8 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
 	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
 	 * makes it scroll to the wrong position on the page
 	 *
-	 * @param  [type] $link [description].
-	 * @return [type]       [description]
+	 * @param  string $link Link.
+	 * @return string       Modified link
 	 */
 	function twentytwenty_filter_comment_reply_link( $link ) {
 
@@ -526,12 +524,13 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
 	 * Filter the class applied to wp_list_pages() items with children to match the menu class,
 	 * to simplify styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
 	 *
-	 * @param  [type] $css_class    [description].
-	 * @param  [type] $item         [description].
-	 * @param  [type] $depth        [description].
-	 * @param  [type] $args         [description].
-	 * @param  [type] $current_page [description].
-	 * @return [type]               [description]
+	 * @param  string[] $css_class An array of CSS classes to be applied to each list item.
+	 * @param  WP_Post  $item        Page data object.
+	 * @param  int      $depth        Depth of page, used for padding.
+	 * @param  array    $args         An array of arguments.
+	 * @param  int      $current_page ID of the current page.
+	 *
+	 * @return array    Filters the list of CSS classes to include with each page item in the list
 	 */
 	function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
 
@@ -576,11 +575,11 @@ endif;
 
 if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 	/**
-	 * [twentytwenty_get_post_meta description]
+	 * Get Post meta
+	 * If it's a single post, output the post meta values specified in the Customizer settings.
 	 *
-	 * @param  [type] $post_id  [description].
-	 * @param  string $location [description].
-	 * @return [type]           [description]
+	 * @param  int    $post_id  The ID of the post for which the post meta should be output.
+	 * @param  string $location Which post meta location to output – single or preview.
 	 */
 	function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' ) {
 
@@ -779,10 +778,9 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 	/**
 	 * Add a Sub Nav Toggle to the Main Menu
 	 *
-	 * @param  [type] $args  [description].
-	 * @param  [type] $item  [description].
-	 * @param  [type] $depth [description].
-	 * @return [type]        [description]
+	 * @param  stdClass $args  An object of wp_nav_menu() arguments.
+	 * @param  WP_Post  $item  The current menu item.
+	 * @param  int      $depth   Depth of menu item. Used for padding.
 	 */
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
@@ -860,8 +858,7 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 	 * Output Customizer Settings in the Classic Editor
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
 	 *
-	 * @param  [type] $mce_init [description].
-	 * @return [type]           [description]
+	 * @param  array $mce_init An array with TinyMCE config.
 	 */
 	function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 
@@ -965,7 +962,8 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 	 * @param  string  $prefix   [description].
 	 * @param  string  $suffix   [description].
 	 * @param  boolean $echo     [description].
-	 * @return string            [description]
+	 *
+	 * @return string            Generated CSS output
 	 */
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 		$return = '';
