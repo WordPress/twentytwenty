@@ -749,31 +749,6 @@ input[type="submit"]:focus {
 	text-decoration: underline;
 }
 
-/* SELECT2 */
-
-.select2-container--default .select2-selection--single {
-	background: transparent;
-}
-
-.select2-container .select2-selection--single {
-	font-size: 1.6rem;
-	height: 50px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-	color: inherit;
-	font-size: 1.6rem;
-	line-height: 50px;
-	padding-left: 18px;
-	padding-right: 40px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-	height: 48px;
-	width: 40px;
-}
-
-
 /* Tables ------------------------------------ */
 
 table {
