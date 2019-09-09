@@ -33,9 +33,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* 2X Header Logo ---------------- */
 
 			$wp_customize->add_setting( 'twentytwenty_retina_logo', array(
-				'capability' 		=> 'edit_theme_options',
+				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
-				'transport'			=> 'postMessage',
+				'transport'         => 'postMessage',
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_retina_logo', array(
@@ -56,8 +56,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
 
 				$wp_customize->add_setting( $color_option_name, array(
-					'default' 			=> $color_option['default'],
-					'type' 				=> 'theme_mod',
+					'default'           => $color_option['default'],
+					'type'              => 'theme_mod',
 					'sanitize_callback' => 'sanitize_hex_color',
 				) );
 
@@ -88,8 +88,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Disable Header Search --------- */
 
 			$wp_customize->add_setting( 'twentytwenty_disable_header_search', array(
-				'capability' 		=> 'edit_theme_options',
-				'default'			=> false,
+				'capability'        => 'edit_theme_options',
+				'default'           => false,
 				'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
 			) );
 
@@ -104,8 +104,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Disable Menu Modal on Desktop - */
 
 			$wp_customize->add_setting( 'twentytwenty_disable_menu_modal_on_desktop', array(
-				'capability' 		=> 'edit_theme_options',
-				'default'			=> false,
+				'capability'        => 'edit_theme_options',
+				'default'           => false,
 				'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
 			) );
 
@@ -131,8 +131,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Fixed Background ------ */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_fixed_background', array(
-				'capability' 		=> 'edit_theme_options',
-				'default'			=> true,
+				'capability'        => 'edit_theme_options',
+				'default'           => true,
 				'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
 			) );
 
@@ -156,8 +156,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Background Color ------ */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_background_color', array(
-				'default' 			=> get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
-				'type' 				=> 'theme_mod',
+				'default'           => get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
+				'type'              => 'theme_mod',
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
 
@@ -171,8 +171,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Text Color ------------ */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_text_color', array(
-				'default' 			=> '#FFFFFF',
-				'type' 				=> 'theme_mod',
+				'default'           => '#FFFFFF',
+				'type'              => 'theme_mod',
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
 
@@ -186,7 +186,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Blend Mode ------------ */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_blend_mode', array(
-				'default' 			=> 'multiply',
+				'default'           => 'multiply',
 				'sanitize_callback' => 'twentytwenty_sanitize_select',
 			) );
 
@@ -219,7 +219,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			/* Overlay Color Opacity --------- */
 
 			$wp_customize->add_setting( 'twentytwenty_cover_template_overlay_opacity', array(
-				'default' 			=> '80',
+				'default'           => '80',
 				'sanitize_callback' => 'twentytwenty_sanitize_select',
 			) );
 
