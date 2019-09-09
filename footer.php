@@ -18,12 +18,14 @@
 
 						<ul class="footer-menu reset-list-style">
 							<?php
-							wp_nav_menu( array(
-								'container'      => '',
-								'depth'          => 1,
-								'items_wrap'     => '%3$s',
-								'theme_location' => 'footer-menu',
-							) );
+							wp_nav_menu(
+								array(
+									'container'      => '',
+									'depth'          => 1,
+									'items_wrap'     => '%3$s',
+									'theme_location' => 'footer-menu',
+								)
+							);
 							?>
 						</ul><!-- .site-nav -->
 
@@ -34,18 +36,20 @@
 								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
 									<?php
-									wp_nav_menu( array(
-										'theme_location'  => 'social-menu',
-										'container'       => '',
-										'container_class' => '',
-										'items_wrap'      => '%3$s',
-										'menu_id'         => '',
-										'menu_class'      => '',
-										'depth'           => 1,
-										'link_before'     => '<span class="screen-reader-text">',
-										'link_after'      => '</span>',
-										'fallback_cb'     => '',
-									) );
+									wp_nav_menu(
+										array(
+											'theme_location' => 'social-menu',
+											'container'   => '',
+											'container_class' => '',
+											'items_wrap'  => '%3$s',
+											'menu_id'     => '',
+											'menu_class'  => '',
+											'depth'       => 1,
+											'link_before' => '<span class="screen-reader-text">',
+											'link_after'  => '</span>',
+											'fallback_cb' => '',
+										)
+									);
 									?>
 
 								</ul><!-- .social-menu -->
@@ -91,21 +95,24 @@
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = WordPress */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
+							?>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
-							printf( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
+							printf( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' );
+							?>
 						</span>
 						<span class="to-the-top-short">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
-							printf( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
+							printf( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' );
+							?>
 						</span>
 					</a>
 
@@ -117,5 +124,5 @@
 
 		<?php wp_footer(); ?>
 
-    </body>
+	</body>
 </html>

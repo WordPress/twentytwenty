@@ -1,7 +1,7 @@
 <?php
 
-/* 
-Template Name: Cover Template 
+/*
+Template Name: Cover Template
 Template Post Type: post, page
 */
 
