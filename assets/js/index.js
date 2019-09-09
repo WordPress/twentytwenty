@@ -863,18 +863,7 @@ var easing = {
 		}
 		t--;
 		return -c / 2 * (t * (t - 2) - 1) + b;
-	},
-
-	easeInCubic: function (t, b, c, d) {
-		var tc = (t /= d) * t * t;
-		return b + c * (tc);
-	},
-
-	inOutQuintic: function (t, b, c, d) {
-		var ts = (t /= d) * t,
-			tc = ts * t;
-		return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
-	},
+	}
 };
 
 function scrollTo(to, callback, duration) {
