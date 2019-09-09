@@ -11,13 +11,11 @@
 		$color_overlay_style = '';
 		$color_overlay_classes = '';
 
-		$section_inner_classes = '';
-
 		$image_url = ! post_password_required() ? get_the_post_thumbnail_url( $post->ID, 'twentytwenty_fullscreen' ) : '';
 
 		if ( $image_url ) {
-			$cover_header_style 	= ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
-			$cover_header_classes 	= ' bg-image';
+			$cover_header_style     = ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
+			$cover_header_classes   = ' bg-image';
 		}
 
 		// Get the color used for the color overlay
@@ -48,9 +46,7 @@
 			<div class="cover-header-inner-wrapper">
 				<div class="cover-header-inner">
 					<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; ?>></div>
-					<div class="section-inner<?php echo esc_attr( $section_inner_classes ); ?>">
-						<?php get_template_part( 'parts/page-header' ); ?>
-					</div><!-- .section-inner -->
+					<?php get_template_part( 'parts/page-header' ); ?>
 				</div><!-- .cover-header-inner -->
 			</div><!-- .cover-header-inner-wrapper -->
 		</div><!-- .cover-header -->
@@ -75,7 +71,7 @@
 
 			<figure class="featured-media">
 
-				<div class="featured-media-inner section-inner<?php esc_attr_e( $featured_media_inner_classes ); ?>">
+				<div class="featured-media-inner section-inner<?php echo esc_attr( $featured_media_inner_classes ); ?>">
 
 					<?php 
 					
@@ -108,8 +104,8 @@
 				the_content();
 			}
 			wp_link_pages( array(
-				'before'           => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'            => '</nav>',
+				'before' => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'  => '</nav>',
 			) );
 			edit_post_link();
 			?>
