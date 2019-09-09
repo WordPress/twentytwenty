@@ -22,6 +22,11 @@ To submit a fix, please [fork the repository](https://help.github.com/articles/f
 
 Whatever you add, make sure you follow the theme review handbook requirements here: https://make.wordpress.org/themes/handbook/review/required/.
 
+No assets may be added without also including: 
+Source, such as a link. 
+Copyright information, license, or public domain declaration.
+The assets must be compatible with GPL version 2 or later, with the exception of fonts that may use SIL. 
+
 ### Commit Messages
 
 Here are some good ideas for commit messages:

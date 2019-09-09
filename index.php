@@ -6,7 +6,7 @@
 
 	$archive_title = '';
 	$archive_subtitle = '';
-	
+
 	if ( is_search() ) {
 		global $wp_query;
 		/* Translators: %s = The search query */
@@ -19,11 +19,11 @@
 		}
 	} elseif ( ! is_home() ) {
 		$archive_title = get_the_archive_title();
-		$archive_subtitle = get_the_archive_description( '<div>', '</div>' ); 
+		$archive_subtitle = get_the_archive_description( '<div>', '</div>' );
 	}
-	
+
 	if ( $archive_title || $archive_subtitle ) : ?>
-		
+
 		<header class="archive-header has-text-align-center">
 
 			<div class="archive-header-inner section-inner medium">
@@ -35,7 +35,7 @@
 				<?php if ( $archive_subtitle ) : ?>
 					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
 				<?php endif; ?>
-			
+
 			</div><!-- .archive-header-inner -->
 
 		</header><!-- .archive-header -->
@@ -44,11 +44,11 @@
 
 	<div class="posts">
 
-		<?php 
-		if ( have_posts() ) : 
-		
+		<?php
+		if ( have_posts() ) :
+
 			while ( have_posts() ) : the_post();
-			
+
 				 get_template_part( 'content', get_post_type() );
 
 			endwhile;
@@ -62,7 +62,7 @@
 			</div><!-- .no-search-results -->
 
 		<?php endif; ?>
-	
+
 	</div><!-- .posts -->
 
 	<?php get_template_part( 'pagination' ); ?>

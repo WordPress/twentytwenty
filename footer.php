@@ -18,14 +18,15 @@
 
 						<ul class="footer-menu reset-list-style">
 							<?php
+
 							wp_nav_menu(
-                                array(
-								'container' 		=> '',
-								'depth'				=> 1,
-								'items_wrap' 		=> '%3$s',
-								'theme_location' 	=> 'footer-menu',
-                                ) 
-                            );
+								array(
+									'container'      => '',
+									'depth'          => 1,
+									'items_wrap'     => '%3$s',
+									'theme_location' => 'footer-menu',
+								)
+							);
 							?>
 						</ul><!-- .site-nav -->
 
@@ -36,20 +37,21 @@
 								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
 									<?php
+
 									wp_nav_menu(
-                                        array(
-										'theme_location'	=> 'social-menu',
-										'container'			=> '',
-										'container_class'	=> '',
-										'items_wrap'		=> '%3$s',
-										'menu_id'			=> '',
-										'menu_class'		=> '',
-										'depth'				=> 1,
-										'link_before'		=> '<span class="screen-reader-text">',
-										'link_after'		=> '</span>',
-										'fallback_cb'		=> '',
-                                        ) 
-                                    );
+										array(
+											'theme_location'  => 'social-menu',
+											'container'       => '',
+											'container_class' => '',
+											'items_wrap'      => '%3$s',
+											'menu_id'         => '',
+											'menu_class'      => '',
+											'depth'           => 1,
+											'link_before'     => '<span class="screen-reader-text">',
+											'link_after'      => '</span>',
+											'fallback_cb'     => '',
+										)
+									);
 									?>
 
 								</ul><!-- .social-menu -->
@@ -65,7 +67,7 @@
 				<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) : ?>
 
 					<div class="footer-widgets-outer-wrapper">
-					
+
 						<div class="footer-widgets-wrapper">
 
 							<?php if ( is_active_sidebar( 'footer-one' ) ) : ?>
@@ -81,7 +83,7 @@
 							<?php endif; ?>
 
 						</div><!-- .footer-widgets-wrapper -->
-						
+
 					</div><!-- .footer-widgets-outer-wrapper -->
 
 				<?php endif; ?>
@@ -102,12 +104,12 @@
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
 							printf( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
 						</span>
 						<span class="to-the-top-short">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
 							printf( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
 						</span>
@@ -121,5 +123,5 @@
 
 		<?php wp_footer(); ?>
 
-    </body>
+		</body>
 </html>

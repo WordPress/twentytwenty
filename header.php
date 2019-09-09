@@ -15,12 +15,8 @@
 
 	<body <?php body_class(); ?>>
 
-		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
-
-		<?php 
-		if ( function_exists( 'wp_body_open' ) ) {
-			wp_body_open(); 
-		}
+		<?php
+		wp_body_open();
 		?>
 
 		<header id="site-header">
@@ -79,13 +75,14 @@
 
 							<ul class="shortcuts-menu color-accent reset-list-style">
 								<?php
+
 								wp_nav_menu(
-                                    array(
-									'container' 		=> '',
-									'items_wrap' 		=> '%3$s',
-									'theme_location' 	=> 'shortcuts-menu',
-                                    ) 
-                                );
+									array(
+										'container'      => '',
+										'items_wrap'     => '%3$s',
+										'theme_location' => 'shortcuts-menu',
+									)
+								);
 								?>
 							</ul><!-- .shortcuts-menu -->
 
@@ -104,15 +101,15 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php 
-						
+						<?php
+
 						// Check whether the header search is deactivated in the customizer
-						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false ); 
-						
+						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
+
 						if ( ! $disable_header_search ) : ?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
-						
+
 								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
 									<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
 									<?php twentytwenty_the_theme_svg( 'search' ); ?>
@@ -120,7 +117,7 @@
 
 							</div>
 
-						<?php endif; ?>						
+						<?php endif; ?>
 
 					</div><!-- .header-toggles -->
 
@@ -128,7 +125,7 @@
 
 			</div><!-- .header-inner -->
 
-			<?php 
+			<?php
 			// Output the search modal (if it isn't deactivated in the customizer)
 			if ( ! $disable_header_search ) {
 				get_template_part( 'parts/modal-search' );
@@ -137,7 +134,7 @@
 
 		</header><!-- #site-header -->
 
-		<?php 
+		<?php
 		// Output the menu modal
-		get_template_part( 'parts/modal-menu' ); 
+		get_template_part( 'parts/modal-menu' );
 		?>

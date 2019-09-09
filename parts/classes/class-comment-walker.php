@@ -1,9 +1,9 @@
 <?php
 
 /* ---------------------------------------------------------------------------------------------
-   CUSTOM COMMENT WALKER
-   A custom walker for comments, based on the walker in TwentyNineteen
-   --------------------------------------------------------------------------------------------- */
+	 CUSTOM COMMENT WALKER
+	 A custom walker for comments, based on the walker in TwentyNineteen
+	 --------------------------------------------------------------------------------------------- */
 
 if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 	class TwentyTwenty_Walker_Comment extends Walker_Comment {
@@ -17,7 +17,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 		 * @param int        $depth   Depth of the current comment.
 		 * @param array      $args    An array of arguments.
 		 */
-		
+
 		protected function html5_comment( $comment, $depth, $args ) {
 
 			$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
@@ -68,7 +68,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 					<div class="comment-content">
 
-						<?php 
+						<?php
 
 						comment_text();
 
@@ -81,17 +81,17 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 					<?php
 
 					$comment_reply_link = get_comment_reply_link(
-                        array_merge(
-                            $args,
-                            array(
-                            'add_below' => 'div-comment',
-                            'depth'     => $depth,
-                            'max_depth' => $args['max_depth'],
-                            'before'    => '<span class="comment-reply">',
-                            'after'     => '</span>',
-                            ) 
-                        ) 
-                    );
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<span class="comment-reply">',
+								'after'     => '</span>',
+							)
+						)
+					);
 
 					$by_post_author = twentytwenty_is_comment_by_post_author( $comment );
 
@@ -101,9 +101,9 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 						<footer class="comment-footer-meta color-secondary">
 
-							<?php 
+							<?php
 							if ( $comment_reply_link ) {
-								echo $comment_reply_link; 
+								echo $comment_reply_link;
 							}
 							if ( $edit_comment_link ) {
 								echo $edit_comment_link;

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  * If the current post is protected by a password and
@@ -19,7 +19,7 @@ if ( $comments ) : ?>
 
 		// Translators: %s = the number of comments
 		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
-		
+
 		?>
 
 		<div class="comments-header">
@@ -31,22 +31,22 @@ if ( $comments ) : ?>
 		<?php
 
 		wp_list_comments(
-            array(
-			'walker'      	=> new TwentyTwenty_Walker_Comment(),
-			'avatar_size'	=> 120,
-			'style' 		=> 'div',
-            ) 
-        );
+			array(
+				'walker'      => new TwentyTwenty_Walker_Comment(),
+				'avatar_size' => 120,
+				'style'       => 'div',
+			)
+		);
 
 		$comment_pagination = paginate_comments_links(
-            array(
-			'echo'			=> false,
-			'end_size'		=> 0,
-			'mid_size'		=> 0,
-			'next_text' 	=> __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
-			'prev_text' 	=> '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
-            ) 
-        );
+			array(
+				'echo'      => false,
+				'end_size'  => 0,
+				'mid_size'  => 0,
+				'next_text' => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
+				'prev_text' => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
+			)
+		);
 
 		if ( $comment_pagination ) :
 
@@ -66,18 +66,18 @@ if ( $comments ) : ?>
 
 	</div><!-- comments -->
 
-	<?php 
+	<?php
 endif;
 
 if ( comments_open() || pings_open() ) :
 
 	comment_form(
-        array(
-		'class_form'			=> 'section-inner thin max-percentage no-margin',
-		'comment_notes_before'	=> '',
-		'comment_notes_after'	=> '',
-        ) 
-    );
+		array(
+			'class_form'           => 'section-inner thin max-percentage no-margin',
+			'comment_notes_before' => '',
+			'comment_notes_after'  => '',
+		)
+	);
 
 elseif ( is_single() ) : ?>
 
