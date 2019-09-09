@@ -959,13 +959,13 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 	/**
 	 * Generate CSS
 	 *
-	 * @param  [type]  $selector [description].
-	 * @param  [type]  $style    [description].
-	 * @param  [type]  $value    [description].
+	 * @param  string  $selector [description].
+	 * @param  string  $style    [description].
+	 * @param  string  $value    [description].
 	 * @param  string  $prefix   [description].
 	 * @param  string  $suffix   [description].
 	 * @param  boolean $echo     [description].
-	 * @return [type]            [description]
+	 * @return string            [description]
 	 */
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 		$return = '';
@@ -979,7 +979,6 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 		return $return;
 	}
 endif;
-
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	/**
@@ -1059,6 +1058,5 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 	}
 endif;
-
 
 ?>
