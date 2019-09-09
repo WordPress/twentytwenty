@@ -1653,6 +1653,10 @@ button.sub-menu-toggle.active svg {
 	transition: transform .15s linear, box-shadow .15s linear;
 }
 
+.admin-bar .search-modal-inner {
+	margin-top: 32px;
+}
+
 .search-modal-inner .section-inner {
 	display: flex;
 	justify-content: space-between;
