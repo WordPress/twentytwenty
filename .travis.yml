@@ -37,4 +37,6 @@ script:
 
   # Lint the PHP files against parse errors.
   - composer lint
+
+  # Check the code against the standards as documented in the phpcs.xml.dist file.
   - if [[ "$PHPCS" == 1 ]]; then composer checkcs; fi

@@ -23,9 +23,9 @@
     "wptrt/wpthemereview": "^0.2.0"
   },
   "scripts": {
-    "lint": "@php ./vendor/bin/parallel-lint --exclude app --exclude vendor .",
+    "lint": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor .",
     "checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.6-",
-    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source --runtime-set testVersion 5.6-"
+    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 5.6-"
   },
   "support"    : {
     "issues": "https://github.com/WordPress/twentytwenty/issues",
