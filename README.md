@@ -1,4 +1,4 @@
-**Theme Name:** Twenty Twenty
+**Theme Name:** Twenty Twenty  
 **Theme URI:** https://wordpress.org/themes/twentytwenty/  
 **Contributors:** the WordPress team  
 **Requires at least:** WordPress 4.9.6  
@@ -21,7 +21,7 @@
 
 ## Copyright
 
-Twenty Twenty WordPress Theme, Copyright 2018 WordPress.org
+Twenty Twenty WordPress Theme, Copyright 2019 WordPress.org
 Twenty Twenty is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
