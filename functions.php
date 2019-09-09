@@ -288,6 +288,12 @@ if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) :
 endif;
 
 if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
+	/**
+	 * Get Custom logo
+	 *
+	 * @param  string $logo_theme_mod Get custom logo.
+	 * @return string                 Custom Logo
+	 */
 	function twentytwenty_get_custom_logo( $logo_theme_mod = 'custom_logo' ) {
 
 		// Get the attachment for the specified logo.
@@ -334,32 +340,31 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 	}
 endif;
 
-/**
- * Shim for wp_body_open, ensuring backwards compatibility with versions of WordPress older than 5.2.
- */
 if ( ! function_exists( 'wp_body_open' ) ) {
+	/**
+	 * Shim for wp_body_open, ensuring backwards compatibility with versions of WordPress older than 5.2.
+	 */
 	function wp_body_open() {
 		do_action( 'wp_body_open' );
 	}
 }
 
-/**
- * Include a skip to content link at the top of the page so that users can bypass the menu.
- */
 if ( ! function_exists( 'twentytwenty_skip_link' ) ) :
+	/**
+	 * Include a skip to content link at the top of the page so that users can bypass the menu.
+	 */
 	function twentytwenty_skip_link() {
 		echo '<a class="skip-link faux-button" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
 	}
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
 endif;
 
-
-/**
- * Register widget areas.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
 if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
+	/**
+	 * Register widget areas.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+	 */
 	function twentytwenty_sidebar_registration() {
 
 		// Arguments used in all register_sidebar() calls.
@@ -398,10 +403,10 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 endif;
 
-/**
- * Add Excerpt Support to Pages
- */
 if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
+	/**
+	 * Add Excerpt Support to Pages
+	 */
 	function twentytwenty_add_excerpt_support_to_pages() {
 
 		add_post_type_support( 'page', 'excerpt' );
@@ -410,23 +415,34 @@ if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
 	add_action( 'init', 'twentytwenty_add_excerpt_support_to_pages' );
 endif;
 
-/**
- * Output and Get Theme SVG
- * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
- */
 if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
+	/**
+	 * Output and Get Theme SVG
+	 * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
+	 *
+	 * @param  [type] $svg_name [description].
+	 * @param  string $color    [description].
+	 * @return void            [description].
+	 */
 	function twentytwenty_the_theme_svg( $svg_name, $color = '' ) {
 
-		// Escaped in twentytwenty_get_theme_svg();
+		// Escaped in twentytwenty_get_theme_svg();.
 		echo twentytwenty_get_theme_svg( $svg_name, $color );
 
 	}
 endif;
 
 if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
+	/**
+	 * [twentytwenty_get_theme_svg description]
+	 *
+	 * @param  [type] $svg_name [description].
+	 * @param  string $color    [description].
+	 * @return [type]           [description]
+	 */
 	function twentytwenty_get_theme_svg( $svg_name, $color = '' ) {
 
-		// Make sure that only our allowed tags and attributes are included
+		// Make sure that only our allowed tags and attributes are included.
 		$svg = wp_kses(
 			TwentyTwenty_SVG_Icons::get_svg( $svg_name, $color ),
 			array(
@@ -465,10 +481,13 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 	}
 endif;
 
-/**
- * Check if the specified comment is written by the author of the post commented on.
- */
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
+	/**
+	 * Check if the specified comment is written by the author of the post commented on.
+	 *
+	 * @param  [type] $comment [description].
+	 * @return [type]          [description]
+	 */
 	function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
 		if ( is_object( $comment ) && $comment->user_id > 0 ) {
@@ -483,12 +502,15 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
 	}
 endif;
 
-/**
- * Filter comment reply link to not JS scroll
- * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
- * makes it scroll to the wrong position on the page
- */
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
+	/**
+	 * Filter comment reply link to not JS scroll
+	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
+	 * makes it scroll to the wrong position on the page
+	 *
+	 * @param  [type] $link [description].
+	 * @return [type]       [description]
+	 */
 	function twentytwenty_filter_comment_reply_link( $link ) {
 
 		$link = str_replace( 'class=\'', 'class=\'do-not-scroll ', $link );
@@ -498,27 +520,34 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
 	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
 endif;
 
-/**
- * Filter Classes of wp_list_pages items to match menu items
- * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify
- * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
- */
 if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
+	/**
+	 * Filter Classes of wp_list_pages items to match menu items
+	 * Filter the class applied to wp_list_pages() items with children to match the menu class,
+	 * to simplify styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
+	 *
+	 * @param  [type] $css_class    [description].
+	 * @param  [type] $item         [description].
+	 * @param  [type] $depth        [description].
+	 * @param  [type] $args         [description].
+	 * @param  [type] $current_page [description].
+	 * @return [type]               [description]
+	 */
 	function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
 
-		// Only apply to wp_list_pages() calls with match_menu_classes set to true
+		// Only apply to wp_list_pages() calls with match_menu_classes set to true.
 		$match_menu_classes = isset( $args['match_menu_classes'] );
 
 		if ( ! $match_menu_classes ) {
 			return $css_class;
 		}
 
-		// Add current menu item class
+		// Add current menu item class.
 		if ( in_array( 'current_page_item', $css_class ) ) {
 			$css_class[] = 'current-menu-item';
 		}
 
-		// Add menu item has children class
+		// Add menu item has children class.
 		if ( in_array( 'page_item_has_children', $css_class ) ) {
 			$css_class[] = 'menu-item-has-children';
 		}
@@ -529,26 +558,33 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
 	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
 endif;
 
-/**
- * Get and Output Post Meta
- * If it's a single post, output the post meta values specified in the Customizer settings.
- *
- * @param   $post_id int        The ID of the post for which the post meta should be output
- * @param   $location string    Which post meta location to output – single or preview
- */
 if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) :
+	/**
+	 * Get and Output Post Meta
+	 * If it's a single post, output the post meta values specified in the Customizer settings.
+	 *
+	 * @param int    $post_id  The ID of the post for which the post meta should be output.
+	 * @param string $location Which post meta location to output – single or preview.
+	 */
 	function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' ) {
 
-		// Escaped in twentytwenty_get_post_meta()
+		// Escaped in twentytwenty_get_post_meta().
 		echo twentytwenty_get_post_meta( $post_id, $location );
 
 	}
 endif;
 
 if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
+	/**
+	 * [twentytwenty_get_post_meta description]
+	 *
+	 * @param  [type] $post_id  [description].
+	 * @param  string $location [description].
+	 * @return [type]           [description]
+	 */
 	function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' ) {
 
-		// Require post ID
+		// Require post ID.
 		if ( ! $post_id ) {
 			return;
 		}
@@ -564,7 +600,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		$post_meta_wrapper_classes = '';
 		$post_meta_classes         = '';
 
-		// Get the post meta settings for the location specified
+		// Get the post meta settings for the location specified.
 		if ( 'single-top' === $location ) {
 
 			$post_meta                 = apply_filters(
@@ -589,15 +625,15 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 		}
 
-		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output
+		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output.
 		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) :
 
-			// Make sure we don't output an empty container
+			// Make sure we don't output an empty container.
 			$has_meta = false;
 
 			global $post;
-			$post = get_post( $post_id );
-			setup_postdata( $post );
+			$get_post = get_post( $post_id );
+			setup_postdata( $get_post );
 
 			ob_start();
 
@@ -609,10 +645,10 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 					<?php
 
-					// Allow output of additional meta items to be added by child themes and plugins
+					// Allow output of additional meta items to be added by child themes and plugins.
 					do_action( 'twentytwenty_start_of_post_meta_list', $post_meta, $post_id );
 
-					// Author
+					// Author.
 					if ( in_array( 'author', $post_meta ) ) :
 						$has_meta = true;
 						?>
@@ -623,7 +659,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 							<span class="meta-text">
 								<?php
-								// Translators: %s = the author name
+								// Translators: %s = the author name.
 								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
 								?>
 							</span>
@@ -631,7 +667,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Post date
+					// Post date.
 					if ( in_array( 'post-date', $post_meta ) ) :
 						$has_meta = true;
 						?>
@@ -649,7 +685,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Categories
+					// Categories.
 					if ( in_array( 'categories', $post_meta ) && has_category() ) :
 						$has_meta = true;
 						?>
@@ -665,7 +701,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Tags
+					// Tags.
 					if ( in_array( 'tags', $post_meta ) && has_tag() ) :
 						$has_meta = true;
 						?>
@@ -681,7 +717,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Comments link
+					// Comments link.
 					if ( in_array( 'comments', $post_meta ) && ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 						$has_meta = true;
 						?>
@@ -696,7 +732,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Sticky
+					// Sticky.
 					if ( in_array( 'sticky', $post_meta ) && is_sticky() ) :
 						$has_meta = true;
 						?>
@@ -711,7 +747,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 						<?php
 					endif;
 
-					// Allow output of additional post meta types to be added by child themes and plugins
+					// Allow output of additional post meta types to be added by child themes and plugins.
 					do_action( 'twentytwenty_end_of_post_meta_list', $post_meta, $post_id );
 
 					?>
@@ -726,47 +762,52 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 			$meta_output = ob_get_clean();
 
-			// If there is meta to output, return it
+			// If there is meta to output, return it.
 			if ( $has_meta && $meta_output ) {
 				return $meta_output;
 			}
 
 		endif;
 
-		// If we've reached this point, there's nothing to return, so we return nothing
+		// If we've reached this point, there's nothing to return, so we return nothing.
 		return;
 
 	}
 endif;
 
-/**
- * Add a Sub Nav Toggle to the Main Menu
- */
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
+	/**
+	 * Add a Sub Nav Toggle to the Main Menu
+	 *
+	 * @param  [type] $args  [description].
+	 * @param  [type] $item  [description].
+	 * @param  [type] $depth [description].
+	 * @return [type]        [description]
+	 */
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
-		// Add sub menu toggles to the main menu with toggles
-		if ( $args->theme_location == 'main-menu' && isset( $args->show_toggles ) ) {
+		// Add sub menu toggles to the main menu with toggles.
+		if ( 'main-menu' == $args->theme_location && isset( $args->show_toggles ) ) {
 
-			// Wrap the menu item link contents in a div, used for positioning
+			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
 			$args->after  = '';
 
-			// Add a toggle to items with children
+			// Add a toggle to items with children.
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 
 				$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
 
-				// Add the sub menu toggle
+				// Add the sub menu toggle.
 				$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="250"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
 			}
 
-			// Close the wrapper
+			// Close the wrapper.
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
-			// Add sub menu icons to the main menu without toggles (the shortcuts menu)
-		} elseif ( $args->theme_location == 'shortcuts-menu' ) {
+			// Add sub menu icons to the main menu without toggles (the shortcuts menu).
+		} elseif ( 'shortcuts-menu' == $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
@@ -780,28 +821,28 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 	add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
 endif;
 
-/**
- * Enqueue supplemental block editor styles.
- */
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
+	/**
+	 * Enqueue supplemental block editor styles.
+	 */
 	function twentytwenty_block_editor_styles() {
 
 		$css_dependencies = array();
 
-		// Enqueue the editor styles
+		// Enqueue the editor styles.
 		wp_enqueue_style( 'twentytwenty_block_editor_styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
-		// Add inline style from the Customizer
+		// Add inline style from the Customizer.
 		wp_add_inline_style( 'twentytwenty_block_editor_styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
 	}
 	add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
 endif;
 
-/**
- * Enqueue classic editor styles.
- */
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
+	/**
+	 * Enqueue classic editor styles.
+	 */
 	function twentytwenty_classic_editor_styles() {
 
 		$classic_editor_styles = array(
@@ -814,11 +855,14 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
 	add_action( 'init', 'twentytwenty_classic_editor_styles' );
 endif;
 
-/**
- * Output Customizer Settings in the Classic Editor
- * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
- */
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) :
+	/**
+	 * Output Customizer Settings in the Classic Editor
+	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
+	 *
+	 * @param  [type] $mce_init [description].
+	 * @return [type]           [description]
+	 */
 	function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 
 		$styles = twentytwenty_get_customizer_css( 'classic-editor' );
@@ -835,21 +879,20 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 	add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_customizer_styles' );
 endif;
 
-
-/**
- * Block Editor Settings
- * Add custom colors and font sizes to the block editor
- */
 if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
+	/**
+	 * Block Editor Settings
+	 * Add custom colors and font sizes to the block editor
+	 */
 	function twentytwenty_block_editor_settings() {
 
-		// Block Editor Palette
+		// Block Editor Palette.
 		$editor_color_palette = array();
 
-		// Get the color options
+		// Get the color options.
 		$twentytwenty_accent_color_options = TwentyTwenty_Customize::twentytwenty_get_color_options();
 
-		// Loop over them and construct an array for the editor-color-palette
+		// Loop over them and construct an array for the editor-color-palette.
 		if ( $twentytwenty_accent_color_options ) {
 			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
 				$editor_color_palette[] = array(
@@ -860,7 +903,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 			}
 		}
 
-		// Add the background option
+		// Add the background option.
 		$background_color = get_theme_mod( 'background_color' );
 		if ( ! $background_color ) {
 			$background_color_arr = get_theme_support( 'custom-background' );
@@ -872,12 +915,12 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 			'color' => '#' . $background_color,
 		);
 
-		// If we have accent colors, add them to the block editor palette
+		// If we have accent colors, add them to the block editor palette.
 		if ( $editor_color_palette ) {
 			add_theme_support( 'editor-color-palette', $editor_color_palette );
 		}
 
-		// Gutenberg Font Sizes
+		// Gutenberg Font Sizes.
 		add_theme_support(
 			'editor-font-sizes',
 			array(
@@ -912,11 +955,18 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 endif;
 
-
-/**
- * Generate CSS
- */
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
+	/**
+	 * Generate CSS
+	 *
+	 * @param  [type]  $selector [description].
+	 * @param  [type]  $style    [description].
+	 * @param  [type]  $value    [description].
+	 * @param  string  $prefix   [description].
+	 * @param  string  $suffix   [description].
+	 * @param  boolean $echo     [description].
+	 * @return [type]            [description]
+	 */
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 		$return = '';
 		if ( ! $value ) {
@@ -931,17 +981,16 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 endif;
 
 
-/**
- * Get CSS Built from Customizer Options
- * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
- *
- * @param   $type string    Whether to return CSS for the "front-end", "block-editor" or "classic-editor"
- */
-
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
+	/**
+	 * Get CSS Built from Customizer Options
+	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
+	 *
+	 * @param string $type Whether to return CSS for the "front-end", "block-editor" or "classic-editor".
+	 */
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
-		// Get variables
+		// Get variables.
 		$accent         = get_theme_mod( 'twentytwenty_accent_color' );
 		$accent_default = '#CD2653';
 
@@ -957,21 +1006,21 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 			have a higher priority than the base element styles
 		*/
 
-		// Front-End Styles
-		if ( $type == 'front-end' ) {
+		// Front-End Styles.
+		if ( 'front-end' == $type ) {
 
-			// Helper Variables
+			// Helper Variables.
 			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
-			// Colors
-			// Element Specific
+			// Colors.
+			// Element Specific.
 			if ( $accent && $accent !== $accent_default ) :
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 			endif;
 
-			// Helper Classes
+			// Helper Classes.
 			if ( $accent && $accent !== $accent_default ) :
 				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
 				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
@@ -979,11 +1028,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
 			endif;
 
-			// Block Editor Styles
-		} elseif ( $type == 'block-editor' ) {
+			// Block Editor Styles.
+		} elseif ( 'block-editor' == $type ) {
 
-			// Colors
-			// Accent color
+			// Colors.
+			// Accent color.
 			if ( $accent && $accent !== $accent_default ) :
 				twentytwenty_generate_css( '.editor-styles-wrapper a', 'color', $accent );
 				twentytwenty_generate_css( '.editor-styles-wrapper blockquote, .editor-styles-wrapper .wp-block-quote', 'border-color', $accent, '', ' !important' );
@@ -993,10 +1042,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
 			endif;
 
-		} elseif ( $type == 'classic-editor' ) {
+		} elseif ( 'classic-editor' == $type ) {
 
-			// Colors
-			// Accent color
+			// Colors.
+			// Accent color.
 			if ( $accent && $accent !== $accent_default ) :
 				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
@@ -1005,7 +1054,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 		}
 
-		// Return the results
+		// Return the results.
 		return ob_get_clean();
 
 	}
