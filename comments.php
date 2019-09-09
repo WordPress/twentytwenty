@@ -31,17 +31,17 @@ if ( $comments ) : ?>
 		<?php
 
 		wp_list_comments( array(
-			'walker'        => new TwentyTwenty_Walker_Comment(),
-			'avatar_size'   => 120,
-			'style'         => 'div',
+			'walker'      => new TwentyTwenty_Walker_Comment(),
+			'avatar_size' => 120,
+			'style'       => 'div',
 		) );
 
 		$comment_pagination = paginate_comments_links( array(
-			'echo'          => false,
-			'end_size'      => 0,
-			'mid_size'      => 0,
-			'next_text'     => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
-			'prev_text'     => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
+			'echo'      => false,
+			'end_size'  => 0,
+			'mid_size'  => 0,
+			'next_text' => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
+			'prev_text' => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
 		) );
 
 		if ( $comment_pagination ) :
@@ -68,9 +68,9 @@ endif;
 if ( comments_open() || pings_open() ) :
 
 	comment_form( array(
-		'class_form'            => 'section-inner thin max-percentage no-margin',
-		'comment_notes_before'  => '',
-		'comment_notes_after'   => '',
+		'class_form'           => 'section-inner thin max-percentage no-margin',
+		'comment_notes_before' => '',
+		'comment_notes_after'  => '',
 	) );
 
 elseif ( is_single() ) : ?>

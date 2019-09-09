@@ -39,11 +39,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_retina_logo', array(
-				'type'          => 'checkbox',
-				'section'       => 'title_tagline',
-				'priority'      => 10,
-				'label'         => __( 'Retina logo', 'twentytwenty' ),
-				'description'   => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
+				'type'        => 'checkbox',
+				'section'     => 'title_tagline',
+				'priority'    => 10,
+				'label'       => __( 'Retina logo', 'twentytwenty' ),
+				'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
 			) );
 
 			/* ---------------------------------------------------------------------------------
@@ -62,10 +62,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 				) );
 
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $color_option_name, array(
-					'label'         => $color_option['label'],
-					'section'       => 'colors',
-					'settings'      => $color_option_name,
-					'priority'      => 10,
+					'label'    => $color_option['label'],
+					'section'  => 'colors',
+					'settings' => $color_option_name,
+					'priority' => 10,
 				) ) );
 
 			}
@@ -79,10 +79,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			 * --------------------------------------------------------------------------------- */
 
 			$wp_customize->add_section( 'twentytwenty_site_header_options', array(
-				'title'         => __( 'Site Header', 'twentytwenty' ),
-				'priority'      => 40,
-				'capability'    => 'edit_theme_options',
-				'description'   => __( 'Settings for the site header.', 'twentytwenty' ),
+				'title'       => __( 'Site Header', 'twentytwenty' ),
+				'priority'    => 40,
+				'capability'  => 'edit_theme_options',
+				'description' => __( 'Settings for the site header.', 'twentytwenty' ),
 			) );
 
 			/* Disable Header Search --------- */
@@ -94,11 +94,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_disable_header_search', array(
-				'type'          => 'checkbox',
-				'section'       => 'twentytwenty_site_header_options',
-				'priority'      => 10,
-				'label'         => __( 'Disable Search Button', 'twentytwenty' ),
-				'description'   => __( 'Check to disable the search button in the header.', 'twentytwenty' ),
+				'type'        => 'checkbox',
+				'section'     => 'twentytwenty_site_header_options',
+				'priority'    => 10,
+				'label'       => __( 'Disable Search Button', 'twentytwenty' ),
+				'description' => __( 'Check to disable the search button in the header.', 'twentytwenty' ),
 			) );
 
 			/* Disable Menu Modal on Desktop - */
@@ -110,11 +110,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_disable_menu_modal_on_desktop', array(
-				'type'          => 'checkbox',
-				'section'       => 'twentytwenty_site_header_options',
-				'priority'      => 10,
-				'label'         => __( 'Disable Menu Modal on Desktop', 'twentytwenty' ),
-				'description'   => __( 'Check to display a regular menu on desktop screens, instead of the search and menu toggles.', 'twentytwenty' ),
+				'type'        => 'checkbox',
+				'section'     => 'twentytwenty_site_header_options',
+				'priority'    => 10,
+				'label'       => __( 'Disable Menu Modal on Desktop', 'twentytwenty' ),
+				'description' => __( 'Check to display a regular menu on desktop screens, instead of the search and menu toggles.', 'twentytwenty' ),
 			) );
 
 			/* ---------------------------------------------------------------------------------
@@ -122,10 +122,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			 * --------------------------------------------------------------------------------- */
 
 			$wp_customize->add_section( 'twentytwenty_cover_template_options', array(
-				'title'         => __( 'Cover Template', 'twentytwenty' ),
-				'capability'    => 'edit_theme_options',
-				'description'   => __( 'Settings for the "Cover Template" page template.', 'twentytwenty' ),
-				'priority'       => 42,
+				'title'       => __( 'Cover Template', 'twentytwenty' ),
+				'capability'  => 'edit_theme_options',
+				'description' => __( 'Settings for the "Cover Template" page template.', 'twentytwenty' ),
+				'priority'    => 42,
 			) );
 
 			/* Overlay Fixed Background ------ */
@@ -137,10 +137,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_cover_template_fixed_background', array(
-				'type'          => 'checkbox',
-				'section'       => 'twentytwenty_cover_template_options',
-				'label'         => __( 'Fixed Background Image', 'twentytwenty' ),
-				'description'   => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
+				'type'        => 'checkbox',
+				'section'     => 'twentytwenty_cover_template_options',
+				'label'       => __( 'Fixed Background Image', 'twentytwenty' ),
+				'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
 			) );
 
 			/* Separator --------------------- */
@@ -150,7 +150,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( new TwentyTwenty_Separator_Control( $wp_customize, 'twentytwenty_cover_template_separator_1', array(
-				'section'       => 'twentytwenty_cover_template_options',
+				'section' => 'twentytwenty_cover_template_options',
 			) ) );
 
 			/* Overlay Background Color ------ */
@@ -162,10 +162,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'twentytwenty_cover_template_overlay_background_color', array(
-				'label'         => __( 'Image Overlay Background Color', 'twentytwenty' ),
-				'description'   => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
-				'section'       => 'twentytwenty_cover_template_options',
-				'settings'      => 'twentytwenty_cover_template_overlay_background_color',
+				'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
+				'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
+				'section'     => 'twentytwenty_cover_template_options',
+				'settings'    => 'twentytwenty_cover_template_overlay_background_color',
 			) ) );
 
 			/* Overlay Text Color ------------ */
@@ -177,10 +177,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'twentytwenty_cover_template_overlay_text_color', array(
-				'label'         => __( 'Image Overlay Text Color', 'twentytwenty' ),
-				'description'   => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
-				'section'       => 'twentytwenty_cover_template_options',
-				'settings'      => 'twentytwenty_cover_template_overlay_text_color',
+				'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
+				'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
+				'section'     => 'twentytwenty_cover_template_options',
+				'settings'    => 'twentytwenty_cover_template_overlay_text_color',
 			) ) );
 
 			/* Overlay Blend Mode ------------ */
@@ -191,28 +191,28 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_cover_template_overlay_blend_mode', array(
-				'label'         => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
-				'description'   => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
-				'section'       => 'twentytwenty_cover_template_options',
-				'settings'      => 'twentytwenty_cover_template_overlay_blend_mode',
-				'type'          => 'select',
-				'choices'       => array(
-					'normal'            => __( 'Normal', 'twentytwenty' ),
-					'multiply'          => __( 'Multiply', 'twentytwenty' ),
-					'screen'            => __( 'Screen', 'twentytwenty' ),
-					'overlay'           => __( 'Overlay', 'twentytwenty' ),
-					'darken'            => __( 'Darken', 'twentytwenty' ),
-					'lighten'           => __( 'Lighten', 'twentytwenty' ),
-					'color-dodge'       => __( 'Color Dodge', 'twentytwenty' ),
-					'color-burn'        => __( 'Color Burn', 'twentytwenty' ),
-					'hard-light'        => __( 'Hard Light', 'twentytwenty' ),
-					'soft-light'        => __( 'Soft Light', 'twentytwenty' ),
-					'difference'        => __( 'Difference', 'twentytwenty' ),
-					'exclusion'         => __( 'Exclusion', 'twentytwenty' ),
-					'hue'               => __( 'Hue', 'twentytwenty' ),
-					'saturation'        => __( 'Saturation', 'twentytwenty' ),
-					'color'             => __( 'Color', 'twentytwenty' ),
-					'luminosity'        => __( 'Luminosity', 'twentytwenty' ),
+				'label'       => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
+				'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
+				'section'     => 'twentytwenty_cover_template_options',
+				'settings'    => 'twentytwenty_cover_template_overlay_blend_mode',
+				'type'        => 'select',
+				'choices'     => array(
+					'normal'      => __( 'Normal', 'twentytwenty' ),
+					'multiply'    => __( 'Multiply', 'twentytwenty' ),
+					'screen'      => __( 'Screen', 'twentytwenty' ),
+					'overlay'     => __( 'Overlay', 'twentytwenty' ),
+					'darken'      => __( 'Darken', 'twentytwenty' ),
+					'lighten'     => __( 'Lighten', 'twentytwenty' ),
+					'color-dodge' => __( 'Color Dodge', 'twentytwenty' ),
+					'color-burn'  => __( 'Color Burn', 'twentytwenty' ),
+					'hard-light'  => __( 'Hard Light', 'twentytwenty' ),
+					'soft-light'  => __( 'Soft Light', 'twentytwenty' ),
+					'difference'  => __( 'Difference', 'twentytwenty' ),
+					'exclusion'   => __( 'Exclusion', 'twentytwenty' ),
+					'hue'         => __( 'Hue', 'twentytwenty' ),
+					'saturation'  => __( 'Saturation', 'twentytwenty' ),
+					'color'       => __( 'Color', 'twentytwenty' ),
+					'luminosity'  => __( 'Luminosity', 'twentytwenty' ),
 				),
 			) );
 
@@ -224,23 +224,23 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			) );
 
 			$wp_customize->add_control( 'twentytwenty_cover_template_overlay_opacity', array(
-				'label'         => __( 'Image Overlay Opacity', 'twentytwenty' ),
-				'description'   => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
-				'section'       => 'twentytwenty_cover_template_options',
-				'settings'      => 'twentytwenty_cover_template_overlay_opacity',
-				'type'          => 'select',
-				'choices'       => array(
-					'0'             => __( '0%', 'twentytwenty' ),
-					'10'            => __( '10%', 'twentytwenty' ),
-					'20'            => __( '20%', 'twentytwenty' ),
-					'30'            => __( '30%', 'twentytwenty' ),
-					'40'            => __( '40%', 'twentytwenty' ),
-					'50'            => __( '50%', 'twentytwenty' ),
-					'60'            => __( '60%', 'twentytwenty' ),
-					'70'            => __( '70%', 'twentytwenty' ),
-					'80'            => __( '80%', 'twentytwenty' ),
-					'90'            => __( '90%', 'twentytwenty' ),
-					'100'           => __( '100%', 'twentytwenty' ),
+				'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
+				'description' => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
+				'section'     => 'twentytwenty_cover_template_options',
+				'settings'    => 'twentytwenty_cover_template_overlay_opacity',
+				'type'        => 'select',
+				'choices'     => array(
+					'0'   => __( '0%', 'twentytwenty' ),
+					'10'  => __( '10%', 'twentytwenty' ),
+					'20'  => __( '20%', 'twentytwenty' ),
+					'30'  => __( '30%', 'twentytwenty' ),
+					'40'  => __( '40%', 'twentytwenty' ),
+					'50'  => __( '50%', 'twentytwenty' ),
+					'60'  => __( '60%', 'twentytwenty' ),
+					'70'  => __( '70%', 'twentytwenty' ),
+					'80'  => __( '80%', 'twentytwenty' ),
+					'90'  => __( '90%', 'twentytwenty' ),
+					'100' => __( '100%', 'twentytwenty' ),
 				),
 			) );
 
@@ -266,9 +266,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 		public static function twentytwenty_get_color_options() {
 			return apply_filters( 'twentytwenty_accent_color_options', array(
 				'twentytwenty_accent_color' => array(
-					'default'   => '#CD2653',
-					'label'     => __( 'Accent Color', 'twentytwenty' ),
-					'slug'      => 'accent',
+					'default' => '#CD2653',
+					'label'   => __( 'Accent Color', 'twentytwenty' ),
+					'slug'    => 'accent',
 				),
 			) );
 		}
