@@ -15,12 +15,8 @@
 
 	<body <?php body_class(); ?>>
 
-		<a class="skip-link faux-button" href="#site-content"><?php _e( 'Skip to the content', 'twentytwenty' ); ?></a>
-
 		<?php 
-		if ( function_exists( 'wp_body_open' ) ) {
-			wp_body_open(); 
-		}
+		wp_body_open();
 		?>
 
 		<header id="site-header">
@@ -80,9 +76,9 @@
 							<ul class="shortcuts-menu color-accent reset-list-style">
 								<?php
 								wp_nav_menu( array(
-									'container' 		=> '',
-									'items_wrap' 		=> '%3$s',
-									'theme_location' 	=> 'shortcuts-menu',
+									'container'      => '',
+									'items_wrap'     => '%3$s',
+									'theme_location' => 'shortcuts-menu',
 								) );
 								?>
 							</ul><!-- .shortcuts-menu -->

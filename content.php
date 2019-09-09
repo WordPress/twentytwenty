@@ -14,8 +14,8 @@
 		$image_url = ! post_password_required() ? get_the_post_thumbnail_url( $post->ID, 'twentytwenty_fullscreen' ) : '';
 
 		if ( $image_url ) {
-			$cover_header_style 	= ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
-			$cover_header_classes 	= ' bg-image';
+			$cover_header_style     = ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
+			$cover_header_classes   = ' bg-image';
 		}
 
 		// Get the color used for the color overlay
@@ -71,7 +71,7 @@
 
 			<figure class="featured-media">
 
-				<div class="featured-media-inner section-inner<?php esc_attr_e( $featured_media_inner_classes ); ?>">
+				<div class="featured-media-inner section-inner<?php echo esc_attr( $featured_media_inner_classes ); ?>">
 
 					<?php 
 					
@@ -104,8 +104,8 @@
 				the_content();
 			}
 			wp_link_pages( array(
-				'before'           => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'            => '</nav>',
+				'before' => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'  => '</nav>',
 			) );
 			edit_post_link();
 			?>
