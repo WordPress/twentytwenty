@@ -15,3 +15,9 @@ The 2020 default theme.
 == Changelog ==
 
 == Resources ==
+
+== Licenses ==
+
+Image in screenshot.png from PxHere
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
+URL: https://pxhere.com/en/photo/1333652
