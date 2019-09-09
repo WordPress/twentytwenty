@@ -46,8 +46,6 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		// Set post thumbnail size
 		set_post_thumbnail_size( 1200, 9999 );
 
-		$low_res_images = get_theme_mod( 'twentytwenty_activate_low_resolution_images', false );
-
 		// Add custom image sizes
 		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
 
