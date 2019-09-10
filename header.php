@@ -15,7 +15,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<?php 
+		<?php
 		wp_body_open();
 		?>
 
@@ -34,19 +34,20 @@
 
 						<?php
 
-						$logo = twentytwenty_get_custom_logo();
-						$site_title = get_bloginfo( 'name' );
+						$logo             = twentytwenty_get_custom_logo();
+						$site_title       = get_bloginfo( 'name' );
 						$site_description = get_bloginfo( 'description' );
 
 						if ( $logo ) {
 							$home_link_contents = $logo . '<span class="screen-reader-text">' . esc_html( $site_title ) . '</span>';
-							$site_title_class = 'site-logo';
+							$site_title_class   = 'site-logo';
 						} else {
-							$site_title_class = 'site-title';
+							$site_title_class   = 'site-title';
 							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
 						}
 
-						if ( is_front_page() || is_home() ) : ?>
+						if ( is_front_page() || is_home() ) :
+							?>
 							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; ?></h1>
 						<?php else : ?>
 							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; ?></div>
@@ -75,11 +76,13 @@
 
 							<ul class="shortcuts-menu color-accent reset-list-style">
 								<?php
-								wp_nav_menu( array(
-									'container'      => '',
-									'items_wrap'     => '%3$s',
-									'theme_location' => 'shortcuts-menu',
-								) );
+								wp_nav_menu(
+									array(
+										'container'      => '',
+										'items_wrap'     => '%3$s',
+										'theme_location' => 'shortcuts-menu',
+									)
+								);
 								?>
 							</ul><!-- .shortcuts-menu -->
 
@@ -98,12 +101,13 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php 
-						
+						<?php
+
 						// Check whether the header search is deactivated in the customizer
-						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false ); 
-						
-						if ( ! $disable_header_search ) : ?>
+						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
+
+						if ( ! $disable_header_search ) :
+							?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 						
@@ -122,7 +126,7 @@
 
 			</div><!-- .header-inner -->
 
-			<?php 
+			<?php
 			// Output the search modal (if it isn't deactivated in the customizer)
 			if ( ! $disable_header_search ) {
 				get_template_part( 'parts/modal-search' );
@@ -131,7 +135,7 @@
 
 		</header><!-- #site-header -->
 
-		<?php 
+		<?php
 		// Output the menu modal
-		get_template_part( 'parts/modal-menu' ); 
+		get_template_part( 'parts/modal-menu' );
 		?>
