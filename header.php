@@ -46,7 +46,7 @@
 							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
 						}
 
-						if ( is_front_page() ) : ?>
+						if ( is_front_page() || is_home() ) : ?>
 							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; ?></h1>
 						<?php else : ?>
 							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; ?></div>
