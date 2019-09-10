@@ -26,7 +26,7 @@
 				<div class="header-titles-wrapper">
 
 					<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
+						<span class="screen-reader-text"><?php _e( 'Toggle search', 'twentytwenty' ); ?></span>
 						<?php twentytwenty_the_theme_svg( 'search' ); ?>
 					</button><!-- .search-toggle -->
 
@@ -61,7 +61,7 @@
 					</div><!-- .header-titles -->
 
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle menu', 'twentytwenty' ); ?></span>
+						<span class="screen-reader-text"><?php _e( 'Toggle menu', 'twentytwenty' ); ?></span>
 						<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
 					</button><!-- .nav-toggle -->
 
@@ -92,7 +92,7 @@
 						<div class="toggle-wrapper nav-toggle-wrapper">
 
 							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-								<span class="screen-reader-text"><?php esc_html_e( 'Toggle menu', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Toggle menu', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
 							</button><!-- .nav-toggle -->
 
@@ -108,7 +108,7 @@
 							<div class="toggle-wrapper search-toggle-wrapper">
 						
 								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
+									<span class="screen-reader-text"><?php _e( 'Toggle search', 'twentytwenty' ); ?></span>
 									<?php twentytwenty_the_theme_svg( 'search' ); ?>
 								</button><!-- .search-toggle -->
 
