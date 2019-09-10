@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  * If the current post is protected by a password and
@@ -19,7 +19,7 @@ if ( $comments ) : ?>
 
 		// Translators: %s = the number of comments
 		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
-		
+
 		?>
 
 		<div class="comments-header">
@@ -62,7 +62,7 @@ if ( $comments ) : ?>
 
 	</div><!-- comments -->
 
-	<?php 
+	<?php
 endif;
 
 if ( comments_open() || pings_open() ) :
@@ -77,7 +77,7 @@ elseif ( is_single() ) : ?>
 
 	<div class="comment-respond" id="respond">
 
-		<p class="comments-closed"><?php esc_html_e( 'Comments are closed.', 'twentytwenty' ); ?></p>
+		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); ?></p>
 
 	</div><!-- #respond -->
 
