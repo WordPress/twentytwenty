@@ -2,7 +2,7 @@
 /**
  * Header file for the Twenty Twenty WordPress default theme.
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
