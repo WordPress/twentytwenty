@@ -86,12 +86,12 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">&copy; <?php echo esc_html( date_i18n( __( 'Y', 'twentytwenty' ) ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php echo bloginfo( 'name' ); ?></a></p>
+						<p class="footer-copyright">&copy; <?php echo esc_html( date_i18n( __( 'Y', 'twentytwenty' ) ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></p>
 
 						<p class="powered-by-wordpress">
 							<?php
-							/* Translators: %s = WordPress */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+							/* Translators: %s = Link to WordPress.org */
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->

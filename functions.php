@@ -46,9 +46,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		// Set post thumbnail size.
 		set_post_thumbnail_size( 1200, 9999 );
 
-		$low_res_images = get_theme_mod( 'twentytwenty_activate_low_resolution_images', false );
-
-		// Add custom image sizes.
+		// Add custom image sizes
 		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
 
 		// Custom logo.
@@ -89,8 +87,8 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Twenty Twenty, use a find and replace
-		 * to change 'twentytwenty' to the name of your theme in all the template files.
+		 * If you're building a theme based on Twenty Nineteen, use a find and replace
+		 * to change 'twentynineteen' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'twentytwenty', get_template_directory() . '/languages' );
 
@@ -215,12 +213,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 			$classes[] = 'disable-search-modal';
 		}
 
-		// Check for disabled menu modal on desktop.
-		if ( get_theme_mod( 'twentytwenty_disable_menu_modal_on_desktop', false ) ) {
-			$classes[] = 'disable-menu-modal-on-desktop';
-		}
-
-		// Check for post thumbnail.
+		// Check for post thumbnail
 		if ( is_singular() && has_post_thumbnail() ) {
 			$classes[] = 'has-post-thumbnail';
 		} elseif ( is_singular() ) {
@@ -254,7 +247,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		return $classes;
 
 	}
-	add_action( 'body_class', 'twentytwenty_body_classes' );
+	add_filter( 'body_class', 'twentytwenty_body_classes' );
 endif;
 
 
@@ -403,18 +396,10 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 endif;
 
-if ( ! function_exists( 'twentytwenty_add_excerpt_support_to_pages' ) ) :
-	/**
-	 * Add Excerpt Support to Pages
-	 */
-	function twentytwenty_add_excerpt_support_to_pages() {
-
-		add_post_type_support( 'page', 'excerpt' );
-
-	}
-	add_action( 'init', 'twentytwenty_add_excerpt_support_to_pages' );
-endif;
-
+/**
+ * Output and Get Theme SVG
+ * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
+ */
 if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
 	/**
 	 * Output and Get Theme SVG
@@ -987,8 +972,8 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	 */
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
-		// Get variables.
-		$accent         = get_theme_mod( 'twentytwenty_accent_color' );
+		// Get variables
+		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
 		$accent_default = '#CD2653';
 
 		ob_start();

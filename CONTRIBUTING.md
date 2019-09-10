@@ -10,12 +10,18 @@ For early development, Twenty Twenty will remain on GitHub. Once it reaches a us
 
 Twenty Twenty should have all issues reported on GitHub at https://github.com/WordPress/twentytwenty/. We are not using Trac for issue reporting until the theme is moved into WordPress Core.
 
+## Working on an issue
+
+If you begin work on a Pull Request for an issue, please make a comment on the issue in question to let people know. It prevents duplicate work, and if someone else has thoughts on the issue, they can reach out and offer help and input.
+
 ## Testing a Pull Request
+
 If you're using Git locally, you can test a pull request by pulling down the associated branch, creating a zip file of the contents, and uploading to your site. This repository includes all compiled files, so it should install just like any other uploaded theme. 
 
 If you're not already using Git, you may benefit from installing the [GitHub desktop application](https://desktop.github.com). This will allow you to [download the repository in one click](https://help.github.com/desktop/guides/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop/), keep it in sync, and easily [switch between different pull requests](https://help.github.com/desktop/guides/contributing-to-projects/accessing-a-pull-request-locally/). Once a pull request is selected in the application, create a zip file of the whole repository, and upload it to your site to test.
 
 ## Submitting Fixes
+
 To submit a fix, please [fork the repository](https://help.github.com/articles/fork-a-repo/) and submit a [pull request](https://help.github.com/articles/creating-a-pull-request/). In your pull request's  description, please explain your update and reference the associated issue you're fixing. 
 
 ## Best Practices
