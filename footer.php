@@ -61,7 +61,7 @@
 				<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) : ?>
 
 					<div class="footer-widgets-outer-wrapper">
-					
+
 						<div class="footer-widgets-wrapper">
 
 							<?php if ( is_active_sidebar( 'footer-one' ) ) : ?>
@@ -77,7 +77,7 @@
 							<?php endif; ?>
 
 						</div><!-- .footer-widgets-wrapper -->
-						
+
 					</div><!-- .footer-widgets-outer-wrapper -->
 
 				<?php endif; ?>
@@ -91,19 +91,19 @@
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . __( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
 							printf( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
 						</span>
 						<span class="to-the-top-short">
-							<?php 
+							<?php
 							// Translators: %s = HTML character for an arrow.
 							printf( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' ); ?>
 						</span>
