@@ -46,7 +46,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 		// Set post thumbnail size.
 		set_post_thumbnail_size( 1200, 9999 );
 
-		// Add custom image sizes
+		// Add custom image sizes.
 		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
 
 		// Custom logo.
@@ -213,7 +213,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 			$classes[] = 'disable-search-modal';
 		}
 
-		// Check for post thumbnail
+		// Check for post thumbnail.
 		if ( is_singular() && has_post_thumbnail() ) {
 			$classes[] = 'has-post-thumbnail';
 		} elseif ( is_singular() ) {
@@ -972,14 +972,14 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	 */
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
-		// Get variables
+		// Get variables.
 		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
 		$accent_default = '#CD2653';
 
 		ob_start();
 
 		/*
-		  Note – Styles are applied in this order:
+			Note – Styles are applied in this order:
 				1. Element specific
 				2. Helper classes
 
