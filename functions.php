@@ -236,6 +236,9 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 			$classes[] = 'not-showing-comments';
 		}
 
+		// Check if avatars are visible
+		$classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
+		
 		// Slim page template class names (class = name - file suffix)
 		if ( is_page_template() ) {
 			$classes[] = basename( get_page_template_slug(), '.php' );
