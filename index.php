@@ -55,8 +55,8 @@
 
 			endwhile;
 
-		elseif ( is_search() ) :
-			?>
+			elseif ( is_search() ) :
+				?>
 
 			<div class="no-search-results-form">
 
@@ -64,7 +64,7 @@
 
 			</div><!-- .no-search-results -->
 
-		<?php endif; ?>
+			<?php endif; ?>
 	
 	</div><!-- .posts -->
 
