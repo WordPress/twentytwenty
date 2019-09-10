@@ -25,7 +25,7 @@ $posts_pagination = get_the_posts_pagination(
 	)
 );
 
-if ( $posts_pagination ) : ?>
+if ( $posts_pagination ) { ?>
 
 	<div class="pagination-wrapper section-inner">
 
@@ -33,4 +33,4 @@ if ( $posts_pagination ) : ?>
 
 	</div><!-- .pagination-wrapper -->
 
-<?php endif; ?>
+<?php } ?>
