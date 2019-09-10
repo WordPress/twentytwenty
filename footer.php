@@ -91,7 +91,7 @@
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">WordPress</a>' ); ?>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
