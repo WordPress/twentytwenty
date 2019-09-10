@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* ---------------------------------------------------------------------------------------------
    CUSTOMIZER SETTINGS
@@ -73,7 +73,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 			// Update background color with postMessage, so inline CSS output is updated as well
 			$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
 
-			
+
 			/* ---------------------------------------------------------------------------------
 			 * Site Header Options
 			 * --------------------------------------------------------------------------------- */
@@ -99,22 +99,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 				'priority'    => 10,
 				'label'       => __( 'Disable Search Button', 'twentytwenty' ),
 				'description' => __( 'Check to disable the search button in the header.', 'twentytwenty' ),
-			) );
-
-			/* Disable Menu Modal on Desktop - */
-
-			$wp_customize->add_setting( 'twentytwenty_disable_menu_modal_on_desktop', array(
-				'capability'        => 'edit_theme_options',
-				'default'           => false,
-				'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
-			) );
-
-			$wp_customize->add_control( 'twentytwenty_disable_menu_modal_on_desktop', array(
-				'type'        => 'checkbox',
-				'section'     => 'twentytwenty_site_header_options',
-				'priority'    => 10,
-				'label'       => __( 'Disable Menu Modal on Desktop', 'twentytwenty' ),
-				'description' => __( 'Check to display a regular menu on desktop screens, instead of the search and menu toggles.', 'twentytwenty' ),
 			) );
 
 			/* ---------------------------------------------------------------------------------
@@ -300,7 +284,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		}
 	endif;
 
-endif; 
+endif;
 
 
 /* ---------------------------------------------------------------------------------------------
@@ -308,14 +292,14 @@ endif;
    --------------------------------------------------------------------------------------------- */
 
 /* Render the site title for the selective refresh partial */
-if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) : 
+if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) :
 	function twentytwenty_customize_partial_blogname() {
 		bloginfo( 'name' );
 	}
 endif;
 
 /* Render the site description for the selective refresh partial */
-if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) : 
+if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) :
 	function twentytwenty_customize_partial_blogdescription() {
 		bloginfo( 'description' );
 	}

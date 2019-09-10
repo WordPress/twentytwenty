@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="TwentyTwenty Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+
+  <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/.phpcs.xml.dist -->
+
+  <!-- Set a description for this ruleset. -->
+  <description>Coding standards used for checking the TwentyTwenty theme.</description>
+
+  <!-- Check the entire theme. -->
+  <file>.</file>
+
+  <!-- Exclude patterns. -->
+  <exclude-pattern>/vendor/*</exclude-pattern>
+  <exclude-pattern>/node_modules/*</exclude-pattern>
+
+  <!-- Additional arguments. -->
+  <arg value="sp"/>
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="8"/>
+  <arg name="cache"/>
+  <arg name="extensions" value="php"/>
+
+  <!-- Include the WordPress rulesets. -->
+  <rule ref="WordPress-Extra"/>
+  <rule ref="WordPress-Docs"/>
+  <rule ref="WPThemeReview"/>
+
+  <!-- We want to allow exceptions for the filename naming, since we are working with a theme. -->
+  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#themes-allow-filename-exceptions -->
+  <rule ref="WordPress.Files.FileName">
+    <properties>
+      <property name="is_theme" value="true"/>
+    </properties>
+  </rule>
+</ruleset>
