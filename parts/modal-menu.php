@@ -1,3 +1,13 @@
+<?php
+/**
+ * Displays the menu icon and modal
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 <div class="menu-modal cover-modal" data-modal-target-string=".menu-modal" aria-expanded="false">
 
 	<div class="menu-modal-inner modal-inner">
@@ -32,7 +42,7 @@
 
 			<div class="menu-bottom">
 
-				<?php if ( has_nav_menu( 'social-menu' ) ) : ?>
+				<?php if ( has_nav_menu( 'social-menu' ) ) { ?>
 
 					<ul class="social-menu reset-list-style social-icons s-icons">
 
@@ -55,7 +65,7 @@
 
 					</ul><!-- .social-menu -->
 
-				<?php endif; ?>
+				<?php } ?>
 
 			</div><!-- .menu-bottom -->
 
