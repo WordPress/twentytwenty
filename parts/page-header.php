@@ -2,7 +2,7 @@
 
 	<div class="entry-header-inner section-inner medium">
 
-		<?php 
+		<?php
 
 		if ( is_singular() ) {
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -16,7 +16,7 @@
 				<?php the_excerpt(); ?>
 			</div>
 
-			<?php 
+			<?php
 		endif;
 
 		// On pages with the cover template, display a "To the content" link
