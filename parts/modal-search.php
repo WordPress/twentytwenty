@@ -15,7 +15,7 @@
 			</form><!-- .search-form -->
 
 			<button class="toggle search-untoggle fill-children-primary" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
-				<span class="screen-reader-text"><?php esc_html_e( 'Close search', 'twentytwenty' ); ?></span>
+				<span class="screen-reader-text"><?php _e( 'Close search', 'twentytwenty' ); ?></span>
 				<?php twentytwenty_the_theme_svg( 'cross' ); ?>
 			</button><!-- .search-toggle -->
 
