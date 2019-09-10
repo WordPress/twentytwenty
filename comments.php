@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template file for displaying the comments and comment form for the
+ * Twenty Twenty theme.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
 /*
  * If the current post is protected by a password and
@@ -17,7 +25,7 @@ if ( $comments ) : ?>
 
 		$comments_number = absint( get_comments_number() );
 
-		// Translators: %s = the number of comments
+		// Translators: %s = the number of comments.
 		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
 
 		?>
@@ -50,7 +58,7 @@ if ( $comments ) : ?>
 
 		if ( $comment_pagination ) :
 
-			// If we're only showing the "Next" link, add a class indicating so
+			// If we're only showing the "Next" link, add a class indicating so.
 			if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
 				$pagination_classes = ' only-next';
 			} else {
