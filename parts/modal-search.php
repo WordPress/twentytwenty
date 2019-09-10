@@ -1,3 +1,13 @@
+<?php
+/**
+ * Displays the post header
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 <div class="search-modal cover-modal" data-modal-target-string=".search-modal" aria-expanded="false">
 
 	<div class="search-modal-inner modal-inner">
