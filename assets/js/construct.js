@@ -117,7 +117,7 @@ twentytwenty.toggles = {
 	// Do the toggle
 	toggle: function() {
 
-		$( '*[data-toggle-target]' ).live( 'click', function( e ) {
+		$( '*[data-toggle-target]' ).on( 'click', function( e ) {
 
 			// Get our targets
 			var $toggle = $( this ),
@@ -328,7 +328,7 @@ twentytwenty.coverModals = {
 	// Close modal on outside click
 	outsideUntoggle: function() {
 
-		$doc.live( 'click', function( e ) {
+		$doc.on( 'click', function( e ) {
 
 			var $target = $( e.target ),
 				modal = '.cover-modal.active';
@@ -377,7 +377,7 @@ twentytwenty.coverModals = {
 
 		// Check for modal matching querystring when clicking a link
 		// Format: www.url.com?modal=modal-id
-		$( 'a' ).live( 'click', function() {
+		$( 'a' ).on( 'click', function() {
 
 			// Load based on query string
 			if ( $( this ).attr( 'href' ).indexOf( key ) !== -1 ) {
