@@ -487,11 +487,11 @@ twentytwenty.smoothScroll = {
 
 					// Get options
 					var additionalOffset = $( this ).data( 'additional-offset' ),
-						scrollSpeed      = $( this ).data( 'scroll-speed' ) ? $( this ).data( 'scroll-speed' ) : 500;
+					    scrollSpeed      = $( this ).data( 'scroll-speed' ) ? $( this ).data( 'scroll-speed' ) : 500;
 
 					// Determine offset
 					var originalOffset = $target.offset().top,
-						scrollOffset   = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+					    scrollOffset   = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
 					$( 'html, body' ).animate({
 						scrollTop: scrollOffset,
