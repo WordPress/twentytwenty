@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays the post header
+ * Displays the search icon and modal
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
