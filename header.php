@@ -101,7 +101,7 @@
 						<?php 
 						
 						// Check whether the header search is deactivated in the customizer
-						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false ); 
+						$disable_header_search = get_theme_mod( 'disable_header_search', false ); 
 						
 						if ( ! $disable_header_search ) : ?>
 

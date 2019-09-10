@@ -19,7 +19,7 @@
 		}
 
 		// Get the color used for the color overlay
-		$color_overlay_color = get_theme_mod( 'twentytwenty_cover_template_overlay_background_color' );
+		$color_overlay_color = get_theme_mod( 'cover_template_overlay_background_color' );
 		if ( $color_overlay_color ) {
 			$color_overlay_style = ' style="color: ' . esc_attr( $color_overlay_color ) . ';"';
 		} else {
@@ -27,17 +27,17 @@
 		}
 
 		// Get the fixed background attachment option
-		if ( get_theme_mod( 'twentytwenty_cover_template_fixed_background', true ) ) {
+		if ( get_theme_mod( 'cover_template_fixed_background', true ) ) {
 			$cover_header_classes .= ' bg-attachment-fixed';
 		}
 
 		// Get the opacity of the color overlay
-		$color_overlay_opacity = get_theme_mod( 'twentytwenty_cover_template_overlay_opacity' );
+		$color_overlay_opacity = get_theme_mod( 'cover_template_overlay_opacity' );
 		$color_overlay_opacity = ( $color_overlay_opacity === false ) ? 80 : $color_overlay_opacity;
 		$color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
 
 		// Get the blend mode of the color overlay (default = multiply)
-		$color_overlay_opacity = get_theme_mod( 'twentytwenty_cover_template_overlay_blend_mode', 'multiply' );
+		$color_overlay_opacity = get_theme_mod( 'cover_template_overlay_blend_mode', 'multiply' );
 		$color_overlay_classes .= ' blend-mode-' . $color_overlay_opacity;
 	
 		?>

@@ -206,7 +206,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		}
 
 		// Check for disabled search
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
+		if ( get_theme_mod( 'disable_header_search', false ) ) {
 			$classes[] = 'disable-search-modal';
 		}
 
@@ -296,7 +296,7 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 		$logo_height = esc_attr( $logo[2] );
 
 		// If the retina logo setting is active, reduce the width/height by half
-		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+		if ( get_theme_mod( 'retina_logo', false ) ) {
 			$logo_width = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
 		}
@@ -893,7 +893,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables
-		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
+		$accent         = sanitize_hex_color( get_theme_mod( 'accent_color' ) );
 		$accent_default = '#CD2653';
 
 		ob_start();
