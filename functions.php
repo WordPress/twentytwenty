@@ -163,6 +163,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 endif;
 
 if ( ! function_exists( 'twentytwenty_menus' ) ) :
+
 	/**
 	 * Register navigation menus uses wp_nav_menu in three places
 	 */
@@ -643,7 +644,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 							<span class="meta-text">
 								<?php
-								// Translators: %s = the author name.
+								// Translators: %s = the author name
 								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
 								?>
 							</span>

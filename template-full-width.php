@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
 Template Name: Full Width Template
 Template Post Type: post, page
 */
