@@ -941,12 +941,12 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 	/**
 	 * Generate CSS
 	 *
-	 * @param  string  $selector [description].
-	 * @param  string  $style    [description].
-	 * @param  string  $value    [description].
-	 * @param  string  $prefix   [description].
-	 * @param  string  $suffix   [description].
-	 * @param  boolean $echo     [description].
+	 * @param  string  $selector HTML div selector.
+	 * @param  string  $style    CSS selector.
+	 * @param  string  $value    CSS value.
+	 * @param  string  $prefix   Any prefix to output of Generate CSS.
+	 * @param  string  $suffix   Any suffix to output of Generate CSS.
+	 * @param  boolean $echo     Display output or not, default set to True.
 	 *
 	 * @return string            Generated CSS output
 	 */
