@@ -12,8 +12,8 @@ var twentytwenty = twentytwenty || {},
 
 var $doc = $( document ),
     $win = $( window ),
-    winHeight = $win.height(),
-    winWidth = $win.width();
+    twentytwentyWinHeight = $win.height(),
+    twentytwentyWinWidth = $win.width();
 
 
 /*	-----------------------------------------------------------------------------------------------
