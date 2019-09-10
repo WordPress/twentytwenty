@@ -6,11 +6,11 @@ $posts_pagination = get_the_posts_pagination(
 		'prev_text' => sprintf(
 			'%s <span class="nav-prev-text">%s</span>',
 			'&larr;',
-			__( 'Newer Posts', 'twentytwenty' )
+			esc_html( _x( 'Newer Posts', 'previous set of posts' ), 'twentytwenty' )
 		),
 		'next_text' => sprintf(
 			'<span class="nav-next-text">%s</span> %s',
-			__( 'Older Posts', 'twentytwenty' ),
+			esc_html( _x( 'Older Posts', 'next set of posts' ), 'twentytwenty' ),
 			'&rarr;'
 		),
 	)
