@@ -90,7 +90,14 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">&copy; <?php echo esc_html( date_i18n( __( 'Y', 'twentytwenty' ) ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></p>
+						<p class="footer-copyright">&copy; <?php echo esc_html( 
+							date_i18n( 
+								/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
+								_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' ) 
+							) 
+						); ?> 
+							<a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>
+						</p>
 
 						<p class="powered-by-wordpress">
 							<?php
