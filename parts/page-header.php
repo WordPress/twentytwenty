@@ -1,3 +1,14 @@
+<?php
+/**
+ * Displays the post header
+ *
+ * @package WordPress
+ * @subpackage Twenty_Nineteen
+ * @since 1.0.0
+ */
+
+?>
+
 <header class="entry-header has-text-align-center">
 
 	<div class="entry-header-inner section-inner medium">
@@ -10,18 +21,17 @@
 			the_title( '<h2 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
 		}
 
-		if ( has_excerpt() ) : ?>
+		if ( has_excerpt() ) { ?>
 
 			<div class="intro-text section-inner thin max-percentage">
 				<?php the_excerpt(); ?>
 			</div>
 
 			<?php
-		endif;
+		}
 
 		// On pages with the cover template, display a "To the content" link
-		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) {
-			?>
+		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) { ?>
 
 			<div class="to-the-content-wrapper">
 
