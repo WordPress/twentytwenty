@@ -486,12 +486,12 @@ twentytwenty.smoothScroll = {
 					event.preventDefault();
 
 					// Get options
-					var additionalOffset 	= $( this ).data( 'additional-offset' ),
-						scrollSpeed 		= $( this ).data( 'scroll-speed' ) ? $( this ).data( 'scroll-speed' ) : 500;
+					var additionalOffset = $( this ).data( 'additional-offset' ),
+						scrollSpeed      = $( this ).data( 'scroll-speed' ) ? $( this ).data( 'scroll-speed' ) : 500;
 
 					// Determine offset
 					var originalOffset = $target.offset().top,
-						scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+						scrollOffset   = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
 					$( 'html, body' ).animate({
 						scrollTop: scrollOffset,
@@ -806,15 +806,15 @@ twentytwenty.mainMenu = {
 
 $doc.ready( function() {
 
-	twentytwenty.intervalScroll.init();			// Check for scroll on an interval
-	twentytwenty.resizeEnd.init();				// Trigger event at end of resize
-	twentytwenty.toggles.init();				// Handle toggles
-	twentytwenty.coverModals.init();			// Handle cover modals
-	twentytwenty.instrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
-	twentytwenty.smoothScroll.init();			// Smooth scroll to anchor link or a specific element
-	twentytwenty.scrollLock.init();				// Scroll Lock
-	twentytwenty.mainMenu.init();				// Main Menu
-	twentytwenty.focusManagement.init();		// Focus Management
-	twentytwenty.dynamicScreenHeight.init();	// Dynamic Screen Height
+	twentytwenty.intervalScroll.init();         // Check for scroll on an interval
+	twentytwenty.resizeEnd.init();              // Trigger event at end of resize
+	twentytwenty.toggles.init();                // Handle toggles
+	twentytwenty.coverModals.init();            // Handle cover modals
+	twentytwenty.instrinsicRatioVideos.init();  // Retain aspect ratio of videos on window resize
+	twentytwenty.smoothScroll.init();           // Smooth scroll to anchor link or a specific element
+	twentytwenty.scrollLock.init();             // Scroll Lock
+	twentytwenty.mainMenu.init();               // Main Menu
+	twentytwenty.focusManagement.init();        // Focus Management
+	twentytwenty.dynamicScreenHeight.init();    // Dynamic Screen Height
 
 } );
