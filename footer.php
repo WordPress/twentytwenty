@@ -27,9 +27,7 @@
 				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
 				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
 
-				if ( $has_footer_menu ) {
-
-					?>
+				if ( $has_footer_menu ) { ?>
 
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
 
@@ -46,11 +44,7 @@
 							?>
 						</ul><!-- .site-nav -->
 
-						<?php
-
-						if ( $has_social_menu ) {
-
-							?>
+						<?php if ( $has_social_menu ) { ?>
 
 							<div class="footer-social-wrapper">
 
@@ -83,21 +77,13 @@
 
 				<?php } ?>
 
-				<?php
-
-				if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) {
-
-					?>
+				<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) { ?>
 
 					<div class="footer-widgets-outer-wrapper">
 
 						<div class="footer-widgets-wrapper">
 
-							<?php
-
-							if ( is_active_sidebar( 'footer-one' ) ) {
-
-								?>
+							<?php if ( is_active_sidebar( 'footer-one' ) ) { ?>
 
 								<div class="footer-widgets column-one grid-item">
 									<?php dynamic_sidebar( 'footer-one' ); ?>
@@ -105,11 +91,7 @@
 
 							<?php } ?>
 
-							<?php
-
-							if ( is_active_sidebar( 'footer-two' ) ) {
-
-								?>
+							<?php if ( is_active_sidebar( 'footer-two' ) ) { ?>
 
 								<div class="footer-widgets column-two grid-item">
 									<?php dynamic_sidebar( 'footer-two' ); ?>
