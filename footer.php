@@ -90,8 +90,8 @@
 
 						<p class="powered-by-wordpress">
 							<?php
-							/* Translators: %s = WordPress */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = name of the theme developer', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
+							/* Translators: %s = Link to WordPress.org */
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' ); ?>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
