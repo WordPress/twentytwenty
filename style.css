@@ -2820,7 +2820,7 @@ div.comment:first-of-type {
 
 /* Widget: Search ---------------------------- */
 
-.widget_search label,
+.widget_search label span,
 .widget_search img {
 	display: none;
 }
