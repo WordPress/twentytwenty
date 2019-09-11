@@ -43,7 +43,7 @@
 					$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
 
 					if ( ! $disable_header_search ) {
-					?>
+						?>
 
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
 							<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
