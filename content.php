@@ -120,7 +120,7 @@
 			}
 			wp_link_pages(
 				array(
-					'before' => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+					'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '">><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
 					'after'  => '</nav>',
 				)
 			);
@@ -156,7 +156,7 @@
 
 			?>
 
-			<nav class="pagination-single section-inner<?php echo esc_attr( $pagination_classes ); ?>">
+			<nav class="pagination-single section-inner<?php echo esc_attr( $pagination_classes ); ?>"  aria-label="<?php esc_attr_e( 'Post', 'twentytwenty' ); ?>">
 
 				<?php if ( $prev_post ) : ?>
 
