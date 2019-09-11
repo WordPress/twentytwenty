@@ -3397,6 +3397,10 @@ ul.footer-social li {
 		padding-left: 8rem;
 	}
 
+	.hide-avatars .comment-body {
+		padding-left: 0;
+	}
+
 	.comment-meta .avatar {
 		display: block;
 		height: 6rem;
