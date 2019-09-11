@@ -119,13 +119,14 @@
 								)
 							);
 							?>
+
 							<a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>
 						</p>
 
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
 							?>
 						</p><!-- .theme-credits -->
 

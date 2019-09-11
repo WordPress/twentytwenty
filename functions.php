@@ -101,7 +101,6 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 
 }
 
-
 /**
  * REQUIRED FILES
  * Include required files.
@@ -117,7 +116,6 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
-
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	/**
@@ -147,7 +145,6 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 
 }
 
-
 if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 	/**
 	 * Register and Enqueue Scripts.
@@ -170,7 +167,6 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 
 }
 
-
 if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	/**
 	 * Register navigation menus uses wp_nav_menu in three places.
@@ -190,7 +186,6 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	add_action( 'init', 'twentytwenty_menus' );
 
 }
-
 
 if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 	/**
@@ -265,8 +260,6 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 
 }
 
-
-
 if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 	/**
 	 * Add No-JS Class.
@@ -285,6 +278,7 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
+
 	/**
 	 * Add and Output Custom Logo.
 	 *
@@ -298,11 +292,13 @@ if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
 if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 
 	/**
+
 	 * Get the information about the logo.
 	 *
 	 * @param string $logo_theme_mod The name of the theme mod.
 	 */
 	function twentytwenty_get_custom_logo( $logo_theme_mod = 'custom_logo' ) {
+
 		$logo_id = get_theme_mod( $logo_theme_mod );
 
 		if ( ! $logo_id ) {
@@ -346,7 +342,6 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'wp_body_open' ) ) {
 
 	/**
@@ -357,8 +352,8 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
+
 	/**
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
@@ -369,7 +364,6 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
 
 }
-
 
 if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 
@@ -417,7 +411,6 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 
 }
-
 
 if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
 	/**
@@ -479,7 +472,6 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 	/**
 	 * Check if the specified comment is written by the author of the post commented on.
@@ -505,6 +497,7 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
+
 	/**
 	 * Filter comment reply link to not JS scroll.
 	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
@@ -522,7 +515,6 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
 	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
 
 }
-
 
 if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 	/**
@@ -562,7 +554,6 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
 
 }
-
 
 if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) {
 	/**
@@ -838,7 +829,6 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 
 }
 
-
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 	/**
 	 * Enqueue supplemental block editor styles.
@@ -860,6 +850,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
+  
 	/**
 	 * Enqueue classic editor styles.
 	 */
@@ -878,6 +869,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) {
+  
 	/**
 	 * Output Customizer Settings in the Classic Editor.
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
@@ -903,6 +895,7 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
+
 	/**
 	 * Block Editor Settings.
 	 * Add custom colors and font sizes to the block editor.
@@ -980,9 +973,8 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 
 }
 
-
-
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
+  
 	/**
 	 * Generate CSS.
 	 *
@@ -1016,6 +1008,7 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
+
 	/**
 	 * Get CSS Built from Customizer Options.
 	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output.
@@ -1091,4 +1084,3 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 	}
 }
-
