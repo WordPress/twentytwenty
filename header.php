@@ -42,7 +42,7 @@
 					// Check whether the header search is deactivated in the customizer.
 					$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
 
-					if( get_theme_mod( $disable_header_search ) ) : 
+					if( get_theme_mod( $disable_header_search ) ) {
 					?>
 					
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
@@ -50,7 +50,7 @@
 							<?php twentytwenty_the_theme_svg( 'search' ); ?>
 						</button><!-- .search-toggle -->
 
-					<?php endif; ?>
+					<?php } ?>
 
 					<div class="header-titles">
 
