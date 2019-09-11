@@ -894,12 +894,12 @@ button.toggle {
 /* BACKGROUND COLOR */
 
 .bg-accent,
-.bg-accent-hover:hover { background-color: #CD2653; }
+.bg-accent:hover { background-color: #CD2653; }
 
 /* BORDER COLOR */
 
 .border-color-accent,
-.border-color-accent-hover:hover { border-color: #CD2653; }
+.border-color-accent:hover { border-color: #CD2653; }
 
 /* FILL COLOR */
 
