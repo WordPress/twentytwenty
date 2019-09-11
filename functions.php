@@ -9,7 +9,7 @@
  * @since 1.0.0
  */
 
-if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
+if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -99,7 +99,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) :
 
 	add_action( 'after_setup_theme', 'twentytwenty_theme_support' );
 
-endif;
+}
 
 
 /**
@@ -116,7 +116,7 @@ require get_template_directory() . '/parts/classes/class-theme-customizer.php';
 // Custom comment walker.
 require get_template_directory() . '/parts/classes/class-comment-walker.php';
 
-if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
+if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	/**
 	 * Register and Enqueue Styles
 	 */
@@ -129,7 +129,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
 
 		if ( $load_font_awesome ) {
-			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
+			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
 			$css_dependencies[] = 'font-awesome';
 		}
 
@@ -139,10 +139,12 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 		wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
 
 	}
-	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
+	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 	/**
 	 * Register and Enqueue Scripts
 	 */
@@ -159,30 +161,34 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) :
 		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version );
 
 	}
-	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_menus' ) ) :
+	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_menus' ) ) {
 
 	/**
 	 * Register navigation menus uses wp_nav_menu in three places
 	 */
-	function twentytwenty_menus() {
+    function twentytwenty_menus() {
 
-		// Register menus.
-		$locations = array(
-			'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
-			'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
-			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
-			'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
-		);
+        // Register menus
+        $locations = array(
+            'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
+            'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
+      			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
+            'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
+		    );
 
-		register_nav_menus( $locations );
-	}
-	add_action( 'init', 'twentytwenty_menus' );
-endif;
+        register_nav_menus( $locations );
+    }
 
-if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
+    add_action( 'init', 'twentytwenty_menus' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 	/**
 	 * Add conditional body classes
 	 *
@@ -251,11 +257,12 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		return $classes;
 
 	}
+
 	add_filter( 'body_class', 'twentytwenty_body_classes' );
-endif;
 
+}
 
-if ( ! function_exists( 'twentytwenty_no_js_class' ) ) :
+if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 	/**
 	 * Add No-JS Class
 	 * If we're missing JavaScript support, the HTML element will have a no-js class
@@ -267,10 +274,12 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) :
 		<?php
 
 	}
-	add_action( 'wp_head', 'twentytwenty_no_js_class' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) :
+	add_action( 'wp_head', 'twentytwenty_no_js_class' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
 	/**
 	 * Add and Output Custom Logo
 	 *
@@ -282,9 +291,9 @@ if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) :
 		echo esc_html( twentytwenty_get_custom_logo( $logo_theme_mod ) );
 
 	}
-endif;
+}
 
-if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
+if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 	/**
 	 * Get Custom logo
 	 *
@@ -335,7 +344,8 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) :
 		return ob_get_clean();
 
 	}
-endif;
+
+}
 
 if ( ! function_exists( 'wp_body_open' ) ) {
 	/**
@@ -346,17 +356,20 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 	}
 }
 
-if ( ! function_exists( 'twentytwenty_skip_link' ) ) :
+if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
+
 	/**
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
 	function twentytwenty_skip_link() {
 		echo '<a class="skip-link faux-button" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
 	}
-	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
-endif;
 
-if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
+	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
+
+}
+
+if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 	/**
 	 * Register widget areas.
 	 *
@@ -397,14 +410,12 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) :
 		);
 
 	}
-	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
-endif;
 
-/**
- * Output and Get Theme SVG
- * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
- */
-if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
+	add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
 	/**
 	 * Output and Get Theme SVG
 	 * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
@@ -418,9 +429,9 @@ if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) :
 		echo twentytwenty_get_theme_svg( $svg_name, $color );
 
 	}
-endif;
+}
 
-if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
+if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 	/**
 	 * Get the SVG icon from TwentyTwenty_SVG_Icons.
 	 *
@@ -466,9 +477,10 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) :
 		return $svg;
 
 	}
-endif;
 
-if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
+}
+
+if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 	/**
 	 * Check if the specified comment is written by the author of the post commented on.
 	 *
@@ -478,18 +490,25 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) :
 	function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
 		if ( is_object( $comment ) && $comment->user_id > 0 ) {
+
 			$user = get_userdata( $comment->user_id );
 			$post = get_post( $comment->comment_post_ID );
+
 			if ( ! empty( $user ) && ! empty( $post ) ) {
+
 				return $comment->user_id === $post->post_author;
+
 			}
+
 		}
+
 		return false;
 
 	}
-endif;
 
-if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
+}
+
+if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
 	/**
 	 * Filter comment reply link to not JS scroll
 	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
@@ -504,10 +523,12 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) :
 		return $link;
 
 	}
-	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
+	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 	/**
 	 * Filter Classes of wp_list_pages items to match menu items
 	 * Filter the class applied to wp_list_pages() items with children to match the menu class,
@@ -543,10 +564,12 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) :
 		return $css_class;
 
 	}
-	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
-endif;
 
-if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) :
+	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
+
+}
+
+if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) {
 	/**
 	 * Get and Output Post Meta
 	 * If it's a single post, output the post meta values specified in the Customizer settings.
@@ -560,9 +583,9 @@ if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) :
 		echo twentytwenty_get_post_meta( $post_id, $location );
 
 	}
-endif;
+}
 
-if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
+if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 	/**
 	 * Get Post meta
 	 * If it's a single post, output the post meta values specified in the Customizer settings.
@@ -614,7 +637,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 		}
 
 		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output.
-		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) :
+		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) {
 
 			// Make sure we don't output an empty container.
 			$has_meta = false;
@@ -637,7 +660,8 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 					do_action( 'twentytwenty_start_of_post_meta_list', $post_meta, $post_id );
 
 					// Author.
-					if ( in_array( 'author', $post_meta ) ) :
+					if ( in_array( 'author', $post_meta ) ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-author meta-wrapper">
@@ -653,10 +677,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Post date.
-					if ( in_array( 'post-date', $post_meta ) ) :
+					if ( in_array( 'post-date', $post_meta ) ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-date">
@@ -671,10 +697,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</a>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Categories.
-					if ( in_array( 'categories', $post_meta ) && has_category() ) :
+					if ( in_array( 'categories', $post_meta ) && has_category() ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-categories meta-wrapper">
@@ -687,10 +715,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Tags.
-					if ( in_array( 'tags', $post_meta ) && has_tag() ) :
+					if ( in_array( 'tags', $post_meta ) && has_tag() ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-tags meta-wrapper">
@@ -703,10 +733,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Comments link.
-					if ( in_array( 'comments', $post_meta ) && ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
+					if ( in_array( 'comments', $post_meta ) && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-comment-link meta-wrapper">
@@ -718,10 +750,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Sticky.
-					if ( in_array( 'sticky', $post_meta ) && is_sticky() ) :
+					if ( in_array( 'sticky', $post_meta ) && is_sticky() ) {
+
 						$has_meta = true;
 						?>
 						<li class="post-sticky meta-wrapper">
@@ -733,7 +767,8 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 						</li>
 						<?php
-					endif;
+
+					}
 
 					// Allow output of additional post meta types to be added by child themes and plugins.
 					do_action( 'twentytwenty_end_of_post_meta_list', $post_meta, $post_id );
@@ -752,18 +787,21 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 
 			// If there is meta to output, return it.
 			if ( $has_meta && $meta_output ) {
+
 				return $meta_output;
+
 			}
 
-		endif;
+		}
 
 		// If we've reached this point, there's nothing to return, so we return nothing.
 		return;
 
 	}
-endif;
 
-if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
+}
+
+if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	/**
 	 * Add a Sub Nav Toggle to the Main Menu
 	 *
@@ -805,10 +843,12 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 		return $args;
 
 	}
-	add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
-endif;
 
-if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
+	add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
+
+}
+
+if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 	/**
 	 * Enqueue supplemental block editor styles.
 	 */
@@ -817,16 +857,18 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
 		$css_dependencies = array();
 
 		// Enqueue the editor styles.
-		wp_enqueue_style( 'twentytwenty_block_editor_styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
 		// Add inline style from the Customizer.
-		wp_add_inline_style( 'twentytwenty_block_editor_styles', twentytwenty_get_customizer_css( 'block-editor' ) );
+		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
 	}
-	add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
-endif;
 
-if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
+	add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
+
+}
+
+if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 	/**
 	 * Enqueue classic editor styles.
 	 */
@@ -839,10 +881,12 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) :
 		add_editor_style( $classic_editor_styles );
 
 	}
-	add_action( 'init', 'twentytwenty_classic_editor_styles' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) :
+	add_action( 'init', 'twentytwenty_classic_editor_styles' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) {
 	/**
 	 * Output Customizer Settings in the Classic Editor
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
@@ -862,10 +906,12 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 		return $mce_init;
 
 	}
-	add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_customizer_styles' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
+	add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_customizer_styles' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	/**
 	 * Block Editor Settings
 	 * Add custom colors and font sizes to the block editor
@@ -938,10 +984,12 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) :
 		);
 
 	}
-	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
-endif;
 
-if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
+	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 	/**
 	 * Generate CSS
 	 *
@@ -955,19 +1003,29 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) :
 	 * @return string            Generated CSS output
 	 */
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
+
 		$return = '';
+
 		if ( ! $value ) {
+
 			return;
 		}
-		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
-		if ( $echo ) {
-			echo $return;
-		}
-		return $return;
-	}
-endif;
 
-if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
+		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
+
+		if ( $echo ) {
+
+			echo $return;
+
+		}
+
+		return $return;
+
+	}
+
+}
+
+if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 	/**
 	 * Get CSS Built from Customizer Options
 	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
@@ -1032,11 +1090,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 
 			// Colors.
 			// Accent color.
-			if ( $accent && $accent !== $accent_default ) :
+			if ( $accent && $accent !== $accent_default ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-			endif;
+      }
 
 		}
 
@@ -1044,6 +1102,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 		return ob_get_clean();
 
 	}
-endif;
+
+}
 
 ?>
