@@ -1,21 +1,35 @@
+<?php
+/**
+ * The default template for displaying content
+ *
+ * Used for both singular and index.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+?>
+
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<?php 
-	
-	// On the cover page template, output the cover header
-	if ( is_page_template( array( 'template-cover.php' ) ) ) : 
+	<?php
 
-		$cover_header_style = '';
+	// On the cover page template, output the cover header
+	if ( is_page_template( array( 'template-cover.php' ) ) ) :
+
+		$cover_header_style   = '';
 		$cover_header_classes = '';
 
-		$color_overlay_style = '';
+		$color_overlay_style   = '';
 		$color_overlay_classes = '';
 
 		$image_url = ! post_password_required() ? get_the_post_thumbnail_url( $post->ID, 'twentytwenty_fullscreen' ) : '';
 
 		if ( $image_url ) {
-			$cover_header_style     = ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
-			$cover_header_classes   = ' bg-image';
+			$cover_header_style   = ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
+			$cover_header_classes = ' bg-image';
 		}
 
 		// Get the color used for the color overlay
@@ -32,14 +46,14 @@
 		}
 
 		// Get the opacity of the color overlay
-		$color_overlay_opacity = get_theme_mod( 'twentytwenty_cover_template_overlay_opacity' );
-		$color_overlay_opacity = ( $color_overlay_opacity === false ) ? 80 : $color_overlay_opacity;
+		$color_overlay_opacity  = get_theme_mod( 'twentytwenty_cover_template_overlay_opacity' );
+		$color_overlay_opacity  = ( $color_overlay_opacity === false ) ? 80 : $color_overlay_opacity;
 		$color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
 
 		// Get the blend mode of the color overlay (default = multiply)
-		$color_overlay_opacity = get_theme_mod( 'twentytwenty_cover_template_overlay_blend_mode', 'multiply' );
+		$color_overlay_opacity  = get_theme_mod( 'twentytwenty_cover_template_overlay_blend_mode', 'multiply' );
 		$color_overlay_classes .= ' blend-mode-' . $color_overlay_opacity;
-	
+
 		?>
 
 		<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; ?>>
@@ -51,14 +65,14 @@
 			</div><!-- .cover-header-inner-wrapper -->
 		</div><!-- .cover-header -->
 
-		<?php 
-	
-	// On all other pages, output the regular page header
-	else : 
-	
+		<?php
+
+		// On all other pages, output the regular page header
+	else :
+
 		get_template_part( 'parts/page-header' );
-		
-		if ( has_post_thumbnail() && ! post_password_required() ) : 
+
+		if ( has_post_thumbnail() && ! post_password_required() ) :
 
 			$featured_media_inner_classes = '';
 
@@ -66,20 +80,21 @@
 			if ( ! is_singular() ) {
 				$featured_media_inner_classes .= ' medium';
 			}
-		
+
 			?>
 
 			<figure class="featured-media">
 
 				<div class="featured-media-inner section-inner<?php echo esc_attr( $featured_media_inner_classes ); ?>">
 
-					<?php 
-					
+					<?php
+
 					the_post_thumbnail();
 
 					$caption = get_the_post_thumbnail_caption();
-					
-					if ( $caption ) : ?>
+
+					if ( $caption ) :
+						?>
 
 						<figcaption class="wp-caption-text"><?php echo esc_html( $caption ); ?></figcaption>
 
@@ -97,22 +112,24 @@
 
 		<div class="entry-content">
 
-			<?php 
+			<?php
 			if ( is_search() ) {
 				the_excerpt();
 			} else {
 				the_content();
 			}
-			wp_link_pages( array(
-				'before' => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'  => '</nav>',
-			) );
+			wp_link_pages(
+				array(
+					'before' => '<nav class="post-nav-links bg-light-background"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+					'after'  => '</nav>',
+				)
+			);
 			edit_post_link();
 			?>
 
 		</div><!-- .entry-content -->
 
-		<?php 
+		<?php
 		// Single bottom post meta
 		twentytwenty_the_post_meta( $post->ID, 'single-bottom' );
 		?>
@@ -121,7 +138,7 @@
 
 	<?php
 
-	if ( is_single() ) : 
+	if ( is_single() ) :
 
 		// Single pagination
 		$next_post = get_next_post();
@@ -168,7 +185,8 @@
 	endif;
 
 	// Output comments wrapper if it's a post, or if comments are open, or if there's a comment number – and check for password
-	if ( ( $post->post_type == 'post' || comments_open() || get_comments_number() ) && ! post_password_required() ) : ?>
+	if ( ( $post->post_type == 'post' || comments_open() || get_comments_number() ) && ! post_password_required() ) :
+		?>
 
 		<div class="comments-wrapper section-inner thin">
 

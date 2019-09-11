@@ -20,6 +20,7 @@ get_header();
 <main id="site-content" role="main">
 
 	<?php
+
 	$archive_title    = '';
 	$archive_subtitle = '';
 
@@ -38,43 +39,41 @@ get_header();
 		$archive_subtitle = get_the_archive_description( '<div>', '</div>' );
 	}
 
-	if ( $archive_title || $archive_subtitle ) {
+	if ( $archive_title || $archive_subtitle ) :
 		?>
-
+		
 		<header class="archive-header has-text-align-center">
 
 			<div class="archive-header-inner section-inner medium">
 
-				<?php if ( $archive_title ) { ?>
+				<?php if ( $archive_title ) : ?>
 					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-				<?php } ?>
+				<?php endif; ?>
 
-				<?php if ( $archive_subtitle ) { ?>
+				<?php if ( $archive_subtitle ) : ?>
 					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
-				<?php } ?>
-
+				<?php endif; ?>
+			
 			</div><!-- .archive-header-inner -->
 
 		</header><!-- .archive-header -->
 
-		<?php
-	}
-	?>
+	<?php endif; ?>
 
 	<div class="posts">
 
 		<?php
-		if ( have_posts() ) {
+		if ( have_posts() ) :
 
 			while ( have_posts() ) :
-
 				the_post();
-				get_template_part( 'content', get_post_type() );
+
+				 get_template_part( 'content', get_post_type() );
 
 			endwhile;
 
-		} elseif ( is_search() ) {
-			?>
+			elseif ( is_search() ) :
+				?>
 
 			<div class="no-search-results-form">
 
@@ -82,15 +81,12 @@ get_header();
 
 			</div><!-- .no-search-results -->
 
-			<?php
-		}
-		?>
-
+			<?php endif; ?>
+	
 	</div><!-- .posts -->
 
 	<?php get_template_part( 'parts/pagination' ); ?>
 
 </main><!-- #site-content -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

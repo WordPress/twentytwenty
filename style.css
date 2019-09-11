@@ -749,31 +749,6 @@ input[type="submit"]:focus {
 	text-decoration: underline;
 }
 
-/* SELECT2 */
-
-.select2-container--default .select2-selection--single {
-	background: transparent;
-}
-
-.select2-container .select2-selection--single {
-	font-size: 1.6rem;
-	height: 50px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-	color: inherit;
-	font-size: 1.6rem;
-	line-height: 50px;
-	padding-left: 18px;
-	padding-right: 40px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-	height: 48px;
-	width: 40px;
-}
-
-
 /* Tables ------------------------------------ */
 
 table {
@@ -2646,39 +2621,33 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
+.navigation.pagination {
+	padding-top: 3rem;
+}
+
 .pagination .nav-links {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.8rem;
-	padding-top: 3rem;
 	font-weight: 600;
+	margin: -2.5rem 0 0 -2.5rem;
+}
+
+.nav-links > * {
+	margin: 2.5rem 0 0 2.5rem;
 }
 
 .pagination a {
 	text-decoration: none;
-	margin: 0 2rem 2rem 2rem;
 }
 
 .pagination a:hover {
 	text-decoration: underline;
 }
 
-.pagination .current {
-	margin: 0 2rem 2rem 2rem;
-}
-
 .pagination .dots {
-	display: inline-block;
-	vertical-align: middle;
+	margin-top: 1.1em;
 	color:#6D6D6D;
-}
-
-.pagination .prev {
-	margin: 0 0 2rem 0;
-}
-
-.pagination-wrapper.only-prev {
-	margin-bottom: 2.2em;
 }
 
 .nav-short {
@@ -3460,6 +3429,10 @@ ul.footer-social li {
 		padding-left: 8rem;
 	}
 
+	.hide-avatars .comment-body {
+		padding-left: 0;
+	}
+
 	.comment-meta .avatar {
 		display: block;
 		height: 6rem;
@@ -3523,7 +3496,7 @@ ul.footer-social li {
 
 	/* Display the full text for Newer and Older Posts. */
 	.nav-short {
-		display: initial;
+		display: inline;
 	}
 
 	/* Widgets ------------------------------- */
@@ -3790,7 +3763,47 @@ ul.footer-social li {
 	}
 
 	/* Comments ------------------------------ */
+
 	/* Site Pagination ----------------------- */
+
+	.pagination .nav-links {
+		display: flex;
+		flex-direction: row;
+		font-size: 2.4rem;
+		margin: -2.5rem 0 0 -2.5rem;
+		letter-spacing: -0.9px;
+	}
+
+	.pagination .next,
+	.pagination .prev {
+		display: inline;
+	}
+
+	.pagination .dots {
+		margin-top: 1.7rem;
+	}
+	
+	.pagination .prev {
+		left: 0;
+		justify-self: flex-start;
+		margin-right: auto;
+	}
+
+	.pagination .next {
+		right: 0;
+		text-align: right;
+		justify-self: flex-end;
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-next .page-numbers:first-child {
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-prev .page-numbers:last-child {
+		margin-right: auto;
+	}
+
 	/* Site Footer --------------------------- */
 
 	#site-footer {
@@ -3814,54 +3827,6 @@ ul.footer-social li {
 
 	.footer-menu li {
 		margin: 1.2rem 0 0 2.4rem;
-	}
-
-	/* SITE PAGINATION */
-	.pagination .nav-links {
-		display: flex;
-		flex-direction: row;
-		font-size: 2.4rem;
-		padding: 3.5rem 0;
-		margin-top: 8rem;
-		justify-content: center;
-		letter-spacing: -0.9px;
-	}
-
-	.pagination a,
-	.pagination .current,
-	.pagination .dots {
-		margin: 0 3rem;
-	}
-
-	.pagination .dots {
-		margin-top: -.3em;
-	}
-
-	.pagination .next,
-	.pagination .prev {
-		display: initial;
-		margin: initial;
-	}
-	
-	.pagination .prev {
-		left: 0;
-		justify-self: flex-start;
-		margin-right: auto;
-	}
-
-	.pagination .next {
-		right: 0;
-		text-align: right;
-		justify-self: flex-end;
-		margin-left: auto;
-	}
-
-	.pagination-wrapper.only-next .page-numbers:first-child {
-		margin-left: auto;
-	}
-
-	.pagination-wrapper.only-prev .page-numbers:last-child {
-		margin-right: auto;
 	}
 
 }
