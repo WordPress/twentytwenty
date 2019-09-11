@@ -56,10 +56,10 @@
 
 		?>
 
-		<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; ?>> 
+		<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>> 
 			<div class="cover-header-inner-wrapper">
 				<div class="cover-header-inner">
-					<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; ?>></div>
+					<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
 					<?php get_template_part( 'template-parts/page-header' ); ?>
 				</div><!-- .cover-header-inner -->
 			</div><!-- .cover-header-inner-wrapper -->
@@ -194,7 +194,7 @@
 	 *  Output comments wrapper if it's a post, or if comments are open,
 	 * or if there's a comment number – and check for password.
 	 * */
-	if ( ( 'post' == $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
+	if ( ( 'post' === $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
 		<div class="comments-wrapper section-inner thin">

@@ -320,7 +320,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			 * @param bool $checked Wethere or not a blox is checked.
 			 */
 			function twentytwenty_sanitize_checkbox( $checked ) {
-				return ( ( isset( $checked ) && true == $checked ) ? true : false );
+				return ( ( isset( $checked ) && true === $checked ) ? true : false );
 			}
 
 			/**

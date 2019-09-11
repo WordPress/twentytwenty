@@ -40,7 +40,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 		 *
 		 * @var array
 		 */
-		static $icons = array(
+		public static $icons = array(
 			'arrow-down'          => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24">
 		<polygon fill="#FFF" points="721.105 856 721.105 874.315 728.083 867.313 730.204 869.41 719.59 880 709 869.41 711.074 867.313 718.076 874.315 718.076 856" transform="translate(-709 -856)"/>
 		</svg>',

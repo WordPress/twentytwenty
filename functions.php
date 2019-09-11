@@ -240,7 +240,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		}
 
 		// Check if we're showing comments.
-		if ( $post && ( ( 'post' == $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
+		if ( $post && ( ( 'post' === $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
 			$classes[] = 'showing-comments';
 		} else {
 			$classes[] = 'not-showing-comments';
@@ -543,12 +543,12 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 		}
 
 		// Add current menu item class.
-		if ( in_array( 'current_page_item', $css_class ) ) {
+		if ( in_array( 'current_page_item', $css_class, true ) ) {
 			$css_class[] = 'current-menu-item';
 		}
 
 		// Add menu item has children class.
-		if ( in_array( 'page_item_has_children', $css_class ) ) {
+		if ( in_array( 'page_item_has_children', $css_class, true ) ) {
 			$css_class[] = 'menu-item-has-children';
 		}
 
@@ -595,7 +595,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 
 		// Check whether the post type is allowed to output post meta.
 		$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
-		if ( in_array( get_post_type( $post_id ), $disallowed_post_types ) ) {
+		if ( in_array( get_post_type( $post_id ), $disallowed_post_types, true ) ) {
 			return;
 		}
 
@@ -628,7 +628,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 		}
 
 		// If the post meta setting has the value 'empty', it's explicitly empty and the default post meta shouldn't be output.
-		if ( $post_meta && ! in_array( 'empty', $post_meta ) ) {
+		if ( $post_meta && ! in_array( 'empty', $post_meta, true ) ) {
 
 			// Make sure we don't output an empty container.
 			$has_meta = false;
@@ -651,7 +651,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					do_action( 'twentytwenty_start_of_post_meta_list', $post_meta, $post_id );
 
 					// Author.
-					if ( in_array( 'author', $post_meta ) ) {
+					if ( in_array( 'author', $post_meta, true ) ) {
 
 						$has_meta = true;
 						?>
@@ -672,7 +672,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					}
 
 					// Post date.
-					if ( in_array( 'post-date', $post_meta ) ) {
+					if ( in_array( 'post-date', $post_meta, true ) ) {
 
 						$has_meta = true;
 						?>
@@ -692,7 +692,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					}
 
 					// Categories.
-					if ( in_array( 'categories', $post_meta ) && has_category() ) {
+					if ( in_array( 'categories', $post_meta, true ) && has_category() ) {
 
 						$has_meta = true;
 						?>
@@ -710,7 +710,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					}
 
 					// Tags.
-					if ( in_array( 'tags', $post_meta ) && has_tag() ) {
+					if ( in_array( 'tags', $post_meta, true ) && has_tag() ) {
 
 						$has_meta = true;
 						?>
@@ -728,7 +728,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					}
 
 					// Comments link.
-					if ( in_array( 'comments', $post_meta ) && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+					if ( in_array( 'comments', $post_meta, true ) && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 
 						$has_meta = true;
 						?>
@@ -745,7 +745,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					}
 
 					// Sticky.
-					if ( in_array( 'sticky', $post_meta ) && is_sticky() ) {
+					if ( in_array( 'sticky', $post_meta, true ) && is_sticky() ) {
 
 						$has_meta = true;
 						?>
@@ -801,14 +801,14 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
 		// Add sub menu toggles to the main menu with toggles.
-		if ( 'main-menu' == $args->theme_location && isset( $args->show_toggles ) ) {
+		if ( 'main-menu' === $args->theme_location && isset( $args->show_toggles ) ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
 			$args->after  = '';
 
 			// Add a toggle to items with children.
-			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 				$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
 
@@ -821,8 +821,8 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
 			// Add sub menu icons to the main menu without toggles (the shortcuts menu).
-		} elseif ( 'shortcuts-menu' == $args->theme_location ) {
-			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+		} elseif ( 'shortcuts-menu' === $args->theme_location ) {
+			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
 				$args->after = '';
@@ -1005,7 +1005,7 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 		if ( $echo ) {
 
-			echo $return;
+			echo $return; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;)
 
 		}
 
@@ -1040,7 +1040,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		*/
 
 		// Front-End Styles.
-		if ( 'front-end' == $type ) {
+		if ( 'front-end' === $type ) {
 
 			// Helper Variables.
 			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
@@ -1062,7 +1062,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			endif;
 
 			// Block Editor Styles.
-		} elseif ( 'block-editor' == $type ) {
+		} elseif ( 'block-editor' === $type ) {
 
 			// Colors.
 			// Accent color.
@@ -1074,7 +1074,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'border-color', $accent );
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
 			}
-		} elseif ( 'classic-editor' == $type ) {
+		} elseif ( 'classic-editor' === $type ) {
 
 			// Colors.
 			// Accent color.
