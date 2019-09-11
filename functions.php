@@ -112,6 +112,9 @@ require get_template_directory() . '/classes/class-twentytwenty-svg-icons.php';
 // Handle Customizer settings.
 require get_template_directory() . '/classes/class-twentytwenty-customize.php';
 
+// Require Separator Control class.
+require get_template_directory() . '/classes/class-twentytwenty-separator-control.php';
+
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
 
