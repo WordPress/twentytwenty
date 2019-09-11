@@ -1,3 +1,13 @@
+<?php
+/**
+ * Displays the menu icon and modal
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 <div class="menu-modal cover-modal" data-modal-target-string=".menu-modal" aria-expanded="false">
 
 	<div class="menu-modal-inner modal-inner">
@@ -9,17 +19,21 @@
 				<ul class="main-menu reset-list-style">
 					<?php
 					if ( has_nav_menu( 'main-menu' ) ) {
-						wp_nav_menu( array(
-							'container'      => '',
-							'items_wrap'     => '%3$s',
-							'show_toggles'   => true,
-							'theme_location' => 'main-menu',
-						) );
+						wp_nav_menu(
+							array(
+								'container'      => '',
+								'items_wrap'     => '%3$s',
+								'show_toggles'   => true,
+								'theme_location' => 'main-menu',
+							)
+						);
 					} else {
-						wp_list_pages( array( 
-							'match_menu_classes' => true,
-							'title_li'           => false, 
-						) );
+						wp_list_pages(
+							array(
+								'match_menu_classes' => true,
+								'title_li'           => false,
+							)
+						);
 					}
 					?>
 				</ul>
@@ -28,28 +42,30 @@
 
 			<div class="menu-bottom">
 
-				<?php if ( has_nav_menu( 'social-menu' ) ) : ?>
+				<?php if ( has_nav_menu( 'social-menu' ) ) { ?>
 
 					<ul class="social-menu reset-list-style social-icons s-icons">
 
 						<?php
-						wp_nav_menu( array(
-							'theme_location'  => 'social-menu',
-							'container'       => '',
-							'container_class' => '',
-							'items_wrap'      => '%3$s',
-							'menu_id'         => '',
-							'menu_class'      => '',
-							'depth'           => 1,
-							'link_before'     => '<span class="screen-reader-text">',
-							'link_after'      => '</span>',
-							'fallback_cb'     => '',
-						) );
+						wp_nav_menu(
+							array(
+								'theme_location'  => 'social-menu',
+								'container'       => '',
+								'container_class' => '',
+								'items_wrap'      => '%3$s',
+								'menu_id'         => '',
+								'menu_class'      => '',
+								'depth'           => 1,
+								'link_before'     => '<span class="screen-reader-text">',
+								'link_after'      => '</span>',
+								'fallback_cb'     => '',
+							)
+						);
 						?>
 
 					</ul><!-- .social-menu -->
 
-				<?php endif; ?>
+				<?php } ?>
 
 			</div><!-- .menu-bottom -->
 
