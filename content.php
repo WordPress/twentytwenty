@@ -60,7 +60,7 @@
 			<div class="cover-header-inner-wrapper">
 				<div class="cover-header-inner">
 					<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
-					<?php get_template_part( 'template-parts/page-header' ); ?>
+					<?php get_template_part( 'template-parts/entry-header' ); ?>
 				</div><!-- .cover-header-inner -->
 			</div><!-- .cover-header-inner-wrapper -->
 		</div><!-- .cover-header -->
@@ -70,7 +70,7 @@
 		// On all other pages, output the regular page header.
 	} else {
 
-		get_template_part( 'template-parts/page-header' );
+		get_template_part( 'template-parts/entry-header' );
 
 		if ( has_post_thumbnail() && ! post_password_required() ) {
 
