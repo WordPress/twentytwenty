@@ -129,7 +129,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
 
 		if ( $load_font_awesome ) {
-			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
+			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
 			$css_dependencies[] = 'font-awesome';
 		}
 
@@ -767,10 +767,10 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) :
 		$css_dependencies = array();
 
 		// Enqueue the editor styles
-		wp_enqueue_style( 'twentytwenty_block_editor_styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
 		// Add inline style from the Customizer
-		wp_add_inline_style( 'twentytwenty_block_editor_styles', twentytwenty_get_customizer_css( 'block-editor' ) );
+		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
 	}
 	add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
