@@ -21,7 +21,8 @@
 			the_title( '<h2 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
 		}
 
-		if ( has_excerpt() ) { ?>
+		if ( has_excerpt() ) {
+			?>
 
 			<div class="intro-text section-inner thin max-percentage">
 				<?php the_excerpt(); ?>
@@ -30,8 +31,9 @@
 			<?php
 		}
 
-		// On pages with the cover template, display a "To the content" link
-		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) { ?>
+		// On pages with the cover template, display a "To the content" link.
+		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) {
+			?>
 
 			<div class="to-the-content-wrapper">
 
@@ -46,7 +48,7 @@
 
 		} else {
 
-			// Default to displaying the post meta
+			// Default to displaying the post meta.
 			twentytwenty_the_post_meta( $post->ID, 'single-top' );
 
 		}
