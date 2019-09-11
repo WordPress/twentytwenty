@@ -213,9 +213,9 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 
-		// Check for disabled search.
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
-			$classes[] = 'disable-search-modal';
+		// Check for enabled search.
+		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+			$classes[] = 'enable-search-modal';
 		}
 
 		// Check for post thumbnail.
