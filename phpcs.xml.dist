@@ -33,4 +33,12 @@
       <property name="is_theme" value="true"/>
     </properties>
   </rule>
+
+  <rule ref="WordPress.WP.I18n">
+    <properties>
+      <property name="text_domain" type="array">
+        <element value="twentytwenty"/>
+      </property>
+    </properties>
+  </rule>
 </ruleset>
