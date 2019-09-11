@@ -101,7 +101,6 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 
 }
 
-
 /**
  * REQUIRED FILES
  * Include required files
@@ -117,6 +116,7 @@ require get_template_directory() . '/parts/classes/class-theme-customizer.php';
 require get_template_directory() . '/parts/classes/class-comment-walker.php';
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
+
 	/**
 	 * Register and Enqueue Styles
 	 */
@@ -145,6 +145,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
+
 	/**
 	 * Register and Enqueue Scripts
 	 */
@@ -189,6 +190,7 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
+
 	/**
 	 * Add conditional body classes
 	 *
@@ -263,6 +265,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
+
 	/**
 	 * Add No-JS Class
 	 * If we're missing JavaScript support, the HTML element will have a no-js class
@@ -280,6 +283,7 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
+
 	/**
 	 * Add and Output Custom Logo
 	 *
@@ -291,9 +295,11 @@ if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
 		echo esc_html( twentytwenty_get_custom_logo( $logo_theme_mod ) );
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
+
 	/**
 	 * Get Custom logo
 	 *
@@ -344,15 +350,18 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 		return ob_get_clean();
 
 	}
+
 }
 
 if ( ! function_exists( 'wp_body_open' ) ) {
+
 	/**
 	 * Shim for wp_body_open, ensuring backwards compatibility with versions of WordPress older than 5.2.
 	 */
 	function wp_body_open() {
 		do_action( 'wp_body_open' );
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
@@ -369,6 +378,7 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
+
 	/**
 	 * Register widget areas.
 	 *
@@ -415,6 +425,7 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
+
 	/**
 	 * Output and Get Theme SVG
 	 * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
@@ -428,9 +439,11 @@ if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
 		echo twentytwenty_get_theme_svg( $svg_name, $color );
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
+
 	/**
 	 * Get the SVG icon from TwentyTwenty_SVG_Icons.
 	 *
@@ -476,9 +489,11 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 		return $svg;
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
+
 	/**
 	 * Check if the specified comment is written by the author of the post commented on.
 	 *
@@ -502,9 +517,11 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 		return false;
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
+
 	/**
 	 * Filter comment reply link to not JS scroll
 	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
@@ -525,6 +542,7 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
+
 	/**
 	 * Filter Classes of wp_list_pages items to match menu items
 	 * Filter the class applied to wp_list_pages() items with children to match the menu class,
@@ -566,6 +584,7 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) {
+
 	/**
 	 * Get and Output Post Meta
 	 * If it's a single post, output the post meta values specified in the Customizer settings.
@@ -579,9 +598,11 @@ if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) {
 		echo twentytwenty_get_post_meta( $post_id, $location );
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
+
 	/**
 	 * Get Post meta
 	 * If it's a single post, output the post meta values specified in the Customizer settings.
@@ -793,9 +814,11 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 		return;
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
+
 	/**
 	 * Add a Sub Nav Toggle to the Main Menu
 	 *
@@ -843,6 +866,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
+
 	/**
 	 * Enqueue supplemental block editor styles.
 	 */
@@ -863,6 +887,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
+
 	/**
 	 * Enqueue classic editor styles.
 	 */
@@ -906,6 +931,7 @@ if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) 
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
+
 	/**
 	 * Block Editor Settings
 	 * Add custom colors and font sizes to the block editor
@@ -984,6 +1010,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
+
 	/**
 	 * Generate CSS
 	 *
@@ -1016,9 +1043,11 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 		return $return;
 
 	}
+
 }
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
+
 	/**
 	 * Get CSS Built from Customizer Options
 	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
@@ -1094,6 +1123,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		return ob_get_clean();
 
 	}
+
 }
 
 ?>
