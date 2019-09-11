@@ -129,8 +129,8 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
 
 		if ( $load_font_awesome ) {
-			wp_register_style( 'twentytwenty-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
-			$css_dependencies[] = 'twentytwenty-font-awesome';
+			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
+			$css_dependencies[] = 'font-awesome';
 		}
 
 		wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/style.css', $css_dependencies, $theme_version );
@@ -234,11 +234,14 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) :
 		}
 
 		// Check if we're showing comments.
-		if ( $post && ( ( 'post' == $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
+		if ( $post && ( ( 'post' === $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
 			$classes[] = 'showing-comments';
 		} else {
 			$classes[] = 'not-showing-comments';
 		}
+
+		// Check if avatars are visible.
+		$classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
 
 		// Slim page template class names (class = name - file suffix).
 		if ( is_page_template() ) {
@@ -644,7 +647,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) :
 							</span>
 							<span class="meta-text">
 								<?php
-								// Translators: %s = the author name
+								// Translators: %s = the author name.
 								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
 								?>
 							</span>
@@ -771,7 +774,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
 		// Add sub menu toggles to the main menu with toggles.
-		if ( 'main-menu' == $args->theme_location && isset( $args->show_toggles ) ) {
+		if ( 'main-menu' === $args->theme_location && isset( $args->show_toggles ) ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
@@ -791,7 +794,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) :
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
 			// Add sub menu icons to the main menu without toggles (the shortcuts menu).
-		} elseif ( 'shortcuts-menu' == $args->theme_location ) {
+		} elseif ( 'shortcuts-menu' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
@@ -990,7 +993,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 		*/
 
 		// Front-End Styles.
-		if ( 'front-end' == $type ) {
+		if ( 'front-end' === $type ) {
 
 			// Helper Variables.
 			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
@@ -1012,7 +1015,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 			endif;
 
 			// Block Editor Styles.
-		} elseif ( 'block-editor' == $type ) {
+		} elseif ( 'block-editor' === $type ) {
 
 			// Colors.
 			// Accent color.
@@ -1025,7 +1028,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) :
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
 			endif;
 
-		} elseif ( 'classic-editor' == $type ) {
+		} elseif ( 'classic-editor' === $type ) {
 
 			// Colors.
 			// Accent color.
