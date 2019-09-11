@@ -1,3 +1,13 @@
+<?php
+/**
+ * Displays the search icon and modal
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
+
+?>
 <div class="search-modal cover-modal" data-modal-target-string=".search-modal" aria-expanded="false">
 
 	<div class="search-modal-inner modal-inner">
@@ -14,10 +24,10 @@
 				<button type="submit" class="search-submit"><?php echo esc_html_x( 'Search', 'Submit button', 'twentytwenty' ); ?></button>
 			</form><!-- .search-form -->
 
-			<a href="#" class="toggle search-untoggle fill-children-primary" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
+			<button class="toggle search-untoggle fill-children-primary" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
 				<span class="screen-reader-text"><?php esc_html_e( 'Close search', 'twentytwenty' ); ?></span>
 				<?php twentytwenty_the_theme_svg( 'cross' ); ?>
-			</a><!-- .search-toggle -->
+			</button><!-- .search-toggle -->
 
 		</div><!-- .section-inner -->
 
