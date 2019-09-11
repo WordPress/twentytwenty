@@ -171,20 +171,20 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	/**
 	 * Register navigation menus uses wp_nav_menu in three places
 	 */
-    function twentytwenty_menus() {
+	function twentytwenty_menus() {
 
-        // Register menus
-        $locations = array(
-            'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
-            'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
-      			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
-            'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
-		    );
+		// Register menus
+		$locations = array(
+			'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
+			'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
+			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
+			'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
+		);
 
-        register_nav_menus( $locations );
-    }
+		register_nav_menus( $locations );
+	}
 
-    add_action( 'init', 'twentytwenty_menus' );
+	add_action( 'init', 'twentytwenty_menus' );
 
 }
 
@@ -344,7 +344,6 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 		return ob_get_clean();
 
 	}
-
 }
 
 if ( ! function_exists( 'wp_body_open' ) ) {
@@ -477,7 +476,6 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 		return $svg;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
@@ -499,13 +497,11 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 				return $comment->user_id === $post->post_author;
 
 			}
-
 		}
 
 		return false;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
@@ -791,14 +787,12 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 				return $meta_output;
 
 			}
-
 		}
 
 		// If we've reached this point, there's nothing to return, so we return nothing.
 		return;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
@@ -1022,7 +1016,6 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 		return $return;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
@@ -1094,15 +1087,13 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-      }
-
+			}
 		}
 
 		// Return the results.
 		return ob_get_clean();
 
 	}
-
 }
 
 ?>
