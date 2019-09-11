@@ -33,4 +33,17 @@
       <property name="is_theme" value="true"/>
     </properties>
   </rule>
+
+	<!-- Allow multiple parameters on one line for multi-line function calls. -->
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+    <properties>
+       <property name="allowMultipleArguments" value="true" />
+    </properties>
+	</rule>
+
+	<!-- Improve code readablilty by allowing the artguments after function call. -->
+  <rule ref="PEAR.Functions.FunctionCallSignature">
+  	<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+  	<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+	</rule>
 </ruleset>
