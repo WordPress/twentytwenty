@@ -268,6 +268,7 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 
 	/**
 	 * Add No-JS Class
+	 *
 	 * If we're missing JavaScript support, the HTML element will have a no-js class
 	 */
 	function twentytwenty_no_js_class() {
@@ -425,6 +426,7 @@ if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
 
 	/**
 	 * Output and Get Theme SVG
+	 *
 	 * Output and get the SVG markup for a icon in the TwentyTwenty_SVG_Icons class
 	 *
 	 * @param  string $svg_name SVG Icon name.
@@ -518,6 +520,7 @@ if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
 
 	/**
 	 * Filter comment reply link to not JS scroll
+	 *
 	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
 	 * makes it scroll to the wrong position on the page
 	 *
@@ -539,6 +542,7 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 
 	/**
 	 * Filter Classes of wp_list_pages items to match menu items
+	 *
 	 * Filter the class applied to wp_list_pages() items with children to match the menu class,
 	 * to simplify styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
 	 *
@@ -598,6 +602,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 
 	/**
 	 * Get Post meta
+	 *
 	 * If it's a single post, output the post meta values specified in the Customizer settings.
 	 *
 	 * @param  int    $post_id  The ID of the post for which the post meta should be output.
@@ -900,6 +905,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) {
 	/**
 	 * Output Customizer Settings in the Classic Editor
+	 *
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
 	 *
 	 * @param  array $mce_init An array with TinyMCE config.
@@ -926,6 +932,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 
 	/**
 	 * Block Editor Settings
+	 *
 	 * Add custom colors and font sizes to the block editor
 	 */
 	function twentytwenty_block_editor_settings() {
@@ -1041,6 +1048,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 	/**
 	 * Get CSS Built from Customizer Options
+	 *
 	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output
 	 *
 	 * @param string $type Whether to return CSS for the "front-end", "block-editor" or "classic-editor".
