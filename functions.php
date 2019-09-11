@@ -295,7 +295,6 @@ if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
 		echo esc_html( twentytwenty_get_custom_logo( $logo_theme_mod ) );
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
@@ -350,7 +349,6 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 		return ob_get_clean();
 
 	}
-
 }
 
 if ( ! function_exists( 'wp_body_open' ) ) {
@@ -361,7 +359,6 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 	function wp_body_open() {
 		do_action( 'wp_body_open' );
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
@@ -439,7 +436,6 @@ if ( ! function_exists( 'twentytwenty_the_theme_svg' ) ) {
 		echo twentytwenty_get_theme_svg( $svg_name, $color );
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
@@ -489,7 +485,6 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 		return $svg;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
@@ -517,7 +512,6 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 		return false;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
@@ -598,7 +592,6 @@ if ( ! function_exists( 'twentytwenty_the_post_meta' ) ) {
 		echo twentytwenty_get_post_meta( $post_id, $location );
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
@@ -814,7 +807,6 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 		return;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
@@ -1043,7 +1035,6 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 		return $return;
 
 	}
-
 }
 
 if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
@@ -1123,7 +1114,6 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		return ob_get_clean();
 
 	}
-
 }
 
 ?>
