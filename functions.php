@@ -634,8 +634,8 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 			$has_meta = false;
 
 			global $post;
-			$post = get_post( $post_id );
-			setup_postdata( $post );
+			$the_post = get_post( $post_id );
+			setup_postdata( $the_post );
 
 			ob_start();
 
@@ -783,8 +783,6 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 
 			}
 		}
-		// If we've reached this point, there's nothing to return, so we return nothing.
-		return;
 
 	}
 }
