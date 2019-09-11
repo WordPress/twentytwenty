@@ -33,4 +33,5 @@ if ( $posts_pagination ) { ?>
 
 	</div><!-- .pagination-wrapper -->
 
-<?php } ?>
+	<?php
+}

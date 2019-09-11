@@ -16,22 +16,22 @@ If you begin work on a Pull Request for an issue, please make a comment on the i
 
 ## Testing a Pull Request
 
-If you're using Git locally, you can test a pull request by pulling down the associated branch, creating a zip file of the contents, and uploading to your site. This repository includes all compiled files, so it should install just like any other uploaded theme. 
+If you're using Git locally, you can test a pull request by pulling down the associated branch, creating a zip file of the contents, and uploading to your site. This repository includes all compiled files, so it should install just like any other uploaded theme.
 
 If you're not already using Git, you may benefit from installing the [GitHub desktop application](https://desktop.github.com). This will allow you to [download the repository in one click](https://help.github.com/desktop/guides/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop/), keep it in sync, and easily [switch between different pull requests](https://help.github.com/desktop/guides/contributing-to-projects/accessing-a-pull-request-locally/). Once a pull request is selected in the application, create a zip file of the whole repository, and upload it to your site to test.
 
 ## Submitting Fixes
 
-To submit a fix, please [fork the repository](https://help.github.com/articles/fork-a-repo/) and submit a [pull request](https://help.github.com/articles/creating-a-pull-request/). In your pull request's  description, please explain your update and reference the associated issue you're fixing. 
+To submit a fix, please [fork the repository](https://help.github.com/articles/fork-a-repo/) and submit a [pull request](https://help.github.com/articles/creating-a-pull-request/). In your pull request's  description, please explain your update and reference the associated issue you're fixing.
 
 ## Best Practices
 
 Whatever you add, make sure you follow the theme review handbook requirements here: https://make.wordpress.org/themes/handbook/review/required/.
 
-No assets may be added without also including: 
-Source, such as a link. 
+No assets may be added without also including:
+Source, such as a link.
 Copyright information, license, or public domain declaration.
-The assets must be compatible with GPL version 2 or later, with the exception of fonts that may use SIL. 
+The assets must be compatible with GPL version 2 or later, with the exception of fonts that may use SIL.
 
 ### Commit Messages
 

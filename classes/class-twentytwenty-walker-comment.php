@@ -1,12 +1,17 @@
 <?php
+/**
+ * Custom comment walker for this theme.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
-/*
- ---------------------------------------------------------------------------------------------
-   CUSTOM COMMENT WALKER
-   A custom walker for comments, based on the walker in TwentyNineteen
-   --------------------------------------------------------------------------------------------- */
-
-if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
+if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
+	/**
+	 * CUSTOM COMMENT WALKER
+	 * A custom walker for comments, based on the walker in Twenty Nineteen.
+	 */
 	class TwentyTwenty_Walker_Comment extends Walker_Comment {
 
 		/**
@@ -18,7 +23,6 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 		 * @param int        $depth   Depth of the current comment.
 		 * @param array      $args    An array of arguments.
 		 */
-
 		protected function html5_comment( $comment, $depth, $args ) {
 
 			$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
@@ -73,10 +77,12 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 						comment_text();
 
-						if ( '0' == $comment->comment_approved ) :
+						if ( '0' == $comment->comment_approved ) {
 							?>
 							<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'twentytwenty' ); ?></p>
-						<?php endif; ?>
+							<?php
+						}
+						?>
 
 					</div><!-- .comment-content -->
 
@@ -99,7 +105,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 					$edit_comment_link = get_edit_comment_link() ? '<a class="edit-comment-link" href="' . get_edit_comment_link() . '">' . __( 'Edit', 'twentytwenty' ) . '</a>' : '';
 
-					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) :
+					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) {
 						?>
 
 						<footer class="comment-footer-meta color-secondary">
@@ -118,11 +124,13 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) :
 
 						</footer>
 
-					<?php endif; ?>
+						<?php
+					}
+					?>
 
 				</article><!-- .comment-body -->
 
 			<?php
 		}
 	}
-endif;
+}
