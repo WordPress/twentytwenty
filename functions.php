@@ -129,8 +129,8 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) :
 		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
 
 		if ( $load_font_awesome ) {
-			wp_register_style( 'twentytwenty-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
-			$css_dependencies[] = 'twentytwenty-font-awesome';
+			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, 1.0, 'all' );
+			$css_dependencies[] = 'font-awesome';
 		}
 
 		wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/style.css', $css_dependencies, $theme_version );
