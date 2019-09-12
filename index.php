@@ -86,7 +86,7 @@ get_header();
 
 	</div><!-- .posts -->
 
-	<?php get_template_part( 'pagination' ); ?>
+	<?php get_template_part( 'template-parts/pagination' ); ?>
 
 </main><!-- #site-content -->
 
