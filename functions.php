@@ -1045,6 +1045,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
+				twentytwenty_generate_css( '.footer-social a', 'background-color', $accent );
 			endif;
 
 			// Helper Classes.
