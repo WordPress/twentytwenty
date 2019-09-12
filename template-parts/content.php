@@ -23,7 +23,7 @@
 
 	?>
 
-	<div class="post-inner section-inner thin" id="post-inner">
+	<div class="post-inner section-inner thin">
 
 		<div class="entry-content">
 
@@ -48,7 +48,7 @@
 
 		<?php
 		// Single bottom post meta.
-		twentytwenty_the_post_meta( $post->ID, 'single-bottom' );
+		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
 		?>
 
 	</div><!-- .post-inner -->
