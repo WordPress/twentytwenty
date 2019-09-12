@@ -1042,7 +1042,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			// Colors.
 			// Element Specific.
 			if ( $accent && $accent !== $accent_default ) :
-				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
+				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 			endif;
@@ -1061,7 +1061,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			// Colors.
 			// Accent color.
 			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( '.editor-styles-wrapper a', 'color', $accent );
+				twentytwenty_generate_css( '.editor-styles-wrapper a, .editor-styles-wrapper .has-drop-cap:not(:focus):first-letter', 'color', $accent );
 				twentytwenty_generate_css( '.editor-styles-wrapper blockquote, .editor-styles-wrapper .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-file .wp-block-file__textlink', 'color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background', $accent );
