@@ -472,6 +472,36 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 	}
 }
 
+if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
+
+	/**
+	 * Filters the archive title and styles the word before the first colon.
+	 *
+	 * @param string $title Current archive title.
+	 */
+	function twentytwenty_get_the_archive_title( $title ) {
+
+		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
+			array(
+				'pattern'     => '/(\A[^\:]+\:)/',
+				'replacement' => '<span class="color-accent">$1</span>'
+			)
+		);
+
+		if ( empty( $regex ) ) {
+
+			return $title;
+
+		}
+
+		return preg_replace( $regex['pattern'], $regex['replacement'], $title );
+
+	}
+
+	add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+}
+
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 	/**
 	 * Check if the specified comment is written by the author of the post commented on.
