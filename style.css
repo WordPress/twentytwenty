@@ -2623,6 +2623,38 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
+.navigation.pagination {
+	padding-top: 3rem;
+}
+
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin: -2.5rem 0 0 -2.5rem;
+}
+
+.nav-links > * {
+	margin: 2.5rem 0 0 2.5rem;
+}
+
+.pagination a {
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	text-decoration: underline;
+}
+
+.pagination .dots {
+	transform: translateY( -.3em );
+	color:#6D6D6D;
+}
+
+.nav-short {
+	display: none;
+}
 
 /* --------------------------------------------------------------------------------------------- */
 /*	14. Error 404
@@ -3463,6 +3495,12 @@ ul.footer-social li {
 	}
 
 	/* Site Pagination ----------------------- */
+
+	/* Display the full text for Newer and Older Posts. */
+	.nav-short {
+		display: inline;
+	}
+
 	/* Widgets ------------------------------- */
 
 	.widget-title {
@@ -3728,6 +3766,41 @@ ul.footer-social li {
 
 	/* Comments ------------------------------ */
 	/* Site Pagination ----------------------- */
+
+	.pagination .nav-links {
+		display: flex;
+		flex-direction: row;
+		font-size: 2.4rem;
+		margin: -2.5rem 0 0 -2.5rem;
+		letter-spacing: -0.9px;
+	}
+
+	.pagination .next,
+	.pagination .prev {
+		display: inline;
+	}
+
+	.pagination .prev {
+		left: 0;
+		justify-self: flex-start;
+		margin-right: auto;
+	}
+
+	.pagination .next {
+		right: 0;
+		text-align: right;
+		justify-self: flex-end;
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-next .page-numbers:first-child {
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-prev .page-numbers:last-child {
+		margin-right: auto;
+	}
+
 	/* Site Footer --------------------------- */
 
 	#site-footer {
