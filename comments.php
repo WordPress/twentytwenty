@@ -67,7 +67,7 @@ if ( $comments ) {
 			}
 			?>
 
-			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>">
+			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
 				<?php echo wp_kses_post( $comment_pagination ); ?>
 			</nav>
 

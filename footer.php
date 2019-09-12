@@ -32,43 +32,51 @@
 
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
 
-						<ul class="footer-menu reset-list-style">
-							<?php
-							wp_nav_menu(
-								array(
-									'container'      => '',
-									'depth'          => 1,
-									'items_wrap'     => '%3$s',
-									'theme_location' => 'footer-menu',
-								)
-							);
-							?>
-						</ul><!-- .site-nav -->
+						<nav aria-label="<?php esc_attr_e( 'Footer menu', 'twentytwenty' ); ?>">
+
+							<ul class="footer-menu reset-list-style">
+								<?php
+								wp_nav_menu(
+									array(
+										'container'      => '',
+										'depth'          => 1,
+										'items_wrap'     => '%3$s',
+										'theme_location' => 'footer-menu',
+									)
+								);
+								?>
+							</ul>
+
+						</nav><!-- .site-nav -->
 
 						<?php if ( $has_social_menu ) { ?>
 
 							<div class="footer-social-wrapper">
 
-								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
+								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
-									<?php
-									wp_nav_menu(
-										array(
-											'theme_location' => 'social-menu',
-											'container'   => '',
-											'container_class' => '',
-											'items_wrap'  => '%3$s',
-											'menu_id'     => '',
-											'menu_class'  => '',
-											'depth'       => 1,
-											'link_before' => '<span class="screen-reader-text">',
-											'link_after'  => '</span>',
-											'fallback_cb' => '',
-										)
-									);
-									?>
+									<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
-								</ul><!-- .social-menu -->
+										<?php
+										wp_nav_menu(
+											array(
+												'theme_location' => 'social-menu',
+												'container' => '',
+												'container_class' => '',
+												'items_wrap' => '%3$s',
+												'menu_id' => '',
+												'menu_class' => '',
+												'depth'   => 1,
+												'link_before' => '<span class="screen-reader-text">',
+												'link_after' => '</span>',
+												'fallback_cb' => '',
+											)
+										);
+										?>
+
+									</ul>
+
+								</nav><!-- .social-menu -->
 
 							</div><!-- .footer-social-wrapper -->
 
