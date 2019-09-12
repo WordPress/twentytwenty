@@ -138,9 +138,7 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-comment.p
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
-
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
-
 	/**
 	 * Register and Enqueue Styles.
 	 */

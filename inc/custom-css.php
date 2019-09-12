@@ -73,19 +73,20 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 			// Colors.
 			// Element Specific.
-			if ( $accent && $accent !== $accent_default ) :
+			if ( $accent && $accent !== $accent_default ) {
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-			endif;
+				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
+			}
 
 			// Helper Classes.
-			if ( $accent && $accent !== $accent_default ) :
+			if ( $accent && $accent !== $accent_default ) {
 				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
 				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
 				twentytwenty_generate_css( '.border-color-accent, .border-color-accent-hover:hover', 'border-color', $accent );
 				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
-			endif;
+			}
 
 			// Block Editor Styles.
 		} elseif ( 'block-editor' === $type ) {
@@ -116,5 +117,3 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 	}
 }
-
-
