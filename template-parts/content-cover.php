@@ -73,7 +73,7 @@
 			</div><!-- .cover-header-inner -->
 		</div><!-- .cover-header-inner-wrapper -->
 	</div><!-- .cover-header -->
-	
+
 	<div class="post-inner section-inner thin" id="post-inner">
 
 		<div class="entry-content">

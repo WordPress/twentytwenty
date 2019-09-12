@@ -20,7 +20,7 @@
 	get_template_part( 'template-parts/entry-header' );
 
 	get_template_part( 'template-parts/featured-image' );
-	
+
 	?>
 
 	<div class="post-inner section-inner thin" id="post-inner">
@@ -40,7 +40,7 @@
 					'after'  => '</nav>',
 				)
 			);
-			
+
 			edit_post_link();
 			?>
 
@@ -58,7 +58,7 @@
 	if ( is_single() ) {
 
 		get_template_part( 'template-parts/navigation' );
-		
+
 	}
 
 	/**
