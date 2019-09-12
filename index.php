@@ -41,7 +41,7 @@ get_header();
 
 	if ( $archive_title || $archive_subtitle ) :
 		?>
-		
+
 		<header class="archive-header has-text-align-center">
 
 			<div class="archive-header-inner section-inner medium">
@@ -53,7 +53,7 @@ get_header();
 				<?php if ( $archive_subtitle ) : ?>
 					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
 				<?php endif; ?>
-			
+
 			</div><!-- .archive-header-inner -->
 
 		</header><!-- .archive-header -->
@@ -63,17 +63,16 @@ get_header();
 	<div class="posts">
 
 		<?php
-		if ( have_posts() ) :
+		if ( have_posts() ) {
 
-			while ( have_posts() ) :
+			while ( have_posts() ) {
 				the_post();
 
-				 get_template_part( 'content', get_post_type() );
+				get_template_part( 'content', get_post_type() );
 
-			endwhile;
-
-			elseif ( is_search() ) :
-				?>
+			}
+		} elseif ( is_search() ) {
+			?>
 
 			<div class="no-search-results-form">
 
@@ -81,12 +80,15 @@ get_header();
 
 			</div><!-- .no-search-results -->
 
-			<?php endif; ?>
-	
+			<?php
+		}
+		?>
+
 	</div><!-- .posts -->
 
-	<?php get_template_part( 'pagination' ); ?>
+	<?php get_template_part( 'template-parts/pagination' ); ?>
 
 </main><!-- #site-content -->
 
-<?php get_footer(); ?>
+<?php
+get_footer();

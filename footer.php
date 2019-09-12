@@ -27,7 +27,8 @@
 				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
 				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
 
-				if ( $has_footer_menu ) { ?>
+				if ( $has_footer_menu ) {
+					?>
 
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
 
@@ -45,7 +46,7 @@
 								);
 								?>
 							</ul>
-
+							
 						</nav><!-- .site-nav -->
 
 						<?php if ( $has_social_menu ) { ?>
@@ -53,7 +54,7 @@
 							<div class="footer-social-wrapper">
 
 								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
-
+								
 									<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
 										<?php
@@ -74,7 +75,7 @@
 										?>
 
 									</ul>
-									
+
 								</nav><!-- .social-menu -->
 
 							</div><!-- .footer-social-wrapper -->
@@ -117,19 +118,23 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">&copy; <?php echo esc_html( 
-							date_i18n( 
-								/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
-								_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' ) 
-							) 
-						); ?> 
+						<p class="footer-copyright">&copy; 
+							<?php
+							echo esc_html(
+								date_i18n(
+									/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
+									_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' )
+								)
+							);
+							?>
+
 							<a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>
 						</p>
 
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
+							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
 							?>
 						</p><!-- .theme-credits -->
 

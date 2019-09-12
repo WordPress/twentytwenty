@@ -1,23 +1,25 @@
-/*---------------------------------------------------------------------------------
+/*
+Theme Name: Twenty Twenty
+Text Domain: twentytwenty
+Version: 0.1
+Description: Default theme for Twenty Twenty
+Tags: 
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Theme URI: https://wordpress.org/themes/twentytwenty/
+License: GNU General Public License version 2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-	Theme Name: Twenty Twenty
-    Text Domain: twentytwenty
-	Version: 0.1
-	Description: 
-	Tags: 
-	Author: the WordPress team
-	Author URI: https://wordpress.org/
-	Theme URI: https://wordpress.org/themes/twentytwenty/
-	License: GNU General Public License version 2.0
-	License URI: http://www.gnu.org/licenses/gpl-2.0.html
-	
-	All files, unless otherwise stated, are released under the GNU General Public License
-	version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+All files, unless otherwise stated, are released under the GNU General Public License
+version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
 
-	This theme, like WordPress, is licensed under the GPL.
-	Use it to make something cool, have fun, and share what you've learned with others.
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
 
------------------------------------------------------------------------------------
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
 
 	0. 	CSS Reset
 	1. 	Document Setup
@@ -2621,6 +2623,38 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
+.navigation.pagination {
+	padding-top: 3rem;
+}
+
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin: -2.5rem 0 0 -2.5rem;
+}
+
+.nav-links > * {
+	margin: 2.5rem 0 0 2.5rem;
+}
+
+.pagination a {
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	text-decoration: underline;
+}
+
+.pagination .dots {
+	transform: translateY( -.3em );
+	color:#6D6D6D;
+}
+
+.nav-short {
+	display: none;
+}
 
 /* --------------------------------------------------------------------------------------------- */
 /*	14. Error 404
@@ -3461,6 +3495,12 @@ ul.footer-social li {
 	}
 
 	/* Site Pagination ----------------------- */
+
+	/* Display the full text for Newer and Older Posts. */
+	.nav-short {
+		display: inline;
+	}
+
 	/* Widgets ------------------------------- */
 
 	.widget-title {
@@ -3726,6 +3766,41 @@ ul.footer-social li {
 
 	/* Comments ------------------------------ */
 	/* Site Pagination ----------------------- */
+
+	.pagination .nav-links {
+		display: flex;
+		flex-direction: row;
+		font-size: 2.4rem;
+		margin: -2.5rem 0 0 -2.5rem;
+		letter-spacing: -0.9px;
+	}
+
+	.pagination .next,
+	.pagination .prev {
+		display: inline;
+	}
+
+	.pagination .prev {
+		left: 0;
+		justify-self: flex-start;
+		margin-right: auto;
+	}
+
+	.pagination .next {
+		right: 0;
+		text-align: right;
+		justify-self: flex-end;
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-next .page-numbers:first-child {
+		margin-left: auto;
+	}
+
+	.pagination-wrapper.only-prev .page-numbers:last-child {
+		margin-right: auto;
+	}
+
 	/* Site Footer --------------------------- */
 
 	#site-footer {
@@ -3759,7 +3834,7 @@ ul.footer-social li {
 
 	/* Element Base -------------------------- */
 
-	h1, .heading-size-1 { font-size: 9.6rem; }
+	h1, .heading-size-1 { font-size: 8.4rem; }
 	h2, .heading-size-2 { font-size: 4.8rem; }
 	h3, .heading-size-3 { font-size: 4rem; }
 	h4, .heading-size-4 { font-size: 3.2rem; }
