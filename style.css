@@ -2177,6 +2177,7 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 .wp-block-pullquote blockquote {
 	border: none;
 	padding: 0;
+	margin: 0;
 }
 
 .wp-block-pullquote p {
@@ -3381,11 +3382,11 @@ ul.footer-social li {
 	}
 
 	.alignleft {
-		margin: .5rem 2.5rem 2.5rem 0;
+		margin-left: calc( ( 100vw - 58rem - 8rem ) / -2 );
 	}
 
 	.alignright {
-		margin: .5rem 0 2.5rem 2.5rem;
+		margin-right: calc( ( 100vw - 58rem - 8rem ) / -2 );
 	}
 
 	.alignwide {
@@ -3939,10 +3940,17 @@ ul.footer-social li {
 
 	/* ALIGNMENT CLASSES */
 
+	.alignleft {
+		margin-left: -31rem;
+	}
+
+	.alignright {
+    margin-right: -31rem;
+	}
+
 	.alignwide {
 		max-width: 120rem;
 		left: calc( 50% - 60rem );
 		width: 120rem;
 	}
-
 }
