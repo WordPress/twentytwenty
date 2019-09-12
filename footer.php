@@ -46,7 +46,7 @@
 								);
 								?>
 							</ul>
-							
+
 						</nav><!-- .site-nav -->
 
 						<?php if ( $has_social_menu ) { ?>
@@ -54,21 +54,21 @@
 							<div class="footer-social-wrapper">
 
 								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
-								
+
 									<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
 										<?php
 										wp_nav_menu(
 											array(
 												'theme_location' => 'social-menu',
-												'container'   => '',
+												'container' => '',
 												'container_class' => '',
-												'items_wrap'  => '%3$s',
-												'menu_id'     => '',
-												'menu_class'  => '',
-												'depth'       => 1,
+												'items_wrap' => '%3$s',
+												'menu_id' => '',
+												'menu_class' => '',
+												'depth'   => 1,
 												'link_before' => '<span class="screen-reader-text">',
-												'link_after'  => '</span>',
+												'link_after' => '</span>',
 												'fallback_cb' => '',
 											)
 										);
