@@ -2168,6 +2168,11 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	padding: 0;
 }
 
+.wp-block-pullquote.alignleft,
+.wp-block-pullquote.alignright {
+	max-width: 100%;
+}
+
 @supports ( font-variation-settings: normal ) {
 	.wp-block-pullquote { 
 		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
@@ -2339,21 +2344,6 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 .aligncenter img {
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.alignleft,
-.alignright {
-	max-width: 50%;
-}
-
-.alignleft {
-	float: left;
-	margin: .3rem 2rem 2rem 0;
-}
-
-.alignright {
-	float: right;
-	margin: .3rem 0 2rem 2rem;
 }
 
 
@@ -3013,6 +3003,37 @@ ul.footer-social li {
 /*	17. Media Queries
 /* --------------------------------------------------------------------------------------------- */
 
+
+@media ( min-width: 400px ) {
+
+	/* Block: Pullquote -------------------------- */
+
+	/* STYLE: DEFAULT */
+
+	.wp-block-pullquote.alignleft,
+	.wp-block-pullquote.alignright {
+		max-width: 350px;
+	}
+	
+	/* Entry Content ------------------------- */
+
+	/* ALIGNMENT CLASSES */
+
+	.alignleft,
+	.alignright {
+		max-width: 50%;
+	}
+
+	.alignleft {
+		float: left;
+		margin: .3rem 2rem 2rem 0;
+	}
+
+	.alignright {
+		float: right;
+		margin: .3rem 0 2rem 2rem;
+	}
+}
 
 @media ( min-width: 700px ) {
 
