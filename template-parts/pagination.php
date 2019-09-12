@@ -1,8 +1,8 @@
 <?php
 /**
- * Pagination for archives
+ * A template partial to output pagination for the Twenty Twenty default theme.
  *
- * This is the template that displays the pagination.
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
@@ -39,12 +39,11 @@ if ( strpos( $posts_pagination, 'prev page-numbers' ) === false ) {
 	$pagination_classes = '';
 }
 
-if ( $posts_pagination ) {
-	?>
+if ( $posts_pagination ) { ?>
 
-	<div class="pagination-wrapper section-inner<?php echo esc_attr( $pagination_classes ); ?>">
+	<div class="pagination-wrapper section-inner">
 
-		<?php echo $posts_pagination; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php echo $posts_pagination; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped during generation. ?>
 
 	</div><!-- .pagination-wrapper -->
 

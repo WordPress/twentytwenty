@@ -1,20 +1,28 @@
 <?php
+/**
+ * Customizer settings for this theme.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
-/*
- ---------------------------------------------------------------------------------------------
-   CUSTOMIZER SETTINGS
-   --------------------------------------------------------------------------------------------- */
-
-if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
+if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
+	/**
+	 * CUSTOMIZER SETTINGS
+	 */
 	class TwentyTwenty_Customize {
 
+		/**
+		 * Register customizer options.
+		 *
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
 		public static function twentytwenty_register( $wp_customize ) {
 
-			/*
-			 ---------------------------------------------------------------------------------
-			 * Site Title & Description
-			 * --------------------------------------------------------------------------------- */
-
+			/**
+			 * Site Title & Description.
+			 * */
 			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
@@ -34,13 +42,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 				)
 			);
 
-			/*
-			 ---------------------------------------------------------------------------------
+			/**
 			 * Site Identity
-			 * --------------------------------------------------------------------------------- */
+			 */
 
 			/* 2X Header Logo ---------------- */
-
 			$wp_customize->add_setting(
 				'twentytwenty_retina_logo',
 				array(
@@ -61,14 +67,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 				)
 			);
 
-			/*
-			 ---------------------------------------------------------------------------------
-			 * Colors
-			 * --------------------------------------------------------------------------------- */
-
+			/**
+			 * Colors.
+			*/
 			$twentytwenty_accent_color_options = self::twentytwenty_get_color_options();
 
-			// Loop over the color options and add them to the customizer
+			// Loop over the color options and add them to the customizer.
 			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
 
 				$wp_customize->add_setting(
@@ -95,13 +99,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 
 			}
 
-			// Update background color with postMessage, so inline CSS output is updated as well
+			// Update background color with postMessage, so inline CSS output is updated as well.
 			$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
 
-			/*
-			 ---------------------------------------------------------------------------------
+			/**
 			 * Site Header Options
-			 * --------------------------------------------------------------------------------- */
+			 * */
 
 			$wp_customize->add_section(
 				'twentytwenty_site_header_options',
@@ -135,11 +138,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 				)
 			);
 
-			/*
-			 ---------------------------------------------------------------------------------
-			 * Template: Cover Template
-			 * --------------------------------------------------------------------------------- */
-
+			/**
+			 * Template: Cover Template.
+			 */
 			$wp_customize->add_section(
 				'twentytwenty_cover_template_options',
 				array(
@@ -313,12 +314,21 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 
 			/* Sanitation Functions ---------- */
 
-			// Sanitize boolean for checkbox
+			/**
+			 * Sanitize boolean for checkbox.
+			 *
+			 * @param bool $checked Wethere or not a blox is checked.
+			 */
 			function twentytwenty_sanitize_checkbox( $checked ) {
-				return ( ( isset( $checked ) && true == $checked ) ? true : false );
+				return ( ( isset( $checked ) && true === $checked ) ? true : false );
 			}
 
-			// Sanitize select
+			/**
+			 * Sanitize select.
+			 *
+			 * @param string $input The input from the setting.
+			 * @param object $setting The selected setting.
+			 */
 			function twentytwenty_sanitize_select( $input, $setting ) {
 				$input   = sanitize_key( $input );
 				$choices = $setting->manager->get_control( $setting->id )->choices;
@@ -327,8 +337,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 
 		}
 
-		// Return the sitewide color options included
-		// Note: These values are shared between the block editor styles and the customizer, and abstracted to this function
+		/**
+		 * Return the sitewide color options included.
+		 * Note: These values are shared between the block editor styles and the customizer,
+		 * and abstracted to this function.
+		 */
 		public static function twentytwenty_get_color_options() {
 			return apply_filters(
 				'twentytwenty_accent_color_options',
@@ -344,50 +357,28 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) :
 
 	}
 
-	// Setup the Theme Customizer settings and controls
+	// Setup the Theme Customizer settings and controls.
 	add_action( 'customize_register', array( 'TwentyTwenty_Customize', 'twentytwenty_register' ) );
 
-endif;
+}
 
-
-/*
- ---------------------------------------------------------------------------------------------
-   CUSTOM CONTROLS
-   --------------------------------------------------------------------------------------------- */
-
-
-if ( class_exists( 'WP_Customize_Control' ) ) :
-
-	/* Separator Control --------------------- */
-
-	if ( ! class_exists( 'TwentyTwenty_Separator_Control' ) ) :
-		class TwentyTwenty_Separator_Control extends WP_Customize_Control {
-
-			public function render_content() {
-				echo '<hr/>';
-			}
-
-		}
-	endif;
-
-endif;
-
-
-/*
- ---------------------------------------------------------------------------------------------
-   PARTIAL REFRESH FUNCTIONS
-   --------------------------------------------------------------------------------------------- */
-
-/* Render the site title for the selective refresh partial */
-if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) :
+/**
+ * PARTIAL REFRESH FUNCTIONS
+ * */
+if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) {
+	/**
+	 * Render the site title for the selective refresh partial.
+	 */
 	function twentytwenty_customize_partial_blogname() {
 		bloginfo( 'name' );
 	}
-endif;
+}
 
-/* Render the site description for the selective refresh partial */
-if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) :
+if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
+	/**
+	 * Render the site description for the selective refresh partial.
+	 */
 	function twentytwenty_customize_partial_blogdescription() {
 		bloginfo( 'description' );
 	}
-endif;
+}
