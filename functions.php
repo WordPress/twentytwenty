@@ -140,7 +140,6 @@ require get_template_directory() . '/inc/custom-css.php';
 
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
-
 	/**
 	 * Register and Enqueue Styles.
 	 */
