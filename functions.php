@@ -358,7 +358,7 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
 	function twentytwenty_skip_link() {
-		echo '<a class="skip-link faux-button" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
+		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
 	}
 
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
@@ -1045,6 +1045,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
+				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
 			endif;
 
 			// Helper Classes.
