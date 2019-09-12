@@ -74,7 +74,7 @@ get_header();
 		} elseif ( is_search() ) {
 			?>
 
-			<div class="no-search-results-form">
+			<div class="no-search-results-form section-inner thin">
 
 				<?php get_search_form(); ?>
 
