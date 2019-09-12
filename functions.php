@@ -1041,9 +1041,6 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		// Front-End Styles.
 		if ( 'front-end' === $type ) {
 
-			// Helper Variables.
-			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
-
 			// Colors.
 			// Element Specific.
 			if ( $accent && $accent !== $accent_default ) :
