@@ -5,9 +5,10 @@
 /* Structure --------------------------------- */
 
 body#tinymce.wp-editor { 
+	background: #F5EFE0;
 	color: #1A1B1F;
 	font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 18px;
+	font-size: 18px;
 	margin: 0 auto;
 	max-width: 100%;
 	width: 580px;

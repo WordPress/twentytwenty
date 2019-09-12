@@ -850,7 +850,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
-  
+
 	/**
 	 * Enqueue classic editor styles.
 	 */
@@ -869,7 +869,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) {
-  
+
 	/**
 	 * Output Customizer Settings in the Classic Editor.
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
@@ -974,7 +974,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
-  
+
 	/**
 	 * Generate CSS.
 	 *
@@ -1018,8 +1018,13 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables.
-		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
-		$accent_default = '#CD2653';
+		$accent          = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
+		$accent_default  = '#CD2653';
+		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
+
+		// Background.
+		$background         = sanitize_hex_color_no_hash( get_theme_mod( 'background_color' ) );
+		$background_default = 'f5efe0';
 
 		ob_start();
 
@@ -1069,6 +1074,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'border-color', $accent );
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
 			}
+
+			// Background color.
+			if ( $background && $background !== $background_default ) {
+				twentytwenty_generate_css( '.editor-styles-wrapper', 'background', '#' . $background );
+			}
 		} elseif ( 'classic-editor' === $type ) {
 
 			// Colors.
@@ -1077,6 +1087,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
+			}
+
+			// Background color.
+			if ( $background && $background !== $background_default ) {
+				twentytwenty_generate_css( 'body#tinymce.wp-editor', 'background', '#' . $background );
 			}
 		}
 
