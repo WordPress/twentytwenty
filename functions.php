@@ -484,7 +484,7 @@ if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
 		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
 			array(
 				'pattern'     => '/(\A[^\:]+\:)/',
-				'replacement' => '<span class="color-accent">$1</span>'
+				'replacement' => '<span class="color-accent">$1</span>',
 			)
 		);
 
