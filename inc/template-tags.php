@@ -335,7 +335,7 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	/**
-	 * Add a Sub Nav Toggle to the Main Menu.
+	 * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
 	 *
 	 * @param array  $args An array of arguments.
 	 * @param string $item Menu item.
@@ -343,8 +343,8 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	 */
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
-		// Add sub menu toggles to the main menu with toggles.
-		if ( 'main-menu' === $args->theme_location && isset( $args->show_toggles ) ) {
+		// Add sub menu toggles to the Expanded Menu with toggles.
+		if ( 'expanded' === $args->theme_location && isset( $args->show_toggles ) || 'mobile' === $args->theme_location && isset( $args->show_toggles ) ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
@@ -363,8 +363,8 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			// Close the wrapper.
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
-			// Add sub menu icons to the main menu without toggles (the shortcuts menu).
-		} elseif ( 'shortcuts-menu' === $args->theme_location ) {
+			// Add sub menu icons to the primary menu without toggles.
+		} elseif ( 'primary' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
