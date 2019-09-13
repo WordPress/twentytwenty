@@ -486,3 +486,26 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 
 }
+
+/**
+ * Search Form
+ * 
+ * Overwrite default search form to enhance it
+ */
+if ( !function_exists( 'twentytwenty_search_form' ) ) {
+
+	function twentytwenty_search_form( $form ) {
+		$form = '<form role="search" method="get" class="search-form" action="/">
+			<label class="section-inner">
+				<span class="screen-reader-text">Search for:</span>
+				<input type="search" class="search-field" placeholder="Search …" value="' . get_search_query() . '" name="s">
+			</label>
+			<input type="submit" class="search-submit" value="Search">
+		</form>';
+
+		return $form;
+	}
+
+	add_filter( 'get_search_form', 'twentytwenty_search_form' );
+
+}
