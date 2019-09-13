@@ -100,8 +100,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			}
 
 			// Update background color with postMessage, so inline CSS output is updated as well.
-			$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
-
+			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
+		
 			/**
 			 * Site Header Options
 			 * */
