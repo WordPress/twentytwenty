@@ -16,17 +16,17 @@ if ( ! class_exists( 'TwentyTwenty_Color' ) ) {
 		/**
 		 * The HEX color.
 		 *
-		 * @access private
-		 * @since 1.0
+		 * @access protected
+		 * @since 1.0.0
 		 * @var string
 		 */
-		private $hex = '';
+		protected $hex = '';
 
 		/**
 		 * Sets the $hex property of this object.
 		 *
 		 * @access public
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $hex The HEX color.
 		 * @return void
 		 */
@@ -38,7 +38,7 @@ if ( ! class_exists( 'TwentyTwenty_Color' ) ) {
 		 * Sanitizes a HEX color.
 		 *
 		 * @access public
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $color The color to sanitize.
 		 * @return string
 		 */
@@ -59,7 +59,7 @@ if ( ! class_exists( 'TwentyTwenty_Color' ) ) {
 		 * Get RGB as an array from $this->hex.
 		 *
 		 * @access public
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @return array
 		 */
 		public function get_rgb() {
@@ -77,7 +77,7 @@ if ( ! class_exists( 'TwentyTwenty_Color' ) ) {
 		 * The sRGB space is used to properly calculate relative luminances.
 		 *
 		 * @access public
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @return array
 		 */
 		public function get_srgb() {
