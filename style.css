@@ -889,7 +889,7 @@ button.toggle {
 /* COLOR */
 
 .color-accent,
-.color-accent:hover { color: #CD2653; }
+.color-accent-hover:hover { color: #CD2653; }
 
 /* BACKGROUND COLOR */
 
@@ -2844,7 +2844,7 @@ div.comment:first-of-type {
 
 /* Widget: Search ---------------------------- */
 
-.widget_search label,
+.widget_search label span,
 .widget_search img {
 	display: none;
 }
