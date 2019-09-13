@@ -93,8 +93,8 @@
 
 									wp_nav_menu(
 										array(
-											'container'      => '',
-											'items_wrap'     => '%3$s',
+											'container'  => '',
+											'items_wrap' => '%3$s',
 											'theme_location' => 'primary',
 										)
 									);
@@ -104,7 +104,7 @@
 									wp_list_pages(
 										array(
 											'match_menu_classes' => true,
-											'title_li'           => false,
+											'title_li' => false,
 										)
 									);
 
