@@ -43,6 +43,3 @@ class TwentyTwenty_Script_Loader {
 	}
 
 }
-
-$loader = new TwentyTwenty_Script_Loader();
-add_filter( 'script_loader_tag', [ $loader, 'filter_script_loader_tag' ], 10, 2 );
