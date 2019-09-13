@@ -56,6 +56,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		$accent_default  = '#CD2653';
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
+		// Background.
+		$background         = sanitize_hex_color_no_hash( get_theme_mod( 'background_color' ) );
+		$background_default = 'f5efe0';
+
 		ob_start();
 
 		/**
@@ -101,6 +105,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'border-color', $accent );
 				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
 			}
+
+			// Background color.
+			if ( $background && $background !== $background_default ) {
+				twentytwenty_generate_css( '.editor-styles-wrapper', 'background', '#' . $background );
+			}
 		} elseif ( 'classic-editor' === $type ) {
 
 			// Colors.
@@ -109,6 +118,11 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
+			}
+
+			// Background color.
+			if ( $background && $background !== $background_default ) {
+				twentytwenty_generate_css( 'body#tinymce.wp-editor', 'background', '#' . $background );
 			}
 		}
 
