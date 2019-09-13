@@ -466,6 +466,13 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 			$classes[] = basename( get_page_template_slug(), '.php' );
 		}
 
+		// Get the luminance of the background color.
+		$background_color = new TwentyTwenty_Color();
+		$background_color->set_hex( get_theme_mod( 'background_color', '#f5efe0' ) );
+
+		// Add a class depending on the background color's relative luminance.
+		$classes[] = ( 0.5 < $background_color->get_luminance() ) ? 'background-color-light' : 'background-color-dark';
+
 		return $classes;
 
 	}
