@@ -165,11 +165,8 @@ twentytwenty.toggles = {
 					$( '*[data-toggle-target="' + targetString + '"]' ).toggleClass( 'active' );
 				}
 
-				// Toggle aria-expanded on the target
-				twentytwentyToggleAttribute( $target, 'aria-expanded', 'true', 'false' );
-
-				// Toggle aria-pressed on the toggle
-				twentytwentyToggleAttribute( $toggle, 'aria-pressed', 'true', 'false' );
+				// Toggle aria-expanded on the toggle
+				twentytwentyToggleAttribute( $toggle, 'aria-expanded', 'true', 'false' );
 
 				// Toggle body class
 				if ( $toggle.data( 'toggle-body-class' ) ) {
@@ -208,8 +205,6 @@ twentytwenty.toggles = {
 				}
 
 			}, timeOutTime );
-
-			return false;
 
 		} );
 	},
@@ -760,7 +755,7 @@ twentytwenty.focusManagement = {
 	},
 
 	focusLoop: function() {
-		$( '*' ).on( 'focus', function() {
+		$( '.cover-modal *:not(.svg):not(.path)' ).on( 'focus', function() {
 			if ( $( '.menu-modal' ).is( '.active' ) ) {
 				if ( ! $( this ).parents( '.menu-modal' ).length && ! $( this ).parents( '.header-toggles' ).length ) {
 					$( '.nav-toggle' ).focus();
