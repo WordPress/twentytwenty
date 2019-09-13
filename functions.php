@@ -9,6 +9,21 @@
  * @since 1.0.0
  */
 
+/**
+ * Table of Contents:
+ * Theme Support
+ * Required Files
+ * Register Styles
+ * Register Scripts
+ * Register Menus
+ * Custom Logo
+ * WP Body Open
+ * Register Sidebars
+ * Enqueue Block editor assets
+ * Classic Editor Style
+ * Block editor settings
+ */
+
 if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -105,8 +120,11 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
  * REQUIRED FILES
  * Include required files.
  */
+require get_template_directory() . '/inc/template-tags.php';
+
 // Handle SVG icons.
 require get_template_directory() . '/classes/class-twentytwenty-svg-icons.php';
+require get_template_directory() . '/inc/svg-icons.php';
 
 // Handle Customizer settings.
 require get_template_directory() . '/classes/class-twentytwenty-customize.php';
@@ -116,6 +134,9 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
+
+// Custom CSS.
+require get_template_directory() . '/inc/custom-css.php';
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	/**
@@ -184,96 +205,6 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	}
 
 	add_action( 'init', 'twentytwenty_menus' );
-
-}
-
-if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
-	/**
-	 * Add conditional body classes.
-	 *
-	 * @param string $classes Classes added to the body tag.
-	 */
-	function twentytwenty_body_classes( $classes ) {
-
-		global $post;
-		$post_type = isset( $post ) ? $post->post_type : false;
-
-		// Check whether we're singular.
-		if ( is_singular() ) {
-			$classes[] = 'singular';
-		}
-
-		// Check whether the current page should have an overlay header.
-		if ( is_page_template( array( 'template-cover.php' ) ) ) {
-			$classes[] = 'overlay-header';
-		}
-
-		// Check whether the current page has full-width content.
-		if ( is_page_template( array( 'template-full-width.php' ) ) ) {
-			$classes[] = 'has-full-width-content';
-		}
-
-		// Check for disabled search.
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
-			$classes[] = 'disable-search-modal';
-		}
-
-		// Check for post thumbnail.
-		if ( is_singular() && has_post_thumbnail() ) {
-			$classes[] = 'has-post-thumbnail';
-		} elseif ( is_singular() ) {
-			$classes[] = 'missing-post-thumbnail';
-		}
-
-		// Check whether we're in the customizer preview.
-		if ( is_customize_preview() ) {
-			$classes[] = 'customizer-preview';
-		}
-
-		// Check if posts have single pagination.
-		if ( is_single() && ( get_next_post() || get_previous_post() ) ) {
-			$classes[] = 'has-single-pagination';
-		} else {
-			$classes[] = 'has-no-pagination';
-		}
-
-		// Check if we're showing comments.
-		if ( $post && ( ( 'post' === $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
-			$classes[] = 'showing-comments';
-		} else {
-			$classes[] = 'not-showing-comments';
-		}
-
-		// Check if avatars are visible.
-		$classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
-
-		// Slim page template class names (class = name - file suffix).
-		if ( is_page_template() ) {
-			$classes[] = basename( get_page_template_slug(), '.php' );
-		}
-
-		return $classes;
-
-	}
-
-	add_filter( 'body_class', 'twentytwenty_body_classes' );
-
-}
-
-if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
-	/**
-	 * Add No-JS Class.
-	 * If we're missing JavaScript support, the HTML element will have a no-js class.
-	 */
-	function twentytwenty_no_js_class() {
-
-		?>
-		<script>document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );</script>
-		<?php
-
-	}
-
-	add_action( 'wp_head', 'twentytwenty_no_js_class' );
 
 }
 
@@ -470,36 +401,6 @@ if ( ! function_exists( 'twentytwenty_get_theme_svg' ) ) {
 		}
 		return $svg;
 	}
-}
-
-if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
-
-	/**
-	 * Filters the archive title and styles the word before the first colon.
-	 *
-	 * @param string $title Current archive title.
-	 */
-	function twentytwenty_get_the_archive_title( $title ) {
-
-		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
-			array(
-				'pattern'     => '/(\A[^\:]+\:)/',
-				'replacement' => '<span class="color-accent">$1</span>',
-			)
-		);
-
-		if ( empty( $regex ) ) {
-
-			return $title;
-
-		}
-
-		return preg_replace( $regex['pattern'], $regex['replacement'], $title );
-
-	}
-
-	add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
-
 }
 
 if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
@@ -880,7 +781,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
-  
+
 	/**
 	 * Enqueue classic editor styles.
 	 */
@@ -899,7 +800,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_add_classic_editor_customizer_styles' ) ) {
-  
+
 	/**
 	 * Output Customizer Settings in the Classic Editor.
 	 * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
@@ -1001,117 +902,4 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 
-}
-
-if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
-  
-	/**
-	 * Generate CSS.
-	 *
-	 * @param string $selector The CSS selector.
-	 * @param string $style The CSS style.
-	 * @param string $value The CSS value.
-	 * @param string $prefix The CSS prefix.
-	 * @param string $suffix The CSS suffix.
-	 * @param var    $echo Echo the styles.
-	 */
-	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
-
-		$return = '';
-
-		if ( ! $value ) {
-
-			return;
-		}
-
-		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
-
-		if ( $echo ) {
-
-			echo $return; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;)
-
-		}
-
-		return $return;
-
-	}
-}
-
-if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
-
-	/**
-	 * Get CSS Built from Customizer Options.
-	 * Build CSS reflecting colors, fonts and other options set in the Customizer, and return them for output.
-	 *
-	 * @param string $type Whether to return CSS for the "front-end", "block-editor" or "classic-editor".
-	 */
-	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
-
-		// Get variables.
-		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
-		$accent_default = '#CD2653';
-
-		ob_start();
-
-		/**
-		 * Note – Styles are applied in this order:
-		 * 1. Element specific
-		 * 2. Helper classes
-		 *
-		 * This enables all helper classes to overwrite base element styles,
-		 * meaning that any color classes applied in the block editor will
-		 * have a higher priority than the base element styles.
-		*/
-
-		// Front-End Styles.
-		if ( 'front-end' === $type ) {
-
-			// Helper Variables.
-			$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
-
-			// Colors.
-			// Element Specific.
-			if ( $accent && $accent !== $accent_default ) :
-				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline', 'color', $accent );
-				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
-			endif;
-
-			// Helper Classes.
-			if ( $accent && $accent !== $accent_default ) :
-				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
-				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
-				twentytwenty_generate_css( '.border-color-accent, .border-color-accent-hover:hover', 'border-color', $accent );
-				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
-			endif;
-
-			// Block Editor Styles.
-		} elseif ( 'block-editor' === $type ) {
-
-			// Colors.
-			// Accent color.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( '.editor-styles-wrapper a', 'color', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper blockquote, .editor-styles-wrapper .wp-block-quote', 'border-color', $accent, '', ' !important' );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-file .wp-block-file__textlink', 'color', $accent );
-				twentytwenty_generate_css( $buttons_targets, 'background', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'border-color', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
-			}
-		} elseif ( 'classic-editor' === $type ) {
-
-			// Colors.
-			// Accent color.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
-				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-			}
-		}
-
-		// Return the results.
-		return ob_get_clean();
-
-	}
 }
