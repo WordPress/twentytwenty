@@ -1,6 +1,5 @@
 === Twenty Twenty ===
 Contributors: wordpressdotorg
-Tags: 
 Requires at least: 4.9.6
 Tested up to: WordPress 5.0
 Requires PHP: 5.2.4
