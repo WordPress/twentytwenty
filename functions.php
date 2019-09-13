@@ -371,7 +371,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 	function twentytwenty_classic_editor_styles() {
 
 		$classic_editor_styles = array(
-			'/assets/css/editor/classic.css',
+			'/assets/css/editor-style-classic.css',
 		);
 
 		add_editor_style( $classic_editor_styles );
