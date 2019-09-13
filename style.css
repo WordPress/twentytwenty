@@ -889,7 +889,7 @@ button.toggle {
 /* COLOR */
 
 .color-accent,
-.color-accent-hover:hover { color: #CD2653; }
+.color-accent:hover { color: #CD2653; }
 
 /* BACKGROUND COLOR */
 
