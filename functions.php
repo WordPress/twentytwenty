@@ -352,7 +352,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 		$css_dependencies = array();
 
 		// Enqueue the editor styles.
-		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
 		// Add inline style from the Customizer.
 		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
@@ -371,7 +371,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 	function twentytwenty_classic_editor_styles() {
 
 		$classic_editor_styles = array(
-			'twentytwenty-editor-style-classic-editor.css',
+			'/assets/css/editor/classic.css',
 		);
 
 		add_editor_style( $classic_editor_styles );

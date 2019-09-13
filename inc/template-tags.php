@@ -448,12 +448,12 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		}
 
 		// Check whether the current page should have an overlay header.
-		if ( is_page_template( array( 'template-cover.php' ) ) ) {
+		if ( is_page_template( array( 'templates/template-cover.php' ) ) ) {
 			$classes[] = 'overlay-header';
 		}
 
 		// Check whether the current page has full-width content.
-		if ( is_page_template( array( 'template-full-width.php' ) ) ) {
+		if ( is_page_template( array( 'templates/template-full-width.php' ) ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 

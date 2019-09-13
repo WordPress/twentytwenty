@@ -32,7 +32,7 @@
 		}
 
 		// On pages with the cover template, display a "To the content" link.
-		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) {
+		if ( is_page() && is_page_template( array( 'templates/template-cover.php' ) ) ) {
 			?>
 
 			<div class="to-the-content-wrapper">
