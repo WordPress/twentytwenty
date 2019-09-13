@@ -1019,7 +1019,9 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 		// Get variables.
 		$accent         = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
-		$accent_default = '#CD2653';
+		$accent_default = '#cd2653';
+		$cover          = sanitize_hex_color( get_theme_mod( 'twentytwenty_cover_template_overlay_text_color' ) );
+		$cover_default  = '#ffffff';
 
 		ob_start();
 
@@ -1046,6 +1048,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
+			endif;
+
+			if ( $cover && $cover !== $cover_default ) :
+				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
 			endif;
 
 			// Helper Classes.
