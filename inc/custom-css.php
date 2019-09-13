@@ -55,6 +55,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		$accent          = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
 		$accent_default  = '#CD2653';
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
+
 		// Background.
 		$background         = sanitize_hex_color_no_hash( get_theme_mod( 'background_color' ) );
 		$background_default = 'f5efe0';
@@ -118,6 +119,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 			}
+
 			// Background color.
 			if ( $background && $background !== $background_default ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor', 'background', '#' . $background );
