@@ -1050,9 +1050,9 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
 			endif;
 
-			if ( $cover && $cover !== $cover_default ) :
+			if ( $cover && $cover !== $cover_default ) {
 				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
-			endif;
+			}
 
 			// Helper Classes.
 			if ( $accent && $accent !== $accent_default ) :
