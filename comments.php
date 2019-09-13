@@ -1,4 +1,12 @@
-<?php 
+<?php
+/**
+ * The template file for displaying the comments and comment form for the
+ * Twenty Twenty theme.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
 /*
  * If the current post is protected by a password and
@@ -9,7 +17,8 @@ if ( post_password_required() ) {
 	return;
 }
 
-if ( $comments ) : ?>
+if ( $comments ) {
+	?>
 
 	<div class="comments section-inner thin max-percentage no-margin" id="comments">
 
@@ -17,9 +26,9 @@ if ( $comments ) : ?>
 
 		$comments_number = absint( get_comments_number() );
 
-		// Translators: %s = the number of comments
+		// Translators: %s = the number of comments.
 		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
-		
+
 		?>
 
 		<div class="comments-header">
@@ -30,23 +39,27 @@ if ( $comments ) : ?>
 
 		<?php
 
-		wp_list_comments( array(
-			'walker'      	=> new TwentyTwenty_Walker_Comment(),
-			'avatar_size'	=> 120,
-			'style' 		=> 'div',
-		) );
+		wp_list_comments(
+			array(
+				'walker'      => new TwentyTwenty_Walker_Comment(),
+				'avatar_size' => 120,
+				'style'       => 'div',
+			)
+		);
 
-		$comment_pagination = paginate_comments_links( array(
-			'echo'			=> false,
-			'end_size'		=> 0,
-			'mid_size'		=> 0,
-			'next_text' 	=> __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
-			'prev_text' 	=> '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
-		) );
+		$comment_pagination = paginate_comments_links(
+			array(
+				'echo'      => false,
+				'end_size'  => 0,
+				'mid_size'  => 0,
+				'next_text' => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
+				'prev_text' => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
+			)
+		);
 
-		if ( $comment_pagination ) :
+		if ( $comment_pagination ) {
 
-			// If we're only showing the "Next" link, add a class indicating so
+			// If we're only showing the "Next" link, add a class indicating so.
 			if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
 				$pagination_classes = ' only-next';
 			} else {
@@ -54,26 +67,31 @@ if ( $comments ) : ?>
 			}
 			?>
 
-			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>">
+			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
 				<?php echo wp_kses_post( $comment_pagination ); ?>
 			</nav>
 
-		<?php endif; ?>
+			<?php
+		}
+		?>
 
 	</div><!-- comments -->
 
-	<?php 
-endif;
+	<?php
+}
 
-if ( comments_open() || pings_open() ) :
+if ( comments_open() || pings_open() ) {
 
-	comment_form( array(
-		'class_form'			=> 'section-inner thin max-percentage no-margin',
-		'comment_notes_before'	=> '',
-		'comment_notes_after'	=> '',
-	) );
+	comment_form(
+		array(
+			'class_form'           => 'section-inner thin max-percentage no-margin',
+			'comment_notes_before' => '',
+			'comment_notes_after'  => '',
+		)
+	);
 
-elseif ( is_single() ) : ?>
+} elseif ( is_single() ) {
+	?>
 
 	<div class="comment-respond" id="respond">
 
@@ -81,4 +99,5 @@ elseif ( is_single() ) : ?>
 
 	</div><!-- #respond -->
 
-<?php endif; ?>
+	<?php
+}
