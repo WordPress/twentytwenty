@@ -1,10 +1,19 @@
 <?php
+/**
+ * Javsscript Loader Class
+ *
+ * Allow `async` and `defer` while enqueuing Javascript.
+ *
+ * Based on a soltion in WP Rig.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty
+ * @since 1.0.0
+ */
 
-/* ---------------------------------------------------------------------------------------------
-   JAVASCRIPT LOADER CLASS
-   Allow `async` and `defer` while enqueueing JavaScript. Based on a solution in WP Rig. 
-   --------------------------------------------------------------------------------------------- */
-
+/**
+ * A class that provides a way to add `async` or `defer` attributes to scripts.
+ */
 class TwentyTwenty_Script_Loader {
 
 	/**
@@ -32,8 +41,8 @@ class TwentyTwenty_Script_Loader {
 		}
 		return $tag;
 	}
-	
+
 }
 
-$loader = new TwentyTwenty_Script_Loader;
+$loader = new TwentyTwenty_Script_Loader();
 add_filter( 'script_loader_tag', [ $loader, 'filter_script_loader_tag' ], 10, 2 );

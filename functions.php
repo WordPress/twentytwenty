@@ -135,11 +135,11 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
 
+// Custom script loader class.
+require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
-
-// Custom script loader class.
-require get_template_directory() . '/parts/classes/class-script-loader.php';
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	/**
