@@ -420,7 +420,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 		$editor_color_palette = array();
 
 		// Get the color options.
-		$twentytwenty_accent_color_options = TwentyTwenty_Customize::twentytwenty_get_color_options();
+		$twentytwenty_accent_color_options = TwentyTwenty_Customize::get_color_options();
 
 		// Loop over them and construct an array for the editor-color-palette.
 		if ( $twentytwenty_accent_color_options ) {

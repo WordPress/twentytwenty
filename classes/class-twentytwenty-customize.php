@@ -18,7 +18,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 *
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
-		public static function twentytwenty_register( $wp_customize ) {
+		public static function register( $wp_customize ) {
 
 			/**
 			 * Site Title & Description.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'twentytwenty_retina_logo',
 				array(
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
 					'transport'         => 'postMessage',
 				)
 			);
@@ -70,7 +70,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/**
 			 * Colors.
 			*/
-			$twentytwenty_accent_color_options = self::twentytwenty_get_color_options();
+			$twentytwenty_accent_color_options = self::get_color_options();
 
 			// Loop over the color options and add them to the customizer.
 			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
@@ -123,7 +123,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => false,
-					'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
 				)
 			);
 
@@ -158,7 +158,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => true,
-					'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
 				)
 			);
 
@@ -245,7 +245,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'twentytwenty_cover_template_overlay_blend_mode',
 				array(
 					'default'           => 'multiply',
-					'sanitize_callback' => 'twentytwenty_sanitize_select',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
 				)
 			);
 
@@ -284,7 +284,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'twentytwenty_cover_template_overlay_opacity',
 				array(
 					'default'           => '80',
-					'sanitize_callback' => 'twentytwenty_sanitize_select',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
 				)
 			);
 
@@ -312,29 +312,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			/* Sanitation Functions ---------- */
-
-			/**
-			 * Sanitize boolean for checkbox.
-			 *
-			 * @param bool $checked Wethere or not a blox is checked.
-			 */
-			function twentytwenty_sanitize_checkbox( $checked ) {
-				return ( ( isset( $checked ) && true === $checked ) ? true : false );
-			}
-
-			/**
-			 * Sanitize select.
-			 *
-			 * @param string $input The input from the setting.
-			 * @param object $setting The selected setting.
-			 */
-			function twentytwenty_sanitize_select( $input, $setting ) {
-				$input   = sanitize_key( $input );
-				$choices = $setting->manager->get_control( $setting->id )->choices;
-				return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
-			}
-
 		}
 
 		/**
@@ -342,12 +319,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 * Note: These values are shared between the block editor styles and the customizer,
 		 * and abstracted to this function.
 		 */
-		public static function twentytwenty_get_color_options() {
+		public static function get_color_options() {
 			return apply_filters(
 				'twentytwenty_accent_color_options',
 				array(
 					'twentytwenty_accent_color' => array(
-						'default' => '#CD2653',
+						'default' => '#cd2653',
 						'label'   => __( 'Accent Color', 'twentytwenty' ),
 						'slug'    => 'accent',
 					),
@@ -355,10 +332,31 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 		}
 
+		/**
+		 * Sanitize select.
+		 *
+		 * @param string $input The input from the setting.
+		 * @param object $setting The selected setting.
+		 */
+		public static function sanitize_select( $input, $setting ) {
+			$input   = sanitize_key( $input );
+			$choices = $setting->manager->get_control( $setting->id )->choices;
+			return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+		}
+
+		/**
+		 * Sanitize boolean for checkbox.
+		 *
+		 * @param bool $checked Wethere or not a blox is checked.
+		 */
+		public static function sanitize_checkbox( $checked ) {
+			return ( ( isset( $checked ) && true === $checked ) ? true : false );
+		}
+
 	}
 
 	// Setup the Theme Customizer settings and controls.
-	add_action( 'customize_register', array( 'TwentyTwenty_Customize', 'twentytwenty_register' ) );
+	add_action( 'customize_register', array( 'TwentyTwenty_Customize', 'register' ) );
 
 }
 
