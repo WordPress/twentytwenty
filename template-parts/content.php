@@ -19,7 +19,9 @@
 
 	get_template_part( 'template-parts/entry-header' );
 
-	get_template_part( 'template-parts/featured-image' );
+	if ( ! is_search() ) {
+		get_template_part( 'template-parts/featured-image' );
+	}
 
 	?>
 
@@ -48,7 +50,10 @@
 
 		<?php
 		// Single bottom post meta.
-		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
+		if ( ! is_search() ) {
+			twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
+		}
+	
 		?>
 
 	</div><!-- .post-inner -->
