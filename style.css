@@ -537,6 +537,7 @@ pre code {
 /* Media ------------------------------------- */
 
 figure {
+	display: block;
 	margin: 0;
 }
 
@@ -582,11 +583,6 @@ figcaption a,
 .gallery-item {
 	margin: .8em 0;
 	padding: 0 .8em;
-}
-
-.gallery-item img,
-.gallery-item {
-	display: block;
 	width: 100%;
 }
 
@@ -754,6 +750,7 @@ input[type="submit"]:focus {
 /* Tables ------------------------------------ */
 
 table {
+	border: .1rem solid #DCD7CA;
 	border-collapse: collapse;
 	border-spacing: 0;
 	empty-cells: show;
@@ -776,8 +773,8 @@ td {
 
 caption {
 	background: #DCD7CA;
-	font-weight: 700;
-	padding-bottom: 2.5%;
+	font-weight: 600;
+	padding: 2.5%;
 	text-align: center;
 }
 
@@ -993,6 +990,7 @@ button.toggle {
 	display: flex;
 	font-size: inherit;
 	margin: 0;
+	width: 100%;
 }
 
 .search-form .search-field {
@@ -1813,6 +1811,9 @@ body.template-cover .entry-header {
 }
 
 .archive-title {
+	font-size: 2.4rem;
+	font-weight: 700;
+	letter-spacing: -.026666667em;
 	margin: 0;
 }
 
@@ -2666,8 +2667,7 @@ div.comment:first-of-type {
 
 
 .error404 #site-content {
-	align-items: center;
-	display: flex;
+	padding-top: 4rem;
 	text-align: center;
 }
 
@@ -2696,27 +2696,52 @@ div.comment:first-of-type {
 .widget-content > div > *:first-child { margin-top: 0; }
 .widget-content > div > *:last-child { margin-bottom: 0; }
 
-.widget .widget-title {
-	margin: 0 0 2.4rem;
+.widget-title {
+	margin: 0 0 2rem;
 }
 
 .widget li {
-	margin-top: 1.4rem;
+	margin-top: 2rem;
 }
 
+.widget li:first-child,
 .widget li > ul, 
 .widget li > ol {
 	margin-top: 0;
 }
 
+.widget table,
+.widget table caption,
+.widget table thead,
+.widget table tbody,
+.widget table tfoot,
+.widget table tr,
+.widget table th,
+.widget table td {
+	border-color: #DEDFDF;
+}
+
+.widget table caption {
+	background-color: #DEDFDF;
+}
+
+.widget .post-date,
+.widget .rss-date {
+	color: #6d6d6d;
+	display: block;
+	font-size: .85em;
+	font-weight: 500;
+	margin-top: .2rem;
+}
 
 /* Font Families ----------------------------- */
 
-.widget-content p,
-.widget-content ol,
-.widget-content ul,
-.widget-content dl,
-.widget-content dt {
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary {
 	font-family: 'NonBreakingSpaceOverride', 'Hoefler Text', Garamond, 'Times New Roman', serif;
 	letter-spacing: normal;
 }
@@ -2735,14 +2760,16 @@ div.comment:first-of-type {
 	}
 }
 
-
 /* Base List Widget -------------------------- */
 
 .widget_archive ul,
 .widget_categories ul,
 .widget_pages ul,
 .widget_meta ul,
-.widget_nav_menu ul {
+.widget_nav_menu ul,
+.widget_recent_comments ul,
+.widget_recent_entries ul,
+.widget_rss ul {
 	list-style: none;
 	margin: 0;
 }
@@ -2752,7 +2779,16 @@ div.comment:first-of-type {
 .widget_pages li,
 .widget_meta li,
 .widget_nav_menu li {
-	margin: 0 !important;
+	color: #6d6d6d;
+	margin: .3rem 0;
+}
+
+.widget_archive li li,
+.widget_categories li li,
+.widget_pages li li,
+.widget_meta li li,
+.widget_nav_menu li li {
+	margin-left: 2rem;
 }
 
 .widget_archive a,
@@ -2760,33 +2796,27 @@ div.comment:first-of-type {
 .widget_pages a,
 .widget_meta a,
 .widget_nav_menu a {
-	color: inherit;
+	font-weight: 700;
 	text-decoration: none;
 }
 
+.widget_archive a:focus,
 .widget_archive a:hover,
+.widget_categories a:focus,
 .widget_categories a:hover,
+.widget_pages a:focus,
 .widget_pages a:hover,
+.widget_meta a:focus,
 .widget_meta a:hover,
+.widget_nav_menu a:focus,
 .widget_nav_menu a:hover {
 	text-decoration: underline;
 }
-
 
 /* Widget: Calendar -------------------------- */
 
 .calendar_wrap {
 	font-size: 2.4rem;
-}
-
-.calendar_wrap table {
-	font-size: 1em;
-}
-
-.calendar_wrap caption {
-	font-weight: 600;
-	text-align: left;
-	text-transform: capitalize;
 }
 
 .calendar_wrap th,
@@ -2809,13 +2839,7 @@ div.comment:first-of-type {
 .calendar_wrap tfoot #prev { text-align: left; }
 .calendar_wrap tfoot #next { text-align: right; }
 
-
 /* Widget: Image ----------------------------- */
-
-.widget_media_image img {
-	width: 100%;
-}
-
 /* Widget: Gallery --------------------------- */
 
 .widget_media_gallery .gallery {
@@ -2828,13 +2852,38 @@ div.comment:first-of-type {
 	padding: 0 .4em;
 }
 
-
 /* Widget: Nav Menu -------------------------- */
 
 .widget_nav_menu .widget-content > div > ul {
 	margin-left: 0;
 }
 
+/* Widget: Recent Comments ------------------- */
+
+.widget_recent_comments li {
+	font-weight: 700;
+}
+
+.widget_recent_comments a {
+	text-decoration: none;
+}
+
+.widget_recent_comments a:hover,
+.widget_recent_comments a:focus {
+	text-decoration: underline;
+}
+
+/* Widget: Recent Entries -------------------- */
+
+.widget_recent_entries a {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.widget_recent_entries a:focus,
+.widget_recent_entries a:hover {
+	text-decoration: underline;
+}
 
 /* Widget: RSS ------------------------------- */
 
@@ -2843,56 +2892,45 @@ div.comment:first-of-type {
 }
 
 .widget_rss .rsswidget {
-	font-weight: 600;
+	font-weight: 700;
+}
+
+.widget_rss a {
 	text-decoration: none;
 }
 
-.widget_rss .rss-date {
-	display: block;
+.widget_rss a:focus,
+.widget_rss a:hover {
+	text-decoration: underline;
+}
+
+.widget_rss .rssSummary {
+	margin-top: .5rem;
 }
 
 .widget_rss cite:before {
 	content: "— ";
 }
 
-
 /* Widget: Search ---------------------------- */
 
-.widget_search label span,
-.widget_search img {
-	display: none;
-}
-
-.widget_search .search-form {
-	align-items: stretch;
-	display: flex;
-	flex-wrap: nowrap;
-	margin: 0 0 -.8rem -.8rem;
-}
-
-.widget_search .search-field,
-.widget_search .search-submit {
-	margin: 0 0 .8rem .8rem;
-}
-
 .widget_search .search-field {
-	width: 100%;
+	border-color: #DEDFDF;
 }
-
-.widget_search .search-submit {
-	flex-shrink: 0;
-}
-
 
 /* Widget: Tag Cloud ------------------------- */
 
 .widget_tag_cloud a {
-	font-weight: 600;
+	font-weight: 700;
 	margin-right: .5rem;
 	text-decoration: none;
 	white-space: nowrap;
 }
 
+.widget_tag_cloud a:focus,
+.widget_tag_cloud a:hover {
+	text-decoration: underline;
+}
 
 /* Widget: Text ------------------------------ */
 
@@ -3259,6 +3297,10 @@ ul.footer-social li {
 		padding: 8rem 0;
 	}
 
+	.archive-title {
+		font-size: 3.2rem;
+	}
+
 	.posts {
 		padding: 8rem 0;
 	}
@@ -3503,6 +3545,12 @@ ul.footer-social li {
 	/* Display the full text for Newer and Older Posts. */
 	.nav-short {
 		display: inline;
+	}
+
+	/* Error 404 ----------------------------- */
+
+	.error404 #site-content {
+		padding-top: 8rem;
 	}
 
 	/* Widgets ------------------------------- */
@@ -3933,6 +3981,17 @@ ul.footer-social li {
 
 	.footer-social a:before {
 		font-size: 2rem;
+	}
+
+	/* FOOTER WIDGETS */
+
+	.footer-widgets-wrapper {
+		margin-left: -6rem;
+		width: calc( 100% + 6rem );
+	}
+
+	.footer-widgets {
+		margin-left: 6rem;
 	}
 
 }
