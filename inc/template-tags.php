@@ -401,6 +401,36 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 
 }
 
+if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
+
+	/**
+	 * Filters the archive title and styles the word before the first colon.
+	 *
+	 * @param string $title Current archive title.
+	 */
+	function twentytwenty_get_the_archive_title( $title ) {
+
+		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
+			array(
+				'pattern'     => '/(\A[^\:]+\:)/',
+				'replacement' => '<span class="color-accent">$1</span>',
+			)
+		);
+
+		if ( empty( $regex ) ) {
+
+			return $title;
+
+		}
+
+		return preg_replace( $regex['pattern'], $regex['replacement'], $title );
+
+	}
+
+	add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+}
+
 if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 	/**
 	 * Add conditional body classes.
@@ -427,9 +457,9 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 
-		// Check for disabled search.
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
-			$classes[] = 'disable-search-modal';
+		// Check for enabled search.
+		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+			$classes[] = 'enable-search-modal';
 		}
 
 		// Check for post thumbnail.

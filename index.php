@@ -26,8 +26,13 @@ get_header();
 
 	if ( is_search() ) {
 		global $wp_query;
-		/* Translators: %s = The search query */
-		$archive_title = sprintf( _x( 'Search: %s', '%s = The search query', 'twentytwenty' ), '&ldquo;' . get_search_query() . '&rdquo;' );
+
+		$archive_title = sprintf( 
+			'%1$s %2$s', 
+			'<span class="color-accent">' . __( 'Search:', 'twentytwenty' ) . '</span>', 
+			'&ldquo;' . get_search_query() . '&rdquo;' 
+		);
+
 		if ( $wp_query->found_posts ) {
 			/* Translators: %s = Number of results */
 			$archive_subtitle = sprintf( _nx( 'We found %s result for your search.', 'We found %s results for your search.', $wp_query->found_posts, '%s = Number of results', 'twentytwenty' ), $wp_query->found_posts );
