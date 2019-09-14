@@ -1813,6 +1813,9 @@ body.template-cover .entry-header {
 }
 
 .archive-title {
+	font-size: 2.4rem;
+	font-weight: 700;
+	letter-spacing: -.026666667em;
 	margin: 0;
 }
 
@@ -2666,8 +2669,7 @@ div.comment:first-of-type {
 
 
 .error404 #site-content {
-	align-items: center;
-	display: flex;
+	padding-top: 4rem;
 	text-align: center;
 }
 
@@ -3259,6 +3261,10 @@ ul.footer-social li {
 		padding: 8rem 0;
 	}
 
+	.archive-title {
+		font-size: 3.2rem;
+	}
+
 	.posts {
 		padding: 8rem 0;
 	}
@@ -3503,6 +3509,12 @@ ul.footer-social li {
 	/* Display the full text for Newer and Older Posts. */
 	.nav-short {
 		display: inline;
+	}
+
+	/* Error 404 ----------------------------- */
+
+	.error404 #site-content {
+		padding-top: 8rem;
 	}
 
 	/* Widgets ------------------------------- */
