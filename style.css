@@ -420,14 +420,14 @@ address {
 }
 
 hr {
-	border-top: .1rem solid #B8B4A8; 
+	border-top: .1rem solid rgba( 0, 0, 0, .42 ); 
 	margin: 4rem 0;
 }
 
 hr:not(.is-style-dots):not(.reset-hr) {
-	background: linear-gradient( to left, #B8B4A8 calc( 50% - 16px ), transparent calc( 50% - 16px ), transparent calc( 50% + 16px ), #B8B4A8 calc( 50% + 16px ) );
+	background: linear-gradient( to left, rgba( 0, 0, 0, .42 ) calc( 50% - 16px ), transparent calc( 50% - 16px ), transparent calc( 50% + 16px ), rgba( 0, 0, 0, .42 ) calc( 50% + 16px ) );
 	border: none;
-	color: #B8B4A8;
+	color: rgba( 0, 0, 0, .42 );
 	height: .1rem;
 	overflow: visible;
 	position: relative;
@@ -2403,7 +2403,7 @@ hr.wp-block-separator {
 /* STYLE: DOTS */
 
 .wp-block-separator.is-style-dots:before {
-	color: #B8B4A8;
+	color: rgba( 0, 0, 0, .42 );
 	font-size: 32px;
 	font-weight: 700;
 	letter-spacing: 1em;
