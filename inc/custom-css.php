@@ -32,10 +32,17 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 			$selector = array_map( 'trim', explode( ',', $selector ) );
 		}
 
-		$selector = apply_filters( 'twentytwenty_generate_css_selector', $selector );
 		$selector = implode( ', ', array_unique( $selector ) );
 
-		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
+		$args = compact( 'selector', 'style', 'value', 'prefix', 'suffix' );
+		$args = apply_filters( 'twentytwenty_generate_css_args', $args );
+
+		$return = sprintf( 
+			'%1$s { %2$s: %3$s; }', 
+			$args['selector'], 
+			$args['style'], 
+			$args['prefix'] . $args['value'] . $args['suffix'] 
+		);
 
 		if ( $echo ) {
 
