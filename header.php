@@ -38,20 +38,20 @@
 				<div class="header-titles-wrapper">
 
 					<?php
-					
+
 					// Check whether the header search is activated in the customizer.
 					$enable_header_search = get_theme_mod( 'twentytwenty_enable_header_search', true );
-					
-					if ( true == $enable_header_search ) {
 
-					?>
+					if ( true === $enable_header_search ) {
 
-					<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
-						<?php twentytwenty_the_theme_svg( 'search' ); ?>
-					</button><!-- .search-toggle -->
+						?>
 
-					<?php } ?>
+						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+							<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
+							<?php twentytwenty_the_theme_svg( 'search' ); ?>
+						</button><!-- .search-toggle -->
+
+						<?php } ?>
 
 					<div class="header-titles">
 
