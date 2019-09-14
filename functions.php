@@ -208,70 +208,52 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 
 }
 
-if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
+function twentytwenty_get_custom_logo() {
 
-	/**
-	 * Add and Output Custom Logo.
-	 *
-	 * @param string $logo_theme_mod HTML for the custom logo.
-	 */
-	function twentytwenty_the_custom_logo( $logo_theme_mod = 'custom_logo' ) {
-		echo esc_html( twentytwenty_get_custom_logo( $logo_theme_mod ) );
+	$logo_theme_mod = 'custom_logo';
+	$logo_id = get_theme_mod( $logo_theme_mod );
+
+	if ( ! $logo_id ) {
+		return;
 	}
+
+	$logo = wp_get_attachment_image_src( $logo_id, 'full' );
+
+	if ( ! $logo ) {
+		return;
+	}
+
+	// For clarity.
+	$logo_url    = esc_url( $logo[0] );
+	$logo_width  = esc_attr( $logo[1] );
+	$logo_height = esc_attr( $logo[2] );
+
+	// If the retina logo setting is active, reduce the width/height by half.
+	if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+		$logo_width  = floor( $logo_width / 2 );
+		$logo_height = floor( $logo_height / 2 );
+	}
+
+	// CSS friendly class.
+	$logo_theme_mod_class = str_replace( '_', '-', $logo_theme_mod );
+
+	// Record our output.
+	ob_start();
+
+	?>
+
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link <?php echo esc_attr( $logo_theme_mod_class ); ?>">
+		<img src="<?php echo esc_url( $logo_url ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
+	</a>
+
+	<?php
+
+	// Return our output.
+	return ob_get_clean();
+
 }
 
-if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
-
-	/**
-
-	 * Get the information about the logo.
-	 *
-	 * @param string $logo_theme_mod The name of the theme mod.
-	 */
-	function twentytwenty_get_custom_logo( $logo_theme_mod = 'custom_logo' ) {
-
-		$logo_id = get_theme_mod( $logo_theme_mod );
-
-		if ( ! $logo_id ) {
-			return;
-		}
-
-		$logo = wp_get_attachment_image_src( $logo_id, 'full' );
-
-		if ( ! $logo ) {
-			return;
-		}
-
-		// For clarity.
-		$logo_url    = esc_url( $logo[0] );
-		$logo_width  = esc_attr( $logo[1] );
-		$logo_height = esc_attr( $logo[2] );
-
-		// If the retina logo setting is active, reduce the width/height by half.
-		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
-			$logo_width  = floor( $logo_width / 2 );
-			$logo_height = floor( $logo_height / 2 );
-		}
-
-		// CSS friendly class.
-		$logo_theme_mod_class = str_replace( '_', '-', $logo_theme_mod );
-
-		// Record our output.
-		ob_start();
-
-		?>
-
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link <?php echo esc_attr( $logo_theme_mod_class ); ?>">
-			<img src="<?php echo esc_url( $logo_url ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
-		</a>
-
-		<?php
-
-		// Return our output.
-		return ob_get_clean();
-
-	}
-}
+add_filter( 'get_custom_logo', 'twentytwenty_get_custom_logo' );
 
 if ( ! function_exists( 'wp_body_open' ) ) {
 
