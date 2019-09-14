@@ -385,6 +385,10 @@ em em, em i, i em, i i, cite em, cite i {
 	font-weight: bolder;
 }
 
+big { font-style: 1.2em; }
+small { font-style: .75em; }
+
+
 b,
 strong {
 	font-weight: 700;
@@ -425,6 +429,7 @@ hr:not(.is-style-dots):not(.reset-hr) {
 	border: none;
 	color: #B8B4A8;
 	height: .1rem;
+	overflow: visible;
 	position: relative;
 }
 
@@ -540,7 +545,7 @@ kbd,
 pre,
 samp {
 	font-family: monospace;
-	font-size: 1em;
+	font-size: .9em;
 	padding: .4rem .6rem;
 }
 
