@@ -58,14 +58,28 @@
 
 							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-							<div class="to-the-content-wrapper">
+							<?php 
+							if ( is_page() ) {
+								?>
 
-							<a href="#post-inner" class="to-the-content fill-children-current-color">
-								<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-								<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
-							</a><!-- .to-the-content -->
+								<div class="to-the-content-wrapper">
 
-							</div><!-- .to-the-content-wrapper -->
+									<a href="#post-inner" class="to-the-content fill-children-current-color">
+										<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
+										<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
+									</a><!-- .to-the-content -->
+
+								</div><!-- .to-the-content-wrapper -->
+
+							<?php } else { ?>
+
+								<div class="intro-text section-inner thin max-percentage">
+									<?php the_excerpt(); ?>
+								</div>
+
+								<?php twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); ?>
+
+							<?php } ?>
 
 						</div><!-- .entry-header-inner -->
 					</header><!-- .entry-header -->

@@ -31,27 +31,8 @@
 			<?php
 		}
 
-		// On pages with the cover template, display a "To the content" link.
-		if ( is_page() && is_page_template( array( 'template-cover.php' ) ) ) {
-			?>
-
-			<div class="to-the-content-wrapper">
-
-				<a href="#post-inner" class="to-the-content fill-children-current-color">
-					<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-					<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
-				</a><!-- .to-the-content -->
-
-			</div><!-- .to-the-content-wrapper -->
-
-			<?php
-
-		} else {
-
-			// Default to displaying the post meta.
-			twentytwenty_the_post_meta( $post->ID, 'single-top' );
-
-		}
+		// Default to displaying the post meta.
+		twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
 
 		?>
 
