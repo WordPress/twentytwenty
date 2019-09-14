@@ -70,7 +70,7 @@
 									</a><!-- .to-the-content -->
 
 								</div><!-- .to-the-content-wrapper -->
-								
+
 							<?php } else { ?>
 
 								<div class="intro-text section-inner thin max-percentage">
