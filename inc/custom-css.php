@@ -12,12 +12,12 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 	/**
 	 * Generate CSS.
 	 *
-	 * @param string $selector The CSS selector.
-	 * @param string $style The CSS style.
-	 * @param string $value The CSS value.
-	 * @param string $prefix The CSS prefix.
-	 * @param string $suffix The CSS suffix.
-	 * @param bool   $echo Echo the styles.
+	 * @param array|string $selector The CSS selector.
+	 * @param string       $style The CSS style.
+	 * @param string       $value The CSS value.
+	 * @param string       $prefix The CSS prefix.
+	 * @param string       $suffix The CSS suffix.
+	 * @param bool         $echo Echo the styles.
 	 */
 	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 
@@ -27,6 +27,13 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 			return;
 		}
+
+		if ( ! is_array( $selector ) ) {
+			$selector = array_map( 'trim', explode( ',', $selector ) );
+		}
+
+		$selector = apply_filters( 'twentytwenty_generate_css_selector', $selector );
+		$selector = implode( ', ', array_unique( $selector ) );
 
 		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
 
