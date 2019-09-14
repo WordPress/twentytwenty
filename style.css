@@ -2041,9 +2041,10 @@ body.template-cover .entry-header {
 .has-text-align-justify { text-align: justify; }
 
 .has-drop-cap:not(:focus):first-letter {
+	color: #CD2653;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 5.4em;
-    font-weight: 800;
+	font-size: 5.4em;
+	font-weight: 800;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -2053,10 +2054,10 @@ body.template-cover .entry-header {
 }
 
 .has-drop-cap:not(:focus):first-letter:after {
-    content: "";
-    display: table;
-    clear: both;
-    padding-top: 14px
+	content: "";
+	display: table;
+	clear: both;
+	padding-top: 14px
 }
 
 
