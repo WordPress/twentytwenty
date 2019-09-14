@@ -133,8 +133,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'        => 'checkbox',
 					'section'     => 'twentytwenty_site_header_options',
 					'priority'    => 10,
-					'label'       => __( 'Display Search', 'twentytwenty' ),
-					'description' => __( 'Uncheck to disable the search button in the header.', 'twentytwenty' ),
+					'label'       => __( 'Show search in header', 'twentytwenty' ),
+					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
 				)
 			);
 
