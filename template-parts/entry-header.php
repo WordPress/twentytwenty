@@ -49,7 +49,7 @@
 		} else {
 
 			// Default to displaying the post meta.
-			twentytwenty_the_post_meta( $post->ID, 'single-top' );
+			twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
 
 		}
 
