@@ -69,18 +69,18 @@
 							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
 						}
 
-						if ( is_front_page() || is_home() ) :
+						if ( is_front_page() || is_home() ) {
 							?>
 							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped during generation. ?></h1>
-						<?php else : ?>
+						<?php } else { ?>
 							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped prior to this point. ?></div>
-						<?php endif; ?>
+						<?php } ?>
 
-						<?php if ( $site_description ) : ?>
+						<?php if ( $site_description ) { ?>
 
 							<div class="site-description"><?php echo esc_html( $site_description ); ?></div><!-- .site-description -->
 
-						<?php endif; ?>
+						<?php } ?>
 
 					</div><!-- .header-titles -->
 
@@ -93,7 +93,7 @@
 
 				<div class="header-navigation-wrapper">
 
-					<?php if ( has_nav_menu( 'shortcuts-menu' ) ) : ?>
+					<?php if ( has_nav_menu( 'shortcuts-menu' ) ) { ?>
 
 						<div class="shortcuts-menu-wrapper">
 
@@ -111,7 +111,7 @@
 
 						</div><!-- .shortcuts-menu-wrapper -->
 
-					<?php endif; ?>
+					<?php } ?>
 
 					<div class="header-toggles hide-no-js">
 
@@ -124,10 +124,7 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php
-
-						if ( true === $enable_header_search ) :
-							?>
+						<?php if ( true === $enable_header_search ) { ?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
@@ -138,7 +135,7 @@
 
 							</div>
 
-						<?php endif; ?>
+						<?php } ?>
 
 					</div><!-- .header-toggles -->
 
