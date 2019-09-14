@@ -58,12 +58,13 @@
 
 							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-							<?php if ( ! is_page() ) {
+							<?php 
+							if ( ! is_page() ) {
 								?>
 								<div class="intro-text section-inner thin max-percentage">
 									<?php the_excerpt(); ?>
-								</div> 
-								
+								</div>
+
 								<?php twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); ?>
 							<?php } ?>
 
