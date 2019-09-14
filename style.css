@@ -1813,6 +1813,9 @@ body.template-cover .entry-header {
 }
 
 .archive-title {
+	font-size: 2.4rem;
+	font-weight: 700;
+	letter-spacing: -.026666667em;
 	margin: 0;
 }
 
@@ -3256,6 +3259,10 @@ ul.footer-social li {
 
 	.archive-header {
 		padding: 8rem 0;
+	}
+
+	.archive-title {
+		font-size: 3.2rem;
 	}
 
 	.posts {
