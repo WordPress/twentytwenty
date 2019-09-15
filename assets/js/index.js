@@ -79,7 +79,7 @@ twentytwenty.coverModals = {
 
 		// Load based on query string
 		if (window.location.search.indexOf(key) !== -1) {
-			var modalTargetString = getQueryStringValue(key),
+			var modalTargetString = twentytwentyGetQueryStringValue(key),
 				modalTarget = document.querySelector('#' + modalTargetString + '-modal');
 
 			if (modalTargetString && modalTarget.length) {
@@ -96,7 +96,7 @@ twentytwenty.coverModals = {
 			link.addEventListener('click', function (event) {
 				// Load based on query string
 				if (event.target.href && event.target.href.indexOf(key) !== -1) {
-					var modalTargetString = getQueryStringValue(key, event.target.attr('href')),
+					var modalTargetString = twentytwentyGetQueryStringValue(key, event.target.attr('href')),
 						modalTarget = document.querySelector('#' + modalTargetString);
 
 					if (modalTargetString && modalTarget.length) {
@@ -309,7 +309,7 @@ twentytwenty.smoothScroll = {
 						var originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
 						var scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
-						scrollTo(scrollOffset, null, scrollSpeed);
+						twentytwentyScrollTo(scrollOffset, null, scrollSpeed);
 
 						window.location.hash = event.target.hash.slice(1);
 					}
@@ -325,7 +325,7 @@ twentytwenty.smoothScroll = {
 		if (scrollToElement) {
 			scrollToElement.addEventListener('click', function (event) {
 				// Figure out element to scroll to
-				var target = event.target.dataset.scrollTo;
+				var target = event.target.dataset.twentytwentyScrollTo;
 
 				// Make sure said element exists
 				if (target) {
@@ -339,7 +339,7 @@ twentytwenty.smoothScroll = {
 					var originalOffset = target.getBoundingClientRect().top + window.pageYOffset,
 						scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
-					scrollTo(scrollOffset, null, scrollSpeed);
+					twentytwentyScrollTo(scrollOffset, null, scrollSpeed);
 				}
 			});
 		}
@@ -389,7 +389,7 @@ twentytwenty.mainMenu = {
 		var activeMenuItem = mainMenu.querySelector('.current-menu-item');
 
 		if (activeMenuItem) {
-			findParents(activeMenuItem, 'li').forEach(function (element) {
+			twentytwentyFindParents(activeMenuItem, 'li').forEach(function (element) {
 				var subMenuToggle = element.querySelector('.sub-menu-toggle');
 				if (subMenuToggle) {
 					subMenuToggle.click();
@@ -575,7 +575,7 @@ twentytwenty.toggles = {
 					// Toggle the target of the clicked toggle
 					if (toggle.dataset.toggleType === 'slidetoggle') {
 						var duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
-						slideToggle(target, duration);
+						twentytwentySlideToggle(target, duration);
 					} else {
 						target.classList.toggle(classToToggle);
 					}
@@ -721,7 +721,7 @@ function twentytwentyToggleAttribute(element, attribute, trueVal, falseVal) {
 	}
 }
 
-function getQueryStringValue() {
+function twentytwentyGetQueryStringValue() {
 	var vars = [];
 	var hash;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -734,14 +734,14 @@ function getQueryStringValue() {
 };
 
 /**
- * slideUp
+ * twentytwentySlideUp
  *
  * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
  *
  * @param {HTMLElement} target
  * @param {number} duration
  */
-function slideUp(target, duration) {
+function twentytwentySlideUp(target, duration) {
 	target.style.transitionProperty = 'height, margin, padding'; /* [1.1] */
 	target.style.transitionDuration = duration + 'ms'; /* [1.2] */
 	target.style.boxSizing = 'border-box'; /* [2] */
@@ -766,14 +766,14 @@ function slideUp(target, duration) {
 };
 
 /**
- * slideDown
+ * twentytwentySlideDown
  *
  * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
  *
  * @param {HTMLElement} target
  * @param {number} duration
  */
-function slideDown(target, duration) {
+function twentytwentySlideDown(target, duration) {
 	target.style.removeProperty('display'); /* [1] */
 	var display = window.getComputedStyle(target).display;
 	if (display === 'none') { /* [2] */
@@ -807,23 +807,23 @@ function slideDown(target, duration) {
 };
 
 /**
- * slideToggle
+ * twentytwentySlideToggle
  *
  * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
  *
  * @param {HTMLElement} target
  * @param {number} duration
  */
-function slideToggle(target, duration) {
+function twentytwentySlideToggle(target, duration) {
 
 	if (duration === undefined) {
 		duration = 500;
 	}
 
 	if (window.getComputedStyle(target).display === 'none') {
-		return slideDown(target, duration);
+		return twentytwentySlideDown(target, duration);
 	}
-	return slideUp(target, duration);
+	return twentytwentySlideUp(target, duration);
 };
 
 /**
@@ -833,7 +833,7 @@ function slideToggle(target, duration) {
  * @param {string} query
  * @return {NodeList} parents matching query
  */
-function findParents(target, query) {
+function twentytwentyFindParents(target, query) {
 	var parents = [];
 
 	// recursively go up the DOM adding matches to the parents array
@@ -852,8 +852,8 @@ function findParents(target, query) {
 	return parents;
 };
 
-// easing functions http://goo.gl/5HLl8
-var easing = {
+// twentytwentyEasing functions http://goo.gl/5HLl8
+var twentytwentyEasing = {
 
 	easeInOutQuad: function (t, b, c, d) {
 		t /= d / 2;
@@ -865,7 +865,7 @@ var easing = {
 	}
 };
 
-function scrollTo(to, callback, duration) {
+function twentytwentyScrollTo(to, callback, duration) {
 	function move(amount) {
 		document.documentElement.scrollTop = amount;
 		document.body.parentNode.scrollTop = amount;
@@ -884,8 +884,8 @@ function scrollTo(to, callback, duration) {
 	function animateScroll() {
 		// increment the time
 		currentTime += increment;
-		// find the value with the quadratic in-out easing function
-		var val = easing.easeInOutQuad(currentTime, start, change, duration);
+		// find the value with the quadratic in-out twentytwentyEasing function
+		var val = twentytwentyEasing.easeInOutQuad(currentTime, start, change, duration);
 		// move the document.body
 		move(val);
 		// do the animation unless its over
