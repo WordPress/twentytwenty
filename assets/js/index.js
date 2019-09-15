@@ -454,8 +454,12 @@ twentytwenty.scrollLock = {
 	saveStyles: function () {
 
 		var htmlStyles = document.querySelector('html').style
+
 		var htmlStylesObject = {};
-		Object.assign(htmlStylesObject, htmlStyles);
+
+		for (var attribute in htmlStyles) {
+			htmlStylesObject[attribute] = htmlStyles[attribute];
+		}
 
 		twentytwenty.prevlockStyles = htmlStylesObject;
 	},
