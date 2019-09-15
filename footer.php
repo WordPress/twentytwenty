@@ -19,8 +19,8 @@
 
 				<?php
 
-				$has_footer_menu = has_nav_menu( 'footer-menu' );
-				$has_social_menu = has_nav_menu( 'social-menu' );
+				$has_footer_menu = has_nav_menu( 'footer' );
+				$has_social_menu = has_nav_menu( 'social' );
 
 				$footer_top_classes = '';
 
@@ -41,7 +41,7 @@
 										'container'      => '',
 										'depth'          => 1,
 										'items_wrap'     => '%3$s',
-										'theme_location' => 'footer-menu',
+										'theme_location' => 'footer',
 									)
 								);
 								?>
@@ -60,7 +60,7 @@
 										<?php
 										wp_nav_menu(
 											array(
-												'theme_location' => 'social-menu',
+												'theme_location' => 'social',
 												'container' => '',
 												'container_class' => '',
 												'items_wrap' => '%3$s',
