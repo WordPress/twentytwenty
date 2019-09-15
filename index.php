@@ -44,26 +44,26 @@ get_header();
 		$archive_subtitle = get_the_archive_description( '<div>', '</div>' );
 	}
 
-	if ( $archive_title || $archive_subtitle ) :
+	if ( $archive_title || $archive_subtitle ) {
 		?>
 
 		<header class="archive-header has-text-align-center">
 
 			<div class="archive-header-inner section-inner medium">
 
-				<?php if ( $archive_title ) : ?>
+				<?php if ( $archive_title ) { ?>
 					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-				<?php endif; ?>
+				<?php } ?>
 
-				<?php if ( $archive_subtitle ) : ?>
+				<?php if ( $archive_subtitle ) { ?>
 					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
-				<?php endif; ?>
+				<?php } ?>
 
 			</div><!-- .archive-header-inner -->
 
 		</header><!-- .archive-header -->
 
-	<?php endif; ?>
+	<?php } ?>
 
 	<div class="posts">
 
@@ -79,7 +79,7 @@ get_header();
 		} elseif ( is_search() ) {
 			?>
 
-			<div class="no-search-results-form">
+			<div class="no-search-results-form section-inner thin">
 
 				<?php get_search_form(); ?>
 
