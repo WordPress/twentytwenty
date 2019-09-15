@@ -37,10 +37,21 @@
 
 				<div class="header-titles-wrapper">
 
-					<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
-						<?php twentytwenty_the_theme_svg( 'search' ); ?>
-					</button><!-- .search-toggle -->
+					<?php
+
+					// Check whether the header search is activated in the customizer.
+					$enable_header_search = get_theme_mod( 'twentytwenty_enable_header_search', true );
+
+					if ( true === $enable_header_search ) {
+
+						?>
+
+						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+							<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
+							<?php twentytwenty_the_theme_svg( 'search' ); ?>
+						</button><!-- .search-toggle -->
+
+						<?php } ?>
 
 					<div class="header-titles">
 
@@ -128,13 +139,9 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php
-
-						// Check whether the header search is deactivated in the customizer.
-						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
-
-						if ( ! $disable_header_search ) {
-							?>
+						<?php 
+            if ( true === $enable_header_search ) { 
+              ?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
@@ -156,8 +163,8 @@
 			</div><!-- .header-inner -->
 
 			<?php
-			// Output the search modal (if it isn't deactivated in the customizer).
-			if ( ! $disable_header_search ) {
+			// Output the search modal (if it is activated in the customizer).
+			if ( true === $enable_header_search ) {
 				get_template_part( 'template-parts/modal-search' );
 			}
 			?>

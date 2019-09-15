@@ -457,9 +457,9 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 
-		// Check for disabled search.
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
-			$classes[] = 'disable-search-modal';
+		// Check for enabled search.
+		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+			$classes[] = 'enable-search-modal';
 		}
 
 		// Check for post thumbnail.
@@ -495,6 +495,13 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		if ( is_page_template() ) {
 			$classes[] = basename( get_page_template_slug(), '.php' );
 		}
+
+		// Get the luminance of the background color.
+		$background_color = new TwentyTwenty_Color();
+		$background_color->set_hex( get_theme_mod( 'background_color', '#f5efe0' ) );
+
+		// Add a class depending on the background color's relative luminance.
+		$classes[] = ( 0.5 < $background_color->get_luminance() ) ? 'background-color-light' : 'background-color-dark';
 
 		return $classes;
 
