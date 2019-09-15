@@ -1338,13 +1338,13 @@ ul.social-icons li {
 }
 
 
-/* Shortcuts Menu ---------------------------- */
+/* Primary Menu ---------------------------- */
 
-.shortcuts-menu-wrapper {
+.primary-menu-wrapper {
 	display: none;
 }
 
-ul.shortcuts-menu {
+ul.primary-menu {
 	display: flex;
 	font-size: 1.8rem;
 	font-weight: 500;
@@ -1354,57 +1354,57 @@ ul.shortcuts-menu {
 	margin: -.8rem 0 0 -1.6rem;
 }
 
-.shortcuts-menu svg {
+.primary-menu svg {
 	display: block;
 	height: .7rem;
 	width: 1.3rem;
 }
 
-.shortcuts-menu svg polygon {
+.primary-menu svg polygon {
 	fill: currentColor;
 }
 
-.shortcuts-menu li {
+.primary-menu li {
 	font-size: inherit;
 	line-height: 1.25;
 	position: relative;
 }
 
-.shortcuts-menu > li {
+.primary-menu > li {
 	margin: .8rem 0 0 1.6rem;
 }
 
-.shortcuts-menu > li.menu-item-has-children > a {
+.primary-menu > li.menu-item-has-children > a {
 	padding-right: 2rem;
 }
 
-.shortcuts-menu > li > svg {
+.primary-menu > li > svg {
 	position: absolute;
 		right: 0;
 		top: calc( 50% - .35rem );
 }
 
-.shortcuts-menu a {
+.primary-menu a {
 	color: inherit;
 	display: block;
 	line-height: 1.2;
 	text-decoration: none;
 }
 
-.shortcuts-menu a:hover,
-.shortcuts-menu a:focus {
+.primary-menu a:hover,
+.primary-menu a:focus {
 	outline: none;
 	text-decoration: underline;
 }
 
-.shortcuts-menu li.current-menu-item > a,
-.shortcuts-menu li.current-menu-item > .link-icon-wrapper > a {
+.primary-menu li.current-menu-item > a,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a {
 	text-decoration: underline;
 }
 
 /* SUB MENU */
 
-.shortcuts-menu ul {
+.primary-menu ul {
 	background: #000;
 	border-radius: .4rem;
 	color: #fff;
@@ -1420,35 +1420,35 @@ ul.shortcuts-menu {
 	z-index: 1;
 }
 
-.shortcuts-menu li.menu-item-has-children:hover > ul,
-.shortcuts-menu li.menu-item-has-children a:focus ~ ul {
+.primary-menu li.menu-item-has-children:hover > ul,
+.primary-menu li.menu-item-has-children a:focus ~ ul {
 	right: 0;
 	opacity: 1;
 	transform: translateY( 0 );
 	transition: opacity .15s linear, transform .15s linear;
 }
 
-.shortcuts-menu ul:before,
-.shortcuts-menu ul:after {
+.primary-menu ul:before,
+.primary-menu ul:after {
 	content: "";
 	display: block;
 	position: absolute;
 	bottom: 100%;
 }
 
-.shortcuts-menu ul:before {
+.primary-menu ul:before {
 	height: 2rem;
 	left: 0;
 	right: 0;
 }
 
-.shortcuts-menu ul:after {
+.primary-menu ul:after {
 	border: .8rem solid transparent;
 	border-bottom-color: #000;
 	right: 1.8rem;
 }
 
-.shortcuts-menu ul a {
+.primary-menu ul a {
 	background: transparent;
 	border: none;
 	display: block;
@@ -1457,11 +1457,11 @@ ul.shortcuts-menu {
 	width: 100%;
 }
 
-.shortcuts-menu ul li.menu-item-has-children > a {
+.primary-menu ul li.menu-item-has-children > a {
 	padding-right: 4.5rem;
 }
 
-.shortcuts-menu ul li.menu-item-has-children svg {
+.primary-menu ul li.menu-item-has-children svg {
 	position: absolute;
 		right: 2rem;
 		top: 50%;
@@ -1470,16 +1470,16 @@ ul.shortcuts-menu {
 
 /* DEEP DOWN */
 
-.shortcuts-menu ul ul {
+.primary-menu ul ul {
 	top: -1rem;
 }
 
-.shortcuts-menu ul li.menu-item-has-children:hover > ul,
-.shortcuts-menu ul li.menu-item-has-children a:focus ~ ul {
+.primary-menu ul li.menu-item-has-children:hover > ul,
+.primary-menu ul li.menu-item-has-children a:focus ~ ul {
 	right: calc( 100% + 2rem );
 }
 
-.shortcuts-menu ul ul:before {
+.primary-menu ul ul:before {
 	bottom: 0;
 	height: auto;
 	left: auto;
@@ -1488,7 +1488,7 @@ ul.shortcuts-menu {
 	width: 2rem;
 }
 
-.shortcuts-menu ul ul:after {
+.primary-menu ul ul:after {
 	border-bottom-color: transparent;
 	border-left-color: #000;
 	bottom: auto;
@@ -1681,7 +1681,7 @@ button.sub-menu-toggle.active svg {
 	transition: transform .25s ease-in-out, box-shadow .1s .25s linear;
 }
 
-.search-untoggle {
+button.search-untoggle {
 	align-items: center;
 	display: flex;
 	flex-shrink: 0;
@@ -4068,7 +4068,7 @@ ul.footer-social li {
 		display: flex;
 	}
 
-	.shortcuts-menu-wrapper {
+	.primary-menu-wrapper {
 		display: block;
 	}
 
@@ -4079,7 +4079,7 @@ ul.footer-social li {
 		display: none !important;
 	}
 
-	.shortcuts-menu-wrapper + .header-toggles {
+	.primary-menu-wrapper + .header-toggles {
 		margin-left: 3rem;
 	}
 
@@ -4296,14 +4296,14 @@ ul.footer-social li {
 		padding: 8rem 0 0;
 	}
 
-	/* SHORTCUTS MENU */
+	/* PRIMARY MENU */
 
-	ul.shortcuts-menu { margin: -.8rem 0 0 -2.5rem; }
-	.shortcuts-menu > li { margin: .8rem 0 0 2.5rem; }
+	ul.primary-menu { margin: -.8rem 0 0 -2.5rem; }
+	.primary-menu > li { margin: .8rem 0 0 2.5rem; }
 
 	/* HEADER TOGGLES */
 
-	.shortcuts-menu-wrapper + .header-toggles {
+	.primary-menu-wrapper + .header-toggles {
 		margin-left: 4rem;
 	}
 

@@ -151,7 +151,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 		$css_dependencies = array();
 
 		// By default, only load the Font Awesome fonts if the social menu is in use.
-		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
+		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social' ) );
 
 		if ( $load_font_awesome ) {
 			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
@@ -198,10 +198,11 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	function twentytwenty_menus() {
 
 		$locations = array(
-			'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
-			'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
-			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
-			'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
+			'primary'  => __( 'Desktop Horizontal Menu', 'twentytwenty' ),
+			'expanded' => __( 'Desktop Expanded Menu', 'twentytwenty' ),
+			'mobile'   => __( 'Mobile Menu', 'twentytwenty' ),
+			'footer'   => __( 'Footer Menu', 'twentytwenty' ),
+			'social'   => __( 'Social Menu', 'twentytwenty' ),
 		);
 
 		register_nav_menus( $locations );
