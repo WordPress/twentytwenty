@@ -46,3 +46,7 @@ Here are some good ideas for commit messages:
 All changes happen through a pull request made by contributors, ideally associated with an issue. After you send your proposed changes, one of the committers will review and test. After that, we can merge the changes.
 
 When you add a pull request, please also add in the description your WordPress.org username. We will then add it to CONTRIBUTORS.md. This is a running list of all contributors and essential to giving everyone that has helped make this project props in Core.
+
+## Setting up Grunt
+
+This project uses Grunt as a task loader, with tasks for building production-ready CSS and JS files. You can install it by running `npm install` or `yarn install` in the theme's main directory. After that you can run `grunt watch` while you're developing or `grunt build` to create the build files.
