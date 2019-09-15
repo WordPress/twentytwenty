@@ -93,25 +93,40 @@
 
 				<div class="header-navigation-wrapper">
 
-					<?php if ( has_nav_menu( 'shortcuts-menu' ) ) { ?>
+						<div class="primary-menu-wrapper">
 
-						<div class="shortcuts-menu-wrapper">
+							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
 
-							<ul class="shortcuts-menu color-accent reset-list-style">
+								<ul class="primary-menu color-accent reset-list-style">
+
 								<?php
-								wp_nav_menu(
-									array(
-										'container'      => '',
-										'items_wrap'     => '%3$s',
-										'theme_location' => 'shortcuts-menu',
-									)
-								);
+								if ( has_nav_menu( 'primary' ) ) {
+
+									wp_nav_menu(
+										array(
+											'container'  => '',
+											'items_wrap' => '%3$s',
+											'theme_location' => 'primary',
+										)
+									);
+
+								} else {
+
+									wp_list_pages(
+										array(
+											'match_menu_classes' => true,
+											'title_li' => false,
+										)
+									);
+
+								}
 								?>
-							</ul><!-- .shortcuts-menu -->
 
-						</div><!-- .shortcuts-menu-wrapper -->
+								</ul>
 
-					<?php } ?>
+							</nav><!-- .primary-menu -->
+
+						</div><!-- .primary-menu-wrapper -->
 
 					<div class="header-toggles hide-no-js">
 
@@ -124,7 +139,9 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php if ( true === $enable_header_search ) { ?>
+						<?php 
+						if ( true === $enable_header_search ) {
+							?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
@@ -135,7 +152,9 @@
 
 							</div>
 
-						<?php } ?>
+							<?php
+						}
+						?>
 
 					</div><!-- .header-toggles -->
 
@@ -155,4 +174,4 @@
 		<?php
 		// Output the menu modal.
 		get_template_part( 'template-parts/modal-menu' );
-		?>
+
