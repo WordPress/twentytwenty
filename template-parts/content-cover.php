@@ -96,17 +96,17 @@
 			the_content();
 
 			edit_post_link();
-			?>
+		?>
 
 		</div><!-- .entry-content -->
-        <?php
-        wp_link_pages(
-            array(
-                'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-                'after'  => '</nav>',
-            )
-        );
-        ?>
+		<?php
+		wp_link_pages(
+			array(
+				'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'  => '</nav>',
+			)
+		);
+		?>
 		<?php
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
