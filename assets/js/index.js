@@ -503,8 +503,8 @@ twentytwenty.scrollLock = {
 			html.style[style] = window.twentytwentyPrevLockStyles[style];
 		});
 
-		window.screenX = window.prevScroll.scrollX;
-		window.scrollY = window.prevScroll.scrollY;
+		window.screenX = window.twentytwentyPrevScroll.scrollX;
+		window.scrollY = window.twentytwentyPrevScroll.scrollY;
 
 		window.twentytwentyScrollLocked = false;
 	},
