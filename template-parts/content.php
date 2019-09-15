@@ -50,10 +50,8 @@
 
 		<?php
 		// Single bottom post meta.
-		if ( ! is_search() ) {
-			twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
-		}
-	
+		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
+		
 		?>
 
 	</div><!-- .post-inner -->
