@@ -1722,6 +1722,16 @@ button.sub-menu-toggle.active svg {
 	z-index: 999;
 }
 
+.admin-bar .search-modal.active {
+	top: 32px;
+}
+
+@media (max-width: 782px) {
+	.admin-bar .search-modal.active {
+		top: 46px;
+	}
+}
+
 .search-modal-inner {
 	background: #fff;
 	transform: translateY( -100% );
