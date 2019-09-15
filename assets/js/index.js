@@ -434,13 +434,13 @@ twentytwenty.scrollLock = {
 
 	init: function () {
 		// Init variables
-		window.scrollLocked = false;
-		window.prevScroll = {
+		window.twentytwentyScrollLocked = false;
+		window.twentytwentyPrevScroll = {
 			scrollX: window.scrollX,
 			scrollY: window.scrollY,
 		};
-		window.prevLockStyles = {};
-		window.lockStyles = {
+		window.twentytwentyPrevLockStyles = {};
+		window.twentytwentyLockStyles = {
 			overflowY: 'scroll',
 			position: 'fixed',
 			width: '100%',
@@ -452,19 +452,19 @@ twentytwenty.scrollLock = {
 
 	// Save context's inline styles in cache
 	saveStyles: function () {
-		window.prevLockStyles = document.querySelector('html').style;
+		window.twentytwentyPrevLockStyles = document.querySelector('html').style;
 	},
 
 	// Lock the scroll (do not call this directly)
 	lock: function () {
 		var appliedLock = {};
 
-		if (window.scrollLocked) {
+		if (window.twentytwentyScrollLocked) {
 			return;
 		}
 
 		// Save scroll state and styles
-		window.prevScroll = {
+		window.twentytwentyPrevScroll = {
 			scrollX: window.scrollX,
 			scrollY: window.scrollY,
 		};
@@ -472,7 +472,7 @@ twentytwenty.scrollLock = {
 		this.saveStyles();
 
 		// Compose our applied CSS, with scroll state as styles
-		Object.assign(appliedLock, window.lockStyles, {
+		Object.assign(appliedLock, window.twentytwentyLockStyles, {
 			left: -window.scrollX + 'px',
 			top: -window.scrollY + 'px',
 		}
@@ -488,25 +488,25 @@ twentytwenty.scrollLock = {
 		window.scrollX = 0;
 		window.scrollY = 0;
 
-		window.scrollLocked = true;
+		window.twentytwentyScrollLocked = true;
 	},
 
 	// Unlock the scroll (do not call this directly)
 	unlock: function () {
-		if (!window.scrollLocked) {
+		if (!window.twentytwentyScrollLocked) {
 			return;
 		}
 
 		var html = document.querySelector('html');
 		// Revert styles and state
-		Object.keys(window.prevLockStyles).forEach(function (style) {
-			html.style[style] = window.prevLockStyles[style];
+		Object.keys(window.twentytwentyPrevLockStyles).forEach(function (style) {
+			html.style[style] = window.twentytwentyPrevLockStyles[style];
 		});
 
 		window.screenX = window.prevScroll.scrollX;
 		window.scrollY = window.prevScroll.scrollY;
 
-		window.scrollLocked = false;
+		window.twentytwentyScrollLocked = false;
 	},
 
 	// Call this to lock or unlock the scroll
@@ -519,7 +519,7 @@ twentytwenty.scrollLock = {
 				this.unlock();
 			}
 			// If not, toggle to the inverse state
-		} else if (window.scrollLocked) {
+		} else if (window.twentytwentyScrollLocked) {
 			this.unlock();
 		} else {
 			this.lock();
