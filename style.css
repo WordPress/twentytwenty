@@ -1681,19 +1681,13 @@ button.sub-menu-toggle.active svg {
 	transition: transform .25s ease-in-out, box-shadow .1s .25s linear;
 }
 
-.search-untoggle {
+button.search-untoggle {
 	align-items: center;
 	display: flex;
 	flex-shrink: 0;
 	justify-content: center;
 	margin-right: -2.5rem;
 	padding: 0 2.5rem;
-}
-
-@media (max-width: 700px) {
-	.search-untoggle {
-		margin-right: 0;
-	}
 }
 
 .search-modal.active .search-untoggle {
