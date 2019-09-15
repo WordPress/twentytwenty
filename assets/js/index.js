@@ -230,11 +230,11 @@ twentytwenty.intrinsicRatioVideos = {
 
 		window.addEventListener('fit-videos', function () {
 			this.makeFit();
-		});
+		}).bind(this);
 
 		window.addEventListener('resize', function () {
 			this.makeFit();
-		});
+		}).bind(this);
 	},
 
 	makeFit: function () {
