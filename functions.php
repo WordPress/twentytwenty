@@ -135,6 +135,9 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
 
+// Color calculations.
+require get_template_directory() . '/classes/class-twentytwenty-color.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
