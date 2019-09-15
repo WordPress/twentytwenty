@@ -452,7 +452,12 @@ twentytwenty.scrollLock = {
 
 	// Save context's inline styles in cache
 	saveStyles: function () {
-		twentytwenty.prevlockStyles = document.querySelector('html').style;
+
+		var htmlStyles = document.querySelector('html').style
+		var htmlStylesObject = {};
+		Object.assign(htmlStylesObject, htmlStyles);
+
+		twentytwenty.prevlockStyles = htmlStylesObject;
 	},
 
 	// Lock the scroll (do not call this directly)
