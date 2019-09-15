@@ -306,8 +306,14 @@ twentytwenty.smoothScroll = {
 						var scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
 
 						// Determine offset
+
+						var adminBar = document.querySelector('#wpadminbar');
+
 						var originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
 						var scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+						if (adminBar && event.target.className === 'to-the-top') {
+							scrollOffset = scrollOffset - adminBar.getBoundingClientRect().height;
+						}
 
 						twentytwentyScrollTo(scrollOffset, null, scrollSpeed);
 
