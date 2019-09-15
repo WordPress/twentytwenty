@@ -1690,6 +1690,12 @@ button.sub-menu-toggle.active svg {
 	padding: 0 2.5rem;
 }
 
+@media (max-width: 700px) {
+	.search-untoggle {
+		margin-right: 0;
+	}
+}
+
 .search-modal.active .search-untoggle {
 	animation: popIn both .3s .2s;
 }
