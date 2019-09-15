@@ -1546,6 +1546,16 @@ ul.primary-menu {
 	z-index: 99;
 }
 
+.admin-bar .menu-modal {
+	top: 32px;
+}
+
+@media (max-width: 782px) {
+	.admin-bar .menu-modal {
+		top: 46px;
+	}
+}
+
 .menu-modal.show-modal {
 	display: flex;
 }
