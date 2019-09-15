@@ -314,6 +314,7 @@ html { font-family: 'Inter', sans-serif; }
 	font-family: 'Inter var';
 	font-weight: 100 900;
 	font-style: normal;
+	font-display: swap;
 	font-named-instance: 'Regular';
 	src: url('./assets/fonts/inter/Inter-upright.var.woff2') format('woff2');
 }
@@ -321,6 +322,7 @@ html { font-family: 'Inter', sans-serif; }
 	font-family: 'Inter var';
 	font-weight: 100 900;
 	font-style: italic;
+	font-display: swap;
 	font-named-instance: 'Italic';
 	src: url('./assets/fonts/inter/Inter-italic.var.woff2') format('woff2');
 }

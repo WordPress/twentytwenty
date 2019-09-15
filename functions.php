@@ -151,11 +151,11 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
 
 		if ( $load_font_awesome ) {
-			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
+			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/dist/css/font-awesome.min.css', false, '5.10.2', 'all' );
 			$css_dependencies[] = 'font-awesome';
 		}
 
-		wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/style.css', $css_dependencies, $theme_version );
+		wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/assets/dist/css/style.min.css', $css_dependencies, $theme_version );
 
 		// Add output of Customizer settings as inline style.
 		wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
@@ -180,7 +180,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 
 		$js_dependencies = array( 'jquery' );
 
-		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version, false );
+		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/dist/js/construct.min.js', $js_dependencies, $theme_version, false );
 
 	}
 
