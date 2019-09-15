@@ -68,7 +68,7 @@ twentytwenty.coverModals = {
 				event.preventDefault();
 				document.querySelectorAll('.cover-modal.active').forEach(function (element) {
 					this.untoggleModal(element);
-				});
+				}.bind(this));
 			}
 		}.bind(this));
 	},
