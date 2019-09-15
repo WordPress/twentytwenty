@@ -1681,7 +1681,7 @@ button.sub-menu-toggle.active svg {
 	transition: transform .25s ease-in-out, box-shadow .1s .25s linear;
 }
 
-.search-untoggle {
+button.search-untoggle {
 	align-items: center;
 	display: flex;
 	flex-shrink: 0;
