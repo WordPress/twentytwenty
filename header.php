@@ -140,8 +140,8 @@
 						</div><!-- .nav-toggle-wrapper -->
 
 						<?php 
-            					if ( true === $enable_header_search ) { 
-              						?>
+						if ( true === $enable_header_search ) {
+							?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
