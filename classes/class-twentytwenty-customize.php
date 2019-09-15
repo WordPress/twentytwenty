@@ -79,7 +79,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$color_option_name,
 					array(
 						'default'           => $color_option['default'],
-						'type'              => 'theme_mod',
 						'sanitize_callback' => 'sanitize_hex_color',
 					)
 				);
@@ -91,7 +90,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 						array(
 							'label'    => $color_option['label'],
 							'section'  => 'colors',
-							'settings' => $color_option_name,
 							'priority' => 10,
 						)
 					)
@@ -197,7 +195,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'twentytwenty_cover_template_overlay_background_color',
 				array(
 					'default'           => get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
-					'type'              => 'theme_mod',
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -210,7 +207,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 						'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
 						'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
 						'section'     => 'twentytwenty_cover_template_options',
-						'settings'    => 'twentytwenty_cover_template_overlay_background_color',
 					)
 				)
 			);
@@ -221,7 +217,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'twentytwenty_cover_template_overlay_text_color',
 				array(
 					'default'           => '#FFFFFF',
-					'type'              => 'theme_mod',
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -234,7 +229,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 						'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
 						'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
 						'section'     => 'twentytwenty_cover_template_options',
-						'settings'    => 'twentytwenty_cover_template_overlay_text_color',
 					)
 				)
 			);
@@ -255,7 +249,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'label'       => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
 					'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
 					'section'     => 'twentytwenty_cover_template_options',
-					'settings'    => 'twentytwenty_cover_template_overlay_blend_mode',
 					'type'        => 'select',
 					'choices'     => array(
 						'normal'      => __( 'Normal', 'twentytwenty' ),
@@ -294,7 +287,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
 					'description' => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
 					'section'     => 'twentytwenty_cover_template_options',
-					'settings'    => 'twentytwenty_cover_template_overlay_opacity',
 					'type'        => 'select',
 					'choices'     => array(
 						'0'   => __( '0%', 'twentytwenty' ),
