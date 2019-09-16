@@ -2150,6 +2150,14 @@ body.template-cover .entry-header {
 	margin-top: 3rem;
 }
 
+.wp-block-image .alignleft {
+	margin-right: 4rem;
+}
+
+.wp-block-image .alignright {
+	margin-left: 4rem;
+}
+
 
 /* Block: Shared Widget Styles ----------------- */
 
