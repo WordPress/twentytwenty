@@ -3,7 +3,7 @@ Theme Name: Twenty Twenty
 Text Domain: twentytwenty
 Version: 0.1
 Description: Default theme for Twenty Twenty
-Tags:
+Tags: 
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Theme URI: https://wordpress.org/themes/twentytwenty/
@@ -93,8 +93,8 @@ body {
 }
 
 @supports ( font-variation-settings: normal ) {
-	body {
-		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	body { 
+		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
 	}
 }
 
@@ -354,8 +354,8 @@ h1, h2, h3, h4, h5, h6, .faux-heading {
 	margin: 4rem 0 2.5rem;
 }
 
-h1, .heading-size-1 {
-	font-size: 3.6rem;
+h1, .heading-size-1 { 
+	font-size: 3.6rem; 
 	font-weight: 800;
 	line-height: 1.138888889;
 }
@@ -364,7 +364,7 @@ h2, .heading-size-2 { font-size: 3.2rem; }
 h3, .heading-size-3 { font-size: 2.8rem; }
 h4, .heading-size-4 { font-size: 2.4rem; }
 h5, .heading-size-5 { font-size: 2.1rem; }
-h6, .heading-size-6 {
+h6, .heading-size-6 { 
 	font-size: 1.6rem;
 	letter-spacing: .03125em;
 }
@@ -420,7 +420,7 @@ address {
 }
 
 hr {
-	border-top: .1rem solid rgba( 0, 0, 0, .42 );
+	border-top: .1rem solid rgba( 0, 0, 0, .42 ); 
 	margin: 4rem 0;
 }
 
@@ -674,8 +674,8 @@ button,
 	.button,
 	.faux-button,
 	.wp-block-button__link,
-	.wp-block-file__button {
-		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	.wp-block-file__button { 
+		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
 	}
 }
 
@@ -848,7 +848,7 @@ th {
 
 section {
 	padding: 5rem 0;
-	width: 100%;
+	width: 100%;	
 }
 
 .section-inner {
@@ -1147,7 +1147,7 @@ ul.social-icons li {
 	overflow: -moz-scrollbars-none;
 }
 
-.cover-modal::-webkit-scrollbar {
+.cover-modal::-webkit-scrollbar { 
 	display: none !important;
 }
 
@@ -1235,7 +1235,6 @@ ul.social-icons li {
 .site-logo img {
 	max-height: 6rem;
 	width: auto;
-	margin: 0 auto;
 }
 
 .site-description {
@@ -2187,7 +2186,7 @@ body.template-cover .entry-header {
 .entry-content .wp-block-latest-comments,
 .entry-content .wp-block-latest-posts,
 .entry-content .wp-block-pullquote,
-.entry-content .wp-block-quote.is-large,
+.entry-content .wp-block-quote.is-large, 
 .entry-content .wp-block-quote.is-style-large {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
 }
@@ -2200,8 +2199,8 @@ body.template-cover .entry-header {
 	.entry-content .wp-block-latest-comments,
 	.entry-content .wp-block-cover-image p,
 	.entry-content .wp-block-cover p,
-	.entry-content .wp-block-pullquote {
-		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	.entry-content .wp-block-pullquote { 
+		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
 	}
 }
 
@@ -2229,7 +2228,7 @@ body.template-cover .entry-header {
 .wp-block-media-text:not(.alignwide):not(.alignfull),
 .wp-block-pullquote:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
 .wp-block-quote,
-.wp-block-quote.is-large,
+.wp-block-quote.is-large, 
 .wp-block-quote.is-style-large {
 	margin-bottom: 3rem;
 	margin-top: 3rem;
@@ -2274,8 +2273,8 @@ body.template-cover .entry-header {
 	font-family: inherit;
 }
 
-.entry-content .wp-block-archives li,
-.entry-content .wp-block-categories li,
+.entry-content .wp-block-archives li, 
+.entry-content .wp-block-categories li, 
 .entry-content .wp-block-latest-posts li {
 	color: #6d6d6d;
 }
@@ -2423,7 +2422,7 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	margin-top: 1.2rem;
 }
 
-.wp-block-pullquote.alignleft p,
+.wp-block-pullquote.alignleft p, 
 .wp-block-pullquote.alignright p {
 	font-size: 2.8rem;
 }
@@ -2542,13 +2541,13 @@ hr.wp-block-separator {
 /* STYLE: DEFAULT */
 /* STYLE: LARGE */
 
-.wp-block-quote.is-large,
+.wp-block-quote.is-large, 
 .wp-block-quote.is-style-large {
 	border: none;
 	padding: 0;
 }
 
-.wp-block-quote.is-large p,
+.wp-block-quote.is-large p, 
 .wp-block-quote.is-style-large p {
 	font-family: inherit;
 	font-style: normal;
@@ -2557,9 +2556,9 @@ hr.wp-block-separator {
 	line-height: 1.285714286;
 }
 
-.wp-block-quote.is-large cite,
-.wp-block-quote.is-large footer,
-.wp-block-quote.is-style-large cite,
+.wp-block-quote.is-large cite, 
+.wp-block-quote.is-large footer, 
+.wp-block-quote.is-style-large cite, 
 .wp-block-quote.is-style-large footer {
 	font-size: 1.6rem;
 	text-align: inherit;
@@ -2680,8 +2679,8 @@ hr.wp-block-separator {
 @supports ( font-variation-settings: normal ) {
 	.entry-content cite,
 	.entry-content figcaption,
-	.entry-content .wp-caption-text {
-		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	.entry-content .wp-caption-text { 
+		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
 	}
 }
 
@@ -2794,7 +2793,7 @@ hr.wp-block-separator {
 .comments .comment,
 .comments .pingback,
 .comments .trackback,
-.comments .review {
+.comments .review { 
 	padding-top: 3.5rem;
 }
 
@@ -2816,7 +2815,7 @@ div.comment:first-of-type {
 	color: inherit;
 }
 
-.comment .comment {
+.comment .comment { 
 	border-left: .1rem solid #DCD7CA;
 	padding-left: 5%;
 }
@@ -2930,7 +2929,7 @@ div.comment:first-of-type {
 	display: block;
 }
 
-.comments-pagination .prev {
+.comments-pagination .prev { 
 	left: 0;
 }
 
@@ -2989,8 +2988,8 @@ div.comment:first-of-type {
 	margin-bottom: 0;
 }
 
-.comment-respond label {
-	display: block;
+.comment-respond label { 
+	display: block; 
 }
 
 .comment-respond input[type="text"],
@@ -3093,7 +3092,7 @@ div.comment:first-of-type {
 }
 
 .widget li:first-child,
-.widget li > ul,
+.widget li > ul, 
 .widget li > ol {
 	margin-top: 0;
 }
@@ -3143,8 +3142,8 @@ div.comment:first-of-type {
 @supports ( font-variation-settings: normal ) {
 	.widget-content cite,
 	.widget-content figcaption,
-	.widget-content .wp-caption-text {
-		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	.widget-content .wp-caption-text { 
+		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
 	}
 }
 
@@ -3521,14 +3520,14 @@ ul.footer-social li {
 
 	/* TITLES */
 
-	h1, .heading-size-1,
-	h2, .heading-size-2,
+	h1, .heading-size-1, 
+	h2, .heading-size-2, 
 	h3, .heading-size-3 {
 		margin: 6rem 0 3.5rem;
 	}
 
-	h4, .heading-size-4,
-	h5, .heading-size-5,
+	h4, .heading-size-4, 
+	h5, .heading-size-5, 
 	h6, .heading-size-6 {
 		margin: 4.5rem 0 2.5rem;
 	}
@@ -3830,7 +3829,7 @@ ul.footer-social li {
 	.wp-block-media-text:not(.alignwide):not(.alignfull),
 	.wp-block-pullquote:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
 	.wp-block-quote,
-	.wp-block-quote.is-large,
+	.wp-block-quote.is-large, 
 	.wp-block-quote.is-style-large {
 		margin-bottom: 5rem;
 		margin-top: 5rem;
@@ -3916,14 +3915,14 @@ ul.footer-social li {
 		line-height: 1.476;
 	}
 
-	.entry-content h1,
-	.entry-content h2,
+	.entry-content h1,  
+	.entry-content h2,  
 	.entry-content h3 {
 		margin: 6rem 0 3.5rem;
 	}
 
-	.entry-content h4,
-	.entry-content h5,
+	.entry-content h4, 
+	.entry-content h5, 
 	.entry-content h6 {
 		margin: 4.5rem 0 2.5rem;
 	}
@@ -3976,7 +3975,7 @@ ul.footer-social li {
 	.comments .comment,
 	.comments .pingback,
 	.comments .trackback,
-	.comments .review {
+	.comments .review { 
 		padding-top: 5rem;
 	}
 
@@ -4152,7 +4151,7 @@ ul.footer-social li {
 	.to-the-top-short { display: none; }
 
 }
-
+	
 @media ( min-width: 1000px ) {
 
 
@@ -4170,7 +4169,7 @@ ul.footer-social li {
 		justify-content: space-between;
 		padding: 2.8rem 0;
 	}
-
+	
 	.header-titles-wrapper {
 		margin-right: 4rem;
 		padding: 0;
@@ -4195,10 +4194,6 @@ ul.footer-social li {
 	.header-titles .site-title,
 	.header-titles .site-logo {
 		flex-shrink: 0;
-	}
-
-	.wp-custom-logo .header-titles {
-		align-items: center;
 	}
 
 	/* HEADER NAVIGATION */
@@ -4530,7 +4525,7 @@ ul.footer-social li {
 		margin-bottom: 10rem;
 		margin-top: 10rem;
 	}
-
+	
 	/* Comments ------------------------------ */
 	/* Site Pagination ----------------------- */
 	/* Widgets ------------------------------- */
