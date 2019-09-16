@@ -17,54 +17,53 @@
 
 			<div class="menu-top">
 
-				<ul class="main-menu reset-list-style">
-					<?php
-					if ( has_nav_menu( 'main-menu' ) ) {
-						wp_nav_menu(
-							array(
-								'container'      => '',
-								'items_wrap'     => '%3$s',
-								'show_toggles'   => true,
-								'theme_location' => 'main-menu',
-							)
-						);
-					} else {
-						wp_list_pages(
-							array(
-								'match_menu_classes' => true,
-								'title_li'           => false,
-							)
-						);
-					}
-					?>
-				</ul>
+				<nav aria-label="<?php esc_attr_e( 'Expanded', 'twentytwenty' ); ?>">
+
+					<ul class="main-menu reset-list-style">
+						<?php
+						if ( has_nav_menu( 'expanded' ) ) {
+							wp_nav_menu(
+								array(
+									'container'      => '',
+									'items_wrap'     => '%3$s',
+									'show_toggles'   => true,
+									'theme_location' => 'expanded',
+								)
+							);
+						}
+						?>
+					</ul>
+
+				</nav>
 
 			</div><!-- .menu-top -->
 
 			<div class="menu-bottom">
 
-				<?php if ( has_nav_menu( 'social-menu' ) ) { ?>
+				<?php if ( has_nav_menu( 'social' ) ) { ?>
 
-					<ul class="social-menu reset-list-style social-icons s-icons">
+					<nav aria-label="<?php esc_attr_e( 'Expanded Social links', 'twentytwenty' ); ?>">
+						<ul class="social-menu reset-list-style social-icons s-icons">
 
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location'  => 'social-menu',
-								'container'       => '',
-								'container_class' => '',
-								'items_wrap'      => '%3$s',
-								'menu_id'         => '',
-								'menu_class'      => '',
-								'depth'           => 1,
-								'link_before'     => '<span class="screen-reader-text">',
-								'link_after'      => '</span>',
-								'fallback_cb'     => '',
-							)
-						);
-						?>
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location'  => 'social',
+									'container'       => '',
+									'container_class' => '',
+									'items_wrap'      => '%3$s',
+									'menu_id'         => '',
+									'menu_class'      => '',
+									'depth'           => 1,
+									'link_before'     => '<span class="screen-reader-text">',
+									'link_after'      => '</span>',
+									'fallback_cb'     => '',
+								)
+							);
+							?>
 
-					</ul><!-- .social-menu -->
+						</ul>
+					</nav><!-- .social-menu -->
 
 				<?php } ?>
 

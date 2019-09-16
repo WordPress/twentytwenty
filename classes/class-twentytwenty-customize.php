@@ -100,8 +100,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			}
 
 			// Update background color with postMessage, so inline CSS output is updated as well.
-			$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
-
+			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
+		
 			/**
 			 * Site Header Options
 			 * */
@@ -116,25 +116,25 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			/* Disable Header Search --------- */
+			/* Enable Header Search --------- */
 
 			$wp_customize->add_setting(
-				'twentytwenty_disable_header_search',
+				'twentytwenty_enable_header_search',
 				array(
 					'capability'        => 'edit_theme_options',
-					'default'           => false,
+					'default'           => true,
 					'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
 				)
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_disable_header_search',
+				'twentytwenty_enable_header_search',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'twentytwenty_site_header_options',
 					'priority'    => 10,
-					'label'       => __( 'Disable Search Button', 'twentytwenty' ),
-					'description' => __( 'Check to disable the search button in the header.', 'twentytwenty' ),
+					'label'       => __( 'Show search in header', 'twentytwenty' ),
+					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
 				)
 			);
 
