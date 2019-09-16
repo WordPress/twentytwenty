@@ -7,6 +7,9 @@
  * @since 1.0.0
  */
 
+
+/* Delete from here */
+
 $next_post = get_next_post();
 $prev_post = get_previous_post();
 
@@ -51,3 +54,17 @@ if ( $next_post || $prev_post ) {
 
 	<?php
 }
+
+/* Delete until here */
+
+/* Single navigation using core function. */
+
+the_post_navigation( array(
+		'prev_text' =>  '<span class="arrow" aria-hidden="true">&larr;</span>' .
+						'<span class="screen-reader-text">' . __( 'Previous post:', 'twentytwenty' ) . '</span> ' .
+						'<span class="post-title">%title</span>',
+		'next_text' => 	'<span class="arrow" aria-hidden="true">&rarr;</span>' .
+						'<span class="screen-reader-text">' . __( 'Next post:', 'twentytwenty' ) . '</span> ' .
+						'<span class="post-title">%title</span>',
+		
+	) );
