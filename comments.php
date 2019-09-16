@@ -17,7 +17,8 @@ if ( post_password_required() ) {
 	return;
 }
 
-if ( $comments ) : ?>
+if ( $comments ) {
+	?>
 
 	<div class="comments section-inner thin max-percentage no-margin" id="comments">
 
@@ -56,7 +57,7 @@ if ( $comments ) : ?>
 			)
 		);
 
-		if ( $comment_pagination ) :
+		if ( $comment_pagination ) {
 
 			// If we're only showing the "Next" link, add a class indicating so.
 			if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
@@ -66,18 +67,20 @@ if ( $comments ) : ?>
 			}
 			?>
 
-			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>">
+			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
 				<?php echo wp_kses_post( $comment_pagination ); ?>
 			</nav>
 
-		<?php endif; ?>
+			<?php
+		}
+		?>
 
 	</div><!-- comments -->
 
 	<?php
-endif;
+}
 
-if ( comments_open() || pings_open() ) :
+if ( comments_open() || pings_open() ) {
 
 	comment_form(
 		array(
@@ -87,7 +90,7 @@ if ( comments_open() || pings_open() ) :
 		)
 	);
 
-elseif ( is_single() ) :
+} elseif ( is_single() ) {
 	?>
 
 	<div class="comment-respond" id="respond">
@@ -96,4 +99,5 @@ elseif ( is_single() ) :
 
 	</div><!-- #respond -->
 
-<?php endif; ?>
+	<?php
+}

@@ -19,55 +19,64 @@
 
 				<?php
 
-				$has_footer_menu = has_nav_menu( 'footer-menu' );
-				$has_social_menu = has_nav_menu( 'social-menu' );
+				$has_footer_menu = has_nav_menu( 'footer' );
+				$has_social_menu = has_nav_menu( 'social' );
 
 				$footer_top_classes = '';
 
 				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
 				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
 
-				if ( $has_footer_menu ) { ?>
+				if ( $has_footer_menu ) {
+					?>
 
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
 
-						<ul class="footer-menu reset-list-style">
-							<?php
-							wp_nav_menu(
-								array(
-									'container'      => '',
-									'depth'          => 1,
-									'items_wrap'     => '%3$s',
-									'theme_location' => 'footer-menu',
-								)
-							);
-							?>
-						</ul><!-- .site-nav -->
+						<nav aria-label="<?php esc_attr_e( 'Footer menu', 'twentytwenty' ); ?>">
+
+							<ul class="footer-menu reset-list-style">
+								<?php
+								wp_nav_menu(
+									array(
+										'container'      => '',
+										'depth'          => 1,
+										'items_wrap'     => '%3$s',
+										'theme_location' => 'footer',
+									)
+								);
+								?>
+							</ul>
+
+						</nav><!-- .site-nav -->
 
 						<?php if ( $has_social_menu ) { ?>
 
 							<div class="footer-social-wrapper">
 
-								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
+								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
-									<?php
-									wp_nav_menu(
-										array(
-											'theme_location' => 'social-menu',
-											'container'   => '',
-											'container_class' => '',
-											'items_wrap'  => '%3$s',
-											'menu_id'     => '',
-											'menu_class'  => '',
-											'depth'       => 1,
-											'link_before' => '<span class="screen-reader-text">',
-											'link_after'  => '</span>',
-											'fallback_cb' => '',
-										)
-									);
-									?>
+									<ul class="social-menu footer-social reset-list-style social-icons s-icons">
 
-								</ul><!-- .social-menu -->
+										<?php
+										wp_nav_menu(
+											array(
+												'theme_location' => 'social',
+												'container' => '',
+												'container_class' => '',
+												'items_wrap' => '%3$s',
+												'menu_id' => '',
+												'menu_class' => '',
+												'depth'   => 1,
+												'link_before' => '<span class="screen-reader-text">',
+												'link_after' => '</span>',
+												'fallback_cb' => '',
+											)
+										);
+										?>
+
+									</ul>
+
+								</nav><!-- .social-menu -->
 
 							</div><!-- .footer-social-wrapper -->
 
@@ -109,19 +118,12 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">&copy; <?php echo esc_html( 
-							date_i18n( 
-								/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
-								_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' ) 
-							) 
-						); ?> 
-							<a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>
-						</p>
+						<p class="footer-copyright">&copy; <?php echo esc_html( date_i18n( __( 'Y', 'twentytwenty' ) ) ); ?> <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></p>
 
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://www.wordpress.org">' . __( 'WordPress', 'twentytwenty' ) . '</a>' );
+							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
 							?>
 						</p><!-- .theme-credits -->
 
