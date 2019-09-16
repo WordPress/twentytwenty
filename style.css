@@ -861,7 +861,7 @@ section {
 	width: 100%;
 }
 
-.section-inner.thin { max-width: 58rem; }
+.section-inner.thin { max-width: 68rem; }
 .section-inner.medium { max-width: 100rem; }
 
 .section-inner.no-margin { margin: 0; }
@@ -2531,8 +2531,8 @@ hr.wp-block-separator {
 
 
 .entry-content {
-    line-height: 1.5;
-	max-width: 58rem;
+  line-height: 1.5;
+	max-width: 68rem;
 }
 
 .entry-content > * {
@@ -2552,7 +2552,7 @@ hr.wp-block-separator {
 }
 
 .entry-content p {
-	max-width: 58rem;
+	max-width: 68rem;
 }
 
 .entry-content ul ul,
