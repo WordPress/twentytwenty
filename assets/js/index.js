@@ -161,29 +161,6 @@ twentytwenty.coverModals = {
 }; // twentytwenty.coverModals
 
 /*	-----------------------------------------------------------------------------------------------
-	Dynamic Screen Height
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.dynamicScreenHeight = {
-
-	init: function () {
-		this.setScreenHeight();
-
-		window.addEventListener('resize', function () {
-			this.setScreenHeight();
-		}.bind(this));
-	},
-
-	setScreenHeight: function () {
-		var screenHeight = document.querySelector('.screen-height');
-		if (screenHeight) {
-			screenHeight.style.minHeight = window.innerHeight + 'px';
-		}
-	},
-
-}; // twentytwenty.dynamicScreenHeight
-
-/*	-----------------------------------------------------------------------------------------------
 	Focus Management
 --------------------------------------------------------------------------------------------------- */
 
@@ -678,7 +655,6 @@ window.wp.domReady(function () {
 	twentytwenty.scrollLock.init();				// Scroll Lock
 	twentytwenty.mainMenu.init();				// Main Menu
 	twentytwenty.focusManagement.init();		// Focus Management
-	twentytwenty.dynamicScreenHeight.init();	// Dynamic Screen Height
 });
 
 
