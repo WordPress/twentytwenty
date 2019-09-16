@@ -169,10 +169,6 @@ twentytwenty.dynamicScreenHeight = {
 	init: function () {
 		this.setScreenHeight();
 
-		setTimeout(function () {
-			this.setScreenHeight();
-		}.bind(this), 500);
-
 		window.addEventListener('resize', function () {
 			this.setScreenHeight();
 		}.bind(this));
