@@ -161,13 +161,13 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-author meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Post author', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Post author', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'user' ); ?>
 							</span>
 							<span class="meta-text">
 								<?php
 								// Translators: %s = the author name.
-								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
+								printf( _x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
 								?>
 							</span>
 						</li>
@@ -183,7 +183,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						<li class="post-date">
 							<a class="meta-wrapper" href="<?php the_permalink(); ?>">
 								<span class="meta-icon">
-									<span class="screen-reader-text"><?php esc_html_e( 'Post date', 'twentytwenty' ); ?></span>
+									<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); ?></span>
 									<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
 								</span>
 								<span class="meta-text">
@@ -202,11 +202,11 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-categories meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Post categories', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Post categories', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
+								<?php _e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
 							</span>
 						</li>
 						<?php
@@ -220,7 +220,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-tags meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Tags', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Tags', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'tag' ); ?>
 							</span>
 							<span class="meta-text">
@@ -258,7 +258,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 								<?php twentytwenty_the_theme_svg( 'bookmark' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'Sticky post', 'twentytwenty' ); ?>
+								<?php _e( 'Sticky post', 'twentytwenty' ); ?>
 							</span>
 						</li>
 						<?php
