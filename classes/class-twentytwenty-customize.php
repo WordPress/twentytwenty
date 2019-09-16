@@ -343,7 +343,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/**
 			 * Sanitize boolean for checkbox.
 			 *
-			 * @param bool $checked Wethere or not a blox is checked.
+			 * @param bool $checked Whether or not a box is checked.
 			 */
 			function twentytwenty_sanitize_checkbox( $checked ) {
 				return ( ( isset( $checked ) && true === $checked ) ? true : false );
