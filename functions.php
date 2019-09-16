@@ -348,6 +348,7 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
+
 	/**
 	 * Enqueue supplemental block editor styles.
 	 */
@@ -488,5 +489,18 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
+	
+	/**
+	 * Read More Link
+	 * Overwrite default (more ...) tag
+	 */
+	function twentytwenty_read_more_tag() {
+		return '<a class="more-link" href="' . get_permalink() . '">' . __( 'Read more', 'twentytwenty' ) . '</a>';
+	}
+	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 }
