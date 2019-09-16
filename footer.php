@@ -118,7 +118,7 @@
 
 					<div class="footer-credits">
 
-					<p class="footer-copyright">&copy; 
+						<p class="footer-copyright">&copy; 
 							<?php 
 							echo esc_html( 
 								date_i18n( 
