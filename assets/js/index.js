@@ -350,33 +350,6 @@ twentytwenty.smoothScroll = {
 }; // twentytwenty.smoothScroll
 
 /*	-----------------------------------------------------------------------------------------------
-	Interval Scroll
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.intervalScroll = {
-
-	init: function () {
-		var didScroll = false;
-
-		// Check for the scroll event
-		window.addEventListener('scroll', function () {
-			didScroll = true;
-		});
-
-		// Once every 250ms, check if we have scrolled, and if we have, do the intensive stuff
-		setInterval(function () {
-			if (didScroll) {
-				didScroll = false;
-
-				// When this triggers, we know that we have scrolled
-				window.dispatchEvent(new Event('did-interval-scroll'));
-			}
-		}, 250);
-	},
-
-}; // twentytwenty.intervalScroll
-
-/*	-----------------------------------------------------------------------------------------------
 	Main Menu
 --------------------------------------------------------------------------------------------------- */
 twentytwenty.mainMenu = {
@@ -697,7 +670,6 @@ twentytwenty.toggles = {
 }; // twentytwenty.toggles
 
 window.wp.domReady(function () {
-	twentytwenty.intervalScroll.init();			// Check for scroll on an interval
 	twentytwenty.resizeEnd.init();				// Trigger event at end of resize
 	twentytwenty.toggles.init();				// Handle toggles
 	twentytwenty.coverModals.init();			// Handle cover modals
