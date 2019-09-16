@@ -329,7 +329,7 @@ twentytwenty.smoothScroll = {
 /*	-----------------------------------------------------------------------------------------------
 	Main Menu
 --------------------------------------------------------------------------------------------------- */
-twentytwenty.mainMenu = {
+twentytwenty.modalMenu = {
 
 	init: function () {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
@@ -337,8 +337,8 @@ twentytwenty.mainMenu = {
 	},
 
 	expandLevel: function () {
-		var mainMenu = document.querySelector('.main-menu');
-		var activeMenuItem = mainMenu.querySelector('.current-menu-item');
+		var modalMenu = document.querySelector('.modal-menu');
+		var activeMenuItem = modalMenu.querySelector('.current-menu-item');
 
 		if (activeMenuItem) {
 			twentytwentyFindParents(activeMenuItem, 'li').forEach(function (element) {
@@ -349,7 +349,7 @@ twentytwenty.mainMenu = {
 			});
 		}
 	},
-}; // twentytwenty.mainMenu
+}; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Scroll Lock
@@ -631,7 +631,7 @@ window.wp.domReady(function () {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();			// Smooth scroll to anchor link or a specific element
 	twentytwenty.scrollLock.init();				// Scroll Lock
-	twentytwenty.mainMenu.init();				// Main Menu
+	twentytwenty.modalMenu.init();				// Modal Menu
 	twentytwenty.focusManagement.init();		// Focus Management
 });
 
