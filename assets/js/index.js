@@ -181,7 +181,7 @@ twentytwenty.dynamicScreenHeight = {
 	setScreenHeight: function () {
 		var screenHeight = document.querySelector('.screen-height');
 		if (screenHeight) {
-			screenHeight.style.minHeight = window.innerHeight;
+			screenHeight.style.minHeight = window.innerHeight + 'px';
 		}
 	},
 
