@@ -37,10 +37,21 @@
 
 				<div class="header-titles-wrapper">
 
-					<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
-						<?php twentytwenty_the_theme_svg( 'search' ); ?>
-					</button><!-- .search-toggle -->
+					<?php
+
+					// Check whether the header search is activated in the customizer.
+					$enable_header_search = get_theme_mod( 'twentytwenty_enable_header_search', true );
+
+					if ( true === $enable_header_search ) {
+
+						?>
+
+						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+							<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
+							<?php twentytwenty_the_theme_svg( 'search' ); ?>
+						</button><!-- .search-toggle -->
+
+						<?php } ?>
 
 					<div class="header-titles">
 
@@ -58,18 +69,18 @@
 							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
 						}
 
-						if ( is_front_page() || is_home() ) :
+						if ( is_front_page() || is_home() ) {
 							?>
 							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped during generation. ?></h1>
-						<?php else : ?>
+						<?php } else { ?>
 							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped prior to this point. ?></div>
-						<?php endif; ?>
+						<?php } ?>
 
-						<?php if ( $site_description ) : ?>
+						<?php if ( $site_description ) { ?>
 
 							<div class="site-description"><?php echo esc_html( $site_description ); ?></div><!-- .site-description -->
 
-						<?php endif; ?>
+						<?php } ?>
 
 					</div><!-- .header-titles -->
 
@@ -82,25 +93,40 @@
 
 				<div class="header-navigation-wrapper">
 
-					<?php if ( has_nav_menu( 'shortcuts-menu' ) ) : ?>
+						<div class="primary-menu-wrapper">
 
-						<div class="shortcuts-menu-wrapper">
+							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
 
-							<ul class="shortcuts-menu color-accent reset-list-style">
+								<ul class="primary-menu color-accent reset-list-style">
+
 								<?php
-								wp_nav_menu(
-									array(
-										'container'      => '',
-										'items_wrap'     => '%3$s',
-										'theme_location' => 'shortcuts-menu',
-									)
-								);
+								if ( has_nav_menu( 'primary' ) ) {
+
+									wp_nav_menu(
+										array(
+											'container'  => '',
+											'items_wrap' => '%3$s',
+											'theme_location' => 'primary',
+										)
+									);
+
+								} else {
+
+									wp_list_pages(
+										array(
+											'match_menu_classes' => true,
+											'title_li' => false,
+										)
+									);
+
+								}
 								?>
-							</ul><!-- .shortcuts-menu -->
 
-						</div><!-- .shortcuts-menu-wrapper -->
+								</ul>
 
-					<?php endif; ?>
+							</nav><!-- .primary-menu -->
+
+						</div><!-- .primary-menu-wrapper -->
 
 					<div class="header-toggles hide-no-js">
 
@@ -113,12 +139,8 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php
-
-						// Check whether the header search is deactivated in the customizer.
-						$disable_header_search = get_theme_mod( 'twentytwenty_disable_header_search', false );
-
-						if ( ! $disable_header_search ) :
+						<?php 
+						if ( true === $enable_header_search ) {
 							?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
@@ -130,7 +152,9 @@
 
 							</div>
 
-						<?php endif; ?>
+							<?php
+						}
+						?>
 
 					</div><!-- .header-toggles -->
 
@@ -139,9 +163,9 @@
 			</div><!-- .header-inner -->
 
 			<?php
-			// Output the search modal (if it isn't deactivated in the customizer).
-			if ( ! $disable_header_search ) {
-				get_template_part( 'parts/modal-search' );
+			// Output the search modal (if it is activated in the customizer).
+			if ( true === $enable_header_search ) {
+				get_template_part( 'template-parts/modal-search' );
 			}
 			?>
 
@@ -149,5 +173,5 @@
 
 		<?php
 		// Output the menu modal.
-		get_template_part( 'parts/modal-menu' );
-		?>
+		get_template_part( 'template-parts/modal-menu' );
+
