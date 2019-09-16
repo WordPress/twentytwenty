@@ -294,7 +294,7 @@ twentytwenty.smoothScroll = {
 				if (window.location.hostname === event.target.hostname) {
 					// Figure out element to scroll to
 					var target = window.location.hash !== '' && document.querySelector(window.location.hash);
-					target = target ? target : event.target.hash !== '' && document.querySelector('#' + event.target.hash);
+					target = target ? target : event.target.hash !== '' && document.querySelector(event.target.hash);
 
 					// Does a scroll target exist?
 					if (target) {
