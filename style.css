@@ -2001,10 +2001,10 @@ body.template-cover .entry-header {
 
 /* Post Footer ------------------------------- */
 
-/* READ MORE LINK */
+/* POST EDIT LINK */
 
-a.more-link {
-	margin-right: 1rem;
+.post-edit-link {
+	margin-left: 1rem;
 }
 
 /* POST NAV LINKS */
@@ -2584,6 +2584,7 @@ hr.wp-block-separator {
 /* Font Families ----------------------------- */
 
 .entry-content p,
+.entry-content a,
 .entry-content ol,
 .entry-content ul,
 .entry-content dl,
