@@ -123,7 +123,7 @@
 						<p class="powered-by-wordpress">
 							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
 								<?php
-								/* translators: %s: WordPress. */
+								/* Translators: %s: WordPress. */
 								printf( __( 'Powered by %s.', 'twentytwenty' ), __( 'WordPress', 'twentytwenty' );
 								?>
 							</a>
