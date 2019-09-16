@@ -28,7 +28,7 @@
 		<div class="entry-content">
 
 			<?php
-			if ( is_search() ) {
+			if ( is_search() || ! is_singular() && get_theme_mod( 'blog_content', 'full' ) === 'summary' ) {
 				the_excerpt();
 			} else {
 				the_content();
