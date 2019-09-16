@@ -2107,11 +2107,6 @@ body.template-cover .entry-header {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
-.wp-block-pullquote.alignleft,
-.wp-block-pullquote.alignright {
-	max-width: 100%;
-}
-
 @supports ( font-variation-settings: normal ) {
 	.has-drop-cap:not(:focus):first-letter,
 	.entry-content .wp-block-archives,
@@ -2295,6 +2290,11 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 .wp-block-pullquote {
 	padding: 0;
 	position: relative;
+}
+
+.wp-block-pullquote.alignleft,
+.wp-block-pullquote.alignright {
+	max-width: 100%;
 }
 
 .wp-block-pullquote:before {
@@ -3360,9 +3360,9 @@ ul.footer-social li {
 
 @media ( min-width: 480px ) {
 
-	/* Block: Pullquote -------------------------- */
+	/* Blocks -------------------------------- */
 
-	/* STYLE: DEFAULT */
+	/* BLOCK: BASE ALIGNMENT WIDTH */
 
 	.wp-block-pullquote.alignleft, 
 	.wp-block-pullquote.alignright,
@@ -3374,7 +3374,7 @@ ul.footer-social li {
 	.wp-block-embed.alignright,
 	.wp-block-gallery.alignleft, 
 	.wp-block-gallery.alignright {
-			max-width: 26rem
+		max-width: 26rem;
 	}
 
 	/* Entry Content ------------------------- */
@@ -3383,7 +3383,7 @@ ul.footer-social li {
 
 	.alignleft,
 	.alignright {
-		max-width: 26rem
+		max-width: 26rem;
 	}
 
 	.alignleft {
