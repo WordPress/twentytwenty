@@ -145,6 +145,9 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
 
+// Custom page walker.
+require get_template_directory() . '/classes/class-twentytwenty-walker-page.php';
+
 // Color calculations.
 require get_template_directory() . '/classes/class-twentytwenty-color.php';
 
@@ -203,7 +206,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 
 if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	/**
-	 * Register navigation menus uses wp_nav_menu in three places.
+	 * Register navigation menus uses wp_nav_menu in five places.
 	 */
 	function twentytwenty_menus() {
 
