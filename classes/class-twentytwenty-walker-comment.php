@@ -120,7 +120,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 								echo $edit_comment_link; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Link escaped on line 109.
 							}
 							if ( $by_post_author ) {
-								echo '<span class="by-post-author">' . esc_html__( 'By Post Author', 'twentytwenty' ) . '</span>';
+								echo '<span class="by-post-author">' . __( 'By Post Author', 'twentytwenty' ) . '</span>';
 							}
 							?>
 

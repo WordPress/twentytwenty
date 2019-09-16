@@ -123,7 +123,7 @@
 						<p class="powered-by-wordpress">
 							<?php
 							/* Translators: %s = Link to WordPress.org */
-							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
+							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . __( 'WordPress', 'twentytwenty' ) . '</a>' );
 							?>
 						</p><!-- .theme-credits -->
 
