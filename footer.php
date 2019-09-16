@@ -121,10 +121,12 @@
 						<p class="footer-copyright">&copy; <?php echo esc_html( date_i18n( __( 'Y', 'twentytwenty' ) ) ); ?> <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></p>
 
 						<p class="powered-by-wordpress">
-							<?php
-							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
-							?>
+							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
+								<?php
+								/* translators: %s: WordPress. */
+								printf( __( 'Powered by %s.', 'twentytwenty' ), __( 'WordPress', 'twentytwenty' );
+								?>
+							</a>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
