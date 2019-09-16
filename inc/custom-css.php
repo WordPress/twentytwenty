@@ -11,26 +11,44 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 	/**
 	 * Generate CSS.
-	 *
-	 * @param string $selector The CSS selector.
-	 * @param string $style The CSS style.
-	 * @param string $value The CSS value.
-	 * @param string $prefix The CSS prefix.
-	 * @param string $suffix The CSS suffix.
-	 * @param bool   $echo Echo the styles.
+	 * 
+	 * @param array $args Doing this later.
 	 */
-	function twentytwenty_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
+	function twentytwenty_generate_css( $args = array() ) {
+		$defaults = array(
+			'selector' => '',
+			'style'    => '',
+			'value'    => false,
+			'prefix'   => '',
+			'suffix'   => '',
+			'echo'     => true,
+			'context'  => '',
+			'mod'      => '',
+		);
 
-		$return = '';
+		$args     = wp_parse_args( $args, $defaults );
+		$return   = '';
+		$selector = $args['selector'];
 
-		if ( ! $value ) {
-
+		if ( ! $args['value'] ) {
 			return;
 		}
 
-		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
+		if ( ! is_array( $selector ) ) {
+			$selector = array_map( 'trim', explode( ',', $selector ) );
+		}
+		
+		$selector = apply_filters( 'twentytwenty_generate_css_selector', $selector, $args );
+		$selector = implode( ', ', array_unique( $selector ) );
 
-		if ( $echo ) {
+		$return = sprintf( 
+			'%s { %s: %s; }', 
+			$selector, 
+			$args['style'], 
+			$args['prefix'] . $args['value'] . $args['suffix'] 
+		);
+
+		if ( $args['echo'] ) {
 
 			echo $return; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;)
 
@@ -52,85 +70,149 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables.
-		$accent          = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
-		$accent_default  = '#cd2653';
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
-		// Cover.
-		$cover         = sanitize_hex_color( get_theme_mod( 'twentytwenty_cover_template_overlay_text_color' ) );
-		$cover_default = '#ffffff';
+		$theme_mods = array(
+			'twentytwenty_accent_color' => array(
+				'default' => '#cd2653',
+				'type'    => 'hex_color',
+				'styles'  => array(
+					'front-end'      => array(
+						array(
+							'style'    => 'color',
+							'selector' => 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter',
+						),
+						array(
+							'style'    => 'border-color',
+							'selector' => 'blockquote, .wp-block-button.is-style-outline',
+						),
+						array(
+							'style'    => 'background-color',
+							'selector' => '.footer-social a, .social-icons a',
+						),
+						array(
+							'style'    => 'background-color',
+							'selector' => $buttons_targets,
+						),
+						array(
+							'style'    => 'color',
+							'selector' => '.color-accent, .color-accent-hover:hover, .has-accent-color',
+						),
+						array(
+							'style'    => 'background-color',
+							'selector' => '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color',
+						),
+						array(
+							'style'    => 'border-color',
+							'selector' => '.border-color-accent, .border-color-accent-hover:hover',
+						),
+						array(
+							'style'    => 'fill',
+							'selector' => '.fill-children-accent, .fill-children-accent *',
+						),
+					),
+					'block-editor'   => array(
+						array(
+							'style'    => 'color',
+							'selector' => '.editor-styles-wrapper a, .editor-styles-wrapper .has-drop-cap:not(:focus):first-letter',
+						),
+						array(
+							'style'    => 'border-color',
+							'selector' => '.editor-styles-wrapper blockquote, .editor-styles-wrapper .wp-block-quote',
+							'suffix'   => ' !important',
+						),
+						array(
+							'style'    => 'color',
+							'selector' => '.editor-styles-wrapper .wp-block-file .wp-block-file__textlink',
+						),
+						array(
+							'style'    => 'background',
+							'selector' => $buttons_targets,
+						),
+						array(
+							'style'    => 'border-color',
+							'selector' => '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link',
+						),
+						array(
+							'style'    => 'color',
+							'selector' => '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link',
+						),
+					),
+					'classic-editor' => array(
+						array(
+							'style'    => 'color',
+							'selector' => 'body#tinymce.wp-editor a',
+						),
+						array(
+							'style'    => 'border-color',
+							'selector' => 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote',
+							'suffix'   => ' !important',
+						),
+						array(
+							'style'    => 'background-color',
+							'selector' => $buttons_targets,
+						),
+						
+					),
+				),
+			),
+			'twentytwenty_cover_template_overlay_text_color' => array(
+				'default' => '#ffffff',
+				'type'    => 'hex_color',
+				'styles'  => array(
+					'front-end' => array(
+						array(
+							'style'    => 'color',
+							'selector' => '.cover-header .entry-header *',
+						),
+					),
+				),
+			),
+			'background_color'=> array(
+				'default' => '#f5efe0',
+				'type'    => 'hex_color',
+				'styles'  => array(
+					'block-editor' => array(
+						array(
+							'style'    => 'background',
+							'selector' => '.editor-styles-wrapper',
+						),
+					),
+					'classic-editor' => array(
+						array(
+							'style'    => 'background',
+							'selector' => 'body#tinymce.wp-editor',
+						),
+					),
+				),
+			),
+		);
 
-		// Background.
-		$background         = sanitize_hex_color_no_hash( get_theme_mod( 'background_color' ) );
-		$background_default = 'f5efe0';
+		$theme_mods = apply_filters( 'twentytwenty_get_customizer_css', $theme_mods, $type );
 
 		ob_start();
 
-		/**
-		 * Note – Styles are applied in this order:
-		 * 1. Element specific
-		 * 2. Helper classes
-		 *
-		 * This enables all helper classes to overwrite base element styles,
-		 * meaning that any color classes applied in the block editor will
-		 * have a higher priority than the base element styles.
-		*/
-
-		// Front-End Styles.
-		if ( 'front-end' === $type ) {
-
-			// Colors.
-			// Element Specific.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter', 'color', $accent );
-				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
+		foreach ( $theme_mods as $theme_mod => $args ) {
+			$value = get_theme_mod( $theme_mod );
+			
+			if ( $value && 'hex_color' === $args['type'] ) {
+				$value = sanitize_hex_color( maybe_hash_hex_color( $value ) );
+			} else {
+				continue;
 			}
 
-			if ( $cover && $cover !== $cover_default ) {
-				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
-			}
+			foreach ( $args['styles'] as $view => $style ) {
+				if ( $type === $view ) {
+					foreach ( $style as $style_args ) {
+						if ( $value !== $args['default'] ) {
+							$style_args['value'] = $value;
+							$style_args['context'] = $view;
+							$style_args['mod'] = $theme_mod;
 
-			// Helper Classes.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
-				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
-				twentytwenty_generate_css( '.border-color-accent, .border-color-accent-hover:hover', 'border-color', $accent );
-				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
-			}
-
-			// Block Editor Styles.
-		} elseif ( 'block-editor' === $type ) {
-
-			// Colors.
-			// Accent color.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( '.editor-styles-wrapper a, .editor-styles-wrapper .has-drop-cap:not(:focus):first-letter', 'color', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper blockquote, .editor-styles-wrapper .wp-block-quote', 'border-color', $accent, '', ' !important' );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-file .wp-block-file__textlink', 'color', $accent );
-				twentytwenty_generate_css( $buttons_targets, 'background', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'border-color', $accent );
-				twentytwenty_generate_css( '.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link', 'color', $accent );
-			}
-
-			// Background color.
-			if ( $background && $background !== $background_default ) {
-				twentytwenty_generate_css( '.editor-styles-wrapper', 'background', '#' . $background );
-			}
-		} elseif ( 'classic-editor' === $type ) {
-
-			// Colors.
-			// Accent color.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
-				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-			}
-
-			// Background color.
-			if ( $background && $background !== $background_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor', 'background', '#' . $background );
+							twentytwenty_generate_css( $style_args );
+						}
+					}
+				}
 			}
 		}
 
