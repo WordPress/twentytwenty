@@ -3388,12 +3388,12 @@ ul.footer-social li {
 
 	.alignleft {
 		float: left;
-		margin: .3rem 2rem 2rem 0;
+		margin-left: calc( ( 100vw - 58rem - 8rem ) / -2 );
 	}
 
 	.alignright {
 		float: right;
-		margin: .3rem 0 2rem 2rem;
+		margin-right: calc( ( 100vw - 58rem - 8rem ) / -2 );
 	}
 }
 
@@ -3845,6 +3845,14 @@ ul.footer-social li {
 
 	/* ALIGNMENT CLASSES */
 
+	.alignleft {
+		margin-left: -31rem;
+	}
+
+	.alignright {
+    margin-right: -31rem;
+	}
+	
 	.alignnone, 
 	.aligncenter,
 	.alignwide,
