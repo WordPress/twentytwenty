@@ -493,13 +493,18 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
-	
+
 	/**
 	 * Read More Link
 	 * Overwrite default (more ...) tag
 	 */
 	function twentytwenty_read_more_tag() {
-		return '<a class="more-link" href="' . get_permalink() . '">' . __( 'Read more', 'twentytwenty' ) . '</a>';
+		return sprintf(
+			'<a href="%1$s" class="more-link">%2$s</a></p>',
+			esc_url( get_permalink( get_the_ID() ) ),
+			/* Translators: %s: Name of current post */
+			sprintf( __( 'Continue reading <span class="screen-reader-text">"%s"</span>', 'twentytwenty' ), get_the_title( get_the_ID() ) )
+		);
 	}
 	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
