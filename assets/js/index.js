@@ -352,27 +352,6 @@ twentytwenty.mainMenu = {
 }; // twentytwenty.mainMenu
 
 /*	-----------------------------------------------------------------------------------------------
-	Resize End Event
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.resizeEnd = {
-
-	init: function () {
-		var resizeTimer;
-
-		window.addEventListener('resize', function () {
-			clearTimeout(resizeTimer);
-
-			resizeTimer = setTimeout(function () {
-				// Trigger this at the end of screen resizing
-				window.dispatchEvent(new Event('resize-end'));
-			}, 250);
-		});
-	},
-
-}; // twentytwenty.resizeEnd
-
-/*	-----------------------------------------------------------------------------------------------
 	Scroll Lock
 --------------------------------------------------------------------------------------------------- */
 
@@ -647,7 +626,6 @@ twentytwenty.toggles = {
 }; // twentytwenty.toggles
 
 window.wp.domReady(function () {
-	twentytwenty.resizeEnd.init();				// Trigger event at end of resize
 	twentytwenty.toggles.init();				// Handle toggles
 	twentytwenty.coverModals.init();			// Handle cover modals
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
