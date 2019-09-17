@@ -33,6 +33,7 @@ _twentyTwentyColor.prototype.setBackgroundColorProperties = function() {
 	// Get luminance.
 	lum = this.getRelativeLuminance( rgb );
 
+	// Set the color properties.
 	this.backgroundColorProps = {
 		hex: hex,
 		red: rgb[0],
@@ -40,6 +41,31 @@ _twentyTwentyColor.prototype.setBackgroundColorProperties = function() {
 		blue: rgb[2],
 		luminance: lum
 	};
+};
+
+/**
+ * Check if the background-color is dark.
+ *
+ * @since 1.0.0
+ * @return {Boolean}
+ */
+_twentyTwentyColor.prototype.isBackgroundDark = function() {
+	var whiteLum = 1,
+		blackLum = 0,
+		contrastWhite = this.getContrast( whiteLum, this.backgroundColorProps.luminance ),
+		contrastBlack = this.getContrast( blackLum, this.backgroundColorProps.luminance );
+
+	return ( contrastBlack < contrastWhite );
+};
+
+/**
+ * Check if the background-color is light.
+ *
+ * @since 1.0.0
+ * @return {Boolean}
+ */
+_twentyTwentyColor.prototype.isBackgroundLight = function() {
+	return ! this.isBackgroundDark();
 };
 
 /**
@@ -79,7 +105,6 @@ _twentyTwentyColor.prototype.getRelativeLuminance = function( color ) {
 	// Return relative luminance rounded to 2 decimals.
 	return Math.round( lum * 100 ) / 100;
 };
-
 
 /**
  * Get luminocity for a part.
