@@ -1235,6 +1235,7 @@ ul.social-icons li {
 .site-logo img {
 	max-height: 6rem;
 	width: auto;
+	margin: 0 auto;
 }
 
 .site-description {
@@ -4195,6 +4196,10 @@ ul.footer-social li {
 	.header-titles .site-title,
 	.header-titles .site-logo {
 		flex-shrink: 0;
+	}
+	
+	.wp-custom-logo .header-titles {
+		align-items: center;
 	}
 
 	/* HEADER NAVIGATION */
