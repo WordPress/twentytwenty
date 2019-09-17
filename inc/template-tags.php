@@ -344,7 +344,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
 		// Add sub menu toggles to the Expanded Menu with toggles.
-		if ( 'expanded' === $args->theme_location && isset( $args->show_toggles ) || 'mobile' === $args->theme_location && isset( $args->show_toggles ) ) {
+		if ( isset( $args->show_toggles ) && $args->show_toggles ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
