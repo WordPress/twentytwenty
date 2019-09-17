@@ -115,7 +115,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					'author',
 					'post-date',
 					'comments',
-					'sticky'
+					'sticky',
 				)
 			);
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
