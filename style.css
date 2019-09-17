@@ -2104,24 +2104,70 @@ body.template-cover .entry-header {
 }
 
 
+/* Author Bio -------------------------------- */
+
+.avatar {
+	border-radius: 50%;
+}
+
+.author-bio {
+	margin-top: 4rem;
+}
+
+.author-bio-inner p:last-child {
+	margin-bottom: 0;
+}
+
+.author-bio .avatar {
+	margin-right: 1.5rem;
+	height: 5rem;
+	width: 5rem;
+}
+
+.author-bio .author-title {
+	align-items: center;
+	display: flex;
+	margin: 0 0 1rem 0;
+}
+
+.author-bio .author-link {
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 600;
+	margin-top: 1em;
+	text-decoration: none;
+}
+
+.author-bio .author-link:hover {
+	text-decoration: underline;
+}
+
+
 /* Single Pagination ------------------------- */
 
 .pagination-single {
-	border-color: #DCD7CA;
-	border-style: solid;
-	border-width: .1rem 0;
-	display: flex;
-	flex-direction: column;
 	font-size: 1.8rem;
 	margin-top: 5rem;
-	padding: 3rem 0;
+}
+
+.pagination-single-inner {
+	display: flex;
+	flex-direction: column;
+}
+
+.pagination-single hr:first-child {
+	margin: 0 0 2.8rem 0;
+}
+
+.pagination-single hr:last-child {
+	margin: 2.8rem 0 0 0;
 }
 
 .pagination-single a {
 	align-items: baseline;
-	color: inherit;
 	display: flex;
-	font-weight: 500;
+	font-weight: 600;
+	letter-spacing: -.0275em;
 	text-decoration: none;
 }
 
@@ -3776,18 +3822,45 @@ ul.footer-social li {
 		margin-top: 4rem;
 	}
 
+	/* AUTHOR BIO */
+
+	.author-bio {
+		margin-top: 8rem;
+		min-height: 8rem;
+		padding-left: 10rem;
+		position: relative;
+	}
+
+	.author-bio .avatar {
+		position: absolute;
+			left: 0;
+			top: 0;
+		height: 8rem;
+		width: 8rem;
+	}
+
 	/* SINGLE PAGINATION */
 
 	.pagination-single {
-		flex-direction: row;
 		font-size: 2.4rem;
-		justify-content: space-between;
-		padding: 3.5rem 0;
 		margin-top: 8rem;
 	}
 
-	.pagination-single.only-next {
+	.pagination-single-inner {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.pagination-single.only-next .pagination-single-inner {
 		justify-content: flex-end;
+	}
+
+	.pagination-single hr:first-child {
+		margin: 0 0 4rem 0;
+	}
+
+	.pagination-single hr:last-child {
+		margin: 4rem 0 0 0;
 	}
 
 	.pagination-single a + a {
