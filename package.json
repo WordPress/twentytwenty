@@ -1,0 +1,33 @@
+{
+  "name": "twentytwenty",
+  "version": "1.0.0",
+  "description": "Default WP Theme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wordpress/twentytwenty.git"
+  },
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/wordpress/twentytwenty/issues"
+  },
+  "homepage": "https://github.com/wordpress/twentytwenty#readme",
+  "devDependencies": {
+    "rtlcss": "^2.4.0"
+	},
+	"rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
+  "scripts": {
+    "build:rtl": "rtlcss style.css style-rtl.css"
+  }
+}
