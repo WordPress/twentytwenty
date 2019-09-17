@@ -94,8 +94,6 @@
 
 		<?php
 			the_content();
-
-			edit_post_link();
 		?>
 
 		</div><!-- .entry-content -->
@@ -106,7 +104,9 @@
 				'after'  => '</nav>',
 			)
 		);
+        edit_post_link();
 		?>
+
 		<?php
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
