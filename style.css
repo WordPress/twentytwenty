@@ -862,6 +862,7 @@ section {
 }
 
 .section-inner.thin { max-width: 58rem; }
+.section-inner.small { max-width: 80rem; }
 .section-inner.medium { max-width: 100rem; }
 
 .section-inner.no-margin { margin: 0; }
@@ -1955,8 +1956,30 @@ body.template-cover .entry-header {
 	padding: 4rem 0;
 }
 
-.entry-title,
-.entry-title {
+.entry-categories {
+	line-height: 1.25;
+	margin-bottom: 2rem;
+}
+
+.entry-categories-inner {
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	margin: -.5rem 0 0 -1rem;
+}
+
+.entry-categories a {
+	border-bottom: .15rem solid currentColor;
+	font-size: 1.4rem;
+	font-weight: 700;
+	letter-spacing: .036666667em;
+	margin: .5rem 0 0 1rem;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+h1.entry-title,
+h2.entry-title {
 	margin: 0;
 }
 
@@ -1971,6 +1994,12 @@ body.template-cover .entry-header {
 
 .intro-text {
 	margin-top: 2rem;
+}
+
+.singular .intro-text {
+	font-size: 2rem;
+	letter-spacing: -.0315em;
+	line-height: 1.4;
 }
 
 /* POST META */
@@ -3858,9 +3887,26 @@ ul.footer-social li {
 		padding: 8rem 0;
 	}
 
+	.entry-categories {
+		margin-bottom: 3rem;
+	}
+
+	.entry-categories-inner {
+		margin: -1rem 0 0 -2rem;
+	}
+
+	.entry-categories a {
+		font-size: 1.5rem;
+		margin: 1rem 0 0 2rem;
+	}
+
 	.intro-text {
 		font-size: 2rem;
 		margin-top: 2.5rem;
+	}
+
+	.singular .intro-text {
+		font-size: 2.6rem;
 	}
 
 	.post-meta-wrapper {
@@ -4490,6 +4536,11 @@ ul.footer-social li {
 	/* Template: [Template Name] ------------- */
 	/* Post: Archive ------------------------- */
 	/* Post: Single -------------------------- */
+
+	.singular .intro-text {
+		font-size: 2.8rem;
+	}
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: GROUP */
@@ -4641,6 +4692,13 @@ ul.footer-social li {
 
 	/* Post: Archive ------------------------- */
 	/* Post: Single -------------------------- */
+
+	.singular .intro-text {
+		font-size: 3.2rem;
+		letter-spacing: -.03125em;
+		line-height: 1.375;
+	}
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: GROUP */
