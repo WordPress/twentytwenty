@@ -3929,14 +3929,6 @@ ul.footer-social li {
 	}
 
 	/* ALIGNMENT CLASSES */
-
-	.alignleft {
-		margin-left: -31rem;
-	}
-
-	.alignright {
-    margin-right: -31rem;
-	}
 	
 	.alignnone, 
 	.aligncenter,
@@ -4590,6 +4582,14 @@ ul.footer-social li {
 	/* Entry Content ------------------------- */
 
 	/* ALIGNMENT CLASSES */
+
+	.alignleft {
+		margin-left: -31rem;
+	}
+
+	.alignright {
+		margin-right: -31rem;
+	}
 
 	.alignwide {
 		max-width: 120rem;
