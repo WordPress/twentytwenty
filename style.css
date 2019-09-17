@@ -2165,8 +2165,9 @@ body.template-cover .entry-header {
 .has-drop-cap:not(:focus):first-letter {
 	color: #CD2653;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
-	font-size: 5.4em;
+	font-size: 4.55em;
 	font-weight: 800;
+	margin: .15em .1em 0 0;
 }
 
 .has-drop-cap:not(:focus):first-letter:after {
@@ -3929,14 +3930,6 @@ ul.footer-social li {
 	}
 
 	/* ALIGNMENT CLASSES */
-
-	.alignleft {
-		margin-left: -31rem;
-	}
-
-	.alignright {
-    margin-right: -31rem;
-	}
 	
 	.alignnone, 
 	.aligncenter,
@@ -4590,6 +4583,14 @@ ul.footer-social li {
 	/* Entry Content ------------------------- */
 
 	/* ALIGNMENT CLASSES */
+
+	.alignleft {
+		margin-left: -31rem;
+	}
+
+	.alignright {
+		margin-right: -31rem;
+	}
 
 	.alignwide {
 		max-width: 120rem;
