@@ -12,8 +12,6 @@
 function _twentyTwentyColor( backgroundColor, accentHue ) {
 
 	// Set the object properties.
-	this.isHex           = isNaN( backgroundColor );
-	this.isHue           = ! this.isHex;
 	this.backgroundColor = backgroundColor;
 	this.accentHue       = accentHue;
 
