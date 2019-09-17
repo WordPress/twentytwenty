@@ -3024,7 +3024,8 @@ div.comment:first-of-type {
 	flex-wrap: wrap;
 	font-size: 1.8rem;
 	font-weight: 600;
-	margin: -2.5rem 0 0 -2.5rem;
+	margin: -1.5rem 0 0 -2.5rem;
+	width: calc( 100% + 2.5rem );
 }
 
 .pagination-separator {
@@ -3032,7 +3033,7 @@ div.comment:first-of-type {
 }
 
 .nav-links > * {
-	margin: 2.5rem 0 0 2.5rem;
+	margin: 1.5rem 0 0 2.5rem;
 }
 
 .nav-links .placeholder {
@@ -4416,8 +4417,9 @@ ul.footer-social li {
 	/* Site Pagination ----------------------- */
 
 	.pagination .nav-links {
-		justify-content: center;
+		justify-content: space-between;
 		margin: 0;
+		width: 100%;
 	}
 
 	.nav-links > * {
