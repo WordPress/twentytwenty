@@ -351,6 +351,7 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
+
 	/**
 	 * Enqueue supplemental block editor styles.
 	 */
@@ -491,5 +492,23 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
+
+	/**
+	 * Read More Link
+	 * Overwrite default (more ...) tag
+	 */
+	function twentytwenty_read_more_tag() {
+		return sprintf(
+			'<a href="%1$s" class="more-link">%2$s</a></p>',
+			esc_url( get_permalink( get_the_ID() ) ),
+			/* Translators: %s: Name of current post */
+			sprintf( __( 'Continue reading <span class="screen-reader-text">"%s"</span>', 'twentytwenty' ), get_the_title( get_the_ID() ) )
+		);
+	}
+	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 }
