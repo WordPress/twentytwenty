@@ -33,3 +33,5 @@ Version 1.0:
 | @pento | @pento |
 | @felixarntz | @flixos90 |
 | @vbaimas | @vbaimas |
+| @ZebulanStanphill | @zebulan |
+| @byalextran | @byalextran |
