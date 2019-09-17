@@ -673,6 +673,7 @@ button,
 	button,
 	.button,
 	.faux-button,
+	.faux-button.more-link,
 	.wp-block-button__link,
 	.wp-block-file__button { 
 		font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; 
@@ -2085,18 +2086,6 @@ body.template-cover .entry-header {
 
 
 /* Post Footer ------------------------------- */
-
-/* POST MORE LINK */
-
-.entry-content a.more-link {
-	border: 2px solid;
-	display: inline-block;
-  font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
-  font-weight: 500;
-  padding: 1.5rem;
-  text-decoration: none;
-  text-transform: uppercase;
-}
 
 /* POST EDIT LINK */
 
