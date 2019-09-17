@@ -48,7 +48,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 
 			/* 2X Header Logo ---------------- */
 			$wp_customize->add_setting(
-				'twentytwenty_retina_logo',
+				'retina_logo',
 				array(
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
@@ -57,7 +57,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_retina_logo',
+				'retina_logo',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
@@ -70,10 +70,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/**
 			 * Colors.
 			*/
-			$twentytwenty_accent_color_options = self::get_color_options();
+			$accent_color_options = self::get_color_options();
 
 			// Loop over the color options and add them to the customizer.
-			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
+			foreach ( $accent_color_options as $color_option_name => $color_option ) {
 
 				$wp_customize->add_setting(
 					$color_option_name,
@@ -117,7 +117,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Enable Header Search --------- */
 
 			$wp_customize->add_setting(
-				'twentytwenty_enable_header_search',
+				'enable_header_search',
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => false,
@@ -126,7 +126,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_enable_header_search',
+				'enable_header_search',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'options',
@@ -143,7 +143,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => 'full',
-					'sanitize_callback' => 'twentytwenty_sanitize_select',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
 				)
 			);
 
@@ -166,7 +166,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			 * Template: Cover Template.
 			 */
 			$wp_customize->add_section(
-				'twentytwenty_cover_template_options',
+				'cover_template_options',
 				array(
 					'title'       => __( 'Cover Template', 'twentytwenty' ),
 					'capability'  => 'edit_theme_options',
@@ -178,7 +178,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Overlay Fixed Background ------ */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_fixed_background',
+				'cover_template_fixed_background',
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => true,
@@ -187,10 +187,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_cover_template_fixed_background',
+				'cover_template_fixed_background',
 				array(
 					'type'        => 'checkbox',
-					'section'     => 'twentytwenty_cover_template_options',
+					'section'     => 'cover_template_options',
 					'label'       => __( 'Fixed Background Image', 'twentytwenty' ),
 					'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
 				)
@@ -199,7 +199,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Separator --------------------- */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_separator_1',
+				'cover_template_separator_1',
 				array(
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
@@ -208,9 +208,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				new TwentyTwenty_Separator_Control(
 					$wp_customize,
-					'twentytwenty_cover_template_separator_1',
+					'cover_template_separator_1',
 					array(
-						'section' => 'twentytwenty_cover_template_options',
+						'section' => 'cover_template_options',
 					)
 				)
 			);
@@ -218,9 +218,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Overlay Background Color ------ */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_overlay_background_color',
+				'cover_template_overlay_background_color',
 				array(
-					'default'           => get_theme_mod( 'twentytwenty_accent_color', '#CD2653' ),
+					'default'           => get_theme_mod( 'accent_color', '#cd2653' ),
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -228,11 +228,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control(
 					$wp_customize,
-					'twentytwenty_cover_template_overlay_background_color',
+					'cover_template_overlay_background_color',
 					array(
 						'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
 						'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
-						'section'     => 'twentytwenty_cover_template_options',
+						'section'     => 'cover_template_options',
 					)
 				)
 			);
@@ -240,9 +240,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Overlay Text Color ------------ */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_overlay_text_color',
+				'cover_template_overlay_text_color',
 				array(
-					'default'           => '#FFFFFF',
+					'default'           => '#ffffff',
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -250,11 +250,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control(
 					$wp_customize,
-					'twentytwenty_cover_template_overlay_text_color',
+					'cover_template_overlay_text_color',
 					array(
 						'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
 						'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
-						'section'     => 'twentytwenty_cover_template_options',
+						'section'     => 'cover_template_options',
 					)
 				)
 			);
@@ -262,7 +262,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Overlay Blend Mode ------------ */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_overlay_blend_mode',
+				'cover_template_overlay_blend_mode',
 				array(
 					'default'           => 'multiply',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
@@ -270,11 +270,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_cover_template_overlay_blend_mode',
+				'cover_template_overlay_blend_mode',
 				array(
 					'label'       => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
 					'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
-					'section'     => 'twentytwenty_cover_template_options',
+					'section'     => 'cover_template_options',
 					'type'        => 'select',
 					'choices'     => array(
 						'normal'      => __( 'Normal', 'twentytwenty' ),
@@ -300,7 +300,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/* Overlay Color Opacity --------- */
 
 			$wp_customize->add_setting(
-				'twentytwenty_cover_template_overlay_opacity',
+				'cover_template_overlay_opacity',
 				array(
 					'default'           => '80',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
@@ -308,11 +308,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_cover_template_overlay_opacity',
+				'cover_template_overlay_opacity',
 				array(
 					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
 					'description' => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
-					'section'     => 'twentytwenty_cover_template_options',
+					'section'     => 'cover_template_options',
 					'type'        => 'select',
 					'choices'     => array(
 						'0'   => __( '0%', 'twentytwenty' ),
@@ -341,7 +341,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			return apply_filters(
 				'twentytwenty_accent_color_options',
 				array(
-					'twentytwenty_accent_color' => array(
+					'accent_color' => array(
 						'default' => '#cd2653',
 						'label'   => __( 'Accent Color', 'twentytwenty' ),
 						'slug'    => 'accent',

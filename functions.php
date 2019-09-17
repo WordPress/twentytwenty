@@ -256,7 +256,7 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 		$logo_height = esc_attr( $logo[2] );
 
 		// If the retina logo setting is active, reduce the width/height by half.
-		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+		if ( get_theme_mod( 'retina_logo', false ) ) {
 			$logo_width  = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
 		}
@@ -429,11 +429,11 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 		$editor_color_palette = array();
 
 		// Get the color options.
-		$twentytwenty_accent_color_options = TwentyTwenty_Customize::get_color_options();
+		$accent_color_options = TwentyTwenty_Customize::get_color_options();
 
 		// Loop over them and construct an array for the editor-color-palette.
-		if ( $twentytwenty_accent_color_options ) {
-			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
+		if ( $accent_color_options ) {
+			foreach ( $accent_color_options as $color_option_name => $color_option ) {
 				$editor_color_palette[] = array(
 					'name'  => $color_option['label'],
 					'slug'  => $color_option['slug'],
