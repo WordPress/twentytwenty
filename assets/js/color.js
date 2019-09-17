@@ -91,6 +91,72 @@ _twentyTwentyColor.prototype.hexToRgb = function( hex ) {
 };
 
 /**
+ * Converts an HSL color value to RGB. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+ * Assumes h, s, and l are contained in the set [0, 1] and
+ * returns r, g, and b in the set [0, 255].
+ *
+ * @param {Array} hsl - [h,s,l]
+ * @return {Array} - [r,g,b]
+ */
+_twentyTwentyColor.prototype.hslToRgb = function( hsl ) {
+	var c, h_, x, r1, g1, b1, m,
+		h = hsl[0],
+		s = hsl[1],
+		l = hsl[1];
+
+	// Calculate chroma.
+	c = ( 1 - Math.abs( ( 2 * l ) - 1 ) ) * s;
+
+	// Find a point (r1, g1, b1) along the bottom three faces of the RGB cube,
+	// with the same hue and chroma as our color
+	// using the intermediate value X for the second largest component of this color.
+	h_ = h / 60;
+	x  = c * ( 1 - Math.abs( ( h_ % 2 ) - 1 ) );
+	r1, g1, b1;
+
+	if ( 'undefined' === typeof h || isNaN( h ) || null === h ) {
+		r1 = g1 = b1 = 0;
+	} else {
+		if ( 0 <= h_ && 1 > h_ ) {
+			r1 = c;
+			g1 = x;
+			b1 = 0;
+		} else if ( 1 <= h_ && 2 > h_ ) {
+			r1 = x;
+			g1 = c;
+			b1 = 0;
+		} else if ( 2 <= h_ && 3 > h_ ) {
+			r1 = 0;
+			g1 = c;
+			b1 = x;
+		} else if ( 3 <= h_ && 4 > h_ ) {
+			r1 = 0;
+			g1 = x;
+			b1 = c;
+		} else if ( 4 <= h_ && 5 > h_ ) {
+			r1 = x;
+			g1 = 0;
+			b1 = c;
+		} else if ( 5 <= h_ && 6 > h_ ) {
+			r1 = c;
+			g1 = 0;
+			b1 = x;
+		}
+	}
+
+	// Find r, g, and b by adding the same amount to each component to match lightness.
+	m = l - ( c / 2 );
+
+	// Normalise to range [0,255] by multiplying with 255.
+	return [
+		Math.round( ( r1 + m ) * 255 ),
+		Math.round( ( g1 + m ) * 255 ),
+		Math.round( ( b1 + m ) * 255 )
+	];
+};
+
+/**
  * Gets the relative luminance from RGB.
  * Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
  *
