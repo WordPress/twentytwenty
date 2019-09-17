@@ -59,7 +59,7 @@
 
 						<?php
 
-						$logo             = twentytwenty_get_custom_logo();
+						$logo             = get_custom_logo();
 						$site_title       = get_bloginfo( 'name' );
 						$site_description = get_bloginfo( 'description' );
 
