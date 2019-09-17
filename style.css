@@ -852,7 +852,8 @@ section {
 }
 
 .section-inner {
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	max-width: 120rem;
 	width: calc( 100% - 4rem );
 }
@@ -1938,7 +1939,7 @@ body.template-cover .entry-header {
 }
 
 .posts {
-	padding: 4rem 0;
+	padding: 4rem 0 0;
 }
 
 
@@ -1954,8 +1955,8 @@ body.template-cover .entry-header {
 	padding: 4rem 0;
 }
 
-.entry-title,
-.entry-title {
+h1.entry-title,
+h2.entry-title {
 	margin: 0;
 }
 
@@ -1987,13 +1988,14 @@ body.template-cover .entry-header {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.5rem;
-	font-weight: 600;
+	font-weight: 500;
 	list-style: none;
 	margin: -1rem 0 0 -2rem;
 }
 
 .post-meta li {
 	flex-shrink: 0;
+	letter-spacing: -.016875em;
 	margin: 1rem 0 0 2rem;
 	max-width: calc( 100% - 2rem );
 }
@@ -3015,11 +3017,9 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
-.navigation.pagination {
-	padding-top: 3rem;
-}
 
 .pagination .nav-links {
+	align-items: baseline;
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.8rem;
@@ -3027,8 +3027,17 @@ div.comment:first-of-type {
 	margin: -2.5rem 0 0 -2.5rem;
 }
 
+.pagination-separator {
+	margin: 5rem 0;
+}
+
 .nav-links > * {
 	margin: 2.5rem 0 0 2.5rem;
+}
+
+.nav-links .placeholder {
+	display: none;
+	visibility: hidden;
 }
 
 .pagination a {
@@ -3727,7 +3736,7 @@ ul.footer-social li {
 	}
 
 	.posts {
-		padding: 8rem 0;
+		padding: 8rem 0 0;
 	}
 
 	h2.entry-title {
@@ -3752,6 +3761,7 @@ ul.footer-social li {
 	}
 
 	.post-meta {
+		font-size: 1.6rem;
 		margin: -1.4rem 0 0 -3rem;
 	}
 
@@ -4053,10 +4063,26 @@ ul.footer-social li {
 
 	/* Site Pagination ----------------------- */
 
+	.pagination-separator {
+		margin: 8rem 0;
+	}
+
 	/* Display the full text for Newer and Older Posts. */
+
 	.nav-short {
 		display: inline;
 	}
+
+	.pagination .nav-links {
+		font-size: 2.4rem;
+		font-weight: 700;
+		margin: -2.5rem 0 0 -4rem;
+	}
+
+	.nav-links > * {
+		margin: 2.5rem 0 0 4rem;
+	}
+
 
 	/* Error 404 ----------------------------- */
 
@@ -4390,44 +4416,29 @@ ul.footer-social li {
 	/* Site Pagination ----------------------- */
 
 	.pagination .nav-links {
-		display: flex;
-		flex-direction: row;
-		font-size: 2.4rem;
-		margin: -2.5rem 0 0 -2.5rem;
-		letter-spacing: -0.9px;
+		justify-content: center;
+		margin: 0;
+	}
+
+	.nav-links > * {
+		margin: 0 2rem;
 	}
 
 	.pagination .next,
 	.pagination .prev {
-		display: inline;
+		display: block;
 	}
 
 	.pagination .prev {
-		left: 0;
-		justify-self: flex-start;
-		margin-right: auto;
+		margin: 0 auto 0 0;
 	}
 
 	.pagination .next {
-		right: 0;
 		text-align: right;
-		justify-self: flex-end;
-		margin-left: auto;
-	}
-
-	.pagination-wrapper.only-next .page-numbers:first-child {
-		margin-left: auto;
-	}
-
-	.pagination-wrapper.only-prev .page-numbers:last-child {
-		margin-right: auto;
+		margin: 0 0 0 auto;
 	}
 
 	/* Site Footer --------------------------- */
-
-	#site-footer {
-		margin-top: 8rem;
-	}
 
 	/* FOOTER TOP */
 

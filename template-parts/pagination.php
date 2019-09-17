@@ -9,39 +9,44 @@
  * @since 1.0.0
  */
 
+/**
+ * Translators:
+ * This text contains HTML to allow the text to be shorter on small screens.
+ * The text inside the span with the class nav-short will be hidden on small screens.
+ */
+
+$prev_text = sprintf(
+	'%s <span class="nav-prev-text">%s</span>',
+	'&larr;',
+	__( 'Newer <span class="nav-short">Posts</span>', 'twentytwenty' )
+);
+$next_text = sprintf(
+	'<span class="nav-next-text">%s</span> %s',
+	__( 'Older <span class="nav-short">Posts</span>', 'twentytwenty' ),
+	'&rarr;'
+);
+
 $posts_pagination = get_the_posts_pagination(
 	array(
 		'mid_size'  => 2,
-		/**
-		 * Translators:
-		* This text contains HTML to allow the text to be shorter on small screens.
-		* The text inside the span with the class nav-short will be hidden on small screens.
-		*/
-		'prev_text' => sprintf(
-			'%s <span class="nav-prev-text">%s</span>',
-			'&larr;',
-			__( 'Newer <span class="nav-short">Posts</span>', 'twentytwenty' )
-		),
-		'next_text' => sprintf(
-			'<span class="nav-next-text">%s</span> %s',
-			__( 'Older <span class="nav-short">Posts</span>', 'twentytwenty' ),
-			'&rarr;'
-		),
+		'prev_text' => $prev_text,
+		'next_text' => $next_text,
 	)
 );
 
-// If we're only showing one of the next or previous links, add a class indicating so.
 if ( strpos( $posts_pagination, 'prev page-numbers' ) === false ) {
-	$pagination_classes = ' only-next';
-} elseif ( strpos( $posts_pagination, 'next page-numbers' ) === false ) {
-	$pagination_classes = ' only-prev';
-} else {
-	$pagination_classes = '';
+	$posts_pagination = str_replace( '<div class="nav-links">', '<div class="nav-links"><span class="prev page-numbers placeholder" aria-hidden="true">' . $prev_text . '</span>', $posts_pagination );
+}
+
+if ( strpos( $posts_pagination, 'next page-numbers' ) === false ) {
+	$posts_pagination = str_replace( '</div>', '<span class="next page-numbers placeholder" aria-hidden="true">' . $next_text . '</span></div>', $posts_pagination );
 }
 
 if ( $posts_pagination ) { ?>
 
 	<div class="pagination-wrapper section-inner">
+
+		<hr class="pagination-separator is-style-wide" aria-hidden="true" />
 
 		<?php echo $posts_pagination; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped during generation. ?>
 
