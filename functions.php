@@ -151,6 +151,9 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-page.php'
 // Color calculations.
 require get_template_directory() . '/classes/class-twentytwenty-color.php';
 
+// Language handling.
+require get_template_directory() . '/classes/class-twentytwenty-language.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
@@ -502,5 +505,19 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 		);
 	}
 	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_non_latin_languages' ) ) {
+	/**
+	 * Handle non-lating language support
+	 *
+	 * @return void
+	 */
+	function twentytwenty_non_latin_languages() {
+		TwentyTwenty_Language::load_fallback_languages();
+	}
+
+	add_action( 'wp_enqueue_scripts', 'twentytwenty_non_latin_languages' );
 
 }
