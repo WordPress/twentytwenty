@@ -100,41 +100,67 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			}
 
 			// Update background color with postMessage, so inline CSS output is updated as well.
-			$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
+			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
 
 			/**
-			 * Site Header Options
-			 * */
+			 * Theme Options
+			 */
 
 			$wp_customize->add_section(
-				'twentytwenty_site_header_options',
+				'options',
 				array(
-					'title'       => __( 'Site Header', 'twentytwenty' ),
+					'title'       => __( 'Theme Options', 'twentytwenty' ),
 					'priority'    => 40,
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for the site header.', 'twentytwenty' ),
+					'description' => __( 'Settings for this theme.', 'twentytwenty' ),
 				)
 			);
 
-			/* Disable Header Search --------- */
+			/* Enable Header Search --------- */
 
 			$wp_customize->add_setting(
-				'twentytwenty_disable_header_search',
+				'twentytwenty_enable_header_search',
 				array(
 					'capability'        => 'edit_theme_options',
-					'default'           => false,
+					'default'           => true,
 					'sanitize_callback' => 'twentytwenty_sanitize_checkbox',
 				)
 			);
 
 			$wp_customize->add_control(
-				'twentytwenty_disable_header_search',
+				'twentytwenty_enable_header_search',
 				array(
 					'type'        => 'checkbox',
-					'section'     => 'twentytwenty_site_header_options',
+					'section'     => 'options',
 					'priority'    => 10,
-					'label'       => __( 'Disable Search Button', 'twentytwenty' ),
-					'description' => __( 'Check to disable the search button in the header.', 'twentytwenty' ),
+					'label'       => __( 'Show search in header', 'twentytwenty' ),
+					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
+				)
+			);
+
+			/* Display full content or excerpts on the blog and archives --------- */
+
+			$wp_customize->add_setting(
+				'blog_content',
+				array(
+					'capability'        => 'edit_theme_options',
+					'default'           => 'full',
+					'sanitize_callback' => 'twentytwenty_sanitize_select',
+				)
+			);
+
+			$wp_customize->add_control(
+				'blog_content',
+				array(
+					'type'        => 'radio',
+					'section'     => 'options',
+					'priority'    => 10,
+					'label'       => __( 'On archive pages, posts show:', 'twentytwenty' ),
+					'description' => __( 'Search results always show the summary.', 'twentytwenty' ),
+					'choices'     => array(
+						'full'    => __( 'Full text', 'twentytwenty' ),
+						'summary' => __( 'Summary', 'twentytwenty' ),
+					),
 				)
 			);
 
@@ -317,7 +343,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			/**
 			 * Sanitize boolean for checkbox.
 			 *
-			 * @param bool $checked Wethere or not a blox is checked.
+			 * @param bool $checked Whether or not a box is checked.
 			 */
 			function twentytwenty_sanitize_checkbox( $checked ) {
 				return ( ( isset( $checked ) && true === $checked ) ? true : false );

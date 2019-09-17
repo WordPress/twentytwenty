@@ -65,11 +65,21 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
 
 		// Custom logo.
+		$logo_id     = get_theme_mod( 'custom_logo' );
+		$logo_width  = 120;
+		$logo_height = 90;
+
+		// If the retina setting is active, double the recommended width and height.
+		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+			$logo_width  = floor( $logo_width * 2 );
+			$logo_height = floor( $logo_height * 2 );
+		}
+
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 240,
-				'width'       => 320,
+				'height'      => $logo_height,
+				'width'       => $logo_width,
 				'flex-height' => true,
 				'flex-width'  => true,
 				'header-text' => array( 'site-title', 'site-description' ),
@@ -135,6 +145,12 @@ require get_template_directory() . '/classes/class-twentytwenty-separator-contro
 // Custom comment walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-comment.php';
 
+// Custom page walker.
+require get_template_directory() . '/classes/class-twentytwenty-walker-page.php';
+
+// Color calculations.
+require get_template_directory() . '/classes/class-twentytwenty-color.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
@@ -148,7 +164,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 		$css_dependencies = array();
 
 		// By default, only load the Font Awesome fonts if the social menu is in use.
-		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social-menu' ) );
+		$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social' ) );
 
 		if ( $load_font_awesome ) {
 			wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
@@ -156,6 +172,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 		}
 
 		wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/style.css', $css_dependencies, $theme_version );
+		wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
 		// Add output of Customizer settings as inline style.
 		wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
@@ -190,15 +207,16 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 
 if ( ! function_exists( 'twentytwenty_menus' ) ) {
 	/**
-	 * Register navigation menus uses wp_nav_menu in three places.
+	 * Register navigation menus uses wp_nav_menu in five places.
 	 */
 	function twentytwenty_menus() {
 
 		$locations = array(
-			'footer-menu'    => __( 'Footer Menu', 'twentytwenty' ),
-			'main-menu'      => __( 'Main Menu', 'twentytwenty' ),
-			'shortcuts-menu' => __( 'Shortcuts Menu', 'twentytwenty' ),
-			'social-menu'    => __( 'Social Menu', 'twentytwenty' ),
+			'primary'  => __( 'Desktop Horizontal Menu', 'twentytwenty' ),
+			'expanded' => __( 'Desktop Expanded Menu', 'twentytwenty' ),
+			'mobile'   => __( 'Mobile Menu', 'twentytwenty' ),
+			'footer'   => __( 'Footer Menu', 'twentytwenty' ),
+			'social'   => __( 'Social Menu', 'twentytwenty' ),
 		);
 
 		register_nav_menus( $locations );
@@ -208,42 +226,23 @@ if ( ! function_exists( 'twentytwenty_menus' ) ) {
 
 }
 
-if ( ! function_exists( 'twentytwenty_the_custom_logo' ) ) {
+/**
+ * Get the information about the logo.
+ *
+ * @param string $html The HTML output from get_custom_logo (core function).
+ */
+function twentytwenty_get_custom_logo( $html ) {
 
-	/**
-	 * Add and Output Custom Logo.
-	 *
-	 * @param string $logo_theme_mod HTML for the custom logo.
-	 */
-	function twentytwenty_the_custom_logo( $logo_theme_mod = 'custom_logo' ) {
-		echo esc_html( twentytwenty_get_custom_logo( $logo_theme_mod ) );
+	$logo_id = get_theme_mod( 'custom_logo' );
+
+	if ( ! $logo_id ) {
+		return $html;
 	}
-}
 
-if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
+	$logo = wp_get_attachment_image_src( $logo_id, 'full' );
 
-	/**
-
-	 * Get the information about the logo.
-	 *
-	 * @param string $logo_theme_mod The name of the theme mod.
-	 */
-	function twentytwenty_get_custom_logo( $logo_theme_mod = 'custom_logo' ) {
-
-		$logo_id = get_theme_mod( $logo_theme_mod );
-
-		if ( ! $logo_id ) {
-			return;
-		}
-
-		$logo = wp_get_attachment_image_src( $logo_id, 'full' );
-
-		if ( ! $logo ) {
-			return;
-		}
-
+	if ( $logo ) {
 		// For clarity.
-		$logo_url    = esc_url( $logo[0] );
 		$logo_width  = esc_attr( $logo[1] );
 		$logo_height = esc_attr( $logo[2] );
 
@@ -251,27 +250,26 @@ if ( ! function_exists( 'twentytwenty_get_custom_logo' ) ) {
 		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
 			$logo_width  = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
+
+			$search = array(
+				'/width=\"\d+\"/iU',
+				'/height=\"\d+\"/iU',
+			);
+
+			$replace = array(
+				"width=\"{$logo_width}\"",
+				"height=\"{$logo_height}\"",
+			);
+
+			$html = preg_replace( $search, $replace, $html );
 		}
-
-		// CSS friendly class.
-		$logo_theme_mod_class = str_replace( '_', '-', $logo_theme_mod );
-
-		// Record our output.
-		ob_start();
-
-		?>
-
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link <?php echo esc_attr( $logo_theme_mod_class ); ?>">
-			<img src="<?php echo esc_url( $logo_url ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
-		</a>
-
-		<?php
-
-		// Return our output.
-		return ob_get_clean();
-
 	}
+
+	return $html;
+
 }
+
+add_filter( 'get_custom_logo', 'twentytwenty_get_custom_logo' );
 
 if ( ! function_exists( 'wp_body_open' ) ) {
 
@@ -344,6 +342,7 @@ if ( ! function_exists( 'twentytwenty_sidebar_registration' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
+
 	/**
 	 * Enqueue supplemental block editor styles.
 	 */
@@ -484,5 +483,24 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
+
+}
+
+if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
+
+	/**
+	 * Read More Link
+	 * Overwrite default (more ...) tag
+	 */
+	function twentytwenty_read_more_tag() {
+		return sprintf(
+			'<a href="%1$s" class="more-link">%2$s <span class="screen-reader-text">"%3$s"</span></a></p>',
+			esc_url( get_permalink( get_the_ID() ) ),
+			/* Translators: %s: Name of current post */
+			esc_html( 'Continue reading', 'twentytwenty' ),
+			get_the_title( get_the_ID() )
+		);
+	}
+	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 }

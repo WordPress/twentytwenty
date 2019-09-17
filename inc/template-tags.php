@@ -167,7 +167,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 							<span class="meta-text">
 								<?php
 								// Translators: %s = the author name.
-								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
+								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>' );
 								?>
 							</span>
 						</li>
@@ -335,7 +335,7 @@ if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
 
 if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	/**
-	 * Add a Sub Nav Toggle to the Main Menu.
+	 * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
 	 *
 	 * @param array  $args An array of arguments.
 	 * @param string $item Menu item.
@@ -343,8 +343,8 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	 */
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
-		// Add sub menu toggles to the main menu with toggles.
-		if ( 'main-menu' === $args->theme_location && isset( $args->show_toggles ) ) {
+		// Add sub menu toggles to the Expanded Menu with toggles.
+		if ( isset( $args->show_toggles ) && $args->show_toggles ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
@@ -363,8 +363,8 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			// Close the wrapper.
 			$args->after .= '</div><!-- .ancestor-wrapper -->';
 
-			// Add sub menu icons to the main menu without toggles (the shortcuts menu).
-		} elseif ( 'shortcuts-menu' === $args->theme_location ) {
+			// Add sub menu icons to the primary menu without toggles.
+		} elseif ( 'primary' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
 			} else {
@@ -401,6 +401,36 @@ if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
 
 }
 
+if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
+
+	/**
+	 * Filters the archive title and styles the word before the first colon.
+	 *
+	 * @param string $title Current archive title.
+	 */
+	function twentytwenty_get_the_archive_title( $title ) {
+
+		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
+			array(
+				'pattern'     => '/(\A[^\:]+\:)/',
+				'replacement' => '<span class="color-accent">$1</span>',
+			)
+		);
+
+		if ( empty( $regex ) ) {
+
+			return $title;
+
+		}
+
+		return preg_replace( $regex['pattern'], $regex['replacement'], $title );
+
+	}
+
+	add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+}
+
 if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 	/**
 	 * Add conditional body classes.
@@ -427,9 +457,9 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 
-		// Check for disabled search.
-		if ( get_theme_mod( 'twentytwenty_disable_header_search', false ) ) {
-			$classes[] = 'disable-search-modal';
+		// Check for enabled search.
+		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+			$classes[] = 'enable-search-modal';
 		}
 
 		// Check for post thumbnail.
@@ -465,6 +495,13 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		if ( is_page_template() ) {
 			$classes[] = basename( get_page_template_slug(), '.php' );
 		}
+
+		// Get the luminance of the background color.
+		$background_color = new TwentyTwenty_Color();
+		$background_color->set_hex( get_theme_mod( 'background_color', '#f5efe0' ) );
+
+		// Add a class depending on the background color's relative luminance.
+		$classes[] = ( 0.5 < $background_color->get_luminance() ) ? 'background-color-light' : 'background-color-dark';
 
 		return $classes;
 
