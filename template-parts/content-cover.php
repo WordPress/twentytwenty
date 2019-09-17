@@ -104,7 +104,7 @@
 				'after'  => '</nav>',
 			)
 		);
-        edit_post_link();
+		edit_post_link();
 		?>
 
 		<?php

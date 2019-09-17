@@ -45,12 +45,12 @@
 				'after'  => '</nav>',
 			)
 		);
-        edit_post_link();
+		edit_post_link();
 		?>
 		<?php
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
-		
+
 		?>
 
 	</div><!-- .post-inner -->
