@@ -20,60 +20,84 @@ if ( post_password_required() ) {
 if ( $comments ) {
 	?>
 
-	<div class="comments section-inner thin max-percentage no-margin" id="comments">
+	<div class="comments" id="comments">
 
 		<?php
-
 		$comments_number = absint( get_comments_number() );
-
-		// Translators: %s = the number of comments.
-		$comments_title = sprintf( _nx( '%s Comment', '%s Comments', $comments_number, 'Translators: %s = the number of comments', 'twentytwenty' ), $comments_number );
-
 		?>
 
 		<div class="comments-header">
 
-			<h3 class="comment-reply-title"><?php echo esc_html( $comments_title ); ?></h3>
+			<h2 class="comment-reply-title">
+			<?php
+			if ( comments_open() ) {
+				if ( ! have_comments() ) {
+					esc_html_e( 'Leave a comment', 'twentynineteen' );
+				} elseif ( '1' == $comments_number ) {
+					/* translators: %s: post title */
+					printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentynineteen' ), get_the_title() );
+				} else {
+					printf(
+						/* translators: 1: number of comments, 2: post title */
+						_nx(
+							'%1$s reply on &ldquo;%2$s&rdquo;',
+							'%1$s replies on &ldquo;%2$s&rdquo;',
+							$comments_number,
+							'comments title',
+							'twentynineteen'
+						),
+						number_format_i18n( $comments_number ),
+						get_the_title()
+					);
+				}
+			}
+			
+			?>
+			</h2><!-- .comments-title -->
 
 		</div><!-- .comments-header -->
 
-		<?php
+		<div class="comments-inner section-inner thin max-percentage">
 
-		wp_list_comments(
-			array(
-				'walker'      => new TwentyTwenty_Walker_Comment(),
-				'avatar_size' => 120,
-				'style'       => 'div',
-			)
-		);
+			<?php
 
-		$comment_pagination = paginate_comments_links(
-			array(
-				'echo'      => false,
-				'end_size'  => 0,
-				'mid_size'  => 0,
-				'next_text' => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
-				'prev_text' => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
-			)
-		);
+			wp_list_comments(
+				array(
+					'walker'      => new TwentyTwenty_Walker_Comment(),
+					'avatar_size' => 120,
+					'style'       => 'div',
+				)
+			);
 
-		if ( $comment_pagination ) {
+			$comment_pagination = paginate_comments_links(
+				array(
+					'echo'      => false,
+					'end_size'  => 0,
+					'mid_size'  => 0,
+					'next_text' => __( 'Newer Comments', 'twentytwenty' ) . ' &rarr;',
+					'prev_text' => '&larr; ' . __( 'Older Comments', 'twentytwenty' ),
+				)
+			);
 
-			// If we're only showing the "Next" link, add a class indicating so.
-			if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
-				$pagination_classes = ' only-next';
-			} else {
-				$pagination_classes = '';
+			if ( $comment_pagination ) {
+
+				// If we're only showing the "Next" link, add a class indicating so.
+				if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
+					$pagination_classes = ' only-next';
+				} else {
+					$pagination_classes = '';
+				}
+				?>
+
+				<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
+					<?php echo wp_kses_post( $comment_pagination ); ?>
+				</nav>
+
+				<?php
 			}
 			?>
 
-			<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
-				<?php echo wp_kses_post( $comment_pagination ); ?>
-			</nav>
-
-			<?php
-		}
-		?>
+		</div><!-- .comments-inner -->
 
 	</div><!-- comments -->
 
@@ -82,11 +106,15 @@ if ( $comments ) {
 
 if ( comments_open() || pings_open() ) {
 
+	if ( $comments ) {
+		echo '<hr class="is-style-wide" aria-hidden="true" />';
+	}
+
 	comment_form(
 		array(
-			'class_form'           => 'section-inner thin max-percentage no-margin',
-			'comment_notes_before' => '',
-			'comment_notes_after'  => '',
+			'class_form'           => 'section-inner thin max-percentage',
+			'title_reply_before'   => '<h2 id="reply-title" class="comment-reply-title">',
+			'title_reply_after'    => '</h2>',
 		)
 	);
 
