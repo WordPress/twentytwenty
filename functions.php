@@ -120,6 +120,9 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
+		// Adds starter content to highlight the theme on fresh sites.
+		add_theme_support( 'starter-content', twentytwenty_get_starter_content() );
+
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_theme_support' );
@@ -153,6 +156,9 @@ require get_template_directory() . '/classes/class-twentytwenty-color.php';
 
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
+
+// Custom starter content to highlight the theme on fresh sites.
+require get_template_directory() . '/inc/starter-content.php';
 
 if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	/**
