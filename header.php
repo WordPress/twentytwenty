@@ -47,11 +47,13 @@
 						?>
 
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<span class="screen-reader-text"><?php _e( 'Toggle search', 'twentytwenty' ); ?></span>
-							<?php twentytwenty_the_theme_svg( 'search' ); ?>
+							<div class="toggle-inner">
+								<?php twentytwenty_the_theme_svg( 'search' ); ?>
+								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); ?></span>
+							</div>
 						</button><!-- .search-toggle -->
 
-						<?php } ?>
+					<?php } ?>
 
 					<div class="header-titles">
 
@@ -85,13 +87,19 @@
 					</div><!-- .header-titles -->
 
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-						<span class="screen-reader-text"><?php _e( 'Toggle menu', 'twentytwenty' ); ?></span>
-						<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+						<div class="toggle-inner">
+							<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+							<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); ?></span>
+						</div>
 					</button><!-- .nav-toggle -->
 
 				</div><!-- .header-titles-wrapper -->
 
 				<div class="header-navigation-wrapper">
+
+					<?php 
+					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
+						?>
 
 						<div class="primary-menu-wrapper">
 
@@ -110,12 +118,14 @@
 										)
 									);
 
-								} else {
+								} elseif ( ! has_nav_menu( 'expanded' ) ) {
 
 									wp_list_pages(
 										array(
 											'match_menu_classes' => true,
+											'show_sub_menu_icons' => true,
 											'title_li' => false,
+											'walker'   => new TwentyTwenty_Walker_Page(),
 										)
 									);
 
@@ -128,13 +138,34 @@
 
 						</div><!-- .primary-menu-wrapper -->
 
-					<div class="header-toggles hide-no-js">
+						<?php 
+					}
 
-						<div class="toggle-wrapper nav-toggle-wrapper">
+					$header_toggles_classes = '';
+
+					if ( ! has_nav_menu( 'expanded' ) && false === $enable_header_search ) {
+						$header_toggles_classes .= ' hide-on-desktop';
+					}
+					?>
+
+					<div class="header-toggles hide-no-js<?php echo esc_attr( $header_toggles_classes ); ?>">
+
+						<?php
+						$nav_toggle_wrapper_classes = '';
+
+						// Add a class indicating whether the navigation toggle wrapper can be hidden on desktop.
+						if ( has_nav_menu( 'expanded' ) ) {
+							$nav_toggle_wrapper_classes .= ' has-expanded-menu';
+						}
+						?>
+
+						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
 
 							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-								<span class="screen-reader-text"><?php _e( 'Toggle menu', 'twentytwenty' ); ?></span>
-								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+								<div class="toggle-inner">
+									<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); ?></span>
+									<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+								</div>
 							</button><!-- .nav-toggle -->
 
 						</div><!-- .nav-toggle-wrapper -->
@@ -146,8 +177,10 @@
 							<div class="toggle-wrapper search-toggle-wrapper">
 
 								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<span class="screen-reader-text"><?php _e( 'Toggle search', 'twentytwenty' ); ?></span>
-									<?php twentytwenty_the_theme_svg( 'search' ); ?>
+									<div class="toggle-inner">
+										<?php twentytwenty_the_theme_svg( 'search' ); ?>
+										<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); ?></span>
+									</div>
 								</button><!-- .search-toggle -->
 
 							</div>
