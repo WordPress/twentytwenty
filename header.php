@@ -40,7 +40,7 @@
 					<?php
 
 					// Check whether the header search is activated in the customizer.
-					$enable_header_search = get_theme_mod( 'twentytwenty_enable_header_search', true );
+					$enable_header_search = get_theme_mod( 'enable_header_search', true );
 
 					if ( true === $enable_header_search ) {
 
@@ -59,7 +59,7 @@
 
 						<?php
 
-						$logo             = twentytwenty_get_custom_logo();
+						$logo             = get_custom_logo();
 						$site_title       = get_bloginfo( 'name' );
 						$site_description = get_bloginfo( 'description' );
 

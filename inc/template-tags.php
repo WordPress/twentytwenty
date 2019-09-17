@@ -167,7 +167,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 							<span class="meta-text">
 								<?php
 								// Translators: %s = the author name.
-								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
+								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>' );
 								?>
 							</span>
 						</li>
@@ -458,7 +458,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		}
 
 		// Check for enabled search.
-		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+		if ( true === get_theme_mod( 'enable_header_search' ) ) {
 			$classes[] = 'enable-search-modal';
 		}
 
