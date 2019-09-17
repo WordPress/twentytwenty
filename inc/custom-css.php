@@ -52,12 +52,12 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables.
-		$accent          = sanitize_hex_color( get_theme_mod( 'twentytwenty_accent_color' ) );
+		$accent          = sanitize_hex_color( get_theme_mod( 'accent_color' ) );
 		$accent_default  = '#cd2653';
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
 		// Cover.
-		$cover         = sanitize_hex_color( get_theme_mod( 'twentytwenty_cover_template_overlay_text_color' ) );
+		$cover         = sanitize_hex_color( get_theme_mod( 'cover_template_overlay_text_color' ) );
 		$cover_default = '#ffffff';
 
 		// Background.
@@ -82,7 +82,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			// Colors.
 			// Element Specific.
 			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter', 'color', $accent );
+				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
