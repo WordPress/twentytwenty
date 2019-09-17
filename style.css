@@ -4217,6 +4217,7 @@ a.to-the-top > * {
 
 	.primary-menu-wrapper {
 		display: block;
+		width: 100%;
 	}
 
 	/* HEADER TOGGLES */
