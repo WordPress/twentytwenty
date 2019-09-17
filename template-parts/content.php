@@ -76,7 +76,7 @@
 	if ( ( 'post' === $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
-		<div class="comments-wrapper section-inner thin">
+		<div class="comments-wrapper section-inner">
 
 			<?php comments_template(); ?>
 
