@@ -63,7 +63,13 @@
 						$site_title       = get_bloginfo( 'name' );
 						$site_description = get_bloginfo( 'description' );
 
-						if ( $logo ) {
+						/*
+						 * When in the customizer `get_custom_logo()` will
+						 * return a placholder with `display:none`, ignore that.
+						 *
+						 * @link https://core.trac.wordpress.org/browser/tags/5.2/src/wp-includes/general-template.php#L983
+						 */
+						if ( $logo && ! strpos( $logo, 'style="display:none;"' ) ) {
 							$home_link_contents = $logo . '<span class="screen-reader-text">' . esc_html( $site_title ) . '</span>';
 							$site_title_class   = 'site-logo';
 						} else {
