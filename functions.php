@@ -41,7 +41,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		add_theme_support(
 			'custom-background',
 			array(
-				'default-color' => 'F5EFE0',
+				'default-color' => 'f5efe0',
 			)
 		);
 
@@ -62,7 +62,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		set_post_thumbnail_size( 1200, 9999 );
 
 		// Add custom image sizes.
-		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
+		add_image_size( 'twentytwenty-fullscreen', 1980, 9999 );
 
 		// Custom logo.
 		$logo_id     = get_theme_mod( 'custom_logo' );
