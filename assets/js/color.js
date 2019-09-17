@@ -39,6 +39,137 @@ _twentyTwentyColor.prototype.setBackgroundColorProperties = function() {
 		blue: rgb[2],
 		luminance: lum
 	};
+
+	this.isDark  = this.isBackgroundDark();
+	this.isLight = this.isBackgroundLight();
+};
+
+/**
+ * Get an array of HSL colors based on the accent hue.
+ * HSL colors are formatted [h,s,l] and saved in this.accentColorHues
+ * For improved performance we only build half the array
+ * depending on dark/light background-color.
+ *
+ * @since 1.0.0
+ * @return {Object} - this
+ */
+_twentyTwentyColor.prototype.setAccentHSLs = function() {
+	var minSaturation    = 0.5,
+		maxSaturation    = 1,
+		minLightness     = this.isDark ? 0.5 : 0.1,
+		maxLighness      = this.isDark ? 0.9 : 0.5,
+		stepSaturation   = 0.05,
+		stepLightness    = 0.05,
+		s, l;
+
+	this.accentColorHues = [];
+
+	// We're using `for` loops here because they perform better than any other kind of loop.
+	// The `Math.round( ( s + stepSaturation ) * 100 ) / 100` part of the code fixes a minor browser issue
+	// where 0 + x in a loop adds an extra decimal throwing off all other calculations.
+	for ( s = minSaturation; s <= maxSaturation; s = Math.round( ( s + stepSaturation ) * 100 ) / 100 ) {
+		for ( l = minLightness; l <= maxLighness; l = Math.round( ( l + stepLightness ) * 100 ) / 100 ) {
+			this.accentColorHues.push( [ this.accentHue, s, l ] );
+		}
+	}
+	return this;
+};
+
+/**
+ * Get the most accessible color for the defined accent-hue and background-color.
+ *
+ * @since 1.0.0
+ * @return {Array} - [h,s,l]
+ */
+_twentyTwentyColor.prototype.getAccentHSL = function() {
+	var textLum = this.isDark ? 1 : 0,
+		colors, checkedColors, saturation, lightless;
+
+	// Get an array of all our colors.
+	colors = this.queryHSLs( this.backgroundColorProps.luminance );
+	checkedColors = colors;
+
+	// Get colors that have a 7:1 contrast with the background.
+	colors = this.queryHSLs( this.backgroundColorProps.luminance, 7 );
+	if ( ! colors.length ) { // Too few? Lower the bar.
+		colors = this.queryHSLs( this.backgroundColorProps.luminance, 4.5 );
+	}
+	if ( ! colors.length ) { // Still nothing? Lower the bar some more.
+		colors = this.queryHSLs( this.backgroundColorProps.luminance, 3 );
+	}
+	if ( colors.length ) {
+
+		// All good, colors founc.
+		checkedColors = colors;
+	}
+
+	console.log(colors);
+	// Get colors that have a 4.5:1 contrast with surrounding text.
+	colors = this.queryHSLs( textLum, 4.5, checkedColors );
+	if ( 10 <= colors.length ) { // Too few? Lower the bar.
+		colors = this.queryHSLs( textLum, 3, checkedColors );
+	}
+	if ( 10 <= colors.length ) { // Too few? Lower the bar some more.
+		colors = this.queryHSLs( textLum, 2, checkedColors );
+	}
+	if ( colors[0] ) {
+		checkedColors = colors[0];
+	}
+
+	// Sort colors by saruration.
+	checkedColors.sort( function( a, b ) {
+		return b[1] - a[1];
+	});
+
+	saturation = ( checkedColors[0] ) ? parseInt( 100 * checkedColors[0][1], 10 ) : 70;
+	lightless  = this.isDark ? 70 : 30;
+	lightness  = ( checkedColors[0] ) ? parseInt( 100 * checkedColors[0][2], 10 ) : lightless;
+
+	return 'hsl(' + this.accentHue + ',' + saturation + '%,' + lightness + '%)';
+};
+
+/**
+ * Sorts the array of accent-color HSLs based on their contrast with another color.
+ *
+ * @since 1.0.0
+ * @param {Number} compareWithLum - The relative luminance of the color we're comparing with.
+ * @param {Number} threshold - If we want to remove from the array items that don't fulfil a minimum contrast we can define it here.
+ * @param {Array} colors - If we want to force a custom array instead of using this.accentColorHues.
+ * @return {Array} - An array of colors from this.accentColorHues ordered by contrast, excluding items that don't pass the threshold.
+ */
+_twentyTwentyColor.prototype.queryHSLs = function( compareWithLum, threshold, colors ) {
+	var self = this,
+		newArray = [],
+		contrast, i;
+
+	colors = colors || this.accentColorHues;
+
+	// Set the contrast as a 4th item in the array. This will help us calc things faster when reordering.
+	for ( i = 0; i < colors.length; i++ ) {
+
+		// Set the contrast it we don't already have it.
+		if ( 'undefined' === typeof colors[ i ][3] ) {
+			contrast = self.getContrast(
+				self.getRelativeLuminance( self.hslToRgb( colors[ i ] ) ),
+				compareWithLum
+			);
+		}
+
+		// Make sure the contrast is above our threshold.
+		if ( ! threshold || threshold < contrast ) {
+			newArray.push( [
+				colors[ i ][0],
+				colors[ i ][1],
+				colors[ i ][2],
+				contrast
+			] );
+		}
+	}
+
+	newArray.sort( function( a, b ) {
+		return b[3] - a[3];
+	});
+	return newArray;
 };
 
 /**
@@ -208,8 +339,15 @@ _twentyTwentyColor.prototype.getContrast = function( lum1, lum2 ) {
  * @return {Object} - this
  */
 function twentyTwentyColor( backgroundColor, accentHue ) {
-	var color = new _twentyTwentyColor( backgroundColor );
+	var color = new _twentyTwentyColor( backgroundColor, accentHue );
+
+	// Set the background-color properties.
 	color.setBackgroundColorProperties();
+
+	// Set the text-color depending on light/dark background.
+	color.textColor = ( color.isDark ) ? '#fff' : '#000';
+
+	color.setAccentHSLs();
 
 	return color;
 }
