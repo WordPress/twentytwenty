@@ -506,8 +506,7 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 		return sprintf(
 			'<a href="%1$s" class="more-link">%2$s <span class="screen-reader-text">"%3$s"</span></a></p>',
 			esc_url( get_permalink( get_the_ID() ) ),
-			/* Translators: %s: Name of current post */
-			esc_html( 'Continue reading', 'twentytwenty' ),
+			esc_html__( 'Continue reading', 'twentytwenty' ),
 			get_the_title( get_the_ID() )
 		);
 	}
