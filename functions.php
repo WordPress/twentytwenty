@@ -515,3 +515,27 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 }
+
+/**
+ * WIP: These should be moved to the Custom class.
+ */
+add_action( 'customize_controls_enqueue_scripts', function() {
+
+	// Add script for color calculations.
+	wp_enqueue_script(
+		'twentytwenty-color',
+		get_template_directory_uri() . '/assets/js/color.js',
+		[ 'wp-color-picker' ],
+		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
+		false
+	);
+
+	// Add script for controls.
+	wp_enqueue_script(
+		'twentytwenty-customizer',
+		get_template_directory_uri() . '/assets/js/customizer.js',
+		[ 'twentytwenty-color', 'customize-controls', 'underscore' ],
+		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
+		false
+	);
+});
