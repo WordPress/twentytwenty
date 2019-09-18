@@ -90,9 +90,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_setting(
 				'accent_accessible_colors',
 				array(
-					'default'           => array(),
+					'default'           => array(), // TODO: We need some sane defaults here.
 					'type'              => 'theme_mod',
-					'sanitize_callback' => function( $value ) {
+					'sanitize_callback' => function( $value ) { // TODO: This should probably be a normal mehod in this object instead of a closure.
 						$value = is_array( $value ) ? $value : array();
 						foreach ( $value as $context => $values ) {
 							$value[ $context ] = array(
