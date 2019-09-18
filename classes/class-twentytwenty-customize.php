@@ -125,6 +125,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			*/
 			$accent_color_options = self::get_color_options();
 
+			/**
+			 * WIP: Disable these options 'cause we're doing the accessibility-color implementation above.
+			 */
+			$accent_color_options = array();
+
 			// Loop over the color options and add them to the customizer.
 			foreach ( $accent_color_options as $color_option_name => $color_option ) {
 
