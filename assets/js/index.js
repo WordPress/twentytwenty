@@ -520,9 +520,9 @@ twentytwenty.toggles = {
 
 				// Trigger events on the toggle targets before they are toggled
 				if (target.classList.contains('active')) {
-					target.dispatchEvent(createEvent('toggle-target-before-active'));
+					target.dispatchEvent(twentytwenty.createEvent('toggle-target-before-active'));
 				} else {
-					target.dispatchEvent(createEvent('toggle-target-before-inactive'));
+					target.dispatchEvent(twentytwenty.createEvent('toggle-target-before-inactive'));
 				}
 
 				// Get the class to toggle, if specified
@@ -586,13 +586,13 @@ twentytwenty.toggles = {
 					}
 
 					// Trigger the toggled event on the toggle target
-					target.dispatchEvent(createEvent('toggled'));
+					target.dispatchEvent(twentytwenty.createEvent('toggled'));
 
 					// Trigger events on the toggle targets after they are toggled
 					if (target.classList.contains('active')) {
-						target.dispatchEvent(createEvent('toggle-target-after-active'));
+						target.dispatchEvent(twentytwenty.createEvent('toggle-target-after-active'));
 					} else {
-						target.dispatchEvent(createEvent('toggle-target-after-inactive'));
+						target.dispatchEvent(twentytwenty.createEvent('toggle-target-after-inactive'));
 					}
 				}, timeOutTime);
 
