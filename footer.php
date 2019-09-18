@@ -134,7 +134,7 @@
 							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
 								<?php
 								/* Translators: %s: WordPress. */
-								printf( __( 'Powered by %s.', 'twentytwenty' ), __( 'WordPress', 'twentytwenty' );
+								printf( __( 'Powered by %s.', 'twentytwenty' ), __( 'WordPress', 'twentytwenty' ) );
 								?>
 							</a>
 						</p><!-- .theme-credits -->
