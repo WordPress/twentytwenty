@@ -2116,6 +2116,14 @@ body.template-cover .entry-header {
 }
 
 
+/* Author Bio ------------------------- */
+.author-details .author-inner .author-title {
+	text-transform: capitalize;
+	padding: 20px 0;
+	margin: 0;
+	display: block;
+}
+
 /* Single Pagination ------------------------- */
 
 .pagination-single {

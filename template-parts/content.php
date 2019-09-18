@@ -52,8 +52,18 @@
 
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
-
-		?>
+		
+		//Author bio
+		if ( is_single() ) { ?>
+		<div class="author-details">
+			<div class="author-inner">
+				<span class="author-title heading-size-5"><?php echo get_the_author();?></span>
+				<div class="entry-content">
+					<p class="author-description"><?php echo the_author_description(); ?></p>
+				</div>
+			</div>
+		</div>		
+		<?php }?>
 
 	</div><!-- .post-inner -->
 
