@@ -4182,7 +4182,8 @@ ul.footer-social li {
 
 	.comment-meta {
 		margin-bottom: 2rem;
-		padding-left: 7rem;
+		min-height: 6rem;
+		padding: .2rem 0 0 7.5rem;
 	}
 
 	.comment-meta .avatar {
@@ -4190,7 +4191,7 @@ ul.footer-social li {
 		height: 6rem;
 		position: absolute;
 		left: 0;
-		top: .5em;
+		top: 0;
 		width: 6rem;
 	}
 
@@ -4200,7 +4201,7 @@ ul.footer-social li {
 
 	.comment-metadata {
 		font-size: 1.6rem;
-		margin-top: .6rem;
+		margin-top: .8rem;
 	}
 
 	.comment-footer-meta {
@@ -4597,7 +4598,7 @@ ul.footer-social li {
 	}
 
 	.comment-meta .avatar {
-		left: -7rem;
+		left: -8rem;
 	}
 
 	/* Site Pagination ----------------------- */
