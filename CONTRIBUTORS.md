@@ -34,3 +34,4 @@ Version 1.0:
 | @felixarntz | @flixos90 |
 | @vbaimas | @vbaimas |
 | @ZebulanStanphill | @zebulan |
+| @byalextran | @byalextran |
