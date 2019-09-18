@@ -106,6 +106,8 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 				'comment-list',
 				'gallery',
 				'caption',
+				'script',
+				'style',
 			)
 		);
 
