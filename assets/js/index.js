@@ -17,7 +17,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
 // event "polyfill"
 
-function createEvent(eventName) {
+twentytwenty.createEvent = function (eventName) {
 	var event;
 	if (typeof window.Event === "function") {
 		event = new Event(eventName);
