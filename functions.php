@@ -539,3 +539,22 @@ add_action( 'customize_controls_enqueue_scripts', function() {
 		false
 	);
 });
+
+/**
+ * Get accessible color for an area.
+ *
+ * @since 1.0.0
+ * @param string $area The area we want to get the colors for.
+ * @param string $context Can be 'text' or 'accent'.
+ * @return string Returns a HEX color.
+ */
+function twentytwenty_get_color_for_area( $area = 'content', $context = 'text' ) {
+
+	// Get the value from the theme-mod.
+	$settings = get_theme_mod( 'accent_accessible_colors' );
+
+	// If we have a value return it.
+	if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
+		return $settings[ $area ][ $context ];
+	}
+}
