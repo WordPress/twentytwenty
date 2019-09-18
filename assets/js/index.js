@@ -15,6 +15,19 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 	};
 }
 
+// event "polyfill"
+
+function createEvent(eventName) {
+	var event;
+	if (typeof window.Event === "function") {
+		event = new Event(eventName);
+	} else {
+		event = document.createEvent('Event');
+		event.initEvent(eventName, true, false);
+	}
+	return event;
+}
+
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals
 --------------------------------------------------------------------------------------------------- */
@@ -507,9 +520,9 @@ twentytwenty.toggles = {
 
 				// Trigger events on the toggle targets before they are toggled
 				if (target.classList.contains('active')) {
-					target.dispatchEvent(new Event('toggle-target-before-active'));
+					target.dispatchEvent(createEvent('toggle-target-before-active'));
 				} else {
-					target.dispatchEvent(new Event('toggle-target-before-inactive'));
+					target.dispatchEvent(createEvent('toggle-target-before-inactive'));
 				}
 
 				// Get the class to toggle, if specified
@@ -573,13 +586,13 @@ twentytwenty.toggles = {
 					}
 
 					// Trigger the toggled event on the toggle target
-					target.dispatchEvent(new Event('toggled'));
+					target.dispatchEvent(createEvent('toggled'));
 
 					// Trigger events on the toggle targets after they are toggled
 					if (target.classList.contains('active')) {
-						target.dispatchEvent(new Event('toggle-target-after-active'));
+						target.dispatchEvent(createEvent('toggle-target-after-active'));
 					} else {
-						target.dispatchEvent(new Event('toggle-target-after-inactive'));
+						target.dispatchEvent(createEvent('toggle-target-after-inactive'));
 					}
 				}, timeOutTime);
 
