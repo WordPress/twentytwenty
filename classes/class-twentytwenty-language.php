@@ -37,13 +37,23 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
           $font_title = 'Noto Sans';
           $font_body  = 'Noto Sans';
           break;
-        // Chinese
+        // Chinese (Hong Kong) - Noto Sans HK
         case 'zh-HK':
+        $font_face = "@font-face { font-family: 'Noto Sans HK'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_HK/NotoSansHK-Regular.otf') format('opentype'); }";
+        $font_title = 'Noto Sans HK';
+        $font_body  = 'Noto Sans HK';
+          break;
+        // Chinese Traditional (Taiwan) - Noto Sans TC
         case 'zh-TW':
+          $font_face = "@font-face { font-family: 'Noto Sans TC'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.otf') format('opentype'); }";
+          $font_title = 'Noto Sans TC';
+          $font_body  = 'Noto Sans TC';
+          break;
+        // Chinese Simplified (China) - Noto Sans SC
         case 'zh-CN':
-          $font_face = "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); }";
-          $font_title = 'Noto Sans';
-          $font_body  = 'Noto Sans';
+          $font_face = "@font-face { font-family: 'Noto Sans SC'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.otf') format('opentype'); }";
+          $font_title = 'Noto Sans SC';
+          $font_body  = 'Noto Sans SC';
             break;
         // Cyrillic
         case 'bel':
@@ -117,9 +127,11 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
           return;
       }
 
-      $custom_css = "* { font-family: '" . $font_body . "' !important; }";
-
+      // Load font face.
       wp_add_inline_style( 'twentytwenty-style', $font_face );
+
+      // Prepare and add inline CSS.
+      $custom_css = "* { font-family: '" . $font_body . "' !important; }, h1, h2, h3, h4, h5, h6 { font-family: '" . $font_title . "' !important; }";
       wp_add_inline_style( 'twentytwenty-style', $custom_css );
 
     }

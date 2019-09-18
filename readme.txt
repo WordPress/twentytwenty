@@ -20,3 +20,19 @@ The 2020 default theme.
 Image in screenshot.png from PxHere
 License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
 URL: https://pxhere.com/en/photo/18153
+
+Font Noto Sans 
+License: Apache License (Apache-2.0), https://www.apache.org/licenses/LICENSE-2.0
+URL: https://fonts.google.com/specimen/Noto+Sans
+
+Font Noto Sans TC
+License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
+URL: https://fonts.google.com/specimen/Noto+Sans+TC
+
+Font Noto Sans SC
+License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
+URL: https://fonts.google.com/specimen/Noto+Sans+TC
+
+Font Noto Sans HK
+License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
+URL: https://fonts.google.com/specimen/Noto+Sans+TC
