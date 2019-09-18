@@ -1,12 +1,11 @@
 <?php
 /**
- * The template for displaying single posts and pages.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template Name: Cover Template
+ * Template Post Type: post, page
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since 1.0.0
+ * @since 1.0
  */
 
 get_header();
@@ -21,7 +20,7 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content-cover' );
 		}
 	}
 

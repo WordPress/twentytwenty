@@ -48,7 +48,7 @@
 	$color_overlay_classes .= ' blend-mode-' . $color_overlay_opacity;
 	?>
 
-	<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>> 
+	<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
 		<div class="cover-header-inner-wrapper">
 			<div class="cover-header-inner">
 				<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
@@ -58,7 +58,7 @@
 
 							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-							<?php 
+							<?php
 							if ( is_page() ) {
 								?>
 
@@ -93,20 +93,20 @@
 		<div class="entry-content">
 
 		<?php
-			the_content();
-
-			wp_link_pages(
-				array(
-					'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-					'after'  => '</nav>',
-				)
-			);
-			edit_post_link();
-			?>
+		the_content();
+		?>
 
 		</div><!-- .entry-content -->
-
 		<?php
+
+		wp_link_pages(
+			array(
+				'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'  => '</nav>',
+			)
+		);
+
+		edit_post_link();
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
 		?>
