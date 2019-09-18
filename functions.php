@@ -41,7 +41,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		add_theme_support(
 			'custom-background',
 			array(
-				'default-color' => 'F5EFE0',
+				'default-color' => 'f5efe0',
 			)
 		);
 
@@ -62,7 +62,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		set_post_thumbnail_size( 1200, 9999 );
 
 		// Add custom image sizes.
-		add_image_size( 'twentytwenty_fullscreen', 1980, 9999 );
+		add_image_size( 'twentytwenty-fullscreen', 1980, 9999 );
 
 		// Custom logo.
 		$logo_id     = get_theme_mod( 'custom_logo' );
@@ -106,6 +106,8 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 				'comment-list',
 				'gallery',
 				'caption',
+				'script',
+				'style',
 			)
 		);
 
@@ -119,6 +121,13 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
+
+		/*
+		 * Adds `async` and `defer` support for scripts registered or enqueued
+		 * by the theme.
+		 */
+		$loader = new TwentyTwenty_Script_Loader();
+		add_filter( 'script_loader_tag', [ $loader, 'filter_script_loader_tag' ], 10, 2 );
 
 	}
 
@@ -150,6 +159,9 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-page.php'
 
 // Color calculations.
 require get_template_directory() . '/classes/class-twentytwenty-color.php';
+
+// Custom script loader class.
+require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
@@ -198,7 +210,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 		$js_dependencies = array( 'jquery' );
 
 		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version, false );
-
+		wp_script_add_data( 'twentytwenty-construct', 'async', true );
 	}
 
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
@@ -247,7 +259,7 @@ function twentytwenty_get_custom_logo( $html ) {
 		$logo_height = esc_attr( $logo[2] );
 
 		// If the retina logo setting is active, reduce the width/height by half.
-		if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+		if ( get_theme_mod( 'retina_logo', false ) ) {
 			$logo_width  = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
 
@@ -351,7 +363,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 		$css_dependencies = array();
 
 		// Enqueue the editor styles.
-		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/twentytwenty-editor-style-block-editor.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
 		// Add inline style from the Customizer.
 		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
@@ -370,7 +382,7 @@ if ( ! function_exists( 'twentytwenty_classic_editor_styles' ) ) {
 	function twentytwenty_classic_editor_styles() {
 
 		$classic_editor_styles = array(
-			'twentytwenty-editor-style-classic-editor.css',
+			'/assets/css/editor-style-classic.css',
 		);
 
 		add_editor_style( $classic_editor_styles );
@@ -419,11 +431,11 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 		$editor_color_palette = array();
 
 		// Get the color options.
-		$twentytwenty_accent_color_options = TwentyTwenty_Customize::twentytwenty_get_color_options();
+		$accent_color_options = TwentyTwenty_Customize::get_color_options();
 
 		// Loop over them and construct an array for the editor-color-palette.
-		if ( $twentytwenty_accent_color_options ) {
-			foreach ( $twentytwenty_accent_color_options as $color_option_name => $color_option ) {
+		if ( $accent_color_options ) {
+			foreach ( $accent_color_options as $color_option_name => $color_option ) {
 				$editor_color_palette[] = array(
 					'name'  => $color_option['label'],
 					'slug'  => $color_option['slug'],
@@ -494,10 +506,9 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 	 */
 	function twentytwenty_read_more_tag() {
 		return sprintf(
-			'<a href="%1$s" class="more-link">%2$s <span class="screen-reader-text">"%3$s"</span></a></p>',
+			'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
 			esc_url( get_permalink( get_the_ID() ) ),
-			/* Translators: %s: Name of current post */
-			esc_html( 'Continue reading', 'twentytwenty' ),
+			esc_html__( 'Continue reading', 'twentytwenty' ),
 			get_the_title( get_the_ID() )
 		);
 	}
