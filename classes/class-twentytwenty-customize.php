@@ -83,6 +83,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'default'           => 344,
 					'type'              => 'theme_mod',
 					'sanitize_callback' => 'absint',
+					'transport'         => 'postMessage',
 				)
 			);
 
@@ -92,6 +93,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'default'           => array(), // TODO: We need some sane defaults here.
 					'type'              => 'theme_mod',
+					'transport'         => 'postMessage',
 					'sanitize_callback' => function( $value ) { // TODO: This should probably be a normal mehod in this object instead of a closure.
 						$value = is_array( $value ) ? $value : array();
 						foreach ( $value as $context => $values ) {
