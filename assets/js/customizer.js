@@ -3,8 +3,15 @@
 	wp.customize.bind( 'ready', function() {
 
 		// An object containing the areas of the theme and their corresponding options for background-colors.
-		var backgroundColors = {
-			content: 'background_color'
+		// TODO: Move these to PHP and add as vars to the script.
+		var backgroundColors = { // TODO: Define in PHP then add as vars to the script.
+			content: {
+				setting: 'background_color',
+				elements: {
+					text: 'body',
+					accent: 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post'
+				}
+			}
 		};
 
 		// Add a listener for accent-color changes.
@@ -13,7 +20,7 @@
 
 				// Update the value for our accessible colors for all areas.
 				Object.keys( backgroundColors ).forEach( function( context ) {
-					twentyTwentySetAccessibleColorsValue( context, wp.customize( backgroundColors[ context ] ).get(), to );
+					twentyTwentySetAccessibleColorsValue( context, wp.customize( backgroundColors[ context ].setting ).get(), to );
 				});
 			});
 		});
@@ -21,7 +28,7 @@
 		// Add a listener for background-color changes.
 
 		Object.keys( backgroundColors ).forEach( function( context ) {
-			wp.customize( backgroundColors[ context ], function( value ) {
+			wp.customize( backgroundColors[ context ].setting, function( value ) {
 				value.bind( function( to ) {
 
 					// Update the value for our accessible colors for this area.
