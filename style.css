@@ -3031,75 +3031,29 @@ div.comment:first-of-type {
 /*	13. Site Pagination
 /* --------------------------------------------------------------------------------------------- */
 
-/* Delete from here */
-
-.pagination-wrapper .navigation.pagination {
-	padding-top: 3rem;
-}
-
-.pagination-wrapper .pagination .nav-links {
-	display: flex;
-	flex-wrap: wrap;
-	font-size: 1.8rem;
-	font-weight: 600;
-	margin: -2.5rem 0 0 -2.5rem;
-	width: inherit;
-	max-width: inherit;
-}
-
-.pagination-wrapper .nav-links .page-numbers {
-	margin: 2.5rem 0 0 2.5rem;
-}
-
-.pagination-wrapper .pagination a {
-	text-decoration: none;
-}
-
-.pagination-wrapper .pagination a:hover .nav-prev-text,
-.pagination-wrapper .pagination a:hover .nav-next-text {
-	text-decoration: underline;
-}
-
-/* Delete until here */
-
-/* New CSS by acalfieri (this comment is to be deleted). */
-
-.pagination {
+.navigation.pagination {
 	padding-top: 3rem;
 }
 
 .pagination .nav-links {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	font-size: 1.8rem;
 	font-weight: 600;
-	width: calc(100% - 4rem);
-	margin: 0 auto;
+	margin: -2.5rem 0 0 -2.5rem;
 }
 
-.nav-links .page-numbers {
-	margin: 2.5rem auto 0;
-}
-
-.nav-links .prev {
-	margin: 2.5rem auto 0 0;
-}
-
-.nav-links .next {
-	margin: 2.5rem 0 0 auto;
+.nav-links > * {
+	margin: 2.5rem 0 0 2.5rem;
 }
 
 .pagination a {
 	text-decoration: none;
 }
 
-.pagination a:hover .nav-text {
+.pagination a:hover {
 	text-decoration: underline;
 }
-
-/* End of new CSS by acalfieri (this comment is to be deleted). */
-
 
 .pagination .dots {
 	transform: translateY( -.3em );
@@ -4449,30 +4403,26 @@ ul.footer-social li {
 	/* Comments ------------------------------ */
 	/* Site Pagination ----------------------- */
 
-	/* Delete from here */
-
-	.pagination-wrapper .pagination .nav-links {
+	.pagination .nav-links {
 		display: flex;
 		flex-direction: row;
 		font-size: 2.4rem;
 		margin: -2.5rem 0 0 -2.5rem;
 		letter-spacing: -0.9px;
-		width: inherit;
-		max-width: inherit;
 	}
 
-	.pagination-wrapper .pagination .next,
-	.pagination-wrapper .pagination .prev {
+	.pagination .next,
+	.pagination .prev {
 		display: inline;
 	}
 
-	.pagination-wrapper .pagination .prev {
+	.pagination .prev {
 		left: 0;
 		justify-self: flex-start;
 		margin-right: auto;
 	}
 
-	.pagination-wrapper .pagination .next {
+	.pagination .next {
 		right: 0;
 		text-align: right;
 		justify-self: flex-end;
@@ -4486,42 +4436,6 @@ ul.footer-social li {
 	.pagination-wrapper.only-prev .page-numbers:last-child {
 		margin-right: auto;
 	}
-
-	/* Delete until here */
-
-	/* New CSS by acalfieri*/
-
-	.pagination .nav-links {
-		display: flex;
-		flex-direction: row;
-		font-size: 2.4rem;
-		margin: 0 auto;
-		width: calc(100% - 8rem);
-		max-width: 120rem;
-		letter-spacing: -0.9px;
-	}
-
-	.pagination .page-numbers {
-		margin: 2.5rem 0 0 2.5rem;
-	}
-
-	.pagination .prev {
-		margin: 2.5rem auto 0 0;
-	}
-
-	.pagination .next {
-		margin: 2.5rem 0 0 auto;
-	}
-
-	.pagination-wrapper.only-next .page-numbers:first-child {
-		margin-left: 0;
-	}
-
-	.pagination-wrapper.only-prev .page-numbers:last-child {
-		margin-right: auto;
-	}
-
-	/* End new CSS by acalfieri */
 
 	/* Site Footer --------------------------- */
 
