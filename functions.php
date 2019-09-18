@@ -120,6 +120,13 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
+		/*
+		 * Adds `async` and `defer` support for scripts registered or enqueued
+		 * by the theme.
+		 */
+		$loader = new TwentyTwenty_Script_Loader();
+		add_filter( 'script_loader_tag', [ $loader, 'filter_script_loader_tag' ], 10, 2 );
+
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_theme_support' );
@@ -150,6 +157,9 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-page.php'
 
 // Color calculations.
 require get_template_directory() . '/classes/class-twentytwenty-color.php';
+
+// Custom script loader class.
+require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
@@ -198,7 +208,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 		$js_dependencies = array( 'jquery' );
 
 		wp_enqueue_script( 'twentytwenty-construct', get_template_directory_uri() . '/assets/js/construct.js', $js_dependencies, $theme_version, false );
-
+		wp_script_add_data( 'twentytwenty-construct', 'async', true );
 	}
 
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
