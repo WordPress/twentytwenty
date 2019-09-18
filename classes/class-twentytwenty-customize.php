@@ -68,6 +68,59 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			/**
+			 * Implementation for the accent color.
+			 * This is different to all other color options because of the accessibility enhancements.
+			 * The control is a hue-only colorpicker, and there is a separate setting that holds values
+			 * for other colors calculated based on the selected hue and various background-colors on the page.
+			 *
+			 * @since 1.0.0
+			 */
+
+			// Add the setting for the hue colorpicker.
+			$wp_customize->add_setting(
+				'accent_hue',
+				array(
+					'default'           => 344,
+					'type'              => 'theme_mod',
+					'sanitize_callback' => 'absint',
+				)
+			);
+
+			// Add setting to hold colors derived from the accent hue.
+			$wp_customize->add_setting(
+				'accent_accessible_colors',
+				array(
+					'default'           => array(),
+					'type'              => 'theme_mod',
+					'sanitize_callback' => function( $value ) {
+						$value = is_array( $value ) ? $value : array();
+						foreach ( $value as $context => $values ) {
+							$value[ $context ] = array(
+								'text' => ( isset( $value[ $context ]['text'] ) ) ? $value[ $context ]['text'] : '#000000',
+								'accent' => ( isset( $value[ $context ]['accent'] ) ) ? $value[ $context ]['accent'] : '#CD2653',
+							);
+						}
+						return $value;
+					},
+				)
+			);
+
+			// Add the hue-only colorpicker for the accent color.
+			$wp_customize->add_control(
+				new WP_Customize_Color_Control(
+					$wp_customize,
+					'accent_hue',
+					array(
+						'label'    => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
+						'section'  => 'colors',
+						'settings' => 'accent_hue',
+						'priority' => 10,
+						'mode'     => 'hue',
+					)
+				)
+			);
+
+			/**
 			 * Colors.
 			*/
 			$twentytwenty_accent_color_options = self::twentytwenty_get_color_options();
@@ -369,16 +422,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 * and abstracted to this function.
 		 */
 		public static function twentytwenty_get_color_options() {
-			return apply_filters(
-				'twentytwenty_accent_color_options',
-				array(
-					'twentytwenty_accent_color' => array(
-						'default' => '#CD2653',
-						'label'   => __( 'Accent Color', 'twentytwenty' ),
-						'slug'    => 'accent',
-					),
-				)
-			);
+			return apply_filters( 'twentytwenty_accent_color_options', array() );
 		}
 
 	}
