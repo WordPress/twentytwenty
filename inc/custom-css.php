@@ -81,19 +81,19 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 			// Colors.
 			// Element Specific.
-			if ( $accent && $accent !== $accent_default ) {
+			if ( $accent && ( $accent !== $accent_default || is_customize_preview() ) ) {
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
 			}
 
-			if ( $cover && $cover !== $cover_default ) {
+			if ( $cover && ( $cover !== $cover_default || is_customize_preview() ) ) {
 				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
 			}
 
 			// Helper Classes.
-			if ( $accent && $accent !== $accent_default ) {
+			if ( $accent && ( $accent !== $accent_default || is_customize_preview() ) ) {
 				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
 				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
 				twentytwenty_generate_css( '.border-color-accent, .border-color-accent-hover:hover', 'border-color', $accent );

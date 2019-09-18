@@ -175,8 +175,9 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 		wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
 		// Add output of Customizer settings as inline style.
-		wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
-
+		if( ! is_customize_preview() ) {
+			wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
+		}
 	}
 
 	add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
