@@ -1,6 +1,6 @@
 /* global backgroundColors */
 /**
- * Theme Customizer enhancements for a better user experience.
+ * Customizer enhancements for a better user experience.
  *
  * Contains extra logic for our Customizer controls & settings.
  *
