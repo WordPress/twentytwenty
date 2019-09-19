@@ -166,11 +166,11 @@ twentytwenty.focusManagement = {
 			var menuModal = document.querySelector('.menu-modal');
 			var headerToggles = document.querySelector('.header-toggles');
 			var searchModal = document.querySelector('.search-modal');
-			if (menuModal.classList.contains('.active')) {
-				if (!menuModal.contains(element) && !headerToggles.contains(element)) {
+			if (menuModal && menuModal.classList.contains('.active')) {
+				if (!menuModal.contains(element) && headerToggles && !headerToggles.contains(element)) {
 					document.querySelector('.nav-toggle').focus();
 				}
-			} else if (!searchModal.classList.contains('.active')) {
+			} else if (searchModal && !searchModal.classList.contains('.active')) {
 				if (!searchModal.contains(element)) {
 					searchModal.querySelector('.search-field').focus();
 				}
