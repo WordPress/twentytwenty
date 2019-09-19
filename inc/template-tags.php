@@ -35,6 +35,7 @@ if ( ! function_exists( 'twentytwenty_site_logo' ) ) {
 			'title_class' => 'site-title',
 			'home_wrap'   => '<h1 class="%1$s">%2$s</h1>',
 			'single_wrap' => '<div class="%1$s faux-heading">%2$s</div>',
+			'condition'   => is_front_page() || is_home(),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -55,20 +56,19 @@ if ( ! function_exists( 'twentytwenty_site_logo' ) ) {
 			$classname = $args['title_class'];
 		}
 
-		$conditional = is_front_page() || is_home();
-
-		$wrap = $conditional ? 'home_wrap' : 'single_wrap';
+		$wrap = $args['condition'] ? 'home_wrap' : 'single_wrap';
 
 		$html = sprintf( $args[ $wrap ], $classname, $contents );
 
 		/**
 		 * Filters the arguments for `twentytwenty_site_logo()`.
 		 *
-		 * @param string  $html        Compiled html based on our arguments.
-		 * @param array   $args        Parsed arguments.
-		 * @param boolean $conditional Is the current view our front-page/home or single view.
+		 * @param string $html      Compiled html based on our arguments.
+		 * @param array  $args      Parsed arguments.
+		 * @param string $classname Class name based on current view, home or single.
+		 * @param string $contents  HTML for site title or logo.
 		 */
-		$html = apply_filters( 'twentytwenty_site_logo', $html, $args, $conditional );
+		$html = apply_filters( 'twentytwenty_site_logo', $html, $args, $classname, $contents );
 
 		if ( ! $echo ) {
 			return $html;
