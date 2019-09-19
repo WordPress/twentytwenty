@@ -367,7 +367,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			// Add sub menu icons to the primary menu without toggles.
 		} elseif ( 'primary' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
+				$args->after = '<span class="icon"></span>';
 			} else {
 				$args->after = '';
 			}
