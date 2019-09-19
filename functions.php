@@ -179,7 +179,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	 */
 	function twentytwenty_register_styles() {
 
-		$theme_version    = time();
+		$theme_version    = wp_get_theme()->get( 'Version' );
 		$css_dependencies = array();
 
 		// By default, only load the Font Awesome fonts if the social menu is in use.
@@ -208,7 +208,7 @@ if ( ! function_exists( 'twentytwenty_register_scripts' ) ) {
 	 */
 	function twentytwenty_register_scripts() {
 
-		$theme_version = time();
+		$theme_version = wp_get_theme()->get( 'Version' );
 
 		if ( ( ! is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -371,7 +371,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 		$css_dependencies = array();
 
 		// Enqueue the editor styles.
-		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, time(), 'all' );
+		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
 
 		// Add inline style from the Customizer.
 		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
@@ -533,7 +533,7 @@ if ( ! function_exists( 'twentytwenty_customize_controls_enqueue_scripts' ) ) {
 	 * @return void
 	 */
 	function twentytwenty_customize_controls_enqueue_scripts() {
-		$theme_version = time();
+		$theme_version = wp_get_theme()->get( 'Version' );
 
 		// Add script for color calculations.
 		wp_enqueue_script( 'twentytwenty-color', get_template_directory_uri() . '/assets/js/color.js', [ 'wp-color-picker' ], $theme_version, false );
@@ -555,7 +555,7 @@ if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
 	 * @return void
 	 */
 	function twentytwenty_customize_preview_init() {
-		$theme_version = time();
+		$theme_version = wp_get_theme()->get( 'Version' );
 
 		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
 		wp_localize_script( 'twentytwenty-customize-preview', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
