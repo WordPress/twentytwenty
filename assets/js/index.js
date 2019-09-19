@@ -106,8 +106,11 @@ twentytwenty.coverModals = {
 					return;
 				}
 
+				var scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
 				window.scrollTo( { top: 0 } );
-				bodyStyle.overflow = 'hidden';
+				bodyStyle.setProperty( 'overflow', 'hidden' );
+				bodyStyle.setProperty( 'padding-right', scrollBarWidth + 'px' );
 				modal.classList.add('show-modal');
 			});
 
@@ -120,6 +123,7 @@ twentytwenty.coverModals = {
 				setTimeout(function () {
 					modal.classList.remove('show-modal');
 					bodyStyle.removeProperty('overflow');
+					bodyStyle.removeProperty('padding-right');
 				}, 500);
 			});
 		});
