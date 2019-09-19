@@ -56,11 +56,15 @@
 		// Get accessible colors for the defined background-color and hue.
 		colors = twentyTwentyColor( backgroundColor, accentHue );
 
-		// Update the value for this context.
-		value[ context ] = {
-			text: colors.getTextColor(),
-			accent: colors.getAccentColor().toCSS()
-		};
+		// Sanity check.
+		if ( colors.getAccentColor() && 'function' === typeof colors.getAccentColor().toCSS ) {
+
+			// Update the value for this context.
+			value[ context ] = {
+				text: colors.getTextColor(),
+				accent: colors.getAccentColor().toCSS()
+			};
+		}
 
 		// Change the value.
 		wp.customize( 'accent_accessible_colors' ).set( value );
