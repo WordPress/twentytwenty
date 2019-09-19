@@ -38,8 +38,8 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 		maxSaturation    = 90,
 		minLightness     = 25,
 		maxLighness      = 75,
-		stepSaturation   = 4,
-		stepLightness    = 4,
+		stepSaturation   = 2.5,
+		stepLightness    = 2.5,
 		pushColor        = function( saturation, lightness ) {
 			var colorObj = new Color( {
 					h: self.accentHue,
@@ -65,7 +65,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 
 			self.accentColorsArray.push( item );
 		},
-		s, l;
+		s, l, aaa;
 
 	this.accentColorsArray = [];
 
@@ -74,6 +74,16 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 		for ( l = minLightness; l <= maxLighness; l += stepLightness ) {
 			pushColor( s, l );
 		}
+	}
+
+	// Check if we have colors that are AAA compliant.
+	aaa = this.accentColorsArray.filter( function( color ) {
+		return color.contrastBackground >= 7;
+	});
+
+	// If we have AAA-compliant colors, alpways prefer them.
+	if ( aaa.length ) {
+		this.accentColorsArray = aaa;
 	}
 
 	// Sort colors by contrast.
