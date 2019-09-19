@@ -433,7 +433,13 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	function twentytwenty_block_editor_settings() {
 
 		// Block Editor Palette.
-		$editor_color_palette = array();
+		$editor_color_palette = array(
+			array(
+				'name'  => esc_html__( 'Accent Color' ),
+				'slug'  => 'accent',
+				'color' => twentytwenty_get_color_for_area( 'content', 'accent' ),
+			),
+		);
 
 		// Get the color options.
 		$accent_color_options = TwentyTwenty_Customize::get_color_options();
