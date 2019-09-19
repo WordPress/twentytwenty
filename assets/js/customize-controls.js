@@ -1,3 +1,4 @@
+/* global backgroundColors */
 /**
  * Theme Customizer enhancements for a better user experience.
  *
@@ -10,18 +11,6 @@
 
 	// Wait until the customizer has finished loading.
 	wp.customize.bind( 'ready', function() {
-
-		// An object containing the areas of the theme and their corresponding options for background-colors.
-		// TODO: Move these to PHP and add as vars to the script.
-		var backgroundColors = { // TODO: Define in PHP then add as vars to the script.
-			content: {
-				setting: 'background_color',
-				elements: {
-					text: 'body',
-					accent: 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post'
-				}
-			}
-		};
 
 		// Add a listener for accent-color changes.
 		wp.customize( 'accent_hue', function( value ) {

@@ -540,6 +540,7 @@ if ( ! function_exists( 'twentytwenty_customize_controls_enqueue_scripts' ) ) {
 
 		// Add script for controls.
 		wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', [ 'twentytwenty-color', 'customize-controls', 'underscore', 'jquery' ], $theme_version, false );
+		wp_localize_script( 'twentytwenty-customize-controls', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
 	}
 
 	add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_controls_enqueue_scripts' );
@@ -557,6 +558,7 @@ if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
 		$theme_version = wp_get_theme()->get( 'Version' );
 
 		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
+		wp_localize_script( 'twentytwenty-customize-preview', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
 	}
 
 	add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
@@ -581,5 +583,20 @@ if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
 		if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
 			return $settings[ $area ][ $context ];
 		}
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
+	function twentytwenty_get_customizer_color_vars() {
+		$colors = array(
+			'content' => array(
+				'setting'  => 'background_color',
+				'elements' => array(
+					'text'   => 'body',
+					'accent' => 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
+				),
+			),
+		);
+		return $colors;
 	}
 }
