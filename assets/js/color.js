@@ -77,11 +77,16 @@ _twentyTwentyColor.prototype.getTextColor = function() {
  * Get accessible color for the defined accent-hue and background-color.
  *
  * @since 1.0.0
+ *
+ * @param {undefined|Array} forcedRule - A rule we may want to force.
+ *                                      If none is defined it goes through a predefined array of rules.
+ *
  * @return {Color} - Returns a Color object.
  */
-_twentyTwentyColor.prototype.getAccentColor = function() {
-	var i, colorFound,
-		self       = this,
+_twentyTwentyColor.prototype.getAccentColor = function( forcedRule ) {
+	var i, colorFound, fallback,
+		self = this,
+		hueDiff = 7, // ~2%
 		findColors = function( minBgContrast, minTxtContrast ) {
 			var i;
 			for ( i = 0; i < self.accentColorsArray.length; i++ ) {
@@ -90,6 +95,7 @@ _twentyTwentyColor.prototype.getAccentColor = function() {
 				}
 			}
 		},
+
 		// The rules below go from good to not so good.
 		// A loop will run through the item so we'll first get the good colors
 		// and if that fails we'll move on to the next case.
@@ -99,22 +105,46 @@ _twentyTwentyColor.prototype.getAccentColor = function() {
 			[ 6, 3 ],
 			[ 5, 3 ],
 			[ 4.5, 3 ],
-			[ 4.5, 2 ],
-			[ 4, 3 ],
-			[ 4, 2 ],
-			[ 3, 3 ],
-			[ 3, 2 ]
 		];
+
+
+	if ( forcedRule ) {
+		return findColors( forcedRule[0], forcedRule[1] );
+	}
 
 	for ( i = 0; i < rules.length; i++ ) {
 		colorFound = findColors( rules[ i ][0], rules[ i ][1] );
+
+		// If a color was not found check neighbouring hues.
+		if ( ! colorFound ) {
+
+			// Check a step back.
+			colorFound = twentyTwentyColor( this.backgroundColor, Math.min( 359, Math.max( 0, this.accentHue - hueDiff ) ) ).getAccentColor( rules[ i ] );
+
+			// Found it? Return it.
+			if ( colorFound ) {
+				console.log( '-7 ' + JSON.stringify( forcedRule ) );
+				return colorFound;
+			}
+
+			// No luck, try a step forward.
+			colorFound = twentyTwentyColor( this.backgroundColor, Math.min( 359, Math.max( 0, this.accentHue + hueDiff ) ) ).getAccentColor( rules[ i ] );
+
+			// Found it? Return it.
+			if ( colorFound ) {
+				console.log( '+7 ' + JSON.stringify( forcedRule ) );
+				return colorFound;
+			}
+		}
+
 		if ( colorFound ) {
 			return colorFound.color;
 		}
 	}
 
 	// Fallback.
-	return new Color( 'hsl(' + this.accentHue + ',50%,50%)' );
+	fallback = new Color( 'hsl(' + this.accentHue + ',50%,50%)' );
+	return fallback.getReadableContrastingColor( this.bgColorObj, 4.5 );
 };
 
 /**
