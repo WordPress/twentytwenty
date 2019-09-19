@@ -32,10 +32,10 @@ if ( $comments ) {
 			<?php
 			if ( comments_open() ) {
 				if ( ! have_comments() ) {
-					esc_html_e( 'Leave a comment', 'twentynineteen' );
+					esc_html_e( 'Leave a comment', 'twentytwenty' );
 				} elseif ( '1' === $comments_number ) {
 					/* translators: %s: post title */
-					printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentynineteen' ), esc_html( get_the_title() ) );
+					printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty' ), esc_html( get_the_title() ) );
 				} else {
 					echo esc_html( 
 						sprintf(
@@ -45,7 +45,7 @@ if ( $comments ) {
 								'%1$s replies on &ldquo;%2$s&rdquo;',
 								$comments_number,
 								'comments title',
-								'twentynineteen'
+								'twentytwenty'
 							),
 							number_format_i18n( $comments_number ),
 							get_the_title()
