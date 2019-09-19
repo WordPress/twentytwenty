@@ -100,8 +100,8 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 			// Header.
 			if ( $header_text && $header_accent ) {
-				twentytwenty_generate_css( '#header', 'color', $header_text );
-				twentytwenty_generate_css( '#header a, #header li', 'color', $header_accent );
+				twentytwenty_generate_css( '#site-header', 'color', $header_text );
+				twentytwenty_generate_css( '#site-header a, #site-header li', 'color', $header_accent );
 			}
 
 			if ( $cover && $cover !== $cover_default ) {
