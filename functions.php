@@ -593,7 +593,8 @@ if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
 				'setting'  => 'background_color',
 				'elements' => array(
 					'text'   => 'body',
-					'accent' => 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
+					// We're using #site-content a here to avoing changing styles for the header & footer in the preview.
+					'accent' => '#site-content a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
 				),
 			),
 			'header' => array(
