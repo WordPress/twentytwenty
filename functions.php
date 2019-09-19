@@ -161,9 +161,6 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-comment.p
 // Custom page walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-page.php';
 
-// Color calculations.
-require get_template_directory() . '/classes/class-twentytwenty-color.php';
-
 // Custom script loader class.
 require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
