@@ -115,6 +115,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					'author',
 					'post-date',
 					'comments',
+					'sticky',
 				)
 			);
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
@@ -258,7 +259,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 								<?php twentytwenty_the_theme_svg( 'bookmark' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'Sticky post', 'twentytwenty' ); ?>
+								<?php esc_html_e( 'Sticky Post', 'twentytwenty' ); ?>
 							</span>
 						</li>
 						<?php
@@ -366,7 +367,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			// Add sub menu icons to the primary menu without toggles.
 		} elseif ( 'primary' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
+				$args->after = '<span class="icon"></span>';
 			} else {
 				$args->after = '';
 			}
