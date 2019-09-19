@@ -1177,7 +1177,7 @@ ul.social-icons li {
 
 .overlay-header #site-header {
 	background: transparent;
-	z-index: 2;
+	z-index: 100;
 }
 
 .overlay-header:not(.showing-menu-modal) .header-inner {
@@ -4172,6 +4172,10 @@ a.to-the-top > * {
 		z-index: 1;
 	}
 
+	.overlay-header #site-header {
+		z-index: 2;
+	}
+	
 	.header-inner {
 		align-items: center;
 		display: flex;
