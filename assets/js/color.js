@@ -143,7 +143,7 @@ _twentyTwentyColor.prototype.getAccentColor = function( forcedRule ) {
 	}
 
 	// Fallback.
-	fallback = new Color( 'hsl(' + this.accentHue + ',50%,50%)' );
+	fallback = new Color( 'hsl(' + this.accentHue + ',75%,50%)' );
 	return fallback.getReadableContrastingColor( this.bgColorObj, 4.5 );
 };
 
