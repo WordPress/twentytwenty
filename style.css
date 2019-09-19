@@ -1177,6 +1177,7 @@ ul.social-icons li {
 
 .overlay-header #site-header {
 	background: transparent;
+	z-index: 2;
 }
 
 .overlay-header:not(.showing-menu-modal) .header-inner {
