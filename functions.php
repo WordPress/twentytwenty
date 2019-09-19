@@ -524,59 +524,62 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 
 }
 
-/**
- * WIP: These should be moved to the Custom class.
- */
-add_action( 'customize_controls_enqueue_scripts', function() {
+if ( ! function_exists( 'twentytwenty_customize_controls_enqueue_scripts' ) ) {
+	/**
+	 * Enqueues scripts for customizer controls & settings.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	function twentytwenty_customize_controls_enqueue_scripts() {
+		$theme_version = wp_get_theme()->get( 'Version' );
 
-	// Add script for color calculations.
-	wp_enqueue_script(
-		'twentytwenty-color',
-		get_template_directory_uri() . '/assets/js/color.js',
-		[ 'wp-color-picker' ],
-		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
-		false
-	);
+		// Add script for color calculations.
+		wp_enqueue_script( 'twentytwenty-color', get_template_directory_uri() . '/assets/js/color.js', [ 'wp-color-picker' ], $theme_version, false );
 
-	// Add script for controls.
-	wp_enqueue_script(
-		'twentytwenty-customizer',
-		get_template_directory_uri() . '/assets/js/customize-controls.js',
-		[ 'twentytwenty-color', 'customize-controls', 'underscore', 'jquery' ],
-		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
-		false
-	);
-});
+		// Add script for controls.
+		wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', [ 'twentytwenty-color', 'customize-controls', 'underscore', 'jquery' ], $theme_version, false );
+	}
 
-/**
- * WIP: Move these where appropriate (of course using a regular function instead of closures).
- */
-add_action( 'customize_preview_init', function() {
-	$js_dependencies = array( 'customize-preview', 'jquery' );
-	wp_enqueue_script(
-		'twentytwenty-customize-preview',
-		get_theme_file_uri( '/assets/js/customize-preview.js' ),
-		$js_dependencies,
-		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
-		true
-	);
-} );
+	add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_controls_enqueue_scripts' );
+}
 
-/**
- * Get accessible color for an area.
- *
- * @since 1.0.0
- * @param string $area The area we want to get the colors for.
- * @param string $context Can be 'text' or 'accent'.
- * @return string Returns a HEX color.
- */
-function twentytwenty_get_color_for_area( $area = 'content', $context = 'text' ) {
+if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
+	/**
+	 * Enqueue scripts for the customizer preview.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	function twentytwenty_customize_preview_init() {
+		$theme_version = wp_get_theme()->get( 'Version' );
 
-	// Get the value from the theme-mod.
-	$settings = get_theme_mod( 'accent_accessible_colors' );
+		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
+	}
 
-	// If we have a value return it.
-	if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
-		return $settings[ $area ][ $context ];
+	add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
+}
+
+if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
+	/**
+	 * Get accessible color for an area.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $area The area we want to get the colors for.
+	 * @param string $context Can be 'text' or 'accent'.
+	 * @return string Returns a HEX color.
+	 */
+	function twentytwenty_get_color_for_area( $area = 'content', $context = 'text' ) {
+
+		// Get the value from the theme-mod.
+		$settings = get_theme_mod( 'accent_accessible_colors' );
+
+		// If we have a value return it.
+		if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
+			return $settings[ $area ][ $context ];
+		}
 	}
 }
