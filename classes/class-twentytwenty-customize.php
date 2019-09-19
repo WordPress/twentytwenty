@@ -118,11 +118,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			*/
 			$accent_color_options = self::get_color_options();
 
-			/**
-			 * WIP: Disable these options 'cause we're doing the accessibility-color implementation above.
-			 */
-			$accent_color_options = array();
-
 			// Loop over the color options and add them to the customizer.
 			foreach ( $accent_color_options as $color_option_name => $color_option ) {
 
@@ -416,16 +411,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 * and abstracted to this function.
 		 */
 		public static function get_color_options() {
-			return apply_filters(
-				'twentytwenty_accent_color_options',
-				array(
-					'accent_color' => array(
-						'default' => '#cd2653',
-						'label'   => __( 'Accent Color', 'twentytwenty' ),
-						'slug'    => 'accent',
-					),
-				)
-			);
+			return apply_filters( 'twentytwenty_accent_color_options', array() );
 		}
 
 		/**
