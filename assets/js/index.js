@@ -136,7 +136,7 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function () {
-		var modals = document.querySelectorAll('.cover-modal')
+		var modals = document.querySelectorAll('.cover-modal'),
 		    bodyStyle = document.body.style;
 
 		// Show the modal
