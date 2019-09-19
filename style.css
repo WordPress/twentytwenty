@@ -78,8 +78,6 @@ blockquote:after {
 
 html {
 	font-size: 62.5%; /* 1rem = 10px */
-	width: 100vw;
-    overflow-x: hidden;
 }
 
 body {

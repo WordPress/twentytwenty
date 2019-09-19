@@ -98,6 +98,27 @@ twentytwenty.coverModals = {
 	hideAndShowModals: function () {
 		var modals = document.querySelectorAll('.cover-modal'),
 			htmlStyle = document.documentElement.style;
+			
+
+
+		var getAdminBarHeight = function( negativeValue ) {
+			var adminBar = document.querySelector('#wpadminbar'),
+			    newHeight;
+
+			if( adminBar ) {
+				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px'
+			}
+
+			return 0;
+		}
+
+		var htmlStyles = {
+			'overflow-y': 'scroll',
+			position: 'fixed',
+			width: '100%',
+			top: getAdminBarHeight( true ),
+			left: 0
+		};
 
 		// Show the modal
 		modals.forEach(function (modal) {
@@ -105,9 +126,15 @@ twentytwenty.coverModals = {
 				if (event.target !== modal) {
 					return;
 				}
-				
+
 				window.scrollTo( { top: 0 } );
-				htmlStyle.setProperty( 'overflow-y', 'hidden' );
+
+				Object.keys( htmlStyles ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, htmlStyles[ styleKey ] );
+				} );
+
+				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
+				
 				modal.classList.add('show-modal');
 			});
 
@@ -119,7 +146,12 @@ twentytwenty.coverModals = {
 
 				setTimeout(function () {
 					modal.classList.remove('show-modal');
-					htmlStyle.removeProperty( 'overflow-y' );
+
+					Object.keys( htmlStyles ).forEach( function( styleKey ) {
+						htmlStyle.removeProperty( styleKey );
+					} );
+
+					document.body.style.removeProperty( 'padding-top' );
 				}, 500);
 			});
 		});
