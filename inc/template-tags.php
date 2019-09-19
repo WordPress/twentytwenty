@@ -115,6 +115,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					'author',
 					'post-date',
 					'comments',
+					'sticky',
 				)
 			);
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
@@ -258,7 +259,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 								<?php twentytwenty_the_theme_svg( 'bookmark' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'Sticky post', 'twentytwenty' ); ?>
+								<?php esc_html_e( 'Sticky Post', 'twentytwenty' ); ?>
 							</span>
 						</li>
 						<?php
