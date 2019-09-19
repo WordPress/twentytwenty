@@ -1153,6 +1153,11 @@ ul.social-icons li {
 
 .cover-modal.show-modal {
 	display: block;
+	cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF/////v3+AAAAh9QkTAAAAAN0Uk5T//8A18oNQQAAAMNJREFUeNqslgEOwzAIAz3//9HT1nZL25hw0yJVlcCOAjgQ2ZabS9snNRlvoF6/HmMDal9N/EBp4vcY1owPSG4xvhC5wxgAOgyPgjG65TXj5JSXjLNLXjEuDnnBuJrlmnEzyiXjbqrdsy3KACeHrI48DyonZZ62nMaU5lSoVMhc2lT4KJ4grSi3KMV/EOiRaNA0rbRwVBpUfFTe9ALRK0qbAG0ztJHRVkmbMW33dKDQkUWHIh27Pw528HTgjxP4/HkKMABaUg2R9Eq3AAAAAABJRU5ErkJggg=='), auto;
+}
+
+.cover-modal.show-modal > * {
+	cursor: auto;
 }
 
 
