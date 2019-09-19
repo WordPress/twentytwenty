@@ -1387,8 +1387,9 @@ ul.primary-menu {
 	display: block;
 	height: .7rem;
 	position: absolute;
-	width: 1.3rem;
+	pointer-events: none;
 	transform: rotate( -45deg );
+	width: 1.3rem;
 }
 
 .primary-menu .icon:before,
