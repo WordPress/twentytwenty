@@ -97,7 +97,7 @@ twentytwenty.coverModals = {
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function () {
 		var modals = document.querySelectorAll('.cover-modal'),
-		    bodyStyle = document.body.style;
+			htmlStyle = document.documentElement.style;
 
 		// Show the modal
 		modals.forEach(function (modal) {
@@ -105,12 +105,9 @@ twentytwenty.coverModals = {
 				if (event.target !== modal) {
 					return;
 				}
-
-				var scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-
+				
 				window.scrollTo( { top: 0 } );
-				bodyStyle.setProperty( 'overflow', 'hidden' );
-				bodyStyle.setProperty( 'padding-right', scrollBarWidth + 'px' );
+				htmlStyle.setProperty( 'overflow-y', 'hidden' );
 				modal.classList.add('show-modal');
 			});
 
@@ -122,8 +119,7 @@ twentytwenty.coverModals = {
 
 				setTimeout(function () {
 					modal.classList.remove('show-modal');
-					bodyStyle.removeProperty('overflow');
-					bodyStyle.removeProperty('padding-right');
+					htmlStyle.removeProperty( 'overflow-y' );
 				}, 500);
 			});
 		});
