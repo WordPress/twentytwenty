@@ -94,16 +94,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'default'           => array(), // TODO: We need some sane defaults here.
 					'type'              => 'theme_mod',
 					'transport'         => 'postMessage',
-					'sanitize_callback' => function( $value ) { // TODO: This should probably be a normal mehod in this object instead of a closure.
-						$value = is_array( $value ) ? $value : array();
-						foreach ( $value as $context => $values ) {
-							$value[ $context ] = array(
-								'text' => ( isset( $value[ $context ]['text'] ) ) ? $value[ $context ]['text'] : '#000000',
-								'accent' => ( isset( $value[ $context ]['accent'] ) ) ? $value[ $context ]['accent'] : '#CD2653',
-							);
-						}
-						return $value;
-					},
+					'sanitize_callback' => array( 'TwentyTwenty_Customize', 'sanitize_accent_accessible_colors' ),
 				)
 			);
 
@@ -390,6 +381,33 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+		}
+
+		/**
+		 * Sanitization callback for the "accent_accessible_colors" setting.
+		 *
+		 * @static
+		 * @access public
+		 * @since 1.0.0
+		 * @param array $value The value we want to sanitize.
+		 * @return array       Returns sanitized value. Each item in the array gets sanitized separately.
+		 */
+		public static function sanitize_accent_accessible_colors( $value ) {
+
+			// Make sure the value is an array. Do not typecast, use empty array as fallback.
+			$value = is_array( $value ) ? $value : array();
+
+			// Loop values.
+			foreach ( $value as $context => $values ) {
+
+				// Sanitization is applied to each item separately using sanitize_hex_color().
+				$value[ $context ] = array(
+					'text'   => ( isset( $value[ $context ]['text'] ) ) ? sanitize_hex_color( $value[ $context ]['text'] ) : '#000000',
+					'accent' => ( isset( $value[ $context ]['accent'] ) ) ? sanitize_hex_color( $value[ $context ]['accent'] ) : '#CD2653',
+				);
+			}
+
+			return $value;
 		}
 
 		/**
