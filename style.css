@@ -1749,13 +1749,9 @@ button.sub-menu-toggle.active svg {
 	transition: transform .15s linear, box-shadow .15s linear;
 }
 
-.admin-bar .search-modal-inner {
-	margin-top: 32px;
-}
-
-@media screen and (max-width: 782px) {
-	.admin-bar .search-modal-inner {
-		margin-top: 46px;
+@media screen and (max-width: 600px) {
+	.showing-search-modal #wpadminbar {
+		position: fixed;
 	}
 }
 
