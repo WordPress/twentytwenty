@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build:rtl": "rtlcss style.css style-rtl.css",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js"
+    "lint:css": "wp-scripts lint-style 'style.css' 'assets/**/*.css'",
+    "lint:js": "wp-scripts lint-js 'assets/**/*.js'"
   }
 }
