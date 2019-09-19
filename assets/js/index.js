@@ -45,9 +45,6 @@ twentytwenty.coverModals = {
 			// Close on escape key press
 			this.closeOnEscape();
 
-			// Show a cover modal on load, if the query string says so
-			this.showOnLoadandClick();
-
 			// Hide and show modals before and after their animations have played out
 			this.hideAndShowModals();
 		}
@@ -95,43 +92,6 @@ twentytwenty.coverModals = {
 				}.bind(this));
 			}
 		}.bind(this));
-	},
-
-	// Show modals on load
-	showOnLoadandClick: function () {
-		var key = 'modal';
-
-		// Load based on query string
-		if (window.location.search.indexOf(key) !== -1) {
-			var modalTargetString = twentytwentyGetQueryStringValue(key),
-				modalTarget = document.querySelector('#' + modalTargetString + '-modal');
-
-			if (modalTargetString && modalTarget.length) {
-				setTimeout(function () {
-					modalTarget.classList.add('active').triggerHandler('toggled');
-					this.scrollLock = true;
-				}.bind(this), 250);
-			}
-		}
-
-		// Check for modal matching querystring when clicking a link
-		// Format: www.url.com?modal=modal-id
-		document.querySelectorAll('a').forEach(function (link) {
-			link.addEventListener('click', function (event) {
-				// Load based on query string
-				if (event.target.href && event.target.href.indexOf(key) !== -1) {
-					var modalTargetString = twentytwentyGetQueryStringValue(key, event.target.attr('href')),
-						modalTarget = document.querySelector('#' + modalTargetString);
-
-					if (modalTargetString && modalTarget.length) {
-						modalTarget.classList.add('active').triggerHandler('toggled');
-						this.scrollLock = true;
-
-						return false;
-					}
-				}
-			}.bind(this));
-		});
 	},
 
 	// Hide and show modals before and after their animations have played out
