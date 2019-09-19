@@ -1,4 +1,12 @@
-( function() {
+/**
+ * Theme Customizer enhancements for a better user experience.
+ *
+ * Contains handlers to make Theme Customizer preview reload changes asynchronously.
+ *
+ * @since 1.0.0
+ */
+
+ ( function() {
 
 	var backgroundColors = { // TODO: Define in PHP then add as vars to the script.
 		content: {
@@ -38,6 +46,15 @@
 		} );
 	} );
 
+	/**
+	 * Add styles to elements in the preview pane.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param {string} context The area for which we want to generate styles. Can be for example "content", "header" etc.
+	 *
+	 * @return {void}
+	 */
 	function twentyTwentyGenerateColorA11yPreviewStyles( context ) {
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get();

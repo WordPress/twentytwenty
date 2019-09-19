@@ -410,7 +410,7 @@ if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
 	 */
 	function twentytwenty_get_the_archive_title( $title ) {
 
-		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
+		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex',
 			array(
 				'pattern'     => '/(\A[^\:]+\:)/',
 				'replacement' => '<span class="color-accent">$1</span>',

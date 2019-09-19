@@ -541,7 +541,7 @@ add_action( 'customize_controls_enqueue_scripts', function() {
 	// Add script for controls.
 	wp_enqueue_script(
 		'twentytwenty-customizer',
-		get_template_directory_uri() . '/assets/js/customizer.js',
+		get_template_directory_uri() . '/assets/js/customize-controls.js',
 		[ 'twentytwenty-color', 'customize-controls', 'underscore', 'jquery' ],
 		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
 		false
@@ -554,8 +554,8 @@ add_action( 'customize_controls_enqueue_scripts', function() {
 add_action( 'customize_preview_init', function() {
 	$js_dependencies = array( 'customize-preview', 'jquery' );
 	wp_enqueue_script(
-		'twentytwenty-customizer-preview',
-		get_theme_file_uri( '/assets/js/customizer-preview.js' ),
+		'twentytwenty-customize-preview',
+		get_theme_file_uri( '/assets/js/customize-preview.js' ),
 		$js_dependencies,
 		time(), // WIP: Using time() instead of a real version for cache-busting while developing.
 		true
