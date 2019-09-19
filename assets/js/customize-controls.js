@@ -18,7 +18,13 @@
 
 				// Update the value for our accessible colors for all areas.
 				Object.keys( backgroundColors ).forEach( function( context ) {
-					twentyTwentySetAccessibleColorsValue( context, wp.customize( backgroundColors[ context ].setting ).get(), to );
+					var backgroundColorValue;
+					if ( backgroundColors[ context ].color ) {
+						backgroundColorValue = backgroundColors[ context ].color;
+					} else {
+						backgroundColorValue = wp.customize( backgroundColors[ context ].setting ).get();
+					}
+					twentyTwentySetAccessibleColorsValue( context, backgroundColorValue, to );
 				});
 			});
 		});

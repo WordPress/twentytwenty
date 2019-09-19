@@ -596,6 +596,13 @@ if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
 					'accent' => 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
 				),
 			),
+			'header' => array(
+				'color'    => '#ffffff',
+				'elements' => array(
+					'text'   => '', // TODO: Add elements.
+					'accent' => '', // TODO: Add elements.
+				),
+			),
 		);
 		return $colors;
 	}
