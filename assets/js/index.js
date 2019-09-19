@@ -45,9 +45,6 @@ twentytwenty.coverModals = {
 			// Close on escape key press
 			this.closeOnEscape();
 
-			// Show a cover modal on load, if the query string says so
-			this.showOnLoadandClick();
-
 			// Hide and show modals before and after their animations have played out
 			this.hideAndShowModals();
 		}
@@ -97,46 +94,31 @@ twentytwenty.coverModals = {
 		}.bind(this));
 	},
 
-	// Show modals on load
-	showOnLoadandClick: function () {
-		var key = 'modal';
-
-		// Load based on query string
-		if (window.location.search.indexOf(key) !== -1) {
-			var modalTargetString = twentytwentyGetQueryStringValue(key),
-				modalTarget = document.querySelector('#' + modalTargetString + '-modal');
-
-			if (modalTargetString && modalTarget.length) {
-				setTimeout(function () {
-					modalTarget.classList.add('active').triggerHandler('toggled');
-					this.scrollLock = true;
-				}.bind(this), 250);
-			}
-		}
-
-		// Check for modal matching querystring when clicking a link
-		// Format: www.url.com?modal=modal-id
-		document.querySelectorAll('a').forEach(function (link) {
-			link.addEventListener('click', function (event) {
-				// Load based on query string
-				if (event.target.href && event.target.href.indexOf(key) !== -1) {
-					var modalTargetString = twentytwentyGetQueryStringValue(key, event.target.attr('href')),
-						modalTarget = document.querySelector('#' + modalTargetString);
-
-					if (modalTargetString && modalTarget.length) {
-						modalTarget.classList.add('active').triggerHandler('toggled');
-						this.scrollLock = true;
-
-						return false;
-					}
-				}
-			}.bind(this));
-		});
-	},
-
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function () {
-		var modals = document.querySelectorAll('.cover-modal');
+		var modals = document.querySelectorAll('.cover-modal'),
+			htmlStyle = document.documentElement.style;
+			
+
+
+		var getAdminBarHeight = function( negativeValue ) {
+			var adminBar = document.querySelector('#wpadminbar'),
+			    newHeight;
+
+			if( adminBar ) {
+				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px'
+			}
+
+			return 0;
+		}
+
+		var htmlStyles = {
+			'overflow-y': 'scroll',
+			position: 'fixed',
+			width: '100%',
+			top: getAdminBarHeight( true ),
+			left: 0
+		};
 
 		// Show the modal
 		modals.forEach(function (modal) {
@@ -145,6 +127,14 @@ twentytwenty.coverModals = {
 					return;
 				}
 
+				window.scrollTo( { top: 0 } );
+
+				Object.keys( htmlStyles ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, htmlStyles[ styleKey ] );
+				} );
+
+				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
+				
 				modal.classList.add('show-modal');
 			});
 
@@ -156,6 +146,12 @@ twentytwenty.coverModals = {
 
 				setTimeout(function () {
 					modal.classList.remove('show-modal');
+
+					Object.keys( htmlStyles ).forEach( function( styleKey ) {
+						htmlStyle.removeProperty( styleKey );
+					} );
+
+					document.body.style.removeProperty( 'padding-top' );
 				}, 500);
 			});
 		});
@@ -202,11 +198,11 @@ twentytwenty.focusManagement = {
 			var menuModal = document.querySelector('.menu-modal');
 			var headerToggles = document.querySelector('.header-toggles');
 			var searchModal = document.querySelector('.search-modal');
-			if (menuModal.classList.contains('.active')) {
-				if (!menuModal.contains(element) && !headerToggles.contains(element)) {
+			if (menuModal && menuModal.classList.contains('.active')) {
+				if (!menuModal.contains(element) && headerToggles && !headerToggles.contains(element)) {
 					document.querySelector('.nav-toggle').focus();
 				}
-			} else if (!searchModal.classList.contains('.active')) {
+			} else if (searchModal && !searchModal.classList.contains('.active')) {
 				if (!searchModal.contains(element)) {
 					searchModal.querySelector('.search-field').focus();
 				}
@@ -376,117 +372,6 @@ twentytwenty.modalMenu = {
 }; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
-	Scroll Lock
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.scrollLock = {
-
-	init: function () {
-		// Init variables
-		twentytwenty.scrollLocked = false;
-		twentytwenty.prevScroll = {
-			scrollX: window.scrollX,
-			scrollY: window.scrollY,
-		};
-		twentytwenty.prevlockStyles = {};
-		twentytwenty.lockStyles = {
-			overflowY: 'scroll',
-			position: 'fixed',
-			width: '100%',
-		};
-
-		// Instantiate cache in case someone tries to unlock before locking
-		this.saveStyles();
-	},
-
-	// Save context's inline styles in cache
-	saveStyles: function () {
-
-		var htmlStyles = document.querySelector('html').style
-
-		var htmlStylesObject = {};
-
-		for (var attribute in htmlStyles) {
-			htmlStylesObject[attribute] = htmlStyles[attribute];
-		}
-
-		twentytwenty.prevlockStyles = htmlStylesObject;
-	},
-
-	// Lock the scroll (do not call this directly)
-	lock: function () {
-		var appliedLock = {};
-
-		if (twentytwenty.scrollLocked) {
-			return;
-		}
-
-		// Save scroll state and styles
-		twentytwenty.prevScroll = {
-			scrollX: window.scrollX,
-			scrollY: window.scrollY,
-		};
-
-		this.saveStyles();
-
-		// Compose our applied CSS, with scroll state as styles
-		Object.assign(appliedLock, twentytwenty.lockStyles, {
-			left: -window.scrollX + 'px',
-			top: -window.scrollY + 'px',
-		}
-		);
-
-		// Then lock styles and state
-		var html = document.querySelector('html');
-
-		Object.keys(appliedLock).forEach(function (style) {
-			html.style[style] = appliedLock[style];
-		});
-
-		window.scrollX = 0;
-		window.scrollY = 0;
-
-		twentytwenty.scrollLocked = true;
-	},
-
-	// Unlock the scroll (do not call this directly)
-	unlock: function () {
-		if (!twentytwenty.scrollLocked) {
-			return;
-		}
-
-		var html = document.querySelector('html');
-		// Revert styles and state
-		Object.keys(twentytwenty.prevlockStyles).forEach(function (style) {
-			html.style[style] = twentytwenty.prevlockStyles[style];
-		});
-
-		window.screenX = twentytwenty.prevScroll.scrollX;
-		window.scrollY = twentytwenty.prevScroll.scrollY;
-
-		twentytwenty.scrollLocked = false;
-	},
-
-	// Call this to lock or unlock the scroll
-	setTo: function (on) {
-		// If an argument is passed, lock or unlock accordingly
-		if (arguments.length) {
-			if (on) {
-				this.lock();
-			} else {
-				this.unlock();
-			}
-			// If not, toggle to the inverse state
-		} else if (twentytwenty.scrollLocked) {
-			this.unlock();
-		} else {
-			this.lock();
-		}
-	},
-
-}; // twentytwenty.scrollLock
-
-/*	-----------------------------------------------------------------------------------------------
 	Toggles
 --------------------------------------------------------------------------------------------------- */
 
@@ -562,15 +447,6 @@ twentytwenty.toggles = {
 					// Toggle body class
 					if (toggle.dataset.toggleBodyClass) {
 						document.querySelector('body').classList.toggle(toggle.dataset.toggleBodyClass);
-					}
-
-					// Check whether to lock the screen
-					if (toggle.dataset.lockScreen) {
-						twentytwenty.scrollLock.setTo(true);
-					} else if (toggle.dataset.unlockScreen) {
-						twentytwenty.scrollLock.setTo(false);
-					} else if (toggle.dataset.toggleScreenLock) {
-						twentytwenty.scrollLock.setTo();
 					}
 
 					// Check whether to set focus
@@ -654,7 +530,6 @@ window.wp.domReady(function () {
 	twentytwenty.coverModals.init();			// Handle cover modals
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();			// Smooth scroll to anchor link or a specific element
-	twentytwenty.scrollLock.init();				// Scroll Lock
 	twentytwenty.modalMenu.init();				// Modal Menu
 	twentytwenty.focusManagement.init();		// Focus Management
 });
