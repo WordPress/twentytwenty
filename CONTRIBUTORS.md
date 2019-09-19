@@ -35,3 +35,4 @@ Version 1.0:
 | @vbaimas | @vbaimas |
 | @ZebulanStanphill | @zebulan |
 | @byalextran | @byalextran |
+| @mor10 | @mor10 |

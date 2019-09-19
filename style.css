@@ -3580,6 +3580,9 @@ ul.footer-social li {
 .to-the-top {
 	color: #6d6d6d;
 }
+a.to-the-top > * {
+    pointer-events: none;
+}
 
 .footer-copyright {
 	font-weight: 600;
