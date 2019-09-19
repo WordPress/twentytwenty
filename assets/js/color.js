@@ -34,10 +34,10 @@ function _twentyTwentyColor( backgroundColor, accentHue ) {
  */
 _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 	var self             = this,
-		minSaturation    = 40,
-		maxSaturation    = 100,
-		minLightness     = this.isDark ? 40 : 0,
-		maxLighness      = this.isDark ? 100 : 60,
+		minSaturation    = 55,
+		maxSaturation    = 90,
+		minLightness     = 25,
+		maxLighness      = 75,
 		stepSaturation   = 4,
 		stepLightness    = 4,
 		pushColor        = function( saturation, lightness ) {
@@ -45,33 +45,41 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 					h: self.accentHue,
 					s: s,
 					l: l
-				} );
+				} ),
+				item;
 
-			self.accentColorsArray.push( {
+			item = {
 				color: colorObj,
 				contrastBackground: colorObj.getDistanceLuminosityFrom( self.bgColorObj ),
 				contrastText: colorObj.getDistanceLuminosityFrom( self.textColorObj )
-			} );
+			};
+
+			// Check a minimum of 4.5:1 contrast with the background and 3:1 with surrounding text.
+			if ( 4.5 > item.contrastBackground || 3 > item.contrastText ) {
+				return;
+			}
+
+			// Get a score for this color by multiplying the 2 contrasts.
+			// We'll use that to sort the array.
+			item.score = item.contrastBackground * item.contrastText;
+
+			self.accentColorsArray.push( item );
 		},
 		s, l;
 
 	this.accentColorsArray = [];
 
 	// We're using `for` loops here because they perform marginally better than other loops.
-	// The saturation loop is reversed to get higher-saturated colors first.
-	for ( s = maxSaturation; s >= minSaturation; s -= stepSaturation ) {
-		// Depending on whether the background is dark or light reverse the order of the loop.
-		// This will put higher-contrasting color on the front to get better results and make it faster.
-		if ( this.isDark ) {
-			for ( l = maxLighness; l >= minLightness; l -= stepLightness ) {
-				pushColor( s, l );
-			}
-		} else {
-			for ( l = minLightness; l <= maxLighness; l += stepLightness ) {
-				pushColor( s, l );
-			}
+	for ( s = minSaturation; s <= maxSaturation; s += stepSaturation ) {
+		for ( l = minLightness; l <= maxLighness; l += stepLightness ) {
+			pushColor( s, l );
 		}
 	}
+
+	// Sort colors by contrast.
+	this.accentColorsArray.sort( function( a, b ) {
+		return b.score - a.score;
+	});
 	return this;
 };
 
@@ -91,68 +99,13 @@ _twentyTwentyColor.prototype.getTextColor = function() {
  *
  * @since 1.0.0
  *
- * @param {undefined|Array} forcedRule - A rule we may want to force.
- *                                      If none is defined it goes through a predefined array of rules.
- *
  * @return {Color} - Returns a Color object.
  */
-_twentyTwentyColor.prototype.getAccentColor = function( forcedRule ) {
-	var i, colorFound, fallback,
-		self = this,
-		hueDiff = 7, // ~2%
-		findColors = function( minBgContrast, minTxtContrast ) {
-			var i;
-			for ( i = 0; i < self.accentColorsArray.length; i++ ) {
-				if ( self.accentColorsArray[ i ].contrastBackground >= minBgContrast && self.accentColorsArray[ i ].contrastText >= minTxtContrast ) {
-					return self.accentColorsArray[ i ];
-				}
-			}
-		},
+_twentyTwentyColor.prototype.getAccentColor = function() {
 
-		// The rules below go from good to not so good.
-		// A loop will run through the item so we'll first get the good colors
-		// and if that fails we'll move on to the next case.
-		// Each item in the array is formatted [minBackgroundContrast, minSurroundingTextContrast].
-		rules = [
-			[ 7, 3 ],
-			[ 6, 3 ],
-			[ 5, 3 ],
-			[ 4.5, 3 ],
-		];
-
-
-	if ( forcedRule ) {
-		return findColors( forcedRule[0], forcedRule[1] );
-	}
-
-	for ( i = 0; i < rules.length; i++ ) {
-		colorFound = findColors( rules[ i ][0], rules[ i ][1] );
-
-		// If a color was not found check neighbouring hues.
-		if ( ! colorFound ) {
-
-			// Check a step back.
-			colorFound = twentyTwentyColor( this.backgroundColor, Math.min( 359, Math.max( 0, this.accentHue - hueDiff ) ) ).getAccentColor( rules[ i ] );
-
-			// Found it? Return it.
-			if ( colorFound ) {
-				console.log( '-7 ' + JSON.stringify( forcedRule ) );
-				return colorFound;
-			}
-
-			// No luck, try a step forward.
-			colorFound = twentyTwentyColor( this.backgroundColor, Math.min( 359, Math.max( 0, this.accentHue + hueDiff ) ) ).getAccentColor( rules[ i ] );
-
-			// Found it? Return it.
-			if ( colorFound ) {
-				console.log( '+7 ' + JSON.stringify( forcedRule ) );
-				return colorFound;
-			}
-		}
-
-		if ( colorFound ) {
-			return colorFound.color;
-		}
+	// If we have colors returns the 1st one - it has the highest score.
+	if ( this.accentColorsArray[0] ) {
+		return this.accentColorsArray[0].color;
 	}
 
 	// Fallback.
