@@ -58,6 +58,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		$accent_default  = '#cd2653';
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
+		// Header.
+		$header_text   = sanitize_hex_color( twentytwenty_get_color_for_area( 'header', 'text' ) );
+		$header_accent = sanitize_hex_color( twentytwenty_get_color_for_area( 'header', 'accent' ) );
+
 		// Cover.
 		$cover         = sanitize_hex_color( get_theme_mod( 'cover_template_overlay_text_color' ) );
 		$cover_default = '#ffffff';
@@ -92,6 +96,12 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
+			}
+
+			// Header.
+			if ( $header_text && $header_accent ) {
+				twentytwenty_generate_css( '#header', 'color', $header_text );
+				twentytwenty_generate_css( '#header a, #header li', 'color', $header_accent );
 			}
 
 			if ( $cover && $cover !== $cover_default ) {
