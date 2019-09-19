@@ -860,7 +860,8 @@ function twentytwentyScrollTo(to, callback, duration) {
 };
 
 /*	-----------------------------------------------------------------------------------------------
-	Add the 'focus' class to all 'li.menu-item-has-children' when the 'focus' is on the a element.
+	Primary Menu
+	Add the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
 --------------------------------------------------------------------------------------------------- */
 
 	// Get all the link elements within the primary menu.
