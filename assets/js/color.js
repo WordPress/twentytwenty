@@ -33,30 +33,43 @@ function _twentyTwentyColor( backgroundColor, accentHue ) {
  * @return {Object} - this
  */
 _twentyTwentyColor.prototype.setAccentColorsArray = function() {
-	var minSaturation    = 40,
+	var self             = this,
+		minSaturation    = 40,
 		maxSaturation    = 100,
 		minLightness     = this.isDark ? 40 : 0,
 		maxLighness      = this.isDark ? 100 : 60,
 		stepSaturation   = 4,
 		stepLightness    = 4,
-		s, l, colorObj;
+		pushColor        = function( saturation, lightness ) {
+			var colorObj = new Color( {
+					h: self.accentHue,
+					s: s,
+					l: l
+				} );
+
+			self.accentColorsArray.push( {
+				color: colorObj,
+				contrastBackground: colorObj.getDistanceLuminosityFrom( self.bgColorObj ),
+				contrastText: colorObj.getDistanceLuminosityFrom( self.textColorObj )
+			} );
+		},
+		s, l;
 
 	this.accentColorsArray = [];
 
 	// We're using `for` loops here because they perform marginally better than other loops.
-	for ( s = minSaturation; s <= maxSaturation; s += stepSaturation ) {
-		for ( l = minLightness; l <= maxLighness; l += stepLightness ) {
-			colorObj = new Color( {
-				h: this.accentHue,
-				s: s,
-				l: l
-			} );
-
-			this.accentColorsArray.push( {
-				color: colorObj,
-				contrastBackground: colorObj.getDistanceLuminosityFrom( this.bgColorObj ),
-				contrastText: colorObj.getDistanceLuminosityFrom( this.textColorObj )
-			} );
+	// The saturation loop is reversed to get higher-saturated colors first.
+	for ( s = maxSaturation; s >= minSaturation; s -= stepSaturation ) {
+		// Depending on whether the background is dark or light reverse the order of the loop.
+		// This will put higher-contrasting color on the front to get better results and make it faster.
+		if ( this.isDark ) {
+			for ( l = maxLighness; l >= minLightness; l -= stepLightness ) {
+				pushColor( s, l );
+			}
+		} else {
+			for ( l = minLightness; l <= maxLighness; l += stepLightness ) {
+				pushColor( s, l );
+			}
 		}
 	}
 	return this;
