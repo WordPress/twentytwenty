@@ -1,13 +1,13 @@
 /*
 Theme Name: Twenty Twenty
 Text Domain: twentytwenty
-Version: 0.1
+Version: 1.0
 Description: Default theme for Twenty Twenty
 Tags:
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Theme URI: https://wordpress.org/themes/twentytwenty/
-License: GNU General Public License version 2.0
+License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 All files, unless otherwise stated, are released under the GNU General Public
@@ -466,13 +466,12 @@ cite i {
 }
 
 big {
-	font-style: 1.2em;
+	font-size: 1.2em;
 }
 
 small {
-	font-style: 0.75em;
+	font-size: 0.75em;
 }
-
 
 b,
 strong {
@@ -2603,6 +2602,7 @@ h2.entry-title {
 
 .post-edit-link {
 	display: block;
+	margin-top: 3rem;
 }
 
 /* POST NAV LINKS */
@@ -2636,6 +2636,10 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+}
+
+.hide-avatars .author-bio {
+	padding-left: 0;
 }
 
 .author-bio-inner p:last-child {
