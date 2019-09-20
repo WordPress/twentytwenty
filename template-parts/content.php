@@ -53,6 +53,11 @@
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
 
+		if ( is_single() ) {
+
+			get_template_part( 'template-parts/entry-author-bio' );
+
+		}
 		?>
 
 	</div><!-- .post-inner -->
@@ -72,7 +77,7 @@
 	if ( ( 'post' === $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
-		<div class="comments-wrapper section-inner thin">
+		<div class="comments-wrapper section-inner">
 
 			<?php comments_template(); ?>
 

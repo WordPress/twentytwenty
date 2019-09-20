@@ -59,7 +59,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 							?>
 						</div><!-- .comment-author -->
 
-						<div class="comment-metadata color-secondary">
+						<div class="comment-metadata">
 							<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 								<?php
 								/* Translators: 1 = comment date, 2 = comment time */
@@ -110,7 +110,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) {
 						?>
 
-						<footer class="comment-footer-meta color-secondary">
+						<footer class="comment-footer-meta">
 
 							<?php
 							if ( $comment_reply_link ) {
