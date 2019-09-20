@@ -76,7 +76,6 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				case 'mr':
 				case 'ne-NP':
 					$font_face  = "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); } ";
-					$font_face .= "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); } ";
 					$font_title = 'Noto Sans';
 					$font_body  = 'Noto Sans';
 					break;
@@ -107,9 +106,9 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 					break;
 				// Korean.
 				case 'ko-KR':
-					$font_face  = "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); }";
-					$font_title = 'Noto Sans';
-					$font_body  = 'Noto Sans';
+					$font_face  = "@font-face { font-family: 'Noto Sans KR'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf') format('opentype'); }";
+					$font_title = 'Noto Sans KR';
+					$font_body  = 'Noto Sans KR';
 					break;
 				// Thai.
 				case 'th':
