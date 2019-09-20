@@ -41,7 +41,7 @@
 			$intro_text_width = ' thin';
 		}
 
-		if ( has_excerpt() ) {
+		if ( has_excerpt() && is_singular()  ) {
 			?>
 
 			<div class="intro-text section-inner max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
