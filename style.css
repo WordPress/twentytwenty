@@ -385,8 +385,8 @@ em em, em i, i em, i i, cite em, cite i {
 	font-weight: bolder;
 }
 
-big { font-style: 1.2em; }
-small { font-style: .75em; }
+big { font-size: 1.2em; }
+small { font-size: .75em; }
 
 
 b,
