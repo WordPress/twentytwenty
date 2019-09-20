@@ -537,6 +537,7 @@ blockquote p:last-child {
 	margin: 0;
 }
 
+
 /* Code -------------------------------------- */
 
 code,
@@ -2163,20 +2164,6 @@ h2.entry-title {
 }
 
 
-<<<<<<< HEAD
-/* Single Post Navigation ------------------------- */
-
-.post-navigation .nav-links {
-	border-color: #DCD7CA;
-	border-style: solid;
-	border-width: .1rem 0;
-	display: flex;
-	flex-direction: column;
-	font-size: 1.8rem;
-	padding: 3rem 0;
-	width: calc(100% - 4rem);
-	margin: 5rem auto 0;
-=======
 /* Author Bio -------------------------------- */
 
 .avatar {
@@ -2238,18 +2225,9 @@ h2.entry-title {
 
 .pagination-single hr:last-child {
 	margin: 2.8rem 0 0 0;
->>>>>>> upstream/master
 }
 
-.post-navigation .nav-previous {
-	margin: 0 0 1rem 0;
-}
-
-.post-navigation .nav-next {
-	margin: 0;
-}
-
-.post-navigation a {
+.pagination-single a {
 	align-items: baseline;
 	display: flex;
 	font-weight: 600;
@@ -2257,13 +2235,18 @@ h2.entry-title {
 	text-decoration: none;
 }
 
-.post-navigation a .arrow {
+.pagination-single a + a {
+	margin-top: 1rem;
+}
+
+.pagination-single a .arrow {
 	margin-right: 1rem;
 }
 
-.post-navigation a:hover .post-title {
+.pagination-single a:hover .title {
 	text-decoration: underline;
 }
+
 
 /* --------------------------------------------------------------------------------------------- */
 /*	10. Blocks
@@ -4001,26 +3984,6 @@ a.to-the-top > * {
 		margin-top: 4rem;
 	}
 
-<<<<<<< HEAD
-	/* Single Post Navigation */
-
-	.post-navigation .nav-links {
-		flex-direction: row;
-		justify-content: space-between;
-		font-size: 2.4rem;
-		padding: 3.5rem 0;
-		margin: 8rem auto 0;
-		width: calc(100% - 8rem);
-		max-width: 120rem;
-	}
-
-	.post-navigation .nav-previous {
-		margin: 0 auto 0 0;
-	}
-
-	.post-navigation .nav-next {
-		margin: 0 0 0 auto;
-=======
 	/* AUTHOR BIO */
 
 	.author-bio {
@@ -4064,19 +4027,18 @@ a.to-the-top > * {
 
 	.pagination-single a + a {
 		margin: 0 0 0 4rem;
->>>>>>> upstream/master
 	}
 
-	.post-navigation a .arrow {
+	.pagination-single a .arrow {
 		margin: 0 2rem 0 0;
 	}
 
-	.post-navigation .nav-next a {
+	.pagination-single .next-post {
 		flex-direction: row-reverse;
 		text-align: right;
 	}
 
-	.post-navigation .nav-next .arrow {
+	.pagination-single .next-post .arrow {
 		margin: 0 0 0 2rem;
 	}
 
