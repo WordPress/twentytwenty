@@ -105,8 +105,6 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				// Japanese.
 				case 'ja':
 					array_push( $font_face, "@font-face { font-family: 'Noto Sans JP'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans HK'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_HK/NotoSansHK-Regular.otf) format('opentype'); } " );
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans KR'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf) format('opentype'); }" );
 					array_push( $font_title, 'Noto Sans JP' );
 					array_push( $font_body, '"Hiragino Kaku Gothic ProN"' );
 					array_push( $font_body, 'Meiryo' );
