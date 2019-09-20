@@ -1200,6 +1200,12 @@ ul.social-icons li {
 	text-align: center;
 }
 
+body:not(.enable-search-modal) .header-titles-wrapper {
+	justify-content: flex-start;
+	padding-left: 0;
+	text-align: left;
+}
+
 .site-title,
 .site-logo,
 .site-description {
