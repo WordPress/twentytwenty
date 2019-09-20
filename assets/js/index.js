@@ -110,14 +110,16 @@ twentytwenty.coverModals = {
 			}
 
 			return 0;
-		}
+		};
 
-		var htmlStyles = {
-			'overflow-y': 'scroll',
-			position: 'fixed',
-			width: '100%',
-			top: getAdminBarHeight( true ),
-			left: 0
+		var htmlStyles = function() {
+			return {
+				'overflow-y': 'scroll',
+				position: 'fixed',
+				width: '100%',
+				top: getAdminBarHeight( true ),
+				left: 0
+			};
 		};
 
 		// Show the modal
@@ -129,8 +131,8 @@ twentytwenty.coverModals = {
 
 				window.scrollTo( { top: 0 } );
 
-				Object.keys( htmlStyles ).forEach( function( styleKey ) {
-					htmlStyle.setProperty( styleKey, htmlStyles[ styleKey ] );
+				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
 				} );
 
 				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
@@ -147,7 +149,7 @@ twentytwenty.coverModals = {
 				setTimeout(function () {
 					modal.classList.remove('show-modal');
 
-					Object.keys( htmlStyles ).forEach( function( styleKey ) {
+					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
