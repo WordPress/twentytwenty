@@ -59,8 +59,8 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
 
 		// Header.
-		$header_text   = sanitize_hex_color( twentytwenty_get_color_for_area( 'header', 'text' ) );
-		$header_accent = sanitize_hex_color( twentytwenty_get_color_for_area( 'header', 'accent' ) );
+		$header_footer_text   = sanitize_hex_color( twentytwenty_get_color_for_area( 'header-footer', 'text' ) );
+		$header_footer_accent = sanitize_hex_color( twentytwenty_get_color_for_area( 'header-footer', 'accent' ) );
 
 		// Cover.
 		$cover         = sanitize_hex_color( get_theme_mod( 'cover_template_overlay_text_color' ) );
@@ -99,9 +99,9 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			}
 
 			// Header.
-			if ( $header_text && $header_accent ) {
-				twentytwenty_generate_css( '#site-header', 'color', $header_text );
-				twentytwenty_generate_css( '#site-header a, #site-header li', 'color', $header_accent );
+			if ( $header_footer_text && $header_footer_accent ) {
+				twentytwenty_generate_css( '#site-header', 'color', $header_footer_text );
+				twentytwenty_generate_css( '#site-header a, #site-header li', 'color', $header_footer_accent );
 			}
 
 			if ( $cover && $cover !== $cover_default ) {

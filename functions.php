@@ -580,7 +580,19 @@ if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
 	function twentytwenty_get_color_for_area( $area = 'content', $context = 'text' ) {
 
 		// Get the value from the theme-mod.
-		$settings = get_theme_mod( 'accent_accessible_colors' );
+		$settings = get_theme_mod(
+			'accent_accessible_colors',
+			array(
+				'content'       => array(
+					'text'   => '#000000',
+					'accent' => '#cd2653',
+				),
+				'header-footer' => array(
+					'text'   => '#000000',
+					'accent' => '#cd2653',
+				),
+			)
+		);
 
 		// If we have a value return it.
 		if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
@@ -600,7 +612,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
 					'accent' => '#site-content a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
 				),
 			),
-			'header' => array(
+			'header-footer' => array(
 				'color'    => '#ffffff',
 				'elements' => array(
 					'text'   => '#site-header',

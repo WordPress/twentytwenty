@@ -91,7 +91,16 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_setting(
 				'accent_accessible_colors',
 				array(
-					'default'           => array(), // TODO: We need some sane defaults here.
+					'default'           => array(
+						'content'       => array(
+							'text'   => '#000000',
+							'accent' => '#cd2653',
+						),
+						'header-footer' => array(
+							'text'   => '#000000',
+							'accent' => '#cd2653',
+						),
+					),
 					'type'              => 'theme_mod',
 					'transport'         => 'postMessage',
 					'sanitize_callback' => array( 'TwentyTwenty_Customize', 'sanitize_accent_accessible_colors' ),
@@ -266,7 +275,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_setting(
 				'cover_template_overlay_background_color',
 				array(
-					'default'           => get_theme_mod( 'accent_color', '#cd2653' ),
+					'default'           => twentytwenty_get_color_for_area( 'content', 'accent' ),
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
