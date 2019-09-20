@@ -100,9 +100,9 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 					break;
 				// Japanese.
 				case 'ja':
-					$font_face  = "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); }";
-					$font_title = 'Noto Sans';
-					$font_body  = 'Noto Sans';
+					$font_face  = "@font-face { font-family: 'Noto Sans JP'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype'); }";
+					$font_title = 'Noto Sans JP';
+					$font_body  = 'Hiragino Kaku Gothic ProN, Meiryo';
 					break;
 				// Korean.
 				case 'ko-KR':

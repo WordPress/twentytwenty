@@ -25,6 +25,10 @@ Font Noto Sans
 License: Apache License (Apache-2.0), https://www.apache.org/licenses/LICENSE-2.0
 URL: https://fonts.google.com/specimen/Noto+Sans
 
+Font Noto Sans JP
+License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
+URL: https://fonts.google.com/specimen/Noto+Sans+JP
+
 Font Noto Sans KR
 License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
 URL: https://fonts.google.com/specimen/Noto+Sans+KR
