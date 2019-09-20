@@ -72,7 +72,10 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				case 'uk':
 					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
 					array_push( $font_title, 'Noto Sans' );
-					array_push( $font_body, 'Noto Sans' );
+					array_push( $font_body, '"Helvetica Neue"' );
+					array_push( $font_body, 'Helvetica' );
+					array_push( $font_body, '"Segoe UI"' );
+					array_push( $font_body, 'Arial' );
 					break;
 				// Devanagari.
 				case 'bn-BD':
