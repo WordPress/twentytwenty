@@ -47,22 +47,6 @@
 @font-face {
 	font-family: 'Inter';
 	font-style:  normal;
-	font-weight: 300;
-	src: url('../fonts/inter/Inter-Light-BETA.woff2') format('woff2'),
-		url('../fonts/inter/Inter-Light-BETA.woff') format('woff');
-}
-
-@font-face {
-	font-family: 'Inter';
-	font-style:  italic;
-	font-weight: 300;
-	src: url('../fonts/inter/Inter-LightItalic-BETA.woff2') format('woff2'),
-		url('../fonts/inter/Inter-LightItalic-BETA.woff') format('woff');
-}
-
-@font-face {
-	font-family: 'Inter';
-	font-style:  normal;
 	font-weight: 400;
 	src: url('../fonts/inter/Inter-Regular.woff2') format('woff2'),
 		url('../fonts/inter/Inter-Regular.woff') format('woff');
