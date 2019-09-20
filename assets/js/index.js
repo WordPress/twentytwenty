@@ -200,7 +200,7 @@ twentytwenty.focusManagement = {
 			var searchModal = document.querySelector('.search-modal');
 			if (menuModal && menuModal.classList.contains('.active')) {
 				if (!menuModal.contains(element) && headerToggles && !headerToggles.contains(element)) {
-					document.querySelector('.nav-toggle').focus();
+					document.querySelector('.close-nav-toggle').focus();
 				}
 			} else if (searchModal && !searchModal.classList.contains('.active')) {
 				if (!searchModal.contains(element)) {
@@ -452,8 +452,8 @@ twentytwenty.toggles = {
 					// Check whether to set focus
 					if (toggle.dataset.setFocus) {
 						var focusElement = document.querySelector(toggle.dataset.setFocus);
-						if (focusElement.length) {
-							if (toggle.classList.contains('.active')) {
+						if ( focusElement ) {
+							if ( target.classList.contains( 'active' ) ) {
 								focusElement.focus();
 							} else {
 								focusElement.blur();
