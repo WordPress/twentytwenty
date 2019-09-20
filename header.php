@@ -58,31 +58,12 @@
 					<div class="header-titles">
 
 						<?php
-
-						$logo             = get_custom_logo();
-						$site_title       = get_bloginfo( 'name' );
-						$site_description = get_bloginfo( 'description' );
-
-						if ( $logo ) {
-							$home_link_contents = $logo . '<span class="screen-reader-text">' . esc_html( $site_title ) . '</span>';
-							$site_title_class   = 'site-logo';
-						} else {
-							$site_title_class   = 'site-title';
-							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
-						}
-
-						if ( is_front_page() || is_home() ) {
-							?>
-							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped during generation. ?></h1>
-						<?php } else { ?>
-							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped prior to this point. ?></div>
-						<?php } ?>
-
-						<?php if ( $site_description ) { ?>
-
-							<div class="site-description"><?php echo esc_html( $site_description ); ?></div><!-- .site-description -->
-
-						<?php } ?>
+							// Site title or logo.
+							twentytwenty_site_logo();
+							
+							// Site description.
+							twentytwenty_site_description();
+						?>
 
 					</div><!-- .header-titles -->
 
