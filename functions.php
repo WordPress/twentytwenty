@@ -598,6 +598,9 @@ if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
 		if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
 			return $settings[ $area ][ $context ];
 		}
+
+		// Return false if the option doesn't exist.
+		return false;
 	}
 }
 
