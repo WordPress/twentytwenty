@@ -2138,6 +2138,7 @@ h2.entry-title {
 
 .post-edit-link {
 	display: block;
+	margin-top: 3rem;
 }
 
 /* POST NAV LINKS */
@@ -2171,6 +2172,10 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+}
+
+.hide-avatars .author-bio {
+	padding-left: 0;
 }
 
 .author-bio-inner p:last-child {
