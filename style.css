@@ -2173,6 +2173,10 @@ h2.entry-title {
 	margin-top: 4rem;
 }
 
+.hide-avatars .author-bio {
+	padding-left: 0;
+}
+
 .author-bio-inner p:last-child {
 	margin-bottom: 0;
 }
