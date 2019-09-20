@@ -92,7 +92,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					array(
 						'label'    => esc_html__( 'Header & Footer Background Color', 'twentytwenty' ),
 						'section'  => 'colors',
-						'priority' => 10,
 					)
 				)
 			);
@@ -146,7 +145,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 						'label'    => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
 						'section'  => 'colors',
 						'settings' => 'accent_hue',
-						'priority' => 10,
 						'mode'     => 'hue',
 					)
 				)
@@ -505,7 +503,7 @@ if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
 if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	/**
 	 * Render the site logo for the selective refresh partial.
-	 * 
+	 *
 	 * Doing it this way so we don't have issues with `render_callback`'s arguments.
 	 */
 	function twentytwenty_customize_partial_site_logo() {
