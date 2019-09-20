@@ -385,8 +385,8 @@ em em, em i, i em, i i, cite em, cite i {
 	font-weight: bolder;
 }
 
-big { font-style: 1.2em; }
-small { font-style: .75em; }
+big { font-size: 1.2em; }
+small { font-size: .75em; }
 
 
 b,
@@ -2138,6 +2138,7 @@ h2.entry-title {
 
 .post-edit-link {
 	display: block;
+	margin-top: 3rem;
 }
 
 /* POST NAV LINKS */
@@ -2171,6 +2172,10 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+}
+
+.hide-avatars .author-bio {
+	padding-left: 0;
 }
 
 .author-bio-inner p:last-child {

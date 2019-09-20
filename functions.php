@@ -117,7 +117,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		 * If you're building a theme based on Twenty Nineteen, use a find and replace
 		 * to change 'twentynineteen' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'twentytwenty', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'twentytwenty' );
 
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
