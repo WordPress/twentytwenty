@@ -190,15 +190,15 @@ twentytwenty.focusManagement = {
 		this.focusLoop();
 	},
 
-	focusLoop() {
-		document.addEventListener( 'focusin', function( event ) {
-			const element = event.target;
-			const menuModal = document.querySelector( '.menu-modal' );
-			const headerToggles = document.querySelector( '.header-toggles' );
-			const searchModal = document.querySelector( '.search-modal' );
+	focusLoop: function () {
+		document.addEventListener( 'focusin', function ( event ) {
+			var element = event.target;
+			var menuModal = document.querySelector( '.menu-modal' );
+			var headerToggles = document.querySelector( '.header-toggles' );
+			var searchModal = document.querySelector( '.search-modal' );
 			if ( menuModal && menuModal.classList.contains( '.active' ) ) {
 				if ( ! menuModal.contains( element ) && headerToggles && ! headerToggles.contains( element ) ) {
-					document.querySelector( '.nav-toggle' ).focus();
+					document.querySelector( '.close-nav-toggle' ).focus();
 				}
 			} else if ( searchModal && ! searchModal.classList.contains( '.active' ) ) {
 				if ( ! searchModal.contains( element ) ) {
@@ -449,9 +449,9 @@ twentytwenty.toggles = {
 
 					// Check whether to set focus
 					if ( toggle.dataset.setFocus ) {
-						const focusElement = document.querySelector( toggle.dataset.setFocus );
-						if ( focusElement.length ) {
-							if ( toggle.classList.contains( '.active' ) ) {
+						var focusElement = document.querySelector( toggle.dataset.setFocus );
+						if ( focusElement ) {
+							if ( target.classList.contains( 'active' ) ) {
 								focusElement.focus();
 							} else {
 								focusElement.blur();
