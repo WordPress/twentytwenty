@@ -714,6 +714,7 @@ textarea {
 	max-width: 100%;
 	padding: 1.5rem 1.8rem;
 	width: 100%;
+	outline: none;
 }
 
 select {
@@ -763,6 +764,7 @@ input[type="submit"] {
 	text-decoration: none;
 	text-transform: uppercase;
 	transition: opacity .15s linear;
+	outline: none;
 }
 
 button:hover,
