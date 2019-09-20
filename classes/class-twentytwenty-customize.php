@@ -42,6 +42,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'custom_logo',
+				array(
+					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+				)
+			);
+
 			/**
 			 * Site Identity
 			 */
@@ -491,5 +499,16 @@ if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
 	 */
 	function twentytwenty_customize_partial_blogdescription() {
 		bloginfo( 'description' );
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
+	/**
+	 * Render the site logo for the selective refresh partial.
+	 * 
+	 * Doing it this way so we don't have issues with `render_callback`'s arguments.
+	 */
+	function twentytwenty_customize_partial_site_logo() {
+		twentytwenty_site_logo();
 	}
 }

@@ -95,7 +95,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post', 'color', $accent );
 				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-				twentytwenty_generate_css( '.footer-social a, .social-icons a', 'background-color', $accent );
+				twentytwenty_generate_css( '.footer-social a, .social-icons a, .comment-reply-link, .edit-comment-link', 'background-color', $accent );
 			}
 
 			// Header.
