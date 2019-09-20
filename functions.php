@@ -613,10 +613,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
 				),
 			),
 			'header-footer' => array(
-				'color'    => '#ffffff',
+				'setting'  => 'header_footer_background_color',
 				'elements' => array(
-					'text'   => '#site-header',
-					'accent' => '#site-header a, #site-header li',
+					'text'   => '#site-header,#site-footer',
+					'accent' => '#site-header a,#site-header li,#site-footer a',
 				),
 			),
 		);

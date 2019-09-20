@@ -9,6 +9,15 @@
 
 ( function() {
 
+	// Add listener for the "header_footer_background_color" control.
+	wp.customize( 'header_footer_background_color', function( value ) {
+		value.bind( function( to ) {
+
+			// Add background color to header and footer wrappers.
+			jQuery( '#site-header,#site-footer' ).css( 'background-color', to );
+		} );
+	} );
+
 	// Add listener for the accent color.
 	wp.customize( 'accent_hue', function( value ) {
 		value.bind( function( to ) {

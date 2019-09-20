@@ -67,6 +67,28 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			// Header & Footer Background Color.
+			$wp_customize->add_setting(
+				'header_footer_background_color',
+				array(
+					'default'           => '#ffffff',
+					'sanitize_callback' => 'sanitize_hex_color',
+					'transport'         => 'postMessage',
+				)
+			);
+
+			$wp_customize->add_control(
+				new WP_Customize_Color_Control(
+					$wp_customize,
+					'header_footer_background_color',
+					array(
+						'label'    => esc_html__( 'Header & Footer Background Color', 'twentytwenty' ),
+						'section'  => 'colors',
+						'priority' => 10,
+					)
+				)
+			);
+
 			/**
 			 * Implementation for the accent color.
 			 * This is different to all other color options because of the accessibility enhancements.
@@ -123,7 +145,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			/**
-			 * Colors.
+			 * Custom Accent Colors.
 			*/
 			$accent_color_options = self::get_color_options();
 
