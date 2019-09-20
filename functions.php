@@ -539,10 +539,10 @@ if ( ! function_exists( 'twentytwenty_customize_controls_enqueue_scripts' ) ) {
 		$theme_version = wp_get_theme()->get( 'Version' );
 
 		// Add script for color calculations.
-		wp_enqueue_script( 'twentytwenty-color', get_template_directory_uri() . '/assets/js/color.js', [ 'wp-color-picker' ], $theme_version, false );
+		wp_enqueue_script( 'twentytwenty-color-calculations', get_template_directory_uri() . '/assets/js/color-calculations.js', [ 'wp-color-picker' ], $theme_version, false );
 
 		// Add script for controls.
-		wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', [ 'twentytwenty-color', 'customize-controls', 'underscore', 'jquery' ], $theme_version, false );
+		wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', [ 'twentytwenty-color-calculations', 'customize-controls', 'underscore', 'jquery' ], $theme_version, false );
 		wp_localize_script( 'twentytwenty-customize-controls', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
 	}
 
