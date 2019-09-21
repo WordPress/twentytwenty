@@ -557,7 +557,7 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		}
 
 		// Check for enabled search.
-		if ( true === get_theme_mod( 'enable_header_search' ) ) {
+		if ( true === get_theme_mod( 'enable_header_search', true ) ) {
 			$classes[] = 'enable-search-modal';
 		}
 
