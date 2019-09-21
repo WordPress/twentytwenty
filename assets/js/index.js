@@ -184,10 +184,15 @@ twentytwenty.coverModals = {
 
 twentytwenty.focusManagement = {
 
+	// If the visitor tabs out of the main menu, return focus to the navigation toggle
+	// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
+
+	// The focusLink() function implements Keyboard Navigation in the Primary Menu
+	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
+
 	init: function() {
-		// If the visitor tabs out of the main menu, return focus to the navigation toggle
-		// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
 		this.focusLoop();
+		this.focusLink();
 	},
 
 	focusLoop: function () {
@@ -206,6 +211,36 @@ twentytwenty.focusManagement = {
 				}
 			}
 		} );
+	},
+
+	focusLink: function() {
+		// Get all the link elements within the primary menu.
+		var menu = document.querySelector( '.primary-menu-wrapper nav' );
+		var links = menu.getElementsByTagName( 'a' );
+
+		// Each time a menu link is focused or blurred, toggle focus.
+		for ( i = 0, len = links.length; i < len; i++ ) {
+			links[i].addEventListener( 'focus', toggleFocus, true );
+			links[i].addEventListener( 'blur', toggleFocus, true );
+		}
+
+		//Sets or removes the .focus class on an element.
+		function toggleFocus() {
+			var self = this;
+
+			// Move up through the ancestors of the current link until we hit .primary-menu.
+			while ( -1 === self.className.indexOf( 'primary-menu' ) ) {
+				// On li elements toggle the class .focus.
+				if ( 'li' === self.tagName.toLowerCase() ) {
+					if ( -1 !== self.className.indexOf( 'focus' ) ) {
+						self.className = self.className.replace( ' focus', '' );
+					} else {
+						self.className += ' focus';
+					}
+				}
+				self = self.parentElement;
+			}
+		}
 	},
 
 }; // twentytwenty.focusManagement
@@ -731,45 +766,3 @@ function twentytwentyScrollTo( to, callback, duration ) {
 	}
 	animateScroll();
 }
-
-/*	-----------------------------------------------------------------------------------------------
-	Primary Menu
-	Add the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
---------------------------------------------------------------------------------------------------- */
-
-// Get all the link elements within the primary menu.
-
-menu = document.querySelector( '.primary-menu-wrapper nav' );
-console.log(menu);
-links = menu.getElementsByTagName( 'a' );
-console.log(links);
-
-// Each time a menu link is focused or blurred, toggle focus.
-for ( i = 0, len = links.length; i < len; i++ ) {
-	links[i].addEventListener( 'focus', toggleFocus, true );
-	links[i].addEventListener( 'blur', toggleFocus, true );
-}
-
-/**
- * Sets or removes .focus class on an element.
- */
-function toggleFocus() {
-	var self = this;
-
-	// Move up through the ancestors of the current link until we hit .primary-menu.
-	while ( -1 === self.className.indexOf( 'primary-menu' ) ) {
-
-		// On li elements toggle the class .focus.
-		if ( 'li' === self.tagName.toLowerCase() ) {
-			
-			if ( -1 !== self.className.indexOf( 'focus' ) ) {
-				self.className = self.className.replace( ' focus', '' );
-			} else {
-				self.className += ' focus';
-			}
-		}
-		self = self.parentElement;
-	}
-}
-
-
