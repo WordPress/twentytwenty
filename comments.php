@@ -26,32 +26,30 @@ if ( $comments ) {
 		$comments_number = absint( get_comments_number() );
 		?>
 
-		<div class="comments-header">
+		<div class="comments-header section-inner small max-percentage">
 
 			<h2 class="comment-reply-title">
 			<?php
-			if ( comments_open() ) {
-				if ( ! have_comments() ) {
-					esc_html_e( 'Leave a comment', 'twentytwenty' );
-				} elseif ( '1' === $comments_number ) {
-					/* translators: %s: post title */
-					printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty' ), esc_html( get_the_title() ) );
-				} else {
-					echo esc_html( 
-						sprintf(
-							/* translators: 1: number of comments, 2: post title */ 
-							_nx(
-								'%1$s reply on &ldquo;%2$s&rdquo;',
-								'%1$s replies on &ldquo;%2$s&rdquo;',
-								$comments_number,
-								'comments title',
-								'twentytwenty'
-							),
-							number_format_i18n( $comments_number ),
-							get_the_title()
-						)
-					);
-				}
+			if ( ! have_comments() ) {
+				esc_html_e( 'Leave a comment', 'twentytwenty' );
+			} elseif ( '1' === $comments_number ) {
+				/* translators: %s: post title */
+				printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty' ), esc_html( get_the_title() ) );
+			} else {
+				echo esc_html( 
+					sprintf(
+						/* translators: 1: number of comments, 2: post title */ 
+						_nx(
+							'%1$s reply on &ldquo;%2$s&rdquo;',
+							'%1$s replies on &ldquo;%2$s&rdquo;',
+							$comments_number,
+							'comments title',
+							'twentytwenty'
+						),
+						number_format_i18n( $comments_number ),
+						get_the_title()
+					)
+				);
 			}
 			
 			?>
@@ -121,6 +119,11 @@ if ( comments_open() || pings_open() ) {
 	);
 
 } elseif ( is_single() ) {
+
+	if ( $comments ) {
+		echo '<hr class="is-style-wide" aria-hidden="true" />';
+	}
+
 	?>
 
 	<div class="comment-respond" id="respond">

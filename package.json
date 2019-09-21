@@ -12,9 +12,10 @@
   },
   "homepage": "https://github.com/wordpress/twentytwenty#readme",
   "devDependencies": {
+    "@wordpress/scripts": "^5.0.0",
     "rtlcss": "^2.4.0"
-	},
-	"rtlcssConfig": {
+  },
+  "rtlcssConfig": {
     "options": {
       "autoRename": false,
       "autoRenameStrict": false,
@@ -28,6 +29,8 @@
     "map": false
   },
   "scripts": {
-    "build:rtl": "rtlcss style.css style-rtl.css"
+    "build:rtl": "rtlcss style.css style-rtl.css",
+    "lint:css": "wp-scripts lint-style 'style.css' 'assets/**/*.css'",
+    "lint:js": "wp-scripts lint-js 'assets/**/*.js'"
   }
 }
