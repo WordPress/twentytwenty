@@ -1,4 +1,4 @@
-/* global backgroundColors, previewElements */
+/* global backgroundColors, previewElements, jQuery, _, wp */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -8,11 +8,9 @@
  */
 
 ( function() {
-
 	// Add listener for the "header_footer_background_color" control.
 	wp.customize( 'header_footer_background_color', function( value ) {
 		value.bind( function( to ) {
-
 			// Add background color to header and footer wrappers.
 			jQuery( '#site-header,#site-footer' ).css( 'background-color', to );
 		} );
@@ -21,7 +19,6 @@
 	// Add listener for the accent color.
 	wp.customize( 'accent_hue', function( value ) {
 		value.bind( function() {
-
 			// Generate the styles.
 			// Add a small delay to be sure the accessible colors were generated.
 			setTimeout( function() {
@@ -36,7 +33,6 @@
 	Object.keys( backgroundColors ).forEach( function( context ) {
 		wp.customize( backgroundColors[ context ].setting, function( value ) {
 			value.bind( function() {
-
 				// Generate the styles.
 				// Add a small delay to be sure the accessible colors were generated.
 				setTimeout( function() {
@@ -56,11 +52,9 @@
 	 * @return {void}
 	 */
 	function twentyTwentyGenerateColorA11yPreviewStyles( context ) {
-
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get();
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
-
 			// Check if we have elements defined.
 			if ( previewElements[ context ] ) {
 				_.each( previewElements[ context ], function( items, setting ) {

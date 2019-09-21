@@ -1,4 +1,4 @@
-/* global backgroundColors, twentyTwentyColor, Color */
+/* global backgroundColors, twentyTwentyColor, Color, jQuery, wp, _ */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -8,14 +8,11 @@
  */
 
 ( function() {
-
 	// Wait until the customizer has finished loading.
 	wp.customize.bind( 'ready', function() {
-
 		// Add a listener for accent-color changes.
 		wp.customize( 'accent_hue', function( value ) {
 			value.bind( function( to ) {
-
 				// Update the value for our accessible colors for all areas.
 				Object.keys( backgroundColors ).forEach( function( context ) {
 					var backgroundColorValue;
@@ -33,7 +30,6 @@
 		Object.keys( backgroundColors ).forEach( function( context ) {
 			wp.customize( backgroundColors[ context ].setting, function( value ) {
 				value.bind( function( to ) {
-
 					// Update the value for our accessible colors for this area.
 					twentyTwentySetAccessibleColorsValue( context, to, wp.customize( 'accent_hue' ).get(), to );
 				} );
@@ -48,7 +44,7 @@
 	 *
 	 * @param {string} context The area for which we want to get colors. Can be for example "content", "header" etc.
 	 * @param {string} backgroundColor The background color (HEX value).
-	 * @param {Number} accentHue Numeric representation of the selected hue (0 - 359).
+	 * @param {number} accentHue Numeric representation of the selected hue (0 - 359).
 	 *
 	 * @return {void}
 	 */
@@ -64,26 +60,25 @@
 
 		// Sanity check.
 		if ( colors.getAccentColor() && 'function' === typeof colors.getAccentColor().toCSS ) {
-
 			// Update the value for this context.
 			value[ context ] = {
 				text: colors.getTextColor(),
 				accent: colors.getAccentColor().toCSS(),
-				background: backgroundColor
+				background: backgroundColor,
 			};
 
 			// Get borders color.
 			value[ context ].borders = Color( {
 				h: colors.bgColorObj.h(),
 				s: colors.bgColorObj.s() * 0.3922,
-				l: colors.isDark ? colors.bgColorObj.l() + 9 : colors.bgColorObj.l() - 9
+				l: colors.isDark ? colors.bgColorObj.l() + 9 : colors.bgColorObj.l() - 9,
 			} ).toCSS();
 
 			// Get secondary color.
 			value[ context ].secondary = Color( {
 				h: colors.bgColorObj.h(),
 				s: colors.bgColorObj.s() / 2,
-				l: ( colors.textColorObj.l() * 0.57 ) + ( colors.bgColorObj.l() * 0.43 )
+				l: ( colors.textColorObj.l() * 0.57 ) + ( colors.bgColorObj.l() * 0.43 ),
 			} ).toCSS();
 		}
 
@@ -93,5 +88,4 @@
 		// Small hack to save the option.
 		wp.customize( 'accent_accessible_colors' )._dirty = true;
 	}
-
 }( jQuery ) );
