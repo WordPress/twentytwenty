@@ -2,12 +2,12 @@
 	Namespace
 --------------------------------------------------------------------------------------------------- */
 
-var twentytwenty = twentytwenty || {};
+const twentytwenty = {};
 
 // polyfill forEach
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
-if ( window.NodeList && ! NodeList.prototype.forEach ) {
-	NodeList.prototype.forEach = function( callback, thisArg ) {
+if ( window.NodeList && ! window.NodeList.prototype.forEach ) {
+	window.NodeList.prototype.forEach = function( callback, thisArg ) {
 		thisArg = thisArg || window;
 		for ( let i = 0; i < this.length; i++ ) {
 			callback.call( thisArg, this[ i ], i, this );
@@ -20,7 +20,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 twentytwenty.createEvent = function( eventName ) {
 	let event;
 	if ( typeof window.Event === 'function' ) {
-		event = new Event( eventName );
+		event = new window.Event( eventName );
 	} else {
 		event = document.createEvent( 'Event' );
 		event.initEvent( eventName, true, false );
@@ -100,8 +100,7 @@ twentytwenty.coverModals = {
 			htmlStyle = document.documentElement.style;
 
 		const getAdminBarHeight = function( negativeValue ) {
-			let adminBar = document.querySelector( '#wpadminbar' ),
-				newHeight;
+			const adminBar = document.querySelector( '#wpadminbar' );
 
 			if ( adminBar ) {
 				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px';
@@ -190,12 +189,12 @@ twentytwenty.focusManagement = {
 		this.focusLoop();
 	},
 
-	focusLoop: function () {
-		document.addEventListener( 'focusin', function ( event ) {
-			var element = event.target;
-			var menuModal = document.querySelector( '.menu-modal' );
-			var headerToggles = document.querySelector( '.header-toggles' );
-			var searchModal = document.querySelector( '.search-modal' );
+	focusLoop() {
+		document.addEventListener( 'focusin', function( event ) {
+			const element = event.target;
+			const menuModal = document.querySelector( '.menu-modal' );
+			const headerToggles = document.querySelector( '.header-toggles' );
+			const searchModal = document.querySelector( '.search-modal' );
 			if ( menuModal && menuModal.classList.contains( '.active' ) ) {
 				if ( ! menuModal.contains( element ) && headerToggles && ! headerToggles.contains( element ) ) {
 					document.querySelector( '.close-nav-toggle' ).focus();
@@ -250,7 +249,7 @@ twentytwenty.intrinsicRatioVideos = {
 
 			// Scale based on ratio, thus retaining proportions
 			video.style.width = iTargetWidth + 'px';
-			video.style.height = video.dataset.origheight * ratio + 'px';
+			video.style.height = ( video.dataset.origheight * ratio ) + 'px';
 		} );
 	},
 
@@ -449,7 +448,7 @@ twentytwenty.toggles = {
 
 					// Check whether to set focus
 					if ( toggle.dataset.setFocus ) {
-						var focusElement = document.querySelector( toggle.dataset.setFocus );
+						const focusElement = document.querySelector( toggle.dataset.setFocus );
 						if ( focusElement ) {
 							if ( target.classList.contains( 'active' ) ) {
 								focusElement.focus();
@@ -549,18 +548,6 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
 	} else {
 		element.setAttribute( attribute, falseVal );
 	}
-}
-
-function twentytwentyGetQueryStringValue() {
-	const vars = [];
-	let hash;
-	const hashes = window.location.href.slice( window.location.href.indexOf( '?' ) + 1 ).split( '&' );
-	for ( let i = 0; i < hashes.length; i++ ) {
-		hash = hashes[ i ].split( '=' );
-		vars.push( hash[ 0 ] );
-		vars[ hash[ 0 ] ] = hash[ 1 ];
-	}
-	return vars;
 }
 
 /**
@@ -668,7 +655,7 @@ function twentytwentyFindParents( target, query ) {
 	// recursively go up the DOM adding matches to the parents array
 	function traverse( item ) {
 		const parent = item.parentNode;
-		if ( parent instanceof HTMLElement ) {
+		if ( parent instanceof window.HTMLElement ) {
 			if ( parent.matches( query ) ) {
 				parents.push( parent );
 			}
@@ -687,10 +674,10 @@ const twentytwentyEasing = {
 	easeInOutQuad( t, b, c, d ) {
 		t /= d / 2;
 		if ( t < 1 ) {
-			return c / 2 * t * t + b;
+			return ( ( ( c / 2 ) * t ) * t ) + b;
 		}
 		t--;
-		return -c / 2 * ( t * ( t - 2 ) - 1 ) + b;
+		return ( ( -c / 2 ) * ( ( t * ( t - 2 ) ) - 1 ) ) + b;
 	},
 };
 
