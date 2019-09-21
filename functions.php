@@ -661,7 +661,7 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 		$elements = array(
 			'content'       => array(
 				'accent'     => array(
-					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'color'            => array( 'a', '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
 					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
 					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
 					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
@@ -697,9 +697,6 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 				),
 			),
 		);
-
-		// While in the customizer tweak the elements for normal links.
-		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
 
 		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
