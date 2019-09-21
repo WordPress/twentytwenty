@@ -362,7 +362,6 @@ html { font-family: 'Inter', sans-serif; }
 	font-family: "Inter var";
 	font-weight: 100 900;
 	font-style: normal;
-	font-named-instance: "Regular";
 	src: url(./assets/fonts/inter/Inter-upright.var.woff2) format("woff2");
 }
 
@@ -370,7 +369,6 @@ html { font-family: 'Inter', sans-serif; }
 	font-family: "Inter var";
 	font-weight: 100 900;
 	font-style: italic;
-	font-named-instance: "Italic";
 	src: url(./assets/fonts/inter/Inter-italic.var.woff2) format("woff2");
 }
 
@@ -1315,7 +1313,7 @@ ul.social-icons li {
 }
 
 .social-icons a::before {
-	content: "\f0c1";
+	content: "\e805";
 	display: block;
 	font-family: "Font Awesome 5";
 	font-size: 2rem;
@@ -1565,11 +1563,6 @@ ul.social-icons li {
 	font-family: "Font Awesome 5 Brands";
 }
 
-.s-icons a[href*="unsplash.com"]::before {
-	content: "\f030";
-	font-family: "Font Awesome 5";
-}
-
 
 /* Cover Modals ------------------------------ */
 
@@ -1617,6 +1610,12 @@ ul.social-icons li {
 	text-align: center;
 }
 
+body:not(.enable-search-modal) .header-titles-wrapper {
+	justify-content: flex-start;
+	padding-left: 0;
+	text-align: left;
+}
+
 .site-title,
 .site-logo,
 .site-description {
@@ -1660,6 +1659,10 @@ ul.social-icons li {
 	max-height: 6rem;
 	width: auto;
 	margin: 0 auto;
+}
+
+body:not(.enable-search-modal) .site-logo img {
+    margin: 0;
 }
 
 /* Overlay Header ---------------------------- */
@@ -2265,7 +2268,7 @@ button.search-untoggle {
 
 .modal-search-form .search-field::-moz-placeholder {
 	color: inherit;
-	line-height: 8rem;
+	line-height: 4;
 }
 
 .modal-search-form .search-submit {
@@ -3009,7 +3012,7 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	display: block;
 	font-size: 6.2rem;
 	font-weight: 500;
-	line-height: 1.2em;
+	line-height: 1.2;
 	margin: 0 auto 1.5rem auto;
 	text-align: center;
 	height: 4.4rem;
@@ -4500,7 +4503,7 @@ a.to-the-top > * {
 	}
 
 	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 18.3rem;
+		line-height: 5.7;
 	}
 
 	/* Sub Page ------------------------------ */
