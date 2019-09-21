@@ -643,107 +643,40 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 		$elements = array(
 			'content' => array(
 				'accent' => array(
-					'color' => array(
-						'.color-accent',
-						'.color-accent-hover:hover',
-						'.has-accent-color',
-						'.has-drop-cap:not(:focus):first-letter',
-						'.wp-block-pullquote:before'
-					),
-					'border-color' => array(
-						'blockquote',
-						'.border-color-accent',
-						'.border-color-accent-hover:hover'
-					),
-					'background' => array(
-						'button',
-						'.button',
-						'.faux-button',
-						'.wp-block-button__link',
-						'.wp-block-file__button',
-						'input[type="button"]',
-						'input[type="reset"]',
-						'input[type="submit"]'
-					),
-					'background-color' => array(
-						'.bg-accent',
-						'.bg-accent-hover:hover',
-						'.has-accent-background-color',
-						'.comment-reply-link',
-						'.edit-comment-link'
-					),
-					'fill' => array(
-						'.fill-children-accent',
-						'.fill-children-accent *'
-					),
+					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
+					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
+					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
+					'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 				),
 				'background' => array(
-					'color' => array(
-						'button',
-						'.button',
-						'.faux-button',
-						'.wp-block-button__link',
-						'.wp-block-file__button',
-						'input[type="button"]',
-						'input[type="reset"]',
-						'input[type="submit"]',
-						'.comment-reply-link',
-						'.edit-comment-link',
-					),
-					'background' => array(
-						'.singular .featured-media:before',
-						'.wp-block-pullquote:before',
-					),
+					'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]','.comment-reply-link', '.edit-comment-link' ),
+					'background' => array( '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 				),
 				'text' => array(
-					'color' => array(
-						'body',
-					),
+					'color' => array( 'body' ),
 				),
 			),
 			'header-footer' => array(
 				'accent' => array(
-					'color' => array(
-						'#site-header a',
-						'#site-footer a',
-					),
-					'background' => array(
-						'social-icons a'
-					),
-					'background-color' => array(
-						'.footer-social a',
-					),
+					'color'            => array( '#site-header a', '#site-footer a' ),
+					'background'       => array( 'social-icons a' ),
+					'background-color' => array( '.footer-social a' ),
 				),
 				'background' => array(
-					'color' => array(
-						'social-icons a',
-						'.overlay-header:not(.showing-menu-modal) .header-inner',
-						'.primary-menu ul',
-						'.overlay-header.showing-menu-modal .header-inner'
-					),
-					'background' => array(
-						'#site-header',
-						'.menu-modal',
-						'.menu-modal-inner',
-						'.search-modal-inner',
-						'.archive-header',
-						'.singular .entry-header',
-						'#site-footer'
-					),
+					'color'      => array( 'social-icons a', '.overlay-header:not(.showing-menu-modal) .header-inner', '.primary-menu ul', '.overlay-header.showing-menu-modal .header-inner' ),
+					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner','.archive-header', '.singular .entry-header', '#site-footer' ),
 				),
 				'text' => array(
-					'background' => array(
-						'.primary-menu ul',
-					),
-					'border-left-color' => array(
-						'.primary-menu ul ul:after',
-					),
+					'background'        => array( '.primary-menu ul' ),
+					'border-left-color' => array( '.primary-menu ul ul:after' ),
 				),
 			),
 		);
 
 		// While in the customizer tweak the elements for normal links.
 		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
+
 		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
 }
