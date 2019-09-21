@@ -301,7 +301,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-categories meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Post categories', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php esc_html_e( 'Categories', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 							</span>
 							<span class="meta-text">
