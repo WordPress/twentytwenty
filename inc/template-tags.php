@@ -140,25 +140,21 @@ if ( ! function_exists( 'twentytwenty_is_comment_by_post_author' ) ) {
 	}
 }
 
-if ( ! function_exists( 'twentytwenty_filter_comment_reply_link' ) ) {
+/**
+ * Filter comment reply link to not JS scroll.
+ * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
+ * makes it scroll to the wrong position on the page.
+ *
+ * @param string $link Link to the top of the page.
+ */
+function twentytwenty_filter_comment_reply_link( $link ) {
 
-	/**
-	 * Filter comment reply link to not JS scroll.
-	 * Filter the comment reply link to add a class indicating it should not use JS slow-scroll, as it
-	 * makes it scroll to the wrong position on the page.
-	 *
-	 * @param string $link Link to the top of the page.
-	 */
-	function twentytwenty_filter_comment_reply_link( $link ) {
-
-		$link = str_replace( 'class=\'', 'class=\'do-not-scroll ', $link );
-		return $link;
-
-	}
-
-	add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
+	$link = str_replace( 'class=\'', 'class=\'do-not-scroll ', $link );
+	return $link;
 
 }
+
+add_filter( 'comment_reply_link', 'twentytwenty_filter_comment_reply_link' );
 
 /**
  * Post Meta
@@ -393,212 +389,196 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 /**
  * Menus
  */
-if ( ! function_exists( 'twentytwenty_filter_wp_list_pages_item_classes' ) ) {
-	/**
-	 * Filter Classes of wp_list_pages items to match menu items.
-	 * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify.
-	 * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
-	 *
-	 * @param string $css_class CSS Class names.
-	 * @param string $item Comment.
-	 * @param int    $depth Depth of the current comment.
-	 * @param array  $args An array of arguments.
-	 * @param string $current_page Wether or not the item is the current item.
-	 */
-	function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
+/**
+ * Filter Classes of wp_list_pages items to match menu items.
+ * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify.
+ * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
+ *
+ * @param string $css_class CSS Class names.
+ * @param string $item Comment.
+ * @param int    $depth Depth of the current comment.
+ * @param array  $args An array of arguments.
+ * @param string $current_page Wether or not the item is the current item.
+ */
+function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
 
-		// Only apply to wp_list_pages() calls with match_menu_classes set to true.
-		$match_menu_classes = isset( $args['match_menu_classes'] );
+	// Only apply to wp_list_pages() calls with match_menu_classes set to true.
+	$match_menu_classes = isset( $args['match_menu_classes'] );
 
-		if ( ! $match_menu_classes ) {
-			return $css_class;
-		}
-
-		// Add current menu item class.
-		if ( in_array( 'current_page_item', $css_class, true ) ) {
-			$css_class[] = 'current-menu-item';
-		}
-
-		// Add menu item has children class.
-		if ( in_array( 'page_item_has_children', $css_class, true ) ) {
-			$css_class[] = 'menu-item-has-children';
-		}
-
+	if ( ! $match_menu_classes ) {
 		return $css_class;
-
 	}
 
-	add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
+	// Add current menu item class.
+	if ( in_array( 'current_page_item', $css_class, true ) ) {
+		$css_class[] = 'current-menu-item';
+	}
+
+	// Add menu item has children class.
+	if ( in_array( 'page_item_has_children', $css_class, true ) ) {
+		$css_class[] = 'menu-item-has-children';
+	}
+
+	return $css_class;
 
 }
 
-if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
-	/**
-	 * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
-	 *
-	 * @param array  $args An array of arguments.
-	 * @param string $item Menu item.
-	 * @param int    $depth Depth of the current menu item.
-	 */
-	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
+add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 10, 5 );
 
-		// Add sub menu toggles to the Expanded Menu with toggles.
-		if ( isset( $args->show_toggles ) && $args->show_toggles ) {
+/**
+ * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
+ *
+ * @param array  $args An array of arguments.
+ * @param string $item Menu item.
+ * @param int    $depth Depth of the current menu item.
+ */
+function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
-			// Wrap the menu item link contents in a div, used for positioning.
-			$args->before = '<div class="ancestor-wrapper">';
-			$args->after  = '';
+	// Add sub menu toggles to the Expanded Menu with toggles.
+	if ( isset( $args->show_toggles ) && $args->show_toggles ) {
 
-			// Add a toggle to items with children.
-			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+		// Wrap the menu item link contents in a div, used for positioning.
+		$args->before = '<div class="ancestor-wrapper">';
+		$args->after  = '';
 
-				$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
+		// Add a toggle to items with children.
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
-				// Add the sub menu toggle.
-				$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="250"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+			$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
 
-			}
+			// Add the sub menu toggle.
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="250"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
-			// Close the wrapper.
-			$args->after .= '</div><!-- .ancestor-wrapper -->';
-
-			// Add sub menu icons to the primary menu without toggles.
-		} elseif ( 'primary' === $args->theme_location ) {
-			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-				$args->after = '<span class="icon"></span>';
-			} else {
-				$args->after = '';
-			}
 		}
 
-		return $args;
+		// Close the wrapper.
+		$args->after .= '</div><!-- .ancestor-wrapper -->';
 
+		// Add sub menu icons to the primary menu without toggles.
+	} elseif ( 'primary' === $args->theme_location ) {
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			$args->after = '<span class="icon"></span>';
+		} else {
+			$args->after = '';
+		}
 	}
 
-	add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
+	return $args;
 
 }
+
+add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3 );
 
 /**
  * Classes
  */
 
-if ( ! function_exists( 'twentytwenty_no_js_class' ) ) {
-	/**
-	 * Add No-JS Class.
-	 * If we're missing JavaScript support, the HTML element will have a no-js class.
-	 */
-	function twentytwenty_no_js_class() {
+/**
+ * Add No-JS Class.
+ * If we're missing JavaScript support, the HTML element will have a no-js class.
+ */
+function twentytwenty_no_js_class() {
 
-		?>
-		<script>document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );</script>
-		<?php
-
-	}
-
-	add_action( 'wp_head', 'twentytwenty_no_js_class' );
+	?>
+	<script>document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );</script>
+	<?php
 
 }
 
-if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
+add_action( 'wp_head', 'twentytwenty_no_js_class' );
 
-	/**
-	 * Filters the archive title and styles the word before the first colon.
-	 *
-	 * @param string $title Current archive title.
-	 */
-	function twentytwenty_get_the_archive_title( $title ) {
+/**
+ * Filters the archive title and styles the word before the first colon.
+ *
+ * @param string $title Current archive title.
+ */
+function twentytwenty_get_the_archive_title( $title ) {
 
-		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex',
-			array(
-				'pattern'     => '/(\A[^\:]+\:)/',
-				'replacement' => '<span class="color-accent">$1</span>',
-			)
-		);
+	$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex',
+		array(
+			'pattern'     => '/(\A[^\:]+\:)/',
+			'replacement' => '<span class="color-accent">$1</span>',
+		)
+	);
 
-		if ( empty( $regex ) ) {
+	if ( empty( $regex ) ) {
 
-			return $title;
-
-		}
-
-		return preg_replace( $regex['pattern'], $regex['replacement'], $title );
+		return $title;
 
 	}
 
-	add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+	return preg_replace( $regex['pattern'], $regex['replacement'], $title );
 
 }
 
-if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
-	/**
-	 * Add conditional body classes.
-	 *
-	 * @param string $classes Classes added to the body tag.
-	 */
-	function twentytwenty_body_classes( $classes ) {
+add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
 
-		global $post;
-		$post_type = isset( $post ) ? $post->post_type : false;
+/**
+ * Add conditional body classes.
+ *
+ * @param string $classes Classes added to the body tag.
+ */
+function twentytwenty_body_classes( $classes ) {
 
-		// Check whether we're singular.
-		if ( is_singular() ) {
-			$classes[] = 'singular';
-		}
+	global $post;
+	$post_type = isset( $post ) ? $post->post_type : false;
 
-		// Check whether the current page should have an overlay header.
-		if ( is_page_template( array( 'templates/template-cover.php' ) ) ) {
-			$classes[] = 'overlay-header';
-		}
-
-		// Check whether the current page has full-width content.
-		if ( is_page_template( array( 'templates/template-full-width.php' ) ) ) {
-			$classes[] = 'has-full-width-content';
-		}
-
-		// Check for enabled search.
-		if ( true === get_theme_mod( 'enable_header_search', true ) ) {
-			$classes[] = 'enable-search-modal';
-		}
-
-		// Check for post thumbnail.
-		if ( is_singular() && has_post_thumbnail() ) {
-			$classes[] = 'has-post-thumbnail';
-		} elseif ( is_singular() ) {
-			$classes[] = 'missing-post-thumbnail';
-		}
-
-		// Check whether we're in the customizer preview.
-		if ( is_customize_preview() ) {
-			$classes[] = 'customizer-preview';
-		}
-
-		// Check if posts have single pagination.
-		if ( is_single() && ( get_next_post() || get_previous_post() ) ) {
-			$classes[] = 'has-single-pagination';
-		} else {
-			$classes[] = 'has-no-pagination';
-		}
-
-		// Check if we're showing comments.
-		if ( $post && ( ( 'post' === $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
-			$classes[] = 'showing-comments';
-		} else {
-			$classes[] = 'not-showing-comments';
-		}
-
-		// Check if avatars are visible.
-		$classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
-
-		// Slim page template class names (class = name - file suffix).
-		if ( is_page_template() ) {
-			$classes[] = basename( get_page_template_slug(), '.php' );
-		}
-
-		return $classes;
-
+	// Check whether we're singular.
+	if ( is_singular() ) {
+		$classes[] = 'singular';
 	}
 
-	add_filter( 'body_class', 'twentytwenty_body_classes' );
+	// Check whether the current page should have an overlay header.
+	if ( is_page_template( array( 'templates/template-cover.php' ) ) ) {
+		$classes[] = 'overlay-header';
+	}
+
+	// Check whether the current page has full-width content.
+	if ( is_page_template( array( 'templates/template-full-width.php' ) ) ) {
+		$classes[] = 'has-full-width-content';
+	}
+
+	// Check for enabled search.
+	if ( true === get_theme_mod( 'enable_header_search', true ) ) {
+		$classes[] = 'enable-search-modal';
+	}
+
+	// Check for post thumbnail.
+	if ( is_singular() && has_post_thumbnail() ) {
+		$classes[] = 'has-post-thumbnail';
+	} elseif ( is_singular() ) {
+		$classes[] = 'missing-post-thumbnail';
+	}
+
+	// Check whether we're in the customizer preview.
+	if ( is_customize_preview() ) {
+		$classes[] = 'customizer-preview';
+	}
+
+	// Check if posts have single pagination.
+	if ( is_single() && ( get_next_post() || get_previous_post() ) ) {
+		$classes[] = 'has-single-pagination';
+	} else {
+		$classes[] = 'has-no-pagination';
+	}
+
+	// Check if we're showing comments.
+	if ( $post && ( ( 'post' === $post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) ) {
+		$classes[] = 'showing-comments';
+	} else {
+		$classes[] = 'not-showing-comments';
+	}
+
+	// Check if avatars are visible.
+	$classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
+
+	// Slim page template class names (class = name - file suffix).
+	if ( is_page_template() ) {
+		$classes[] = basename( get_page_template_slug(), '.php' );
+	}
+
+	return $classes;
 
 }
+
+add_filter( 'body_class', 'twentytwenty_body_classes' );
