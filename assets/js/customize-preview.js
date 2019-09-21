@@ -53,18 +53,33 @@
 	 */
 	function twentyTwentyGenerateColorA11yPreviewStyles( context ) {
 		// Get the accessible colors option.
-		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get();
+		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get(),
+			stylesheedID = 'twentytwenty-customizer-styles-' + context,
+			stylesheet = jQuery( '#' + stylesheedID ),
+			styles = '';
+		// If the stylesheet doesn't exist, create it and append it to <head>.
+		if ( ! stylesheet.length ) {
+			jQuery( '#twentytwenty-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
+			stylesheet = jQuery( '#' + stylesheedID );
+		}
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
 			// Check if we have elements defined.
 			if ( previewElements[ context ] ) {
 				_.each( previewElements[ context ], function( items, setting ) {
 					_.each( items, function( elements, property ) {
 						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
-							jQuery( elements.join( ',' ) ).css( property, a11yColors[ context ][ setting ] );
+							styles += elements.join( ',' ) + '{' + property + ':' + a11yColors[ context ][ setting ] + ';}';
 						}
 					} );
 				} );
 			}
 		}
+		// Add styles.
+		stylesheet.html( styles );
 	}
+	// Generate styles on load. Handles page-changes on the preview pane.
+	jQuery( document ).ready( function() {
+		twentyTwentyGenerateColorA11yPreviewStyles( 'content' );
+		twentyTwentyGenerateColorA11yPreviewStyles( 'header-footer' );
+	} );
 }() );
