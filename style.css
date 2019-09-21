@@ -1313,7 +1313,7 @@ ul.social-icons li {
 }
 
 .social-icons a::before {
-	content: "\f0c1";
+	content: "\e805";
 	display: block;
 	font-family: "Font Awesome 5";
 	font-size: 2rem;
@@ -1561,11 +1561,6 @@ ul.social-icons li {
 .s-icons a[href*="youtube.com"]::before {
 	content: "\f167";
 	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="unsplash.com"]::before {
-	content: "\f030";
-	font-family: "Font Awesome 5";
 }
 
 
