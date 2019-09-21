@@ -72,12 +72,15 @@
 				background: backgroundColor
 			};
 
-			// Get secondary color.
+			// Get borders color.
 			value[ context ].borders = Color( {
 				h: colors.bgColorObj.h(),
 				s: colors.bgColorObj.s() * 0.3922,
 				l: colors.isDark ? colors.bgColorObj.l() + 9 : colors.bgColorObj.l() - 9
 			} ).toCSS();
+
+			// Get secondary color.
+			value[ context ].secondary = colors.isDark ? colors.textColorObj.clone().darken( 43 ).toCSS() : colors.textColorObj.clone().lighten( 43 ).toCSS();
 		}
 
 		// Change the value.
