@@ -1668,6 +1668,10 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 	margin: 0 auto;
 }
 
+body:not(.enable-search-modal) .site-logo img {
+    margin: 0;
+}
+
 /* Overlay Header ---------------------------- */
 
 .overlay-header #site-header {
