@@ -161,9 +161,6 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-comment.p
 // Custom page walker.
 require get_template_directory() . '/classes/class-twentytwenty-walker-page.php';
 
-// Color calculations.
-require get_template_directory() . '/classes/class-twentytwenty-color.php';
-
 // Custom script loader class.
 require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
@@ -434,7 +431,23 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 	function twentytwenty_block_editor_settings() {
 
 		// Block Editor Palette.
-		$editor_color_palette = array();
+		$editor_color_palette = array(
+			array(
+				'name'  => esc_html__( 'Accent Color', 'twentytwenty' ),
+				'slug'  => 'accent',
+				'color' => twentytwenty_get_color_for_area( 'content', 'accent' ),
+			),
+			array(
+				'name'  => esc_html__( 'Secondary', 'twentytwenty' ),
+				'slug'  => 'secondary',
+				'color' => twentytwenty_get_color_for_area( 'content', 'secondary' ),
+			),
+			array(
+				'name'  => esc_html__( 'Subtle Background', 'twentytwenty' ),
+				'slug'  => 'subtle-background',
+				'color' => twentytwenty_get_color_for_area( 'content', 'borders' ),
+			),
+		);
 
 		// Get the color options.
 		$accent_color_options = TwentyTwenty_Customize::get_color_options();
@@ -498,6 +511,12 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 			)
 		);
 
+		// If we have a dark background color then add support for dark editor style.
+		// We can determine if the background color is dark by checking if the text-color is white.
+		if ( '#ffffff' === strtolower( twentytwenty_get_color_for_area( 'content', 'text' ) ) ) {
+			add_theme_support( 'dark-editor-style' );
+		}
+
 	}
 
 	add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
@@ -520,4 +539,168 @@ if ( ! function_exists( 'twentytwenty_read_more_tag' ) ) {
 	}
 	add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
+}
+
+if ( ! function_exists( 'twentytwenty_customize_controls_enqueue_scripts' ) ) {
+	/**
+	 * Enqueues scripts for customizer controls & settings.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	function twentytwenty_customize_controls_enqueue_scripts() {
+		$theme_version = wp_get_theme()->get( 'Version' );
+
+		// Add script for color calculations.
+		wp_enqueue_script( 'twentytwenty-color-calculations', get_template_directory_uri() . '/assets/js/color-calculations.js', array( 'wp-color-picker' ), $theme_version, false );
+
+		// Add script for controls.
+		wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', array( 'twentytwenty-color-calculations', 'customize-controls', 'underscore', 'jquery' ), $theme_version, false );
+		wp_localize_script( 'twentytwenty-customize-controls', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
+	}
+
+	add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_controls_enqueue_scripts' );
+}
+
+if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
+	/**
+	 * Enqueue scripts for the customizer preview.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	function twentytwenty_customize_preview_init() {
+		$theme_version = wp_get_theme()->get( 'Version' );
+
+		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
+		wp_localize_script( 'twentytwenty-customize-preview', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
+		wp_localize_script( 'twentytwenty-customize-preview', 'previewElements', twentytwenty_get_elements_array() );
+	}
+
+	add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
+}
+
+if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
+	/**
+	 * Get accessible color for an area.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $area The area we want to get the colors for.
+	 * @param string $context Can be 'text' or 'accent'.
+	 * @return string Returns a HEX color.
+	 */
+	function twentytwenty_get_color_for_area( $area = 'content', $context = 'text' ) {
+
+		// Get the value from the theme-mod.
+		$settings = get_theme_mod(
+			'accent_accessible_colors',
+			array(
+				'content'       => array(
+					'text'      => '#000000',
+					'accent'    => '#cd2653',
+					'secondary' => '#6d6d6d',
+					'borders'   => '#dcd7ca',
+				),
+				'header-footer' => array(
+					'text'      => '#000000',
+					'accent'    => '#cd2653',
+					'secondary' => '#6d6d6d',
+					'borders'   => '#dcd7ca',
+				),
+			)
+		);
+
+		// If we have a value return it.
+		if ( isset( $settings[ $area ] ) && isset( $settings[ $area ][ $context ] ) ) {
+			return $settings[ $area ][ $context ];
+		}
+
+		// Return false if the option doesn't exist.
+		return false;
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
+
+	/**
+	 * Returns an array of variables for the customizer preview.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	function twentytwenty_get_customizer_color_vars() {
+		$colors = array(
+			'content'       => array(
+				'setting' => 'background_color',
+			),
+			'header-footer' => array(
+				'setting' => 'header_footer_background_color',
+			),
+		);
+		return $colors;
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
+
+	/**
+	 * Get an array of elements.
+	 *
+	 * @since 1.0
+	 *
+	 * @return array
+	 */
+	function twentytwenty_get_elements_array() {
+
+		// The array is formatted like this:
+		// [key-in-saved-setting][sub-key-in-setting][css-property] = [elements].
+		$elements = array(
+			'content'       => array(
+				'accent'     => array(
+					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
+					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
+					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
+					'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
+				),
+				'background' => array(
+					'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
+					'background' => array( '.singular .featured-media:before', '.wp-block-pullquote:before' ),
+				),
+				'text'       => array(
+					'color' => array( 'body' ),
+				),
+				'secondary'  => array(
+					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
+				),
+			),
+			'header-footer' => array(
+				'accent'     => array(
+					'color'            => array( '#site-header a', '#site-footer a' ),
+					'background'       => array( 'social-icons a' ),
+					'background-color' => array( '.footer-social a' ),
+				),
+				'background' => array(
+					'color'      => array( 'social-icons a', '.overlay-header:not(.showing-menu-modal) .header-inner', '.primary-menu ul', '.overlay-header.showing-menu-modal .header-inner' ),
+					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '#site-footer' ),
+				),
+				'text'       => array(
+					'background'        => array( '.primary-menu ul' ),
+					'border-left-color' => array( '.primary-menu ul ul:after' ),
+				),
+				'secondary'  => array(
+					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top' ),
+				),
+			),
+		);
+
+		// While in the customizer tweak the elements for normal links.
+		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
+
+		return apply_filters( 'twentytwenty_get_elements_array', $elements );
+	}
 }
