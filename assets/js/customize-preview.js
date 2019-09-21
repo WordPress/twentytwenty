@@ -59,7 +59,7 @@
 			styles = '';
 		// If the stylesheet doesn't exist, create it and append it to <head>.
 		if ( ! stylesheet.length ) {
-			jQuery( 'head' ).append( '<style id="' + stylesheedID + '"></style>' );
+			jQuery( '#twentytwenty-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
 			stylesheet = jQuery( '#' + stylesheedID );
 		}
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
