@@ -24,11 +24,12 @@
 
 				$footer_top_classes = '';
 
-				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
-				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
+				$footer_top_classes .=         $has_footer_menu ? ' has-footer-menu' : '';
+				$footer_top_classes .=         $has_social_menu ? ' has-social-menu' : '';
 				$footer_social_wrapper_class = $has_footer_menu ? 'footer-social-wrapper' : '';
 
-				if ( $has_footer_menu || $has_social_menu ) { ?>
+				if ( $has_footer_menu || $has_social_menu ) {
+					?>
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
 						<?php if ( $has_footer_menu ) { ?>
 
@@ -38,8 +39,8 @@
 									<?php
 									wp_nav_menu(
 										array(
-											'container' => '',
-											'depth' => 1,
+											'container'  => '',
+											'depth'      => 1,
 											'items_wrap' => '%3$s',
 											'theme_location' => 'footer',
 										)
