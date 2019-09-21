@@ -599,12 +599,16 @@ if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
 			'accent_accessible_colors',
 			array(
 				'content'       => array(
-					'text'   => '#000000',
-					'accent' => '#cd2653',
+					'text'      => '#000000',
+					'accent'    => '#cd2653',
+					'secondary' => '#6d6d6d',
+					'borders'   => '#dcd7ca',
 				),
 				'header-footer' => array(
-					'text'   => '#000000',
-					'accent' => '#cd2653',
+					'text'      => '#000000',
+					'accent'    => '#cd2653',
+					'secondary' => '#6d6d6d',
+					'borders'   => '#dcd7ca',
 				),
 			)
 		);
