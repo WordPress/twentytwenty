@@ -131,7 +131,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 
 			// Text color.
 			if ( $body && $body !== $body_default ) {
-				twentytwenty_generate_css( 'body .editor-styles-wrapper', 'color', $body );
+				twentytwenty_generate_css( 'body .editor-styles-wrapper, body .editor-post-title__block, body .editor-post-title__input, body textarea, .editor-post-title__block .editor-post-title__input', 'color', $body );
 			}
 
 		} elseif ( 'classic-editor' === $type ) {
