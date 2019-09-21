@@ -3005,7 +3005,7 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	display: block;
 	font-size: 6.2rem;
 	font-weight: 500;
-	line-height: 12px;
+	line-height: 12;
 	margin: 0 auto 1.5rem auto;
 	text-align: center;
 	height: 4.4rem;
@@ -4496,7 +4496,7 @@ a.to-the-top > * {
 	}
 
 	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 292.8px;
+		line-height: 292.8;
 	}
 
 	/* Sub Page ------------------------------ */
