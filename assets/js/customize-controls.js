@@ -80,7 +80,11 @@
 			} ).toCSS();
 
 			// Get secondary color.
-			value[ context ].secondary = colors.isDark ? colors.textColorObj.clone().darken( 43 ).toCSS() : colors.textColorObj.clone().lighten( 43 ).toCSS();
+			value[ context ].secondary = Color( {
+				h: colors.bgColorObj.h(),
+				s: colors.bgColorObj.s() / 2,
+				l: ( colors.textColorObj.l() * 0.57 ) + ( colors.bgColorObj.l() * 0.43 )
+			} );
 		}
 
 		// Change the value.
