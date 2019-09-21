@@ -68,7 +68,8 @@
 			// Update the value for this context.
 			value[ context ] = {
 				text: colors.getTextColor(),
-				accent: colors.getAccentColor().toCSS()
+				accent: colors.getAccentColor().toCSS(),
+				background: backgroundColor
 			};
 		}
 

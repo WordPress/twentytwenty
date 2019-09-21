@@ -562,6 +562,7 @@ if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
 
 		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
 		wp_localize_script( 'twentytwenty-customize-preview', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
+		wp_localize_script( 'twentytwenty-customize-preview', 'previewElements', twentytwenty_get_elements_array() );
 	}
 
 	add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
@@ -605,24 +606,77 @@ if ( ! function_exists( 'twentytwenty_get_color_for_area' ) ) {
 }
 
 if ( ! function_exists( 'twentytwenty_get_customizer_color_vars' ) ) {
+
+	/**
+	 * Returns an array of variables for the customizer preview.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
 	function twentytwenty_get_customizer_color_vars() {
 		$colors = array(
 			'content' => array(
 				'setting'  => 'background_color',
-				'elements' => array(
-					'text'   => 'body',
-					// We're using #site-content a here to avoing changing styles for the header & footer in the preview.
-					'accent' => '#site-content a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post',
-				),
 			),
 			'header-footer' => array(
 				'setting'  => 'header_footer_background_color',
-				'elements' => array(
-					'text'   => '#site-header,#site-footer',
-					'accent' => '#site-header a,#site-header li,#site-footer a',
-				),
 			),
 		);
 		return $colors;
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
+
+	/**
+	 * Get an array of elements.
+	 *
+	 * @since 1.0
+	 *
+	 * @return array
+	 */
+	function twentytwenty_get_elements_array() {
+
+		// The array is formatted like this:
+		// [key-in-saved-setting][sub-key-in-setting][css-property] = [elements].
+		$elements = array(
+			'content' => array(
+				'accent' => array(
+					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
+					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
+					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
+					'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
+				),
+				'background' => array(
+					'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]','.comment-reply-link', '.edit-comment-link' ),
+					'background' => array( '.singular .featured-media:before', '.wp-block-pullquote:before' ),
+				),
+				'text' => array(
+					'color' => array( 'body' ),
+				),
+			),
+			'header-footer' => array(
+				'accent' => array(
+					'color'            => array( '#site-header a', '#site-footer a' ),
+					'background'       => array( 'social-icons a' ),
+					'background-color' => array( '.footer-social a' ),
+				),
+				'background' => array(
+					'color'      => array( 'social-icons a', '.overlay-header:not(.showing-menu-modal) .header-inner', '.primary-menu ul', '.overlay-header.showing-menu-modal .header-inner' ),
+					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner','.archive-header', '.singular .entry-header', '#site-footer' ),
+				),
+				'text' => array(
+					'background'        => array( '.primary-menu ul' ),
+					'border-left-color' => array( '.primary-menu ul ul:after' ),
+				),
+			),
+		);
+
+		// While in the customizer tweak the elements for normal links.
+		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
+
+		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
 }

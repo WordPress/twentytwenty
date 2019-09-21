@@ -59,8 +59,20 @@
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get();
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
-			jQuery( backgroundColors[ context ].elements.text ).css( 'color', a11yColors[ context ].text );
-			jQuery( backgroundColors[ context ].elements.accent ).css( 'color', a11yColors[ context ].accent );
+
+			// Check if we have elements defined.
+			if ( previewElements[ context ] ) {
+				_.each( previewElements[ context ], function( items, setting ) {
+					_.each( items, function( elements, property ) {
+
+						console.log( context + ' - ' + setting + ' - ' + property );
+
+						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
+							jQuery( elements.join( ',' ) ).css( property, a11yColors[ context ][ setting ] );
+						}
+					});
+				});
+			}
 		}
 	}
 } )();
