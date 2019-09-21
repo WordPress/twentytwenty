@@ -819,6 +819,7 @@ textarea {
 	color: inherit;
 	display: block;
 	font-size: 1.6rem;
+	letter-spacing: -0.015em;
 	margin: 0;
 	max-width: 100%;
 	padding: 1.5rem 1.8rem;
@@ -3546,32 +3547,32 @@ div.comment:first-of-type {
 /* COMMENT FOOTER */
 
 .comment-footer-meta {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.2rem;
+	font-weight: 600;
+	justify-content: flex-start;
+	letter-spacing: 0.030833333em;
 	line-height: 1;
-	margin: 1.1em 0 0;
+	margin: 1.5rem 0 -1rem -1.5rem;
+	text-transform: uppercase;
 }
 
-.comment-footer-meta > * + * {
-	margin-left: 1.2em;
+.comment-footer-meta > * {
+	margin: 0 0 1rem 1.5rem;
 }
 
 .comment-reply-link,
 .edit-comment-link {
 	background-color: #cd2653;
 	color: #fff;
-	display: inline-block;
-	font-size: 1.2rem;
-	font-weight: 600;
-	letter-spacing: 0.030833333em;
+	display: block;
 	padding: 0.7rem;
-	text-transform: uppercase;
-}
-
-.comment-reply + .edit-comment-link {
-	margin-left: 1rem;
 }
 
 .bypostauthor .comment-footer-meta .by-post-author {
-	display: inline;
+	display: block;
 }
 
 .comment-footer-meta a {
@@ -3681,15 +3682,23 @@ div.comment:first-of-type {
 	display: block;
 }
 
+.comment-respond input[type="checkbox"] + label {
+	font-size: 1.5rem;
+	line-height: 1.25;
+}
+
 .comment-respond input[type="text"],
 .comment-respond input[type="email"],
 .comment-respond textarea {
 	margin-bottom: 0;
 }
 
+.comment-respond textarea {
+	height: 15rem;
+}
+
 .comment-respond #submit {
 	display: block;
-	margin-left: auto;
 }
 
 .comment-respond .comments-closed {
@@ -4821,8 +4830,8 @@ a.to-the-top > * {
 
 	.comment-respond p.comment-notes,
 	.comment-respond p.logged-in-as {
-		font-size: 2.4rem;
-		letter-spacing: -0.03125em;
+		font-size: 1.8rem;
+		letter-spacing: -0.025em;
 		margin: -2.5rem 0 4.4rem 0;
 	}
 
@@ -4862,7 +4871,7 @@ a.to-the-top > * {
 	}
 
 	.comment-footer-meta {
-		margin-top: 2rem;
+		margin-top: 2.5rem;
 	}
 
 	.comments-pagination {
@@ -5449,23 +5458,23 @@ a.to-the-top > * {
 	/* Comments ------------------------------ */
 
 	.comment-reply-title {
-		font-size: 6.4rem;
-		margin-bottom: 8rem;
+		font-size: 5.6rem;
+		line-height: 1.2;
+		margin-bottom: 6rem;
 	}
 
 	.comment-respond p.comment-notes,
 	.comment-respond p.logged-in-as {
-		margin: -6rem 0 7rem 0;
+		margin: -4rem 0 6rem 0;
 	}
 
 	.comments .comment-respond .comment-reply-title {
 		font-size: 4.8rem;
-		margin-bottom: 6rem;
 	}
 
 	.comments .comment-respond p.comment-notes,
 	.comments .comment-respond p.logged-in-as {
-		margin: -4rem 0 4rem 0;
+		margin: -4.5rem 0 4rem 0;
 	}
 
 	/* Site Pagination ----------------------- */
