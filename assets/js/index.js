@@ -352,6 +352,7 @@ twentytwenty.modalMenu = {
 	init() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
+		this.returnToCloseButton();
 	},
 
 	expandLevel() {
@@ -367,6 +368,36 @@ twentytwenty.modalMenu = {
 			} );
 		}
 	},
+
+	// If the current menu item is the last one, return to close button when tab
+	returnToCloseButton() {
+		document.addEventListener( 'keydown', function( event ) {
+			if ( event.key === 'Tab' ) {
+				const activeModalMenu = document.querySelector('.menu-modal.show-modal');
+
+				if (activeModalMenu) {
+
+					const hasSocialMenu = activeModalMenu.querySelectorAll('nav').length > 1;
+
+					const lastModalMenuItems = hasSocialMenu
+						? document.querySelectorAll('.social-menu > li')
+						: document.querySelectorAll('.modal-menu > li');
+
+					const focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
+
+					if (lastModalMenuItems && focusedElementParentLi[0]) {
+
+						const isLastItem = focusedElementParentLi[0].id === lastModalMenuItems[lastModalMenuItems.length-1].id;
+
+						if (isLastItem) {
+							event.preventDefault();
+							document.querySelector('.toggle.close-nav-toggle').focus();
+						}
+					}
+				}
+			}
+		});
+	}
 }; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
