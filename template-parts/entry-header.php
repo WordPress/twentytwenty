@@ -15,7 +15,10 @@
 
 		<?php
 
-		if ( has_category() ) {
+		// Allow child themes and plugins to filter the display of the categories in the entry header.
+		$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+
+		if ( true === $show_categories && has_category() ) {
 			?>
 
 			<div class="entry-categories">
