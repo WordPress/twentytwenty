@@ -125,6 +125,7 @@ html { font-family: Inter, sans-serif; }
 	font-style: normal;
 	src: url(../fonts/inter/Inter-upright.var.woff2) format("woff2");
 }
+
 @font-face {
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
@@ -134,14 +135,16 @@ html { font-family: Inter, sans-serif; }
 
 /* Structure --------------------------------- */
 
-body#tinymce.wp-editor {
+body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
 	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
+
 	body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
 		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
+	
 }
 
 body#tinymce.wp-editor {
