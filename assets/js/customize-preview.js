@@ -65,8 +65,6 @@
 				_.each( previewElements[ context ], function( items, setting ) {
 					_.each( items, function( elements, property ) {
 
-						console.log( context + ' - ' + setting + ' - ' + property );
-
 						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
 							jQuery( elements.join( ',' ) ).css( property, a11yColors[ context ][ setting ] );
 						}

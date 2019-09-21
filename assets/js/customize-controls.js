@@ -71,6 +71,13 @@
 				accent: colors.getAccentColor().toCSS(),
 				background: backgroundColor
 			};
+
+			// Get secondary color.
+			value[ context ].secondary = Color( {
+				h: colors.bgColorObj.h(),
+				s: colors.bgColorObj.s() * 0.3922,
+				l: colors.isDark ? colors.bgColorObj.l() + 9 : colors.bgColorObj.l() - 9
+			} ).toCSS();
 		}
 
 		// Change the value.
