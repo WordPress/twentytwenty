@@ -2612,7 +2612,10 @@ h2.entry-title {
 
 .post-edit-link {
 	display: block;
-	margin-top: 3rem;
+	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+	font-size: 1.8rem;
+	letter-spacing: normal;
+	margin-top: 2rem;
 }
 
 /* POST NAV LINKS */
@@ -4682,6 +4685,11 @@ a.to-the-top > * {
 	}
 
 	/* POST FOOTER */
+
+	.post-edit-link {
+		font-size: 2.1rem;
+		margin-top: 2.2rem;
+	}
 
 	.post-meta-wrapper.post-meta-single-bottom {
 		margin-top: 4rem;
