@@ -1662,7 +1662,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 }
 
 body:not(.enable-search-modal) .site-logo img {
-    margin: 0;
+	margin: 0;
 }
 
 /* Overlay Header ---------------------------- */
