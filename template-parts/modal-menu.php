@@ -23,7 +23,7 @@
 				if ( has_nav_menu( 'expanded' ) ) { 
 					?>
 
-					<button class="toggle close-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+					<button class="toggle close-nav-toggle fill-children-current-color" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
 						<span class="toggle-text"><?php esc_html_e( 'Close Menu', 'twentytwenty' ); ?></span>
 						<?php twentytwenty_the_theme_svg( 'cross' ); ?>
 					</button><!-- .nav-toggle -->
