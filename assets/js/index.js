@@ -368,7 +368,7 @@ twentytwenty.modalMenu = {
 			} );
 		}
 	},
-	
+
 		// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton() {
 		document.addEventListener( 'keydown', function( event ) {
@@ -377,7 +377,7 @@ twentytwenty.modalMenu = {
 
 				if (activeModalMenu) {
 
-					const hasSocialMenu = activeModalMenu.querySelectorAll('nav').length > 1;
+					const hasSocialMenu = activeModalMenu.querySelectorAll('.social-menu').length > 0;
 
 					const lastModalMenuItems = hasSocialMenu
 						? document.querySelectorAll('.social-menu > li')
@@ -387,8 +387,7 @@ twentytwenty.modalMenu = {
 
 					if (lastModalMenuItems && focusedElementParentLi[0]) {
 
-						const isLastItem = focusedElementParentLi[0].id === lastModalMenuItems[lastModalMenuItems.length-1].id;
-
+						const isLastItem = focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length-1].className;
 						if (isLastItem) {
 							event.preventDefault();
 							document.querySelector('.toggle.close-nav-toggle').focus();
