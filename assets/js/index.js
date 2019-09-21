@@ -9,7 +9,7 @@ var twentytwenty = twentytwenty || {};
 if ( window.NodeList && ! NodeList.prototype.forEach ) {
 	NodeList.prototype.forEach = function( callback, thisArg ) {
 		thisArg = thisArg || window;
-		for ( let i = 0; i < this.length; i++ ) {
+		for ( var i = 0; i < this.length; i++ ) {
 			callback.call( thisArg, this[ i ], i, this );
 		}
 	};
@@ -18,7 +18,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 // event "polyfill"
 
 twentytwenty.createEvent = function( eventName ) {
-	let event;
+	var event;
 	if ( typeof window.Event === 'function' ) {
 		event = new Event( eventName );
 	} else {
@@ -34,7 +34,7 @@ twentytwenty.createEvent = function( eventName ) {
 
 twentytwenty.coverModals = {
 
-	init() {
+	init: function() {
 		if ( document.querySelector( '.cover-modal' ) ) {
 			// Handle cover modals when they're toggled
 			this.onToggle();
@@ -51,9 +51,9 @@ twentytwenty.coverModals = {
 	},
 
 	// Handle cover modals when they're toggled
-	onToggle() {
+	onToggle: function() {
 		document.querySelector( '.cover-modal' ).addEventListener( 'toggled', function( event ) {
-			const modal = event.target,
+			var modal = event.target,
 				body = document.querySelector( 'body' );
 
 			if ( modal.classList.contains( 'active' ) ) {
@@ -71,10 +71,10 @@ twentytwenty.coverModals = {
 	},
 
 	// Close modal on outside click
-	outsideUntoggle() {
+	outsideUntoggle: function() {
 		document.addEventListener( 'click', function( event ) {
-			const target = event.target;
-			const modal = document.querySelector( '.cover-modal.active' );
+			var target = event.target;
+			var modal = document.querySelector( '.cover-modal.active' );
 
 			if ( target === modal ) {
 				this.untoggleModal( target );
@@ -83,7 +83,7 @@ twentytwenty.coverModals = {
 	},
 
 	// Close modal on escape key press
-	closeOnEscape() {
+	closeOnEscape: function() {
 		document.addEventListener( 'keydown', function( event ) {
 			if ( event.keyCode === 27 ) {
 				event.preventDefault();
@@ -95,12 +95,12 @@ twentytwenty.coverModals = {
 	},
 
 	// Hide and show modals before and after their animations have played out
-	hideAndShowModals() {
-		const modals = document.querySelectorAll( '.cover-modal' ),
+	hideAndShowModals: function() {
+		var modals = document.querySelectorAll( '.cover-modal' ),
 			htmlStyle = document.documentElement.style;
 
-		const getAdminBarHeight = function( negativeValue ) {
-			let adminBar = document.querySelector( '#wpadminbar' ),
+		var getAdminBarHeight = function( negativeValue ) {
+			var adminBar = document.querySelector( '#wpadminbar' ),
 				newHeight;
 
 			if ( adminBar ) {
@@ -110,7 +110,7 @@ twentytwenty.coverModals = {
 			return 0;
 		};
 
-		const htmlStyles = {
+		var htmlStyles = {
 			'overflow-y': 'scroll',
 			position: 'fixed',
 			width: '100%',
@@ -156,13 +156,13 @@ twentytwenty.coverModals = {
 	},
 
 	// Untoggle a modal
-	untoggleModal( modal ) {
-		let modalToggle = false;
+	untoggleModal: function( modal ) {
+		var modalToggle = false;
 
 		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string
 		// The modal-target-string must match the string toggles use to target the modal
 		if ( modal.dataset.modalTargetString ) {
-			const modalTargetClass = modal.dataset.modalTargetString;
+			var modalTargetClass = modal.dataset.modalTargetString;
 			modalToggle = document.querySelector( '*[data-toggle-target="' + modalTargetClass + '"]' );
 		}
 
@@ -184,7 +184,7 @@ twentytwenty.coverModals = {
 
 twentytwenty.focusManagement = {
 
-	init() {
+	init: function() {
 		// If the visitor tabs out of the main menu, return focus to the navigation toggle
 		// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
 		this.focusLoop();
@@ -216,7 +216,7 @@ twentytwenty.focusManagement = {
 
 twentytwenty.intrinsicRatioVideos = {
 
-	init() {
+	init: function() {
 		this.makeFit();
 
 		window.addEventListener( 'fit-videos', function() {
@@ -228,9 +228,9 @@ twentytwenty.intrinsicRatioVideos = {
 		}.bind( this ) );
 	},
 
-	makeFit() {
+	makeFit: function() {
 		document.querySelectorAll( 'iframe, object, video' ).forEach( function( video ) {
-			const container = video.parentNode;
+			var container = video.parentNode;
 
 			// Skip videos we want to ignore
 			if ( video.classList.contains( 'intrinsic-ignore' ) || video.parentNode.classList.contains( 'intrinsic-ignore' ) ) {
@@ -243,10 +243,10 @@ twentytwenty.intrinsicRatioVideos = {
 				video.setAttribute( 'data-origheight', video.height );
 			}
 
-			const iTargetWidth = container.offsetWidth;
+			var iTargetWidth = container.offsetWidth;
 
 			// Get ratio from proportions
-			const ratio = iTargetWidth / video.dataset.origwidth;
+			var ratio = iTargetWidth / video.dataset.origwidth;
 
 			// Scale based on ratio, thus retaining proportions
 			video.style.width = iTargetWidth + 'px';
@@ -262,7 +262,7 @@ twentytwenty.intrinsicRatioVideos = {
 
 twentytwenty.smoothScroll = {
 
-	init() {
+	init: function() {
 		// Scroll to anchor
 		this.scrollToAnchor();
 
@@ -271,9 +271,9 @@ twentytwenty.smoothScroll = {
 	},
 
 	// Scroll to anchor
-	scrollToAnchor() {
-		const anchorElements = document.querySelectorAll( 'a[href*="#"]' );
-		const anchorElementsList = Array.prototype.slice.call( anchorElements );
+	scrollToAnchor: function() {
+		var anchorElements = document.querySelectorAll( 'a[href*="#"]' );
+		var anchorElementsList = Array.prototype.slice.call( anchorElements );
 		anchorElementsList.filter( function( element ) {
 			if ( element.href === '#' || element.href === '#0' || element.classList.contains( '.do-not-scroll' ) || element.classList.contains( 'skip-link' ) ) {
 				return false;
@@ -284,7 +284,7 @@ twentytwenty.smoothScroll = {
 				// On-page links
 				if ( window.location.hostname === event.target.hostname ) {
 					// Figure out element to scroll to
-					let target = window.location.hash !== '' && document.querySelector( window.location.hash );
+					var target = window.location.hash !== '' && document.querySelector( window.location.hash );
 					target = target ? target : event.target.hash !== '' && document.querySelector( event.target.hash );
 
 					// Does a scroll target exist?
@@ -293,15 +293,15 @@ twentytwenty.smoothScroll = {
 						event.preventDefault();
 
 						// Get options
-						const additionalOffset = event.target.dataset.additionalOffset;
-						const scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
+						var additionalOffset = event.target.dataset.additionalOffset;
+						var scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
 
 						// Determine offset
 
-						const adminBar = document.querySelector( '#wpadminbar' );
+						var adminBar = document.querySelector( '#wpadminbar' );
 
-						const originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
-						let scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
+						var originalOffset = target.getBoundingClientRect().top + window.pageYOffset;
+						var scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 						if ( adminBar && event.target.className === 'to-the-top' ) {
 							scrollOffset = scrollOffset - adminBar.getBoundingClientRect().height;
 						}
@@ -316,24 +316,24 @@ twentytwenty.smoothScroll = {
 	},
 
 	// Scroll to element
-	scrollToElement() {
-		const scrollToElement = document.querySelector( '*[data-scroll-to]' );
+	scrollToElement: function() {
+		var scrollToElement = document.querySelector( '*[data-scroll-to]' );
 
 		if ( scrollToElement ) {
 			scrollToElement.addEventListener( 'click', function( event ) {
 				// Figure out element to scroll to
-				const target = event.target.dataset.twentytwentyScrollTo;
+				var target = event.target.dataset.twentytwentyScrollTo;
 
 				// Make sure said element exists
 				if ( target ) {
 					event.preventDefault();
 
 					// Get options
-					const additionalOffset = event.target.dataset.additionalOffset,
+					var additionalOffset = event.target.dataset.additionalOffset,
 						scrollSpeed = event.target.dataset.scrollSpeed ? event.target.dataset.scrollSpeed : 500;
 
 					// Determine offset
-					const originalOffset = target.getBoundingClientRect().top + window.pageYOffset,
+					var originalOffset = target.getBoundingClientRect().top + window.pageYOffset,
 						scrollOffset = additionalOffset ? originalOffset + additionalOffset : originalOffset;
 
 					twentytwentyScrollTo( scrollOffset, null, scrollSpeed );
@@ -349,18 +349,18 @@ twentytwenty.smoothScroll = {
 --------------------------------------------------------------------------------------------------- */
 twentytwenty.modalMenu = {
 
-	init() {
+	init: function() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
 	},
 
-	expandLevel() {
-		const modalMenu = document.querySelector( '.modal-menu' );
-		const activeMenuItem = modalMenu.querySelector( '.current-menu-item' );
+	expandLevel: function() {
+		var modalMenu = document.querySelector( '.modal-menu' );
+		var activeMenuItem = modalMenu.querySelector( '.current-menu-item' );
 
 		if ( activeMenuItem ) {
 			twentytwentyFindParents( activeMenuItem, 'li' ).forEach( function( element ) {
-				const subMenuToggle = element.querySelector( '.sub-menu-toggle' );
+				var subMenuToggle = element.querySelector( '.sub-menu-toggle' );
 				if ( subMenuToggle ) {
 					subMenuToggle.click();
 				}
@@ -375,7 +375,7 @@ twentytwenty.modalMenu = {
 
 twentytwenty.toggles = {
 
-	init() {
+	init: function() {
 		// Do the toggle
 		this.toggle();
 
@@ -387,13 +387,13 @@ twentytwenty.toggles = {
 	},
 
 	// Do the toggle
-	toggle() {
+	toggle: function() {
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
 			element.addEventListener( 'click', function() {
 				// Get our targets
-				const toggle = element;
-				const targetString = toggle.dataset.toggleTarget;
-				let target;
+				var toggle = element;
+				var targetString = toggle.dataset.toggleTarget;
+				var target;
 
 				if ( targetString === 'next' ) {
 					target = toggle.nextSibling;
@@ -409,10 +409,10 @@ twentytwenty.toggles = {
 				}
 
 				// Get the class to toggle, if specified
-				const classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : 'active';
+				var classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : 'active';
 
 				// For cover modals, set a short timeout duration so the class animations have time to play out
-				let timeOutTime = 0;
+				var timeOutTime = 0;
 
 				if ( target.classList.contains( 'cover-modal' ) ) {
 					timeOutTime = 10;
@@ -421,7 +421,7 @@ twentytwenty.toggles = {
 				setTimeout( function() {
 					// Toggle the target of the clicked toggle
 					if ( toggle.dataset.toggleType === 'slidetoggle' ) {
-						const duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
+						var duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
 						twentytwentySlideToggle( target, duration );
 					} else {
 						target.classList.toggle( classToToggle );
@@ -474,14 +474,14 @@ twentytwenty.toggles = {
 	},
 
 	// Check for toggle/untoggle on screen resize
-	resizeCheck() {
+	resizeCheck: function() {
 		if ( document.querySelectorAll( '*[data-untoggle-above], *[data-untoggle-below], *[data-toggle-above], *[data-toggle-below]' ).length ) {
 			window.addEventListener( 'resize', function() {
-				const winWidth = window.innerWidth,
+				var winWidth = window.innerWidth,
 					toggles = document.querySelectorAll( '.toggle' );
 
 				toggles.forEach( function( toggle ) {
-					const unToggleAbove = toggle.dataset.untoggleAbove,
+					var unToggleAbove = toggle.dataset.untoggleAbove,
 						unToggleBelow = toggle.dataset.untoggleBelow,
 						toggleAbove = toggle.dataset.toggleAbove,
 						toggleBelow = toggle.dataset.toggleBelow;
@@ -508,7 +508,7 @@ twentytwenty.toggles = {
 	},
 
 	// Close toggle on escape key press
-	untoggleOnEscapeKeyPress() {
+	untoggleOnEscapeKeyPress: function() {
 		document.addEventListener( 'keyup', function( event ) {
 			if ( event.key === 'Escape' ) {
 				document.querySelectorAll( '*[data-untoggle-on-escape].active' ).forEach( function( element ) {
@@ -522,7 +522,25 @@ twentytwenty.toggles = {
 
 }; // twentytwenty.toggles
 
-window.wp.domReady( function() {
+
+/**
+ * Is the DOM ready
+ *
+ * this implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/
+ *
+ * @param {Function} fn Callback function to run.
+ */
+twentytwentyDomReady = function ( fn ) {
+    if ( typeof fn !== 'function' ) return;
+
+    if ( document.readyState === 'complete'  ) {
+        return fn();
+    }
+
+    document.addEventListener( 'DOMContentLoaded', fn, false );
+};
+
+twentytwentyDomReady( function() {
 	twentytwenty.toggles.init();				// Handle toggles
 	twentytwenty.coverModals.init();			// Handle cover modals
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
@@ -549,18 +567,6 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
 	} else {
 		element.setAttribute( attribute, falseVal );
 	}
-}
-
-function twentytwentyGetQueryStringValue() {
-	const vars = [];
-	let hash;
-	const hashes = window.location.href.slice( window.location.href.indexOf( '?' ) + 1 ).split( '&' );
-	for ( let i = 0; i < hashes.length; i++ ) {
-		hash = hashes[ i ].split( '=' );
-		vars.push( hash[ 0 ] );
-		vars[ hash[ 0 ] ] = hash[ 1 ];
-	}
-	return vars;
 }
 
 /**
@@ -605,13 +611,13 @@ function twentytwentySlideUp( target, duration ) {
  */
 function twentytwentySlideDown( target, duration ) {
 	target.style.removeProperty( 'display' ); /* [1] */
-	let display = window.getComputedStyle( target ).display;
+	var display = window.getComputedStyle( target ).display;
 	if ( display === 'none' ) { /* [2] */
 		display = 'block';
 	}
 	target.style.display = display;
 
-	const height = target.offsetHeight; /* [3] */
+	var height = target.offsetHeight; /* [3] */
 	target.style.height = 0; /* [4] */
 	target.style.paddingTop = 0; /* [5.1] */
 	target.style.paddingBottom = 0; /* [5.2] */
@@ -663,11 +669,11 @@ function twentytwentySlideToggle( target, duration ) {
  * @return {NodeList} parents matching query
  */
 function twentytwentyFindParents( target, query ) {
-	const parents = [];
+	var parents = [];
 
 	// recursively go up the DOM adding matches to the parents array
 	function traverse( item ) {
-		const parent = item.parentNode;
+		var parent = item.parentNode;
 		if ( parent instanceof HTMLElement ) {
 			if ( parent.matches( query ) ) {
 				parents.push( parent );
@@ -682,9 +688,9 @@ function twentytwentyFindParents( target, query ) {
 }
 
 // twentytwentyEasing functions http://goo.gl/5HLl8
-const twentytwentyEasing = {
+var twentytwentyEasing = {
 
-	easeInOutQuad( t, b, c, d ) {
+	easeInOutQuad: function( t, b, c, d ) {
 		t /= d / 2;
 		if ( t < 1 ) {
 			return c / 2 * t * t + b;
@@ -701,10 +707,10 @@ function twentytwentyScrollTo( to, callback, duration ) {
 		document.body.scrollTop = amount;
 	}
 
-	const start = document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
-	const change = to - start;
-	const increment = 20;
-	let currentTime = 0;
+	var start = document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
+	var change = to - start;
+	var increment = 20;
+	var currentTime = 0;
 
 	duration = ( typeof ( duration ) === 'undefined' ) ? 500 : duration;
 
@@ -712,7 +718,7 @@ function twentytwentyScrollTo( to, callback, duration ) {
 		// increment the time
 		currentTime += increment;
 		// find the value with the quadratic in-out twentytwentyEasing function
-		const val = twentytwentyEasing.easeInOutQuad( currentTime, start, change, duration );
+		var val = twentytwentyEasing.easeInOutQuad( currentTime, start, change, duration );
 		// move the document.body
 		move( val );
 		// do the animation unless its over
