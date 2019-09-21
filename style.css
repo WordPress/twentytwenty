@@ -360,12 +360,14 @@ html { font-family: 'Inter', sans-serif; }
 
 @font-face {
 	font-family: "Inter var";
+	font-weight: 100 900;
 	font-style: normal;
 	src: url(./assets/fonts/inter/Inter-upright.var.woff2) format("woff2");
 }
 
 @font-face {
 	font-family: "Inter var";
+	font-weight: 100 900;
 	font-style: italic;
 	src: url(./assets/fonts/inter/Inter-italic.var.woff2) format("woff2");
 }
@@ -1660,7 +1662,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 }
 
 body:not(.enable-search-modal) .site-logo img {
-	margin: 0;
+    margin: 0;
 }
 
 /* Overlay Header ---------------------------- */
