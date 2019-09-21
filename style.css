@@ -2768,7 +2768,7 @@ h2.entry-title {
 	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 5.1em;
 	font-weight: 800;
-	margin: .05em .1em 0 0;
+	margin: 0.05em 0.1em 0 0;
 }
 
 .has-drop-cap:not(:focus)::first-letter::after {
@@ -2957,6 +2957,7 @@ h2.entry-title {
 }
 
 /* Block: Embed ------------------------------ */
+
 /* Block: File ------------------------------- */
 
 .wp-block-file {
@@ -2983,13 +2984,13 @@ h2.entry-title {
 	font-size: 1.5rem;
 	padding: 1em 1.25em;
 }
- 
+
 .wp-block-file a.wp-block-file__button:visited {
 	opacity: 1;
 }
 
 .wp-block-file a.wp-block-file__button:active,
-.wp-block-file a.wp-block-file__button:focus, 
+.wp-block-file a.wp-block-file__button:focus,
 .wp-block-file a.wp-block-file__button:hover {
 	opacity: 1;
 	text-decoration: underline;
@@ -3246,7 +3247,7 @@ hr.wp-block-separator {
 	margin-left: 0;
 }
 
-.has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-excerpt, 
+.has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-excerpt,
 .has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-meta {
 	margin-left: 5.5rem;
 }
@@ -3265,7 +3266,7 @@ hr.wp-block-separator {
 
 .wp-block-latest-comments__comment-excerpt p {
 	font-size: 0.7em;
-	margin: .9rem 0 2rem 0;
+	margin: 0.9rem 0 2rem 0;
 }
 
 /* Block: Widget Latest Posts ---------------- */

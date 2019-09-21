@@ -144,10 +144,10 @@ body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
 	body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
 		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
-	
+
 }
 
-body#tinymce.wp-editor {
+body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
 	background: #f5efe0;
 	color: #000;
 	font-size: 21px;
