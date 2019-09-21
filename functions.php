@@ -697,9 +697,6 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 			),
 		);
 
-		// While in the customizer tweak the elements for normal links.
-		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
-
 		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
 }
