@@ -3552,10 +3552,10 @@ div.comment:first-of-type {
 	flex-wrap: wrap;
 	font-size: 1.2rem;
 	font-weight: 600;
+	justify-content: flex-start;
 	letter-spacing: 0.030833333em;
 	line-height: 1;
 	margin: 1.5rem 0 -1rem -1.5rem;
-	justify-content: flex-start;
 	text-transform: uppercase;
 }
 
