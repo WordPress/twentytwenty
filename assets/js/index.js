@@ -2,7 +2,7 @@
 	Namespace
 --------------------------------------------------------------------------------------------------- */
 
-var twentytwenty = twentytwenty || {};
+let twentytwenty = twentytwenty || {};
 
 // polyfill forEach
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
@@ -100,8 +100,8 @@ twentytwenty.coverModals = {
 			htmlStyle = document.documentElement.style;
 
 		const getAdminBarHeight = function( negativeValue ) {
-			let adminBar = document.querySelector( '#wpadminbar' ),
-				newHeight;
+			const adminBar = document.querySelector( '#wpadminbar' ),
+				// newHeight;
 
 			if ( adminBar ) {
 				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px';
@@ -189,13 +189,12 @@ twentytwenty.focusManagement = {
 		// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
 		this.focusLoop();
 	},
-
-	focusLoop: function () {
+	focusLoop() {
 		document.addEventListener( 'focusin', function ( event ) {
-			var element = event.target;
-			var menuModal = document.querySelector( '.menu-modal' );
-			var headerToggles = document.querySelector( '.header-toggles' );
-			var searchModal = document.querySelector( '.search-modal' );
+			let element = event.target;
+			let menuModal = document.querySelector( '.menu-modal' );
+			let headerToggles = document.querySelector( '.header-toggles' );
+			let searchModal = document.querySelector( '.search-modal' );
 			if ( menuModal && menuModal.classList.contains( '.active' ) ) {
 				if ( ! menuModal.contains( element ) && headerToggles && ! headerToggles.contains( element ) ) {
 					document.querySelector( '.close-nav-toggle' ).focus();
@@ -205,7 +204,7 @@ twentytwenty.focusManagement = {
 					searchModal.querySelector( '.search-field' ).focus();
 				}
 			}
-		} );
+		});
 	},
 
 }; // twentytwenty.focusManagement
@@ -251,7 +250,7 @@ twentytwenty.intrinsicRatioVideos = {
 			// Scale based on ratio, thus retaining proportions
 			video.style.width = iTargetWidth + 'px';
 			video.style.height = video.dataset.origheight * ratio + 'px';
-		} );
+		});
 	},
 
 }; // twentytwenty.instrinsicRatioVideos
@@ -449,7 +448,7 @@ twentytwenty.toggles = {
 
 					// Check whether to set focus
 					if ( toggle.dataset.setFocus ) {
-						var focusElement = document.querySelector( toggle.dataset.setFocus );
+						let focusElement = document.querySelector( toggle.dataset.setFocus );
 						if ( focusElement ) {
 							if ( target.classList.contains( 'active' ) ) {
 								focusElement.focus();
