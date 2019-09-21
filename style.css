@@ -2261,7 +2261,7 @@ button.search-untoggle {
 
 .modal-search-form .search-field::-moz-placeholder {
 	color: inherit;
-	line-height: 128px;
+	line-height: 128;
 }
 
 .modal-search-form .search-submit {
