@@ -430,13 +430,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$value = is_array( $value ) ? $value : array();
 
 			// Loop values.
-			foreach ( $value as $context => $values ) {
-
-				// Sanitization is applied to each item separately using sanitize_hex_color().
-				$value[ $context ] = array(
-					'text'   => ( isset( $value[ $context ]['text'] ) ) ? sanitize_hex_color( $value[ $context ]['text'] ) : '#000000',
-					'accent' => ( isset( $value[ $context ]['accent'] ) ) ? sanitize_hex_color( $value[ $context ]['accent'] ) : '#CD2653',
-				);
+			foreach ( $value as $area => $values ) {
+				foreach ( $values as $context => $color_val ) {
+					$value[ $area ][ $context ] = sanitize_hex_color( $color_val );
+				}
 			}
 
 			return $value;
