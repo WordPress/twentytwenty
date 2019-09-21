@@ -67,7 +67,7 @@
 
 					</div><!-- .header-titles -->
 
-					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 						<div class="toggle-inner">
 							<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
 							<span class="toggle-text"><?php esc_html_e( 'Menu', 'twentytwenty' ); ?></span>
@@ -142,7 +142,7 @@
 
 						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
 
-							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 								<div class="toggle-inner">
 									<span class="toggle-text"><?php esc_html_e( 'Menu', 'twentytwenty' ); ?></span>
 									<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>

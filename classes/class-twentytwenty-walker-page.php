@@ -79,7 +79,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Page' ) ) {
 
 			if ( '' === $page->post_title ) {
 				/* translators: %d: ID of a post */
-				$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+				$page->post_title = sprintf( __( '#%d (no title)', 'twentytwenty' ), $page->ID );
 			}
 
 			$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];

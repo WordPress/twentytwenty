@@ -1,34 +1,34 @@
 {
-  "name": "wordpress/twentytwenty",
-  "description": "Twenty Twenty is designed with flexibility at its core.",
-  "type": "package",
-  "license": "GPL-2.0-or-later",
-  "keywords": [
-    "WordPress",
-    "Themes"
-  ],
-  "homepage": "https://github.com/WordPress/twentytwenty",
-  "authors": [
-    {
-      "name": "Contributors",
-      "homepage": "https://github.com/WordPress/twentytwenty/graphs/contributors"
-    }
-  ],
-  "require": {
-    "php": ">=5.6"
-  },
-  "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-    "jakub-onderka/php-parallel-lint": "^1.0",
-    "wptrt/wpthemereview": "^0.2.0"
-  },
-  "scripts": {
-    "lint": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor .",
-    "checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.6-",
-    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 5.6-"
-  },
-  "support"    : {
-    "issues": "https://github.com/WordPress/twentytwenty/issues",
-    "source": "https://github.com/WordPress/twentytwenty"
-  }
+	"name": "wordpress/twentytwenty",
+	"type": "package",
+	"description": "Twenty Twenty is designed with flexibility at its core.",
+	"keywords": [
+		"WordPress",
+		"Themes"
+	],
+	"homepage": "https://github.com/WordPress/twentytwenty",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Contributors",
+			"homepage": "https://github.com/WordPress/twentytwenty/graphs/contributors"
+		}
+	],
+	"require": {
+		"php": ">=5.6"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+		"jakub-onderka/php-parallel-lint": "^1.0",
+		"wptrt/wpthemereview": "^0.2.0"
+	},
+	"scripts": {
+		"checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.6-",
+		"fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 5.6-",
+		"lint": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor ."
+	},
+	"support": {
+		"issues": "https://github.com/WordPress/twentytwenty/issues",
+		"source": "https://github.com/WordPress/twentytwenty"
+	}
 }
