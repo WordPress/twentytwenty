@@ -301,7 +301,7 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
 	function twentytwenty_skip_link() {
-		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations 
+		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
 	}
 
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
@@ -675,6 +675,12 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 				),
 				'secondary'  => array(
 					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
+				),
+				'borders'    => array(
+					'border-color'        => array( 'pre', 'fieldset', 'input', 'textarea', 'table', 'th', 'td' ),
+					'background'          => array( 'caption' ),
+					'border-bottom-color' => array( '.wp-block-table.is-style-stripes' ),
+					'border-top-color'    => array( '.wp-block-latest-posts.is-grid li' ),
 				),
 			),
 			'header-footer' => array(
