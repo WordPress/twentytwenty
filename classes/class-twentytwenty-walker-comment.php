@@ -81,7 +81,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 
 						if ( '0' === $comment->comment_approved ) {
 							?>
-							<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'twentytwenty' ); ?></p>
+							<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></p>
 							<?php
 						}
 						?>
@@ -120,7 +120,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 								echo $edit_comment_link; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Link escaped on line 109.
 							}
 							if ( $by_post_author ) {
-								echo '<span class="by-post-author">' . esc_html__( 'By Post Author', 'twentytwenty' ) . '</span>';
+								echo '<span class="by-post-author">' . __( 'By Post Author', 'twentytwenty' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
 							}
 							?>
 
