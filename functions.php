@@ -668,7 +668,7 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 				),
 				'background' => array(
 					'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
-					'background' => array(  ),
+					'background' => array(),
 				),
 				'text'       => array(
 					'color' => array( 'body', '.entry-title a' ),
