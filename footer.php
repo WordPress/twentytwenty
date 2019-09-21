@@ -24,8 +24,9 @@
 
 				$footer_top_classes = '';
 
-				$footer_top_classes .=         $has_footer_menu ? ' has-footer-menu' : '';
-				$footer_top_classes .=         $has_social_menu ? ' has-social-menu' : '';
+				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
+				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
+
 				$footer_social_wrapper_class = $has_footer_menu ? 'footer-social-wrapper' : '';
 
 				if ( $has_footer_menu || $has_social_menu ) {
