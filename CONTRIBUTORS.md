@@ -36,3 +36,9 @@ Version 1.0:
 | @ZebulanStanphill | @zebulan |
 | @byalextran | @byalextran |
 | @mor10 | @mor10 |
+| @kjellr | @kjellr |
+| @allancole | @allancole |
+| @tdhftw | @tdh |
+| @karmatosed | @karmatosed |
+| @mapk | @mapk |
+| @m | @matt |
