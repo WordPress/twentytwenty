@@ -1,4 +1,4 @@
-/* global backgroundColors */
+/* global backgroundColors, previewElements */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -20,7 +20,7 @@
 
 	// Add listener for the accent color.
 	wp.customize( 'accent_hue', function( value ) {
-		value.bind( function( to ) {
+		value.bind( function() {
 
 			// Generate the styles.
 			// Add a small delay to be sure the accessible colors were generated.
@@ -56,6 +56,7 @@
 	 * @return {void}
 	 */
 	function twentyTwentyGenerateColorA11yPreviewStyles( context ) {
+
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get();
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
@@ -64,13 +65,12 @@
 			if ( previewElements[ context ] ) {
 				_.each( previewElements[ context ], function( items, setting ) {
 					_.each( items, function( elements, property ) {
-
 						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
 							jQuery( elements.join( ',' ) ).css( property, a11yColors[ context ][ setting ] );
 						}
-					});
-				});
+					} );
+				} );
 			}
 		}
 	}
-} )();
+}() );

@@ -1,3 +1,4 @@
+/* global Color */
 /**
  * Color Calculations.
  *
@@ -16,7 +17,7 @@ function _twentyTwentyColor( backgroundColor, accentHue ) {
 	this.bgColorObj      = new Color( backgroundColor );
 	this.textColorObj    = this.bgColorObj.getMaxContrastColor();
 	this.textColor       = this.textColorObj.toCSS();
-	this.isDark          = this.bgColorObj.toLuminosity() < 0.5;
+	this.isDark          = 0.5 > this.bgColorObj.toLuminosity();
 	this.isLight         = ! this.isDark;
 
 	// Return the object.
@@ -40,7 +41,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 		maxLighness      = 75,
 		stepSaturation   = 2.5,
 		stepLightness    = 2.5,
-		pushColor        = function( saturation, lightness ) {
+		pushColor        = function() {
 			var colorObj = new Color( {
 					h: self.accentHue,
 					s: s,
@@ -78,8 +79,8 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 
 	// Check if we have colors that are AAA compliant.
 	aaa = this.accentColorsArray.filter( function( color ) {
-		return color.contrastBackground >= 7;
-	});
+		return 7 <= color.contrastBackground;
+	} );
 
 	// If we have AAA-compliant colors, alpways prefer them.
 	if ( aaa.length ) {
@@ -89,7 +90,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 	// Sort colors by contrast.
 	this.accentColorsArray.sort( function( a, b ) {
 		return b.score - a.score;
-	});
+	} );
 	return this;
 };
 
@@ -112,6 +113,7 @@ _twentyTwentyColor.prototype.getTextColor = function() {
  * @return {Color} - Returns a Color object.
  */
 _twentyTwentyColor.prototype.getAccentColor = function() {
+	var fallback;
 
 	// If we have colors returns the 1st one - it has the highest score.
 	if ( this.accentColorsArray[0] ) {

@@ -1,4 +1,4 @@
-/* global backgroundColors */
+/* global backgroundColors, twentyTwentyColor, Color */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -25,9 +25,9 @@
 						backgroundColorValue = wp.customize( backgroundColors[ context ].setting ).get();
 					}
 					twentyTwentySetAccessibleColorsValue( context, backgroundColorValue, to );
-				});
-			});
-		});
+				} );
+			} );
+		} );
 
 		// Add a listener for background-color changes.
 		Object.keys( backgroundColors ).forEach( function( context ) {
@@ -36,10 +36,10 @@
 
 					// Update the value for our accessible colors for this area.
 					twentyTwentySetAccessibleColorsValue( context, to, wp.customize( 'accent_hue' ).get(), to );
-				});
-			});
-		});
-	});
+				} );
+			} );
+		} );
+	} );
 
 	/**
 	 * Updates the value of the "accent_accessible_colors" setting.
@@ -94,4 +94,4 @@
 		wp.customize( 'accent_accessible_colors' )._dirty = true;
 	}
 
-})( jQuery );
+}( jQuery ) );
