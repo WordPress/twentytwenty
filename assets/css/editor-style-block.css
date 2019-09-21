@@ -341,7 +341,7 @@ html { font-family: Inter, sans-serif; }
 /* DROP CAP */
 
 .editor-styles-wrapper .has-drop-cap:not(:focus):first-letter {
-	color: #CD2653;
+	color: #cd2653;
 	font-size: 5.1em;
 	font-weight: 800;
 	margin: 0.05em 0.1em 0 0;
@@ -366,7 +366,7 @@ html { font-family: Inter, sans-serif; }
 }
 
 .editor-styles-wrapper pre {
-	border-color: #DCD7CA;
+	border-color: #dcd7ca;
 	border-radius: 0;
 	line-height: 1.5;
 	padding: 1em;
@@ -441,7 +441,7 @@ html { font-family: Inter, sans-serif; }
 /* Forms ------------------------------------- */
 
 .editor-styles-wrapper fieldset {
-	border: 2px solid #e1e1e3;
+	border: 2px solid #dcd7ca;
 	padding: 20px;
 }
 
@@ -527,7 +527,7 @@ html { font-family: Inter, sans-serif; }
 
 .editor-styles-wrapper .wp-block-table,
 .editor-styles-wrapper .wp-block-table * {
-	border-color: #DCD7CA;
+	border-color: #dcd7ca;
 }
 
 .editor-styles-wrapper .wp-block-table tr {
@@ -535,7 +535,7 @@ html { font-family: Inter, sans-serif; }
 }
 
 .editor-styles-wrapper  .wp-block-table caption {
-	background: #DCD7CA;
+	background: #dcd7ca;
 	text-align: center;
 }
 
@@ -563,11 +563,11 @@ html { font-family: Inter, sans-serif; }
 /* STYLE: STRIPES */
 
 .editor-styles-wrapper .wp-block-table.is-style-stripes {
-	border: 1px solid #DCD7CA;
+	border: 1px solid #dcd7ca;
 }
 
 .editor-styles-wrapper .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-	background: #DCD7CA;
+	background: #dcd7ca;
 }
 
 
@@ -693,7 +693,7 @@ hr.wp-block-separator.is-style-dots:before {
 .editor-styles-wrapper .wp-block-code,
 .editor-styles-wrapper .wp-block-preformatted pre,
 .editor-styles-wrapper .wp-block-verse pre {
-	border: 1px solid #DCD7CA;
+	border: 1px solid #dcd7ca;
 	border-radius: 0;
 	padding: 30px;
 }
@@ -978,7 +978,7 @@ hr.wp-block-separator.is-style-dots:before {
 /* STYLE: GRID */
 
 .editor-styles-wrapper .wp-block-latest-posts.is-grid li {
-	border-color: #DCD7CA;
+	border-color: #dcd7ca;
 }
 
 .editor-styles-wrapper ul.wp-block-latest-posts.is-grid li {
