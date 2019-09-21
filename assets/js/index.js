@@ -385,34 +385,30 @@ twentytwenty.modalMenu = {
 		}
 	},
 
-		// If the current menu item is the last one, return to close button when tab
-	goBackToCloseButton() {
+	// If the current menu item is the last one, return to close button when tab
+	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			if ( event.key === 'Tab' ) {
-				const activeModalMenu = document.querySelector('.menu-modal.show-modal');
-
-				if (activeModalMenu) {
-
-					const hasSocialMenu = activeModalMenu.querySelectorAll('.social-menu').length > 0;
-
-					const lastModalMenuItems = hasSocialMenu
-						? document.querySelectorAll('.social-menu > li')
-						: document.querySelectorAll('.modal-menu > li');
-
-					const focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
-
-					if (lastModalMenuItems && focusedElementParentLi[0]) {
-
-						const isLastItem = focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length-1].className;
-						if (isLastItem) {
-							event.preventDefault();
-							document.querySelector('.toggle.close-nav-toggle').focus();
-						}
-					}
-				}
+			var menuLinks = document.querySelectorAll( '.menu-modal .expanded-menu li' ),
+				socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' ),
+				closeButton = document.querySelector( '.toggle.close-nav-toggle' ),
+				hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0,
+				lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks,
+				focusedElementParentLi = twentytwentyFindParents( event.target, 'li' ),
+				focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0,
+				isFirstModalItem = focusedElementIsInsideModal && event.target === closeButton,
+				isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ? // Prevent from cannot read classname of undefined
+					focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length - 1].className :
+					undefined;
+			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) { // Forward
+				event.preventDefault();
+				closeButton.focus();
 			}
-		});
-	}
+			if ( event.shiftKey && event.key === 'Tab' && isFirstModalItem ) { // Backward
+				event.preventDefault();
+				lastModalMenuItems[lastModalMenuItems.length - 1].querySelector( 'a' ).focus();
+			}
+		} );
+	},
 }; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
