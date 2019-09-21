@@ -2261,7 +2261,7 @@ button.search-untoggle {
 
 .modal-search-form .search-field::-moz-placeholder {
 	color: inherit;
-	line-height: 8rem;
+	line-height: 128px;
 }
 
 .modal-search-form .search-submit {
@@ -3005,7 +3005,7 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	display: block;
 	font-size: 6.2rem;
 	font-weight: 500;
-	line-height: 1.2em;
+	line-height: 12px;
 	margin: 0 auto 1.5rem auto;
 	text-align: center;
 	height: 4.4rem;
@@ -4496,7 +4496,7 @@ a.to-the-top > * {
 	}
 
 	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 18.3rem;
+		line-height: 292.8px;
 	}
 
 	/* Sub Page ------------------------------ */
