@@ -435,9 +435,19 @@ if ( ! function_exists( 'twentytwenty_block_editor_settings' ) ) {
 		// Block Editor Palette.
 		$editor_color_palette = array(
 			array(
-				'name'  => esc_html__( 'Accent Color' ),
+				'name'  => esc_html__( 'Accent Color', 'twentytwenty' ),
 				'slug'  => 'accent',
 				'color' => twentytwenty_get_color_for_area( 'content', 'accent' ),
+			),
+			array(
+				'name'  => esc_html__( 'Secondary', 'twentytwenty' ),
+				'slug'  => 'secondary',
+				'color' => twentytwenty_get_color_for_area( 'content', 'secondary' ),
+			),
+			array(
+				'name'  => esc_html__( 'Subtle Background', 'twentytwenty' ),
+				'slug'  => 'subtle-background',
+				'color' => twentytwenty_get_color_for_area( 'content', 'borders' ),
 			),
 		);
 
