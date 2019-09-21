@@ -128,6 +128,12 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			if ( $background && $background !== $background_default ) {
 				twentytwenty_generate_css( '.editor-styles-wrapper', 'background', '#' . $background );
 			}
+
+			// Text color.
+			if ( $body && $body !== $body_default ) {
+				twentytwenty_generate_css( 'body .editor-styles-wrapper', 'color', $body );
+			}
+
 		} elseif ( 'classic-editor' === $type ) {
 
 			// Colors.
