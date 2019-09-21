@@ -77,4 +77,9 @@
 		// Add styles.
 		stylesheet.html( styles );
 	}
+	// Generate styles on load. Handles page-changes on the preview pane.
+	jQuery( document ).ready( function() {
+		twentyTwentyGenerateColorA11yPreviewStyles( 'content' );
+		twentyTwentyGenerateColorA11yPreviewStyles( 'header-footer' );
+	} );
 }() );
