@@ -84,7 +84,7 @@
 				h: colors.bgColorObj.h(),
 				s: colors.bgColorObj.s() / 2,
 				l: ( colors.textColorObj.l() * 0.57 ) + ( colors.bgColorObj.l() * 0.43 )
-			} );
+			} ).toCSS();
 		}
 
 		// Change the value.
