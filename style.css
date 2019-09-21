@@ -360,12 +360,14 @@ html { font-family: 'Inter', sans-serif; }
 
 @font-face {
 	font-family: "Inter var";
+	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: normal;
 	src: url(./assets/fonts/inter/Inter-upright.var.woff2) format("woff2");
 }
 
 @font-face {
 	font-family: "Inter var";
+	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: italic;
 	src: url(./assets/fonts/inter/Inter-italic.var.woff2) format("woff2");
 }
