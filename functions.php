@@ -122,7 +122,6 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
-
 		// Adds starter content to highlight the theme on fresh sites.
 		add_theme_support( 'starter-content', twentytwenty_get_starter_content() );
 
@@ -661,9 +660,9 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 		$elements = array(
 			'content'       => array(
 				'accent'     => array(
-					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'color'            => array( 'a', '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
 					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
-					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
+					'background'       => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
 					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
 					'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 				),
@@ -672,15 +671,15 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 					'background' => array( '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 				),
 				'text'       => array(
-					'color' => array( 'body' ),
+					'color' => array( 'body', '.entry-title a' ),
 				),
 				'secondary'  => array(
-					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
+					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '#site-content .post-meta a', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
 				),
 			),
 			'header-footer' => array(
 				'accent'     => array(
-					'color'            => array( '#site-header a', '#site-footer a' ),
+					'color'            => array( '#site-header a', '#site-footer a', '.toggle-inner' ),
 					'background'       => array( 'social-icons a' ),
 					'background-color' => array( '.footer-social a' ),
 				),
@@ -689,17 +688,15 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '#site-footer' ),
 				),
 				'text'       => array(
+					'color'             => array( '#site-footer .footer-copyright a' ),
 					'background'        => array( '.primary-menu ul' ),
 					'border-left-color' => array( '.primary-menu ul ul:after' ),
 				),
 				'secondary'  => array(
-					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top' ),
+					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '#site-footer .to-the-top', '#site-footer .powered-by-wordpress a' ),
 				),
 			),
 		);
-
-		// While in the customizer tweak the elements for normal links.
-		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
 
 		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
