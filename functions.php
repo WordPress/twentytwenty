@@ -656,6 +656,9 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 				'text' => array(
 					'color' => array( 'body' ),
 				),
+				'secondary' => array(
+					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
+				),
 			),
 			'header-footer' => array(
 				'accent' => array(
@@ -670,6 +673,9 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 				'text' => array(
 					'background'        => array( '.primary-menu ul' ),
 					'border-left-color' => array( '.primary-menu ul ul:after' ),
+				),
+				'secondary' => array(
+					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top' ),
 				),
 			),
 		);
