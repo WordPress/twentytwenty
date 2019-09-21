@@ -85,23 +85,17 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		// Front-End Styles.
 		if ( 'front-end' === $type ) {
 
-			// Colors.
-			if ( $body && $body !== $body_default ) {
-				twentytwenty_generate_css( 'body', 'color', $body );
-			}
-
-			// Element Specific.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'a, .wp-block-button.is-style-outline, .has-drop-cap:not(:focus):first-letter, a.previous-post, a.next-post', 'color', $accent );
-				twentytwenty_generate_css( 'blockquote, .wp-block-button.is-style-outline', 'border-color', $accent );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
-				twentytwenty_generate_css( '.footer-social a, .social-icons a, .comment-reply-link, .edit-comment-link', 'background-color', $accent );
-			}
-
-			// Header.
-			if ( $header_footer_text && $header_footer_accent ) {
-				twentytwenty_generate_css( '#site-header', 'color', $header_footer_text );
-				twentytwenty_generate_css( '#site-header a, #site-header li', 'color', $header_footer_accent );
+			// Auto-calculated colors.
+			$elements_definitions = twentytwenty_get_elements_array();
+			foreach ( $elements_definitions as $context => $props ) {
+				foreach ( $props as $key => $definitions ) {
+					foreach ( $definitions as $property => $elements ) {
+						$val = twentytwenty_get_color_for_area( $context, $key );
+						if ( $val ) {
+							twentytwenty_generate_css( implode( ',', $elements ), $property, $val );
+						}
+					}
+				}
 			}
 
 			if ( $cover && $cover !== $cover_default ) {
