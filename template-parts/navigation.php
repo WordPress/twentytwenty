@@ -59,3 +59,20 @@ if ( $next_post || $prev_post ) {
 
 	<?php
 }
+?>
+
+<div class="section-inner">
+<hr class="is-style-wide" aria-hidden="true" />
+
+<?php
+
+the_post_navigation(
+	array(
+		'prev_text' => '<span class="arrow" aria-hidden="true">&larr;</span><span class="screen-reader-text">' . __( 'Previous post:', 'twentytwenty' ) . '</span><span class="post-title">%title</span>',
+		'next_text' => '<span class="arrow" aria-hidden="true">&rarr;</span><span class="screen-reader-text">' . __( 'Next post:', 'twentytwenty' ) . '</span><span class="post-title">%title</span>',
+	)
+);
+?>
+
+<hr class="is-style-wide" aria-hidden="true" />
+</div>

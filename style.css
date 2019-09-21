@@ -2711,6 +2711,58 @@ h2.entry-title {
 	text-decoration: underline;
 }
 
+/* Start CSS acalfieri */
+
+.post-navigation {
+	font-size: 1.8rem;
+	margin: 0;
+	/*max-width: 120rem;
+	width: calc(100% - 4rem);*/
+}
+
+.post-navigation .nav-links {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-navigation .nav-previous {
+	margin: 0;
+}
+
+.post-navigation .nav-next {
+	margin: 1rem 0 0;
+}
+
+.pagination-single hr:first-child {
+	margin: 0 0 2.8rem 0;
+}
+
+.pagination-single hr:last-child {
+	margin: 2.8rem 0 0 0;
+}
+
+.post-navigation a {
+	align-items: baseline;
+	display: flex;
+	font-weight: 600;
+	letter-spacing: -0.0275em;
+	text-decoration: none;
+}
+
+.pagination-single a + a {
+	margin-top: 1rem;
+}
+
+.post-navigation a .arrow {
+	margin-right: 1rem;
+}
+
+.post-navigation a:hover .title {
+	text-decoration: underline;
+}
+
+/* End CSS acalfieri */
+
 
 /* -------------------------------------------------------------------------- */
 
