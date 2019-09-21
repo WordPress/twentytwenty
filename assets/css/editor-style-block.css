@@ -149,16 +149,6 @@ html { font-family: Inter, sans-serif; }
 	src: url("../fonts/inter/Inter-italic.var.woff2") format("woff2");
 }
 
-
-/* Accessibility Settings -------------------- */
-
-@media ( prefers-reduced-motion: reduce ) {
-	* {
-		animation-duration: 0s !important;
-		transition-duration: 0s !important;
-	}
-}
-
 /* Structure --------------------------------- */
 
 .wp-block {
