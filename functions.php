@@ -301,7 +301,7 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
 	function twentytwenty_skip_link() {
-		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
+		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations 
 	}
 
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
