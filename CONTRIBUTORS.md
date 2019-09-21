@@ -42,3 +42,10 @@ Version 1.0:
 | @karmatosed | @karmatosed |
 | @mapk | @mapk |
 | @m | @matt |
+| @ataylorme | andrewtaylor-1 |
+| @Ismail-elkorchi | ismailelkorchi |
+| @garrett-eclipse | garrett-eclipse |
+| @imranhsayed | gsayed786 |
+| @dianeco | dianeco |
+| @celloexpressions | celloexpressions |
+| @aristath | aristath |
