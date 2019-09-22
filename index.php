@@ -87,7 +87,13 @@ get_header();
 
 			<div class="no-search-results-form section-inner thin">
 
-				<?php get_search_form(); ?>
+				<?php
+				get_search_form(
+					array(
+						'label' => __( 'search again', 'twentytwenty' ),
+					)
+				);
+				?>
 
 			</div><!-- .no-search-results -->
 
