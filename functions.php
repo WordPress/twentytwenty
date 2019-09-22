@@ -122,7 +122,6 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
-
 		// Adds starter content to highlight the theme on fresh sites.
 		add_theme_support( 'starter-content', twentytwenty_get_starter_content() );
 
@@ -302,7 +301,7 @@ if ( ! function_exists( 'twentytwenty_skip_link' ) ) {
 	 * Include a skip to content link at the top of the page so that users can bypass the menu.
 	 */
 	function twentytwenty_skip_link() {
-		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . esc_html__( 'Skip to the content', 'twentytwenty' ) . '</a>';
+		echo '<a class="skip-link faux-button screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
 	}
 
 	add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
@@ -661,45 +660,48 @@ if ( ! function_exists( 'twentytwenty_get_elements_array' ) ) {
 		$elements = array(
 			'content'       => array(
 				'accent'     => array(
-					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-pullquote:before' ),
+					'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-button.is-style-outline' ),
 					'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
-					'background'       => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
+					'background'       => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
 					'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
 					'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 				),
 				'background' => array(
 					'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
-					'background' => array( '.singular .featured-media:before', '.wp-block-pullquote:before' ),
+					'background' => array(),
 				),
 				'text'       => array(
-					'color' => array( 'body' ),
+					'color' => array( 'body', '.entry-title a' ),
 				),
 				'secondary'  => array(
 					'color' => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots' ),
 				),
+				'borders'    => array(
+					'border-color'        => array( 'pre', 'fieldset', 'input', 'textarea', 'table', 'th', 'td' ),
+					'background'          => array( 'caption' ),
+					'border-bottom-color' => array( '.wp-block-table.is-style-stripes' ),
+					'border-top-color'    => array( '.wp-block-latest-posts.is-grid li' ),
+				),
 			),
 			'header-footer' => array(
 				'accent'     => array(
-					'color'            => array( '#site-header a', '#site-footer a' ),
-					'background'       => array( 'social-icons a' ),
-					'background-color' => array( '.footer-social a' ),
+					'color'      => array( '.primary-menu-wrapper a', '.footer-menu a, .footer-widgets a', '#site-footer .wp-block-button.is-style-outline', '.wp-block-pullquote:before' ),
+					'background' => array( '.social-icons a', '#site-footer button:not(.toggle)', '#site-footer .button', '#site-footer .faux-button', '#site-footer .wp-block-button__link', '#site-footer .wp-block-file__button', '#site-footer input[type="button"]', '#site-footer input[type="reset"]', '#site-footer input[type="submit"]' ),
 				),
 				'background' => array(
-					'color'      => array( 'social-icons a', '.overlay-header:not(.showing-menu-modal) .header-inner', '.primary-menu ul', '.overlay-header.showing-menu-modal .header-inner' ),
-					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '#site-footer' ),
+					'color'      => array( '.social-icons a', '.overlay-header:not(.showing-menu-modal) .header-inner', '.primary-menu ul', '.overlay-header.showing-menu-modal .header-inner', '#site-footer button', '#site-footer .button', '#site-footer .faux-button', '#site-footer .wp-block-button:not(.is-style-outline) .wp-block-button__link', '#site-footer .wp-block-file__button', '#site-footer input[type="button"]', '#site-footer input[type="reset"]', '#site-footer input[type="submit"]' ),
+					'background' => array( '#site-header', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '#site-footer', '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 				),
 				'text'       => array(
+					'color'             => array( '#site-header', '#site-header .toggle', '#site-footer', '.singular .entry-header', '.singular .entry-header .post-meta', '.archive-header', '.menu-modal' ),
 					'background'        => array( '.primary-menu ul' ),
 					'border-left-color' => array( '.primary-menu ul ul:after' ),
 				),
 				'secondary'  => array(
-					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top' ),
+					'color' => array( '.site-description', '.toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget cite', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top' ),
 				),
 			),
 		);
-
-		// While in the customizer tweak the elements for normal links.
-		$elements['content']['accent']['color'][] = is_customize_preview() ? '#site-content a' : 'a';
 
 		return apply_filters( 'twentytwenty_get_elements_array', $elements );
 	}
