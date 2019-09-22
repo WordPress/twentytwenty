@@ -2408,7 +2408,7 @@ body.template-cover .entry-header {
 	margin: 0;
 }
 
-.posts {
+body:not(.single) .post {
 	padding: 4rem 0 0;
 }
 
@@ -4621,7 +4621,7 @@ a.to-the-top > * {
 		font-size: 3.2rem;
 	}
 
-	.posts {
+	body:not(.single) .post {
 		padding: 8rem 0 0;
 	}
 
