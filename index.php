@@ -63,7 +63,7 @@ get_header();
 
 		</header><!-- .archive-header -->
 
-	<?php
+		<?php
 	}
 	
 	if ( have_posts() ) {
