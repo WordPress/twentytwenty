@@ -30,6 +30,8 @@
   },
   "scripts": {
     "build:rtl": "rtlcss style.css style-rtl.css",
+    "build:rtl-esb": "rtlcss assets/css/editor-style-block.css assets/css/editor-style-block-rtl.css",
+    "build:rtl-esc": "rtlcss assets/css/editor-style-classic.css assets/css/editor-style-classic-rtl.css",
     "lint:css": "wp-scripts lint-style 'style.css' 'assets/**/*.css'",
     "lint:js": "wp-scripts lint-js 'assets/**/*.js'"
   }

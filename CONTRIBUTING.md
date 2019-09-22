@@ -49,7 +49,7 @@ When you add a pull request, please also add in the description your WordPress.o
 
 ## Create Right-To-Left (RTL) CSS file
 
-Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  Left-To-Right (LTR) file `style.css` into the Right-To-Left (RTL) file `style-rtl.css`.
+Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  Left-To-Right (LTR) files,  into the Right-To-Left (RTL) files.
 
 ### Installation instructions
 
@@ -59,4 +59,6 @@ Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  
 
 ### Usage instructions
 
-1. After making a change to the `style.css` file, which affects RTL, run `npm run build:rtl` from within the theme directory to build the `style-rtl.css` file with your new changes.
+- After making a change to `style.css`, which affects RTL, run `npm run build:rtl` from within the theme directory to build `style-rtl.css` with your changes.
+- After making a change to `assets/css/editor-style-block.css`, which affects RTL, run `npm run build:rtl-esb` from within the theme directory to build `assets/css/editor-style-block-rtl.css` with your changes.
+- After making a change to `assets/css/editor-style-classic.css`, which affects RTL, run `npm run build:rtl-esc` from within the theme directory to build `assets/css/editor-style-classic-rtl.css` with your changes.
