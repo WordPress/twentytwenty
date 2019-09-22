@@ -50,4 +50,3 @@ Version 1.0:
 | @celloexpressions | @celloexpressions |
 | @aristath | @aristath |
 | @senadir | @nadir |
-| @juanfra | @juanfra |
