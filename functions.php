@@ -206,7 +206,7 @@ if ( ! function_exists( 'twentytwenty_register_styles' ) ) {
 	function twentytwenty_register_print_style() {
 
 			$theme_version = wp_get_theme()->get( 'Version' );
-		
+
 			// Add print CSS.
 			wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
 			
