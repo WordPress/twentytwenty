@@ -755,6 +755,7 @@ hr.wp-block-separator.is-style-dots::before {
 	color: inherit;
 	padding: 0;
 	position: relative;
+	text-align: center;
 }
 
 .editor-styles-wrapper .wp-block-pullquote::before {
@@ -770,14 +771,6 @@ hr.wp-block-separator.is-style-dots::before {
 	text-align: center;
 	height: 44px;
 	width: 44px;
-}
-
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color {
-	position: relative;
-}
-
-.editor-styles-wrapper .wp-block-pullquote {
-	text-align: center;
 }
 
 .editor-styles-wrapper .wp-block .wp-block-pullquote p {
@@ -856,6 +849,7 @@ hr.wp-block-separator.is-style-dots::before {
 
 .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color {
 	padding: 30px 20px;
+	position: relative;
 }
 
 .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color::before {
@@ -989,7 +983,7 @@ hr.wp-block-separator.is-style-dots::before {
 	border-style: solid;
 	border-width: 2px 0 0;
 	line-height: 1.25;
-    margin: 20px 16px 16px 0;
+	margin: 20px 16px 16px 0;
 	padding-top: 12px;
 }
 
@@ -1055,7 +1049,6 @@ hr.wp-block-separator.is-style-dots::before {
 /* Block: Paragraph -------------------------- */
 
 
-/* -------------------------------------------------------------------------------- */
 /*	X.	Media Queries
 /* -------------------------------------------------------------------------------- */
 
@@ -1081,8 +1074,8 @@ hr.wp-block-separator.is-style-dots::before {
 		max-width: 260px;
 	}
 
-	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="left"] [data-block],
-	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="right"] [data-block] {
+	.wp-block[data-type="core/pullquote"][data-align="left"] [data-block],
+	.wp-block[data-type="core/pullquote"][data-align="right"] [data-block] {
 		margin-top: 0;
 	}
 
@@ -1098,11 +1091,11 @@ hr.wp-block-separator.is-style-dots::before {
 		max-width: 260px;
 	}
 
-	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="right"] .block-editor-block-list__block-edit .wp-block-pullquote::before {
+	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="right"] .wp-block-pullquote::before {
 		margin-right: 0;
 	}
 
-	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="left"] .block-editor-block-list__block-edit .wp-block-pullquote::before {
+	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="left"] .wp-block-pullquote::before {
 		margin-left: 0;
 	}
 
