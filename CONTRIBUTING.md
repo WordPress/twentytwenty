@@ -46,3 +46,17 @@ Here are some good ideas for commit messages:
 All changes happen through a pull request made by contributors, ideally associated with an issue. After you send your proposed changes, one of the committers will review and test. After that, we can merge the changes.
 
 When you add a pull request, please also add in the description your WordPress.org username. We will then add it to CONTRIBUTORS.md. This is a running list of all contributors and essential to giving everyone that has helped make this project props in Core.
+
+## Create Right-To-Left (RTL) CSS file
+
+Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  Left-To-Right (LTR) file `style.css` into the Right-To-Left (RTL) file `style-rtl.css`.
+
+### Installation instructions
+
+1. Using a command line interface, go to the `twentytwenty` directory `cd /my-compter/local-wordpress-install/wp-content/themes/twentynineteen`.
+2. Type `npm install` into the command line and press [return], to install all Node.js dependencies. 
+3. The dependencies may take a few minutes to download and once it completes, you’re done.
+
+### Usage instructions
+
+1. After making a change to the `style.css` file, which affects RTL, run `npm run build:rtl` from within the theme directory to build the `style-rtl.css` file with your new changes.
