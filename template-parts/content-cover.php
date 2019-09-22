@@ -58,10 +58,14 @@
 
 							<?php
 
-							if ( has_category() ) {
+							// Allow child themes and plugins to filter the display of the categories in the entry header.
+							$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+
+							if ( true === $show_categories && has_category() ) {
 								?>
 
 								<div class="entry-categories">
+									<span class="screen-reader-text"><?php esc_html_e( 'Categories', 'twentytwenty' ); ?></span>
 									<div class="entry-categories-inner">
 										<?php the_category( ' ' ); ?>
 									</div><!-- .entry-categories-inner -->
@@ -71,7 +75,7 @@
 							}
 
 							the_title( '<h1 class="entry-title">', '</h1>' );
-							
+
 							if ( is_page() ) {
 								?>
 
@@ -79,12 +83,12 @@
 
 									<a href="#post-inner" class="to-the-content fill-children-current-color">
 										<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-										<div class="screen-reader-text"><?php esc_html_e( 'Scroll Down', 'twentytwenty' ); ?></div>
+										<div class="screen-reader-text"><?php _e( 'Scroll Down', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></div>
 									</a><!-- .to-the-content -->
 
 								</div><!-- .to-the-content-wrapper -->
 
-								<?php 
+								<?php
 							} else {
 
 								$intro_text_width = '';
@@ -105,8 +109,8 @@
 									<?php
 								}
 
-								twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); 
-								
+								twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
+
 							}
 							?>
 
