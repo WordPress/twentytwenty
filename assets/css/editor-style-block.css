@@ -1,7 +1,7 @@
-/* -------------------------------------------------------------------------- */
+/* ------------------------------------------- */
 
 /*	Twenty Twenty Editor Styles — Block Editor
-/* -------------------------------------------------------------------------- */
+/* ------------------------------------------- */
 
 .editor-styles-wrapper {
 	background: #f5efe0;
@@ -36,9 +36,9 @@
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
  * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually inserting
- * a custom font that includes just a Hoefler Text space replacement for that
- * character instead.
+ * editors. The following font-face override fixes the issue by manually
+ * inserting a custom font that includes just a Hoefler Text space replacement
+ * for that character instead.
  */
 @font-face {
 	font-family: NonBreakingSpaceOverride;
@@ -1050,7 +1050,7 @@ hr.wp-block-separator.is-style-dots::before {
 
 
 /*	X.	Media Queries
-/* -------------------------------------------------------------------------------- */
+/* ------------------------------------------- */
 
 
 @media ( min-width: 480px ) {
@@ -1208,6 +1208,7 @@ hr.wp-block-separator.is-style-dots::before {
 	}
 
 	/* BLOCK: LATEST POSTS */
+
 	/* BLOCK: PULLQUOTE */
 
 	.editor-styles-wrapper .wp-block .wp-block-pullquote p,
