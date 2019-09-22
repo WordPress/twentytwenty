@@ -383,14 +383,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					),
 				)
 			);
-
+			
 			/* Overlay Color Opacity --------- */
-
+			
 			$wp_customize->add_setting(
 				'cover_template_overlay_opacity',
 				array(
-					'default'           => '80',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'default'           => 80,
+					'sanitize_callback' => 'absint',
 				)
 			);
 
@@ -398,25 +398,16 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'cover_template_overlay_opacity',
 				array(
 					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
-					'description' => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
+					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
-					'type'        => 'select',
-					'choices'     => array(
-						'0'   => __( '0%', 'twentytwenty' ),
-						'10'  => __( '10%', 'twentytwenty' ),
-						'20'  => __( '20%', 'twentytwenty' ),
-						'30'  => __( '30%', 'twentytwenty' ),
-						'40'  => __( '40%', 'twentytwenty' ),
-						'50'  => __( '50%', 'twentytwenty' ),
-						'60'  => __( '60%', 'twentytwenty' ),
-						'70'  => __( '70%', 'twentytwenty' ),
-						'80'  => __( '80%', 'twentytwenty' ),
-						'90'  => __( '90%', 'twentytwenty' ),
-						'100' => __( '100%', 'twentytwenty' ),
+					'type'        => 'range',
+					'input_attrs' => array(
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 10,
 					),
 				)
 			);
-
 		}
 
 		/**
