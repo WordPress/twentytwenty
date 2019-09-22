@@ -31,7 +31,7 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header">
+		<header id="site-header" role="banner">
 
 			<div class="header-inner section-inner">
 

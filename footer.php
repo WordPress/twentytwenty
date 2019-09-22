@@ -97,7 +97,7 @@
 
 							<?php if ( is_active_sidebar( 'footer-one' ) ) { ?>
 
-								<div class="footer-widgets column-one grid-item">
+								<div class="footer-widgets column-one grid-item" aria-label="<?php esc_attr_e( 'Footer #1', 'twentytwenty' ); ?>">
 									<?php dynamic_sidebar( 'footer-one' ); ?>
 								</div>
 
@@ -105,7 +105,7 @@
 
 							<?php if ( is_active_sidebar( 'footer-two' ) ) { ?>
 
-								<div class="footer-widgets column-two grid-item">
+								<div class="footer-widgets column-two grid-item" aria-label="<?php esc_attr_e( 'Footer #2', 'twentytwenty' ); ?>">
 									<?php dynamic_sidebar( 'footer-two' ); ?>
 								</div>
 
