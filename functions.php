@@ -366,6 +366,7 @@ if ( ! function_exists( 'twentytwenty_block_editor_styles' ) ) {
 
 		// Enqueue the editor styles.
 		wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+		wp_style_add_data( 'twentytwenty-block-editor-styles', 'rtl', 'replace' );
 
 		// Add inline style from the Customizer.
 		wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
