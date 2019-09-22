@@ -4289,10 +4289,12 @@ a.to-the-top > * {
 	}
 
 	.alignleft {
+		/*rtl:ignore*/
 		float: left;
 	}
 
 	.alignright {
+		/*rtl:ignore*/
 		float: right;
 	}
 }
@@ -4304,10 +4306,12 @@ a.to-the-top > * {
 	/* ALIGNMENT CLASSES */
 
 	.alignleft {
+		/*rtl:ignore*/
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
 	.alignright {
+		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
@@ -5621,10 +5625,12 @@ a.to-the-top > * {
 	/* ALIGNMENT CLASSES */
 
 	.alignleft {
+		/*rtl:ignore*/
 		margin-left: -31rem;
 	}
 
 	.alignright {
+		/*rtl:ignore*/
 		margin-right: -31rem;
 	}
 
