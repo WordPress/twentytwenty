@@ -581,7 +581,7 @@ function twentytwentyDomReady( fn ) {
 		return;
 	}
 
-	if ( document.readyState === 'complete' ) {
+	if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
 		return fn();
 	}
 
