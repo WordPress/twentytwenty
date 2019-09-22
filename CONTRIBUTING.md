@@ -53,7 +53,7 @@ Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  
 
 ### Installation instructions
 
-1. Using a command line interface, go to the `twentytwenty` directory `cd /my-compter/local-wordpress-install/wp-content/themes/twentynineteen`.
+1. Using a command line interface, go to the `twentytwenty` directory `cd /my-compter/local-wordpress-install/wp-content/themes/twentytwenty`.
 2. Type `npm install` into the command line and press [return], to install all Node.js dependencies. 
 3. The dependencies may take a few minutes to download and once it completes, you’re done.
 
