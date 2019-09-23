@@ -56,3 +56,4 @@ Version 1.0:
 | @yannickiki | **???** |
 | @LittleBigThing | @littlebigthing |
 | @tobifjellner | @tobifjellner |
+| @kevIN-kovaDIA | @kevinkovadia |
