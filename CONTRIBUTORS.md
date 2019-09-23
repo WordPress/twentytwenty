@@ -53,7 +53,7 @@ Version 1.0:
 | @c4rl0sbr4v0 | @cbravobernal |
 | @okpierre | @intimez |
 | @GlennMartin1 | @hometowntrailers |
-| @yannickiki | **???** |
+| @yannickiki | @collet |
 | @LittleBigThing | @littlebigthing |
 | @tobifjellner | @tobifjellner |
 | @kevIN-kovaDIA | @kevinkovadia |
