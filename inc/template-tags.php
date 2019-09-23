@@ -304,7 +304,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-categories meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php _e( 'Post categories', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+								<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 								<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 							</span>
 							<span class="meta-text">

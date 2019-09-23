@@ -47,7 +47,7 @@ get_header();
 	if ( $archive_title || $archive_subtitle ) {
 		?>
 
-		<header class="archive-header has-text-align-center">
+		<header class="archive-header has-text-align-center header-footer-group">
 
 			<div class="archive-header-inner section-inner medium">
 
@@ -87,7 +87,13 @@ get_header();
 
 			<div class="no-search-results-form section-inner thin">
 
-				<?php get_search_form(); ?>
+				<?php
+				get_search_form(
+					array(
+						'label' => __( 'search again', 'twentytwenty' ),
+					)
+				);
+				?>
 
 			</div><!-- .no-search-results -->
 

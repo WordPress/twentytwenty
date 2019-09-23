@@ -4,6 +4,28 @@
 
 var twentytwenty = twentytwenty || {};
 
+// polyfill closest
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+if ( ! Element.prototype.matches ) {
+	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+}
+
+if ( ! Element.prototype.closest ) {
+	Element.prototype.closest = function( s ) {
+		var el = this;
+
+		do {
+			if ( el.matches( s ) ) {
+				return el;
+			}
+
+			el = el.parentElement || el.parentNode;
+		} while ( el !== null && el.nodeType === 1 );
+
+		return null;
+	};
+}
+
 // polyfill forEach
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
 if ( window.NodeList && ! NodeList.prototype.forEach ) {
@@ -432,12 +454,12 @@ twentytwenty.toggles = {
 	toggle: function() {
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
 			element.addEventListener( 'click', function() {
-				// Get our targets
-				var toggle, targetString, target, timeOutTime, classToToggle;
+				var toggle, targetString, target, timeOutTime, classToToggle, activeClass;
 
 				// Get our targets
 				toggle = element;
 				targetString = toggle.dataset.toggleTarget;
+				activeClass = 'active';
 
 				if ( targetString === 'next' ) {
 					target = toggle.nextSibling;
@@ -446,14 +468,14 @@ twentytwenty.toggles = {
 				}
 
 				// Trigger events on the toggle targets before they are toggled
-				if ( target.classList.contains( 'active' ) ) {
+				if ( target.classList.contains( activeClass ) ) {
 					target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-active' ) );
 				} else {
 					target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-inactive' ) );
 				}
 
 				// Get the class to toggle, if specified
-				classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : 'active';
+				classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : activeClass;
 
 				// For cover modals, set a short timeout duration so the class animations have time to play out
 				timeOutTime = 0;
@@ -463,23 +485,27 @@ twentytwenty.toggles = {
 				}
 
 				setTimeout( function() {
-					var focusElement, duration;
+					var focusElement, duration, newTarget, subMenued;
 
 					// Toggle the target of the clicked toggle
 					if ( toggle.dataset.toggleType === 'slidetoggle' ) {
 						duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
-						twentytwentySlideToggle( target, duration );
+						subMenued = target.classList.contains( 'sub-menu' );
+						newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target;
+
+						twentytwentySlideToggle( newTarget, duration );
 					} else {
 						target.classList.toggle( classToToggle );
 					}
 
 					// If the toggle target is 'next', only give the clicked toggle the active class
 					if ( targetString === 'next' ) {
-						toggle.classList.toggle( 'active' );
-
-						// If not, toggle all toggles with this toggle target
+						toggle.classList.toggle( activeClass );
+					} else if ( target.classList.contains( 'sub-menu' ) ) {
+						toggle.classList.toggle( activeClass );
 					} else {
-						document.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( 'active' );
+						// If not, toggle all toggles with this toggle target
+						document.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
 					}
 
 					// Toggle aria-expanded on the target
@@ -498,7 +524,7 @@ twentytwenty.toggles = {
 						focusElement = document.querySelector( toggle.dataset.setFocus );
 
 						if ( focusElement ) {
-							if ( target.classList.contains( 'active' ) ) {
+							if ( target.classList.contains( activeClass ) ) {
 								focusElement.focus();
 							} else {
 								focusElement.blur();
@@ -510,7 +536,7 @@ twentytwenty.toggles = {
 					target.dispatchEvent( twentytwenty.createEvent( 'toggled' ) );
 
 					// Trigger events on the toggle targets after they are toggled
-					if ( target.classList.contains( 'active' ) ) {
+					if ( target.classList.contains( activeClass ) ) {
 						target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-active' ) );
 					} else {
 						target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-inactive' ) );
@@ -581,7 +607,7 @@ function twentytwentyDomReady( fn ) {
 		return;
 	}
 
-	if ( document.readyState === 'complete' ) {
+	if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
 		return fn();
 	}
 

@@ -7,18 +7,28 @@
  * @since 1.0.0
  */
 
+$entry_header_classes = '';
+
+if ( is_singular() ) {
+	$entry_header_classes .= ' header-footer-group';
+}
+
 ?>
 
-<header class="entry-header has-text-align-center">
+<header class="entry-header has-text-align-center<?php echo esc_attr( $entry_header_classes ); ?>">
 
 	<div class="entry-header-inner section-inner medium">
 
 		<?php
 
-		if ( has_category() ) {
+		// Allow child themes and plugins to filter the display of the categories in the entry header.
+		$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+
+		if ( true === $show_categories && has_category() ) {
 			?>
 
 			<div class="entry-categories">
+				<span class="screen-reader-text"><?php esc_html_e( 'Categories', 'twentytwenty' ); ?></span>
 				<div class="entry-categories-inner">
 					<?php the_category( ' ' ); ?>
 				</div><!-- .entry-categories-inner -->
