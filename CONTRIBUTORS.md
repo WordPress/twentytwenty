@@ -53,4 +53,5 @@ Version 1.0:
 | @c4rl0sbr4v0 | @cbravobernal |
 | @okpierre | **???** |
 | @GlennMartin1 | @hometowntrailers |
-| @yannickiki | **???*** |
+| @yannickiki | **???** |
+| @LittleBigThing | @littlebigthing |
