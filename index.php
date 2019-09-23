@@ -47,7 +47,7 @@ get_header();
 	if ( $archive_title || $archive_subtitle ) {
 		?>
 
-		<header class="archive-header has-text-align-center">
+		<header class="archive-header has-text-align-center header-footer-group">
 
 			<div class="archive-header-inner section-inner medium">
 
