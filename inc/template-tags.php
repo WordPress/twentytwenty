@@ -15,6 +15,104 @@
  * Classes
  */
 
+if ( ! function_exists( 'twentytwenty_site_logo' ) ) {
+	/**
+	 * Displays the site logo, either text or image.
+	 *
+	 * @param array   $args Arguments for displaying the site logo either as an image or text.
+	 * @param boolean $echo Echo or return the html.
+	 */
+	function twentytwenty_site_logo( $args = array(), $echo = true ) {
+		$logo       = get_custom_logo();
+		$site_title = get_bloginfo( 'name' );
+		$contents   = '';
+		$classname  = '';
+
+		$defaults = array(
+			'logo'        => '%1$s<span class="screen-reader-text">%2$s</span>',
+			'logo_class'  => 'site-logo',
+			'title'       => '<a href="%1$s">%2$s</a>',
+			'title_class' => 'site-title',
+			'home_wrap'   => '<h1 class="%1$s">%2$s</h1>',
+			'single_wrap' => '<div class="%1$s faux-heading">%2$s</div>',
+			'condition'   => is_front_page() || is_home(),
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		/**
+		 * Filters the arguments for `twentytwenty_site_logo()`.
+		 *
+		 * @param array  $args     Parsed arguments.
+		 * @param array  $defaults Function's default arguments.
+		 */
+		$args = apply_filters( 'twentytwenty_site_logo_args', $args, $defaults );
+
+		if ( has_custom_logo() ) {
+			$contents  = sprintf( $args['logo'], $logo, esc_html( $site_title ) );
+			$classname = $args['logo_class'];
+		} else {
+			$contents  = sprintf( $args['title'], esc_url( get_home_url( null, '/' ) ), esc_html( $site_title ) );
+			$classname = $args['title_class'];
+		}
+
+		$wrap = $args['condition'] ? 'home_wrap' : 'single_wrap';
+
+		$html = sprintf( $args[ $wrap ], $classname, $contents );
+
+		/**
+		 * Filters the arguments for `twentytwenty_site_logo()`.
+		 *
+		 * @param string $html      Compiled html based on our arguments.
+		 * @param array  $args      Parsed arguments.
+		 * @param string $classname Class name based on current view, home or single.
+		 * @param string $contents  HTML for site title or logo.
+		 */
+		$html = apply_filters( 'twentytwenty_site_logo', $html, $args, $classname, $contents );
+
+		if ( ! $echo ) {
+			return $html;
+		}
+
+		echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+	}
+}
+
+if ( ! function_exists( 'twentytwenty_site_description' ) ) {
+	/**
+	 * Displays the site description.
+	 *
+	 * @param boolean $echo Echo or return the html.
+	 */
+	function twentytwenty_site_description( $echo = true ) {
+		$description = get_bloginfo( 'description' );
+
+		if ( ! $description ) {
+			return;
+		}
+
+		$wrapper = '<div class="site-description">%s</div><!-- .site-description -->';
+
+		$html = sprintf( $wrapper, esc_html( $description ) );
+
+		/**
+		 * Filters the html for the site description.
+		 *
+		 * @param string $html         The HTML to display.
+		 * @param string $description  Site description via `bloginfo()`.
+		 * @param string $wrapper      The format used in case you want to reuse it in a `sprintf()`.
+		 */
+		$html = apply_filters( 'twentytwenty_site_description', $html, $description, $wrapper );
+
+		if ( ! $echo ) {
+			return $html;
+		}
+
+		echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+
 /**
  * Comments
  */
@@ -115,6 +213,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 					'author',
 					'post-date',
 					'comments',
+					'sticky',
 				)
 			);
 			$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
@@ -161,13 +260,16 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-author meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Post author', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Post author', 'twentytwenty' );// phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 								<?php twentytwenty_the_theme_svg( 'user' ); ?>
 							</span>
 							<span class="meta-text">
 								<?php
-								// Translators: %s = the author name.
-								printf( esc_html_x( 'By %s', '%s = author name', 'twentytwenty' ), '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname' ) ) . '</a>' );
+								printf(
+									// Translators: %s = the author name.
+									_x( 'By %s', '%s = author name', 'twentytwenty' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
+									'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>'
+								);
 								?>
 							</span>
 						</li>
@@ -183,7 +285,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						<li class="post-date">
 							<a class="meta-wrapper" href="<?php the_permalink(); ?>">
 								<span class="meta-icon">
-									<span class="screen-reader-text"><?php esc_html_e( 'Post date', 'twentytwenty' ); ?></span>
+									<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 									<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
 								</span>
 								<span class="meta-text">
@@ -202,11 +304,11 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-categories meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Post categories', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 								<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
+								<?php _e( 'In', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?> <?php the_category( ', ' ); ?>
 							</span>
 						</li>
 						<?php
@@ -220,7 +322,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 						?>
 						<li class="post-tags meta-wrapper">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php esc_html_e( 'Tags', 'twentytwenty' ); ?></span>
+								<span class="screen-reader-text"><?php _e( 'Tags', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 								<?php twentytwenty_the_theme_svg( 'tag' ); ?>
 							</span>
 							<span class="meta-text">
@@ -258,7 +360,7 @@ if ( ! function_exists( 'twentytwenty_get_post_meta' ) ) {
 								<?php twentytwenty_the_theme_svg( 'bookmark' ); ?>
 							</span>
 							<span class="meta-text">
-								<?php esc_html_e( 'Sticky post', 'twentytwenty' ); ?>
+								<?php _e( 'Sticky post', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?>
 							</span>
 						</li>
 						<?php
@@ -344,7 +446,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 	function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
 		// Add sub menu toggles to the Expanded Menu with toggles.
-		if ( 'expanded' === $args->theme_location && isset( $args->show_toggles ) || 'mobile' === $args->theme_location && isset( $args->show_toggles ) ) {
+		if ( isset( $args->show_toggles ) && $args->show_toggles ) {
 
 			// Wrap the menu item link contents in a div, used for positioning.
 			$args->before = '<div class="ancestor-wrapper">';
@@ -366,7 +468,7 @@ if ( ! function_exists( 'twentytwenty_add_sub_toggles_to_main_menu' ) ) {
 			// Add sub menu icons to the primary menu without toggles.
 		} elseif ( 'primary' === $args->theme_location ) {
 			if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-				$args->after = twentytwenty_get_theme_svg( 'chevron-down' );
+				$args->after = '<span class="icon"></span>';
 			} else {
 				$args->after = '';
 			}
@@ -410,7 +512,7 @@ if ( ! function_exists( 'twentytwenty_get_the_archive_title' ) ) {
 	 */
 	function twentytwenty_get_the_archive_title( $title ) {
 
-		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex', 
+		$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex',
 			array(
 				'pattern'     => '/(\A[^\:]+\:)/',
 				'replacement' => '<span class="color-accent">$1</span>',
@@ -448,17 +550,17 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		}
 
 		// Check whether the current page should have an overlay header.
-		if ( is_page_template( array( 'template-cover.php' ) ) ) {
+		if ( is_page_template( array( 'templates/template-cover.php' ) ) ) {
 			$classes[] = 'overlay-header';
 		}
 
 		// Check whether the current page has full-width content.
-		if ( is_page_template( array( 'template-full-width.php' ) ) ) {
+		if ( is_page_template( array( 'templates/template-full-width.php' ) ) ) {
 			$classes[] = 'has-full-width-content';
 		}
 
 		// Check for enabled search.
-		if ( true === get_theme_mod( 'twentytwenty_enable_header_search' ) ) {
+		if ( true === get_theme_mod( 'enable_header_search', true ) ) {
 			$classes[] = 'enable-search-modal';
 		}
 
@@ -495,13 +597,6 @@ if ( ! function_exists( 'twentytwenty_body_classes' ) ) {
 		if ( is_page_template() ) {
 			$classes[] = basename( get_page_template_slug(), '.php' );
 		}
-
-		// Get the luminance of the background color.
-		$background_color = new TwentyTwenty_Color();
-		$background_color->set_hex( get_theme_mod( 'background_color', '#f5efe0' ) );
-
-		// Add a class depending on the background color's relative luminance.
-		$classes[] = ( 0.5 < $background_color->get_luminance() ) ? 'background-color-light' : 'background-color-dark';
 
 		return $classes;
 

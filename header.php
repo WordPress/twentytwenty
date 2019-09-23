@@ -40,58 +40,47 @@
 					<?php
 
 					// Check whether the header search is activated in the customizer.
-					$enable_header_search = get_theme_mod( 'twentytwenty_enable_header_search', true );
+					$enable_header_search = get_theme_mod( 'enable_header_search', true );
 
 					if ( true === $enable_header_search ) {
 
 						?>
 
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
-							<?php twentytwenty_the_theme_svg( 'search' ); ?>
+							<div class="toggle-inner">
+								<?php twentytwenty_the_theme_svg( 'search' ); ?>
+								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+							</div>
 						</button><!-- .search-toggle -->
 
-						<?php } ?>
+					<?php } ?>
 
 					<div class="header-titles">
 
 						<?php
+							// Site title or logo.
+							twentytwenty_site_logo();
 
-						$logo             = twentytwenty_get_custom_logo();
-						$site_title       = get_bloginfo( 'name' );
-						$site_description = get_bloginfo( 'description' );
-
-						if ( $logo ) {
-							$home_link_contents = $logo . '<span class="screen-reader-text">' . esc_html( $site_title ) . '</span>';
-							$site_title_class   = 'site-logo';
-						} else {
-							$site_title_class   = 'site-title';
-							$home_link_contents = '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( $site_title ) . '</a>';
-						}
-
-						if ( is_front_page() || is_home() ) {
-							?>
-							<h1 class="<?php echo esc_attr( $site_title_class ); ?>"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped during generation. ?></h1>
-						<?php } else { ?>
-							<div class="<?php echo esc_attr( $site_title_class ); ?> faux-heading"><?php echo $home_link_contents; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped prior to this point. ?></div>
-						<?php } ?>
-
-						<?php if ( $site_description ) { ?>
-
-							<div class="site-description"><?php echo esc_html( $site_description ); ?></div><!-- .site-description -->
-
-						<?php } ?>
+							// Site description.
+							twentytwenty_site_description();
+						?>
 
 					</div><!-- .header-titles -->
 
-					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle menu', 'twentytwenty' ); ?></span>
-						<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
+						<div class="toggle-inner">
+							<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+							<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+						</div>
 					</button><!-- .nav-toggle -->
 
 				</div><!-- .header-titles-wrapper -->
 
 				<div class="header-navigation-wrapper">
+
+					<?php
+					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
+						?>
 
 						<div class="primary-menu-wrapper">
 
@@ -110,12 +99,14 @@
 										)
 									);
 
-								} else {
+								} elseif ( ! has_nav_menu( 'expanded' ) ) {
 
 									wp_list_pages(
 										array(
 											'match_menu_classes' => true,
+											'show_sub_menu_icons' => true,
 											'title_li' => false,
+											'walker'   => new TwentyTwenty_Walker_Page(),
 										)
 									);
 
@@ -128,26 +119,49 @@
 
 						</div><!-- .primary-menu-wrapper -->
 
-					<div class="header-toggles hide-no-js">
+						<?php
+					}
 
-						<div class="toggle-wrapper nav-toggle-wrapper">
+					$header_toggles_classes = '';
 
-							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
-								<span class="screen-reader-text"><?php esc_html_e( 'Toggle menu', 'twentytwenty' ); ?></span>
-								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+					if ( ! has_nav_menu( 'expanded' ) && false === $enable_header_search ) {
+						$header_toggles_classes .= ' hide-on-desktop';
+					}
+					?>
+
+					<div class="header-toggles hide-no-js<?php echo esc_attr( $header_toggles_classes ); ?>">
+
+						<?php
+						$nav_toggle_wrapper_classes = '';
+
+						// Add a class indicating whether the navigation toggle wrapper can be hidden on desktop.
+						if ( has_nav_menu( 'expanded' ) ) {
+							$nav_toggle_wrapper_classes .= ' has-expanded-menu';
+						}
+						?>
+
+						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
+
+							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
+								<div class="toggle-inner">
+									<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+									<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+								</div>
 							</button><!-- .nav-toggle -->
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php 
+						<?php
 						if ( true === $enable_header_search ) {
 							?>
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
 								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<span class="screen-reader-text"><?php esc_html_e( 'Toggle search', 'twentytwenty' ); ?></span>
-									<?php twentytwenty_the_theme_svg( 'search' ); ?>
+									<div class="toggle-inner">
+										<?php twentytwenty_the_theme_svg( 'search' ); ?>
+										<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+									</div>
 								</button><!-- .search-toggle -->
 
 							</div>
@@ -174,4 +188,3 @@
 		<?php
 		// Output the menu modal.
 		get_template_part( 'template-parts/modal-menu' );
-
