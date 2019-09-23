@@ -2228,6 +2228,10 @@ button.search-untoggle {
 	padding: 0 2.5rem;
 }
 
+.search-modal button.search-untoggle {
+	color: inherit;
+}
+
 .search-modal.active .search-untoggle {
 	animation: popIn both 0.3s 0.2s;
 }
