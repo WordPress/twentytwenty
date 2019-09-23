@@ -124,6 +124,9 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 
 		// Adds starter content to highlight the theme on fresh sites.
 		add_theme_support( 'starter-content', twentytwenty_get_starter_content() );
+		
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		/*
 		 * Adds `async` and `defer` support for scripts registered or enqueued
