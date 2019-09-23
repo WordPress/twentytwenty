@@ -52,4 +52,5 @@ Version 1.0:
 | @senadir | @nadir |
 | @c4rl0sbr4v0 | @cbravobernal |
 | @okpierre | **???** |
-| @GlennMartin1 | hometowntrailers |
+| @GlennMartin1 | @hometowntrailers |
+| @yannickiki | **???*** |
