@@ -50,3 +50,5 @@ Version 1.0:
 | @celloexpressions | @celloexpressions |
 | @aristath | @aristath |
 | @senadir | @nadir |
+| @c4rl0sbr4v0 | @cbravobernal |
+| @okpierre | **???** |
