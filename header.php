@@ -49,7 +49,7 @@
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
 							<div class="toggle-inner">
 								<?php twentytwenty_the_theme_svg( 'search' ); ?>
-								<span class="toggle-text"><?php esc_html_e( 'Search', 'twentytwenty' ); ?></span>
+								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 							</div>
 						</button><!-- .search-toggle -->
 
@@ -60,17 +60,17 @@
 						<?php
 							// Site title or logo.
 							twentytwenty_site_logo();
-							
+
 							// Site description.
 							twentytwenty_site_description();
 						?>
 
 					</div><!-- .header-titles -->
 
-					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 						<div class="toggle-inner">
 							<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
-							<span class="toggle-text"><?php esc_html_e( 'Menu', 'twentytwenty' ); ?></span>
+							<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 						</div>
 					</button><!-- .nav-toggle -->
 
@@ -78,7 +78,7 @@
 
 				<div class="header-navigation-wrapper">
 
-					<?php 
+					<?php
 					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
 						?>
 
@@ -119,7 +119,7 @@
 
 						</div><!-- .primary-menu-wrapper -->
 
-						<?php 
+						<?php
 					}
 
 					$header_toggles_classes = '';
@@ -142,16 +142,16 @@
 
 						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
 
-							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 								<div class="toggle-inner">
-									<span class="toggle-text"><?php esc_html_e( 'Menu', 'twentytwenty' ); ?></span>
+									<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 									<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
 								</div>
 							</button><!-- .nav-toggle -->
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php 
+						<?php
 						if ( true === $enable_header_search ) {
 							?>
 
@@ -160,7 +160,7 @@
 								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
 									<div class="toggle-inner">
 										<?php twentytwenty_the_theme_svg( 'search' ); ?>
-										<span class="toggle-text"><?php esc_html_e( 'Search', 'twentytwenty' ); ?></span>
+										<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 									</div>
 								</button><!-- .search-toggle -->
 
@@ -188,4 +188,3 @@
 		<?php
 		// Output the menu modal.
 		get_template_part( 'template-parts/modal-menu' );
-

@@ -15,10 +15,14 @@
 
 		<?php
 
-		if ( has_category() ) {
+		// Allow child themes and plugins to filter the display of the categories in the entry header.
+		$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+
+		if ( true === $show_categories && has_category() ) {
 			?>
 
 			<div class="entry-categories">
+				<span class="screen-reader-text"><?php esc_html_e( 'Categories', 'twentytwenty' ); ?></span>
 				<div class="entry-categories-inner">
 					<?php the_category( ' ' ); ?>
 				</div><!-- .entry-categories-inner -->
@@ -41,7 +45,7 @@
 			$intro_text_width = ' thin';
 		}
 
-		if ( has_excerpt() ) {
+		if ( has_excerpt() && is_singular() ) {
 			?>
 
 			<div class="intro-text section-inner max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
