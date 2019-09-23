@@ -59,6 +59,4 @@ Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  
 
 ### Usage instructions
 
-- After making a change to `style.css`, which affects RTL, run `npm run build:rtl` from within the theme directory to build `style-rtl.css` with your changes.
-- After making a change to `assets/css/editor-style-block.css`, which affects RTL, run `npm run build:rtl-esb` from within the theme directory to build `assets/css/editor-style-block-rtl.css` with your changes.
-- After making a change to `assets/css/editor-style-classic.css`, which affects RTL, run `npm run build:rtl-esc` from within the theme directory to build `assets/css/editor-style-classic-rtl.css` with your changes.
+- After making a change to a CSS, which affects RTL, run `npm run build:rtl` from within the theme directory to build `style-rtl.css` with your changes.
