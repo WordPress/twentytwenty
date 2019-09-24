@@ -2,7 +2,7 @@
 **Theme URI:** https://wordpress.org/themes/twentytwenty/  
 **Contributors:** the WordPress team  
 **Requires at least:** WordPress 4.7  
-**Version:** 1.0
+**Version:** 1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
@@ -44,11 +44,11 @@ Inter Font
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
 Source: https://rsms.me/inter/
 
-FontAwesome Icons  
+Font Awesome Icons  
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
 Source: https://www.fontawesome.io
 
-FontAwesome Code  
+Font Awesome Code  
 License: MIT License, https://opensource.org/licenses/MIT  
 Source: https://www.fontawesome.io
 
