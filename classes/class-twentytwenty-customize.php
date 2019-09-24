@@ -207,7 +207,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'enable_header_search',
 				array(
 					'capability'        => 'edit_theme_options',
-					'default'           => false,
+					'default'           => true,
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
 				)
 			);
