@@ -28,8 +28,13 @@ allow_failures:
   - php: "7.4snapshot"
 
 before_install:
-    - composer install
-    - npm install
+  # Speed up build time by disabling Xdebug.
+  # @link https://johnblackbourn.com/reducing-travis-ci-build-times-for-wordpress-projects/
+  # @link https://twitter.com/kelunik/status/954242454676475904
+  - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
+
+  - composer install
+  - npm install
 
 script:
   # Validate the composer.json file.
