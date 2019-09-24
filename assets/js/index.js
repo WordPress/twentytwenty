@@ -153,7 +153,7 @@ twentytwenty.coverModals = {
 					return;
 				}
 
-				window.scrollTo( { top: 0 } );
+				window.scrollTo( { top: 0, } );
 
 				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
