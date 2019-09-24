@@ -44,11 +44,11 @@ Inter Font
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
 Source: https://rsms.me/inter/
 
-FontAwesome Icons  
+Font Awesome Icons  
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
 Source: https://www.fontawesome.io
 
-FontAwesome Code  
+Font Awesome Code  
 License: MIT License, https://opensource.org/licenses/MIT  
 Source: https://www.fontawesome.io
 
