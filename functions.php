@@ -114,8 +114,8 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Twenty Nineteen, use a find and replace
-		 * to change 'twentynineteen' to the name of your theme in all the template files.
+		 * If you're building a theme based on Twenty Twenty, use a find and replace
+		 * to change 'twentytwenty' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'twentytwenty' );
 
@@ -133,7 +133,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		 * by the theme.
 		 */
 		$loader = new TwentyTwenty_Script_Loader();
-		add_filter( 'script_loader_tag', [ $loader, 'filter_script_loader_tag' ], 10, 2 );
+		add_filter( 'script_loader_tag', array( $loader, 'filter_script_loader_tag' ), 10, 2 );
 
 	}
 
