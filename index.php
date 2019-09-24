@@ -47,7 +47,7 @@ get_header();
 	if ( $archive_title || $archive_subtitle ) {
 		?>
 
-		<header class="archive-header has-text-align-center">
+		<header class="archive-header has-text-align-center header-footer-group">
 
 			<div class="archive-header-inner section-inner medium">
 
@@ -63,33 +63,41 @@ get_header();
 
 		</header><!-- .archive-header -->
 
-	<?php } ?>
-
-	<div class="posts">
-
 		<?php
-		if ( have_posts() ) {
+	}
+	
+	if ( have_posts() ) {
 
-			while ( have_posts() ) {
-				the_post();
+		$i = 0;
 
-				get_template_part( 'template-parts/content', get_post_type() );
-
+		while ( have_posts() ) {
+			$i++;
+			if ( $i > 1 ) {
+				echo '<hr class="post-separator is-style-wide section-inner" aria-hidden="true" />';
 			}
-		} elseif ( is_search() ) {
-			?>
+			the_post();
 
-			<div class="no-search-results-form section-inner thin">
+			get_template_part( 'template-parts/content', get_post_type() );
 
-				<?php get_search_form(); ?>
-
-			</div><!-- .no-search-results -->
-
-			<?php
 		}
+	} elseif ( is_search() ) {
 		?>
 
-	</div><!-- .posts -->
+		<div class="no-search-results-form section-inner thin">
+
+			<?php
+			get_search_form(
+				array(
+					'label' => __( 'search again', 'twentytwenty' ),
+				)
+			);
+			?>
+
+		</div><!-- .no-search-results -->
+
+		<?php
+	}
+	?>
 
 	<?php get_template_part( 'template-parts/pagination' ); ?>
 
