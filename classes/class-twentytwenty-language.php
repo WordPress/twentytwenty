@@ -37,9 +37,9 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				case 'fa-IR':
 				case 'haz':
 				case 'ps':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					array_push( $font_face, "@font-face { font-family: 'Cairo'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Cairo/Cairo-Regular.ttf) format('truetype'); }" );
+					array_push( $font_title, 'Cairo' );
+					array_push( $font_body, 'Cairo' );
 					break;
 				// Chinese (Hong Kong) - Noto Sans HK.
 				case 'zh-HK':
