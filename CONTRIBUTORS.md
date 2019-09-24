@@ -51,4 +51,10 @@ Version 1.0:
 | @aristath | @aristath |
 | @senadir | @nadir |
 | @c4rl0sbr4v0 | @cbravobernal |
-| @okpierre | **???** |
+| @okpierre | @intimez |
+| @GlennMartin1 | @hometowntrailers |
+| @yannickiki | @collet |
+| @LittleBigThing | @littlebigthing |
+| @tobifjellner | @tobifjellner |
+| @kevIN-kovaDIA | @kevinkovadia |
+| @jarretc | @jarretc |
