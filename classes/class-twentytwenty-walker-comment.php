@@ -59,7 +59,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 							?>
 						</div><!-- .comment-author -->
 
-						<div class="comment-metadata color-secondary">
+						<div class="comment-metadata">
 							<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 								<?php
 								/* Translators: 1 = comment date, 2 = comment time */
@@ -81,7 +81,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 
 						if ( '0' === $comment->comment_approved ) {
 							?>
-							<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'twentytwenty' ); ?></p>
+							<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></p>
 							<?php
 						}
 						?>
@@ -110,7 +110,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 					if ( $comment_reply_link || $by_post_author || $edit_comment_link ) {
 						?>
 
-						<footer class="comment-footer-meta color-secondary">
+						<footer class="comment-footer-meta">
 
 							<?php
 							if ( $comment_reply_link ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 								echo $edit_comment_link; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Link escaped on line 109.
 							}
 							if ( $by_post_author ) {
-								echo '<span class="by-post-author">' . esc_html__( 'By Post Author', 'twentytwenty' ) . '</span>';
+								echo '<span class="by-post-author">' . __( 'By Post Author', 'twentytwenty' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
 							}
 							?>
 

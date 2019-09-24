@@ -79,7 +79,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Page' ) ) {
 
 			if ( '' === $page->post_title ) {
 				/* translators: %d: ID of a post */
-				$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+				$page->post_title = sprintf( __( '#%d (no title)', 'twentytwenty' ), $page->ID );
 			}
 
 			$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
@@ -141,7 +141,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Page' ) ) {
 			// Add icons to menu items with children.
 			if ( isset( $args['show_sub_menu_icons'] ) && true === $args['show_sub_menu_icons'] ) {
 				if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
-					$args['list_item_after'] = twentytwenty_get_theme_svg( 'chevron-down' );
+					$args['list_item_after'] = '<span class="icon"></span>';
 				}
 			}
 
