@@ -133,7 +133,7 @@ if ( ! function_exists( 'twentytwenty_theme_support' ) ) {
 		 * by the theme.
 		 */
 		$loader = new TwentyTwenty_Script_Loader();
-		add_filter( 'script_loader_tag', array( $loader => 'filter_script_loader_tag' ), 10, 2 );
+		add_filter( 'script_loader_tag', array( $loader, 'filter_script_loader_tag' ), 10, 2 );
 
 	}
 
