@@ -31,7 +31,7 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header" role="banner">
+		<header id="site-header" class="header-footer-group">
 
 			<div class="header-inner section-inner">
 
@@ -86,7 +86,7 @@
 
 							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
 
-								<ul class="primary-menu color-accent reset-list-style">
+								<ul class="primary-menu reset-list-style">
 
 								<?php
 								if ( has_nav_menu( 'primary' ) ) {
