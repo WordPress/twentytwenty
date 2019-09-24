@@ -3,7 +3,7 @@
  * Displays the post header
  *
  * @package WordPress
- * @subpackage Twenty_Nineteen
+ * @subpackage Twenty_Twenty
  * @since 1.0.0
  */
 
