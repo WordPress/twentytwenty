@@ -35,7 +35,7 @@ if ( ! function_exists( 'twentytwenty_site_logo' ) ) {
 			'title_class' => 'site-title',
 			'home_wrap'   => '<h1 class="%1$s">%2$s</h1>',
 			'single_wrap' => '<div class="%1$s faux-heading">%2$s</div>',
-			'condition'   => is_front_page() || is_home(),
+			'condition'   => ( is_front_page() || is_home() ) && ! is_page(),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
