@@ -13,7 +13,7 @@
 
 ?>
 
-		<footer id="site-footer" role="contentinfo">
+		<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
 			<div class="footer-inner section-inner">
 
