@@ -2,7 +2,7 @@
 **Theme URI:** https://wordpress.org/themes/twentytwenty/  
 **Contributors:** the WordPress team  
 **Requires at least:** WordPress 4.7  
-**Version:** 1.0
+**Version:** 1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
@@ -51,6 +51,10 @@ Source: https://www.fontawesome.io
 FontAwesome Code  
 License: MIT License, https://opensource.org/licenses/MIT  
 Source: https://www.fontawesome.io
+
+Font Cairo  
+License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1  
+URL: https://fonts.google.com/specimen/Cairo
 
 Font Noto Sans  
 License: Apache License (Apache-2.0), https://www.apache.org/licenses/LICENSE-2.0  
