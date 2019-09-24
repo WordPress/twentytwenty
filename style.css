@@ -508,14 +508,14 @@ address {
 }
 
 hr {
-	border-top: 0.1rem solid rgba(0, 0, 0, 0.42);
+	border-top: 0.1rem solid #dcd7ca;
 	margin: 4rem 0;
 }
 
 hr:not(.is-style-dots):not(.reset-hr) {
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.42) calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), rgba(0, 0, 0, 0.42) calc(50% + 16px));
+	background: linear-gradient(to left, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
 	border: none;
-	color: rgba(0, 0, 0, 0.42);
+	color: #dcd7ca;
 	height: 0.1rem;
 	overflow: visible;
 	position: relative;
@@ -1930,6 +1930,7 @@ ul.primary-menu {
 .primary-menu ul a {
 	background: transparent;
 	border: none;
+	color: inherit;
 	display: block;
 	padding: 1rem 2rem;
 	transition: background-color 0.15s linear;
@@ -2225,6 +2226,10 @@ button.search-untoggle {
 	justify-content: center;
 	margin-right: -2.5rem;
 	padding: 0 2.5rem;
+}
+
+.search-modal button.search-untoggle {
+	color: inherit;
 }
 
 .search-modal.active .search-untoggle {
@@ -3898,13 +3903,7 @@ div.comment:first-of-type {
 }
 
 .widget table,
-.widget table caption,
-.widget table thead,
-.widget table tbody,
-.widget table tfoot,
-.widget table tr,
-.widget table th,
-.widget table td {
+.widget table * {
 	border-color: #dedfdf;
 }
 
@@ -5263,11 +5262,14 @@ a.to-the-top > * {
 	/* Menu Modal ---------------------------- */
 
 	.menu-modal {
-		background: rgba(0, 0, 0, 0);
 		opacity: 1;
 		justify-content: flex-end;
 		padding: 0;
 		transition: background-color 0.3s ease-in, left 0s 0.3s, right 0s 0.3s;
+	}
+
+	.menu-modal.cover-modal {
+		background: rgba(0, 0, 0, 0);
 	}
 
 	.menu-modal.active {
