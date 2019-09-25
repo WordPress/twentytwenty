@@ -511,7 +511,6 @@ hr {
 	border-style: solid;
 	border-width: 0.1rem 0 0 0;
 	border-color: #dcd7ca;
-	color: #dcd7ca;
 	margin: 4rem 0;
 }
 
@@ -519,6 +518,7 @@ hr {
 hr.styled-separator {
 	background: linear-gradient(to left, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
 	border: none;
+	color: #6d6d6d;
 	height: 0.1rem;
 	overflow: visible;
 	position: relative;
