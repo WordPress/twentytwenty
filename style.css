@@ -4282,11 +4282,11 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.alignleft {
+	.entry-content .alignleft {
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.alignright {
+	.entry-content .alignright {
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
@@ -5602,11 +5602,11 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.alignleft {
+	.entry-content .alignleft {
 		margin-left: -31rem;
 	}
 
-	.alignright {
+	.entry-content .alignright {
 		margin-right: -31rem;
 	}
 
