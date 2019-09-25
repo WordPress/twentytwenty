@@ -534,9 +534,18 @@ add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_contro
 function twentytwenty_customize_preview_init() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
+	wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'customize-selective-refresh', 'jquery' ), $theme_version, true );
 	wp_localize_script( 'twentytwenty-customize-preview', 'twentyTwentyBgColors', twentytwenty_get_customizer_color_vars() );
 	wp_localize_script( 'twentytwenty-customize-preview', 'twentyTwentyPreviewEls', twentytwenty_get_elements_array() );
+
+	wp_add_inline_script(
+		'twentytwenty-customize-preview',
+		sprintf(
+			'wp.customize.selectiveRefresh.partialConstructor[ %1$s ].prototype.attrs = %2$s;',
+			wp_json_encode( 'cover_opacity' ),
+			wp_json_encode( twentytwenty_customize_opacity_range() )
+		)
+	);
 }
 
 add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );

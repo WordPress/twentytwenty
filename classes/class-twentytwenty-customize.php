@@ -270,6 +270,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'capability'        => 'edit_theme_options',
 					'default'           => true,
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+					'transport'         => 'postMessage',
 				)
 			);
 
@@ -282,6 +283,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
 				)
 			);
+
+			$wp_customize->selective_refresh->add_partial( 'cover_template_fixed_background', array(
+				'selector' => '.cover-header',
+				'type'     => 'cover_fixed',
+			) );
 
 			/* Separator --------------------- */
 
@@ -353,6 +359,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'default'           => 80,
 					'sanitize_callback' => 'absint',
+					'transport'         => 'postMessage',
 				)
 			);
 
@@ -363,13 +370,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
 					'type'        => 'range',
-					'input_attrs' => array(
-						'min'  => 0,
-						'max'  => 100,
-						'step' => 5,
-					),
+					'input_attrs' => twentytwenty_customize_opacity_range(),
 				)
 			);
+
+			$wp_customize->selective_refresh->add_partial( 'cover_template_overlay_opacity', array(
+				'selector' => '.cover-color-overlay',
+				'type'     => 'cover_opacity',
+			) );
 		}
 
 		/**
@@ -463,4 +471,29 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	function twentytwenty_customize_partial_site_logo() {
 		twentytwenty_site_logo();
 	}
+}
+
+
+/**
+ * Input attributes for cover overlay opacity option.
+ *
+ * @return array Array containing attribute names and their values.
+ */
+function twentytwenty_customize_opacity_range() {
+	/**
+	 * Filter the input attributes for opacity
+	 *
+	 * @param array $attrs {
+	 *     The attributes
+	 * 
+	 *     @type int $min Minimum value
+	 *     @type int $max Maximum value
+	 *     @type int $step Interval between numbers
+	 * }
+	 */
+	return apply_filters( 'twentytwenty_customize_opacity_range', array(
+		'min'  => 0,
+		'max'  => 90,
+		'step' => 5,
+	) );
 }
