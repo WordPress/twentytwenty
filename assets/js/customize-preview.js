@@ -1,4 +1,4 @@
-/* global backgroundColors, previewElements, jQuery, _, wp */
+/* global twentyTwentyBgColors, twentyTwentyPreviewEls, jQuery, _, wp */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -22,7 +22,7 @@
 			// Generate the styles.
 			// Add a small delay to be sure the accessible colors were generated.
 			setTimeout( function() {
-				Object.keys( backgroundColors ).forEach( function( context ) {
+				Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
 					twentyTwentyGenerateColorA11yPreviewStyles( context );
 				} );
 			}, 50 );
@@ -30,8 +30,8 @@
 	} );
 
 	// Add listeners for background-color settings.
-	Object.keys( backgroundColors ).forEach( function( context ) {
-		wp.customize( backgroundColors[ context ].setting, function( value ) {
+	Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
+		wp.customize( twentyTwentyBgColors[ context ].setting, function( value ) {
 			value.bind( function() {
 				// Generate the styles.
 				// Add a small delay to be sure the accessible colors were generated.
@@ -64,8 +64,8 @@
 		}
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
 			// Check if we have elements defined.
-			if ( previewElements[ context ] ) {
-				_.each( previewElements[ context ], function( items, setting ) {
+			if ( twentyTwentyPreviewEls[ context ] ) {
+				_.each( twentyTwentyPreviewEls[ context ], function( items, setting ) {
 					_.each( items, function( elements, property ) {
 						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
 							styles += elements.join( ',' ) + '{' + property + ':' + a11yColors[ context ][ setting ] + ';}';
