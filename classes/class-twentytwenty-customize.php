@@ -493,7 +493,7 @@ function twentytwenty_customize_opacity_range() {
 	 */
 	return apply_filters( 'twentytwenty_customize_opacity_range', array(
 		'min'  => 0,
-		'max'  => 100,
+		'max'  => 90,
 		'step' => 5,
 	) );
 }
