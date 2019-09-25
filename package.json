@@ -2,15 +2,21 @@
 	"name": "twentytwenty",
 	"version": "1.0.0",
 	"description": "Default WP Theme",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Theme",
+		"TwentyTwenty"
+	],
+	"homepage": "https://github.com/wordpress/twentytwenty#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/wordpress/twentytwenty.git"
 	},
-	"license": "GPL-2.0+",
 	"bugs": {
 		"url": "https://github.com/wordpress/twentytwenty/issues"
 	},
-	"homepage": "https://github.com/wordpress/twentytwenty#readme",
 	"devDependencies": {
 		"@wordpress/scripts": "^5.0.0",
 		"concurrently": "^4.1.2",
@@ -35,6 +41,7 @@
 		"build:rtl-esb": "rtlcss assets/css/editor-style-block.css assets/css/editor-style-block-rtl.css",
 		"build:rtl-esc": "rtlcss assets/css/editor-style-classic.css assets/css/editor-style-classic-rtl.css",
 		"lint:css": "wp-scripts lint-style 'style.css' 'assets/**/*.css'",
-		"lint:js": "wp-scripts lint-js 'assets/**/*.js'"
+		"lint:js": "wp-scripts lint-js 'assets/**/*.js'",
+		"lint:pkg-json": "wp-scripts lint-pkg-json"
 	}
 }
