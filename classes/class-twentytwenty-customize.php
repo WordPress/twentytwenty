@@ -223,6 +223,28 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			/* Enable Author Bio --------- */
+
+			$wp_customize->add_setting(
+				'enable_author_bio',
+				array(
+					'capability'        => 'edit_theme_options',
+					'default'           => true,
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+				)
+			);
+
+			$wp_customize->add_control(
+				'enable_author_bio',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'options',
+					'priority'    => 10,
+					'label'       => __( 'Show author bio', 'twentytwenty' ),
+					'description' => __( 'Uncheck to hide the author bio section in posts.', 'twentytwenty' ),
+				)
+			);
+
 			/* Display full content or excerpts on the blog and archives --------- */
 
 			$wp_customize->add_setting(

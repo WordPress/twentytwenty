@@ -143,7 +143,7 @@
 		// Single bottom post meta.
 		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
 
-		if ( is_single() ) {
+		if ( is_single() && get_theme_mod( 'enable_author_bio', true ) ) {
 
 			get_template_part( 'template-parts/entry-author-bio' );
 
