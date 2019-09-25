@@ -8,37 +8,87 @@
  */
 
 ( function( $, api, _ ) {
+	/**
+	 * Return a value for our partial refresh.
+	 *
+	 * @param {Object} partial  Current partial.
+	 *
+	 * @return {jQuery.Promise} Resolved promise.
+	 */
+	function returnDeferred( partial ) {
+		var deferred = new $.Deferred();
 
-	api.selectiveRefresh.partialConstructor.cover_blend_mode = api.selectiveRefresh.Partial.extend({
+		deferred.resolveWith( partial, _.map( partial.placements(), function() {
+			return '';
+		} ) );
 
-		choices: [],
+		return deferred.promise();
+	}
 
+	// Selective refresh for "Fixed Background Image"
+	api.selectiveRefresh.partialConstructor.cover_fixed = api.selectiveRefresh.Partial.extend( {
+
+		/**
+		 * Override the refresh method
+		 *
+		 * @return {jQuery.Promise} Resolved promise.
+		 */
 		refresh: function() {
-			var partial, choices, setting, params, overlay, deferred, className, classNames;
-			
+			var partial, cover, params;
+
 			partial = this;
-			choices = partial.choices;
-			params  = partial.params
+			params = partial.params;
+			cover = $( params.selector );
+
+			if ( cover.length && cover.hasClass( 'bg-image' ) ) {
+				cover.toggleClass( 'bg-attachment-fixed' );
+			}
+
+			return returnDeferred( partial );
+		},
+
+	} );
+
+	// Selective refresh for "Image Overlay Opacity"
+	api.selectiveRefresh.partialConstructor.cover_opacity = api.selectiveRefresh.Partial.extend( {
+
+		/**
+		 * Input attributes.
+		 *
+		 * @type {Object}
+		 */
+		attrs: {},
+
+		/**
+		 * Override the refresh method
+		 *
+		 * @return {jQuery.Promise} Resolved promise.
+		 */
+		refresh: function() {
+			var partial, ranges, attrs, setting, params, cover, className, classNames;
+
+			partial = this;
+			attrs = partial.attrs;
+			ranges = _.range( attrs.min, attrs.max + attrs.step, attrs.step );
+			params = partial.params;
 			setting = api( params.primarySetting );
+			cover = $( params.selector );
 
-			classNames = _.map( choices, function( name ) {
-				return 'blend-mode-' + name;
-			} );
+			if ( cover.length ) {
+				classNames = _.map( ranges, function( val ) {
+					return 'opacity-' + val;
+				} );
 
-			className = classNames[ choices.indexOf( setting.get() ) ];
+				className = classNames[ ranges.indexOf( parseInt( setting.get() ) ) ];
 
-			overlay = $( params.selector );
-			overlay.removeClass( classNames.join( ' ' ) );
-			overlay.addClass( className );
+				cover.removeClass( classNames.join( ' ' ) );
+				cover.addClass( className );
+			}
 
-			deferred = new $.Deferred();
-			deferred.resolveWith( partial, _.map( partial.placements(), function() {
-				return '';
-			} ) );
+			return returnDeferred( partial );
+		},
 
-			return deferred.promise();
-		}
-	});
+	} );
 
 	// Add listener for the "header_footer_background_color" control.
 	api( 'header_footer_background_color', function( value ) {
@@ -114,5 +164,4 @@
 		twentyTwentyGenerateColorA11yPreviewStyles( 'content' );
 		twentyTwentyGenerateColorA11yPreviewStyles( 'header-footer' );
 	} );
-	
 }( jQuery, wp.customize, _ ) );

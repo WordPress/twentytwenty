@@ -473,7 +473,24 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	}
 }
 
+
+/**
+ * Input attributes for cover overlay opacity option.
+ *
+ * @return array Array containing attribute names and their values.
+ */
 function twentytwenty_customize_opacity_range() {
+	/**
+	 * Filter the input attributes for opacity
+	 *
+	 * @param array $attrs {
+	 *     The attributes
+	 * 
+	 *     @type int $min Minimum value
+	 *     @type int $max Maximum value
+	 *     @type int $step Interval between numbers
+	 * }
+	 */
 	return apply_filters( 'twentytwenty_customize_opacity_range', array(
 		'min'  => 0,
 		'max'  => 100,
