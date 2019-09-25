@@ -345,44 +345,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					)
 				)
 			);
-
-			/* Overlay Blend Mode ------------ */
-
-			$wp_customize->add_setting(
-				'cover_template_overlay_blend_mode',
-				array(
-					'default'           => 'multiply',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
-				)
-			);
-
-			$wp_customize->add_control(
-				'cover_template_overlay_blend_mode',
-				array(
-					'label'       => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
-					'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
-					'section'     => 'cover_template_options',
-					'type'        => 'select',
-					'choices'     => array(
-						'normal'      => __( 'Normal', 'twentytwenty' ),
-						'multiply'    => __( 'Multiply', 'twentytwenty' ),
-						'screen'      => __( 'Screen', 'twentytwenty' ),
-						'overlay'     => __( 'Overlay', 'twentytwenty' ),
-						'darken'      => __( 'Darken', 'twentytwenty' ),
-						'lighten'     => __( 'Lighten', 'twentytwenty' ),
-						'color-dodge' => __( 'Color Dodge', 'twentytwenty' ),
-						'color-burn'  => __( 'Color Burn', 'twentytwenty' ),
-						'hard-light'  => __( 'Hard Light', 'twentytwenty' ),
-						'soft-light'  => __( 'Soft Light', 'twentytwenty' ),
-						'difference'  => __( 'Difference', 'twentytwenty' ),
-						'exclusion'   => __( 'Exclusion', 'twentytwenty' ),
-						'hue'         => __( 'Hue', 'twentytwenty' ),
-						'saturation'  => __( 'Saturation', 'twentytwenty' ),
-						'color'       => __( 'Color', 'twentytwenty' ),
-						'luminosity'  => __( 'Luminosity', 'twentytwenty' ),
-					),
-				)
-			);
 			
 			/* Overlay Color Opacity --------- */
 			
@@ -404,7 +366,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'input_attrs' => array(
 						'min'  => 0,
 						'max'  => 100,
-						'step' => 10,
+						'step' => 5,
 					),
 				)
 			);
