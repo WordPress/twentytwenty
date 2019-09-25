@@ -969,6 +969,17 @@ th {
 	min-height: 100vh;
 }
 
+.admin-bar .screen-height {
+	min-height: calc(100vh - 32px);
+}
+
+@media (max-width: 782px) {
+
+	.admin-bar .screen-height {
+		min-height: calc(100vh - 46px);
+	}
+}
+
 .screen-width {
 	position: relative;
 	left: calc(50% - 50vw);
