@@ -2148,6 +2148,10 @@ button.sub-menu-toggle.active svg {
 	padding: 4rem 0;
 }
 
+.menu-bottom nav {
+	width: 100%;
+}
+
 .menu-copyright {
 	display: none;
 	font-size: 1.6rem;
