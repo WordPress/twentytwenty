@@ -46,4 +46,14 @@
   	<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
   	<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
 	</rule>
+
+  <!-- Check valid textdomain. -->
+  <rule ref="WordPress.WP.I18n">
+    <properties>
+      <property name="text_domain" type="array">
+        <element value="twentytwenty"/>
+      </property>
+    </properties>
+  </rule>
+
 </ruleset>
