@@ -1709,6 +1709,7 @@ body:not(.enable-search-modal) .site-logo img {
 	align-items: center;
 	display: flex;
 	outline: none;
+	overflow: visible;
 	padding: 0 2rem;
 }
 
@@ -1725,6 +1726,10 @@ body:not(.enable-search-modal) .site-logo img {
 .toggle-inner {
 	height: 2.3rem;
 	position: relative;
+}
+
+.toggle-icon {
+	overflow: hidden;
 }
 
 .toggle-inner .toggle-text {
@@ -1755,8 +1760,10 @@ body:not(.enable-search-modal) .site-logo img {
 	top: 0;
 }
 
+.search-toggle .toggle-icon,
 .search-toggle svg {
 	height: 2.3rem;
+	max-width: 2.3rem;
 	width: 2.3rem;
 }
 
@@ -1775,8 +1782,9 @@ body:not(.enable-search-modal) .site-logo img {
 	width: 6.6rem;
 }
 
+.nav-toggle .toggle-icon,
 .nav-toggle svg {
-	height: 0.7rem;
+	height: 0.8rem;
 	width: 2.6rem;
 }
 
