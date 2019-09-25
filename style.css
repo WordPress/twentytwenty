@@ -4567,10 +4567,6 @@ a.to-the-top > * {
 		margin-right: 4rem;
 	}
 
-	.menu-bottom .social-menu {
-		justify-content: flex-end;
-	}
-
 	/* Modal Search Form ------------------------- */
 
 	.modal-search-form {
@@ -5321,6 +5317,10 @@ a.to-the-top > * {
 
 	.menu-bottom {
 		padding: 6rem 0;
+	}
+
+	.menu-bottom .social-menu {
+		justify-content: flex-start;
 	}
 
 	/* Sub Page ------------------------------ */
