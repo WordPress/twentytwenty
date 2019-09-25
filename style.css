@@ -508,21 +508,26 @@ address {
 }
 
 hr {
-	border-top: 0.1rem solid #dcd7ca;
+	border-style: solid;
+	border-width: 0.1rem 0 0 0;
+	border-color: #dcd7ca;
+	color: #dcd7ca;
 	margin: 4rem 0;
 }
 
-hr:not(.is-style-dots):not(.reset-hr) {
+.entry-content hr,
+hr.styled-separator {
 	background: linear-gradient(to left, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
 	border: none;
-	color: #dcd7ca;
 	height: 0.1rem;
 	overflow: visible;
 	position: relative;
 }
 
-hr:not(.is-style-dots):not(.reset-hr)::before,
-hr:not(.is-style-dots):not(.reset-hr)::after {
+.entry-content hr::before,
+.entry-content hr::after,
+hr.styled-separator::before,
+hr.styled-separator::after {
 	background: currentColor;
 	content: "";
 	display: block;
@@ -533,11 +538,13 @@ hr:not(.is-style-dots):not(.reset-hr)::after {
 	width: 0.1rem;
 }
 
-hr::before {
+.entry-content hr::before,
+hr.styled-separator::before {
 	left: calc(50% - 0.5rem);
 }
 
-hr::after {
+.entry-content hr::after,
+hr.styled-separator::after {
 	right: calc(50% - 0.5rem);
 }
 
@@ -969,6 +976,17 @@ th {
 	min-height: 100vh;
 }
 
+.admin-bar .screen-height {
+	min-height: calc(100vh - 32px);
+}
+
+@media (max-width: 782px) {
+
+	.admin-bar .screen-height {
+		min-height: calc(100vh - 46px);
+	}
+}
+
 .screen-width {
 	position: relative;
 	left: calc(50% - 50vw);
@@ -1121,111 +1139,76 @@ button.toggle {
 	opacity: 0;
 }
 
+.opacity-5 {
+	opacity: 0.05;
+}
+
 .opacity-10 {
 	opacity: 0.1;
+}
+
+.opacity-15 {
+	opacity: 0.15;
 }
 
 .opacity-20 {
 	opacity: 0.2;
 }
 
+.opacity-25 {
+	opacity: 0.25;
+}
+
 .opacity-30 {
 	opacity: 0.3;
+}
+
+.opacity-35 {
+	opacity: 0.35;
 }
 
 .opacity-40 {
 	opacity: 0.4;
 }
 
+.opacity-45 {
+	opacity: 0.45;
+}
+
 .opacity-50 {
 	opacity: 0.5;
+}
+
+.opacity-55 {
+	opacity: 0.55;
 }
 
 .opacity-60 {
 	opacity: 0.6;
 }
 
+.opacity-65 {
+	opacity: 0.65;
+}
+
 .opacity-70 {
 	opacity: 0.7;
+}
+
+.opacity-75 {
+	opacity: 0.75;
 }
 
 .opacity-80 {
 	opacity: 0.8;
 }
 
+.opacity-85 {
+	opacity: 0.85;
+}
+
 .opacity-90 {
 	opacity: 0.9;
-}
-
-.opacity-100 {
-	opacity: 1;
-}
-
-
-/* Blend Mode -------------------------------- */
-
-.blend-mode-normal {
-	mix-blend-mode: normal;
-}
-
-.blend-mode-multiply {
-	mix-blend-mode: multiply;
-}
-
-.blend-mode-screen {
-	mix-blend-mode: screen;
-}
-
-.blend-mode-overlay {
-	mix-blend-mode: overlay;
-}
-
-.blend-mode-darken {
-	mix-blend-mode: darken;
-}
-
-.blend-mode-lighten {
-	mix-blend-mode: lighten;
-}
-
-.blend-mode-color-dodge {
-	mix-blend-mode: color-dodge;
-}
-
-.blend-mode-color-burn {
-	mix-blend-mode: color-burn;
-}
-
-.blend-mode-hard-light {
-	mix-blend-mode: hard-light;
-}
-
-.blend-mode-soft-light {
-	mix-blend-mode: soft-light;
-}
-
-.blend-mode-difference {
-	mix-blend-mode: difference;
-}
-
-.blend-mode-exclusion {
-	mix-blend-mode: exclusion;
-}
-
-.blend-mode-hue {
-	mix-blend-mode: hue;
-}
-
-.blend-mode-saturation {
-	mix-blend-mode: saturation;
-}
-
-.blend-mode-color {
-	mix-blend-mode: color;
-}
-
-.blend-mode-luminosity {
-	mix-blend-mode: luminosity;
 }
 
 
@@ -2314,6 +2297,10 @@ button.search-untoggle {
 	width: 100%;
 }
 
+.cover-color-overlay {
+	mix-blend-mode: multiply;
+}
+
 .cover-color-overlay,
 .cover-color-overlay::before {
 	position: absolute;
@@ -3177,11 +3164,20 @@ hr.wp-block-separator {
 /* STYLE: DOTS */
 
 .wp-block-separator.is-style-dots::before {
-	color: rgba(0, 0, 0, 0.42);
+	background: none;
+	color: inherit;
 	font-size: 3.2rem;
 	font-weight: 700;
+	height: auto;
 	letter-spacing: 1em;
 	padding-left: 1em;
+	position: static;
+	transform: none;
+	width: auto;
+}
+
+.wp-block-separator.is-style-dots::after {
+	content: none;
 }
 
 
@@ -4302,11 +4298,11 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.alignleft {
+	.entry-content .alignleft {
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.alignright {
+	.entry-content .alignright {
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
@@ -5622,11 +5618,11 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.alignleft {
+	.entry-content .alignleft {
 		margin-left: -31rem;
 	}
 
-	.alignright {
+	.entry-content .alignright {
 		margin-right: -31rem;
 	}
 
