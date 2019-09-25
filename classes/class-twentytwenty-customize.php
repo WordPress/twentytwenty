@@ -353,6 +353,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'default'           => 'multiply',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'transport'         => 'postMessage',
 				)
 			);
 
@@ -363,26 +364,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
 					'type'        => 'select',
-					'choices'     => array(
-						'normal'      => __( 'Normal', 'twentytwenty' ),
-						'multiply'    => __( 'Multiply', 'twentytwenty' ),
-						'screen'      => __( 'Screen', 'twentytwenty' ),
-						'overlay'     => __( 'Overlay', 'twentytwenty' ),
-						'darken'      => __( 'Darken', 'twentytwenty' ),
-						'lighten'     => __( 'Lighten', 'twentytwenty' ),
-						'color-dodge' => __( 'Color Dodge', 'twentytwenty' ),
-						'color-burn'  => __( 'Color Burn', 'twentytwenty' ),
-						'hard-light'  => __( 'Hard Light', 'twentytwenty' ),
-						'soft-light'  => __( 'Soft Light', 'twentytwenty' ),
-						'difference'  => __( 'Difference', 'twentytwenty' ),
-						'exclusion'   => __( 'Exclusion', 'twentytwenty' ),
-						'hue'         => __( 'Hue', 'twentytwenty' ),
-						'saturation'  => __( 'Saturation', 'twentytwenty' ),
-						'color'       => __( 'Color', 'twentytwenty' ),
-						'luminosity'  => __( 'Luminosity', 'twentytwenty' ),
-					),
+					'choices'     => twentytwenty_customize_get_blend_mods(),
 				)
 			);
+
+			$wp_customize->selective_refresh->add_partial( 'cover_template_overlay_blend_mode', array(
+				'selector' => '.cover-color-overlay',
+				'type'     => 'cover_blend_mode',
+			) );
 
 			/* Overlay Color Opacity --------- */
 
@@ -510,4 +499,25 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	function twentytwenty_customize_partial_site_logo() {
 		twentytwenty_site_logo();
 	}
+}
+
+function twentytwenty_customize_get_blend_mods() {
+	return apply_filters( 'twentytwenty_customize_get_blend_mods', array(
+		'normal'      => __( 'Normal', 'twentytwenty' ),
+		'multiply'    => __( 'Multiply', 'twentytwenty' ),
+		'screen'      => __( 'Screen', 'twentytwenty' ),
+		'overlay'     => __( 'Overlay', 'twentytwenty' ),
+		'darken'      => __( 'Darken', 'twentytwenty' ),
+		'lighten'     => __( 'Lighten', 'twentytwenty' ),
+		'color-dodge' => __( 'Color Dodge', 'twentytwenty' ),
+		'color-burn'  => __( 'Color Burn', 'twentytwenty' ),
+		'hard-light'  => __( 'Hard Light', 'twentytwenty' ),
+		'soft-light'  => __( 'Soft Light', 'twentytwenty' ),
+		'difference'  => __( 'Difference', 'twentytwenty' ),
+		'exclusion'   => __( 'Exclusion', 'twentytwenty' ),
+		'hue'         => __( 'Hue', 'twentytwenty' ),
+		'saturation'  => __( 'Saturation', 'twentytwenty' ),
+		'color'       => __( 'Color', 'twentytwenty' ),
+		'luminosity'  => __( 'Luminosity', 'twentytwenty' ),
+	) );
 }

@@ -577,9 +577,18 @@ if ( ! function_exists( 'twentytwenty_customize_preview_init' ) ) {
 	function twentytwenty_customize_preview_init() {
 		$theme_version = wp_get_theme()->get( 'Version' );
 
-		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'jquery' ), $theme_version, true );
+		wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'customize-selective-refresh', 'jquery' ), $theme_version, true );
 		wp_localize_script( 'twentytwenty-customize-preview', 'backgroundColors', twentytwenty_get_customizer_color_vars() );
 		wp_localize_script( 'twentytwenty-customize-preview', 'previewElements', twentytwenty_get_elements_array() );
+
+		wp_add_inline_script(
+			'twentytwenty-customize-preview',
+			sprintf(
+				'wp.customize.selectiveRefresh.partialConstructor[ %1$s ].prototype.choices = %2$s;',
+				wp_json_encode( 'cover_blend_mode' ),
+				wp_json_encode( array_keys( twentytwenty_customize_get_blend_mods() ) )
+			)
+		);
 	}
 
 	add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );

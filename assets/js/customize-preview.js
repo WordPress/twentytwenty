@@ -7,17 +7,49 @@
  * @since 1.0.0
  */
 
-( function() {
+( function( $, api, _ ) {
+
+	api.selectiveRefresh.partialConstructor.cover_blend_mode = api.selectiveRefresh.Partial.extend({
+
+		choices: [],
+
+		refresh: function() {
+			var partial, choices, setting, params, overlay, deferred, className, classNames;
+			
+			partial = this;
+			choices = partial.choices;
+			params  = partial.params
+			setting = api( params.primarySetting );
+
+			classNames = _.map( choices, function( name ) {
+				return 'blend-mode-' + name;
+			} );
+
+			className = classNames[ choices.indexOf( setting.get() ) ];
+
+			overlay = $( params.selector );
+			overlay.removeClass( classNames.join( ' ' ) );
+			overlay.addClass( className );
+
+			deferred = new $.Deferred();
+			deferred.resolveWith( partial, _.map( partial.placements(), function() {
+				return '';
+			} ) );
+
+			return deferred.promise();
+		}
+	});
+
 	// Add listener for the "header_footer_background_color" control.
-	wp.customize( 'header_footer_background_color', function( value ) {
+	api( 'header_footer_background_color', function( value ) {
 		value.bind( function( to ) {
 			// Add background color to header and footer wrappers.
-			jQuery( '#site-header,#site-footer' ).css( 'background-color', to );
+			$( '#site-header,#site-footer' ).css( 'background-color', to );
 		} );
 	} );
 
 	// Add listener for the accent color.
-	wp.customize( 'accent_hue', function( value ) {
+	api( 'accent_hue', function( value ) {
 		value.bind( function() {
 			// Generate the styles.
 			// Add a small delay to be sure the accessible colors were generated.
@@ -31,7 +63,7 @@
 
 	// Add listeners for background-color settings.
 	Object.keys( backgroundColors ).forEach( function( context ) {
-		wp.customize( backgroundColors[ context ].setting, function( value ) {
+		api( backgroundColors[ context ].setting, function( value ) {
 			value.bind( function() {
 				// Generate the styles.
 				// Add a small delay to be sure the accessible colors were generated.
@@ -55,12 +87,12 @@
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get(),
 			stylesheedID = 'twentytwenty-customizer-styles-' + context,
-			stylesheet = jQuery( '#' + stylesheedID ),
+			stylesheet = $( '#' + stylesheedID ),
 			styles = '';
 		// If the stylesheet doesn't exist, create it and append it to <head>.
 		if ( ! stylesheet.length ) {
-			jQuery( '#twentytwenty-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
-			stylesheet = jQuery( '#' + stylesheedID );
+			$( '#twentytwenty-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
+			stylesheet = $( '#' + stylesheedID );
 		}
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
 			// Check if we have elements defined.
@@ -78,8 +110,9 @@
 		stylesheet.html( styles );
 	}
 	// Generate styles on load. Handles page-changes on the preview pane.
-	jQuery( document ).ready( function() {
+	$( document ).ready( function() {
 		twentyTwentyGenerateColorA11yPreviewStyles( 'content' );
 		twentyTwentyGenerateColorA11yPreviewStyles( 'header-footer' );
 	} );
-}() );
+	
+}( jQuery, wp.customize, _ ) );
