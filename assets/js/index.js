@@ -142,7 +142,7 @@ twentytwenty.coverModals = {
 				position: 'fixed',
 				width: '100%',
 				top: getAdminBarHeight( true ),
-				left: 0,
+				left: 0
 			};
 		}
 
@@ -153,7 +153,7 @@ twentytwenty.coverModals = {
 					return;
 				}
 
-				window.scrollTo( { top: 0, } );
+				window.scrollTo( { top: 0 } );
 
 				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
@@ -205,7 +205,7 @@ twentytwenty.coverModals = {
 		} else {
 			modal.classList.remove( 'active' );
 		}
-	},
+	}
 
 }; // twentytwenty.coverModals
 
@@ -249,7 +249,7 @@ twentytwenty.intrinsicRatioVideos = {
 			video.style.width = iTargetWidth + 'px';
 			video.style.height = ( video.dataset.origheight * ratio ) + 'px';
 		} );
-	},
+	}
 
 }; // twentytwenty.instrinsicRatioVideos
 
@@ -342,7 +342,7 @@ twentytwenty.smoothScroll = {
 				}
 			} );
 		}
-	},
+	}
 
 }; // twentytwenty.smoothScroll
 
@@ -368,7 +368,7 @@ twentytwenty.modalMenu = {
 				}
 			} );
 		}
-	},
+	}
 }; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
@@ -529,7 +529,7 @@ twentytwenty.toggles = {
 				} );
 			}
 		} );
-	},
+	}
 
 }; // twentytwenty.toggles
 
