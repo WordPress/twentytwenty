@@ -2297,10 +2297,6 @@ button.search-untoggle {
 	width: 100%;
 }
 
-.cover-color-overlay {
-	mix-blend-mode: multiply;
-}
-
 .cover-color-overlay,
 .cover-color-overlay::before {
 	position: absolute;
