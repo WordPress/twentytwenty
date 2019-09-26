@@ -200,23 +200,12 @@ function twentytwenty_register_styles() {
 	// Add output of Customizer settings as inline style.
 	wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
 
-}
-
-add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
-
-/**
- * Register and Enqueue Print Styles.
- */
-function twentytwenty_register_print_style() {
-
-	$theme_version = wp_get_theme()->get( 'Version' );
-
 	// Add print CSS.
 	wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
 
 }
 
-add_action( 'wp_footer', 'twentytwenty_register_print_style' );
+add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 
 /**
  * Register and Enqueue Scripts.
