@@ -197,7 +197,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'title'       => __( 'Theme Options', 'twentytwenty' ),
 					'priority'    => 40,
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for this theme.', 'twentytwenty' ),
+					'description' => __( 'Specific settings for the Twenty Twenty theme.', 'twentytwenty' ),
 				)
 			);
 
@@ -219,7 +219,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'section'     => 'options',
 					'priority'    => 10,
 					'label'       => __( 'Show search in header', 'twentytwenty' ),
-					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
 				)
 			);
 
@@ -241,7 +240,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'section'     => 'options',
 					'priority'    => 10,
 					'label'       => __( 'On archive pages, posts show:', 'twentytwenty' ),
-					'description' => __( 'Search results always show the summary.', 'twentytwenty' ),
 					'choices'     => array(
 						'full'    => __( 'Full text', 'twentytwenty' ),
 						'summary' => __( 'Summary', 'twentytwenty' ),
