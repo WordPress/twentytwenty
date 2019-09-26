@@ -216,6 +216,7 @@ path {
 	left: -9999rem;
 	top: 2.5rem;
 	z-index: 999999999;
+	text-decoration: underline;
 }
 
 .skip-link:focus {
@@ -558,6 +559,11 @@ hr.styled-separator::after {
 a {
 	color: #cd2653;
 	text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
 }
 
 
@@ -1879,6 +1885,13 @@ ul.primary-menu {
 	text-decoration: underline;
 }
 
+.primary-menu li.current-menu-item > a:hover,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:hover,
+.primary-menu li.current-menu-item > a:focus,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:focus {
+	text-decoration: none;
+}
+
 /* SUB MENU */
 
 .primary-menu ul {
@@ -2455,6 +2468,11 @@ body:not(.singular) main article:first-of-type {
 	text-transform: uppercase;
 }
 
+.entry-categories a:hover,
+.entry-categories a:focus {
+	text-decoration: underline;
+}
+
 h1.entry-title,
 h2.entry-title {
 	margin: 0;
@@ -2465,7 +2483,8 @@ h2.entry-title {
 	text-decoration: none;
 }
 
-.entry-title a:hover {
+.entry-title a:hover,
+.entry-title a:focus {
 	text-decoration: underline;
 }
 
@@ -2683,7 +2702,8 @@ h2.entry-title {
 	text-decoration: none;
 }
 
-.author-bio .author-link:hover {
+.author-bio .author-link:hover,
+.author-bio .author-link:focus {
 	text-decoration: underline;
 }
 
@@ -2714,6 +2734,11 @@ h2.entry-title {
 	font-weight: 600;
 	letter-spacing: -0.0275em;
 	text-decoration: none;
+}
+
+.pagination-single a:hover,
+.pagination-single a:focus {
+	text-decoration: underline;
 }
 
 .pagination-single a + a {
@@ -2914,6 +2939,17 @@ h2.entry-title {
 	text-decoration: none;
 }
 
+.wp-block-archives a:hover,
+.wp-block-categories a:hover,
+.wp-block-latest-posts a:hover,
+.wp-block-latest-comments a:hover,
+.wp-block-archives a:focus,
+.wp-block-categories a:focus,
+.wp-block-latest-posts a:focus,
+.wp-block-latest-comments a:focus {
+	text-decoration: underline;
+}
+
 .wp-block-latest-posts a,
 .wp-block-latest-comments__comment-meta {
 	font-weight: 700;
@@ -2983,7 +3019,8 @@ h2.entry-title {
 	margin-right: 1rem;
 }
 
-.wp-block-file a:not(.wp-block-file__button):hover {
+.wp-block-file a:not(.wp-block-file__button):hover,
+.wp-block-file a:not(.wp-block-file__button):focus {
 	text-decoration: underline;
 }
 
@@ -3272,6 +3309,11 @@ hr.wp-block-separator {
 	text-decoration: none;
 }
 
+.entry-content .wp-block-latest-comments a:hover,
+.entry-content .wp-block-latest-comments a:focus {
+		text-decoration: underline;
+}
+
 .wp-block-latest-comments__comment {
 	font-size: inherit;
 }
@@ -3335,7 +3377,8 @@ hr.wp-block-separator {
 	margin-bottom: 0;
 }
 
-.entry-content a:hover {
+.entry-content a:hover,
+.entry-content a:focus {
 	text-decoration: underline;
 }
 
@@ -3530,6 +3573,11 @@ div.comment:first-of-type {
 	text-decoration: underline;
 }
 
+.comment-author a:hover,
+.comment-author a:focus {
+	text-decoration: none;
+}
+
 .comment-meta .avatar {
 	height: 4rem;
 	position: absolute;
@@ -3553,7 +3601,8 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
-.comment-metadata a:hover {
+.comment-metadata a:hover,
+.comment-metadata a:focus {
 	text-decoration: underline;
 }
 
@@ -3655,7 +3704,8 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
-.comment-footer-meta a:hover {
+.comment-footer-meta a:hover,
+.comment-footer-meta a:focus {
 	text-decoration: underline;
 }
 
@@ -3687,7 +3737,8 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
-.comments-pagination .page-numbers:hover {
+.comments-pagination .page-numbers:hover,
+.comments-pagination .page-numbers:focus {
 	text-decoration: underline;
 }
 
@@ -3730,7 +3781,9 @@ div.comment:first-of-type {
 }
 
 .comment-respond .comment-notes a:hover,
-.comment-respond .logged-in-as a:hover {
+.comment-respond .logged-in-as a:hover,
+.comment-respond .comment-notes a:focus,
+.comment-respond .logged-in-as a:focus {
 	text-decoration: underline;
 }
 
@@ -3807,7 +3860,8 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
-.comment-reply-title small a:hover {
+.comment-reply-title small a:hover,
+.comment-reply-title small a:focus {
 	text-decoration: underline;
 }
 
