@@ -351,9 +351,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					)
 				)
 			);
-			
+
 			/* Overlay Color Opacity --------- */
-			
+
 			$wp_customize->add_setting(
 				'cover_template_overlay_opacity',
 				array(
@@ -410,6 +410,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 * and abstracted to this function.
 		 */
 		public static function get_color_options() {
+			/**
+			* Filters color options in array.
+			*
+			* @since 1.0.0
+			*
+			* @param string array
+			*/
 			return apply_filters( 'twentytwenty_accent_color_options', array() );
 		}
 
@@ -485,7 +492,7 @@ function twentytwenty_customize_opacity_range() {
 	 *
 	 * @param array $attrs {
 	 *     The attributes
-	 * 
+	 *
 	 *     @type int $min Minimum value
 	 *     @type int $max Maximum value
 	 *     @type int $step Interval between numbers
