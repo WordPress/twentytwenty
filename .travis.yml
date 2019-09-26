@@ -28,7 +28,13 @@ allow_failures:
   - php: "7.4snapshot"
 
 before_install:
-    - composer install
+  # Speed up build time by disabling Xdebug.
+  # @link https://johnblackbourn.com/reducing-travis-ci-build-times-for-wordpress-projects/
+  # @link https://twitter.com/kelunik/status/954242454676475904
+  - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
+
+  - composer install
+  - npm install
 
 script:
   # Validate the composer.json file.
@@ -40,3 +46,12 @@ script:
 
   # Check the code against the standards as documented in the phpcs.xml.dist file.
   - if [[ "$PHPCS" == 1 ]]; then composer checkcs; fi
+
+  # Run the theme through lint:js checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:js; fi
+
+  # Run the theme through lint:css checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:css; fi
+
+  # Run the theme through lint:pkg-json checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:pkg-json; fi

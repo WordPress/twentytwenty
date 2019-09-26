@@ -13,7 +13,7 @@
 
 ?>
 
-		<footer id="site-footer" role="contentinfo">
+		<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
 			<div class="footer-inner section-inner">
 
@@ -27,31 +27,34 @@
 				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
 				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
 
-				if ( $has_footer_menu ) {
+				$footer_social_wrapper_class = $has_footer_menu ? 'footer-social-wrapper' : '';
+
+				if ( $has_footer_menu || $has_social_menu ) {
 					?>
-
 					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
+						<?php if ( $has_footer_menu ) { ?>
 
-						<nav aria-label="<?php esc_attr_e( 'Footer menu', 'twentytwenty' ); ?>">
+							<nav aria-label="<?php esc_attr_e( 'Footer menu', 'twentytwenty' ); ?>">
 
-							<ul class="footer-menu reset-list-style">
-								<?php
-								wp_nav_menu(
-									array(
-										'container'      => '',
-										'depth'          => 1,
-										'items_wrap'     => '%3$s',
-										'theme_location' => 'footer',
-									)
-								);
-								?>
-							</ul>
+								<ul class="footer-menu reset-list-style">
+									<?php
+									wp_nav_menu(
+										array(
+											'container'  => '',
+											'depth'      => 1,
+											'items_wrap' => '%3$s',
+											'theme_location' => 'footer',
+										)
+									);
+									?>
+								</ul>
 
-						</nav><!-- .site-nav -->
+							</nav><!-- .site-nav -->
 
+						<?php } ?>
 						<?php if ( $has_social_menu ) { ?>
 
-							<div class="footer-social-wrapper">
+							<div class="<?php esc_attr( $footer_social_wrapper_class ); ?>">
 
 								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
@@ -81,29 +84,29 @@
 							</div><!-- .footer-social-wrapper -->
 
 						<?php } ?>
-
 					</div><!-- .footer-top -->
 
 				<?php } ?>
 
-				<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) { ?>
+
+				<?php if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) { ?>
 
 					<div class="footer-widgets-outer-wrapper">
 
 						<div class="footer-widgets-wrapper">
 
-							<?php if ( is_active_sidebar( 'footer-one' ) ) { ?>
+							<?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
 
 								<div class="footer-widgets column-one grid-item">
-									<?php dynamic_sidebar( 'footer-one' ); ?>
+									<?php dynamic_sidebar( 'sidebar-1' ); ?>
 								</div>
 
 							<?php } ?>
 
-							<?php if ( is_active_sidebar( 'footer-two' ) ) { ?>
+							<?php if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
 
 								<div class="footer-widgets column-two grid-item">
-									<?php dynamic_sidebar( 'footer-two' ); ?>
+									<?php dynamic_sidebar( 'sidebar-2' ); ?>
 								</div>
 
 							<?php } ?>
@@ -118,23 +121,24 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">&copy; 
-							<?php 
-							echo esc_html( 
-								date_i18n( 
+						<p class="footer-copyright">&copy;
+							<?php
+							echo esc_html(
+								date_i18n(
 									/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
-									_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' ) 
-								) 
-							); 
+									_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' )
+								)
+							);
 							?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></a>
 						</p>
 
 						<p class="powered-by-wordpress">
-							<?php
-							/* Translators: %s = Link to WordPress.org */
-							printf( esc_html_x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . esc_html__( 'WordPress', 'twentytwenty' ) . '</a>' );
-							?>
+							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
+								<?php
+								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
+								?>
+							</a>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
