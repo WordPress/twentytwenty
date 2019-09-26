@@ -123,7 +123,7 @@ function twentytwenty_theme_support() {
 
 	// Adds starter content to highlight the theme on fresh sites.
 	add_theme_support( 'starter-content', twentytwenty_get_starter_content() );
-	
+
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -177,7 +177,16 @@ function twentytwenty_register_styles() {
 	$theme_version    = wp_get_theme()->get( 'Version' );
 	$css_dependencies = array();
 
-	// By default, only load the Font Awesome fonts if the social menu is in use.
+	/**
+	* Filter to load, unload Font Awesome CSS
+	*
+	* By default, only load the Font Awesome fonts if the social menu is in use or
+	* using filter Font Awesome css be loaded
+	*
+	* @since 1.0.0
+	*
+	* @param bool Whether to load font awesome, Default false.
+	*/
 	$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social' ) );
 
 	if ( $load_font_awesome ) {
@@ -672,5 +681,12 @@ function twentytwenty_get_elements_array() {
 		),
 	);
 
+	/**
+	* Filters Twenty Twenty theme elements
+	*
+	* @since 1.0.0
+	*
+	* @param array Array of elements
+	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
