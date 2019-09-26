@@ -3564,6 +3564,13 @@ div.comment:first-of-type {
 	font-size: 2rem;
 }
 
+@media ( min-width: 700px ) {
+
+    .comment-content {
+        font-size: 2rem;
+    }
+}
+
 .comment-content > *:first-child {
 	margin-top: 0;
 }
