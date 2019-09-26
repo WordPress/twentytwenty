@@ -2,7 +2,7 @@
 /**
  * The searchform.php template.
  *
- * Used any time that get_serach_form() is called.
+ * Used any time that get_search_form() is called.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

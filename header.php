@@ -31,7 +31,7 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header">
+		<header id="site-header" class="header-footer-group">
 
 			<div class="header-inner section-inner">
 
@@ -48,7 +48,9 @@
 
 						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
 							<div class="toggle-inner">
-								<?php twentytwenty_the_theme_svg( 'search' ); ?>
+								<div class="toggle-icon">
+									<?php twentytwenty_the_theme_svg( 'search' ); ?>
+								</div>
 								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 							</div>
 						</button><!-- .search-toggle -->
@@ -69,7 +71,9 @@
 
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 						<div class="toggle-inner">
-							<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+							<div class="toggle-icon">
+								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+							</div>
 							<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 						</div>
 					</button><!-- .nav-toggle -->
@@ -86,7 +90,7 @@
 
 							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
 
-								<ul class="primary-menu color-accent reset-list-style">
+								<ul class="primary-menu reset-list-style">
 
 								<?php
 								if ( has_nav_menu( 'primary' ) ) {
@@ -145,7 +149,9 @@
 							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 								<div class="toggle-inner">
 									<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-									<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+									<div class="toggle-icon">
+										<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
+									</div>
 								</div>
 							</button><!-- .nav-toggle -->
 
