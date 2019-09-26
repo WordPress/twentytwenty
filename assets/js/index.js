@@ -53,6 +53,24 @@ twentytwenty.createEvent = function( eventName ) {
 	return event;
 };
 
+// matches "polyfill"
+// https://developer.mozilla.org/es/docs/Web/API/Element/matches
+
+if ( ! Element.prototype.matches ) {
+	Element.prototype.matches =
+		Element.prototype.matchesSelector ||
+		Element.prototype.mozMatchesSelector ||
+		Element.prototype.msMatchesSelector ||
+		Element.prototype.oMatchesSelector ||
+		Element.prototype.webkitMatchesSelector ||
+		function( s ) {
+			var matches = ( this.document || this.ownerDocument ).querySelectorAll( s ),
+				i = matches.length;
+			while ( --i >= 0 && matches.item( i ) !== this ) {}
+			return i > -1;
+		};
+}
+
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals
 --------------------------------------------------------------------------------------------------- */
@@ -410,17 +428,17 @@ twentytwenty.modalMenu = {
 	// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			var menuLinks = document.querySelectorAll( '.menu-modal .expanded-menu li' ),
-				socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' ),
-				closeButton = document.querySelector( '.toggle.close-nav-toggle' ),
-				hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0,
-				lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks,
-				focusedElementParentLi = twentytwentyFindParents( event.target, 'li' ),
-				focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0,
-				isFirstModalItem = focusedElementIsInsideModal && event.target === closeButton,
-				isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ? // Prevent from cannot read classname of undefined
-					focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length - 1].className :
-					undefined;
+			var menuLinks = document.querySelectorAll( '.menu-modal .expanded-menu li' );
+			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' );
+			var	closeButton = document.querySelector( '.toggle.close-nav-toggle' );
+			var	hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
+			var	lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
+			var	focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
+			var	focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
+			var	isFirstModalItem = focusedElementIsInsideModal && event.target === closeButton;
+			var	isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ? // Prevent from cannot read classname of undefined
+				focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length - 1].className :
+				undefined;
 			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) { // Forward
 				event.preventDefault();
 				closeButton.focus();
