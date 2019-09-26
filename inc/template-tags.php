@@ -96,6 +96,8 @@ function twentytwenty_site_description( $echo = true ) {
 	/**
 	 * Filters the html for the site description.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param string $html         The HTML to display.
 	 * @param string $description  Site description via `bloginfo()`.
 	 * @param string $wrapper      The format used in case you want to reuse it in a `sprintf()`.
@@ -181,8 +183,17 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 	$page_template = get_page_template_slug( $post_id );
 
-	// Check whether the post type is allowed to output post meta.
+	/**
+	 * Filters post types array
+	 *
+	 * This filter can be used to hide post meta information of post, page or custom post type registerd by child themes or plugins
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array Array of post types
+	 */
 	$disallowed_post_types = apply_filters( 'twentytwenty_disallowed_post_types_for_meta_output', array( 'page' ) );
+	// Check whether the post type is allowed to output post meta.
 	if ( in_array( get_post_type( $post_id ), $disallowed_post_types, true ) ) {
 		return;
 	}
@@ -192,7 +203,20 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 	// Get the post meta settings for the location specified.
 	if ( 'single-top' === $location ) {
-
+		/**
+		* Filters post meta info visibility
+		*
+		* Use this filter to hide post meta information like Author, Post date, Comments, Is stiky status
+		*
+		* @since 1.0.0
+		*
+		* @param array $args {
+		*  @type string 'author'
+		*  @type string 'post-date'
+		*  @type string 'comments'
+		*  @type string  'sticky'
+		* }
+		*/
 		$post_meta                 = apply_filters(
 			'twentytwenty_post_meta_location_single_top',
 			array(
@@ -206,6 +230,17 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 	} elseif ( 'single-bottom' === $location ) {
 
+		/**
+		* Filters post tags visibility
+		*
+		* Use this filter to hide post tags
+		*
+		* @since 1.0.0
+		*
+		* @param array $args {
+		*   @type string 'tags'
+		* }
+		*/
 		$post_meta                 = apply_filters(
 			'twentytwenty_post_meta_location_single_bottom',
 			array(
@@ -236,8 +271,16 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 				<?php
 
-				// Allow output of additional meta items to be added by child themes and plugins.
-				do_action( 'twentytwenty_start_of_post_meta_list', $post_meta, $post_id );
+				/**
+				 * Fires before post meta html display.
+				 *
+				 * Allow output of additional post meta info to be added by child themes and plugins.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param int   $post_ID Post ID.
+				 */
+				do_action( 'twentytwenty_start_of_post_meta_list', $post_id );
 
 				// Author.
 				if ( in_array( 'author', $post_meta, true ) ) {
@@ -353,8 +396,16 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 				}
 
-				// Allow output of additional post meta types to be added by child themes and plugins.
-				do_action( 'twentytwenty_end_of_post_meta_list', $post_meta, $post_id );
+				/**
+				 * Fires after post meta html display.
+				 *
+				 * Allow output of additional post meta info to be added by child themes and plugins.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param int   $post_ID Post ID.
+				 */
+				do_action( 'twentytwenty_end_of_post_meta_list', $post_id );
 
 				?>
 
@@ -485,7 +536,8 @@ add_action( 'wp_head', 'twentytwenty_no_js_class' );
  */
 function twentytwenty_get_the_archive_title( $title ) {
 
-	$regex = apply_filters( 'twentytwenty_get_the_archive_title_regex',
+	$regex = apply_filters(
+		'twentytwenty_get_the_archive_title_regex',
 		array(
 			'pattern'     => '/(\A[^\:]+\:)/',
 			'replacement' => '<span class="color-accent">$1</span>',
