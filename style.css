@@ -2399,6 +2399,14 @@ body.template-full-width .entry-content p {
 	max-width: none;
 }
 
+body.template-full-width .entry-content .alignleft {
+    margin-left: 0;
+}
+
+body.template-full-width .entry-content .alignright {
+    margin-right: 0;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	8. Post: Archive
