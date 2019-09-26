@@ -3311,7 +3311,7 @@ hr.wp-block-separator {
 
 .entry-content .wp-block-latest-comments a:hover,
 .entry-content .wp-block-latest-comments a:focus {
-		text-decoration: underline;
+	text-decoration: underline;
 }
 
 .wp-block-latest-comments__comment {
