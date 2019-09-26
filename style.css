@@ -1596,21 +1596,6 @@ ul.social-icons li {
 	z-index: 100;
 }
 
-/* Overlay Header ---------------------------- */
-
-.overlay-header #site-header {
-	background: transparent;
-	z-index: 100;
-}
-
-.overlay-header:not(.showing-menu-modal) .header-inner {
-	color: #fff;
-}
-
-.overlay-header .header-inner * {
-	color: inherit;
-}
-
 /* Header Titles ----------------------------- */
 
 .header-titles-wrapper {
@@ -1685,6 +1670,7 @@ body:not(.enable-search-modal) .site-logo img {
 	left: 0;
 	right: 0;
 	top: 0;
+	z-index: 100;
 }
 
 .overlay-header .header-inner * {
@@ -5148,7 +5134,7 @@ a.to-the-top > * {
 	.overlay-header #site-header {
 		z-index: 2;
 	}
-	
+
 	.header-inner {
 		align-items: center;
 		display: flex;
