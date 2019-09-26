@@ -3559,11 +3559,6 @@ div.comment:first-of-type {
 
 
 /* COMMENT CONTENT */
-
-.comment-content {
-	font-size: 2rem;
-}
-
 .comment-content > *:first-child {
 	margin-top: 0;
 }
@@ -4924,6 +4919,10 @@ a.to-the-top > * {
 	.comments .trackback,
 	.comments .review {
 		padding-top: 5rem;
+	}
+
+	.comment-content {
+		font-size: 2.1rem;
 	}
 
 	div.comment:first-of-type {
