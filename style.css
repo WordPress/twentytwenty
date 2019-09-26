@@ -813,6 +813,7 @@ textarea {
 	border-color: #dcd7ca;
 }
 
+code,
 input[type="url"],
 input[type="email"],
 input[type="tel"] {
