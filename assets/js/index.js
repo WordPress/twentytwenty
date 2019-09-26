@@ -160,7 +160,7 @@ twentytwenty.coverModals = {
 				position: 'fixed',
 				width: '100%',
 				top: getAdminBarHeight( true ),
-				left: 0,
+				left: 0
 			};
 		}
 
@@ -223,41 +223,9 @@ twentytwenty.coverModals = {
 		} else {
 			modal.classList.remove( 'active' );
 		}
-	},
+	}
 
 }; // twentytwenty.coverModals
-
-/*	-----------------------------------------------------------------------------------------------
-	Focus Management
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.focusManagement = {
-
-	init: function() {
-		// If the visitor tabs out of the main menu, return focus to the navigation toggle
-		// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
-		this.focusLoop();
-	},
-
-	focusLoop: function() {
-		document.addEventListener( 'focusin', function( event ) {
-			var element = event.target;
-			var menuModal = document.querySelector( '.menu-modal' );
-			var headerToggles = document.querySelector( '.header-toggles' );
-			var searchModal = document.querySelector( '.search-modal' );
-			if ( menuModal && menuModal.classList.contains( '.active' ) ) {
-				if ( ! menuModal.contains( element ) && headerToggles && ! headerToggles.contains( element ) ) {
-					document.querySelector( '.close-nav-toggle' ).focus();
-				}
-			} else if ( searchModal && ! searchModal.classList.contains( '.active' ) ) {
-				if ( ! searchModal.contains( element ) ) {
-					searchModal.querySelector( '.search-field' ).focus();
-				}
-			}
-		} );
-	},
-
-}; // twentytwenty.focusManagement
 
 /*	-----------------------------------------------------------------------------------------------
 	Intrinsic Ratio Embeds
@@ -267,10 +235,6 @@ twentytwenty.intrinsicRatioVideos = {
 
 	init: function() {
 		this.makeFit();
-
-		window.addEventListener( 'fit-videos', function() {
-			this.makeFit();
-		}.bind( this ) );
 
 		window.addEventListener( 'resize', function() {
 			this.makeFit();
@@ -303,7 +267,7 @@ twentytwenty.intrinsicRatioVideos = {
 			video.style.width = iTargetWidth + 'px';
 			video.style.height = ( video.dataset.origheight * ratio ) + 'px';
 		} );
-	},
+	}
 
 }; // twentytwenty.instrinsicRatioVideos
 
@@ -396,7 +360,7 @@ twentytwenty.smoothScroll = {
 				}
 			} );
 		}
-	},
+	}
 
 }; // twentytwenty.smoothScroll
 
@@ -609,7 +573,7 @@ twentytwenty.toggles = {
 				} );
 			}
 		} );
-	},
+	}
 
 }; // twentytwenty.toggles
 
@@ -638,7 +602,6 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
-	twentytwenty.focusManagement.init();	// Focus Management
 } );
 
 /*	-----------------------------------------------------------------------------------------------
