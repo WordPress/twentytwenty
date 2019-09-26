@@ -3559,11 +3559,6 @@ div.comment:first-of-type {
 
 
 /* COMMENT CONTENT */
-
-.comment-content {
-	font-size: 2rem;
-}
-
 @media ( min-width: 700px ) {
 
     .comment-content {
