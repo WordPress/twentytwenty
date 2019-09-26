@@ -2400,11 +2400,11 @@ body.template-full-width .entry-content p {
 }
 
 body.template-full-width .entry-content .alignleft {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 body.template-full-width .entry-content .alignright {
-    margin-right: 0;
+	margin-right: 0;
 }
 
 /* -------------------------------------------------------------------------- */
