@@ -2134,6 +2134,72 @@ button.sub-menu-toggle.active svg {
 	font-weight: 500;
 }
 
+/* Main menu animation ----------------------- */
+
+.modal-menu .menu-item {
+	position: relative;
+}
+
+.modal-menu .active {
+	display: block;
+}
+
+.modal-menu.is-toggling {
+	pointer-events: none;
+}
+
+.modal-menu.is-toggling .menu-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.modal-menu.is-animating .menu-item,
+.modal-menu.is-animating .toggling-target {
+	transition-duration: 250ms;
+}
+
+.modal-menu.is-animating .menu-item {
+	transition-property: transform;
+}
+
+.modal-menu.is-toggling .toggling-target {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 1;
+}
+
+.modal-menu.is-toggling .toggling-target.active {
+	opacity: 0;
+}
+
+.modal-menu.is-animating.is-toggling .toggling-target {
+	display: block;
+	transition-property: opacity;
+	opacity: 0;
+}
+
+.modal-menu.is-animating.is-toggling .toggling-target.active {
+	opacity: 1;
+}
+
+.modal-menu.is-toggling > li:last-child li {
+	border-top-color: transparent;
+	border-bottom-width: 0.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.modal-menu.is-animating .menu-item,
+	.modal-menu.is-animating .toggling-target {
+		transition-duration: 1ms !important;
+	}
+
+}
+
 
 /* Expanded Menu ----------------------------- */
 
