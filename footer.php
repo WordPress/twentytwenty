@@ -134,10 +134,11 @@
 						</p>
 
 						<p class="powered-by-wordpress">
-							<?php
-							/* Translators: %s = Link to WordPress.org */
-							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . __( 'WordPress', 'twentytwenty' ) . '</a>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
-							?>
+							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
+								<?php
+								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
+								?>
+							</a>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
