@@ -89,24 +89,24 @@
 				<?php } ?>
 
 
-				<?php if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) ) { ?>
+				<?php if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) { ?>
 
 					<div class="footer-widgets-outer-wrapper">
 
 						<div class="footer-widgets-wrapper">
 
-							<?php if ( is_active_sidebar( 'footer-one' ) ) { ?>
+							<?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
 
-								<div class="footer-widgets column-one grid-item" aria-label="<?php esc_attr_e( 'Footer #1', 'twentytwenty' ); ?>">
-									<?php dynamic_sidebar( 'footer-one' ); ?>
+								<div class="footer-widgets column-one grid-item">
+									<?php dynamic_sidebar( 'sidebar-1' ); ?>
 								</div>
 
 							<?php } ?>
 
-							<?php if ( is_active_sidebar( 'footer-two' ) ) { ?>
+							<?php if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
 
-								<div class="footer-widgets column-two grid-item" aria-label="<?php esc_attr_e( 'Footer #2', 'twentytwenty' ); ?>">
-									<?php dynamic_sidebar( 'footer-two' ); ?>
+								<div class="footer-widgets column-two grid-item">
+									<?php dynamic_sidebar( 'sidebar-2' ); ?>
 								</div>
 
 							<?php } ?>
@@ -134,10 +134,11 @@
 						</p>
 
 						<p class="powered-by-wordpress">
-							<?php
-							/* Translators: %s = Link to WordPress.org */
-							printf( _x( 'Powered by %s', 'Translators: %s = Link to WordPress.org', 'twentytwenty' ), '<a href="https://wordpress.org">' . __( 'WordPress', 'twentytwenty' ) . '</a>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
-							?>
+							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
+								<?php
+								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
+								?>
+							</a>
 						</p><!-- .theme-credits -->
 
 					</div><!-- .footer-credits -->
