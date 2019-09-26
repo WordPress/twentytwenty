@@ -3561,9 +3561,9 @@ div.comment:first-of-type {
 /* COMMENT CONTENT */
 @media ( min-width: 700px ) {
 
-    .comment-content {
-        font-size: 2rem;
-    }
+	.comment-content {
+		font-size: 2rem;
+	}
 }
 
 .comment-content > *:first-child {
