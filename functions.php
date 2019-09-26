@@ -325,7 +325,7 @@ function twentytwenty_sidebar_registration() {
 			$shared_args,
 			array(
 				'name'        => __( 'Footer #1', 'twentytwenty' ),
-				'id'          => 'footer-one',
+				'id'          => 'sidebar-1',
 				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
 			)
 		)
@@ -337,7 +337,7 @@ function twentytwenty_sidebar_registration() {
 			$shared_args,
 			array(
 				'name'        => __( 'Footer #2', 'twentytwenty' ),
-				'id'          => 'footer-two',
+				'id'          => 'sidebar-2',
 				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
 			)
 		)
