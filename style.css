@@ -2390,6 +2390,18 @@ body.template-cover .entry-header {
 /*	7c. Template: Full Width
 /* -------------------------------------------------------------------------- */
 
+body.template-full-width .entry-content,
+body.template-full-width .entry-content p {
+	max-width: none;
+}
+
+body.template-full-width .entry-content .alignleft {
+	margin-left: 0;
+}
+
+body.template-full-width .entry-content .alignright {
+	margin-right: 0;
+}
 
 /* -------------------------------------------------------------------------- */
 
