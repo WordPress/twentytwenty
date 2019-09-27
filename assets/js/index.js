@@ -392,24 +392,39 @@ twentytwenty.modalMenu = {
 	// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			var menuLinks = document.querySelectorAll( '.menu-modal .expanded-menu li' );
+			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
+			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
+			var isMobileMenu = window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none';
+			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
+
+			var menuLinks = isMobileMenu ?
+				document.querySelectorAll( '.menu-modal .mobile-menu li' ) :
+				document.querySelectorAll( '.menu-modal .expanded-menu li' );
+
 			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' );
-			var	closeButton = document.querySelector( '.toggle.close-nav-toggle' );
-			var	hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
-			var	lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
-			var	focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
-			var	focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
-			var	isFirstModalItem = focusedElementIsInsideModal && event.target === closeButton;
-			var	isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ? // Prevent from cannot read classname of undefined
-				focusedElementParentLi[0].className === lastModalMenuItems[lastModalMenuItems.length - 1].className :
+			var hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
+			var lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
+			var focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
+			var focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
+			var lastMenuItem = lastModalMenuItems[lastModalMenuItems.length - 1];
+
+			var isFirstModalItem = isMobileMenu ?
+				event.target === mobileMenuButton :
+				focusedElementIsInsideModal && event.target === desktopMenuButton;
+
+			var isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ?
+				focusedElementParentLi[0].className === lastMenuItem.className :
 				undefined;
-			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) { // Forward
+
+			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) {
+				// Forward
 				event.preventDefault();
-				closeButton.focus();
+				firstMenuItem.focus();
 			}
-			if ( event.shiftKey && event.key === 'Tab' && isFirstModalItem ) { // Backward
+			if ( event.shiftKey && event.key === 'Tab' && isFirstModalItem ) {
+				// Backward
 				event.preventDefault();
-				lastModalMenuItems[lastModalMenuItems.length - 1].querySelector( 'a' ).focus();
+				lastMenuItem.querySelector( 'a' ).focus();
 			}
 		} );
 	}
