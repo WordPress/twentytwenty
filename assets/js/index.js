@@ -412,7 +412,7 @@ twentytwenty.modalMenu = {
 				lastModalMenuItems[lastModalMenuItems.length - 1].querySelector( 'a' ).focus();
 			}
 		} );
-	},
+	}
 }; // twentytwenty.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
