@@ -594,7 +594,7 @@ ol ol ol {
 
 li {
 	line-height: 1.5;
-	margin: 1rem 0;
+	margin: 0 0 2rem;
 }
 
 li > ul,
@@ -3382,10 +3382,6 @@ hr.wp-block-separator {
 
 .entry-content hr {
 	margin: 4rem 0;
-}
-
-.woocommerce-js .entry-content li {
-	margin: 0 0 3rem;
 }
 
 /* Font Families ----------------------------- */
