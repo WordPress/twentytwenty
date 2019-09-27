@@ -361,6 +361,8 @@ function twentytwenty_block_editor_styles() {
 	// Add inline style from the Customizer.
 	wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
+	// Enqueue the editor script.
+	wp_enqueue_script( 'twentytwenty-block-editor-script', get_theme_file_uri( '/assets/js/editor-script-block.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
