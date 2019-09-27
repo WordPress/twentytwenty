@@ -6,10 +6,6 @@ var twentytwenty = twentytwenty || {};
 
 // polyfill closest
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
-if ( ! Element.prototype.matches ) {
-	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-}
-
 if ( ! Element.prototype.closest ) {
 	Element.prototype.closest = function( s ) {
 		var el = this;
@@ -52,6 +48,24 @@ twentytwenty.createEvent = function( eventName ) {
 	}
 	return event;
 };
+
+// matches "polyfill"
+// https://developer.mozilla.org/es/docs/Web/API/Element/matches
+
+if ( ! Element.prototype.matches ) {
+	Element.prototype.matches =
+		Element.prototype.matchesSelector ||
+		Element.prototype.mozMatchesSelector ||
+		Element.prototype.msMatchesSelector ||
+		Element.prototype.oMatchesSelector ||
+		Element.prototype.webkitMatchesSelector ||
+		function( s ) {
+			var matches = ( this.document || this.ownerDocument ).querySelectorAll( s ),
+				i = matches.length;
+			while ( --i >= 0 && matches.item( i ) !== this ) {}
+			return i > -1;
+		};
+}
 
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals
@@ -354,6 +368,7 @@ twentytwenty.modalMenu = {
 	init: function() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
+		this.goBackToCloseButton();
 	},
 
 	expandLevel: function() {
@@ -369,6 +384,46 @@ twentytwenty.modalMenu = {
 						twentytwenty.toggles.performToggle( subMenuToggle, true );
 					}
 				} );
+			}
+		} );
+	},
+
+	// If the current menu item is the last one, return to close button when tab
+	goBackToCloseButton: function() {
+		document.addEventListener( 'keydown', function( event ) {
+			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
+			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
+			var isMobileMenu = window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none';
+			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
+
+			var menuLinks = isMobileMenu ?
+				document.querySelectorAll( '.menu-modal .mobile-menu li' ) :
+				document.querySelectorAll( '.menu-modal .expanded-menu li' );
+
+			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' );
+			var hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
+			var lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
+			var focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
+			var focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
+			var lastMenuItem = lastModalMenuItems[lastModalMenuItems.length - 1];
+
+			var isFirstModalItem = isMobileMenu ?
+				event.target === mobileMenuButton :
+				focusedElementIsInsideModal && event.target === desktopMenuButton;
+
+			var isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ?
+				focusedElementParentLi[0].className === lastMenuItem.className :
+				undefined;
+
+			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) {
+				// Forward
+				event.preventDefault();
+				firstMenuItem.focus();
+			}
+			if ( event.shiftKey && event.key === 'Tab' && isFirstModalItem ) {
+				// Backward
+				event.preventDefault();
+				lastMenuItem.querySelector( 'a' ).focus();
 			}
 		} );
 	}
