@@ -558,6 +558,27 @@ function twentytwenty_get_the_archive_title( $title ) {
 add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
 
 /**
+ * Filters the edit post link to add an icon and use the post meta structure.
+ *
+ * @param string $link    Anchor tag for the edit link.
+ * @param int    $post_id Post ID.
+ * @param string $text    Anchor text.
+ */
+function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+
+	$edit_url = get_edit_post_link( $post_id );
+
+	if ( ! $edit_url ) {
+		return;
+	}
+
+	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
+
+}
+
+add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
+
+/**
  * Add conditional body classes.
  *
  * @param string $classes Classes added to the body tag.
