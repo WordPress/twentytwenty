@@ -3954,6 +3954,10 @@ div.comment:first-of-type {
 	margin-top: 0.2rem;
 }
 
+.widget select {
+	max-width: 100%;
+}
+
 /* Font Families ----------------------------- */
 
 .widget_text p,
