@@ -1582,7 +1582,7 @@ ul.social-icons li {
 }
 
 .cover-modal.show-modal > * {
-	cursor: auto;
+	cursor: default;
 }
 
 
