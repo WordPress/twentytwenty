@@ -512,7 +512,8 @@ html { font-family: Inter, sans-serif; }
 .editor-styles-wrapper .wp-block-categories li > a:hover,
 .editor-styles-wrapper .wp-block-latest-posts li > a:focus,
 .editor-styles-wrapper .wp-block-latest-posts li > a:hover {
-	text-decoration: underline;
+	font-weight: 700;
+	text-decoration: none;
 }
 
 .editor-styles-wrapper .wp-block-archives.aligncenter,
@@ -959,7 +960,7 @@ hr.wp-block-separator.is-style-dots::before {
 
 .editor-styles-wrapper .wp-block-latest-comments__comment-meta a:focus,
 .editor-styles-wrapper .wp-block-latest-comments__comment-meta a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* HAS AVATAR */

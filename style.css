@@ -2476,9 +2476,10 @@ body:not(.singular) main article:first-of-type {
 	text-transform: uppercase;
 }
 
-.entry-categories a:hover,
-.entry-categories a:focus {
+.entry-categories a:focus,
+.entry-categories a:hover {
 	text-decoration: underline;
+	border-bottom: none;
 }
 
 h1.entry-title,
@@ -3387,7 +3388,7 @@ hr.wp-block-separator {
 
 .entry-content a:hover,
 .entry-content a:focus {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .entry-content p,
@@ -3783,10 +3784,10 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
-.comment-respond .comment-notes a:hover,
-.comment-respond .logged-in-as a:hover,
 .comment-respond .comment-notes a:focus,
-.comment-respond .logged-in-as a:focus {
+.comment-respond .comment-notes a:hover,
+.comment-respond .logged-in-as a:focus,
+.comment-respond .logged-in-as a:hover {
 	text-decoration: underline;
 }
 
