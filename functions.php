@@ -427,20 +427,6 @@ function twentytwenty_block_editor_settings() {
 		),
 	);
 
-	// Get the color options.
-	$accent_color_options = TwentyTwenty_Customize::get_color_options();
-
-	// Loop over them and construct an array for the editor-color-palette.
-	if ( $accent_color_options ) {
-		foreach ( $accent_color_options as $color_option_name => $color_option ) {
-			$editor_color_palette[] = array(
-				'name'  => $color_option['label'],
-				'slug'  => $color_option['slug'],
-				'color' => get_theme_mod( $color_option_name, $color_option['default'] ),
-			);
-		}
-	}
-
 	// Add the background option.
 	$background_color = get_theme_mod( 'background_color' );
 	if ( ! $background_color ) {
