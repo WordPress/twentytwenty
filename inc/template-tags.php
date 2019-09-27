@@ -637,7 +637,8 @@ function twentytwenty_toggle_duration() {
 	 * Filters the animation duration/speed used usually for submenu toggles.
 	 * 
 	 * @since 1.0
-	 * @type integer $duration Duration in milliseconds.
+	 * 
+	 * @param integer $duration Duration in milliseconds.
 	 */
 	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );
 
