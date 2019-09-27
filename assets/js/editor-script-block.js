@@ -3,7 +3,7 @@
  *
  * @since 1.0.0
  */
-/* eslint-disable no-undef */
+/* global wp */
 wp.domReady( function() {
 	wp.blocks.unregisterBlockStyle( 'core/button', 'squared' );
 } );
