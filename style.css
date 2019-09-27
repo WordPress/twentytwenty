@@ -1578,6 +1578,11 @@ ul.social-icons li {
 
 .cover-modal.show-modal {
 	display: block;
+	cursor: pointer;
+}
+
+.cover-modal.show-modal > * {
+	cursor: default;
 }
 
 
