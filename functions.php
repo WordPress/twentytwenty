@@ -427,20 +427,6 @@ function twentytwenty_block_editor_settings() {
 		),
 	);
 
-	// Get the color options.
-	$accent_color_options = TwentyTwenty_Customize::get_color_options();
-
-	// Loop over them and construct an array for the editor-color-palette.
-	if ( $accent_color_options ) {
-		foreach ( $accent_color_options as $color_option_name => $color_option ) {
-			$editor_color_palette[] = array(
-				'name'  => $color_option['label'],
-				'slug'  => $color_option['slug'],
-				'color' => get_theme_mod( $color_option_name, $color_option['default'] ),
-			);
-		}
-	}
-
 	// Add the background option.
 	$background_color = get_theme_mod( 'background_color' );
 	if ( ! $background_color ) {
@@ -631,10 +617,10 @@ function twentytwenty_get_elements_array() {
 	$elements = array(
 		'content'       => array(
 			'accent'     => array(
-				'color'            => array( '.color-accent', '.color-accent-hover:hover', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-button.is-style-outline', 'a' ),
-				'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover' ),
+				'color'            => array( '.color-accent', '.color-accent-hover:hover', '.color-accent-hover:focus', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-button.is-style-outline', 'a' ),
+				'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover', '.border-color-accent-hover:focus' ),
 				'background'       => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
-				'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
+				'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.bg-accent-hover:focus', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
 				'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 			),
 			'background' => array(
