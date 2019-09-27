@@ -4190,6 +4190,11 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
+.footer-menu a:hover,
+.footer-menu a:focus {
+        text-decoration: underline;
+}
+
 /* FOOTER SOCIAL */
 
 .footer-social-wrapper {
