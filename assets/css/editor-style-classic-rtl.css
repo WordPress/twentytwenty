@@ -206,6 +206,7 @@ body#tinymce.wp-editor pre {
 }
 
 body#tinymce.wp-editor a,
+body#tinymce.wp-editor a:focus,
 body#tinymce.wp-editor a:hover {
 	color: #cd2653;
 	text-decoration: underline;
@@ -658,6 +659,7 @@ body#tinymce.wp-editor input[type="submit"]:focus {
 /* BUTTON STYLE: OUTLINE */
 
 body#tinymce.wp-editor .is-style-outline .wp-block-button__link,
+body#tinymce.wp-editor .is-style-outline .wp-block-button__link:focus,
 body#tinymce.wp-editor .is-style-outline .wp-block-button__link:hover {
 	color: #cd2653;
 }

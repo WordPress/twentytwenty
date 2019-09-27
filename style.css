@@ -3384,6 +3384,10 @@ hr.wp-block-separator {
 	margin: 4rem 0;
 }
 
+.woocommerce-js .entry-content li {
+	margin: 0 0 3rem;
+}
+
 /* Font Families ----------------------------- */
 
 .entry-content p,
