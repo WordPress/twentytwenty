@@ -247,7 +247,7 @@ path {
 }
 
 /* ----------------------------------------------
-Inter Variable font. Usage:
+Inter variable font. Usage:
 
 @supports (font-variation-settings: normal) {
 	html { font-family: 'Inter var', sans-serif; }
