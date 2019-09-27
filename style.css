@@ -2421,8 +2421,8 @@ body.template-full-width .entry-content,
 body.template-full-width .entry-content p {
 	max-width: none;
 }
-body.template-full-width .entry-content .alignleft {
 
+body.template-full-width .entry-content .alignleft {
 	margin-left: 0;
 }
 
@@ -4366,9 +4366,8 @@ a.to-the-top > * {
 		/*rtl:ignore*/
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
-	.entry-content .alignright {
 
-	.alignright {
+	.entry-content .alignright {
 
 		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
