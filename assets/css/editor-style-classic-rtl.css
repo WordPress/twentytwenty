@@ -136,7 +136,7 @@ html { font-family: Inter, sans-serif; }
 /* Structure --------------------------------- */
 
 body#tinymce.wp-editor { /* stylelint-disable-line no-duplicate-selectors */
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -277,7 +277,7 @@ body#tinymce.wp-editor .wp-caption-text,
 body#tinymce.wp-editor .wp-caption-dd,
 body#tinymce.wp-editor cite,
 body#tinymce.wp-editor table {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	line-height: 1;
 }
 
