@@ -2713,16 +2713,6 @@ h2.entry-title {
 
 /* Post Footer ------------------------------- */
 
-/* POST EDIT LINK */
-
-.post-edit-link {
-	display: block;
-	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
-	font-size: 1.8rem;
-	letter-spacing: normal;
-	margin-top: 2rem;
-}
-
 /* POST NAV LINKS */
 
 .post-nav-links {
