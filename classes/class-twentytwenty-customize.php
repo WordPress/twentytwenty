@@ -154,36 +154,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			/**
-			 * Custom Accent Colors.
-			*/
-			$accent_color_options = self::get_color_options();
-
-			// Loop over the color options and add them to the customizer.
-			foreach ( $accent_color_options as $color_option_name => $color_option ) {
-
-				$wp_customize->add_setting(
-					$color_option_name,
-					array(
-						'default'           => $color_option['default'],
-						'sanitize_callback' => 'sanitize_hex_color',
-					)
-				);
-
-				$wp_customize->add_control(
-					new WP_Customize_Color_Control(
-						$wp_customize,
-						$color_option_name,
-						array(
-							'label'    => $color_option['label'],
-							'section'  => 'colors',
-							'priority' => 10,
-						)
-					)
-				);
-
-			}
-
 			// Update background color with postMessage, so inline CSS output is updated as well.
 			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
 
@@ -197,7 +167,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'title'       => __( 'Theme Options', 'twentytwenty' ),
 					'priority'    => 40,
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for this theme.', 'twentytwenty' ),
+					'description' => __( 'Specific settings for the Twenty Twenty theme.', 'twentytwenty' ),
 				)
 			);
 
@@ -215,11 +185,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'enable_header_search',
 				array(
-					'type'        => 'checkbox',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'Show search in header', 'twentytwenty' ),
-					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show search in header', 'twentytwenty' ),
 				)
 			);
 
@@ -237,12 +206,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'blog_content',
 				array(
-					'type'        => 'radio',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'On archive pages, posts show:', 'twentytwenty' ),
-					'description' => __( 'Search results always show the summary.', 'twentytwenty' ),
-					'choices'     => array(
+					'type'     => 'radio',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'On archive pages, posts show:', 'twentytwenty' ),
+					'choices'  => array(
 						'full'    => __( 'Full text', 'twentytwenty' ),
 						'summary' => __( 'Summary', 'twentytwenty' ),
 					),
@@ -284,10 +252,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial( 'cover_template_fixed_background', array(
-				'selector' => '.cover-header',
-				'type'     => 'cover_fixed',
-			) );
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_fixed_background',
+				array(
+					'selector' => '.cover-header',
+					'type'     => 'cover_fixed',
+				)
+			);
 
 			/* Separator --------------------- */
 
@@ -351,9 +322,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					)
 				)
 			);
-			
+
 			/* Overlay Color Opacity --------- */
-			
+
 			$wp_customize->add_setting(
 				'cover_template_overlay_opacity',
 				array(
@@ -374,10 +345,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial( 'cover_template_overlay_opacity', array(
-				'selector' => '.cover-color-overlay',
-				'type'     => 'cover_opacity',
-			) );
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_overlay_opacity',
+				array(
+					'selector' => '.cover-color-overlay',
+					'type'     => 'cover_opacity',
+				)
+			);
 		}
 
 		/**
@@ -402,15 +376,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			}
 
 			return $value;
-		}
-
-		/**
-		 * Return the sitewide color options included.
-		 * Note: These values are shared between the block editor styles and the customizer,
-		 * and abstracted to this function.
-		 */
-		public static function get_color_options() {
-			return apply_filters( 'twentytwenty_accent_color_options', array() );
 		}
 
 		/**
@@ -485,15 +450,18 @@ function twentytwenty_customize_opacity_range() {
 	 *
 	 * @param array $attrs {
 	 *     The attributes
-	 * 
+	 *
 	 *     @type int $min Minimum value
 	 *     @type int $max Maximum value
 	 *     @type int $step Interval between numbers
 	 * }
 	 */
-	return apply_filters( 'twentytwenty_customize_opacity_range', array(
-		'min'  => 0,
-		'max'  => 90,
-		'step' => 5,
-	) );
+	return apply_filters(
+		'twentytwenty_customize_opacity_range',
+		array(
+			'min'  => 0,
+			'max'  => 90,
+			'step' => 5,
+		)
+	);
 }
