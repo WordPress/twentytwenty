@@ -197,7 +197,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'title'       => __( 'Theme Options', 'twentytwenty' ),
 					'priority'    => 40,
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for this theme.', 'twentytwenty' ),
+					'description' => __( 'Specific settings for the Twenty Twenty theme.', 'twentytwenty' ),
 				)
 			);
 
@@ -215,11 +215,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'enable_header_search',
 				array(
-					'type'        => 'checkbox',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'Show search in header', 'twentytwenty' ),
-					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show search in header', 'twentytwenty' ),
 				)
 			);
 
@@ -237,12 +236,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'blog_content',
 				array(
-					'type'        => 'radio',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'On archive pages, posts show:', 'twentytwenty' ),
-					'description' => __( 'Search results always show the summary.', 'twentytwenty' ),
-					'choices'     => array(
+					'type'     => 'radio',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'On archive pages, posts show:', 'twentytwenty' ),
+					'choices'  => array(
 						'full'    => __( 'Full text', 'twentytwenty' ),
 						'summary' => __( 'Summary', 'twentytwenty' ),
 					),
@@ -284,10 +282,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial( 'cover_template_fixed_background', array(
-				'selector' => '.cover-header',
-				'type'     => 'cover_fixed',
-			) );
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_fixed_background',
+				array(
+					'selector' => '.cover-header',
+					'type'     => 'cover_fixed',
+				)
+			);
 
 			/* Separator --------------------- */
 
@@ -374,10 +375,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial( 'cover_template_overlay_opacity', array(
-				'selector' => '.cover-color-overlay',
-				'type'     => 'cover_opacity',
-			) );
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_overlay_opacity',
+				array(
+					'selector' => '.cover-color-overlay',
+					'type'     => 'cover_opacity',
+				)
+			);
 		}
 
 		/**
@@ -498,9 +502,12 @@ function twentytwenty_customize_opacity_range() {
 	 *     @type int $step Interval between numbers
 	 * }
 	 */
-	return apply_filters( 'twentytwenty_customize_opacity_range', array(
-		'min'  => 0,
-		'max'  => 90,
-		'step' => 5,
-	) );
+	return apply_filters(
+		'twentytwenty_customize_opacity_range',
+		array(
+			'min'  => 0,
+			'max'  => 90,
+			'step' => 5,
+		)
+	);
 }
