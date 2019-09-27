@@ -58,3 +58,5 @@ Version 1.0:
 | @tobifjellner | @tobifjellner |
 | @kevIN-kovaDIA | @kevinkovadia |
 | @jarretc | @jarretc |
+| @Adhitya03 | @adhitya03 |
+| @sgomes | @sergiomdgomes |
