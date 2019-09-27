@@ -1633,9 +1633,8 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 	text-decoration: none;
 }
 
-.site-title a:focus,
-.site-title a:hover {
-	outline: none;
+.site-title a:hover,
+.site-title a:focus {
 	text-decoration: underline;
 }
 
@@ -1711,7 +1710,6 @@ body:not(.enable-search-modal) .site-logo img {
 .header-inner .toggle {
 	align-items: center;
 	display: flex;
-	outline: none;
 	overflow: visible;
 	padding: 0 2rem;
 }
@@ -1871,9 +1869,8 @@ ul.primary-menu {
 	text-decoration: none;
 }
 
-.primary-menu a:focus,
-.primary-menu a:hover {
-	outline: none;
+.primary-menu a:hover,
+.primary-menu a:focus {
 	text-decoration: underline;
 }
 
@@ -2041,7 +2038,6 @@ button.close-nav-toggle {
 	font-size: 1.8rem;
 	font-weight: 500;
 	justify-content: flex-end;
-	outline: none;
 	padding: 4rem 0;
 	width: 100%;
 }
@@ -2401,6 +2397,18 @@ body.template-cover .entry-header {
 /*	7c. Template: Full Width
 /* -------------------------------------------------------------------------- */
 
+body.template-full-width .entry-content,
+body.template-full-width .entry-content p {
+	max-width: none;
+}
+
+body.template-full-width .entry-content .alignleft {
+	margin-left: 0;
+}
+
+body.template-full-width .entry-content .alignright {
+	margin-right: 0;
+}
 
 /* -------------------------------------------------------------------------- */
 
