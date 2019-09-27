@@ -200,6 +200,9 @@ function twentytwenty_register_styles() {
 	// Add output of Customizer settings as inline style.
 	wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
 
+	// Add print CSS.
+	wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
