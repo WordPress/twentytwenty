@@ -488,9 +488,10 @@ function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 			$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
+			$toggle_duration      = twentytwenty_toggle_duration();
 
 			// Add the sub menu toggle.
-			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="250"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
 		}
 
@@ -555,6 +556,27 @@ function twentytwenty_get_the_archive_title( $title ) {
 }
 
 add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+/**
+ * Filters the edit post link to add an icon and use the post meta structure.
+ *
+ * @param string $link    Anchor tag for the edit link.
+ * @param int    $post_id Post ID.
+ * @param string $text    Anchor text.
+ */
+function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+
+	$edit_url = get_edit_post_link( $post_id );
+
+	if ( ! $edit_url ) {
+		return;
+	}
+
+	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
+
+}
+
+add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 
 /**
  * Add conditional body classes.
@@ -625,3 +647,21 @@ function twentytwenty_body_classes( $classes ) {
 }
 
 add_filter( 'body_class', 'twentytwenty_body_classes' );
+
+/**
+ * Toggle animation duration in milliseconds.
+ *
+ * @return integer Duration in milliseconds
+ */
+function twentytwenty_toggle_duration() {
+	/**
+	 * Filters the animation duration/speed used usually for submenu toggles.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param integer $duration Duration in milliseconds.
+	 */
+	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );
+
+	return $duration;
+}
