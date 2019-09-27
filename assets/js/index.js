@@ -606,13 +606,13 @@ function twentytwentyMenuToggle( target, duration ) {
 		return;
 	}
 
-	menu = target.closest( '.modal-menu' );
+	menu = target.closest( '.menu-wrapper' );
 
 	// Step 1: look at the initial positions of every menu item.
 	menuItems = menu.querySelectorAll( '.menu-item' );
 
 	menuItems.forEach( function( menuItem, index ) {
-		initialPositions[ index ] = menuItem.offsetTop;
+		initialPositions[ index ] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
 	} );
 	initialParentHeight = target.parentElement.offsetHeight;
 
@@ -622,7 +622,7 @@ function twentytwentyMenuToggle( target, duration ) {
 	target.classList.toggle( 'active' );
 
 	menuItems.forEach( function( menuItem, index ) {
-		finalPositions[ index ] = menuItem.offsetTop;
+		finalPositions[ index ] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
 	} );
 	finalParentHeight = target.parentElement.offsetHeight;
 
@@ -637,10 +637,10 @@ function twentytwentyMenuToggle( target, duration ) {
 	target.classList.toggle( 'active' );
 	menuItems.forEach( function( menuItem, index ) {
 		var initialPosition = initialPositions[ index ];
-		if ( initialPosition === 0 && menuItem.parentElement === target ) {
-			initialPosition = initialParentHeight;
+		if ( initialPosition.y === 0 && menuItem.parentElement === target ) {
+			initialPosition.y = initialParentHeight;
 		}
-		menuItem.style.transform = 'translate(0, ' + initialPosition + 'px)';
+		menuItem.style.transform = 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px)';
 	} );
 
 	// The double rAF is unfortunately needed, since we're toggling CSS classes, and
@@ -655,13 +655,13 @@ function twentytwentyMenuToggle( target, duration ) {
 			menu.classList.add( 'is-animating' );
 			menuItems.forEach( function( menuItem, index ) {
 				var finalPosition = finalPositions[ index ];
-				if ( finalPosition === 0 && menuItem.parentElement === target ) {
-					finalPosition = finalParentHeight;
+				if ( finalPosition.y === 0 && menuItem.parentElement === target ) {
+					finalPosition.y = finalParentHeight;
 				}
 				if ( duration !== undefined ) {
 					menuItem.style.transitionDuration = duration + 'ms';
 				}
-				menuItem.style.transform = 'translate(0, ' + finalPosition + 'px)';
+				menuItem.style.transform = 'translate(' + finalPosition.x + 'px, ' + finalPosition.y + 'px)';
 			} );
 			if ( duration !== undefined ) {
 				target.style.transitionDuration = duration + 'ms';
