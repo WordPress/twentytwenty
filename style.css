@@ -2566,8 +2566,7 @@ body:not(.singular) main article:first-of-type {
 
 .entry-categories a:focus,
 .entry-categories a:hover {
-	text-decoration: underline;
-	border-bottom: none;
+	border-bottom-color: transparent;
 }
 
 h1.entry-title,
