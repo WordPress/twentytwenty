@@ -817,7 +817,8 @@ code,
 input[type="url"],
 input[type="email"],
 input[type="tel"] {
-	/*rtl:ignore*/ /* stylelint-disable-line */
+
+	/*rtl:ignore*/
 	direction: ltr;
 }
 

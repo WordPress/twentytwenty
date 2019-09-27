@@ -816,8 +816,8 @@ textarea {
 code,
 input[type="url"],
 input[type="email"],
-input[type="tel"] { /* stylelint-disable-line */
-	direction: rtl;
+input[type="tel"] {
+	direction: ltr;
 }
 
 input[type="text"],
