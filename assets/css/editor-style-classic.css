@@ -466,6 +466,7 @@ body#tinymce.wp-editor .wp-caption .alignright {
 }
 
 body#tinymce.wp-editor .alignleft {
+
 	/*rtl:ignore*/
 	float: left;
 	margin-right: 25px;
@@ -473,6 +474,7 @@ body#tinymce.wp-editor .alignleft {
 }
 
 body#tinymce.wp-editor .alignright {
+
 	/*rtl:ignore*/
 	float: right;
 	margin-left: 25px;
