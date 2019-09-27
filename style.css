@@ -2027,6 +2027,7 @@ ul.primary-menu {
 	display: flex;
 	justify-content: stretch;
 	overflow: auto;
+	-ms-overflow-style: auto;
 	width: 100%;
 }
 
@@ -2050,6 +2051,10 @@ button.close-nav-toggle {
 button.close-nav-toggle svg {
 	height: 2rem;
 	width: 2rem;
+}
+
+.menu-modal .menu-top {
+	flex-shrink: 0;
 }
 
 
