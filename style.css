@@ -5216,6 +5216,7 @@ a.to-the-top > * {
 
 	.header-titles-wrapper {
 		margin-right: 4rem;
+		max-width: 50%;
 		padding: 0;
 		text-align: left;
 	}
@@ -5232,11 +5233,6 @@ a.to-the-top > * {
 	.header-titles .site-logo,
 	.header-titles .site-description {
 		margin: 1rem 0 0 2.4rem;
-	}
-
-	.header-titles .site-title,
-	.header-titles .site-logo {
-		flex-shrink: 0;
 	}
 
 	.wp-custom-logo .header-titles {

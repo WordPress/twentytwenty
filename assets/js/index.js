@@ -393,7 +393,7 @@ twentytwenty.modalMenu = {
 		document.addEventListener( 'keydown', function( event ) {
 			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
 			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
-			var isMobileMenu = window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none';
+			var isMobileMenu = desktopMenuButton ? window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none' : false;
 			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
 
 			var menuLinks = isMobileMenu ?
