@@ -2640,6 +2640,10 @@ h2.entry-title {
 	padding-top: 5rem;
 }
 
+.reduced-spacing.missing-post-thumbnail .post-inner {
+	padding-top: 0;
+}
+
 
 /* Post Footer ------------------------------- */
 
@@ -4202,6 +4206,10 @@ div.comment:first-of-type {
 #site-footer {
 	background-color: #fff;
 	margin-top: 5rem;
+}
+
+.reduced-spacing #site-footer {
+	border-top: .1rem solid #dedfdf;
 }
 
 .footer-top,
