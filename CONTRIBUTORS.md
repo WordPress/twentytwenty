@@ -60,3 +60,4 @@ Version 1.0:
 | @jarretc | @jarretc |
 | @Adhitya03 | @adhitya03 |
 | @sgomes | @sergiomdgomes |
+| @mafzal9 | @phpdocs |

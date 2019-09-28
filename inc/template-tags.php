@@ -488,9 +488,10 @@ function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 			$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
+			$toggle_duration      = twentytwenty_toggle_duration();
 
 			// Add the sub menu toggle.
-			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="250"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
 		}
 
@@ -641,8 +642,39 @@ function twentytwenty_body_classes( $classes ) {
 		$classes[] = basename( get_page_template_slug(), '.php' );
 	}
 
+	// Get header/footer background color.
+	$header_footer_background = get_theme_mod( 'header_footer_background_color', '#ffffff' );
+	$header_footer_background = strtolower( '#' . ltrim( $header_footer_background, '#' ) );
+
+	// Get content background color.
+	$background_color = get_theme_mod( 'background_color', 'f5efe0' );
+	$background_color = strtolower( '#' . ltrim( $background_color, '#' ) );
+
+	// Add extra class if main background and header/footer background are the same color.
+	if ( $background_color === $header_footer_background ) {
+		$classes[] = 'reduced-spacing';
+	}
+
 	return $classes;
 
 }
 
 add_filter( 'body_class', 'twentytwenty_body_classes' );
+
+/**
+ * Toggle animation duration in milliseconds.
+ *
+ * @return integer Duration in milliseconds
+ */
+function twentytwenty_toggle_duration() {
+	/**
+	 * Filters the animation duration/speed used usually for submenu toggles.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param integer $duration Duration in milliseconds.
+	 */
+	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );
+
+	return $duration;
+}
