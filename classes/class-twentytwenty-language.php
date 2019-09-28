@@ -23,11 +23,7 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 		 * @return string|null
 		 */
 		public static function load_fallback_languages() {
-			$font_face  = [];
-			$font_title = [];
-			$font_body  = [];
-			$custom_css = [];
-
+			
 			switch ( get_bloginfo( 'language' ) ) {
 				// Arabic.
 				case 'ar':
@@ -37,51 +33,23 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				case 'fa-IR':
 				case 'haz':
 				case 'ps':
-					array_push( $font_face, "@font-face { font-family: 'Cairo'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Cairo/Cairo-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, 'Cairo' );
-					array_push( $font_body, 'Cairo' );
-					break;
-				// Chinese (Hong Kong) - Noto Sans HK.
-				case 'zh-HK':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans HK'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_HK/NotoSansHK-Regular.otf) format('opentype'); }" );
-					array_push( $font_title, '"Noto Sans HK"' );
-					array_push( $font_title, '"PingFang HK"' );
-					array_push( $font_title, '"Helvetica Neue"' );
-					array_push( $font_title, '"Microsoft YaHei New"' );
-					array_push( $font_title, '"STHeiti Light"' );
-					array_push( $font_body, '"Noto Sans HK"' );
-					array_push( $font_body, '"PingFang HK"' );
-					array_push( $font_body, '"Helvetica Neue"' );
-					array_push( $font_body, '"Microsoft YaHei New"' );
-					array_push( $font_body, '"STHeiti Light"' );
-					break;
-				// Chinese Traditional (Taiwan) - Noto Sans TC.
-				case 'zh-TW':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans TC'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.otf) format('opentype'); }" );
-					array_push( $font_title, '"Noto Sans TC"' );
-					array_push( $font_title, '"PingFang TC"' );
-					array_push( $font_title, '"Helvetica Neue"' );
-					array_push( $font_title, '"Microsoft YaHei New"' );
-					array_push( $font_title, '"STHeiti Light"' );
-					array_push( $font_body, '"Noto Sans TC"' );
-					array_push( $font_body, '"PingFang TC"' );
-					array_push( $font_body, '"Helvetica Neue"' );
-					array_push( $font_body, '"Microsoft YaHei New"' );
-					array_push( $font_body, '"STHeiti Light"' );
+					$font_title = 'Tahoma, Arial, sans_serif';
+					$font_body  = 'Tahoma, Arial, sans_serif';
 					break;
 				// Chinese Simplified (China) - Noto Sans SC.
 				case 'zh-CN':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans SC'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.otf) format('opentype'); }" );
-					array_push( $font_title, '"Noto Sans SC"' );
-					array_push( $font_title, '"PingFang SC"' );
-					array_push( $font_title, '"Helvetica Neue"' );
-					array_push( $font_title, '"Microsoft YaHei New"' );
-					array_push( $font_title, '"STHeiti Light"' );
-					array_push( $font_body, '"Noto Sans SC"' );
-					array_push( $font_body, '"PingFang SC"' );
-					array_push( $font_body, '"Helvetica Neue"' );
-					array_push( $font_body, '"Microsoft YaHei New"' );
-					array_push( $font_body, '"STHeiti Light"' );
+					$font_title = '"PingFang SC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
+					$font_body  = '"PingFang SC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
+					break;
+				// Chinese Traditional (Taiwan) - Noto Sans TC.
+				case 'zh-TW':
+					$font_title = '"PingFang TC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
+					$font_body  = '"PingFang TC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
+					break;
+				// Chinese (Hong Kong) - Noto Sans HK.
+				case 'zh-HK':
+					$font_title = '"PingFang HK", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
+					$font_body  = '"PingFang HK", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
 					break;
 				// Cyrillic.
 				case 'bel':
@@ -94,81 +62,65 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				case 'sr-RS':
 				case 'tt-RU':
 				case 'uk':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Helvetica Neue"' );
-					array_push( $font_body, 'Helvetica' );
-					array_push( $font_body, '"Segoe UI"' );
-					array_push( $font_body, 'Arial' );
+					$font_title = '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans_serif;';
+					$font_body  = '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans_serif;';
 					break;
 				// Devanagari.
 				case 'bn-BD':
 				case 'hi-IN':
 				case 'mr':
 				case 'ne-NP':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); } " );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					$font_title = 'Arial, sans_serif;';
+					$font_body  = 'Arial, sans_serif;';
 					break;
 				// Greek.
 				case 'el':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); } " );
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans HK'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_HK/NotoSansHK-Regular.otf) format('opentype'); } " );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, 'Noto Sans HK' );
+					$font_title = '"Helvetica Neue", Helvetica, Arial, sans_serif;';
+					$font_body  = '"Helvetica Neue", Helvetica, Arial, sans_serif;';
 					break;
 				// Gujarati.
 				case 'gu':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					$font_title = 'Arial, sans_serif;';
+					$font_body  = 'Arial, sans_serif;';
 					break;
 				// Hebrew.
 				case 'he-IL':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					$font_title = '"Arial Hebrew", Arial, sans_serif;	';
+					$font_body  = '"Arial Hebrew", Arial, sans_serif;	';
 					break;
 				// Japanese.
 				case 'ja':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans JP'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, 'Noto Sans JP' );
-					array_push( $font_body, '"Hiragino Kaku Gothic ProN"' );
-					array_push( $font_body, 'Meiryo' );
+					$font_title = '"Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;';
+					$font_body  = '"Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;';
 					break;
 				// Korean.
 				case 'ko-KR':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans KR'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf) format('opentype'); }" );
-					array_push( $font_title, 'Noto Sans KR' );
-					array_push( $font_body, 'Noto Sans KR' );
+					$font_title = '"Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;';
+					$font_body  = '"Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;';
 					break;
 				// Thai.
 				case 'th':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					$font_title = '"Sukhumvit Set", "Helvetica Neue", Helvetica, Arial, sans-serif;';
+					$font_body  = '"Sukhumvit Set", "Helvetica Neue", Helvetica, Arial, sans-serif;';
 					break;
 				// Vietnamese.
 				case 'vi':
-					array_push( $font_face, "@font-face { font-family: 'Noto Sans'; font-style:  normal; font-weight: 400; src: url(" . get_stylesheet_directory_uri() . "/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype'); }" );
-					array_push( $font_title, '"Noto Sans"' );
-					array_push( $font_body, '"Noto Sans"' );
+					$font_title = '"Libre Franklin", sans-serif;';
+					$font_body  = '"Libre Franklin", sans-serif;';
+
 					break;
 				default:
 					return;
 			}
 
-			// Load font face.
-			wp_add_inline_style( 'twentytwenty-style', implode( ' ', $font_face ) );
-
 			// Prepare CSS for all element except of titles.
-			array_push( $custom_css, '* { font-family: ' . implode( ', ', $font_body ) . ' sans-serif  !important; }' );
+			$custom_css = sprintf( '* { font-family: %s !important; } ', $font_body );
 
 			// Prepare CSS for all titles.
-			array_push( $custom_css, 'h1, h2, h3, h4, h5, h6 { font-family: ' . implode( ', ', $font_title ) . ' sans-serif !important; }' );
+			$custom_css .= sprintf( 'h1, h2, h3, h4, h5, h6 { font-family: %s !important; } ', $font_title );
 
 			// Add inline CSS.
-			wp_add_inline_style( 'twentytwenty-style', implode( ' ', $custom_css ) );
+			wp_add_inline_style( 'twentytwenty-style', $custom_css );
 
 		}
 	}
