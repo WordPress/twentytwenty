@@ -171,7 +171,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 						'section'         => 'colors',
 						'settings'        => 'accent_hue',
 						'mode'            => 'hue',
-						'active_callback' => function( $control ) use ( $wp_customize ) {
+						'active_callback' => function() use ( $wp_customize ) {
 							return ( true === $wp_customize->get_setting( 'accent_hue_active' )->value() );
 						},
 					)

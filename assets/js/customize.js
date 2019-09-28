@@ -6,8 +6,11 @@
 
 		api.control( 'accent_hue_active' ).setting.bind( function( active ) {
 			if ( active ) {
-				accentHueControl.activate();
-				accentHueControl.focus();
+				accentHueControl.activate( {
+					completeCallback: function() {
+						accentHueControl.focus();
+					}
+				} );
 			} else {
 				accentHueControl.deactivate( {
 					completeCallback: function() {
