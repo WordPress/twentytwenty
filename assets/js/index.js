@@ -361,7 +361,7 @@ twentytwenty.smoothScroll = {
 }; // twentytwenty.smoothScroll
 
 /*	-----------------------------------------------------------------------------------------------
-	Main Menu
+	Modal Menu
 --------------------------------------------------------------------------------------------------- */
 twentytwenty.modalMenu = {
 
@@ -393,7 +393,7 @@ twentytwenty.modalMenu = {
 		document.addEventListener( 'keydown', function( event ) {
 			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
 			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
-			var isMobileMenu = window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none';
+			var isMobileMenu = desktopMenuButton ? window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none' : false;
 			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
 
 			var menuLinks = isMobileMenu ?
@@ -428,6 +428,50 @@ twentytwenty.modalMenu = {
 		} );
 	}
 }; // twentytwenty.modalMenu
+
+/*	-----------------------------------------------------------------------------------------------
+	Primary Menu
+--------------------------------------------------------------------------------------------------- */
+
+twentytwenty.primaryMenu = {
+
+	init: function() {
+		this.focusMenuWithChildren();
+	},
+
+	// The focusMenuWithChildren() function implements Keyboard Navigation in the Primary Menu
+	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
+	focusMenuWithChildren: function() {
+		// Get all the link elements within the primary menu.
+		var menu = document.querySelector( '.primary-menu-wrapper nav' );
+		var links = menu.getElementsByTagName( 'a' );
+		var i, len;
+
+		// Each time a menu link is focused or blurred, toggle focus.
+		for ( i = 0, len = links.length; i < len; i++ ) {
+			links[i].addEventListener( 'focus', toggleFocus, true );
+			links[i].addEventListener( 'blur', toggleFocus, true );
+		}
+
+		//Sets or removes the .focus class on an element.
+		function toggleFocus() {
+			var self = this;
+
+			// Move up through the ancestors of the current link until we hit .primary-menu.
+			while ( -1 === self.className.indexOf( 'primary-menu' ) ) {
+				// On li elements toggle the class .focus.
+				if ( 'li' === self.tagName.toLowerCase() ) {
+					if ( -1 !== self.className.indexOf( 'focus' ) ) {
+						self.className = self.className.replace( ' focus', '' );
+					} else {
+						self.className += ' focus';
+					}
+				}
+				self = self.parentElement;
+			}
+		}
+	}
+}; // twentytwenty.primaryMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Toggles
@@ -622,6 +666,7 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
+	twentytwenty.primaryMenu.init();	// Primary Menu
 } );
 
 /*	-----------------------------------------------------------------------------------------------
