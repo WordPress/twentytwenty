@@ -117,7 +117,7 @@
 
 					$header_toggles_classes = '';
 
-					if ( ! has_nav_menu( 'expanded' ) && false === $enable_header_search ) {
+					if ( ! has_nav_menu( 'expanded' ) ) {
 						$header_toggles_classes .= ' hide-on-desktop';
 					}
 					?>
@@ -146,24 +146,16 @@
 
 						</div><!-- .nav-toggle-wrapper -->
 
-						<?php
-						if ( true === $enable_header_search ) {
-							?>
+						<div class="toggle-wrapper search-toggle-wrapper">
 
-							<div class="toggle-wrapper search-toggle-wrapper">
+							<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+								<div class="toggle-inner">
+									<?php twentytwenty_the_theme_svg( 'search' ); ?>
+									<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+								</div>
+							</button><!-- .search-toggle -->
 
-								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<div class="toggle-inner">
-										<?php twentytwenty_the_theme_svg( 'search' ); ?>
-										<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-									</div>
-								</button><!-- .search-toggle -->
-
-							</div>
-
-							<?php
-						}
-						?>
+						</div>
 
 					</div><!-- .header-toggles -->
 
@@ -172,10 +164,7 @@
 			</div><!-- .header-inner -->
 
 			<?php
-			// Output the search modal (if it is activated in the customizer).
-			if ( true === $enable_header_search ) {
 				get_template_part( 'template-parts/modal-search' );
-			}
 			?>
 
 		</header><!-- #site-header -->
