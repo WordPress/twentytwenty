@@ -2862,14 +2862,17 @@ h2.entry-title {
 
 .entry-content .has-medium-font-size {
 	font-size: 1.1em;
+	line-height: 1.45;
 }
 
 .entry-content .has-large-font-size {
 	font-size: 1.25em;
+	line-height: 1.4;
 }
 
 .entry-content .has-larger-font-size {
 	font-size: 1.5em;
+	line-height: 1.3;
 }
 
 
