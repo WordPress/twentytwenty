@@ -200,6 +200,9 @@ function twentytwenty_register_styles() {
 	// Add output of Customizer settings as inline style.
 	wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
 
+	// Add print CSS.
+	wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
@@ -428,20 +431,6 @@ function twentytwenty_block_editor_settings() {
 			'color' => twentytwenty_get_color_for_area( 'content', 'borders' ),
 		),
 	);
-
-	// Get the color options.
-	$accent_color_options = TwentyTwenty_Customize::get_color_options();
-
-	// Loop over them and construct an array for the editor-color-palette.
-	if ( $accent_color_options ) {
-		foreach ( $accent_color_options as $color_option_name => $color_option ) {
-			$editor_color_palette[] = array(
-				'name'  => $color_option['label'],
-				'slug'  => $color_option['slug'],
-				'color' => get_theme_mod( $color_option_name, $color_option['default'] ),
-			);
-		}
-	}
 
 	// Add the background option.
 	$background_color = get_theme_mod( 'background_color' );

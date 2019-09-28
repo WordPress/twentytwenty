@@ -121,7 +121,7 @@ body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	color: #000;
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 1.8rem;
 	letter-spacing: -0.015em;
 	text-align: left;
@@ -216,6 +216,7 @@ path {
 	left: -9999rem;
 	top: 2.5rem;
 	z-index: 999999999;
+	text-decoration: underline;
 }
 
 .skip-link:focus {
@@ -246,120 +247,9 @@ path {
 	src: url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMoAA0AAAAACDQAAALTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCahEICjx3CywAATYCJANUBCAFhiEHgWwbXQfILgpsY+rQRRARwyAs6uL7pxzYhxEE+32b3aeHmifR6tklkS9hiZA0ewkqGRJE+H7/+6378ASViK/PGeavqJyOzsceKi1s3BCiQsiOdn1r/RBgIJYEgCUhbm/8/8/h4saPssnTNkkiWUBrTRtjmQSajw3Ui3pZ3LYDPD+XG2C3JA/yKAS8/rU5eNfuGqRf4eNNgV4YAlIIgxglEkWe6FYpq10+wi3g+/nUgvgPFczNrz/RsTgVm/zfbPuHZlsuQECxuyqBcQwKFBjFgKO8AqP4bAN9tFJtnM9xPcbNjeXS/x1wY/xU52f5W/X1+9cnH4YwKIaoRRAkUkj/YlAAeF/624foiIDBgBmgQBeGAyhBljUPZUm/l2dTvmpqcBDUOHdbPZWd8JsBAsGr4w8/EDn82/bUPx4eh0YNrQTBuHO2FjQEAGBwK0DeI37DpQVqdERS4gZBhpeUhWCfLFz7J99aEBgsJCHvUGAdAPp4IADDCAPCEFMGpMZ9AQpTfQtQGhLbGVBZFV8BaqNyP68oTZgHNj3M8kBPfXTTC9t90UuzYhy9ciH0grVlOcqyCytisvbsERsEYztiznR0WCrmTksJwbSNK6fd1Rvr25I9oLvctUoEbNOmXJbqgYgPXEHJ82IUsrCnpkxh23F1rfZ2zcRnJYoXtauB3VTFkFXQg3uoZYD5qE0kdjDtoDoF1h2bulGmev5HbYhbrjtohQSRI4aNOkffIcT+d3v6atpaYh3JvPoQsztCcqvaBkppDSPcQ3bw3KaCBo1f5CJWTZEgW3LjLofYg51MaVezrx8xZitYbQ9KYeoRaqQdVLwSEfrKXLK1otCWOKNdR/YwYAfon5Yk8O2MJfSD10dPGA5PIJJQMkah0ugMJiv6x4Dm7LEa8xnrRGGGLAg4sAlbsA07sAt76DOsXKO3hIjtIlpnnFrt1qW4kh6NhS83P/6HB/fl1SMAAA==) format("woff2"), url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAUQAA0AAAAACDQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAE9AAAABwAAAAchf5yU0dERUYAAATYAAAAHAAAAB4AJwAbT1MvMgAAAaAAAABJAAAAYJAcgU5jbWFwAAACIAAAAF4AAAFqUUxBZ2dhc3AAAATQAAAACAAAAAgAAAAQZ2x5ZgAAApAAAAAyAAAAPL0n8y9oZWFkAAABMAAAADAAAAA2Fi93Z2hoZWEAAAFgAAAAHQAAACQOSgWaaG10eAAAAewAAAAzAAAAVC7TAQBsb2NhAAACgAAAABAAAAAsAOQBAm1heHAAAAGAAAAAHQAAACAAWQALbmFtZQAAAsQAAAF6AAADIYvD/Adwb3N0AAAEQAAAAI4AAADsapk2o3jaY2BkYGAA4ov5mwzj+W2+MnCzXwCKMNzgCBSB0LfbQDQ7AxuI4mBgAlEAFKQIRHjaY2BkYGD3+NvCwMDBAALsDAyMDKhAFAA3+wH3AAAAeNpjYGRgYBBl4GBgYgABEMnIABJzAPMZAAVmAGUAAAB42mNgZlJhnMDAysDCKsKygYGBYRqEZtrDYMT4D8gHSmEHjgUFOQwODAqqf9g9/rYwMLB7MNUAhRlBcsxBrMlASoGBEQAj8QtyAAAAeNrjYGBkAAGmWQwMjO8gmBnIZ2NA0ExAzNjAAFYJVn0ASBsD6VAIDZb7AtELAgANIgb9AHjaY2BgYGaAYBkGRgYQSAHyGMF8FgYPIM3HwMHAxMDGoMCwQIFLQV8hXvXP//9AcRCfAcb///h/ygPW+w/vb7olBjUHCTCyMcAFGZmABBO6AogThgZgIUsXAEDcEzcAAHjaY2BgECMCyoEgACZaAed42mNgYmRgYGBnYGNgYAZSDJqMgorCgoqCjECRXwwNrCAKSP5mAAFGBiRgyAAAi/YFBQAAeNqtkc1OwkAUhU/5M25cEhcsZick0AwlBJq6MWwgJkAgYV/KAA2lJeUn+hY+gktXvpKv4dLTMqKycGHsTZNv7px7z50ZAFd4hYHjdw1Ls4EiHjVncIFnzVnc4F1zDkWjrzmPW+NNcwGlzIRKI3fJlUyrEjZQxb3mDH2fNGfRx4vmHKqG0JzHg6E0F9DOlFBGBxUI1GEzLNT4S0aLuTtsGAEUuYcQHkyg3KmIum1bNUvKlrjbbAIleqHHnS4iSudpQcySMYtdFiXlAxzSbAwfMxK6kZoHKhbjjespMTioOPZnzI+4ucCeTVyKMVKLfeAS6vSWaTinuZwzyy/Dc7vaed+6KaV0kukdPUk6yOcctZPvvxxqksq2lEW8RvHjMEO2FCl/zy6p3NEm0R9OFSafJdldc4QVeyaaObMBO0/5cCaa6d9Ggyubxire+lEojscdjoWUR1xGOy8KD8mG2ZLO2l2paDc3A39qmU2z2W5YNv5+u79e6QfGJY/hAAB42m3NywrCMBQE0DupWp/1AYI7/6DEaLQu66Mrd35BKUWKJSlFv1+rue4cGM7shgR981qSon+ZNwUJ8iDgoYU2OvDRRQ99DDDECAHGmGCKmf80hZSx/Kik/LliFbtmN6xmt+yOjdg9GztV4tROnRwX/Bsaaw51nt4Lc7tWaZYHp/MlzKx51LZs5htNri+2AAAAAQAB//8AD3jaY2BkYGDgAWIxIGZiYARCESBmAfMYAAR6AEMAAAABAAAAANXtRbgAAAAA2AhRFAAAAADYCNuG) format("woff");
 }
 
-/* INTER */
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 300;
-	src:
-		url(./assets/fonts/inter/Inter-Light-BETA.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-Light-BETA.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 300;
-	src:
-		url(./assets/fonts/inter/Inter-LightItalic-BETA.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-LightItalic-BETA.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 400;
-	src:
-		url(./assets/fonts/inter/Inter-Regular.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-Regular.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 400;
-	src:
-		url(./assets/fonts/inter/Inter-Italic.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-Italic.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 500;
-	src:
-		url(./assets/fonts/inter/Inter-Medium.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-Medium.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 500;
-	src:
-		url(./assets/fonts/inter/Inter-MediumItalic.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-MediumItalic.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 600;
-	src:
-		url(./assets/fonts/inter/Inter-SemiBold.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-SemiBold.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 600;
-	src:
-		url(./assets/fonts/inter/Inter-SemiBoldItalic.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-SemiBoldItalic.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 700;
-	src:
-		url(./assets/fonts/inter/Inter-Bold.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-Bold.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 700;
-	src:
-		url(./assets/fonts/inter/Inter-BoldItalic.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-BoldItalic.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 800;
-	src:
-		url(./assets/fonts/inter/Inter-ExtraBold.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-ExtraBold.woff) format("woff");
-}
-
-@font-face {
-	font-family: Inter;
-	font-style: italic;
-	font-weight: 800;
-	src:
-		url(./assets/fonts/inter/Inter-ExtraBoldItalic.woff2) format("woff2"),
-		url(./assets/fonts/inter/Inter-ExtraBoldItalic.woff) format("woff");
-}
-
 /* ----------------------------------------------
-Variable font. Usage:
+Inter variable font. Usage:
 
-html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
 	html { font-family: 'Inter var', sans-serif; }
 }
@@ -558,6 +448,11 @@ hr.styled-separator::after {
 a {
 	color: #cd2653;
 	text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
 }
 
 
@@ -790,7 +685,7 @@ button,
 .faux-button,
 .wp-block-button__link,
 .wp-block-file__button {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	line-height: 1;
 }
 
@@ -1578,6 +1473,11 @@ ul.social-icons li {
 
 .cover-modal.show-modal {
 	display: block;
+	cursor: pointer;
+}
+
+.cover-modal.show-modal > * {
+	cursor: default;
 }
 
 
@@ -1879,6 +1779,13 @@ ul.primary-menu {
 	text-decoration: underline;
 }
 
+.primary-menu li.current-menu-item > a:hover,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:hover,
+.primary-menu li.current-menu-item > a:focus,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:focus {
+	text-decoration: none;
+}
+
 /* SUB MENU */
 
 .primary-menu ul {
@@ -2022,6 +1929,7 @@ ul.primary-menu {
 	display: flex;
 	justify-content: stretch;
 	overflow: auto;
+	-ms-overflow-style: auto;
 	width: 100%;
 }
 
@@ -2045,6 +1953,10 @@ button.close-nav-toggle {
 button.close-nav-toggle svg {
 	height: 2rem;
 	width: 2rem;
+}
+
+.menu-modal .menu-top {
+	flex-shrink: 0;
 }
 
 
@@ -2127,6 +2039,77 @@ button.sub-menu-toggle.active svg {
 .modal-menu ul li a {
 	color: inherit;
 	font-weight: 500;
+}
+
+/* Main menu animation ----------------------- */
+
+.menu-wrapper .menu-item {
+	position: relative;
+}
+
+.menu-wrapper .active {
+	display: block;
+}
+
+.menu-wrapper.is-toggling {
+	pointer-events: none;
+}
+
+.menu-wrapper.is-toggling .menu-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.menu-wrapper.is-toggling .menu-bottom .social-menu .menu-item {
+	width: auto;
+}
+
+.menu-wrapper.is-animating .menu-item,
+.menu-wrapper.is-animating .toggling-target {
+	transition-duration: 250ms;
+}
+
+.menu-wrapper.is-animating .menu-item {
+	transition-property: transform;
+}
+
+.menu-wrapper.is-toggling .toggling-target {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 1;
+}
+
+.menu-wrapper.is-toggling .toggling-target.active {
+	opacity: 0;
+}
+
+.menu-wrapper.is-animating.is-toggling .toggling-target {
+	display: block;
+	transition-property: opacity;
+	opacity: 0;
+}
+
+.menu-wrapper.is-animating.is-toggling .toggling-target.active {
+	opacity: 1;
+}
+
+.menu-wrapper.is-toggling .modal-menu > li:last-child li {
+	border-top-color: transparent;
+	border-bottom-width: 0.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.menu-wrapper.is-animating .menu-item,
+	.menu-wrapper.is-animating .toggling-target {
+		transition-duration: 1ms !important;
+	}
+
 }
 
 
@@ -2253,12 +2236,12 @@ button.search-untoggle {
 
 /* Modal Search Form ------------------------- */
 
-.modal-search-form {
+.search-modal form {
 	position: relative;
 	width: 100%;
 }
 
-.modal-search-form .search-field {
+.search-modal .search-field {
 	background: none;
 	border: none;
 	border-radius: 0;
@@ -2270,27 +2253,27 @@ button.search-untoggle {
 	width: 100%;
 }
 
-.modal-search-form .search-field::-webkit-input-placeholder {
+.search-modal .search-field::-webkit-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field:-ms-input-placeholder {
+.search-modal .search-field:-ms-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field::-moz-placeholder {
+.search-modal .search-field::-moz-placeholder {
 	color: inherit;
 	line-height: 4;
 }
 
-.modal-search-form .search-submit {
+.search-modal .search-submit {
 	position: absolute;
 	right: -9999rem;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.modal-search-form .search-submit:focus {
+.search-modal .search-submit:focus {
 	right: 0;
 }
 
@@ -2470,6 +2453,11 @@ body:not(.singular) main article:first-of-type {
 	text-transform: uppercase;
 }
 
+.entry-categories a:focus,
+.entry-categories a:hover {
+	border-bottom-color: transparent;
+}
+
 h1.entry-title,
 h2.entry-title {
 	margin: 0;
@@ -2632,13 +2620,6 @@ h2.entry-title {
 
 /* Post Footer ------------------------------- */
 
-/* POST EDIT LINK */
-
-.post-edit-link {
-	display: block;
-	margin-top: 3rem;
-}
-
 /* POST NAV LINKS */
 
 .post-nav-links {
@@ -2734,6 +2715,11 @@ h2.entry-title {
 	text-decoration: none;
 }
 
+.pagination-single a:hover,
+.pagination-single a:focus {
+	text-decoration: underline;
+}
+
 .pagination-single a + a {
 	margin-top: 1rem;
 }
@@ -2791,7 +2777,7 @@ h2.entry-title {
 
 .has-drop-cap:not(:focus)::first-letter {
 	color: #cd2653;
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 5.1em;
 	font-weight: 800;
 	margin: 0.05em 0.1em 0 0;
@@ -2816,7 +2802,7 @@ h2.entry-title {
 .entry-content .wp-block-pullquote,
 .entry-content .wp-block-quote.is-large,
 .entry-content .wp-block-quote.is-style-large {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -2885,6 +2871,7 @@ h2.entry-title {
 
 .wp-block-archives,
 .wp-block-categories,
+.wp-block-gallery ul,
 .wp-block-latest-posts,
 .wp-block-latest-comments {
 	list-style: none;
@@ -2931,6 +2918,17 @@ h2.entry-title {
 .wp-block-latest-comments a {
 	font-weight: 700;
 	text-decoration: none;
+}
+
+.wp-block-archives a:hover,
+.wp-block-categories a:hover,
+.wp-block-latest-posts a:hover,
+.wp-block-latest-comments a:hover,
+.wp-block-archives a:focus,
+.wp-block-categories a:focus,
+.wp-block-latest-posts a:focus,
+.wp-block-latest-comments a:focus {
+	text-decoration: underline;
 }
 
 .wp-block-latest-posts a,
@@ -3292,6 +3290,11 @@ hr.wp-block-separator {
 	text-decoration: none;
 }
 
+.entry-content .wp-block-latest-comments a:hover,
+.entry-content .wp-block-latest-comments a:focus {
+	text-decoration: underline;
+}
+
 .wp-block-latest-comments__comment {
 	font-size: inherit;
 }
@@ -3355,9 +3358,9 @@ hr.wp-block-separator {
 	margin-bottom: 0;
 }
 
-.entry-content a:focus,
-.entry-content a:hover {
-	text-decoration: underline;
+.entry-content a:hover,
+.entry-content a:focus {
+	text-decoration: none;
 }
 
 .entry-content p,
@@ -3398,7 +3401,7 @@ hr.wp-block-separator {
 .entry-content cite,
 .entry-content figcaption,
 .entry-content .wp-caption-text {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -3551,6 +3554,11 @@ div.comment:first-of-type {
 	text-decoration: underline;
 }
 
+.comment-author a:hover,
+.comment-author a:focus {
+	text-decoration: none;
+}
+
 .comment-meta .avatar {
 	height: 4rem;
 	position: absolute;
@@ -3601,7 +3609,7 @@ div.comment:first-of-type {
 .comment-content cite,
 .comment-content figcaption,
 .comment-content .wp-caption-text {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -3954,6 +3962,10 @@ div.comment:first-of-type {
 	margin-top: 0.2rem;
 }
 
+.widget select {
+	max-width: 100%;
+}
+
 /* Font Families ----------------------------- */
 
 .widget_text p,
@@ -3969,7 +3981,7 @@ div.comment:first-of-type {
 .widget-content cite,
 .widget-content figcaption,
 .widget-content .wp-caption-text {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -4203,6 +4215,11 @@ div.comment:first-of-type {
 
 .footer-menu a {
 	text-decoration: none;
+}
+
+.footer-menu a:hover,
+.footer-menu a:focus {
+	text-decoration: underline;
 }
 
 /* FOOTER SOCIAL */
@@ -4593,7 +4610,7 @@ a.to-the-top > * {
 
 	/* Modal Search Form ------------------------- */
 
-	.modal-search-form {
+	.search-modal form {
 		position: relative;
 		width: 100%;
 	}
@@ -4603,14 +4620,14 @@ a.to-the-top > * {
 		width: 2.5rem;
 	}
 
-	.modal-search-form .search-field {
+	.search-modal .search-field {
 		border: none;
 		font-size: 3.2rem;
-		height: 18.3rem;
+		height: 14rem;
 	}
 
-	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 5.7;
+	.search-modal .search-field::-moz-placeholder {
+		line-height: 4.375;
 	}
 
 	/* Sub Page ------------------------------ */
