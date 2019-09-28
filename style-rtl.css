@@ -216,6 +216,7 @@ path {
 	right: -9999rem;
 	top: 2.5rem;
 	z-index: 999999999;
+	text-decoration: underline;
 }
 
 .skip-link:focus {
@@ -447,6 +448,11 @@ hr.styled-separator::after {
 a {
 	color: #cd2653;
 	text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
 }
 
 
@@ -1467,6 +1473,11 @@ ul.social-icons li {
 
 .cover-modal.show-modal {
 	display: block;
+	cursor: pointer;
+}
+
+.cover-modal.show-modal > * {
+	cursor: default;
 }
 
 
@@ -1768,6 +1779,13 @@ ul.primary-menu {
 	text-decoration: underline;
 }
 
+.primary-menu li.current-menu-item > a:hover,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:hover,
+.primary-menu li.current-menu-item > a:focus,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:focus {
+	text-decoration: none;
+}
+
 /* SUB MENU */
 
 .primary-menu ul {
@@ -1911,6 +1929,7 @@ ul.primary-menu {
 	display: flex;
 	justify-content: stretch;
 	overflow: auto;
+	-ms-overflow-style: auto;
 	width: 100%;
 }
 
@@ -1934,6 +1953,10 @@ button.close-nav-toggle {
 button.close-nav-toggle svg {
 	height: 2rem;
 	width: 2rem;
+}
+
+.menu-modal .menu-top {
+	flex-shrink: 0;
 }
 
 
@@ -2016,6 +2039,77 @@ button.sub-menu-toggle.active svg {
 .modal-menu ul li a {
 	color: inherit;
 	font-weight: 500;
+}
+
+/* Main menu animation ----------------------- */
+
+.menu-wrapper .menu-item {
+	position: relative;
+}
+
+.menu-wrapper .active {
+	display: block;
+}
+
+.menu-wrapper.is-toggling {
+	pointer-events: none;
+}
+
+.menu-wrapper.is-toggling .menu-item {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.menu-wrapper.is-toggling .menu-bottom .social-menu .menu-item {
+	width: auto;
+}
+
+.menu-wrapper.is-animating .menu-item,
+.menu-wrapper.is-animating .toggling-target {
+	transition-duration: 250ms;
+}
+
+.menu-wrapper.is-animating .menu-item {
+	transition-property: transform;
+}
+
+.menu-wrapper.is-toggling .toggling-target {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 1;
+}
+
+.menu-wrapper.is-toggling .toggling-target.active {
+	opacity: 0;
+}
+
+.menu-wrapper.is-animating.is-toggling .toggling-target {
+	display: block;
+	transition-property: opacity;
+	opacity: 0;
+}
+
+.menu-wrapper.is-animating.is-toggling .toggling-target.active {
+	opacity: 1;
+}
+
+.menu-wrapper.is-toggling .modal-menu > li:last-child li {
+	border-top-color: transparent;
+	border-bottom-width: 0.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.menu-wrapper.is-animating .menu-item,
+	.menu-wrapper.is-animating .toggling-target {
+		transition-duration: 1ms !important;
+	}
+
 }
 
 
@@ -2359,6 +2453,11 @@ body:not(.singular) main article:first-of-type {
 	text-transform: uppercase;
 }
 
+.entry-categories a:focus,
+.entry-categories a:hover {
+	border-bottom-color: transparent;
+}
+
 h1.entry-title,
 h2.entry-title {
 	margin: 0;
@@ -2623,6 +2722,11 @@ h2.entry-title {
 	text-decoration: none;
 }
 
+.pagination-single a:hover,
+.pagination-single a:focus {
+	text-decoration: underline;
+}
+
 .pagination-single a + a {
 	margin-top: 1rem;
 }
@@ -2820,6 +2924,17 @@ h2.entry-title {
 .wp-block-latest-comments a {
 	font-weight: 700;
 	text-decoration: none;
+}
+
+.wp-block-archives a:hover,
+.wp-block-categories a:hover,
+.wp-block-latest-posts a:hover,
+.wp-block-latest-comments a:hover,
+.wp-block-archives a:focus,
+.wp-block-categories a:focus,
+.wp-block-latest-posts a:focus,
+.wp-block-latest-comments a:focus {
+	text-decoration: underline;
 }
 
 .wp-block-latest-posts a,
@@ -3181,6 +3296,11 @@ hr.wp-block-separator {
 	text-decoration: none;
 }
 
+.entry-content .wp-block-latest-comments a:hover,
+.entry-content .wp-block-latest-comments a:focus {
+	text-decoration: underline;
+}
+
 .wp-block-latest-comments__comment {
 	font-size: inherit;
 }
@@ -3244,9 +3364,9 @@ hr.wp-block-separator {
 	margin-bottom: 0;
 }
 
-.entry-content a:focus,
-.entry-content a:hover {
-	text-decoration: underline;
+.entry-content a:hover,
+.entry-content a:focus {
+	text-decoration: none;
 }
 
 .entry-content p,
@@ -3438,6 +3558,11 @@ div.comment:first-of-type {
 
 .comment-author a {
 	text-decoration: underline;
+}
+
+.comment-author a:hover,
+.comment-author a:focus {
+	text-decoration: none;
 }
 
 .comment-meta .avatar {
@@ -4096,6 +4221,11 @@ div.comment:first-of-type {
 
 .footer-menu a {
 	text-decoration: none;
+}
+
+.footer-menu a:hover,
+.footer-menu a:focus {
+	text-decoration: underline;
 }
 
 /* FOOTER SOCIAL */
