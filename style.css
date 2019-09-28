@@ -3685,8 +3685,7 @@ div.comment:first-of-type {
 	margin: 0 0 1rem 1.5rem;
 }
 
-.comment-reply-link,
-.edit-comment-link {
+.comment-reply-link {
 	background-color: #cd2653;
 	color: #fff;
 	display: block;
@@ -5005,7 +5004,7 @@ a.to-the-top > * {
 	.comment-meta {
 		margin-bottom: 2rem;
 		min-height: 6rem;
-		padding: 0.2rem 0 0 7.5rem;
+		padding: 0.3rem 0 0 7.5rem;
 	}
 
 	.comment-meta .avatar {
