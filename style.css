@@ -4475,7 +4475,10 @@ a.to-the-top > * {
 	h2,
 	.heading-size-2,
 	h3,
-	.heading-size-3,
+	.heading-size-3 {
+		margin: 6rem 0 3rem;
+	}
+	
 	h4,
 	.heading-size-4,
 	h5,
@@ -4973,7 +4976,10 @@ a.to-the-top > * {
 
 	.entry-content h1,
 	.entry-content h2,
-	.entry-content h3,
+	.entry-content h3 {
+		margin: 6rem 0 3rem;
+	}
+
 	.entry-content h4,
 	.entry-content h5,
 	.entry-content h6 {
