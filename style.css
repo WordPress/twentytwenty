@@ -708,6 +708,15 @@ textarea {
 	border-color: #dcd7ca;
 }
 
+code,
+input[type="url"],
+input[type="email"],
+input[type="tel"] {
+
+	/*rtl:ignore*/
+	direction: ltr;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
