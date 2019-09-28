@@ -13,7 +13,25 @@ Default theme for Twenty Twenty
 
 == Changelog ==
 
-== Resources ==
+== Copyright ==
+
+Twenty Twenty WordPress Theme, Copyright 2019 WordPress.org
+Twenty Twenty is distributed under the terms of the GNU GPL.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+Twenty Twenty is derived from the Chaplin Theme, Copyright 2019 Anders Norén
+Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
+
+Twenty Twenty bundles the following third-party resources:
 
 Image in screenshot.png from PxHere
 License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
@@ -23,26 +41,20 @@ Inter Font
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://rsms.me/inter/
 
-FontAwesome Icons
+Bespoke Icons Created For Twenty Twenty
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
+List of bespoke icons:
+- Search icon
+- Menu icon
+
+Feather Icons
+License: MIT License, https://opensource.org/licenses/MIT
+Source: https://feathericons.com
+
+Font Awesome Icons
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://www.fontawesome.io
 
-FontAwesome Code
+Font Awesome Code
 License: MIT License, https://opensource.org/licenses/MIT
 Source: https://www.fontawesome.io
-
-Font Noto Sans 
-License: Apache License (Apache-2.0), https://www.apache.org/licenses/LICENSE-2.0
-URL: https://fonts.google.com/specimen/Noto+Sans
-
-Font Noto Sans TC
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
-
-Font Noto Sans SC
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
-
-Font Noto Sans HK
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1 
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
