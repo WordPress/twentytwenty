@@ -1595,7 +1595,7 @@ body:not(.enable-search-modal) .site-logo img {
 
 .overlay-header .header-inner .toggle-wrapper::before {
 	background-color: currentColor;
-	opacity: .25;
+	opacity: 0.25;
 }
 
 .admin-bar.overlay-header #site-header {
