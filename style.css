@@ -2223,7 +2223,7 @@ button.search-untoggle {
 
 /* Modal Search Form ------------------------- */
 
-.modal-search-form {
+.modal-search-form form {
 	position: relative;
 	width: 100%;
 }
