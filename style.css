@@ -4209,7 +4209,7 @@ div.comment:first-of-type {
 }
 
 .reduced-spacing #site-footer {
-	border-top: .1rem solid #dedfdf;
+	border-top: 0.1rem solid #dedfdf;
 }
 
 .footer-top,
