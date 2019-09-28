@@ -445,6 +445,7 @@ twentytwenty.primaryMenu = {
 		// Get all the link elements within the primary menu.
 		var menu = document.querySelector( '.primary-menu-wrapper nav' );
 		var links = menu.getElementsByTagName( 'a' );
+		var i, len;
 
 		// Each time a menu link is focused or blurred, toggle focus.
 		for ( i = 0, len = links.length; i < len; i++ ) {
@@ -665,7 +666,7 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
-	twentytwenty.primaryMenu.init(); // Primary Menu 
+	twentytwenty.primaryMenu.init();	// Primary Menu 
 } );
 
 /*	-----------------------------------------------------------------------------------------------
