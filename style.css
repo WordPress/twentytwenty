@@ -4872,7 +4872,7 @@ a.to-the-top > * {
 
 	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
-		margin-top: -4rem;
+		margin-top: -2rem;
 	}
 
 	/* BLOCK: GROUP */
@@ -5442,7 +5442,7 @@ a.to-the-top > * {
 
 	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
-		margin-top: -6rem;
+		margin-top: -4rem;
 	}
 
 	/* BLOCK: GROUP */
@@ -5600,7 +5600,7 @@ a.to-the-top > * {
 	/* BLOCK: COLUMNS */
 
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
-		margin-top: -8rem;
+		margin-top: -6rem;
 	}
 
 	/* BLOCK: GROUP */
