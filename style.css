@@ -3949,7 +3949,7 @@ div.comment:first-of-type {
 	margin-bottom: 0;
 }
 
-.widget-title {
+.widget .widget-title {
 	margin: 0 0 2rem;
 }
 
@@ -5098,7 +5098,7 @@ a.to-the-top > * {
 
 	/* Widgets ------------------------------- */
 
-	.widget-title {
+	.widget .widget-title {
 		margin-bottom: 3rem;
 	}
 
