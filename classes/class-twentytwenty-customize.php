@@ -96,6 +96,27 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			// Enable picking an accent color.
+			$wp_customize->add_setting(
+				'accent_hue_active',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+					'transport'         => 'postMessage',
+					'default'           => false,
+				)
+			);
+
+			$wp_customize->add_control(
+				'accent_hue_active',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'colors',
+					'label'       => __( 'Change accent color', 'twentytwenty' ),
+					'description' => __( 'Something', 'twentytwenty' ),
+				)
+			);
+
 			/**
 			 * Implementation for the accent color.
 			 * This is different to all other color options because of the accessibility enhancements.
@@ -146,10 +167,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'accent_hue',
 					array(
-						'label'    => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
-						'section'  => 'colors',
-						'settings' => 'accent_hue',
-						'mode'     => 'hue',
+						'label'           => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
+						'section'         => 'colors',
+						'settings'        => 'accent_hue',
+						'mode'            => 'hue',
+						'active_callback' => function( $control ) use ( $wp_customize ) {
+							return ( true === $wp_customize->get_setting( 'accent_hue_active' )->value() );
+						},
 					)
 				)
 			);
