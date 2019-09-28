@@ -4873,6 +4873,15 @@ a.to-the-top > * {
 		margin-top: -2rem;
 	}
 
+	.entry-content .wp-block-columns h1,
+	.entry-content .wp-block-columns h2,
+	.entry-content .wp-block-columns h3,
+	.entry-content .wp-block-columns h4,
+	.entry-content .wp-block-columns h5,
+	.entry-content .wp-block-columns h6 {
+		margin: 3.5rem 0 2rem;
+	}
+
 	/* BLOCK: GROUP */
 
 	.wp-block-group.has-background {
