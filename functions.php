@@ -629,7 +629,7 @@ function twentytwenty_get_elements_array() {
 				'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 			),
 			'background' => array(
-				'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-button__link:hover', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
+				'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-button__link:active', '.wp-block-button__link:focus', '.wp-block-button__link:visited', '.wp-block-button__link:hover', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
 				'background' => array(),
 			),
 			'text'       => array(
