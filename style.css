@@ -2415,6 +2415,10 @@ body.template-full-width .entry-content .alignright {
 	padding: 4rem 0;
 }
 
+.reduced-spacing .archive-header {
+	padding-bottom: 2rem;
+}
+
 .archive-title {
 	font-size: 2.4rem;
 	font-weight: 700;
@@ -4689,6 +4693,10 @@ a.to-the-top > * {
 
 	.archive-header {
 		padding: 8rem 0;
+	}
+
+	.reduced-spacing .archive-header {
+		padding-bottom: 3rem;
 	}
 
 	.archive-title {
