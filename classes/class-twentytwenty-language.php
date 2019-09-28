@@ -23,7 +23,7 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 		 * @return string|null
 		 */
 		public static function load_fallback_languages() {
-			
+
 			switch ( get_bloginfo( 'language' ) ) {
 				// Arabic.
 				case 'ar':
