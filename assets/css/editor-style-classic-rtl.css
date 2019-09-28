@@ -113,6 +113,7 @@ body#tinymce.wp-editor pre {
 }
 
 body#tinymce.wp-editor a,
+body#tinymce.wp-editor a:focus,
 body#tinymce.wp-editor a:hover {
 	color: #cd2653;
 	text-decoration: underline;
@@ -533,20 +534,20 @@ body#tinymce.wp-editor input[type="submit"] {
 	text-transform: uppercase;
 }
 
+body#tinymce.wp-editor button:focus,
 body#tinymce.wp-editor button:hover,
 body#tinymce.wp-editor .faux-button:hover,
-body#tinymce.wp-editor .wp-block-button__link:hover,
-body#tinymce.wp-editor .wp-block-file__button:hover,
-body#tinymce.wp-editor input[type="button"]:hover,
-body#tinymce.wp-editor input[type="reset"]:hover,
-body#tinymce.wp-editor input[type="submit"]:hover,
-body#tinymce.wp-editor button:focus,
 body#tinymce.wp-editor .faux-button:focus,
 body#tinymce.wp-editor .wp-block-button__link:focus,
+body#tinymce.wp-editor .wp-block-button__link:hover,
 body#tinymce.wp-editor .wp-block-file__button:focus,
+body#tinymce.wp-editor .wp-block-file__button:hover,
 body#tinymce.wp-editor input[type="button"]:focus,
+body#tinymce.wp-editor input[type="button"]:hover,
 body#tinymce.wp-editor input[type="reset"]:focus,
-body#tinymce.wp-editor input[type="submit"]:focus {
+body#tinymce.wp-editor input[type="reset"]:hover,
+body#tinymce.wp-editor input[type="submit"]:focus,
+body#tinymce.wp-editor input[type="submit"]:hover {
 	color: #fff;
 	text-decoration: underline;
 }
@@ -565,6 +566,7 @@ body#tinymce.wp-editor input[type="submit"]:focus {
 /* BUTTON STYLE: OUTLINE */
 
 body#tinymce.wp-editor .is-style-outline .wp-block-button__link,
+body#tinymce.wp-editor .is-style-outline .wp-block-button__link:focus,
 body#tinymce.wp-editor .is-style-outline .wp-block-button__link:hover {
 	color: #cd2653;
 }

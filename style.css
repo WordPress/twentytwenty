@@ -216,6 +216,7 @@ path {
 	left: -9999rem;
 	top: 2.5rem;
 	z-index: 999999999;
+	text-decoration: underline;
 }
 
 .skip-link:focus {
@@ -447,6 +448,11 @@ hr.styled-separator::after {
 a {
 	color: #cd2653;
 	text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
 }
 
 
@@ -1782,6 +1788,13 @@ ul.primary-menu {
 	text-decoration: underline;
 }
 
+.primary-menu li.current-menu-item > a:hover,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:hover,
+.primary-menu li.current-menu-item > a:focus,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:focus {
+	text-decoration: none;
+}
+
 /* SUB MENU */
 
 .primary-menu ul {
@@ -2232,12 +2245,12 @@ button.search-untoggle {
 
 /* Modal Search Form ------------------------- */
 
-.modal-search-form {
+.search-modal form {
 	position: relative;
 	width: 100%;
 }
 
-.modal-search-form .search-field {
+.search-modal .search-field {
 	background: none;
 	border: none;
 	border-radius: 0;
@@ -2249,27 +2262,27 @@ button.search-untoggle {
 	width: 100%;
 }
 
-.modal-search-form .search-field::-webkit-input-placeholder {
+.search-modal .search-field::-webkit-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field:-ms-input-placeholder {
+.search-modal .search-field:-ms-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field::-moz-placeholder {
+.search-modal .search-field::-moz-placeholder {
 	color: inherit;
 	line-height: 4;
 }
 
-.modal-search-form .search-submit {
+.search-modal .search-submit {
 	position: absolute;
 	right: -9999rem;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.modal-search-form .search-submit:focus {
+.search-modal .search-submit:focus {
 	right: 0;
 }
 
@@ -2447,6 +2460,11 @@ body:not(.singular) main article:first-of-type {
 	margin: 0.5rem 0 0 1rem;
 	text-decoration: none;
 	text-transform: uppercase;
+}
+
+.entry-categories a:focus,
+.entry-categories a:hover {
+	border-bottom-color: transparent;
 }
 
 h1.entry-title,
@@ -2706,6 +2724,11 @@ h2.entry-title {
 	text-decoration: none;
 }
 
+.pagination-single a:hover,
+.pagination-single a:focus {
+	text-decoration: underline;
+}
+
 .pagination-single a + a {
 	margin-top: 1rem;
 }
@@ -2857,6 +2880,7 @@ h2.entry-title {
 
 .wp-block-archives,
 .wp-block-categories,
+.wp-block-gallery ul,
 .wp-block-latest-posts,
 .wp-block-latest-comments {
 	list-style: none;
@@ -2903,6 +2927,17 @@ h2.entry-title {
 .wp-block-latest-comments a {
 	font-weight: 700;
 	text-decoration: none;
+}
+
+.wp-block-archives a:hover,
+.wp-block-categories a:hover,
+.wp-block-latest-posts a:hover,
+.wp-block-latest-comments a:hover,
+.wp-block-archives a:focus,
+.wp-block-categories a:focus,
+.wp-block-latest-posts a:focus,
+.wp-block-latest-comments a:focus {
+	text-decoration: underline;
 }
 
 .wp-block-latest-posts a,
@@ -3264,6 +3299,11 @@ hr.wp-block-separator {
 	text-decoration: none;
 }
 
+.entry-content .wp-block-latest-comments a:hover,
+.entry-content .wp-block-latest-comments a:focus {
+	text-decoration: underline;
+}
+
 .wp-block-latest-comments__comment {
 	font-size: inherit;
 }
@@ -3327,9 +3367,9 @@ hr.wp-block-separator {
 	margin-bottom: 0;
 }
 
-.entry-content a:focus,
-.entry-content a:hover {
-	text-decoration: underline;
+.entry-content a:hover,
+.entry-content a:focus {
+	text-decoration: none;
 }
 
 .entry-content p,
@@ -3521,6 +3561,11 @@ div.comment:first-of-type {
 
 .comment-author a {
 	text-decoration: underline;
+}
+
+.comment-author a:hover,
+.comment-author a:focus {
+	text-decoration: none;
 }
 
 .comment-meta .avatar {
@@ -4574,7 +4619,7 @@ a.to-the-top > * {
 
 	/* Modal Search Form ------------------------- */
 
-	.modal-search-form {
+	.search-modal form {
 		position: relative;
 		width: 100%;
 	}
@@ -4584,14 +4629,14 @@ a.to-the-top > * {
 		width: 2.5rem;
 	}
 
-	.modal-search-form .search-field {
+	.search-modal .search-field {
 		border: none;
 		font-size: 3.2rem;
-		height: 18.3rem;
+		height: 14rem;
 	}
 
-	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 5.7;
+	.search-modal .search-field::-moz-placeholder {
+		line-height: 4.375;
 	}
 
 	/* Sub Page ------------------------------ */
