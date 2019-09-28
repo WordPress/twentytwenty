@@ -642,6 +642,19 @@ function twentytwenty_body_classes( $classes ) {
 		$classes[] = basename( get_page_template_slug(), '.php' );
 	}
 
+	// Get header/footer background color.
+	$header_footer_background = get_theme_mod( 'header_footer_background_color', '#ffffff' );
+	$header_footer_background = strtolower( '#' . ltrim( $header_footer_background, '#' ) );
+
+	// Get content background color.
+	$background_color = get_theme_mod( 'background_color', 'f5efe0' );
+	$background_color = strtolower( '#' . ltrim( $background_color, '#' ) );
+
+	// Add extra class if main background and header/footer background are the same color.
+	if ( $background_color === $header_footer_background ) {
+		$classes[] = 'reduced-spacing';
+	}
+
 	return $classes;
 
 }
