@@ -489,7 +489,7 @@ ol ol ol {
 
 li {
 	line-height: 1.5;
-	margin: 1rem 0;
+	margin: 0.5rem 0 0 2rem;
 }
 
 li > ul,
@@ -706,6 +706,15 @@ button,
 input,
 textarea {
 	border-color: #dcd7ca;
+}
+
+code,
+input[type="url"],
+input[type="email"],
+input[type="tel"] {
+
+	/*rtl:ignore*/
+	direction: ltr;
 }
 
 input[type="text"],
@@ -2415,8 +2424,22 @@ body.template-full-width .entry-content .alignright {
 	margin: 0;
 }
 
+.archive-subtitle p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* Posts ------------------------------------- */
+
 body:not(.singular) main article:first-of-type {
 	padding: 4rem 0 0;
+}
+
+
+/* Search Results ---------------------------- */
+
+.no-search-results-form {
+	padding-top: 5rem;
 }
 
 
@@ -3379,10 +3402,6 @@ hr.wp-block-separator {
 .entry-content ul ol,
 .entry-content ol ul {
 	margin-bottom: 1rem;
-}
-
-.entry-content li {
-	margin: 0.5rem 0 0 2rem;
 }
 
 .entry-content hr {
@@ -4676,6 +4695,12 @@ a.to-the-top > * {
 
 	h2.entry-title {
 		font-size: 6.4rem;
+	}
+
+	/* SEARCH RESULTS */
+
+	.no-search-results-form {
+		padding-top: 8rem;
 	}
 
 	/* Post: Single -------------------------- */
