@@ -38,6 +38,7 @@ License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/z
 URL: https://pxhere.com/en/photo/18153
 
 Inter Font
+Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://rsms.me/inter/
 
@@ -48,13 +49,16 @@ List of bespoke icons:
 - Menu icon
 
 Feather Icons
+Copyright (c) 2013-2017 Cole Bemis
 License: MIT License, https://opensource.org/licenses/MIT
 Source: https://feathericons.com
 
 Font Awesome Icons
+Copyright (c) 2012-2019 Fonticons, Inc.
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://www.fontawesome.io
 
 Font Awesome Code
+Copyright (c) 2012-2019 Fonticons, Inc.
 License: MIT License, https://opensource.org/licenses/MIT
 Source: https://www.fontawesome.io
