@@ -2396,8 +2396,7 @@ body.template-cover .entry-header {
 /*	7c. Template: Full Width
 /* -------------------------------------------------------------------------- */
 
-body.template-full-width .entry-content,
-body.template-full-width .entry-content p {
+body.template-full-width .entry-content {
 	max-width: none;
 }
 
@@ -3405,10 +3404,6 @@ hr.wp-block-separator {
 .entry-content p,
 .entry-content li {
 	line-height: 1.4;
-}
-
-.entry-content p {
-	max-width: 58rem;
 }
 
 .entry-content h1,
