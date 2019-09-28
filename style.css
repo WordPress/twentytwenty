@@ -2427,6 +2427,13 @@ body:not(.singular) main article:first-of-type {
 }
 
 
+/* Search Results ---------------------------- */
+
+.no-search-results-form {
+	padding-top: 5rem;
+}
+
+
 /* -------------------------------------------------------------------------- */
 
 /*	9. Post: Single
@@ -4679,6 +4686,12 @@ a.to-the-top > * {
 
 	h2.entry-title {
 		font-size: 6.4rem;
+	}
+
+	/* SEARCH RESULTS */
+
+	.no-search-results-form {
+		padding-top: 8rem;
 	}
 
 	/* Post: Single -------------------------- */
