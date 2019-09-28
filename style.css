@@ -4578,11 +4578,11 @@ a.to-the-top > * {
 	.search-modal .search-field {
 		border: none;
 		font-size: 3.2rem;
-		height: 18.3rem;
+		height: 14rem;
 	}
 
 	.search-modal .search-field::-moz-placeholder {
-		line-height: 5.7;
+		line-height: 4.375;
 	}
 
 	/* Sub Page ------------------------------ */
