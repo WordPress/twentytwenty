@@ -200,6 +200,9 @@ function twentytwenty_register_styles() {
 	// Add output of Customizer settings as inline style.
 	wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
 
+	// Add print CSS.
+	wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
@@ -361,6 +364,8 @@ function twentytwenty_block_editor_styles() {
 	// Add inline style from the Customizer.
 	wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
+	// Enqueue the editor script.
+	wp_enqueue_script( 'twentytwenty-block-editor-script', get_theme_file_uri( '/assets/js/editor-script-block.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1, 1 );
@@ -620,11 +625,11 @@ function twentytwenty_get_elements_array() {
 				'color'            => array( '.color-accent', '.color-accent-hover:hover', '.color-accent-hover:focus', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-button.is-style-outline', 'a' ),
 				'border-color'     => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover', '.border-color-accent-hover:focus' ),
 				'background'       => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]' ),
-				'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.bg-accent-hover:focus', '.has-accent-background-color', '.comment-reply-link', '.edit-comment-link' ),
+				'background-color' => array( '.bg-accent', '.bg-accent-hover:hover', '.bg-accent-hover:focus', '.has-accent-background-color', '.comment-reply-link' ),
 				'fill'             => array( '.fill-children-accent', '.fill-children-accent *' ),
 			),
 			'background' => array(
-				'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link', '.edit-comment-link' ),
+				'color'      => array( 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.comment-reply-link' ),
 				'background' => array(),
 			),
 			'text'       => array(
