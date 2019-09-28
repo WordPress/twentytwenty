@@ -3954,7 +3954,7 @@ div.comment:first-of-type {
 }
 
 .widget li {
-	margin-top: 2rem;
+	margin: 2rem 0 0 0;
 }
 
 .widget li:first-child,
