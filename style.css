@@ -414,11 +414,16 @@ hr {
 .entry-content hr,
 hr.styled-separator {
 	background: linear-gradient(to left, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
+	background-color: transparent !important;
 	border: none;
-	color: #6d6d6d;
 	height: 0.1rem;
 	overflow: visible;
 	position: relative;
+}
+
+.entry-content hr:not(.has-background),
+hr.styled-separator {
+	color: #6d6d6d;
 }
 
 .entry-content hr::before,
