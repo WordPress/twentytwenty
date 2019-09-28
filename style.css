@@ -2818,7 +2818,7 @@ h2.entry-title {
 	clear: both;
 }
 
-.has-drop-cap:not(:focus):after {
+.has-drop-cap:not(:focus)::after {
 	padding: 0;
 }
 
@@ -4477,7 +4477,7 @@ a.to-the-top > * {
 	.heading-size-3 {
 		margin: 6rem 0 3rem;
 	}
-	
+
 	h4,
 	.heading-size-4,
 	h5,
