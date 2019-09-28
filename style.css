@@ -2223,12 +2223,12 @@ button.search-untoggle {
 
 /* Modal Search Form ------------------------- */
 
-.modal-search-form form {
+.search-modal form {
 	position: relative;
 	width: 100%;
 }
 
-.modal-search-form .search-field {
+.search-modal .search-field {
 	background: none;
 	border: none;
 	border-radius: 0;
@@ -2240,27 +2240,27 @@ button.search-untoggle {
 	width: 100%;
 }
 
-.modal-search-form .search-field::-webkit-input-placeholder {
+.search-modal .search-field::-webkit-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field:-ms-input-placeholder {
+.search-modal .search-field:-ms-input-placeholder {
 	color: inherit;
 }
 
-.modal-search-form .search-field::-moz-placeholder {
+.search-modal .search-field::-moz-placeholder {
 	color: inherit;
 	line-height: 4;
 }
 
-.modal-search-form .search-submit {
+.search-modal .search-submit {
 	position: absolute;
 	right: -9999rem;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.modal-search-form .search-submit:focus {
+.search-modal .search-submit:focus {
 	right: 0;
 }
 
@@ -2848,6 +2848,7 @@ h2.entry-title {
 
 .wp-block-archives,
 .wp-block-categories,
+.wp-block-gallery ul,
 .wp-block-latest-posts,
 .wp-block-latest-comments {
 	list-style: none;
@@ -4565,7 +4566,7 @@ a.to-the-top > * {
 
 	/* Modal Search Form ------------------------- */
 
-	.modal-search-form {
+	.search-modal form {
 		position: relative;
 		width: 100%;
 	}
@@ -4575,14 +4576,14 @@ a.to-the-top > * {
 		width: 2.5rem;
 	}
 
-	.modal-search-form .search-field {
+	.search-modal .search-field {
 		border: none;
 		font-size: 3.2rem;
-		height: 18.3rem;
+		height: 14rem;
 	}
 
-	.modal-search-form .search-field::-moz-placeholder {
-		line-height: 5.7;
+	.search-modal .search-field::-moz-placeholder {
+		line-height: 4.375;
 	}
 
 	/* Sub Page ------------------------------ */
