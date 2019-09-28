@@ -4979,7 +4979,11 @@ a.to-the-top > * {
 	/* ALIGNMENT CLASSES */
 
 	.alignnone,
-	.aligncenter,
+	.aligncenter {
+		margin-bottom: 4rem;
+		margin-top: 4rem;
+	}
+
 	.alignwide,
 	.alignfull {
 		margin-bottom: 6rem;
