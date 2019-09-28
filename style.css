@@ -2816,7 +2816,10 @@ h2.entry-title {
 	content: "";
 	display: table;
 	clear: both;
-	padding-top: 14px;
+}
+
+.has-drop-cap:not(:focus):after {
+	padding: 0;
 }
 
 
