@@ -3003,6 +3003,16 @@ h2.entry-title {
 	color: inherit;
 }
 
+/* Block: Columns ---------------------------- */
+
+.wp-block-column > *:first-child {
+	margin-top: 0;
+}
+
+.wp-block-column > *:last-child {
+	margin-bottom: 0;
+}
+
 /* Block: Cover ------------------------------ */
 
 .entry-content .wp-block-cover p {
@@ -4856,6 +4866,13 @@ a.to-the-top > * {
 		margin-top: 5rem;
 	}
 
+	/* BLOCK: COLUMNS */
+
+	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
+	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
+		margin-top: -4rem;
+	}
+
 	/* BLOCK: GROUP */
 
 	.wp-block-group.has-background {
@@ -5410,6 +5427,13 @@ a.to-the-top > * {
 
 	/* Blocks -------------------------------- */
 
+	/* BLOCK: COLUMNS */
+
+	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
+	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
+		margin-top: -6rem;
+	}
+
 	/* BLOCK: GROUP */
 
 	.wp-block-group.alignwide.has-background,
@@ -5561,6 +5585,12 @@ a.to-the-top > * {
 	}
 
 	/* Blocks -------------------------------- */
+
+	/* BLOCK: COLUMNS */
+
+	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
+		margin-top: -8rem;
+	}
 
 	/* BLOCK: GROUP */
 
