@@ -171,27 +171,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
-			/* Enable Header Search --------- */
-
-			$wp_customize->add_setting(
-				'enable_header_search',
-				array(
-					'capability'        => 'edit_theme_options',
-					'default'           => true,
-					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
-				)
-			);
-
-			$wp_customize->add_control(
-				'enable_header_search',
-				array(
-					'type'     => 'checkbox',
-					'section'  => 'options',
-					'priority' => 10,
-					'label'    => __( 'Show search in header', 'twentytwenty' ),
-				)
-			);
-
 			/* Display full content or excerpts on the blog and archives --------- */
 
 			$wp_customize->add_setting(

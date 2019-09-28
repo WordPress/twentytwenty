@@ -36,26 +36,15 @@
 			<div class="header-inner section-inner">
 
 				<div class="header-titles-wrapper">
-
-					<?php
-
-					// Check whether the header search is activated in the customizer.
-					$enable_header_search = get_theme_mod( 'enable_header_search', true );
-
-					if ( true === $enable_header_search ) {
-
-						?>
-
-						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<div class="toggle-inner">
-								<div class="toggle-icon">
-									<?php twentytwenty_the_theme_svg( 'search' ); ?>
-								</div>
-								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+					
+					<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+						<div class="toggle-inner">
+							<div class="toggle-icon">
+								<?php twentytwenty_the_theme_svg( 'search' ); ?>
 							</div>
-						</button><!-- .search-toggle -->
-
-					<?php } ?>
+							<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+						</div>
+					</button><!-- .search-toggle -->
 
 					<div class="header-titles">
 
