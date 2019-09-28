@@ -2422,6 +2422,13 @@ body.template-full-width .entry-content .alignright {
 	margin: 0;
 }
 
+.archive-subtitle p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* Posts ------------------------------------- */
+
 body:not(.singular) main article:first-of-type {
 	padding: 4rem 0 0;
 }
