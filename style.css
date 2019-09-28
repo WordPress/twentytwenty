@@ -342,7 +342,7 @@ h6,
 
 p {
 	line-height: 1.5;
-	margin: 0 0 2rem 0;
+	margin: 0 0 1em 0;
 }
 
 em,
@@ -4402,10 +4402,6 @@ a.to-the-top > * {
 @media ( min-width: 700px ) {
 
 	/* Element Base ------------------------- */
-
-	p {
-		margin-bottom: 2.2rem;
-	}
 
 	ul,
 	ol {
