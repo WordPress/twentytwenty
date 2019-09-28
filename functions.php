@@ -640,7 +640,7 @@ function twentytwenty_get_elements_array() {
 			),
 			'borders'    => array(
 				'border-color'        => array( 'pre', 'fieldset', 'input', 'textarea', 'table', 'table *', 'hr' ),
-				'background'          => array( 'caption', 'code', 'code', 'kbd', 'samp' ),
+				'background'          => array( 'caption', 'code', 'code', 'kbd', 'samp', '.wp-block-table.is-style-stripes tbody tr:nth-child(odd)' ),
 				'border-bottom-color' => array( '.wp-block-table.is-style-stripes' ),
 				'border-top-color'    => array( '.wp-block-latest-posts.is-grid li' ),
 			),
@@ -666,8 +666,6 @@ function twentytwenty_get_elements_array() {
 			'borders'    => array(
 				'border-color'        => array( '.header-footer-group pre', '.header-footer-group fieldset', '.header-footer-group input', '.header-footer-group textarea', '.header-footer-group table', '.header-footer-group table *', '.menu-modal nav *', '.footer-widgets-outer-wrapper', '.footer-top' ),
 				'background'          => array( '.header-footer-group table caption', 'body:not(.overlay-header) .header-inner .toggle-wrapper::before' ),
-				'border-bottom-color' => array( '.wp-block-table.is-style-stripes' ),
-				'border-top-color'    => array( '.wp-block-latest-posts.is-grid li' ),
 			),
 		),
 	);

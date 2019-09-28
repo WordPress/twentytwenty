@@ -3251,8 +3251,8 @@ hr.wp-block-separator {
 
 /* Block: Table ------------------------------ */
 
-.wp-block-table.is-style-stripes tr:nth-child(odd) {
-	background: rgba(0, 0, 0, 0.05);
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+	background: #dcd7ca;
 }
 
 .wp-block-table.is-style-stripes {
