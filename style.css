@@ -3411,6 +3411,15 @@ hr.wp-block-separator {
 	max-width: 58rem;
 }
 
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+	margin: 4rem 0 2.5rem;
+}
+
 .entry-content ul ul,
 .entry-content ol ol,
 .entry-content ul ol,
@@ -4461,10 +4470,7 @@ a.to-the-top > * {
 	h2,
 	.heading-size-2,
 	h3,
-	.heading-size-3 {
-		margin: 6rem 0 3.5rem;
-	}
-
+	.heading-size-3,
 	h4,
 	.heading-size-4,
 	h5,
@@ -4949,6 +4955,15 @@ a.to-the-top > * {
 	.entry-content p,
 	.entry-content li {
 		line-height: 1.476;
+	}
+
+	.entry-content h1,
+	.entry-content h2,
+	.entry-content h3,
+	.entry-content h4,
+	.entry-content h5,
+	.entry-content h6 {
+		margin: 4.5rem 0 2.5rem;
 	}
 
 	/* ALIGNMENT CLASSES */
