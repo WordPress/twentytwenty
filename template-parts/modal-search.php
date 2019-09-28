@@ -12,7 +12,7 @@
 
 	<div class="search-modal-inner modal-inner">
 
-		<div class="section-inner modal-search-form">
+		<div class="section-inner">
 
 			<?php
 			get_search_form(
