@@ -515,7 +515,7 @@ add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
  * @return void
  */
 function twentytwenty_non_latin_languages() {
-  TwentyTwenty_Language::load_fallback_languages();
+	TwentyTwenty_Language::load_fallback_languages();
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_non_latin_languages' );
