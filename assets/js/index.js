@@ -470,7 +470,7 @@ twentytwenty.primaryMenu = {
 				self = self.parentElement;
 			}
 		}
-	},
+	}
 }; // twentytwenty.primaryMenu
 
 /*	-----------------------------------------------------------------------------------------------
@@ -666,7 +666,7 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
-	twentytwenty.primaryMenu.init();	// Primary Menu 
+	twentytwenty.primaryMenu.init();	// Primary Menu
 } );
 
 /*	-----------------------------------------------------------------------------------------------
