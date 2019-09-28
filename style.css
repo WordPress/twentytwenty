@@ -483,7 +483,7 @@ ol ol ol {
 
 li {
 	line-height: 1.5;
-	margin: 0 0 2rem;
+	margin: 0.5rem 0 0 2rem;
 }
 
 li > ul,
@@ -3337,10 +3337,6 @@ hr.wp-block-separator {
 .entry-content ul ol,
 .entry-content ol ul {
 	margin-bottom: 1rem;
-}
-
-.entry-content li {
-	margin: 0.5rem 0 0 2rem;
 }
 
 .entry-content hr {
