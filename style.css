@@ -2848,6 +2848,7 @@ h2.entry-title {
 
 .wp-block-archives,
 .wp-block-categories,
+.wp-block-gallery ul,
 .wp-block-latest-posts,
 .wp-block-latest-comments {
 	list-style: none;
