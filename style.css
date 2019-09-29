@@ -1672,7 +1672,7 @@ body:not(.enable-search-modal) .site-logo img {
 
 .search-toggle .toggle-icon,
 .search-toggle svg {
-	height: 2.3rem;
+	height: 2.5rem;
 	max-width: 2.3rem;
 	width: 2.3rem;
 }
@@ -2796,10 +2796,6 @@ h2.entry-title {
 	text-align: right;
 }
 
-.has-text-align-justify {
-	text-align: justify;
-}
-
 .has-drop-cap:not(:focus)::first-letter {
 	color: #cd2653;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
@@ -3685,8 +3681,7 @@ div.comment:first-of-type {
 	margin: 0 0 1rem 1.5rem;
 }
 
-.comment-reply-link,
-.edit-comment-link {
+.comment-reply-link {
 	background-color: #cd2653;
 	color: #fff;
 	display: block;
@@ -4331,6 +4326,20 @@ a.to-the-top > * {
 
 /*	17. Media Queries
 /* -------------------------------------------------------------------------- */
+
+@media ( max-width: 479px ) {
+
+	/* Lists ------------------------------------- */
+
+	ul,
+	ol {
+		margin: 0 0 3rem 1rem;
+	}
+
+	li {
+		margin: 0.5rem 0 0 1rem;
+	}
+}
 
 @media ( min-width: 480px ) {
 
@@ -5005,7 +5014,7 @@ a.to-the-top > * {
 	.comment-meta {
 		margin-bottom: 2rem;
 		min-height: 6rem;
-		padding: 0.2rem 0 0 7.5rem;
+		padding: 0.3rem 0 0 7.5rem;
 	}
 
 	.comment-meta .avatar {
@@ -5217,6 +5226,7 @@ a.to-the-top > * {
 
 	.header-titles-wrapper {
 		margin-right: 4rem;
+		max-width: 50%;
 		padding: 0;
 		text-align: left;
 	}
@@ -5233,11 +5243,6 @@ a.to-the-top > * {
 	.header-titles .site-logo,
 	.header-titles .site-description {
 		margin: 1rem 0 0 2.4rem;
-	}
-
-	.header-titles .site-title,
-	.header-titles .site-logo {
-		flex-shrink: 0;
 	}
 
 	.wp-custom-logo .header-titles {
