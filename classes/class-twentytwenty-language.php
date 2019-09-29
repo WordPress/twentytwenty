@@ -20,108 +20,96 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 		 *
 		 * Return CSS for non-latin languagee, if available, or null
 		 *
-		 * @return string|null
+		 * @return void
 		 */
 		public static function load_fallback_languages() {
 
-			switch ( get_bloginfo( 'language' ) ) {
-				// Arabic.
-				case 'ar':
-				case 'ary':
-				case 'azb':
-				case 'ckb':
-				case 'fa-IR':
-				case 'haz':
-				case 'ps':
-					$font_title = 'Tahoma, Arial, sans_serif';
-					$font_body  = 'Tahoma, Arial, sans_serif';
-					break;
-				// Chinese Simplified (China) - Noto Sans SC.
-				case 'zh-CN':
-					$font_title = '"PingFang SC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					$font_body  = '"PingFang SC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					break;
-				// Chinese Traditional (Taiwan) - Noto Sans TC.
-				case 'zh-TW':
-					$font_title = '"PingFang TC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					$font_body  = '"PingFang TC", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					break;
-				// Chinese (Hong Kong) - Noto Sans HK.
-				case 'zh-HK':
-					$font_title = '"PingFang HK", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					$font_body  = '"PingFang HK", "Helvetica Neue", "Microsoft YaHei New", "STHeiti Light", sans-serif';
-					break;
-				// Cyrillic.
-				case 'bel':
-				case 'bg-BG':
-				case 'kk':
-				case 'mk-MK':
-				case 'mn':
-				case 'ru-RU':
-				case 'sah':
-				case 'sr-RS':
-				case 'tt-RU':
-				case 'uk':
-					$font_title = '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans_serif;';
-					$font_body  = '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans_serif;';
-					break;
-				// Devanagari.
-				case 'bn-BD':
-				case 'hi-IN':
-				case 'mr':
-				case 'ne-NP':
-					$font_title = 'Arial, sans_serif;';
-					$font_body  = 'Arial, sans_serif;';
-					break;
-				// Greek.
-				case 'el':
-					$font_title = '"Helvetica Neue", Helvetica, Arial, sans_serif;';
-					$font_body  = '"Helvetica Neue", Helvetica, Arial, sans_serif;';
-					break;
-				// Gujarati.
-				case 'gu':
-					$font_title = 'Arial, sans_serif;';
-					$font_body  = 'Arial, sans_serif;';
-					break;
-				// Hebrew.
-				case 'he-IL':
-					$font_title = '"Arial Hebrew", Arial, sans_serif;	';
-					$font_body  = '"Arial Hebrew", Arial, sans_serif;	';
-					break;
-				// Japanese.
-				case 'ja':
-					$font_title = '"Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;';
-					$font_body  = '"Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;';
-					break;
-				// Korean.
-				case 'ko-KR':
-					$font_title = '"Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;';
-					$font_body  = '"Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;';
-					break;
-				// Thai.
-				case 'th':
-					$font_title = '"Sukhumvit Set", "Helvetica Neue", Helvetica, Arial, sans-serif;';
-					$font_body  = '"Sukhumvit Set", "Helvetica Neue", Helvetica, Arial, sans-serif;';
-					break;
-				// Vietnamese.
-				case 'vi':
-					$font_title = '"Libre Franklin", sans-serif;';
-					$font_body  = '"Libre Franklin", sans-serif;';
+			// Fetch users locale.
+			$locale = get_bloginfo( 'language' );
 
-					break;
-				default:
-					return;
+			// Define fallback fonts for non-latin languages.
+			$font_family = apply_filters(
+				'twentytwenty_get_localized_font_family_types',
+				array(
+
+					// Arabic.
+					'ar'    => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'ary'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'azb'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'ckb'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'fa-IR' => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'haz'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'ps'    => array( 'Tahoma', 'Arial', 'sans_serif' ),
+
+					// Chinese Simplified (China) - Noto Sans SC.
+					'zh-CN' => array( '"PingFang SC"', '"Helvetica Neue"', '"Microsoft YaHei New"', '"STHeiti Light"', 'sans-serif' ),
+
+					// Chinese Traditional (Taiwan) - Noto Sans TC.
+					'zh-TW' => array( '"PingFang TC"', '"Helvetica Neue"', '"Microsoft YaHei New"', '"STHeiti Light"', 'sans-serif' ),
+
+					// Chinese Traditional (Taiwan) - Noto Sans TC.
+					'zh-TW' => array( '"PingFang TC"', '"Helvetica Neue"', '"Microsoft YaHei New"', '"STHeiti Light"', 'sans-serif' ),
+
+					// Chinese (Hong Kong) - Noto Sans HK.
+					'zh-HK' => array( '"PingFang HK"', '"Helvetica Neue"', '"Microsoft YaHei New"', '"STHeiti Light"', 'sans-serif' ),
+
+					// Cyrillic.
+					'bel'   => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'bg-BG' => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'kk'    => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'mk-MK' => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'mn'    => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'ru-RU' => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'sah'   => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'sr-RS' => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'tt-RU' => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+					'uk'    => array( '"Helvetica Neue"', 'Helvetica', '"Segoe UI"', 'Arial', 'sans_serif' ),
+
+					// Devanagari.
+					'bn-BD' => array( 'Arial', 'sans_serif' ),
+					'hi-IN' => array( 'Arial', 'sans_serif' ),
+					'mr'    => array( 'Arial', 'sans_serif' ),
+					'ne-NP' => array( 'Arial', 'sans_serif' ),
+
+					// Greek.
+					'el'    => array( '"Helvetica Neue", Helvetica, Arial, sans_serif' ),
+
+					// Gujarati.
+					'gu'    => array( 'Arial', 'sans_serif' ),
+
+					// Hebrew.
+					'he-IL' => array( '"Arial Hebrew"', 'Arial', 'sans_serif' ),
+
+					// Japanese.
+					'ja'    => array( '"Hiragino Kaku Gothic ProN"', '"Meiryo"', 'sans-serif' ),
+
+					// Korean.
+					'ko-KR' => array( '"Apple SD Gothic Neo"', '"Malgun Gothic"', '"Nanum Gothic"', 'Dotum', 'sans-serif' ),
+
+					// Thai.
+					'th'    => array( '"Sukhumvit Set"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif' ),
+
+					// Vietnamese.
+					'vi'    => array( '"Libre Franklin"', 'sans-serif' ),
+
+				)
+			);
+
+			// Define elements to apply fallback fonts to.
+			$elements = apply_filters(
+				'twentytwenty_get_localized_font_family_elements',
+				array(
+					'front-end'      => array( 'body', 'input', 'textarea', 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', '.has-drop-cap:not(:focus)::first-letter', '.has-drop-cap:not(:focus)::first-letter', '.entry-content .wp-block-archives', '.entry-content .wp-block-categories', '.entry-content .wp-block-cover-image', '.entry-content .wp-block-latest-comments', '.entry-content .wp-block-latest-posts', '.entry-content .wp-block-pullquote', '.entry-content .wp-block-quote.is-large', '.entry-content .wp-block-quote.is-style-large', '.entry-content .wp-block-archives *', '.entry-content .wp-block-categories *', '.entry-content .wp-block-latest-posts *', '.entry-content .wp-block-latest-comments *', '.entry-content p', '.entry-content ol', '.entry-content ul', '.entry-content dl', '.entry-content dt', '.entry-content cite', '.entry-content figcaption', '.entry-content .wp-caption-text', '.comment-content p', '.comment-content ol', '.comment-content ul', '.comment-content dl', '.comment-content dt', '.comment-content cite', '.comment-content figcaption', '.comment-content .wp-caption-text', '.widget_text p', '.widget_text ol', '.widget_text ul', '.widget_text dl', '.widget_text dt', '.widget-content .rssSummary', '.widget-content cite', '.widget-content figcaption', '.widget-content .wp-caption-text' ),
+					'block-editor'   => array( '.editor-styles-wrapper > *', '.editor-styles-wrapper p', '.editor-styles-wrapper ol', '.editor-styles-wrapper ul', '.editor-styles-wrapper dl', '.editor-styles-wrapper dt', '.editor-post-title__block .editor-post-title__input', '.editor-styles-wrapper .wp-block h1', '.editor-styles-wrapper .wp-block h2', '.editor-styles-wrapper .wp-block h3', '.editor-styles-wrapper .wp-block h4', '.editor-styles-wrapper .wp-block h5', '.editor-styles-wrapper .wp-block h6', '.editor-styles-wrapper .has-drop-cap:not(:focus)::first-letter', '.editor-styles-wrapper cite', '.editor-styles-wrapper figcaption', '.editor-styles-wrapper .wp-caption-text' ),
+					'classic-editor' => array( 'body#tinymce.wp-editor', 'body#tinymce.wp-editor p', 'body#tinymce.wp-editor ol', 'body#tinymce.wp-editor ul', 'body#tinymce.wp-editor dl', 'body#tinymce.wp-editor dt', 'body#tinymce.wp-editor figcaption', 'body#tinymce.wp-editor .wp-caption-text', 'body#tinymce.wp-editor .wp-caption-dd', 'body#tinymce.wp-editor cite', 'body#tinymce.wp-editor table' ),
+				)
+			);
+
+			// Generate and inline the CSS.
+			foreach ( $elements as $element ) {
+				$custom_css = twentytwenty_generate_css( implode( ',', $element ), 'font-family', implode( ',', $font_family[ $locale ] ), null, null, false );
+				wp_add_inline_style( 'twentytwenty-style', $custom_css );
 			}
-
-			// Prepare CSS for all element except of titles.
-			$custom_css = sprintf( '* { font-family: %s !important; } ', $font_body );
-
-			// Prepare CSS for all titles.
-			$custom_css .= sprintf( 'h1, h2, h3, h4, h5, h6 { font-family: %s !important; } ', $font_title );
-
-			// Add inline CSS.
-			wp_add_inline_style( 'twentytwenty-style', $custom_css );
-
 		}
 	}
 }
