@@ -3952,6 +3952,9 @@ div.comment:first-of-type {
 
 .error404 #site-content {
 	padding-top: 4rem;
+}
+
+.error404-content {
 	text-align: center;
 }
 
@@ -4235,12 +4238,18 @@ div.comment:first-of-type {
 /* -------------------------------------------------------------------------- */
 
 
+.footer-nav-widgets-wrapper,
 #site-footer {
 	background-color: #fff;
+}
+
+.footer-top-visible .footer-nav-widgets-wrapper,
+.footer-top-hidden #site-footer {
 	margin-top: 5rem;
 }
 
-.reduced-spacing #site-footer {
+.reduced-spacing.footer-top-visible .footer-nav-widgets-wrapper,
+.reduced-spacing.footer-top-hidden #site-footer {
 	border-top: 0.1rem solid #dedfdf;
 }
 
@@ -5191,7 +5200,8 @@ a.to-the-top > * {
 
 	/* Site Footer --------------------------- */
 
-	#site-footer {
+	.footer-top-visible .footer-nav-widgets-wrapper,
+	.footer-top-hidden #site-footer {
 		margin-top: 8rem;
 	}
 
