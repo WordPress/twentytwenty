@@ -151,8 +151,10 @@ twentytwenty.coverModals = {
 		};
 
 		function htmlStyles() {
+			var overflow = window.innerHeight > document.documentElement.getBoundingClientRect().height;
+
 			return {
-				'overflow-y': 'scroll',
+				'overflow-y': overflow ? 'hidden' : 'scroll',
 				position: 'fixed',
 				width: '100%',
 				top: getAdminBarHeight( true ),
