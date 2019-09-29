@@ -68,11 +68,10 @@
 			};
 
 			// Get borders color.
-			value[ context ].borders = Color( {
-				h: colors.bgColorObj.h(),
-				s: colors.bgColorObj.s() * 0.3922,
-				l: colors.isDark ? colors.bgColorObj.l() + 9 : colors.bgColorObj.l() - 9
-			} ).toCSS();
+			value[ context ].borders = colors.bgColorObj
+				.clone()
+				.getReadableContrastingColor( colors.bgColorObj, 1.36 )
+				.toCSS();
 
 			// Get secondary color.
 			value[ context ].secondary = Color( {
