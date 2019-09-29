@@ -1645,6 +1645,8 @@ body:not(.enable-search-modal) .site-logo img {
 .toggle-inner {
 	height: 2.3rem;
 	position: relative;
+	display: block;
+	min-width: 3.5rem;
 }
 
 .toggle-icon {
@@ -1657,8 +1659,6 @@ body:not(.enable-search-modal) .site-logo img {
 	font-weight: 600;
 	position: absolute;
 	top: calc(100% + 0.5rem);
-	width: 10rem;
-	word-break: break-all;
 }
 
 .overlay-header .toggle-text {
@@ -1712,8 +1712,7 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .nav-toggle .toggle-text {
-	right: 0;
-	text-align: right;
+	left: 0;	
 }
 
 /* Primary Menu ---------------------------- */

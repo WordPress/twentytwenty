@@ -10,9 +10,9 @@
 if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 <div class="author-bio">
 		<h2 class="author-title heading-size-4">
-			<div class="author-avatar vcard">
+			<span class="author-avatar vcard">
 				<?php echo get_avatar( get_the_author_meta( 'ID' ), 160 ); ?>
-			</div>
+			</span>
 			<span class="author-name">
 				<?php
 				printf(
