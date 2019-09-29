@@ -1504,7 +1504,6 @@ ul.social-icons li {
 #site-header {
 	background: #fff;
 	position: relative;
-	z-index: 9999;
 }
 
 .header-inner {
@@ -1913,7 +1912,6 @@ ul.primary-menu {
 	display: none;
 	opacity: 0;
 	overflow: auto;
-	padding: 8.4rem 0 0 0;
 	position: fixed;
 	bottom: 0;
 	left: -99999rem;
@@ -1963,17 +1961,21 @@ ul.primary-menu {
 
 button.close-nav-toggle {
 	align-items: center;
-	display: none;
-	font-size: 1.8rem;
+	display: flex;
+	font-size: 1.6rem;
 	font-weight: 500;
 	justify-content: flex-end;
-	padding: 4rem 0;
+	padding: 3.1rem 0;
 	width: 100%;
 }
 
 button.close-nav-toggle svg {
-	height: 2rem;
-	width: 2rem;
+	height: 1.6rem;
+	width: 1.6rem;
+}
+
+button.close-nav-toggle .toggle-text {
+	margin-right: 1.6rem;
 }
 
 .menu-modal .menu-top {
@@ -4622,8 +4624,18 @@ a.to-the-top > * {
 
 	/* Menu Modal ---------------------------- */
 
-	.menu-modal {
-		padding-top: 13.1rem;
+	button.close-nav-toggle {
+		font-size: 1.8rem;
+		padding: 4rem 0;
+	}
+
+	button.close-nav-toggle svg {
+		height: 2rem;
+		width: 2rem;
+	}
+
+	button.close-nav-toggle .toggle-text {
+		margin-right: 2.1rem;
 	}
 
 	.modal-menu {
@@ -5435,14 +5447,6 @@ a.to-the-top > * {
 
 	.expanded-menu {
 		display: block;
-	}
-
-	button.close-nav-toggle {
-		display: flex;
-	}
-
-	button.close-nav-toggle .toggle-text {
-		margin-right: 2.1rem;
 	}
 
 	.menu-bottom {
