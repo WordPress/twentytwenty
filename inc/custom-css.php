@@ -116,6 +116,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			}
 
 			if ( $cover && $cover !== $cover_default ) {
+				twentytwenty_generate_css( '.overlay-header .header-inner', 'color', $cover );
 				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
 			}
 

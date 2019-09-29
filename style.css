@@ -1589,8 +1589,18 @@ body:not(.enable-search-modal) .site-logo img {
 	z-index: 100;
 }
 
-.overlay-header .header-inner * {
+.overlay-header .header-inner {
+	color: #fff;
+}
+
+.overlay-header .site-description,
+.overlay-header .toggle {
 	color: inherit;
+}
+
+.overlay-header .header-inner .toggle-wrapper::before {
+	background-color: currentColor;
+	opacity: 0.25;
 }
 
 .admin-bar.overlay-header #site-header {
@@ -1602,11 +1612,6 @@ body:not(.enable-search-modal) .site-logo img {
 	.admin-bar.overlay-header #site-header {
 		top: 46px;
 	}
-}
-
-.overlay-header:not(.showing-menu-modal):not(.overlay-header-has-text-color) .header-inner,
-.overlay-header:not(.showing-menu-modal) .header-inner {
-	color: #fff;
 }
 
 /* Header Navigation ------------------------- */
@@ -5364,26 +5369,11 @@ a.to-the-top > * {
 	}
 
 	.toggle-inner .toggle-text {
-		color: #6d6d6d;
 		left: 0;
 		right: 0;
 		text-align: center;
 		top: calc(100% - 0.3rem);
 		width: auto;
-	}
-
-	/* OVERLAY HEADER */
-
-	.overlay-header.showing-menu-modal .header-inner {
-		color: #fff;
-	}
-
-	.overlay-header .toggle-wrapper::before {
-		background: rgba(255, 255, 255, 0.33);
-	}
-
-	.overlay-header .toggle-inner .toggle-text {
-		color: inherit;
 	}
 
 	/* Menu Modal ---------------------------- */
