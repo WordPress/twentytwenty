@@ -23,7 +23,10 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 		$return = '';
 
-		if ( ! $value ) {
+		/*
+		 * Bail early if we have no $selector elements or properties and $value.
+		 */
+		if ( ! $value || ! $selector ) {
 
 			return;
 		}
