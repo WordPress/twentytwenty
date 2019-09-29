@@ -1812,7 +1812,8 @@ ul.primary-menu {
 }
 
 .primary-menu li.menu-item-has-children:hover > ul,
-.primary-menu li.menu-item-has-children a:focus ~ ul {
+.primary-menu li.menu-item-has-children:focus > ul,
+.primary-menu li.menu-item-has-children.focus > ul {
 	left: 0;
 	opacity: 1;
 	transform: translateY(0);
@@ -1866,7 +1867,8 @@ ul.primary-menu {
 }
 
 .primary-menu ul li.menu-item-has-children:hover > ul,
-.primary-menu ul li.menu-item-has-children a:focus ~ ul {
+.primary-menu ul li.menu-item-has-children:focus > ul,
+.primary-menu ul li.menu-item-has-children.focus > ul {
 	left: calc(100% + 2rem);
 }
 
@@ -2420,8 +2422,22 @@ body.template-full-width .entry-content .alignright {
 	margin: 0;
 }
 
+.archive-subtitle p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* Posts ------------------------------------- */
+
 body:not(.singular) main article:first-of-type {
 	padding: 4rem 0 0;
+}
+
+
+/* Search Results ---------------------------- */
+
+.no-search-results-form {
+	padding-top: 5rem;
 }
 
 
@@ -3382,10 +3398,6 @@ hr.wp-block-separator {
 	margin-bottom: 1rem;
 }
 
-.entry-content li {
-	margin: 0.5rem 2rem 0 0;
-}
-
 .entry-content hr {
 	margin: 4rem 0;
 }
@@ -3667,8 +3679,7 @@ div.comment:first-of-type {
 	margin: 0 1.5rem 1rem 0;
 }
 
-.comment-reply-link,
-.edit-comment-link {
+.comment-reply-link {
 	background-color: #cd2653;
 	color: #fff;
 	display: block;
@@ -4679,6 +4690,12 @@ a.to-the-top > * {
 		font-size: 6.4rem;
 	}
 
+	/* SEARCH RESULTS */
+
+	.no-search-results-form {
+		padding-top: 8rem;
+	}
+
 	/* Post: Single -------------------------- */
 
 	/* POST HEADER */
@@ -4981,7 +4998,7 @@ a.to-the-top > * {
 	.comment-meta {
 		margin-bottom: 2rem;
 		min-height: 6rem;
-		padding: 0.2rem 7.5rem 0 0;
+		padding: 0.3rem 7.5rem 0 0;
 	}
 
 	.comment-meta .avatar {
@@ -5193,6 +5210,7 @@ a.to-the-top > * {
 
 	.header-titles-wrapper {
 		margin-left: 4rem;
+		max-width: 50%;
 		padding: 0;
 		text-align: right;
 	}
@@ -5209,11 +5227,6 @@ a.to-the-top > * {
 	.header-titles .site-logo,
 	.header-titles .site-description {
 		margin: 1rem 2.4rem 0 0;
-	}
-
-	.header-titles .site-title,
-	.header-titles .site-logo {
-		flex-shrink: 0;
 	}
 
 	.wp-custom-logo .header-titles {
