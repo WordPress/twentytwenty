@@ -3083,6 +3083,11 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	margin-left: 0;
 }
 
+.wp-block-gallery.alignfull figcaption {
+	max-width: 100%;
+	width: 100%;
+}
+
 /* Block: Group ------------------------------ */
 
 .wp-block-group.has-background {
