@@ -3946,12 +3946,12 @@ div.comment:first-of-type {
 	margin-bottom: 0;
 }
 
-.widget-title {
+.widget .widget-title {
 	margin: 0 0 2rem;
 }
 
 .widget li {
-	margin-top: 2rem;
+	margin: 2rem 0 0 0;
 }
 
 .widget li:first-child,
@@ -5109,7 +5109,7 @@ a.to-the-top > * {
 
 	/* Widgets ------------------------------- */
 
-	.widget-title {
+	.widget .widget-title {
 		margin-bottom: 3rem;
 	}
 
