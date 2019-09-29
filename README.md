@@ -1,10 +1,10 @@
-**Theme Name:** Twenty Twenty  
-**Theme URI:** https://wordpress.org/themes/twentytwenty/  
-**Contributors:** the WordPress team  
-**Requires at least:** WordPress 4.7  
-**Version:** 1.0  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Theme Name:** Twenty Twenty
+**Theme URI:** https://wordpress.org/themes/twentytwenty/
+**Contributors:** the WordPress team
+**Requires at least:** WordPress 4.7
+**Version:** 1.0
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 **Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 
 ## Description
@@ -34,39 +34,40 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
+Twenty Twenty is derived from the Chaplin Theme, Copyright 2019 Anders Norén
+Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
+
 Twenty Twenty bundles the following third-party resources:
 
-Image in screenshot.png from PxHere  
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
+Image in screenshot.png from PxHere
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
 URL: https://pxhere.com/en/photo/18153
 
-Inter Font  
-License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
+Inter Font
+Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)
+License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://rsms.me/inter/
 
-Font Awesome Icons  
-License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
+Bespoke Icons Created For Twenty Twenty
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
+List of bespoke icons:
+- Search icon
+- Menu icon
+
+Feather Icons
+Copyright (c) 2013-2017 Cole Bemis
+License: MIT License, https://opensource.org/licenses/MIT
+Source: https://feathericons.com
+
+Font Awesome Icons
+Copyright (c) 2012-2019 Fonticons, Inc.
+License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 Source: https://www.fontawesome.io
 
-Font Awesome Code  
-License: MIT License, https://opensource.org/licenses/MIT  
+Font Awesome Code
+Copyright (c) 2012-2019 Fonticons, Inc.
+License: MIT License, https://opensource.org/licenses/MIT
 Source: https://www.fontawesome.io
-
-Font Noto Sans  
-License: Apache License (Apache-2.0), https://www.apache.org/licenses/LICENSE-2.0  
-URL: https://fonts.google.com/specimen/Noto+Sans
-
-Font Noto Sans TC  
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1  
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
-
-Font Noto Sans SC  
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1  
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
-
-Font Noto Sans HK  
-License: SIL Open Font License (OFL-1.1), https://opensource.org/licenses/OFL-1.1  
-URL: https://fonts.google.com/specimen/Noto+Sans+TC
 
 ## Changelog
 
