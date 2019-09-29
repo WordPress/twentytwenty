@@ -664,7 +664,7 @@ function twentytwenty_get_elements_array() {
 				'color' => array( '.site-description', 'body:not(.overlay-header) .toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget cite', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.powered-by-wordpress', '.to-the-top', '.singular .entry-header .post-meta', '.singular:not(.overlay-header) .entry-header .post-meta a' ),
 			),
 			'borders'    => array(
-				'border-color' => array( '.header-footer-group pre', '.header-footer-group fieldset', '.header-footer-group input', '.header-footer-group textarea', '.header-footer-group table', '.header-footer-group table *', '.menu-modal nav *', '.footer-widgets-outer-wrapper', '.footer-top' ),
+				'border-color' => array( '.header-footer-group pre', '.header-footer-group fieldset', '.header-footer-group input', '.header-footer-group textarea', '.header-footer-group table', '.header-footer-group table *', '.reduced-spacing #site-footer', '.menu-modal nav *', '.footer-widgets-outer-wrapper', '.footer-top' ),
 				'background'   => array( '.header-footer-group table caption', 'body:not(.overlay-header) .header-inner .toggle-wrapper::before' ),
 			),
 		),

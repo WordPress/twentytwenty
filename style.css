@@ -2426,6 +2426,10 @@ body.template-full-width .entry-content .alignright {
 	padding: 4rem 0;
 }
 
+.reduced-spacing .archive-header {
+	padding-bottom: 2rem;
+}
+
 .archive-title {
 	font-size: 2.4rem;
 	font-weight: 700;
@@ -2649,6 +2653,10 @@ h2.entry-title {
 
 .post-inner {
 	padding-top: 5rem;
+}
+
+.reduced-spacing.missing-post-thumbnail .post-inner {
+	padding-top: 0;
 }
 
 
@@ -4230,6 +4238,10 @@ div.comment:first-of-type {
 	margin-top: 5rem;
 }
 
+.reduced-spacing #site-footer {
+	border-top: 0.1rem solid #dedfdf;
+}
+
 .footer-top,
 .footer-widgets-outer-wrapper,
 .footer-bottom {
@@ -4721,6 +4733,10 @@ a.to-the-top > * {
 
 	.archive-header {
 		padding: 8rem 0;
+	}
+
+	.reduced-spacing .archive-header {
+		padding-bottom: 3rem;
 	}
 
 	.archive-title {
