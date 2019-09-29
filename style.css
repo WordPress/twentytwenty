@@ -1672,7 +1672,7 @@ body:not(.enable-search-modal) .site-logo img {
 
 .search-toggle .toggle-icon,
 .search-toggle svg {
-	height: 2.3rem;
+	height: 2.5rem;
 	max-width: 2.3rem;
 	width: 2.3rem;
 }
@@ -3946,12 +3946,12 @@ div.comment:first-of-type {
 	margin-bottom: 0;
 }
 
-.widget-title {
+.widget .widget-title {
 	margin: 0 0 2rem;
 }
 
 .widget li {
-	margin-top: 2rem;
+	margin: 2rem 0 0 0;
 }
 
 .widget li:first-child,
@@ -4326,6 +4326,20 @@ a.to-the-top > * {
 
 /*	17. Media Queries
 /* -------------------------------------------------------------------------- */
+
+@media ( max-width: 479px ) {
+
+	/* Lists ------------------------------------- */
+
+	ul,
+	ol {
+		margin: 0 0 3rem 1rem;
+	}
+
+	li {
+		margin: 0.5rem 0 0 1rem;
+	}
+}
 
 @media ( min-width: 480px ) {
 
@@ -5095,7 +5109,7 @@ a.to-the-top > * {
 
 	/* Widgets ------------------------------- */
 
-	.widget-title {
+	.widget .widget-title {
 		margin-bottom: 3rem;
 	}
 
