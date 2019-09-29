@@ -23,7 +23,10 @@ if ( ! function_exists( 'twentytwenty_generate_css' ) ) {
 
 		$return = '';
 
-		if ( ! $value ) {
+		/*
+		 * Bail early if we have no $selector elements or properties and $value.
+		 */
+		if ( ! $value || ! $selector ) {
 
 			return;
 		}
@@ -97,6 +100,13 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			foreach ( $elements_definitions as $context => $props ) {
 				foreach ( $props as $key => $definitions ) {
 					foreach ( $definitions as $property => $elements ) {
+						/*
+						 * If we don't have an elements array or it is empty
+						 * then skip this itteration early;
+						 */
+						if ( ! is_array( $elements ) || empty( $elements ) ) {
+							continue;
+						}
 						$val = twentytwenty_get_color_for_area( $context, $key );
 						if ( $val ) {
 							twentytwenty_generate_css( implode( ',', $elements ), $property, $val );
@@ -106,6 +116,7 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			}
 
 			if ( $cover && $cover !== $cover_default ) {
+				twentytwenty_generate_css( '.overlay-header .header-inner', 'color', $cover );
 				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
 			}
 

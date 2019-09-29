@@ -54,7 +54,7 @@
 						<?php } ?>
 						<?php if ( $has_social_menu ) { ?>
 
-							<div class="<?php esc_attr( $footer_social_wrapper_class ); ?>">
+							<div class="<?php echo esc_attr( $footer_social_wrapper_class ); ?>">
 
 								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
@@ -130,7 +130,7 @@
 								)
 							);
 							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></a>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
 						</p>
 
 						<p class="powered-by-wordpress">
