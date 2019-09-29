@@ -2796,10 +2796,6 @@ h2.entry-title {
 	text-align: right;
 }
 
-.has-text-align-justify {
-	text-align: justify;
-}
-
 .has-drop-cap:not(:focus)::first-letter {
 	color: #cd2653;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
