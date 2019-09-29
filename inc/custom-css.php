@@ -97,6 +97,13 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			foreach ( $elements_definitions as $context => $props ) {
 				foreach ( $props as $key => $definitions ) {
 					foreach ( $definitions as $property => $elements ) {
+						/*
+						 * If we don't have an elements array or it is empty
+						 * then skip this itteration early;
+						 */
+						if ( ! is_array( $elements ) || empty( $elements ) ) {
+							continue;
+						}
 						$val = twentytwenty_get_color_for_area( $context, $key );
 						if ( $val ) {
 							twentytwenty_generate_css( implode( ',', $elements ), $property, $val );
