@@ -41,7 +41,7 @@ get_header();
 		}
 	} elseif ( ! is_home() ) {
 		$archive_title    = get_the_archive_title();
-		$archive_subtitle = get_the_archive_description( '<div>', '</div>' );
+		$archive_subtitle = get_the_archive_description();
 	}
 
 	if ( $archive_title || $archive_subtitle ) {
@@ -100,6 +100,7 @@ get_header();
 	?>
 
 	<?php get_template_part( 'template-parts/pagination' ); ?>
+	<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
 
 </main><!-- #site-content -->
 
