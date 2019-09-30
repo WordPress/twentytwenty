@@ -2772,7 +2772,7 @@ h2.entry-title {
 	margin-right: 1rem;
 }
 
-.pagination-single a:focus .title
+.pagination-single a:focus .title,
 .pagination-single a:hover .title {
 	text-decoration: underline;
 }
