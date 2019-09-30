@@ -116,6 +116,14 @@ html {
 	scroll-behavior: smooth;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+
+	html {
+		scroll-behavior: auto;
+	}
+
+}
+
 body {
 	background: #f5efe0;
 	-webkit-box-sizing: border-box;
