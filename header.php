@@ -86,9 +86,7 @@
 					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
 						?>
 
-						<div class="primary-menu-wrapper">
-
-							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
+							<nav class="primary-menu-wrapper" aria-label="<?php esc_attr_e( 'Horizontal', 'twentytwenty' ); ?>" role="navigation">
 
 								<ul class="primary-menu reset-list-style">
 
@@ -119,9 +117,7 @@
 
 								</ul>
 
-							</nav><!-- .primary-menu -->
-
-						</div><!-- .primary-menu-wrapper -->
+							</nav><!-- .primary-menu-wrapper -->
 
 						<?php
 					}
