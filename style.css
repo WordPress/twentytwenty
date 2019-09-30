@@ -2309,20 +2309,14 @@ button.search-untoggle {
 
 .cover-header {
 	display: flex;
-	position: relative;
 	overflow: hidden;
 }
 
 .cover-header-inner-wrapper {
 	display: flex;
-	position: absolute;
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
 }
 
 .cover-header-inner {

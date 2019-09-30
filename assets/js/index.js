@@ -181,15 +181,16 @@ twentytwenty.coverModals = {
 					return;
 				}
 
+				if ( cover ) {
+					window.scrollTo( 0, 0 );
+					styles.top = getAdminBarHeight( true );
+				}
+
 				Object.keys( styles ).forEach( function( styleKey ) {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
 				window.twentytwenty.scrolled = parseInt( styles.top );
-
-				if ( cover ) {
-					cover.style.setProperty( 'min-height', 'calc( 100vh - ' + Math.abs( parseInt( styles.top ) ) + 'px )' );
-				}
 
 				if ( adminBar ) {
 					document.body.style.setProperty( 'padding-top', paddingTop );
@@ -217,11 +218,9 @@ twentytwenty.coverModals = {
 						document.body.style.removeProperty( 'padding-top' );
 					}
 
-					if ( cover ) {
-						cover.style.removeProperty( 'min-height' );
-					}
-
-					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+					if ( ! cover ) {
+						_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+					} 
 
 					_win.twentytwenty.scrolled = 0;
 				}, 500 );
