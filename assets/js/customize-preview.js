@@ -79,7 +79,7 @@
 					return 'opacity-' + val;
 				} );
 
-				className = classNames[ ranges.indexOf( parseInt( setting.get() ) ) ];
+				className = classNames[ ranges.indexOf( parseInt( setting.get(), 10 ) ) ];
 
 				cover.removeClass( classNames.join( ' ' ) );
 				cover.addClass( className );

@@ -445,7 +445,7 @@ twentytwenty.primaryMenu = {
 	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
 	focusMenuWithChildren: function() {
 		// Get all the link elements within the primary menu.
-		var menu = document.querySelector( '.primary-menu-wrapper nav' );
+		var menu = document.querySelector( '.primary-menu-wrapper' );
 		var links = menu.getElementsByTagName( 'a' );
 		var i, len;
 
