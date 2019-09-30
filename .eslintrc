@@ -4,6 +4,6 @@
 		"browser": true
 	},
 	"rules": {
-		"comma-dangle": [2, "never"],
+		"comma-dangle": [2, "never"]
 	}
 }
