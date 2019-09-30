@@ -439,7 +439,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
  * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify.
  * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
  *
- * @param array $css_class CSS Class names.
+ * @param array  $css_class CSS Class names.
  * @param string $item Comment.
  * @param int    $depth Depth of the current comment.
  * @param array  $args An array of arguments.
@@ -476,8 +476,8 @@ add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 
  * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
  *
  * @param stdClass $args An array of arguments.
- * @param string $item Menu item.
- * @param int $depth Depth of the current menu item.
+ * @param string   $item Menu item.
+ * @param int      $depth Depth of the current menu item.
  *
  * @return stdClass $args An object of wp_nav_menu() arguments.
  */
