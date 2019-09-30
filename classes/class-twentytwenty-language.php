@@ -95,6 +95,11 @@ if ( ! class_exists( 'TwentyTwenty_Language' ) ) {
 				)
 			);
 
+			// Return if selected language has no fallback fonts.
+			if ( null == $font_family[ $locale ] ) {
+				return;
+			}
+			
 			// Define elements to apply fallback fonts to.
 			$elements = apply_filters(
 				'twentytwenty_get_localized_font_family_elements',
