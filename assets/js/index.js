@@ -138,7 +138,7 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals, htmlStyle, cover, adminBar, _doc, _win;
+		var modals, htmlStyle, cover, adminBar, _doc, _win, coverOverlay;
 
 		_doc = document;
 		_win = window;
