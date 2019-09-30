@@ -2314,9 +2314,12 @@ button.search-untoggle {
 
 .cover-header-inner-wrapper {
 	display: flex;
+	position: absolute;
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
+	top: 0;
+	left: 0;
 }
 
 .cover-header-inner {
