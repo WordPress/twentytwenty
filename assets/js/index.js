@@ -187,7 +187,8 @@ twentytwenty.coverModals = {
 
 				if ( cover ) {
 					coverOverlay.style.setProperty( 'position', 'fixed' );
-					coverOverlay.style.setProperty( 'height', 'calc( 100vh - ' + offsetY + 'px )' );
+					coverOverlay.style.setProperty( 'min-height', 'calc( 100vh - ' + offsetY + 'px )' );
+					coverOverlay.style.setProperty( 'bottom', 'auto' );
 				}
 
 				Object.keys( styles ).forEach( function( styleKey ) {
@@ -222,7 +223,8 @@ twentytwenty.coverModals = {
 
 					if ( cover ) {
 						coverOverlay.style.removeProperty( 'position' );
-						coverOverlay.style.removeProperty( 'height' );
+						coverOverlay.style.removeProperty( 'min-height' );
+						coverOverlay.style.removeProperty( 'bottom' );
 					}
 
 					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
