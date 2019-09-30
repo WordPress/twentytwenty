@@ -2309,6 +2309,7 @@ button.search-untoggle {
 
 .cover-header {
 	display: flex;
+	position: relative;
 	overflow: hidden;
 }
 
@@ -2320,6 +2321,8 @@ button.search-untoggle {
 	width: 100%;
 	top: 0;
 	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .cover-header-inner {

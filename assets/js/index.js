@@ -138,15 +138,16 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals, htmlStyle;
+		var modals, htmlStyle, cover, adminBar;
 
 		modals = document.querySelectorAll( '.cover-modal' );
 		htmlStyle = document.documentElement.style;
+		cover = document.querySelector( '.cover-header-inner-wrapper' );
+		adminBar = document.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
-			var adminBar, currentScroll;
+			var currentScroll;
 
-			adminBar = document.querySelector( '#wpadminbar' );
 			currentScroll = window.pageYOffset;
 
 			if ( adminBar ) {
@@ -154,7 +155,7 @@ twentytwenty.coverModals = {
 			}
 
 			return currentScroll === 0 ? 0 : -currentScroll + 'px';
-		};
+		}
 
 		function htmlStyles() {
 			var overflow = window.innerHeight > document.documentElement.getBoundingClientRect().height;
@@ -172,9 +173,9 @@ twentytwenty.coverModals = {
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
 				var styles, paddingTop;
-				
+
 				styles = htmlStyles();
-				paddingTop = Math.abs( parseInt( getAdminBarHeight() ) ) + 'px';
+				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - window.pageYOffset ) + 'px';
 
 				if ( event.target !== modal ) {
 					return;
@@ -184,10 +185,15 @@ twentytwenty.coverModals = {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				window.twentytwenty.scrolled = parseInt( styles[ 'top' ] );
+				window.twentytwenty.scrolled = parseInt( styles.top );
 
-				document.querySelector( '.cover-header-inner-wrapper' ).style.setProperty( 'min-height', 'calc( 100vh - ' + Math.abs( parseInt( styles[ 'top' ] ) ) + 'px )' );
-				// document.body.style.setProperty( 'padding-top', paddingTop );
+				if ( cover ) {
+					cover.style.setProperty( 'min-height', 'calc( 100vh - ' + Math.abs( parseInt( styles.top ) ) + 'px )' );
+				}
+
+				if ( adminBar ) {
+					document.body.style.setProperty( 'padding-top', paddingTop );
+				}
 
 				modal.classList.add( 'show-modal' );
 			} );
@@ -207,15 +213,17 @@ twentytwenty.coverModals = {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
-					document.body.style.removeProperty( 'padding-top' );
-					document.querySelector( '.cover-header-inner-wrapper' ).style.removeProperty( 'min-height' );
+					if ( adminBar ) {
+						document.body.style.removeProperty( 'padding-top' );
+					}
 
-					_win.scrollTo( { 
-						top: Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) )
-					} );
+					if ( cover ) {
+						cover.style.removeProperty( 'min-height' );
+					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
 
 					_win.twentytwenty.scrolled = 0;
-					
 				}, 500 );
 			} );
 		} );
