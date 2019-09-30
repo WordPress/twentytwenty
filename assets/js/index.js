@@ -138,14 +138,12 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals, htmlStyle, cover, adminBar, _doc, _win, coverOverlay;
+		var modals, htmlStyle, adminBar, _doc, _win;
 
 		_doc = document;
 		_win = window;
 		modals = _doc.querySelectorAll( '.cover-modal' );
 		htmlStyle = _doc.documentElement.style;
-		cover = _doc.querySelector( '.cover-header-inner-wrapper' );
-		coverOverlay = _doc.querySelector( '.cover-color-overlay' );
 		adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
@@ -185,12 +183,6 @@ twentytwenty.coverModals = {
 					return;
 				}
 
-				if ( cover ) {
-					coverOverlay.style.setProperty( 'position', 'fixed' );
-					coverOverlay.style.setProperty( 'min-height', 'calc( 100vh - ' + offsetY + 'px )' );
-					coverOverlay.style.setProperty( 'bottom', 'auto' );
-				}
-
 				Object.keys( styles ).forEach( function( styleKey ) {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
@@ -219,12 +211,6 @@ twentytwenty.coverModals = {
 
 					if ( adminBar ) {
 						_doc.body.style.removeProperty( 'padding-top' );
-					}
-
-					if ( cover ) {
-						coverOverlay.style.removeProperty( 'position' );
-						coverOverlay.style.removeProperty( 'min-height' );
-						coverOverlay.style.removeProperty( 'bottom' );
 					}
 
 					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
