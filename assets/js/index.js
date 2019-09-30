@@ -138,17 +138,20 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals, htmlStyle, cover, adminBar;
+		var modals, htmlStyle, cover, adminBar, _doc, _win;
 
-		modals = document.querySelectorAll( '.cover-modal' );
-		htmlStyle = document.documentElement.style;
-		cover = document.querySelector( '.cover-header-inner-wrapper' );
-		adminBar = document.querySelector( '#wpadminbar' );
+		_doc = document;
+		_win = window;
+		modals = _doc.querySelectorAll( '.cover-modal' );
+		htmlStyle = _doc.documentElement.style;
+		cover = _doc.querySelector( '.cover-header-inner-wrapper' );
+		coverOverlay = _doc.querySelector( '.cover-color-overlay' );
+		adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
 			var currentScroll;
 
-			currentScroll = window.pageYOffset;
+			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
 				return ( negativeValue ? '-' : '' ) + ( currentScroll + adminBar.getBoundingClientRect().height ) + 'px';
@@ -158,7 +161,7 @@ twentytwenty.coverModals = {
 		}
 
 		function htmlStyles() {
-			var overflow = window.innerHeight > document.documentElement.getBoundingClientRect().height;
+			var overflow = _win.innerHeight > _doc.documentElement.getBoundingClientRect().height;
 
 			return {
 				'overflow-y': overflow ? 'hidden' : 'scroll',
@@ -172,28 +175,29 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
-				var styles, paddingTop;
+				var styles, paddingTop, offsetY;
 
 				styles = htmlStyles();
-				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - window.pageYOffset ) + 'px';
+				offsetY = _win.pageYOffset;
+				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - offsetY ) + 'px';
 
 				if ( event.target !== modal ) {
 					return;
 				}
 
 				if ( cover ) {
-					window.scrollTo( 0, 0 );
-					styles.top = getAdminBarHeight( true );
+					coverOverlay.style.setProperty( 'position', 'fixed' );
+					coverOverlay.style.setProperty( 'height', 'calc( 100vh - ' + offsetY + 'px )' );
 				}
 
 				Object.keys( styles ).forEach( function( styleKey ) {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				window.twentytwenty.scrolled = parseInt( styles.top );
+				_win.twentytwenty.scrolled = parseInt( styles.top );
 
 				if ( adminBar ) {
-					document.body.style.setProperty( 'padding-top', paddingTop );
+					_doc.body.style.setProperty( 'padding-top', paddingTop );
 				}
 
 				modal.classList.add( 'show-modal' );
@@ -206,8 +210,6 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
-					var _win = window;
-
 					modal.classList.remove( 'show-modal' );
 
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
@@ -215,12 +217,15 @@ twentytwenty.coverModals = {
 					} );
 
 					if ( adminBar ) {
-						document.body.style.removeProperty( 'padding-top' );
+						_doc.body.style.removeProperty( 'padding-top' );
 					}
 
-					if ( ! cover ) {
-						_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+					if ( cover ) {
+						coverOverlay.style.removeProperty( 'position' );
+						coverOverlay.style.removeProperty( 'height' );
 					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
 
 					_win.twentytwenty.scrolled = 0;
 				}, 500 );
