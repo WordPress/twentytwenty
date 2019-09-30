@@ -220,7 +220,7 @@ twentytwenty.coverModals = {
 
 					if ( ! cover ) {
 						_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
-					} 
+					}
 
 					_win.twentytwenty.scrolled = 0;
 				}, 500 );
