@@ -679,3 +679,27 @@ function twentytwenty_get_elements_array() {
 	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+/**
+ * Style horizontal rows in comments
+ *
+ * @since 1.0.0
+ *
+ * @param string $comment The users comment.
+ * @return string
+ */
+function wps_filter_comment( $comment ) {
+
+	$replace = array(
+		'<hr>'   => '<hr class="styled-separator is-style-wide" aria-hidden="true">',
+		'<hr/>'  => '<hr class="styled-separator is-style-wide" aria-hidden="true">',
+		'<hr />' => '<hr class="styled-separator is-style-wide" aria-hidden="true">',
+	);
+
+	$comment = str_replace( array_keys( $replace ), $replace, $comment );
+
+	return $comment;
+
+}
+
+add_filter( 'pre_comment_content', 'wps_filter_comment' );
