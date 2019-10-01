@@ -2733,25 +2733,24 @@ h2.entry-title {
 
 /* Single Pagination ------------------------- */
 
-.pagination-single {
+.post-navigation {
 	font-size: 1.8rem;
-	margin-top: 5rem;
+	margin: 2.3rem auto;
+	max-width: 120rem;
+	width: calc(100% - 4rem);
 }
 
-.pagination-single-inner {
+.post-navigation .nav-links {
 	display: flex;
 	flex-direction: column;
 }
 
-.pagination-single hr:first-child {
-	margin: 0 0 2.8rem 0;
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+	margin: 0.5rem 0;
 }
 
-.pagination-single hr:last-child {
-	margin: 2.8rem 0 0 0;
-}
-
-.pagination-single a {
+.post-navigation a {
 	align-items: baseline;
 	display: flex;
 	font-weight: 600;
@@ -2759,23 +2758,26 @@ h2.entry-title {
 	text-decoration: none;
 }
 
-.pagination-single a:hover,
-.pagination-single a:focus {
-	text-decoration: underline;
-}
-
-.pagination-single a + a {
-	margin-top: 1rem;
-}
-
-.pagination-single a .arrow {
+.post-navigation .arrow {
 	margin-right: 1rem;
 }
 
-.pagination-single a:focus .title,
-.pagination-single a:hover .title {
+.post-navigation a:hover .post-title,
+.post-navigation a:focus .post-title {
 	text-decoration: underline;
 }
+
+.nav-separator {
+	max-width: 120rem;
+	width: calc(100% - 4rem);
+	margin: 0 auto;
+}
+
+.nav-separator:first-of-type {
+	margin: 5rem auto 0;
+}
+
+/**/
 
 
 /* -------------------------------------------------------------------------- */
@@ -4858,43 +4860,44 @@ a.to-the-top > * {
 
 	/* SINGLE PAGINATION */
 
-	.pagination-single {
+	.post-navigation {
 		font-size: 2.4rem;
-		margin-top: 8rem;
+		margin: 4rem auto;
+		width: calc(100% - 8rem);
 	}
 
-	.pagination-single-inner {
+	.post-navigation .nav-links {
 		flex-direction: row;
 		justify-content: space-between;
 	}
 
-	.pagination-single.only-next .pagination-single-inner {
-		justify-content: flex-end;
+	.post-navigation .nav-previous {
+		margin: 0 auto 0 0;
 	}
 
-	.pagination-single hr:first-child {
-		margin: 0 0 4rem 0;
+	.post-navigation .nav-next {
+		margin: 0 0 0 auto;
 	}
 
-	.pagination-single hr:last-child {
-		margin: 4rem 0 0 0;
-	}
-
-	.pagination-single a + a {
-		margin: 0 0 0 4rem;
-	}
-
-	.pagination-single a .arrow {
-		margin: 0 2rem 0 0;
-	}
-
-	.pagination-single .next-post {
+	.post-navigation .nav-next a {
 		flex-direction: row-reverse;
 		text-align: right;
 	}
 
-	.pagination-single .next-post .arrow {
+	.post-navigation .arrow {
+		margin: 0 2rem 0 0;
+	}
+
+	.post-navigation .nav-next .arrow {
 		margin: 0 0 0 2rem;
+	}
+
+	.nav-separator {
+		width: calc(100% - 8rem);
+	}
+
+	.nav-separator:first-of-type {
+		margin: 8rem auto 0;
 	}
 
 	/* Blocks -------------------------------- */
