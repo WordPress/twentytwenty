@@ -112,7 +112,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'type'    => 'radio',
 					'section' => 'colors',
-					'label'   => __( 'Primary color', 'twentytwenty' ),
+					'label'   => __( 'Primary Color', 'twentytwenty' ),
 					'choices' => array(
 						'default' => __( 'Default', 'twentytwenty' ),
 						'custom'  => __( 'Custom', 'twentytwenty' ),
