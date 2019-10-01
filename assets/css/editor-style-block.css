@@ -472,10 +472,6 @@ Inter variable font. Usage:
 	padding: 0;
 }
 
-.editor-styles-wrapper .wp-block-table .wp-block-table__cell-content {
-	padding: 12px;
-}
-
 .editor-styles-wrapper .wp-block-table thead {
 	vertical-align: bottom;
 	white-space: nowrap;
