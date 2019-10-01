@@ -580,6 +580,19 @@ function twentytwenty_edit_post_link( $link, $post_id, $text ) {
 		return;
 	}
 
+	$text = sprintf(
+		wp_kses(
+			/* translators: %s: Post title. Only visible to screen readers. */
+			__( 'Edit <span class="screen-reader-text">%s</span>', 'twentytwenty' ),
+			array(
+				'span' => array(
+					'class' => array(),
+				),
+			)
+		),
+		get_the_title( $post_id )
+	);
+
 	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
 
 }
@@ -692,9 +705,9 @@ add_filter( 'body_class', 'twentytwenty_body_classes' );
 function twentytwenty_toggle_duration() {
 	/**
 	 * Filters the animation duration/speed used usually for submenu toggles.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @param integer $duration Duration in milliseconds.
 	 */
 	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );
