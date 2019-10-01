@@ -152,10 +152,12 @@ twentytwenty.coverModals = {
 			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				return ( negativeValue ? '-' : '' ) + ( currentScroll + adminBar.getBoundingClientRect().height ) + 'px';
+				var height = currentScroll + adminBar.getBoundingClientRect().height;
+
+				return negativeValue ? -height : height;
 			}
 
-			return currentScroll === 0 ? 0 : -currentScroll + 'px';
+			return currentScroll === 0 ? 0 : -currentScroll;
 		}
 
 		function htmlStyles() {
@@ -165,7 +167,7 @@ twentytwenty.coverModals = {
 				'overflow-y': overflow ? 'hidden' : 'scroll',
 				position: 'fixed',
 				width: '100%',
-				top: getAdminBarHeight( true ),
+				top: getAdminBarHeight( true ) + 'px',
 				left: 0
 			};
 		}
@@ -173,11 +175,12 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
-				var styles, paddingTop, offsetY;
+				var styles, paddingTop, offsetY, mQuery;
 
 				styles = htmlStyles();
 				offsetY = _win.pageYOffset;
-				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - offsetY ) + 'px';
+				paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px';
+				mQuery = _win.matchMedia( '(max-width: 600px)' );
 
 				if ( event.target !== modal ) {
 					return;
@@ -191,6 +194,14 @@ twentytwenty.coverModals = {
 
 				if ( adminBar ) {
 					_doc.body.style.setProperty( 'padding-top', paddingTop );
+
+					if ( mQuery.matches ) {
+						if ( offsetY >= getAdminBarHeight() ) {
+							modal.style.setProperty( 'top', 0 );
+						} else {
+							modal.style.setProperty( 'top', ( getAdminBarHeight() - offsetY ) + 'px' );
+						}
+					}
 				}
 
 				modal.classList.add( 'show-modal' );
@@ -204,16 +215,17 @@ twentytwenty.coverModals = {
 
 				setTimeout( function() {
 					modal.classList.remove( 'show-modal' );
-
+					
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
 					if ( adminBar ) {
 						_doc.body.style.removeProperty( 'padding-top' );
+						modal.style.removeProperty( 'top' );
 					}
 
-					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
 
 					_win.twentytwenty.scrolled = 0;
 				}, 500 );
