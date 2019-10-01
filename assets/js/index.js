@@ -4,6 +4,9 @@
 
 var twentytwenty = twentytwenty || {};
 
+// Set a default value for scrolled.
+twentytwenty.scrolled = 0;
+
 // polyfill closest
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
 if ( ! Element.prototype.closest ) {
@@ -37,7 +40,6 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 // event "polyfill"
-
 twentytwenty.createEvent = function( eventName ) {
 	var event;
 	if ( typeof window.Event === 'function' ) {
@@ -51,7 +53,6 @@ twentytwenty.createEvent = function( eventName ) {
 
 // matches "polyfill"
 // https://developer.mozilla.org/es/docs/Web/API/Element/matches
-
 if ( ! Element.prototype.matches ) {
 	Element.prototype.matches =
 		Element.prototype.matchesSelector ||
@@ -137,22 +138,31 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals = document.querySelectorAll( '.cover-modal' ),
-			htmlStyle = document.documentElement.style;
+		var modals, htmlStyle, adminBar, _doc, _win;
 
-		var getAdminBarHeight = function( negativeValue ) {
-			var adminBar = document.querySelector( '#wpadminbar' );
+		_doc = document;
+		_win = window;
+		modals = _doc.querySelectorAll( '.cover-modal' );
+		htmlStyle = _doc.documentElement.style;
+		adminBar = _doc.querySelector( '#wpadminbar' );
+
+		function getAdminBarHeight( negativeValue ) {
+			var currentScroll;
+
+			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px';
+				return ( negativeValue ? '-' : '' ) + ( currentScroll + adminBar.getBoundingClientRect().height ) + 'px';
 			}
 
-			return 0;
-		};
+			return currentScroll === 0 ? 0 : -currentScroll + 'px';
+		}
 
 		function htmlStyles() {
+			var overflow = _win.innerHeight > _doc.documentElement.getBoundingClientRect().height;
+
 			return {
-				'overflow-y': 'scroll',
+				'overflow-y': overflow ? 'hidden' : 'scroll',
 				position: 'fixed',
 				width: '100%',
 				top: getAdminBarHeight( true ),
@@ -163,17 +173,25 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
+				var styles, paddingTop, offsetY;
+
+				styles = htmlStyles();
+				offsetY = _win.pageYOffset;
+				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - offsetY ) + 'px';
+
 				if ( event.target !== modal ) {
 					return;
 				}
 
-				window.scrollTo( { top: 0 } );
-
-				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
-					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
+				Object.keys( styles ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
+				_win.twentytwenty.scrolled = parseInt( styles.top );
+
+				if ( adminBar ) {
+					_doc.body.style.setProperty( 'padding-top', paddingTop );
+				}
 
 				modal.classList.add( 'show-modal' );
 			} );
@@ -191,7 +209,13 @@ twentytwenty.coverModals = {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
-					document.body.style.removeProperty( 'padding-top' );
+					if ( adminBar ) {
+						_doc.body.style.removeProperty( 'padding-top' );
+					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+
+					_win.twentytwenty.scrolled = 0;
 				}, 500 );
 			} );
 		} );
@@ -361,7 +385,7 @@ twentytwenty.smoothScroll = {
 }; // twentytwenty.smoothScroll
 
 /*	-----------------------------------------------------------------------------------------------
-	Main Menu
+	Modal Menu
 --------------------------------------------------------------------------------------------------- */
 twentytwenty.modalMenu = {
 
@@ -393,7 +417,7 @@ twentytwenty.modalMenu = {
 		document.addEventListener( 'keydown', function( event ) {
 			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
 			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
-			var isMobileMenu = window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none';
+			var isMobileMenu = desktopMenuButton ? window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none' : false;
 			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
 
 			var menuLinks = isMobileMenu ?
@@ -428,6 +452,50 @@ twentytwenty.modalMenu = {
 		} );
 	}
 }; // twentytwenty.modalMenu
+
+/*	-----------------------------------------------------------------------------------------------
+	Primary Menu
+--------------------------------------------------------------------------------------------------- */
+
+twentytwenty.primaryMenu = {
+
+	init: function() {
+		this.focusMenuWithChildren();
+	},
+
+	// The focusMenuWithChildren() function implements Keyboard Navigation in the Primary Menu
+	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
+	focusMenuWithChildren: function() {
+		// Get all the link elements within the primary menu.
+		var menu = document.querySelector( '.primary-menu-wrapper' );
+		var links = menu.getElementsByTagName( 'a' );
+		var i, len;
+
+		// Each time a menu link is focused or blurred, toggle focus.
+		for ( i = 0, len = links.length; i < len; i++ ) {
+			links[i].addEventListener( 'focus', toggleFocus, true );
+			links[i].addEventListener( 'blur', toggleFocus, true );
+		}
+
+		//Sets or removes the .focus class on an element.
+		function toggleFocus() {
+			var self = this;
+
+			// Move up through the ancestors of the current link until we hit .primary-menu.
+			while ( -1 === self.className.indexOf( 'primary-menu' ) ) {
+				// On li elements toggle the class .focus.
+				if ( 'li' === self.tagName.toLowerCase() ) {
+					if ( -1 !== self.className.indexOf( 'focus' ) ) {
+						self.className = self.className.replace( ' focus', '' );
+					} else {
+						self.className += ' focus';
+					}
+				}
+				self = self.parentElement;
+			}
+		}
+	}
+}; // twentytwenty.primaryMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Toggles
@@ -622,6 +690,7 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
+	twentytwenty.primaryMenu.init();	// Primary Menu
 } );
 
 /*	-----------------------------------------------------------------------------------------------

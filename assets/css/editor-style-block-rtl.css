@@ -499,7 +499,8 @@ Inter variable font. Usage:
 /* Block: Separator -------------------------- */
 
 hr.wp-block-separator {
-	border-top: 1px solid rgba(0, 0, 0, 0.42);
+	border-top: 1px solid #6d6d6d;
+	color: #6d6d6d;
 	margin: 30px 0;
 }
 
@@ -508,12 +509,16 @@ hr.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
 }
 
 hr.wp-block-separator:not(.is-style-dots) {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.42) calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), rgba(0, 0, 0, 0.42) calc(50% + 16px));
+	background: linear-gradient(to right, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
+	background-color: transparent !important;
 	border: none;
-	color: rgba(0, 0, 0, 0.42);
 	height: 1px;
 	overflow: visible;
 	position: relative;
+}
+
+.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots) {
+	height: 1px;
 }
 
 hr.wp-block-separator:not(.is-style-dots)::before,
@@ -539,7 +544,6 @@ hr.wp-block-separator::after {
 /* STYLE: DOTS */
 
 hr.wp-block-separator.is-style-dots::before {
-	color: rgba(0, 0, 0, 0.42);
 	font-size: 32px;
 	font-weight: 700;
 	letter-spacing: 1em;
