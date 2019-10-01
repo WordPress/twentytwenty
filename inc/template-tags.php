@@ -208,7 +208,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 		/**
 		* Filters post meta info visibility
 		*
-		* Use this filter to hide post meta information like Author, Post date, Comments, Is stiky status
+		* Use this filter to hide post meta information like Author, Post date, Comments, Is sticky status
 		*
 		* @since 1.0.0
 		*
