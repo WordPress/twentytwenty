@@ -1188,6 +1188,10 @@ button.toggle {
 	flex-shrink: 0;
 }
 
+.search-form .search-submit:hover {
+	text-decoration: none;
+}
+
 
 /* Social Icons ------------------------------ */
 
@@ -1585,7 +1589,7 @@ body:not(.enable-search-modal) .site-logo img {
 	left: 0;
 	right: 0;
 	top: 0;
-	z-index: 100;
+	z-index: 2;
 }
 
 .overlay-header .header-inner {
@@ -1648,6 +1652,7 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .toggle-icon {
+	display: block;
 	overflow: hidden;
 }
 
@@ -1657,7 +1662,8 @@ body:not(.enable-search-modal) .site-logo img {
 	font-weight: 600;
 	position: absolute;
 	top: calc(100% + 0.5rem);
-	width: 10rem;
+	width: auto;
+	white-space: nowrap;
 	word-break: break-all;
 }
 
@@ -2314,6 +2320,7 @@ button.search-untoggle {
 
 .cover-header-inner-wrapper {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
@@ -2772,7 +2779,7 @@ h2.entry-title {
 	margin-right: 1rem;
 }
 
-.pagination-single a:focus .title
+.pagination-single a:focus .title,
 .pagination-single a:hover .title {
 	text-decoration: underline;
 }
@@ -5300,10 +5307,6 @@ a.to-the-top > * {
 
 	#site-header {
 		z-index: 1;
-	}
-
-	.overlay-header #site-header {
-		z-index: 2;
 	}
 
 	.header-inner {
