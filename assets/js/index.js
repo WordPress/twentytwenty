@@ -147,12 +147,12 @@ twentytwenty.coverModals = {
 		adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
-			var currentScroll;
+			var currentScroll, height;
 
 			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				var height = currentScroll + adminBar.getBoundingClientRect().height;
+				height = currentScroll + adminBar.getBoundingClientRect().height;
 
 				return negativeValue ? -height : height;
 			}
@@ -215,7 +215,7 @@ twentytwenty.coverModals = {
 
 				setTimeout( function() {
 					modal.classList.remove( 'show-modal' );
-					
+
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 						htmlStyle.removeProperty( styleKey );
 					} );
