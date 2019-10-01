@@ -4203,6 +4203,10 @@ div.comment:first-of-type {
 	text-decoration: none;
 }
 
+.widget_rss a.rsswidget:first-of-type {
+	display: none;
+}
+
 .widget_rss a:focus,
 .widget_rss a:hover {
 	text-decoration: underline;
