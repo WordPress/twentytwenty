@@ -101,19 +101,22 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'accent_hue_active',
 				array(
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
 					'transport'         => 'postMessage',
-					'default'           => false,
+					'default'           => 'default',
 				)
 			);
 
 			$wp_customize->add_control(
 				'accent_hue_active',
 				array(
-					'type'        => 'checkbox',
-					'section'     => 'colors',
-					'label'       => __( 'Change accent color', 'twentytwenty' ),
-					'description' => __( 'Something', 'twentytwenty' ),
+					'type'    => 'radio',
+					'section' => 'colors',
+					'label'   => __( 'Primary color', 'twentytwenty' ),
+					'choices' => array(
+						'default' => __( 'Default', 'twentytwenty' ),
+						'custom'  => __( 'Custom', 'twentytwenty' ),
+					),
 				)
 			);
 
@@ -167,12 +170,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'accent_hue',
 					array(
-						'label'           => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
 						'section'         => 'colors',
 						'settings'        => 'accent_hue',
+						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'twentytwenty' ),
 						'mode'            => 'hue',
 						'active_callback' => function() use ( $wp_customize ) {
-							return ( true === $wp_customize->get_setting( 'accent_hue_active' )->value() );
+							return ( 'custom' === $wp_customize->get_setting( 'accent_hue_active' )->value() );
 						},
 					)
 				)
