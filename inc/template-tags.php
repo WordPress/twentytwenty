@@ -142,6 +142,8 @@ function twentytwenty_is_comment_by_post_author( $comment = null ) {
  * makes it scroll to the wrong position on the page.
  *
  * @param string $link Link to the top of the page.
+ *
+ * @return string $link Link to the top of the page.
  */
 function twentytwenty_filter_comment_reply_link( $link ) {
 
@@ -206,7 +208,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 		/**
 		* Filters post meta info visibility
 		*
-		* Use this filter to hide post meta information like Author, Post date, Comments, Is stiky status
+		* Use this filter to hide post meta information like Author, Post date, Comments, Is sticky status
 		*
 		* @since 1.0.0
 		*
@@ -437,11 +439,13 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
  * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify.
  * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
  *
- * @param string $css_class CSS Class names.
+ * @param array  $css_class CSS Class names.
  * @param string $item Comment.
  * @param int    $depth Depth of the current comment.
  * @param array  $args An array of arguments.
  * @param string $current_page Wether or not the item is the current item.
+ *
+ * @return array $css_class CSS Class names.
  */
 function twentytwenty_filter_wp_list_pages_item_classes( $css_class, $item, $depth, $args, $current_page ) {
 
@@ -471,9 +475,11 @@ add_filter( 'page_css_class', 'twentytwenty_filter_wp_list_pages_item_classes', 
 /**
  * Add a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
  *
- * @param array  $args An array of arguments.
- * @param string $item Menu item.
- * @param int    $depth Depth of the current menu item.
+ * @param stdClass $args An array of arguments.
+ * @param string   $item Menu item.
+ * @param int      $depth Depth of the current menu item.
+ *
+ * @return stdClass $args An object of wp_nav_menu() arguments.
  */
 function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 
@@ -534,6 +540,8 @@ add_action( 'wp_head', 'twentytwenty_no_js_class' );
  * Filters the archive title and styles the word before the first colon.
  *
  * @param string $title Current archive title.
+ *
+ * @return string $title Current archive title.
  */
 function twentytwenty_get_the_archive_title( $title ) {
 
@@ -572,6 +580,19 @@ function twentytwenty_edit_post_link( $link, $post_id, $text ) {
 		return;
 	}
 
+	$text = sprintf(
+		wp_kses(
+			/* translators: %s: Post title. Only visible to screen readers. */
+			__( 'Edit <span class="screen-reader-text">%s</span>', 'twentytwenty' ),
+			array(
+				'span' => array(
+					'class' => array(),
+				),
+			)
+		),
+		get_the_title( $post_id )
+	);
+
 	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
 
 }
@@ -581,7 +602,9 @@ add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 /**
  * Add conditional body classes.
  *
- * @param string $classes Classes added to the body tag.
+ * @param array $classes Classes added to the body tag.
+ *
+ * @return array $classes Classes added to the body tag.
  */
 function twentytwenty_body_classes( $classes ) {
 
@@ -642,6 +665,19 @@ function twentytwenty_body_classes( $classes ) {
 		$classes[] = basename( get_page_template_slug(), '.php' );
 	}
 
+	// Check for the elements output in the top part of the footer.
+	$has_footer_menu = has_nav_menu( 'footer' );
+	$has_social_menu = has_nav_menu( 'social' );
+	$has_sidebar_1   = is_active_sidebar( 'sidebar-1' );
+	$has_sidebar_2   = is_active_sidebar( 'sidebar-2' );
+
+	// Add a class indicating whether those elements are output.
+	if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) {
+		$classes[] = 'footer-top-visible';
+	} else {
+		$classes[] = 'footer-top-hidden';
+	}
+
 	// Get header/footer background color.
 	$header_footer_background = get_theme_mod( 'header_footer_background_color', '#ffffff' );
 	$header_footer_background = strtolower( '#' . ltrim( $header_footer_background, '#' ) );
@@ -669,9 +705,9 @@ add_filter( 'body_class', 'twentytwenty_body_classes' );
 function twentytwenty_toggle_duration() {
 	/**
 	 * Filters the animation duration/speed used usually for submenu toggles.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @param integer $duration Duration in milliseconds.
 	 */
 	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );

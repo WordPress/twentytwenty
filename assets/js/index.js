@@ -4,6 +4,9 @@
 
 var twentytwenty = twentytwenty || {};
 
+// Set a default value for scrolled.
+twentytwenty.scrolled = 0;
+
 // polyfill closest
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
 if ( ! Element.prototype.closest ) {
@@ -37,7 +40,6 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 // event "polyfill"
-
 twentytwenty.createEvent = function( eventName ) {
 	var event;
 	if ( typeof window.Event === 'function' ) {
@@ -51,7 +53,6 @@ twentytwenty.createEvent = function( eventName ) {
 
 // matches "polyfill"
 // https://developer.mozilla.org/es/docs/Web/API/Element/matches
-
 if ( ! Element.prototype.matches ) {
 	Element.prototype.matches =
 		Element.prototype.matchesSelector ||
@@ -137,21 +138,28 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals = document.querySelectorAll( '.cover-modal' ),
-			htmlStyle = document.documentElement.style;
+		var modals, htmlStyle, adminBar, _doc, _win;
 
-		var getAdminBarHeight = function( negativeValue ) {
-			var adminBar = document.querySelector( '#wpadminbar' );
+		_doc = document;
+		_win = window;
+		modals = _doc.querySelectorAll( '.cover-modal' );
+		htmlStyle = _doc.documentElement.style;
+		adminBar = _doc.querySelector( '#wpadminbar' );
+
+		function getAdminBarHeight( negativeValue ) {
+			var currentScroll;
+
+			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px';
+				return ( negativeValue ? '-' : '' ) + ( currentScroll + adminBar.getBoundingClientRect().height ) + 'px';
 			}
 
-			return 0;
-		};
+			return currentScroll === 0 ? 0 : -currentScroll + 'px';
+		}
 
 		function htmlStyles() {
-			var overflow = window.innerHeight > document.documentElement.getBoundingClientRect().height;
+			var overflow = _win.innerHeight > _doc.documentElement.getBoundingClientRect().height;
 
 			return {
 				'overflow-y': overflow ? 'hidden' : 'scroll',
@@ -165,17 +173,25 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
+				var styles, paddingTop, offsetY;
+
+				styles = htmlStyles();
+				offsetY = _win.pageYOffset;
+				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - offsetY ) + 'px';
+
 				if ( event.target !== modal ) {
 					return;
 				}
 
-				window.scrollTo( { top: 0 } );
-
-				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
-					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
+				Object.keys( styles ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
+				_win.twentytwenty.scrolled = parseInt( styles.top );
+
+				if ( adminBar ) {
+					_doc.body.style.setProperty( 'padding-top', paddingTop );
+				}
 
 				modal.classList.add( 'show-modal' );
 			} );
@@ -193,7 +209,13 @@ twentytwenty.coverModals = {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
-					document.body.style.removeProperty( 'padding-top' );
+					if ( adminBar ) {
+						_doc.body.style.removeProperty( 'padding-top' );
+					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+
+					_win.twentytwenty.scrolled = 0;
 				}, 500 );
 			} );
 		} );
@@ -445,7 +467,7 @@ twentytwenty.primaryMenu = {
 	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
 	focusMenuWithChildren: function() {
 		// Get all the link elements within the primary menu.
-		var menu = document.querySelector( '.primary-menu-wrapper nav' );
+		var menu = document.querySelector( '.primary-menu-wrapper' );
 		var links = menu.getElementsByTagName( 'a' );
 		var i, len;
 
