@@ -4191,7 +4191,7 @@ div.comment:first-of-type {
 
 /* Widget: RSS ------------------------------- */
 
-.widget_rss .rss-widget-icon {
+.widget_rss a.rsswidget:first-of-type {
 	display: none;
 }
 
@@ -4201,10 +4201,6 @@ div.comment:first-of-type {
 
 .widget_rss a {
 	text-decoration: none;
-}
-
-.widget_rss a.rsswidget:first-of-type {
-	display: none;
 }
 
 .widget_rss a:focus,
