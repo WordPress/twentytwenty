@@ -194,7 +194,7 @@ function twentytwenty_register_styles() {
 		$css_dependencies[] = 'font-awesome';
 	}
 
-	wp_enqueue_style( 'twentytwenty-style', get_template_directory_uri() . '/style.css', $css_dependencies, $theme_version );
+	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), $css_dependencies, $theme_version );
 	wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
 	// Add output of Customizer settings as inline style.
