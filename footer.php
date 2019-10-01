@@ -36,7 +36,7 @@
 								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
 								?>
 							</a>
-						</p><!-- .theme-credits -->
+						</p><!-- .powered-by-wordpress -->
 
 					</div><!-- .footer-credits -->
 
@@ -46,14 +46,14 @@
 							// Translators: %s = HTML character for an arrow.
 							printf( esc_html( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
 							?>
-						</span>
+						</span><!-- .to-the-top-long -->
 						<span class="to-the-top-short">
 							<?php
 							// Translators: %s = HTML character for an arrow.
 							printf( esc_html( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
 							?>
-						</span>
-					</a>
+						</span><!-- .to-the-top-short -->
+					</a><!-- .to-the-top -->
 
 				</div><!-- .section-inner -->
 
