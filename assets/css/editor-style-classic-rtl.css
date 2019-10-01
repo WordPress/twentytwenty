@@ -109,7 +109,7 @@ body#tinymce.wp-editor pre {
 	margin: 40px 0;
 	overflow: auto;
 	padding: 30px;
-	text-align: left;
+	text-align: right;
 }
 
 body#tinymce.wp-editor a,
@@ -136,7 +136,7 @@ body#tinymce.wp-editor hr {
 }
 
 body#tinymce.wp-editor hr:not(.is-style-dots) {
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.42) calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), rgba(0, 0, 0, 0.42) calc(50% + 16px));
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.42) calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), rgba(0, 0, 0, 0.42) calc(50% + 16px));
 	border: none;
 	color: rgba(0, 0, 0, 0.42);
 	height: 1px;
@@ -153,16 +153,16 @@ body#tinymce.wp-editor hr:not(.is-style-dots)::after {
 	height: 16px;
 	position: absolute;
 	top: calc(50% - 8px);
-	transform: rotate(22.5deg);
+	transform: rotate(-22.5deg);
 	width: 1px;
 }
 
 body#tinymce.wp-editor hr::before {
-	left: calc(50% - 5px);
+	right: calc(50% - 5px);
 }
 
 body#tinymce.wp-editor hr::after {
-	right: calc(50% - 5px);
+	left: calc(50% - 5px);
 }
 
 body#tinymce.wp-editor dt {
@@ -250,9 +250,9 @@ body#tinymce.wp-editor h6 {
 body#tinymce.wp-editor blockquote {
 	border-style: solid;
 	border: none;
-	border-left: 2px solid #cd2653;
+	border-right: 2px solid #cd2653;
 	margin: 0 0 1.6em 0;
-	padding: 0.25em 0 0.25em 1em;
+	padding: 0.25em 1em 0.25em 0;
 }
 
 body#tinymce.wp-editor blockquote p {
@@ -277,14 +277,14 @@ body#tinymce.wp-editor blockquote cite {
 /* Lists ------------------------------------- */
 
 body#tinymce.wp-editor ul {
-	margin-left: 1.5em;
-	padding-left: 0;
+	margin-right: 1.5em;
+	padding-right: 0;
 	list-style: disc;
 }
 
 body#tinymce.wp-editor ol {
-	margin-left: 1.5em;
-	padding-left: 0;
+	margin-right: 1.5em;
+	padding-right: 0;
 	list-style: square;
 }
 
@@ -373,14 +373,14 @@ body#tinymce.wp-editor .wp-caption .alignright {
 }
 
 body#tinymce.wp-editor .alignleft {
-	float: left;
-	margin-right: 25px;
+	float: right;
+	margin-left: 25px;
 	max-width: 260px;
 }
 
 body#tinymce.wp-editor .alignright {
-	float: right;
-	margin-left: 25px;
+	float: left;
+	margin-right: 25px;
 	max-width: 260px;
 }
 
@@ -438,7 +438,7 @@ body#tinymce.wp-editor thead {
 }
 
 body#tinymce.wp-editor th {
-	text-align: left;
+	text-align: right;
 }
 
 
@@ -596,9 +596,9 @@ body#tinymce.wp-editor .has-background {
 
 body#tinymce.wp-editor ul.wp-block-gallery {
 	list-style: none;
-	margin-left: 0;
+	margin-right: 0;
 }
 
 body#tinymce.wp-editor ul.wp-block-gallery li {
-	margin-left: 0;
+	margin-right: 0;
 }
