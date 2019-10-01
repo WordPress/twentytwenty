@@ -1636,6 +1636,11 @@ body:not(.enable-search-modal) .site-logo img {
 	padding: 0 2rem;
 }
 
+.header-inner .toggle:focus {
+	outline: none;
+	box-shadow: inset 0 0 10px 4px rgba(150, 150, 150, .5);
+}
+
 .header-inner .toggle svg {
 	display: block;
 	position: relative;
