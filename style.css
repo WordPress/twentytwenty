@@ -4487,10 +4487,6 @@ a.to-the-top > * {
 	}
 }
 
-@media ( min-width: 660px ) {
-
-}
-
 @media ( min-width: 700px ) {
 
 	/* Element Base ------------------------- */
