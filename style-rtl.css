@@ -5432,7 +5432,7 @@ a.to-the-top > * {
 
 	.toggle-inner {
 		display: flex;
-    flex-wrap: nowrap;
+		flex-wrap: nowrap;
 		align-items: center;
 		position: static;
 	}
