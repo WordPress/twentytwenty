@@ -17,8 +17,8 @@ if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 				<?php
 				printf(
 					/* Translators: %s: post author */
-					esc_html__( 'By %s', 'twentytwenty' ),
-					esc_html( get_the_author() )
+					__( 'By %s', 'twentytwenty' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
+					esc_html( get_the_author() ) 
 				);
 				?>
 			</span>
