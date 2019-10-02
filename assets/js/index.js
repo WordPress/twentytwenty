@@ -526,12 +526,28 @@ twentytwenty.toggles = {
 	},
 
 	performToggle: function( element, instantly ) {
-		var toggle, targetString, target, timeOutTime, classToToggle, activeClass;
+		var self, toggle, targetString, target, timeOutTime, classToToggle, activeClass, elsToFocusAfter;
+
+		self = this;
 
 		// Get our targets
 		toggle = element;
 		targetString = toggle.dataset.toggleTarget;
 		activeClass = 'active';
+
+		// Elements to focus after modals are closed
+		elsToFocusAfter = [
+			'desktop-nav-toggle',
+			'desktop-search-toggle',
+			'mobile-nav-toggle',
+			'mobile-search-toggle'
+		];
+
+		elsToFocusAfter.forEach( function( el ) {
+			if ( toggle.classList.contains( el ) && window.getComputedStyle( toggle ).display !== 'none' ) {
+				self.clickedEl = toggle;
+			}
+		} );
 
 		if ( targetString === 'next' ) {
 			target = toggle.nextSibling;
@@ -622,23 +638,7 @@ twentytwenty.toggles = {
 
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
 			element.addEventListener( 'click', function( event ) {
-				var elsToFocusAfter;
-
 				event.preventDefault();
-
-				elsToFocusAfter = [
-					'desktop-nav-toggle',
-					'desktop-search-toggle',
-					'mobile-nav-toggle',
-					'mobile-search-toggle'
-				];
-
-				elsToFocusAfter.forEach( function( el ) {
-					if ( element.classList.contains( el ) && window.getComputedStyle( element ).display !== 'none' ) {
-						self.clickedEl = element;
-					}
-				} );
-
 				self.performToggle( element );
 			} );
 		} );
