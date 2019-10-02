@@ -44,7 +44,7 @@
 	$color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
 	?>
 
-	<div class="cover-header <?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
+	<div class="cover-header <?php echo $cover_header_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
 		<div class="cover-header-inner-wrapper screen-height">
 			<div class="cover-header-inner">
 				<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
@@ -133,11 +133,12 @@
 
 		</div><!-- .entry-content -->
 		<?php
-
 		wp_link_pages(
 			array(
-				'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'  => '</nav>',
+				'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'       => '</nav>',
+				'link_before' => '<span class="page-number">',
+				'link_after'  => '</span>',
 			)
 		);
 
