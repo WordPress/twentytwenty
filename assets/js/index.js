@@ -203,6 +203,10 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
+					var clickedEl;
+
+					clickedEl = twentytwenty.toggles.clickedEl;
+
 					modal.classList.remove( 'show-modal' );
 
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
@@ -216,6 +220,11 @@ twentytwenty.coverModals = {
 					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
 
 					_win.twentytwenty.scrolled = 0;
+
+					if( clickedEl !== false ) {
+						clickedEl.focus();
+						clickedEl = false;
+					}
 				}, 500 );
 			} );
 		} );
@@ -503,6 +512,8 @@ twentytwenty.primaryMenu = {
 
 twentytwenty.toggles = {
 
+	clickedEl: false,
+
 	init: function() {
 		// Do the toggle
 		this.toggle();
@@ -610,7 +621,24 @@ twentytwenty.toggles = {
 		var self = this;
 
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
-			element.addEventListener( 'click', function() {
+			element.addEventListener( 'click', function( event ) {
+				var elsToFocusAfter;
+
+				event.preventDefault();
+
+				elsToFocusAfter = [ 
+					'desktop-nav-toggle', 
+					'desktop-search-toggle', 
+					'mobile-nav-toggle', 
+					'mobile-search-toggle' 
+				];
+				
+				elsToFocusAfter.forEach( function( el ) {
+					if( element.classList.contains( el ) && window.getComputedStyle( element ).display !== 'none' ) {
+						self.clickedEl = element;
+					}
+				} );
+
 				self.performToggle( element );
 			} );
 		} );
