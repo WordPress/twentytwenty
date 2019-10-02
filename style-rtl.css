@@ -1206,6 +1206,10 @@ button.toggle {
 	flex-shrink: 0;
 }
 
+.search-form .search-submit:hover {
+	text-decoration: none;
+}
+
 
 /* Social Icons ------------------------------ */
 
@@ -1666,6 +1670,7 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .toggle-icon {
+	display: block;
 	overflow: hidden;
 }
 
@@ -1675,7 +1680,8 @@ body:not(.enable-search-modal) .site-logo img {
 	font-weight: 600;
 	position: absolute;
 	top: calc(100% + 0.5rem);
-	width: 10rem;
+	width: auto;
+	white-space: nowrap;
 	word-break: break-all;
 }
 
@@ -2232,6 +2238,7 @@ button.sub-menu-toggle.active svg {
 .search-modal-inner .section-inner {
 	display: flex;
 	justify-content: space-between;
+	max-width: 168rem;
 }
 
 .search-modal.active {
@@ -2332,6 +2339,7 @@ button.search-untoggle {
 
 .cover-header-inner-wrapper {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
@@ -4202,7 +4210,7 @@ div.comment:first-of-type {
 
 /* Widget: RSS ------------------------------- */
 
-.widget_rss .rss-widget-icon {
+.widget_rss a.rsswidget:first-of-type {
 	display: none;
 }
 

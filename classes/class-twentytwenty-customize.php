@@ -136,7 +136,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					),
 					'type'              => 'theme_mod',
 					'transport'         => 'postMessage',
-					'sanitize_callback' => array( 'TwentyTwenty_Customize', 'sanitize_accent_accessible_colors' ),
+					'sanitize_callback' => array( __CLASS__, 'sanitize_accent_accessible_colors' ),
 				)
 			);
 
