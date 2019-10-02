@@ -1199,7 +1199,7 @@ ul.social-icons {
 	display: flex;
 	flex-wrap: wrap;
 	margin: -0.9rem 0 0 -0.9rem;
-	width: calc( 100% + 0.9rem );
+	width: calc(100% + 0.9rem);
 }
 
 ul.social-icons li {
