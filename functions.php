@@ -499,7 +499,7 @@ function twentytwenty_read_more_tag() {
 		'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		esc_html__( 'Continue reading', 'twentytwenty' ),
-		get_the_title( get_the_ID() )
+		esc_html( get_the_title( get_the_ID() ) )
 	);
 }
 add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
