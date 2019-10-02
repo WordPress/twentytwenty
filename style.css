@@ -1199,6 +1199,7 @@ ul.social-icons {
 	display: flex;
 	flex-wrap: wrap;
 	margin: -1rem 0 0 -1rem;
+	width: calc( 100% + 1rem );
 }
 
 ul.social-icons li {
@@ -4048,6 +4049,11 @@ div.comment:first-of-type {
 /* FOOTER SOCIAL */
 
 .footer-social-wrapper {
+	margin: 0;
+	width: 100%;
+}
+
+.has-footer-menu .footer-social-wrapper {
 	flex-shrink: 0;
 	margin-left: 1rem;
 	width: 50%;
@@ -4055,6 +4061,9 @@ div.comment:first-of-type {
 
 ul.footer-social {
 	margin: -0.5rem 0 0 -0.5rem;
+}
+
+.has-footer-menu .footer-social {
 	justify-content: flex-end;
 }
 
@@ -4978,7 +4987,8 @@ a.to-the-top > * {
 		margin: 0.8rem 0 0 1.6rem;
 	}
 
-	.footer-social-wrapper {
+	.has-footer-menu .footer-social-wrapper {
+		flex: 1;
 		margin-left: 4rem;
 		width: auto;
 	}
