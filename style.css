@@ -2220,6 +2220,7 @@ button.sub-menu-toggle.active svg {
 .search-modal-inner .section-inner {
 	display: flex;
 	justify-content: space-between;
+	max-width: 168rem;
 }
 
 .search-modal.active {
