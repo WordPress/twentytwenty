@@ -61,16 +61,16 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 								<?php
 								wp_nav_menu(
 									array(
-										'theme_location' => 'social',
-										'container'   => '',
+										'theme_location'  => 'social',
+										'container'       => '',
 										'container_class' => '',
-										'items_wrap'  => '%3$s',
-										'menu_id'     => '',
-										'menu_class'  => '',
-										'depth'       => 1,
-										'link_before' => '<span class="screen-reader-text">',
-										'link_after'  => '</span>',
-										'fallback_cb' => '',
+										'items_wrap'      => '%3$s',
+										'menu_id'         => '',
+										'menu_class'      => '',
+										'depth'           => 1,
+										'link_before'     => '<span class="screen-reader-text">',
+										'link_after'      => '</span>',
+										'fallback_cb'     => '',
 									)
 								);
 								?>
