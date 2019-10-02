@@ -128,7 +128,7 @@
 					}
 					?>
 
-					<div class="header-toggles hide-no-js<?php echo esc_attr( $header_toggles_classes ); ?>">
+					<div class="header-toggles hide-no-js<?php echo $header_toggles_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 
 						<?php
 						$nav_toggle_wrapper_classes = '';
@@ -139,7 +139,7 @@
 						}
 						?>
 
-						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
+						<div class="toggle-wrapper nav-toggle-wrapper<?php echo $nav_toggle_wrapper_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 
 							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 								<span class="toggle-inner">
