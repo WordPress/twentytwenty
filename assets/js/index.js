@@ -221,7 +221,7 @@ twentytwenty.coverModals = {
 
 					_win.twentytwenty.scrolled = 0;
 
-					if( clickedEl !== false ) {
+					if ( clickedEl !== false ) {
 						clickedEl.focus();
 						clickedEl = false;
 					}
@@ -626,15 +626,15 @@ twentytwenty.toggles = {
 
 				event.preventDefault();
 
-				elsToFocusAfter = [ 
-					'desktop-nav-toggle', 
-					'desktop-search-toggle', 
-					'mobile-nav-toggle', 
-					'mobile-search-toggle' 
+				elsToFocusAfter = [
+					'desktop-nav-toggle',
+					'desktop-search-toggle',
+					'mobile-nav-toggle',
+					'mobile-search-toggle'
 				];
-				
+
 				elsToFocusAfter.forEach( function( el ) {
-					if( element.classList.contains( el ) && window.getComputedStyle( element ).display !== 'none' ) {
+					if ( element.classList.contains( el ) && window.getComputedStyle( element ).display !== 'none' ) {
 						self.clickedEl = element;
 					}
 				} );
