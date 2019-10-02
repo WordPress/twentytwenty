@@ -5426,11 +5426,24 @@ a.to-the-top > * {
 		display: none;
 	}
 
+	.nav-toggle .toggle-inner {
+		padding-top: 0;
+	}
+
 	.toggle-inner {
+		display: flex;
+    flex-wrap: nowrap;
+		align-items: center;
 		position: static;
 	}
 
+	.toggle-inner .svg-icon {
+		order: 1;
+	}
+
 	.toggle-inner .toggle-text {
+		position: static;
+		padding-left: 1.2rem;
 		right: 0;
 		left: 0;
 		text-align: center;
