@@ -373,13 +373,13 @@ body#tinymce.wp-editor .wp-caption .alignright {
 }
 
 body#tinymce.wp-editor .alignleft {
-	float: right;
+	float: left;
 	margin-left: 25px;
 	max-width: 260px;
 }
 
 body#tinymce.wp-editor .alignright {
-	float: left;
+	float: right;
 	margin-right: 25px;
 	max-width: 260px;
 }
