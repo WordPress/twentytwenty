@@ -4683,7 +4683,47 @@ a.to-the-top > * {
 	}
 
 	.modal-menu ul li {
-		border-right-color: transparent;
+		border-right-width: 0;
+	}
+
+	.modal-menu ul a {
+		padding-right: 2.5rem;
+	}
+
+	.modal-menu ul ul a {
+		padding-right: 5rem;
+	}
+
+	.modal-menu ul ul ul a {
+		padding-right: 7.5rem;
+	}
+
+	.modal-menu ul ul ul ul a {
+		padding-right: 10rem;
+  }
+  
+  .modal-menu ul ul ul ul ul a {
+		padding-right: 12.5rem;
+	}
+
+	.modal-menu ul ul ul ul ul ul a {
+		padding-right: 15rem;
+	}
+
+	.modal-menu ul ul ul ul ul ul ul a {
+		padding-right: 17.5rem;
+	}
+
+	.modal-menu ul ul ul ul ul ul ul ul a {
+		padding-right: 20rem;
+	}
+
+	.modal-menu ul ul ul ul ul ul ul ul ul a {
+		padding-right: 22.5rem;
+	}
+
+	.modal-menu ul ul ul ul ul ul ul ul ul ul a {
+		padding-right: 25rem;
 	}
 
 	.modal-menu > li > .ancestor-wrapper > button.sub-menu-toggle {
