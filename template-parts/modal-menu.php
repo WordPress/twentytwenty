@@ -45,7 +45,7 @@
 
 					?>
 
-					<nav class="expanded-menu<?php echo esc_attr( $expanded_nav_classes ); ?>" aria-label="<?php esc_attr_e( 'Expanded', 'twentytwenty' ); ?>">
+					<nav class="expanded-menu<?php echo $expanded_nav_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e( 'Expanded', 'twentytwenty' ); ?>">
 
 						<ul class="modal-menu reset-list-style">
 							<?php
