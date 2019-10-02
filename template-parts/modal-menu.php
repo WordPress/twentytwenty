@@ -115,7 +115,7 @@
 				<?php if ( has_nav_menu( 'social' ) ) { ?>
 
 					<nav aria-label="<?php esc_attr_e( 'Expanded Social links', 'twentytwenty' ); ?>">
-						<ul class="social-menu reset-list-style social-icons s-icons">
+						<ul class="social-menu reset-list-style social-icons s-icons fill-children-current-color">
 
 							<?php
 							wp_nav_menu(

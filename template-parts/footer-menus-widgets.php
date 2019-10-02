@@ -60,7 +60,7 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 
 							<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
-								<ul class="social-menu footer-social reset-list-style social-icons s-icons">
+								<ul class="social-menu footer-social reset-list-style social-icons s-icons fill-children-current-color">
 
 									<?php
 									wp_nav_menu(
