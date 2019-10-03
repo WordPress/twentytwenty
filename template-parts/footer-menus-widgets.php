@@ -33,7 +33,7 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 
 			if ( $has_footer_menu || $has_social_menu ) {
 				?>
-				<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
+				<div class="footer-top<?php echo $footer_top_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 					<?php if ( $has_footer_menu ) { ?>
 
 						<nav aria-label="<?php esc_attr_e( 'Footer', 'twentytwenty' ); ?>" role="navigation">
@@ -56,7 +56,7 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 					<?php } ?>
 					<?php if ( $has_social_menu ) { ?>
 
-						<div class="<?php echo esc_attr( $footer_social_wrapper_class ); ?>">
+						<div class="<?php echo $footer_social_wrapper_class; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 
 							<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
 
