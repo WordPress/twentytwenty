@@ -550,7 +550,7 @@ twentytwenty.toggles = {
 		activeEl = document.activeElement;
 
 		// Elements to focus after modals are closed
-		if ( ! isModal && window.getComputedStyle( activeEl ).display !== 'none' ) {
+		if ( ! isModal ) {
 			self.clickedEl = activeEl;
 		}
 
