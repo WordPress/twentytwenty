@@ -3889,6 +3889,10 @@ div.comment:first-of-type {
 	display: block;
 }
 
+.comment-respond #submit:hover {
+	text-decoration: none;
+}
+
 .comment-respond .comments-closed {
 	text-align: center;
 }
