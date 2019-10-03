@@ -538,7 +538,7 @@ twentytwenty.toggles = {
 	},
 
 	performToggle: function( element, instantly ) {
-		var self, toggle, targetString, target, timeOutTime, classToToggle, activeClass, elsToFocusAfter;
+		var self, toggle, isModal, activeEl, targetString, target, timeOutTime, classToToggle, activeClass;
 
 		self = this;
 
@@ -546,20 +546,13 @@ twentytwenty.toggles = {
 		toggle = element;
 		targetString = toggle.dataset.toggleTarget;
 		activeClass = 'active';
+		isModal = document.querySelectorAll( '.show-modal' ).length;
+		activeEl = document.activeElement;
 
 		// Elements to focus after modals are closed
-		elsToFocusAfter = [
-			'desktop-nav-toggle',
-			'desktop-search-toggle',
-			'mobile-nav-toggle',
-			'mobile-search-toggle'
-		];
-
-		elsToFocusAfter.forEach( function( el ) {
-			if ( toggle.classList.contains( el ) && window.getComputedStyle( toggle ).display !== 'none' ) {
-				self.clickedEl = toggle;
-			}
-		} );
+		if ( ! isModal && window.getComputedStyle( activeEl ).display !== 'none' ) {
+			self.clickedEl = activeEl;
+		}
 
 		if ( targetString === 'next' ) {
 			target = toggle.nextSibling;
