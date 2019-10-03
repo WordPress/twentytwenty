@@ -237,8 +237,8 @@ path {
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -4697,23 +4697,7 @@ a.to-the-top > * {
 	}
 
 	.modal-menu ul li {
-		border-left-width: 0;
-	}
-
-	.modal-menu ul a {
-		padding-left: 2.5rem;
-	}
-
-	.modal-menu ul ul a {
-		padding-left: 5rem;
-	}
-
-	.modal-menu ul ul ul a {
-		padding-left: 7.5rem;
-	}
-
-	.modal-menu ul ul ul ul a {
-		padding-left: 10rem;
+		border-left-color: transparent;
 	}
 
 	.modal-menu > li > .ancestor-wrapper > button.sub-menu-toggle {
