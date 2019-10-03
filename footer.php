@@ -11,7 +11,7 @@
  * @since 1.0.0
  */
 
-?>		
+?>
 			<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
 				<div class="section-inner">
@@ -22,8 +22,8 @@
 							<?php
 							echo esc_html(
 								date_i18n(
-									/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
-									_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' )
+									/* translators: Copyright date format, see https://secure.php.net/date */
+									_x( 'Y', 'copyright date format', 'twentytwenty' )
 								)
 							);
 							?>
