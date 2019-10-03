@@ -32,9 +32,7 @@
 
 						<p class="powered-by-wordpress">
 							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
-								<?php
-								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
-								?>
+								<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
 							</a>
 						</p><!-- .powered-by-wordpress -->
 

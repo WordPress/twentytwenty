@@ -127,7 +127,7 @@ if ( comments_open() || pings_open() ) {
 
 	<div class="comment-respond" id="respond">
 
-		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></p>
+		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); ?></p>
 
 	</div><!-- #respond -->
 
