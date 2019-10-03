@@ -20,11 +20,9 @@
 
 						<p class="footer-copyright">&copy;
 							<?php
-							echo esc_html(
-								date_i18n(
-									/* translators: Copyright date format, see https://secure.php.net/date */
-									_x( 'Y', 'copyright date format', 'twentytwenty' )
-								)
+							echo date_i18n(
+								/* translators: Copyright date format, see https://secure.php.net/date */
+								_x( 'Y', 'copyright date format', 'twentytwenty' )
 							);
 							?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
@@ -42,13 +40,13 @@
 						<span class="to-the-top-long">
 							<?php
 							/* translators: %s: HTML character for up arrow */
-							printf( esc_html( __( 'To the top %s', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
+							printf( __( 'To the top %s', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' );
 							?>
 						</span><!-- .to-the-top-long -->
 						<span class="to-the-top-short">
 							<?php
 							/* translators: %s: HTML character for up arrow */
-							printf( esc_html( __( 'Up %s', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
+							printf( __( 'Up %s', 'twentytwenty' ), '<span class="arrow">&uarr;</span>' );
 							?>
 						</span><!-- .to-the-top-short -->
 					</a><!-- .to-the-top -->
