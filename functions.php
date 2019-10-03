@@ -126,9 +126,6 @@ function twentytwenty_theme_support() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
-	
-	// Add support for Block Styles.
-	add_theme_support( 'wp-block-styles' );
 
 	/*
 	 * Adds `async` and `defer` support for scripts registered or enqueued
