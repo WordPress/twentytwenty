@@ -96,7 +96,7 @@ get_header();
 			<?php
 			get_search_form(
 				array(
-					'label' => _x( 'search again', 'Label', 'twentytwenty' ),
+					'label' => __( 'search again', 'twentytwenty' ),
 				)
 			);
 			?>
