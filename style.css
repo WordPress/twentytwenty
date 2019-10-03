@@ -237,8 +237,8 @@ path {
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -1128,6 +1128,26 @@ button.toggle {
 
 .opacity-90 {
 	opacity: 0.9;
+}
+
+.blend-mode-exclusion {
+	mix-blend-mode: exclusion;
+}
+
+.blend-mode-hue {
+	mix-blend-mode: hue;
+}
+
+.blend-mode-saturation {
+	mix-blend-mode: saturation;
+}
+
+.blend-mode-color {
+	mix-blend-mode: color;
+}
+
+.blend-mode-luminosity {
+	mix-blend-mode: luminosity;
 }
 
 
@@ -2267,6 +2287,7 @@ button.search-untoggle {
 /* Modal Search Form ------------------------- */
 
 .search-modal form {
+	margin: 0;
 	position: relative;
 	width: 100%;
 }
@@ -2279,8 +2300,10 @@ button.search-untoggle {
 	font-size: 2rem;
 	letter-spacing: -0.0277em;
 	height: 8.4rem;
-	padding: 0;
-	width: 100%;
+	margin: 0 0 0 -2rem;
+	max-width: calc(100% + 2rem);
+	padding: 0 0 0 2rem;
+	width: calc(100% + 2rem);
 }
 
 .search-modal .search-field::-webkit-input-placeholder {
@@ -4433,10 +4456,14 @@ a.to-the-top > * {
 	}
 
 	.alignleft {
+
+		/*rtl:ignore*/
 		float: left;
 	}
 
 	.alignright {
+
+		/*rtl:ignore*/
 		float: right;
 	}
 }
@@ -4447,15 +4474,15 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content > .alignleft,
-	.entry-content > p .alignleft,
-	.entry-content > .wp-block-image .alignleft {
+	.entry-content .alignleft {
+
+		/*rtl:ignore*/
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.entry-content > .alignright,
-	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright {
+	.entry-content .alignright {
+
+		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
@@ -4670,23 +4697,7 @@ a.to-the-top > * {
 	}
 
 	.modal-menu ul li {
-		border-left-width: 0;
-	}
-
-	.modal-menu ul a {
-		padding-left: 2.5rem;
-	}
-
-	.modal-menu ul ul a {
-		padding-left: 5rem;
-	}
-
-	.modal-menu ul ul ul a {
-		padding-left: 7.5rem;
-	}
-
-	.modal-menu ul ul ul ul a {
-		padding-left: 10rem;
+		border-left-color: transparent;
 	}
 
 	.modal-menu > li > .ancestor-wrapper > button.sub-menu-toggle {
@@ -5774,15 +5785,15 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content > .alignleft,
-	.entry-content > p .alignleft,
-	.entry-content > .wp-block-image .alignleft {
+	.entry-content .alignleft {
+
+		/*rtl:ignore*/
 		margin-left: -31rem;
 	}
 
-	.entry-content > .alignright,
-	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright {
+	.entry-content .alignright {
+
+		/*rtl:ignore*/
 		margin-right: -31rem;
 	}
 

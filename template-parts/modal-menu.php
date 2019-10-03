@@ -17,7 +17,7 @@
 
 			<div class="menu-top">
 
-				<button class="toggle close-nav-toggle fill-children-current-color" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
+				<button class="toggle close-nav-toggle fill-children-current-color" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal">
 					<span class="toggle-text"><?php esc_html_e( 'Close Menu', 'twentytwenty' ); ?></span>
 					<?php twentytwenty_the_theme_svg( 'cross' ); ?>
 				</button><!-- .nav-toggle -->
@@ -45,7 +45,7 @@
 
 					?>
 
-					<nav class="expanded-menu<?php echo $expanded_nav_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e( 'Expanded', 'twentytwenty' ); ?>">
+					<nav class="expanded-menu<?php echo esc_attr( $expanded_nav_classes ); ?>" aria-label="<?php esc_attr_e( 'Expanded', 'twentytwenty' ); ?>" role="navigation">
 
 						<ul class="modal-menu reset-list-style">
 							<?php
@@ -70,7 +70,7 @@
 				if ( 'expanded' !== $mobile_menu_location ) { 
 					?>
 
-					<nav class="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'twentytwenty' ); ?>">
+					<nav class="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'twentytwenty' ); ?>" role="navigation">
 
 						<ul class="modal-menu reset-list-style">
 
@@ -114,7 +114,7 @@
 
 				<?php if ( has_nav_menu( 'social' ) ) { ?>
 
-					<nav aria-label="<?php esc_attr_e( 'Expanded Social links', 'twentytwenty' ); ?>">
+					<nav aria-label="<?php esc_attr_e( 'Expanded Social links', 'twentytwenty' ); ?>" role="navigation">
 						<ul class="social-menu reset-list-style social-icons s-icons">
 
 							<?php

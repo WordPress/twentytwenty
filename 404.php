@@ -21,7 +21,7 @@ get_header();
 		<?php
 		get_search_form(
 			array(
-				'label' => _x( '404 not found', 'Label', 'twentytwenty' ),
+				'label' => __( '404 not found', 'twentytwenty' ),
 			)
 		);
 		?>
