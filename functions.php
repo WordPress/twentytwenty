@@ -19,8 +19,8 @@
  * Custom Logo
  * WP Body Open
  * Register Sidebars
- * Enqueue Block editor assets
- * Classic Editor Style
+ * Enqueue block editor assets
+ * Enqueue classic editor styles
  * Block editor settings
  */
 
@@ -386,7 +386,7 @@ function twentytwenty_classic_editor_styles() {
 add_action( 'init', 'twentytwenty_classic_editor_styles' );
 
 /**
- * Output Customizer Settings in the Classic Editor.
+ * Output Customizer settings in the classic editor.
  * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
  *
  * @param array $mce_init TinyMCE styles.
@@ -449,31 +449,31 @@ function twentytwenty_block_editor_settings() {
 		add_theme_support( 'editor-color-palette', $editor_color_palette );
 	}
 
-	// Gutenberg Font Sizes.
+	// Block Editor Font Sizes.
 	add_theme_support(
 		'editor-font-sizes',
 		array(
 			array(
-				'name'      => _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'S', 'Short name of the small font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Small', 'Name of the small font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'S', 'Short name of the small font size in the block editor.', 'twentytwenty' ),
 				'size'      => 16,
 				'slug'      => 'small',
 			),
 			array(
-				'name'      => _x( 'Regular', 'Name of the regular font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'M', 'Short name of the regular font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Regular', 'Name of the regular font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'M', 'Short name of the regular font size in the block editor.', 'twentytwenty' ),
 				'size'      => 18,
 				'slug'      => 'regular',
 			),
 			array(
-				'name'      => _x( 'Large', 'Name of the large font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'L', 'Short name of the large font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'L', 'Short name of the large font size in the block editor.', 'twentytwenty' ),
 				'size'      => 24,
 				'slug'      => 'large',
 			),
 			array(
-				'name'      => _x( 'Larger', 'Name of the larger font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'XL', 'Short name of the larger font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Larger', 'Name of the larger font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'XL', 'Short name of the larger font size in the block editor.', 'twentytwenty' ),
 				'size'      => 32,
 				'slug'      => 'larger',
 			),
