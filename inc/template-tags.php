@@ -297,8 +297,8 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 						<span class="meta-text">
 							<?php
 							printf(
-								// Translators: %s = the author name.
-								_x( 'By %s', '%s = author name', 'twentytwenty' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
+								/* translators: %s: Author name */
+								__( 'By %s', 'twentytwenty' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
 								'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>'
 							);
 							?>
