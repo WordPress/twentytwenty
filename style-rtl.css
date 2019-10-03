@@ -4683,23 +4683,7 @@ a.to-the-top > * {
 	}
 
 	.modal-menu ul li {
-		border-right-width: 0;
-	}
-
-	.modal-menu ul a {
-		padding-right: 2.5rem;
-	}
-
-	.modal-menu ul ul a {
-		padding-right: 5rem;
-	}
-
-	.modal-menu ul ul ul a {
-		padding-right: 7.5rem;
-	}
-
-	.modal-menu ul ul ul ul a {
-		padding-right: 10rem;
+		border-right-color: transparent;
 	}
 
 	.modal-menu > li > .ancestor-wrapper > button.sub-menu-toggle {
