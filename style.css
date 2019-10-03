@@ -237,8 +237,8 @@ path {
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -1130,6 +1130,26 @@ button.toggle {
 	opacity: 0.9;
 }
 
+.blend-mode-exclusion {
+	mix-blend-mode: exclusion;
+}
+
+.blend-mode-hue {
+	mix-blend-mode: hue;
+}
+
+.blend-mode-saturation {
+	mix-blend-mode: saturation;
+}
+
+.blend-mode-color {
+	mix-blend-mode: color;
+}
+
+.blend-mode-luminosity {
+	mix-blend-mode: luminosity;
+}
+
 
 /* Image Classes ----------------------------- */
 
@@ -1970,6 +1990,7 @@ button.sub-menu-toggle.active svg {
 .search-modal-inner .section-inner {
 	display: flex;
 	justify-content: space-between;
+	max-width: 168rem;
 }
 
 .search-modal.active {
@@ -3941,7 +3962,7 @@ div.comment:first-of-type {
 
 /* Widget: RSS ------------------------------- */
 
-.widget_rss .rss-widget-icon {
+.widget_rss a.rsswidget:first-of-type {
 	display: none;
 }
 
@@ -4190,10 +4211,14 @@ a.to-the-top > * {
 	}
 
 	.alignleft {
+
+		/*rtl:ignore*/
 		float: left;
 	}
 
 	.alignright {
+
+		/*rtl:ignore*/
 		float: right;
 	}
 }
@@ -4204,15 +4229,15 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content > .alignleft,
-	.entry-content > p .alignleft,
-	.entry-content > .wp-block-image .alignleft {
+	.entry-content .alignleft {
+
+		/*rtl:ignore*/
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.entry-content > .alignright,
-	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright {
+	.entry-content .alignright {
+
+		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
@@ -5532,15 +5557,15 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content > .alignleft,
-	.entry-content > p .alignleft,
-	.entry-content > .wp-block-image .alignleft {
+	.entry-content .alignleft {
+
+		/*rtl:ignore*/
 		margin-left: -31rem;
 	}
 
-	.entry-content > .alignright,
-	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright {
+	.entry-content .alignright {
+
+		/*rtl:ignore*/
 		margin-right: -31rem;
 	}
 

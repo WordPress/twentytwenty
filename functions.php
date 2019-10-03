@@ -19,8 +19,8 @@
  * Custom Logo
  * WP Body Open
  * Register Sidebars
- * Enqueue Block editor assets
- * Classic Editor Style
+ * Enqueue block editor assets
+ * Enqueue classic editor styles
  * Block editor settings
  */
 
@@ -368,7 +368,7 @@ function twentytwenty_classic_editor_styles() {
 add_action( 'init', 'twentytwenty_classic_editor_styles' );
 
 /**
- * Output Customizer Settings in the Classic Editor.
+ * Output Customizer settings in the classic editor.
  * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
  *
  * @param array $mce_init TinyMCE styles.
@@ -431,31 +431,31 @@ function twentytwenty_block_editor_settings() {
 		add_theme_support( 'editor-color-palette', $editor_color_palette );
 	}
 
-	// Gutenberg Font Sizes.
+	// Block Editor Font Sizes.
 	add_theme_support(
 		'editor-font-sizes',
 		array(
 			array(
-				'name'      => _x( 'Small', 'Name of the small font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'S', 'Short name of the small font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Small', 'Name of the small font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'S', 'Short name of the small font size in the block editor.', 'twentytwenty' ),
 				'size'      => 16,
 				'slug'      => 'small',
 			),
 			array(
-				'name'      => _x( 'Regular', 'Name of the regular font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'M', 'Short name of the regular font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Regular', 'Name of the regular font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'M', 'Short name of the regular font size in the block editor.', 'twentytwenty' ),
 				'size'      => 18,
 				'slug'      => 'regular',
 			),
 			array(
-				'name'      => _x( 'Large', 'Name of the large font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'L', 'Short name of the large font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'L', 'Short name of the large font size in the block editor.', 'twentytwenty' ),
 				'size'      => 24,
 				'slug'      => 'large',
 			),
 			array(
-				'name'      => _x( 'Larger', 'Name of the larger font size in Gutenberg', 'twentytwenty' ),
-				'shortName' => _x( 'XL', 'Short name of the larger font size in the Gutenberg editor.', 'twentytwenty' ),
+				'name'      => _x( 'Larger', 'Name of the larger font size in the block editor', 'twentytwenty' ),
+				'shortName' => _x( 'XL', 'Short name of the larger font size in the block editor.', 'twentytwenty' ),
 				'size'      => 32,
 				'slug'      => 'larger',
 			),
@@ -481,7 +481,7 @@ function twentytwenty_read_more_tag() {
 		'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		esc_html__( 'Continue reading', 'twentytwenty' ),
-		get_the_title( get_the_ID() )
+		esc_html( get_the_title( get_the_ID() ) )
 	);
 }
 add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
@@ -633,7 +633,7 @@ function twentytwenty_get_elements_array() {
 				'background' => array( '.social-icons a', '#site-footer button:not(.toggle)', '#site-footer .button', '#site-footer .faux-button', '#site-footer .wp-block-button__link', '#site-footer .wp-block-file__button', '#site-footer input[type="button"]', '#site-footer input[type="reset"]', '#site-footer input[type="submit"]' ),
 			),
 			'background' => array(
-				'color'      => array( '.social-icons a', '.overlay-header .header-inner', '.primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
+				'color'      => array( '.social-icons a', '.overlay-header .header-inner', 'body:not(.overlay-header) .primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
 				'background' => array( '#site-header', '.footer-nav-widgets-wrapper', '#site-footer', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 			),
 			'text'       => array(
