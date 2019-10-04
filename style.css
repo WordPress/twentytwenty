@@ -3308,8 +3308,8 @@ hr.wp-block-separator {
 
 /* Entry Media ------------------------------- */
 
-.alignfull figcaption,
-.alignfull .wp-caption-text {
+.alignfull > figcaption,
+.alignfull > .wp-caption-text {
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 120rem;
@@ -4839,8 +4839,8 @@ a.to-the-top > * {
 
 	/* ENTRY MEDIA */
 
-	.alignfull figcaption,
-	.alignfull .wp-caption-text {
+	.alignfull > figcaption,
+	.alignfull > .wp-caption-text {
 		width: calc(100% - 8rem);
 	}
 
@@ -5317,8 +5317,8 @@ a.to-the-top > * {
 
 	/* ENTRY MEDIA */
 
-	.alignfull figcaption,
-	.alignfull .wp-caption-text {
+	.alignfull > figcaption,
+	.alignfull > .wp-caption-text {
 		width: calc(100% - 10rem);
 	}
 

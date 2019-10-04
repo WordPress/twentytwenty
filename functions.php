@@ -284,7 +284,7 @@ if ( ! function_exists( 'wp_body_open' ) ) {
  * Include a skip to content link at the top of the page so that users can bypass the menu.
  */
 function twentytwenty_skip_link() {
-	echo '<a class="skip-link screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
+	echo '<a class="skip-link screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'twentytwenty' ) . '</a>';
 }
 
 add_action( 'wp_body_open', 'twentytwenty_skip_link', 5 );
@@ -398,17 +398,17 @@ function twentytwenty_block_editor_settings() {
 	// Block Editor Palette.
 	$editor_color_palette = array(
 		array(
-			'name'  => esc_html__( 'Accent Color', 'twentytwenty' ),
+			'name'  => __( 'Accent Color', 'twentytwenty' ),
 			'slug'  => 'accent',
 			'color' => twentytwenty_get_color_for_area( 'content', 'accent' ),
 		),
 		array(
-			'name'  => esc_html__( 'Secondary', 'twentytwenty' ),
+			'name'  => __( 'Secondary', 'twentytwenty' ),
 			'slug'  => 'secondary',
 			'color' => twentytwenty_get_color_for_area( 'content', 'secondary' ),
 		),
 		array(
-			'name'  => esc_html__( 'Subtle Background', 'twentytwenty' ),
+			'name'  => __( 'Subtle Background', 'twentytwenty' ),
 			'slug'  => 'subtle-background',
 			'color' => twentytwenty_get_color_for_area( 'content', 'borders' ),
 		),
@@ -480,7 +480,7 @@ function twentytwenty_read_more_tag() {
 	return sprintf(
 		'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
 		esc_url( get_permalink( get_the_ID() ) ),
-		esc_html__( 'Continue reading', 'twentytwenty' ),
+		__( 'Continue reading', 'twentytwenty' ),
 		esc_html( get_the_title( get_the_ID() ) )
 	);
 }

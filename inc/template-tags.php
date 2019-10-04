@@ -291,14 +291,14 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 					?>
 					<li class="post-author meta-wrapper">
 						<span class="meta-icon">
-							<span class="screen-reader-text"><?php _e( 'Post author', 'twentytwenty' );// phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+							<span class="screen-reader-text"><?php _e( 'Post author', 'twentytwenty' ); ?></span>
 							<?php twentytwenty_the_theme_svg( 'user' ); ?>
 						</span>
 						<span class="meta-text">
 							<?php
 							printf(
 								/* translators: %s: Author name */
-								__( 'By %s', 'twentytwenty' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core trusts translations
+								__( 'By %s', 'twentytwenty' ),
 								'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>'
 							);
 							?>
@@ -316,7 +316,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 					<li class="post-date">
 						<a class="meta-wrapper" href="<?php the_permalink(); ?>">
 							<span class="meta-icon">
-								<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+								<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); ?></span>
 								<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
 							</span>
 							<span class="meta-text">
@@ -335,11 +335,11 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 					?>
 					<li class="post-categories meta-wrapper">
 						<span class="meta-icon">
-							<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+							<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); ?></span>
 							<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php _e( 'In', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?> <?php the_category( ', ' ); ?>
+							<?php _e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
 						</span>
 					</li>
 					<?php
@@ -353,7 +353,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 					?>
 					<li class="post-tags meta-wrapper">
 						<span class="meta-icon">
-							<span class="screen-reader-text"><?php _e( 'Tags', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
+							<span class="screen-reader-text"><?php _e( 'Tags', 'twentytwenty' ); ?></span>
 							<?php twentytwenty_the_theme_svg( 'tag' ); ?>
 						</span>
 						<span class="meta-text">
@@ -391,7 +391,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 							<?php twentytwenty_the_theme_svg( 'bookmark' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php _e( 'Sticky post', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?>
+							<?php _e( 'Sticky post', 'twentytwenty' ); ?>
 						</span>
 					</li>
 					<?php
