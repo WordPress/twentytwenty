@@ -15,8 +15,9 @@
  * Generate a unique ID for each form and a string containing an aria-label if
  * one was passed to get_search_form() in the args array.
  */
-$unique_id  = wp_unique_id( 'search-form-' );
-$aria_label = ( isset( $args['label'] ) && ! empty( $args['label'] ) ) ? 'aria-label="' . esc_attr( $args['label'] ) . '"' : '';
+$unique_id = twentytwenty_unique_id( 'search-form-' );
+
+$aria_label = ! empty( $args['label'] ) ? 'aria-label="' . esc_attr( $args['label'] ) . '"' : '';
 ?>
 <form role="search" <?php echo $aria_label; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label for="<?php echo esc_attr( $unique_id ); ?>">

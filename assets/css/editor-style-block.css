@@ -671,6 +671,13 @@ hr.wp-block-separator.is-style-dots::before {
 	color: inherit;
 }
 
+/* Block: Shared Media Styles ---------------- */
+
+.wp-block[data-type*="core-embed"][data-align="full"] figcaption,
+.wp-block[data-type="core/image"][data-align="full"] figcaption,
+.wp-block[data-type="core/gallery"][data-align="full"] .blocks-gallery-caption {
+	padding: 0 14px;
+}
 
 /* Block: Paragraph -------------------------- */
 
@@ -1040,6 +1047,14 @@ hr.wp-block-separator.is-style-dots::before {
 
 @media ( min-width: 600px ) {
 
+
+	/* BLOCK: SHARED MEDIA STYLES */
+
+	.wp-block[data-type*="core-embed"][data-align="full"] figcaption,
+	.wp-block[data-type="core/image"][data-align="full"] figcaption,
+	.wp-block[data-type="core/gallery"][data-align="full"] .blocks-gallery-caption {
+		padding: 0 45px;
+	}
 
 	/* BLOCK: PULLQUOTE */
 

@@ -1216,11 +1216,12 @@ button.toggle {
 ul.social-icons {
 	display: flex;
 	flex-wrap: wrap;
-	margin: -1rem -1rem 0 0;
+	margin: -0.9rem -0.9rem 0 0;
+	width: calc( 100% + 0.9rem );
 }
 
 ul.social-icons li {
-	margin: 1rem 1rem 0 0;
+	margin: 0.9rem 0.9rem 0 0;
 }
 
 .social-icons a {
@@ -1241,257 +1242,6 @@ ul.social-icons li {
 .social-icons a:hover {
 	transform: scale(1.1);
 	text-decoration: none;
-}
-
-.social-icons a::before {
-	content: "\e805";
-	display: block;
-	font-family: "Font Awesome 5";
-	font-size: 2rem;
-}
-
-/* NON-BRAND ICONS */
-
-.s-icons a[href*="mailto"]::before {
-	content: "\f0e0";
-}
-
-.s-icons a[href*="/feed/"]::before,
-.s-icons a[href*="rss"]::before {
-	content: "\f09e";
-}
-
-/* BRAND ICONS */
-
-.s-icons a[href*="500px.com"]::before {
-	content: "\f26e";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="amazon.com"]::before {
-	content: "\f270";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="angel.co"]::before {
-	content: "\f209";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="audible.com"]::before {
-	content: "\f373";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="behance.net"]::before {
-	content: "\f1b4";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="blogger.com"]::before {
-	content: "\f37d";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="codepen.io"]::before {
-	content: "\f1cb";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="creativecommons.com"]::before {
-	content: "\f25e";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="deviantart.com"]::before {
-	content: "\f1bd";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="digg.com"]::before {
-	content: "\f1a6";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="discordapp.com"]::before {
-	content: "\f392";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="dribbble.com"]::before {
-	content: "\f17d";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="ebay"]::before {
-	content: "\f4f4";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="etsy.com"]::before {
-	content: "\f2d7";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="facebook.com"]::before {
-	content: "\f39e";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="flickr.com"]::before {
-	content: "\f16e";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="github.com"]::before {
-	content: "\f113";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="gitlab.com"]::before {
-	content: "\f296";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="goodreads.com"]::before {
-	content: "\f3a9";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="houzz"]::before {
-	content: "\f27c";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="imdb.com"]::before {
-	content: "\f2d8";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="instagram.com"]::before {
-	content: "\f16d";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="kickstarter.com"]::before {
-	content: "\f3bc";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="jsfiddle.net"]::before {
-	content: "\f1cc";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="linkedin.com"]::before {
-	content: "\f0e1";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="last.fm"]::before {
-	content: "\f202";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="medium.com"]::before {
-	content: "\f3c7";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="meetup.com"]::before {
-	content: "\f2e0";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="mixcloud.com"]::before {
-	content: "\f289";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="patreon.com"]::before {
-	content: "\f3d9";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="pscp.tv"]::before {
-	content: "\f3da";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="pinterest"]::before {
-	content: "\f231";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="play.google.com"]::before {
-	content: "\f3ab";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="plus.google.com"]::before {
-	content: "\f0d5";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="producthunt.com"]::before {
-	content: "\f288";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="quora.com"]::before {
-	content: "\f2c4";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="reddit.com"]::before {
-	content: "\f281";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="slack.com"]::before {
-	content: "\f198";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="soundcloud.com"]::before {
-	content: "\f1be";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="spotify.com"]::before {
-	content: "\f1bc";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="tumblr.com"]::before {
-	content: "\f173";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="twitch"]::before {
-	content: "\f1e8";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="twitter.com"]::before {
-	content: "\f099";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="vimeo.com"]::before {
-	content: "\f27d";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="wordpress.org"]::before,
-.s-icons a[href*="wordpress.com"]::before {
-	content: "\f411";
-	font-family: "Font Awesome 5 Brands";
-}
-
-.s-icons a[href*="youtube.com"]::before {
-	content: "\f167";
-	font-family: "Font Awesome 5 Brands";
 }
 
 
@@ -3556,8 +3306,8 @@ hr.wp-block-separator {
 
 /* Entry Media ------------------------------- */
 
-.alignfull figcaption,
-.alignfull .wp-caption-text {
+.alignfull > figcaption,
+.alignfull > .wp-caption-text {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 120rem;
@@ -4322,6 +4072,11 @@ div.comment:first-of-type {
 /* FOOTER SOCIAL */
 
 .footer-social-wrapper {
+	margin: 0;
+	width: 100%;
+}
+
+.has-footer-menu .footer-social-wrapper {
 	flex-shrink: 0;
 	margin-right: 1rem;
 	width: 50%;
@@ -4329,6 +4084,9 @@ div.comment:first-of-type {
 
 ul.footer-social {
 	margin: -0.5rem -0.5rem 0 0;
+}
+
+.has-footer-menu .footer-social {
 	justify-content: flex-end;
 }
 
@@ -5071,8 +4829,8 @@ a.to-the-top > * {
 
 	/* ENTRY MEDIA */
 
-	.alignfull figcaption,
-	.alignfull .wp-caption-text {
+	.alignfull > figcaption,
+	.alignfull > .wp-caption-text {
 		width: calc(100% - 8rem);
 	}
 
@@ -5232,7 +4990,8 @@ a.to-the-top > * {
 		margin: 0.8rem 1.6rem 0 0;
 	}
 
-	.footer-social-wrapper {
+	.has-footer-menu .footer-social-wrapper {
+		flex: 1;
 		margin-right: 4rem;
 		width: auto;
 	}
@@ -5548,8 +5307,8 @@ a.to-the-top > * {
 
 	/* ENTRY MEDIA */
 
-	.alignfull figcaption,
-	.alignfull .wp-caption-text {
+	.alignfull > figcaption,
+	.alignfull > .wp-caption-text {
 		width: calc(100% - 10rem);
 	}
 
