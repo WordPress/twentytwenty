@@ -2037,6 +2037,7 @@ button.search-untoggle {
 /* Modal Search Form ------------------------- */
 
 .search-modal form {
+	margin: 0;
 	position: relative;
 	width: 100%;
 }
@@ -2049,8 +2050,10 @@ button.search-untoggle {
 	font-size: 2rem;
 	letter-spacing: -0.0277em;
 	height: 8.4rem;
-	padding: 0;
-	width: 100%;
+	margin: 0 0 0 -2rem;
+	max-width: calc(100% + 2rem);
+	padding: 0 0 0 2rem;
+	width: calc(100% + 2rem);
 }
 
 .search-modal .search-field::-webkit-input-placeholder {
@@ -4452,23 +4455,7 @@ a.to-the-top > * {
 	}
 
 	.modal-menu ul li {
-		border-left-width: 0;
-	}
-
-	.modal-menu ul a {
-		padding-left: 2.5rem;
-	}
-
-	.modal-menu ul ul a {
-		padding-left: 5rem;
-	}
-
-	.modal-menu ul ul ul a {
-		padding-left: 7.5rem;
-	}
-
-	.modal-menu ul ul ul ul a {
-		padding-left: 10rem;
+		border-left-color: transparent;
 	}
 
 	.modal-menu > li > .ancestor-wrapper > button.sub-menu-toggle {
