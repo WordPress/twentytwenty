@@ -12,7 +12,7 @@ get_header();
 
 <main id="site-content" role="main">
 
-	<div class="section-inner thin">
+	<div class="section-inner thin error404-content">
 
 		<h1 class="entry-title"><?php _e( 'Page Not Found', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></h1>
 
@@ -29,6 +29,8 @@ get_header();
 	</div><!-- .section-inner -->
 
 </main><!-- #site-content -->
+
+<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
 
 <?php
 get_footer();

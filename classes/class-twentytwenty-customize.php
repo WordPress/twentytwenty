@@ -96,6 +96,30 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			// Enable picking an accent color.
+			$wp_customize->add_setting(
+				'accent_hue_active',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'transport'         => 'postMessage',
+					'default'           => 'default',
+				)
+			);
+
+			$wp_customize->add_control(
+				'accent_hue_active',
+				array(
+					'type'    => 'radio',
+					'section' => 'colors',
+					'label'   => __( 'Primary Color', 'twentytwenty' ),
+					'choices' => array(
+						'default' => __( 'Default', 'twentytwenty' ),
+						'custom'  => __( 'Custom', 'twentytwenty' ),
+					),
+				)
+			);
+
 			/**
 			 * Implementation for the accent color.
 			 * This is different to all other color options because of the accessibility enhancements.
@@ -136,7 +160,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					),
 					'type'              => 'theme_mod',
 					'transport'         => 'postMessage',
-					'sanitize_callback' => array( 'TwentyTwenty_Customize', 'sanitize_accent_accessible_colors' ),
+					'sanitize_callback' => array( __CLASS__, 'sanitize_accent_accessible_colors' ),
 				)
 			);
 
@@ -146,43 +170,16 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'accent_hue',
 					array(
-						'label'    => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
-						'section'  => 'colors',
-						'settings' => 'accent_hue',
-						'mode'     => 'hue',
+						'section'         => 'colors',
+						'settings'        => 'accent_hue',
+						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'twentytwenty' ),
+						'mode'            => 'hue',
+						'active_callback' => function() use ( $wp_customize ) {
+							return ( 'custom' === $wp_customize->get_setting( 'accent_hue_active' )->value() );
+						},
 					)
 				)
 			);
-
-			/**
-			 * Custom Accent Colors.
-			*/
-			$accent_color_options = self::get_color_options();
-
-			// Loop over the color options and add them to the customizer.
-			foreach ( $accent_color_options as $color_option_name => $color_option ) {
-
-				$wp_customize->add_setting(
-					$color_option_name,
-					array(
-						'default'           => $color_option['default'],
-						'sanitize_callback' => 'sanitize_hex_color',
-					)
-				);
-
-				$wp_customize->add_control(
-					new WP_Customize_Color_Control(
-						$wp_customize,
-						$color_option_name,
-						array(
-							'label'    => $color_option['label'],
-							'section'  => 'colors',
-							'priority' => 10,
-						)
-					)
-				);
-
-			}
 
 			// Update background color with postMessage, so inline CSS output is updated as well.
 			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
@@ -406,22 +403,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			}
 
 			return $value;
-		}
-
-		/**
-		 * Return the sitewide color options included.
-		 * Note: These values are shared between the block editor styles and the customizer,
-		 * and abstracted to this function.
-		 */
-		public static function get_color_options() {
-			/**
-			* Filters color options in array.
-			*
-			* @since 1.0.0
-			*
-			* @param string array
-			*/
-			return apply_filters( 'twentytwenty_accent_color_options', array() );
 		}
 
 		/**
