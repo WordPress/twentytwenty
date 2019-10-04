@@ -5187,7 +5187,7 @@ a.to-the-top > * {
 
 	.header-toggles:only-child .toggle-inner {
 		display: flex;
-    flex-wrap: nowrap;
+		flex-wrap: nowrap;
 		align-items: center;
 	}
 
