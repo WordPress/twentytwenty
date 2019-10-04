@@ -12,112 +12,9 @@
  */
 
 ?>
+			<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
-		<footer id="site-footer" role="contentinfo" class="header-footer-group">
-
-			<div class="footer-inner section-inner">
-
-				<?php
-
-				$has_footer_menu = has_nav_menu( 'footer' );
-				$has_social_menu = has_nav_menu( 'social' );
-
-				$footer_top_classes = '';
-
-				$footer_top_classes .= $has_footer_menu ? ' has-footer-menu' : '';
-				$footer_top_classes .= $has_social_menu ? ' has-social-menu' : '';
-
-				$footer_social_wrapper_class = $has_footer_menu ? 'footer-social-wrapper' : '';
-
-				if ( $has_footer_menu || $has_social_menu ) {
-					?>
-					<div class="footer-top<?php echo esc_attr( $footer_top_classes ); ?>">
-						<?php if ( $has_footer_menu ) { ?>
-
-							<nav aria-label="<?php esc_attr_e( 'Footer menu', 'twentytwenty' ); ?>">
-
-								<ul class="footer-menu reset-list-style">
-									<?php
-									wp_nav_menu(
-										array(
-											'container'  => '',
-											'depth'      => 1,
-											'items_wrap' => '%3$s',
-											'theme_location' => 'footer',
-										)
-									);
-									?>
-								</ul>
-
-							</nav><!-- .site-nav -->
-
-						<?php } ?>
-						<?php if ( $has_social_menu ) { ?>
-
-							<div class="<?php echo esc_attr( $footer_social_wrapper_class ); ?>">
-
-								<nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>">
-
-									<ul class="social-menu footer-social reset-list-style social-icons s-icons">
-
-										<?php
-										wp_nav_menu(
-											array(
-												'theme_location' => 'social',
-												'container' => '',
-												'container_class' => '',
-												'items_wrap' => '%3$s',
-												'menu_id' => '',
-												'menu_class' => '',
-												'depth'   => 1,
-												'link_before' => '<span class="screen-reader-text">',
-												'link_after' => '</span>',
-												'fallback_cb' => '',
-											)
-										);
-										?>
-
-									</ul>
-
-								</nav><!-- .social-menu -->
-
-							</div><!-- .footer-social-wrapper -->
-
-						<?php } ?>
-					</div><!-- .footer-top -->
-
-				<?php } ?>
-
-
-				<?php if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) { ?>
-
-					<div class="footer-widgets-outer-wrapper">
-
-						<div class="footer-widgets-wrapper">
-
-							<?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
-
-								<div class="footer-widgets column-one grid-item">
-									<?php dynamic_sidebar( 'sidebar-1' ); ?>
-								</div>
-
-							<?php } ?>
-
-							<?php if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
-
-								<div class="footer-widgets column-two grid-item">
-									<?php dynamic_sidebar( 'sidebar-2' ); ?>
-								</div>
-
-							<?php } ?>
-
-						</div><!-- .footer-widgets-wrapper -->
-
-					</div><!-- .footer-widgets-outer-wrapper -->
-
-				<?php } ?>
-
-				<div class="footer-bottom">
+				<div class="section-inner">
 
 					<div class="footer-credits">
 
@@ -125,8 +22,8 @@
 							<?php
 							echo esc_html(
 								date_i18n(
-									/* Translators: Y = Format parameter for date() https://php.net/manual/en/function.date.php */
-									_x( 'Y', 'Translators: Y = Current year', 'twentytwenty' )
+									/* translators: Copyright date format, see https://secure.php.net/date */
+									_x( 'Y', 'copyright date format', 'twentytwenty' )
 								)
 							);
 							?>
@@ -139,30 +36,28 @@
 								_e( 'Powered by WordPress', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations
 								?>
 							</a>
-						</p><!-- .theme-credits -->
+						</p><!-- .powered-by-wordpress -->
 
 					</div><!-- .footer-credits -->
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">
 							<?php
-							// Translators: %s = HTML character for an arrow.
-							printf( esc_html( _x( 'To the top %s', '%s = HTML character for an arrow', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
+							/* translators: %s: HTML character for up arrow */
+							printf( esc_html( __( 'To the top %s', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
 							?>
-						</span>
+						</span><!-- .to-the-top-long -->
 						<span class="to-the-top-short">
 							<?php
-							// Translators: %s = HTML character for an arrow.
-							printf( esc_html( _x( 'Up %s', '%s = HTML character for an arrow', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
+							/* translators: %s: HTML character for up arrow */
+							printf( esc_html( __( 'Up %s', 'twentytwenty' ) ), '<span class="arrow">&uarr;</span>' );
 							?>
-						</span>
-					</a>
+						</span><!-- .to-the-top-short -->
+					</a><!-- .to-the-top -->
 
-				</div><!-- .footer-bottom -->
+				</div><!-- .section-inner -->
 
-			</div><!-- .footer-inner -->
-
-		</footer><!-- #site-footer -->
+			</footer><!-- #site-footer -->
 
 		<?php wp_footer(); ?>
 

@@ -9,8 +9,7 @@
  * @since 1.0.0
  */
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>
 
@@ -31,7 +30,7 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header" class="header-footer-group">
+		<header id="site-header" class="header-footer-group" role="banner">
 
 			<div class="header-inner section-inner">
 
@@ -46,13 +45,13 @@
 
 						?>
 
-						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<div class="toggle-inner">
-								<div class="toggle-icon">
+						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+							<span class="toggle-inner">
+								<span class="toggle-icon">
 									<?php twentytwenty_the_theme_svg( 'search' ); ?>
-								</div>
+								</span>
 								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-							</div>
+							</span>
 						</button><!-- .search-toggle -->
 
 					<?php } ?>
@@ -69,13 +68,13 @@
 
 					</div><!-- .header-titles -->
 
-					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
-						<div class="toggle-inner">
-							<div class="toggle-icon">
+					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal"  data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
+						<span class="toggle-inner">
+							<span class="toggle-icon">
 								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
-							</div>
+							</span>
 							<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-						</div>
+						</span>
 					</button><!-- .nav-toggle -->
 
 				</div><!-- .header-titles-wrapper -->
@@ -86,9 +85,7 @@
 					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
 						?>
 
-						<div class="primary-menu-wrapper">
-
-							<nav aria-label="<?php esc_attr_e( 'Primary', 'twentytwenty' ); ?>">
+							<nav class="primary-menu-wrapper" aria-label="<?php esc_attr_e( 'Horizontal', 'twentytwenty' ); ?>" role="navigation">
 
 								<ul class="primary-menu reset-list-style">
 
@@ -119,9 +116,7 @@
 
 								</ul>
 
-							</nav><!-- .primary-menu -->
-
-						</div><!-- .primary-menu-wrapper -->
+							</nav><!-- .primary-menu-wrapper -->
 
 						<?php
 					}
@@ -133,7 +128,7 @@
 					}
 					?>
 
-					<div class="header-toggles hide-no-js<?php echo esc_attr( $header_toggles_classes ); ?>">
+					<div class="header-toggles hide-no-js<?php echo $header_toggles_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 
 						<?php
 						$nav_toggle_wrapper_classes = '';
@@ -144,15 +139,15 @@
 						}
 						?>
 
-						<div class="toggle-wrapper nav-toggle-wrapper<?php echo esc_attr( $nav_toggle_wrapper_classes ); ?>">
+						<div class="toggle-wrapper nav-toggle-wrapper<?php echo $nav_toggle_wrapper_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 
-							<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
-								<div class="toggle-inner">
+							<button class="toggle nav-toggle desktop-nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
+								<span class="toggle-inner">
 									<span class="toggle-text"><?php _e( 'Menu', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-									<div class="toggle-icon">
+									<span class="toggle-icon">
 										<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
-									</div>
-								</div>
+									</span>
+								</span>
 							</button><!-- .nav-toggle -->
 
 						</div><!-- .nav-toggle-wrapper -->
@@ -163,11 +158,11 @@
 
 							<div class="toggle-wrapper search-toggle-wrapper">
 
-								<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-screen-lock="true" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<div class="toggle-inner">
+								<button class="toggle search-toggle desktop-search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
+									<span class="toggle-inner">
 										<?php twentytwenty_the_theme_svg( 'search' ); ?>
 										<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
-									</div>
+									</span>
 								</button><!-- .search-toggle -->
 
 							</div>
