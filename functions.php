@@ -174,27 +174,9 @@ require get_template_directory() . '/inc/starter-content.php';
  */
 function twentytwenty_register_styles() {
 
-	$theme_version    = wp_get_theme()->get( 'Version' );
-	$css_dependencies = array();
+	$theme_version = wp_get_theme()->get( 'Version' );
 
-	/**
-	* Filter to load, unload Font Awesome CSS
-	*
-	* By default, only load the Font Awesome fonts if the social menu is in use or
-	* using filter Font Awesome css be loaded
-	*
-	* @since 1.0.0
-	*
-	* @param bool Whether to load font awesome, Default false.
-	*/
-	$load_font_awesome = apply_filters( 'twentytwenty_load_font_awesome', has_nav_menu( 'social' ) );
-
-	if ( $load_font_awesome ) {
-		wp_register_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css', false, '5.10.2', 'all' );
-		$css_dependencies[] = 'font-awesome';
-	}
-
-	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), $css_dependencies, $theme_version );
+	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
 	wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
 	// Add output of Customizer settings as inline style.
