@@ -538,9 +538,10 @@ twentytwenty.toggles = {
 	},
 
 	performToggle: function( element, instantly ) {
-		var self, toggle, targetString, target, timeOutTime, classToToggle, activeClass, elsToFocusAfter;
+		var self, toggle, _doc, targetString, target, timeOutTime, classToToggle, activeClass;
 
 		self = this;
+		_doc = document;
 
 		// Get our targets
 		toggle = element;
@@ -548,23 +549,14 @@ twentytwenty.toggles = {
 		activeClass = 'active';
 
 		// Elements to focus after modals are closed
-		elsToFocusAfter = [
-			'desktop-nav-toggle',
-			'desktop-search-toggle',
-			'mobile-nav-toggle',
-			'mobile-search-toggle'
-		];
-
-		elsToFocusAfter.forEach( function( el ) {
-			if ( toggle.classList.contains( el ) && window.getComputedStyle( toggle ).display !== 'none' ) {
-				self.clickedEl = toggle;
-			}
-		} );
+		if ( ! _doc.querySelectorAll( '.show-modal' ).length ) {
+			self.clickedEl = _doc.activeElement;
+		}
 
 		if ( targetString === 'next' ) {
 			target = toggle.nextSibling;
 		} else {
-			target = document.querySelector( targetString );
+			target = _doc.querySelector( targetString );
 		}
 
 		// Trigger events on the toggle targets before they are toggled
@@ -605,7 +597,7 @@ twentytwenty.toggles = {
 				toggle.classList.toggle( activeClass );
 			} else {
 				// If not, toggle all toggles with this toggle target
-				document.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
+				_doc.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
 			}
 
 			// Toggle aria-expanded on the target
@@ -616,12 +608,12 @@ twentytwenty.toggles = {
 
 			// Toggle body class
 			if ( toggle.dataset.toggleBodyClass ) {
-				document.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
+				_doc.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
 			}
 
 			// Check whether to set focus
 			if ( toggle.dataset.setFocus ) {
-				focusElement = document.querySelector( toggle.dataset.setFocus );
+				focusElement = _doc.querySelector( toggle.dataset.setFocus );
 
 				if ( focusElement ) {
 					if ( target.classList.contains( activeClass ) ) {
