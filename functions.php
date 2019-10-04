@@ -60,7 +60,7 @@ function twentytwenty_theme_support() {
 	// Set post thumbnail size.
 	set_post_thumbnail_size( 1200, 9999 );
 
-	// Add custom image sizes.
+	// Add custom image size used in Cover Template.
 	add_image_size( 'twentytwenty-fullscreen', 1980, 9999 );
 
 	// Custom logo.
