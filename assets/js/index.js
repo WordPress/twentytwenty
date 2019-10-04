@@ -147,15 +147,17 @@ twentytwenty.coverModals = {
 		adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
-			var currentScroll;
+			var currentScroll, height;
 
 			currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				return ( negativeValue ? '-' : '' ) + ( currentScroll + adminBar.getBoundingClientRect().height ) + 'px';
+				height = currentScroll + adminBar.getBoundingClientRect().height;
+
+				return negativeValue ? -height : height;
 			}
 
-			return currentScroll === 0 ? 0 : -currentScroll + 'px';
+			return currentScroll === 0 ? 0 : -currentScroll;
 		}
 
 		function htmlStyles() {
@@ -165,7 +167,7 @@ twentytwenty.coverModals = {
 				'overflow-y': overflow ? 'hidden' : 'scroll',
 				position: 'fixed',
 				width: '100%',
-				top: getAdminBarHeight( true ),
+				top: getAdminBarHeight( true ) + 'px',
 				left: 0
 			};
 		}
@@ -173,11 +175,12 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
-				var styles, paddingTop, offsetY;
+				var styles, paddingTop, offsetY, mQuery;
 
 				styles = htmlStyles();
 				offsetY = _win.pageYOffset;
-				paddingTop = ( Math.abs( parseInt( getAdminBarHeight() ) ) - offsetY ) + 'px';
+				paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px';
+				mQuery = _win.matchMedia( '(max-width: 600px)' );
 
 				if ( event.target !== modal ) {
 					return;
@@ -191,6 +194,14 @@ twentytwenty.coverModals = {
 
 				if ( adminBar ) {
 					_doc.body.style.setProperty( 'padding-top', paddingTop );
+
+					if ( mQuery.matches ) {
+						if ( offsetY >= getAdminBarHeight() ) {
+							modal.style.setProperty( 'top', 0 );
+						} else {
+							modal.style.setProperty( 'top', ( getAdminBarHeight() - offsetY ) + 'px' );
+						}
+					}
 				}
 
 				modal.classList.add( 'show-modal' );
@@ -203,6 +214,10 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
+					var clickedEl;
+
+					clickedEl = twentytwenty.toggles.clickedEl;
+
 					modal.classList.remove( 'show-modal' );
 
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
@@ -211,11 +226,17 @@ twentytwenty.coverModals = {
 
 					if ( adminBar ) {
 						_doc.body.style.removeProperty( 'padding-top' );
+						modal.style.removeProperty( 'top' );
 					}
 
-					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + parseInt( getAdminBarHeight() ) ) );
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
 
 					_win.twentytwenty.scrolled = 0;
+
+					if ( clickedEl !== false ) {
+						clickedEl.focus();
+						clickedEl = false;
+					}
 				}, 500 );
 			} );
 		} );
@@ -503,6 +524,8 @@ twentytwenty.primaryMenu = {
 
 twentytwenty.toggles = {
 
+	clickedEl: false,
+
 	init: function() {
 		// Do the toggle
 		this.toggle();
@@ -515,17 +538,25 @@ twentytwenty.toggles = {
 	},
 
 	performToggle: function( element, instantly ) {
-		var toggle, targetString, target, timeOutTime, classToToggle, activeClass;
+		var self, toggle, _doc, targetString, target, timeOutTime, classToToggle, activeClass;
+
+		self = this;
+		_doc = document;
 
 		// Get our targets
 		toggle = element;
 		targetString = toggle.dataset.toggleTarget;
 		activeClass = 'active';
 
+		// Elements to focus after modals are closed
+		if ( ! _doc.querySelectorAll( '.show-modal' ).length ) {
+			self.clickedEl = _doc.activeElement;
+		}
+
 		if ( targetString === 'next' ) {
 			target = toggle.nextSibling;
 		} else {
-			target = document.querySelector( targetString );
+			target = _doc.querySelector( targetString );
 		}
 
 		// Trigger events on the toggle targets before they are toggled
@@ -566,7 +597,7 @@ twentytwenty.toggles = {
 				toggle.classList.toggle( activeClass );
 			} else {
 				// If not, toggle all toggles with this toggle target
-				document.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
+				_doc.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
 			}
 
 			// Toggle aria-expanded on the target
@@ -577,12 +608,12 @@ twentytwenty.toggles = {
 
 			// Toggle body class
 			if ( toggle.dataset.toggleBodyClass ) {
-				document.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
+				_doc.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
 			}
 
 			// Check whether to set focus
 			if ( toggle.dataset.setFocus ) {
-				focusElement = document.querySelector( toggle.dataset.setFocus );
+				focusElement = _doc.querySelector( toggle.dataset.setFocus );
 
 				if ( focusElement ) {
 					if ( target.classList.contains( activeClass ) ) {
@@ -610,7 +641,8 @@ twentytwenty.toggles = {
 		var self = this;
 
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
-			element.addEventListener( 'click', function() {
+			element.addEventListener( 'click', function( event ) {
+				event.preventDefault();
 				self.performToggle( element );
 			} );
 		} );
