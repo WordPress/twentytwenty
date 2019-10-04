@@ -52,13 +52,9 @@ Feather Icons
 Copyright (c) 2013-2017 Cole Bemis
 License: MIT License, https://opensource.org/licenses/MIT
 Source: https://feathericons.com
+Used for post meta icons, and the link icon in the social menu.
 
-Font Awesome Icons
-Copyright (c) 2012-2019 Fonticons, Inc.
+Socicon Icons
 License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
-Source: https://www.fontawesome.io
-
-Font Awesome Code
-Copyright (c) 2012-2019 Fonticons, Inc.
-License: MIT License, https://opensource.org/licenses/MIT
-Source: https://www.fontawesome.io
+Source: https://www.socicon.com
+Used for all social menu icons except the link icon.
