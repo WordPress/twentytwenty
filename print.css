@@ -149,7 +149,7 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
   .footer-widgets-outer-wrapper,
   .header-navigation-wrapper,
   .pagination-wrapper,
-  .post-meta-wrapper.post-meta-single-bottom
+  .post-meta-wrapper.post-meta-single-bottom,
   .post-separator,
   .site-logo img {
     display: none;

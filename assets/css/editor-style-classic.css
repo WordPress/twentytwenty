@@ -8,8 +8,8 @@
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -373,12 +373,16 @@ body#tinymce.wp-editor .wp-caption .alignright {
 }
 
 body#tinymce.wp-editor .alignleft {
+
+	/*rtl:ignore*/
 	float: left;
 	margin-right: 25px;
 	max-width: 260px;
 }
 
 body#tinymce.wp-editor .alignright {
+
+	/*rtl:ignore*/
 	float: right;
 	margin-left: 25px;
 	max-width: 260px;
@@ -534,20 +538,20 @@ body#tinymce.wp-editor input[type="submit"] {
 	text-transform: uppercase;
 }
 
+body#tinymce.wp-editor button:focus,
 body#tinymce.wp-editor button:hover,
 body#tinymce.wp-editor .faux-button:hover,
-body#tinymce.wp-editor .wp-block-button__link:hover,
-body#tinymce.wp-editor .wp-block-file__button:hover,
-body#tinymce.wp-editor input[type="button"]:hover,
-body#tinymce.wp-editor input[type="reset"]:hover,
-body#tinymce.wp-editor input[type="submit"]:hover,
-body#tinymce.wp-editor button:focus,
 body#tinymce.wp-editor .faux-button:focus,
 body#tinymce.wp-editor .wp-block-button__link:focus,
+body#tinymce.wp-editor .wp-block-button__link:hover,
 body#tinymce.wp-editor .wp-block-file__button:focus,
+body#tinymce.wp-editor .wp-block-file__button:hover,
 body#tinymce.wp-editor input[type="button"]:focus,
+body#tinymce.wp-editor input[type="button"]:hover,
 body#tinymce.wp-editor input[type="reset"]:focus,
-body#tinymce.wp-editor input[type="submit"]:focus {
+body#tinymce.wp-editor input[type="reset"]:hover,
+body#tinymce.wp-editor input[type="submit"]:focus,
+body#tinymce.wp-editor input[type="submit"]:hover {
 	color: #fff;
 	text-decoration: underline;
 }

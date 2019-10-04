@@ -47,7 +47,7 @@ if ( $comments ) {
 							'twentytwenty'
 						),
 						number_format_i18n( $comments_number ),
-						get_the_title()
+						esc_html( get_the_title() )
 					)
 				);
 			}
@@ -80,16 +80,15 @@ if ( $comments ) {
 			);
 
 			if ( $comment_pagination ) {
+				$pagination_classes = '';
 
 				// If we're only showing the "Next" link, add a class indicating so.
-				if ( strpos( $comment_pagination, 'prev page-numbers' ) === false ) {
+				if ( false === strpos( $comment_pagination, 'prev page-numbers' ) ) {
 					$pagination_classes = ' only-next';
-				} else {
-					$pagination_classes = '';
 				}
 				?>
 
-				<nav class="comments-pagination pagination<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
+				<nav class="comments-pagination pagination<?php echo $pagination_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e( 'Comments', 'twentytwenty' ); ?>">
 					<?php echo wp_kses_post( $comment_pagination ); ?>
 				</nav>
 
