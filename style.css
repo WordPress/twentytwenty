@@ -2581,6 +2581,38 @@ h2.entry-title {
 	background-color: #cd2653;
 }
 
+.has-primary-color {
+	color: #000;
+}
+
+.has-primary-background-color {
+	background-color: #000;
+}
+
+.has-secondary-color {
+	color: #6d6d6d;
+}
+
+.has-secondary-background-color {
+	background-color: #6d6d6d;
+}
+
+.has-subtle-background-color {
+	color: #dcd7ca;
+}
+
+.has-subtle-background-background-color {
+	background-color: #dcd7ca;
+}
+
+.has-background-color {
+	color: #f5efe0;
+}
+
+.has-background-background-color {
+	background-color: #f5efe0;
+}
+
 
 /* Block Typography Classes ------------------ */
 
