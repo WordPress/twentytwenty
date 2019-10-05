@@ -2891,6 +2891,26 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	margin: 0 0 -1.6rem 0;
 }
 
+figure.wp-block-gallery.alignnone,
+figure.wp-block-gallery.aligncenter,
+figure.wp-block-gallery.alignwide {
+	margin-bottom: 3rem;
+	margin-top: 3rem;
+}
+
+figure.wp-block-gallery.alignleft {
+	margin: 0.3rem 2rem 2rem 0;
+}
+
+figure.wp-block-gallery.alignright {
+	margin: 0.3rem 0 2rem 2rem;
+}
+
+figure.wp-block-gallery.alignfull {
+	margin-bottom: 5rem;
+	margin-top: 5rem;
+}
+
 /* Block: Group ------------------------------ */
 
 .wp-block-group.has-background {
@@ -4247,6 +4267,22 @@ a.to-the-top > * {
 
 @media ( min-width: 660px ) {
 
+	/* Blocks -------------------------------- */
+
+	/* BLOCK: GALLERY */
+
+	figure.wp-block-gallery.alignleft {
+
+		/*rtl:ignore*/
+		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
+	}
+
+	figure.wp-block-gallery.alignright {
+
+		/*rtl:ignore*/
+		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
+	}
+
 	/* Entry Content ------------------------- */
 
 	/* ALIGNMENT CLASSES */
@@ -4747,6 +4783,20 @@ a.to-the-top > * {
 	.wp-block-cover-image .wp-block-cover__inner-container, 
 	.wp-block-cover .wp-block-cover__inner-container {
 		width: calc( 100% - 8rem );
+	}
+
+	/* BLOCK: GALLERY */
+
+	figure.wp-block-gallery.alignnone,
+	figure.wp-block-gallery.aligncenter {
+		margin-bottom: 4rem;
+		margin-top: 4rem;
+	}
+
+	figure.wp-block-gallery.alignwide,
+	figure.wp-block-gallery.alignfull {
+		margin-bottom: 6rem;
+		margin-top: 6rem;
 	}
 
 	/* BLOCK: GROUP */
@@ -5317,6 +5367,14 @@ a.to-the-top > * {
 		margin-top: -4rem;
 	}
 
+	/* BLOCK: GALLERY */
+
+	figure.wp-block-gallery.alignwide,
+	figure.wp-block-gallery.alignfull {
+		margin-bottom: 8rem;
+		margin-top: 8rem;
+	}
+
 	/* BLOCK: GROUP */
 
 	.wp-block-group.alignwide.has-background,
@@ -5475,6 +5533,13 @@ a.to-the-top > * {
 		margin-top: -6rem;
 	}
 
+	/* BLOCK: GALLERY */
+
+	figure.wp-block-gallery.alignfull {
+		margin-bottom: 10rem;
+		margin-top: 10rem;
+	}
+
 	/* BLOCK: GROUP */
 
 	.wp-block-group.alignwide.has-background,
@@ -5577,6 +5642,20 @@ a.to-the-top > * {
 @media ( min-width: 1280px ) {
 
 	/* Blocks -------------------------------- */
+
+	/* BLOCK: GALLERY */
+
+	figure.wp-block-gallery.alignleft {
+
+		/*rtl:ignore*/
+		margin-left: -31rem;
+	}
+
+	figure.wp-block-gallery.alignright {
+
+		/*rtl:ignore*/
+		margin-right: -31rem;
+	}
 
 	/* BLOCK: SEPARATOR */
 
