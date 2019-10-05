@@ -3310,22 +3310,6 @@ hr.wp-block-separator {
 	max-width: 100%;
 }
 
-.alignfull {
-	margin: 5rem 0;
-	max-width: 100vw;
-	position: relative;
-	left: calc(50% - 50vw);
-	width: 100vw;
-}
-
-.alignwide {
-	margin: 4rem 0;
-	max-width: calc(100vw - 4rem);
-	position: relative;
-	left: calc(50% - 50vw + 2rem);
-	width: calc(100vw - 4rem);
-}
-
 .aligncenter,
 .aligncenter img {
 	margin-left: auto;
@@ -3347,6 +3331,29 @@ hr.wp-block-separator {
 	/*rtl:ignore*/
 	float: right;
 	margin: 0.3rem 0 2rem 2rem;
+}
+
+.alignwide {
+	margin: 4rem auto;
+	max-width: 120rem;
+}
+
+.entry-content > .alignwide {
+	max-width: calc(100vw - 4rem);
+	position: relative;
+	left: calc(50% - 50vw + 2rem);
+	width: calc(100vw - 4rem);
+}
+
+.alignfull {
+	margin: 5rem 0;
+}
+
+.entry-content > .alignfull {
+	max-width: 100vw;
+	position: relative;
+	left: calc(50% - 50vw);
+	width: 100vw;
 }
 
 
@@ -4970,7 +4977,7 @@ a.to-the-top > * {
 		margin-top: 6rem;
 	}
 
-	.alignwide {
+	.entry-content > .alignwide {
 		max-width: calc(100vw - 8rem);
 		left: calc(50% - 50vw + 4rem);
 		width: calc(100vw - 8rem);
@@ -5744,7 +5751,7 @@ a.to-the-top > * {
 		margin-right: -31rem;
 	}
 
-	.alignwide {
+	.entry-content > .alignwide {
 		max-width: 120rem;
 		left: calc(50% - 60rem);
 		width: 120rem;
