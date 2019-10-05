@@ -5138,12 +5138,12 @@ a.to-the-top > * {
 
 	/* BLOCK: COLUMNS */
 	
-	.alignfull > .wp-block-column:first-child > p,
+	.alignfull .wp-block-column:first-child > p,
 	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
 	}
 
-	.alignfull > .wp-block-column:last-child > p,
+	.alignfull .wp-block-column:last-child > p,
 	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-right: 2rem;
 	}
