@@ -65,6 +65,7 @@ Included as part of the following classes and functions:
 - TwentyTwenty_SVG_Icons
 - twentytwenty_the_theme_svg()
 - twentytwenty_get_theme_svg()
+- twentytwenty_nav_menu_social_icons()
 
 Code from Twenty Seventeen
 Copyright (c) 2016 WordPress.org
