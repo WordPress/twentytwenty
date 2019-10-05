@@ -18,10 +18,14 @@
 		"url": "https://github.com/wordpress/twentytwenty/issues"
 	},
 	"devDependencies": {
+		"@wordpress/browserslist-config": "^2.6.0",
 		"@wordpress/scripts": "^5.0.0",
 		"concurrently": "^4.1.2",
 		"rtlcss": "^2.4.0"
 	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
 	"rtlcssConfig": {
 		"options": {
 			"autoRename": false,
