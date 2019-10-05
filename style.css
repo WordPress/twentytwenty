@@ -3137,8 +3137,6 @@ hr.wp-block-separator {
 	padding: 0 2rem 0 0;
 }
 
-/* STYLE: DEFAULT */
-
 /* STYLE: LARGE */
 
 .wp-block-quote.is-large,
@@ -3150,10 +3148,11 @@ hr.wp-block-separator {
 .wp-block-quote.is-large p,
 .wp-block-quote.is-style-large p {
 	font-family: inherit;
+	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: 700;
-	letter-spacing: -0.035714286em;
-	line-height: 1.285714286;
+	letter-spacing: -0.02em;
+	line-height: 1.285;
 }
 
 .wp-block-quote.is-large cite,
@@ -4920,6 +4919,13 @@ a.to-the-top > * {
 	.wp-block-pullquote.alignleft.is-style-solid-color blockquote p,
 	.wp-block-pullquote.alignright.is-style-solid-color blockquote p {
 		font-size: 2.6rem;
+	}
+
+	/* BLOCK: QUOTE */
+
+	.wp-block-quote.is-large p,
+	.wp-block-quote.is-style-large p {
+		font-size: 2.8rem;
 	}
 
 	/* BLOCK: SEPARATOR */
