@@ -3305,15 +3305,8 @@ hr.wp-block-separator {
 .alignnone,
 .aligncenter,
 .alignleft,
-.alignright,
-.alignfull {
-	margin: 3rem 0;
-}
-
-.alignnone,
-.aligncenter,
-.alignleft,
 .alignright {
+	margin: 3rem 0;
 	max-width: 100%;
 }
 
