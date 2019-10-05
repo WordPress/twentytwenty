@@ -81,7 +81,6 @@ function twentytwenty_theme_support() {
 			'width'       => $logo_width,
 			'flex-height' => true,
 			'flex-width'  => true,
-			'header-text' => array( 'site-title', 'site-description' ),
 		)
 	);
 
