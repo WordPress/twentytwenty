@@ -69,7 +69,7 @@ function twentytwenty_theme_support() {
 	$logo_height = 90;
 
 	// If the retina setting is active, double the recommended width and height.
-	if ( get_theme_mod( 'twentytwenty_high_resolution_logo', false ) ) {
+	if ( get_theme_mod( 'high_resolution_logo', false ) ) {
 		$logo_width  = floor( $logo_width * 2 );
 		$logo_height = floor( $logo_height * 2 );
 	}
