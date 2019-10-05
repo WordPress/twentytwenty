@@ -2820,6 +2820,15 @@ h2.entry-title {
 
 /* Block: Cover ------------------------------ */
 
+.wp-block-cover-image .wp-block-cover-image-text, 
+.wp-block-cover-image .wp-block-cover-text, 
+.wp-block-cover-image h2, 
+.wp-block-cover .wp-block-cover-image-text, 
+.wp-block-cover .wp-block-cover-text, 
+.wp-block-cover h2 {
+	max-width: 100%;
+}
+
 .entry-content .wp-block-cover p {
 	font-family: inherit;
 }
