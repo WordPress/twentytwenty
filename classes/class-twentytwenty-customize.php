@@ -422,7 +422,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		/**
 		 * Sanitize boolean for checkbox.
 		 *
-		 * @param bool $checked Wethere or not a box is checked.
+		 * @param bool $checked Whether or not a box is checked.
 		 *
 		 * @return bool
 		 */

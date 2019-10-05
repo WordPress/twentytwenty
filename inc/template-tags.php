@@ -489,7 +489,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $item Comment.
  * @param int    $depth Depth of the current comment.
  * @param array  $args An array of arguments.
- * @param string $current_page Wether or not the item is the current item.
+ * @param string $current_page Whether or not the item is the current item.
  *
  * @return array $css_class CSS Class names.
  */
