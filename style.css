@@ -2834,10 +2834,6 @@ h2.entry-title {
 	width: calc( 100% - 4rem );
 }
 
-.entry-content .wp-block-cover p {
-	font-family: inherit;
-}
-
 /* Block: Embed ------------------------------ */
 
 /* Block: File ------------------------------- */
