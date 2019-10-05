@@ -2227,7 +2227,7 @@ body.template-full-width .entry-content .alignright {
 
 /* Posts ------------------------------------- */
 
-body:not(.singular) main article:first-of-type {
+body:not(.singular) main > article:first-of-type {
 	padding: 4rem 0 0;
 }
 
@@ -4579,7 +4579,7 @@ a.to-the-top > * {
 		font-size: 3.2rem;
 	}
 
-	body:not(.singular) main article:first-of-type {
+	body:not(.singular) main > article:first-of-type {
 		padding: 8rem 0 0;
 	}
 
