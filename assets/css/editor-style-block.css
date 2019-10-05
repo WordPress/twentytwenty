@@ -1056,6 +1056,17 @@ hr.wp-block-separator.is-style-dots::before {
 		padding: 0 45px;
 	}
 
+	/* BLOCK: COLUMNS */
+
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h1,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h2,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h3,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h4,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h5,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h6 {
+		margin: 35px 0 20px 0;
+	}
+
 	/* BLOCK: PULLQUOTE */
 
 	.editor-styles-wrapper .wp-block[data-type="core/pullquote"][data-align="right"] .block-editor-block-list__block-edit {
