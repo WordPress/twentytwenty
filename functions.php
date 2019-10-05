@@ -614,7 +614,7 @@ function twentytwenty_get_elements_array() {
 			'accent'     => array(
 				'color'        => array( '.color-accent', '.color-accent-hover:hover', '.color-accent-hover:focus', '.has-accent-color', '.has-drop-cap:not(:focus):first-letter', '.wp-block-button.is-style-outline', 'a' ),
 				'border-color' => array( 'blockquote', '.border-color-accent', '.border-color-accent-hover:hover', '.border-color-accent-hover:focus' ),
-				'background'   => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.bg-accent', '.bg-accent-hover:hover', '.bg-accent-hover:focus', '.has-accent-background-color', '.comment-reply-link' ),
+				'background'   => array( 'button:not(.toggle)', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file .wp-block-file__button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]', '.bg-accent', '.bg-accent-hover:hover', '.bg-accent-hover:focus', '.has-accent-background-color', '.comment-reply-link' ),
 				'fill'         => array( '.fill-children-accent', '.fill-children-accent *' ),
 			),
 			'background' => array(
