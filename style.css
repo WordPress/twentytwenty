@@ -2887,6 +2887,10 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 	margin-left: 0;
 }
 
+.wp-block-gallery ul {
+	margin-bottom: -1.6rem;
+}
+
 /* Block: Group ------------------------------ */
 
 .wp-block-group.has-background {
