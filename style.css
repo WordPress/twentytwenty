@@ -2678,24 +2678,24 @@ h2.entry-title {
 	margin-bottom: 0;
 }
 
-.wp-block-archives:not(.aligncenter):not(.alignleft):not(.alignright),
-.wp-block-categories:not(.aligncenter):not(.alignleft):not(.alignright),
+.wp-block-archives,
+.wp-block-categories,
 .wp-block-code,
-.wp-block-columns:not(.alignwide):not(.alignfull),
-.wp-block-cover:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-.wp-block-embed:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-.wp-block-group:not(.alignwide):not(.alignfull),
-.wp-block-latest-comments:not(.aligncenter):not(.alignleft):not(.alignright),
-.wp-block-latest-posts:not(.aligncenter):not(.alignleft):not(.alignright),
-.wp-block-media-text:not(.alignwide):not(.alignfull),
+.wp-block-columns,
+.wp-block-cover,
+.wp-block-embed,
+.wp-block-gallery,
+.wp-block-group,
+.wp-block-latest-comments,
+.wp-block-latest-posts,
+.wp-block-media-text,
 .wp-block-preformatted,
-.wp-block-pullquote:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+.wp-block-pullquote,
 .wp-block-quote,
 .wp-block-quote.is-large,
 .wp-block-quote.is-style-large,
 .wp-block-verse,
-.wp-block-video:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter) {
+.wp-block-video {
 	margin-bottom: 3rem;
 	margin-top: 3rem;
 }
@@ -4742,24 +4742,24 @@ a.to-the-top > * {
 
 	/* BLOCK: BASE MARGINS */
 
-	.wp-block-archives:not(.aligncenter):not(.alignleft):not(.alignright),
-	.wp-block-categories:not(.aligncenter):not(.alignleft):not(.alignright),
+	.wp-block-archives,
+	.wp-block-categories,
 	.wp-block-code,
-	.wp-block-columns:not(.alignwide):not(.alignfull),
-	.wp-block-cover:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-	.wp-block-embed:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-	.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
-	.wp-block-group:not(.alignwide):not(.alignfull),
-	.wp-block-latest-comments:not(.aligncenter):not(.alignleft):not(.alignright),
-	.wp-block-latest-posts:not(.aligncenter):not(.alignleft):not(.alignright),
-	.wp-block-media-text:not(.alignwide):not(.alignfull),
+	.wp-block-columns,
+	.wp-block-cover,
+	.wp-block-embed,
+	.wp-block-gallery,
+	.wp-block-group,
+	.wp-block-latest-comments,
+	.wp-block-latest-posts,
+	.wp-block-media-text,
 	.wp-block-preformatted,
-	.wp-block-pullquote:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+	.wp-block-pullquote,
 	.wp-block-quote,
 	.wp-block-quote.is-large,
 	.wp-block-quote.is-style-large,
 	.wp-block-verse,
-	.wp-block-video:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter) {
+	.wp-block-video {
 		margin-bottom: 5rem;
 		margin-top: 5rem;
 	}
