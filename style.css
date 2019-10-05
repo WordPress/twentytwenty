@@ -2578,6 +2578,38 @@ h2.entry-title {
 	background-color: #cd2653;
 }
 
+.has-primary-color {
+	color: #000;
+}
+
+.has-primary-background-color {
+	background-color: #000;
+}
+
+.has-secondary-color {
+	color: #6d6d6d;
+}
+
+.has-secondary-background-color {
+	background-color: #6d6d6d;
+}
+
+.has-subtle-background-color {
+	color: #dcd7ca;
+}
+
+.has-subtle-background-background-color {
+	background-color: #dcd7ca;
+}
+
+.has-background-color {
+	color: #f5efe0;
+}
+
+.has-background-background-color {
+	background-color: #f5efe0;
+}
+
 
 /* Block Typography Classes ------------------ */
 
@@ -4019,6 +4051,9 @@ div.comment:first-of-type {
 .footer-nav-widgets-wrapper,
 #site-footer {
 	background-color: #fff;
+	border-color: #dedfdf;
+	border-style: solid;
+	border-width: 0;
 }
 
 .footer-top-visible .footer-nav-widgets-wrapper,
@@ -4028,7 +4063,7 @@ div.comment:first-of-type {
 
 .reduced-spacing.footer-top-visible .footer-nav-widgets-wrapper,
 .reduced-spacing.footer-top-hidden #site-footer {
-	border-top: 0.1rem solid #dedfdf;
+	border-top-width: 0.1rem;
 }
 
 .footer-top,
