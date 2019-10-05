@@ -1058,11 +1058,11 @@ hr.wp-block-separator.is-style-dots::before {
 
 	/* BLOCK: COLUMNS */
 
-	.editor-styles-wrapper .wp-block[data-type="core/column"] h1, 
-	.editor-styles-wrapper .wp-block[data-type="core/column"] h2, 
-	.editor-styles-wrapper .wp-block[data-type="core/column"] h3, 
-	.editor-styles-wrapper .wp-block[data-type="core/column"] h4, 
-	.editor-styles-wrapper .wp-block[data-type="core/column"] h5, 
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h1,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h2,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h3,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h4,
+	.editor-styles-wrapper .wp-block[data-type="core/column"] h5,
 	.editor-styles-wrapper .wp-block[data-type="core/column"] h6 {
 		margin: 35px 0 20px 0;
 	}
