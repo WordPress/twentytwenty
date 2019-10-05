@@ -120,14 +120,6 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 				twentytwenty_generate_css( '.cover-header .entry-header *', 'color', $cover );
 			}
 
-			// Helper Classes.
-			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( '.color-accent, .color-accent-hover:hover, .has-accent-color', 'color', $accent );
-				twentytwenty_generate_css( '.bg-accent, .bg-accent-hover:hover, .has-accent-background-color', 'background-color', $accent );
-				twentytwenty_generate_css( '.border-color-accent, .border-color-accent-hover:hover', 'border-color', $accent );
-				twentytwenty_generate_css( '.fill-children-accent, .fill-children-accent *', 'fill', $accent );
-			}
-
 			// Block Editor Styles.
 		} elseif ( 'block-editor' === $type ) {
 
