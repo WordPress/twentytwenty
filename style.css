@@ -4262,12 +4262,12 @@ a.to-the-top > * {
 }
 
 @media ( max-width: 599px ) {
-	
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: COLUMNS */
-	
-	.alignfull .wp-block-column > p:not(.has-background-color), 
+
+	.alignfull .wp-block-column > p:not(.has-background-color),
 	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
 		max-width: calc(100% - 4rem);
 		margin: auto;
@@ -4275,11 +4275,11 @@ a.to-the-top > * {
 }
 
 @media ( min-width: 600px ) {
-	
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: COLUMNS */
-	
+
 	.alignfull .wp-block-column:nth-child(odd) > p:not(.has-background-color),
 	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
@@ -5133,11 +5133,11 @@ a.to-the-top > * {
 }
 
 @media (min-width: 782px) {
-	
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: COLUMNS */
-	
+
 	.alignfull .wp-block-column:first-child > p,
 	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
