@@ -852,13 +852,13 @@ td {
 	line-height: 1.4;
 	margin: 0;
 	overflow: visible;
-	padding: .5em;
+	padding: 0.5em;
 }
 
 caption {
 	background: #dcd7ca;
 	font-weight: 600;
-	padding: .5em;
+	padding: 0.5em;
 	text-align: center;
 }
 
@@ -2865,17 +2865,17 @@ h2.entry-title {
 
 /* Block: Cover ------------------------------ */
 
-.wp-block-cover-image .wp-block-cover__inner-container, 
+.wp-block-cover-image .wp-block-cover__inner-container,
 .wp-block-cover .wp-block-cover__inner-container {
 	width: calc( 100% - 4rem );
 	padding: 2rem 0;
 }
 
-.wp-block-cover-image .wp-block-cover-image-text, 
-.wp-block-cover-image .wp-block-cover-text, 
-.wp-block-cover-image h2, 
-.wp-block-cover .wp-block-cover-image-text, 
-.wp-block-cover .wp-block-cover-text, 
+.wp-block-cover-image .wp-block-cover-image-text,
+.wp-block-cover-image .wp-block-cover-text,
+.wp-block-cover-image h2,
+.wp-block-cover .wp-block-cover-image-text,
+.wp-block-cover .wp-block-cover-text,
 .wp-block-cover h2 {
 	max-width: 100%;
 	padding: 0;
@@ -3024,7 +3024,7 @@ figure.wp-block-gallery.alignfull {
 }
 
 .reduced-spacing .wp-block-pullquote::before {
-	border: .1rem solid currentColor;
+	border: 0.1rem solid currentColor;
 	font-size: 5.9rem;
 }
 
@@ -3364,12 +3364,14 @@ hr.wp-block-separator {
 }
 
 .alignleft {
+
 	/*rtl:ignore*/
 	float: left;
 	margin: 0.3rem 2rem 2rem 0;
 }
 
 .alignright {
+
 	/*rtl:ignore*/
 	float: right;
 	margin: 0.3rem 0 2rem 2rem;
@@ -4274,15 +4276,15 @@ a.to-the-top > * {
 	.wp-block-pullquote.alignleft,
 	.wp-block-pullquote.alignright {
 		float: none;
-		margin: 3rem 0; 
+		margin: 3rem 0;
 	}
 
-	.wp-block-pullquote.alignleft:first-child, 
+	.wp-block-pullquote.alignleft:first-child,
 	.wp-block-pullquote.alignright:first-child {
 		margin-top: 0;
 	}
 
-	.wp-block-pullquote.alignleft:last-child, 
+	.wp-block-pullquote.alignleft:last-child,
 	.wp-block-pullquote.alignright:last-child {
 		margin-bottom: 0;
 	}
@@ -4342,11 +4344,11 @@ a.to-the-top > * {
 	}
 
 	.wp-block-columns + .wp-block-columns {
-		margin-top: .2rem;
+		margin-top: 0.2rem;
 	}
 
 	.wp-block-columns.alignwide + .wp-block-columns.alignwide {
-		margin-top: -.8rem;
+		margin-top: -0.8rem;
 	}
 
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
@@ -4883,9 +4885,9 @@ a.to-the-top > * {
 
 	/* BLOCK: COVER */
 
-	.wp-block-cover-image .wp-block-cover__inner-container, 
+	.wp-block-cover-image .wp-block-cover__inner-container,
 	.wp-block-cover .wp-block-cover__inner-container {
-		width: calc( 100% - 8rem );
+		width: calc(100% - 8rem);
 	}
 
 	.wp-block-cover-image h2,
