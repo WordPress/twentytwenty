@@ -2809,26 +2809,6 @@ h2.entry-title {
 
 /* Block: Columns ---------------------------- */
 
-@media ( max-width: 599px ) {
-
-	/* While columns are stacked */
-	.wp-block-column:last-child {
-		margin-bottom: 0;
-	}
-
-	.wp-block-columns + .wp-block-columns {
-		margin-top: .2rem;
-	}
-
-	.wp-block-columns.alignwide + .wp-block-columns.alignwide {
-		margin-top: -.8rem;
-	}
-
-	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
-		margin-top: -1.8rem;
-	}
-}
-
 .wp-block-column {
 	margin-bottom: 3.2rem;
 }
@@ -4284,6 +4264,31 @@ a.to-the-top > * {
 	.alignright {
 		max-width: 26rem;
 	}
+}
+
+@media ( max-width: 599px ) {
+
+	/* Blocks -------------------------------- */
+
+	/* BLOCK: COLUMNS */
+
+	/* While columns are stacked */
+	.wp-block-column:last-child {
+		margin-bottom: 0;
+	}
+
+	.wp-block-columns + .wp-block-columns {
+		margin-top: .2rem;
+	}
+
+	.wp-block-columns.alignwide + .wp-block-columns.alignwide {
+		margin-top: -.8rem;
+	}
+
+	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
+		margin-top: -1.8rem;
+	}
+
 }
 
 @media ( min-width: 600px ) {
