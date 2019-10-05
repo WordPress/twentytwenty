@@ -711,6 +711,7 @@ button,
 input,
 textarea {
 	border-color: #dcd7ca;
+	color: #000;
 }
 
 code,
@@ -744,7 +745,6 @@ textarea {
 	border-style: solid;
 	border-width: 0.1rem;
 	box-shadow: none;
-	color: inherit;
 	display: block;
 	font-size: 1.6rem;
 	letter-spacing: -0.015em;
