@@ -70,8 +70,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
 					'priority'    => 10,
-					'label'       => __( 'Retina logo', 'twentytwenty' ),
-					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
+					'label'       => __( 'High-resolution logo', 'twentytwenty' ),
+					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-resolution screens.', 'twentytwenty' ),
 				)
 			);
 
