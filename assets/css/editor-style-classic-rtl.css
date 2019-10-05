@@ -8,8 +8,8 @@
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -373,13 +373,13 @@ body#tinymce.wp-editor .wp-caption .alignright {
 }
 
 body#tinymce.wp-editor .alignleft {
-	float: right;
+	float: left;
 	margin-left: 25px;
 	max-width: 260px;
 }
 
 body#tinymce.wp-editor .alignright {
-	float: left;
+	float: right;
 	margin-right: 25px;
 	max-width: 260px;
 }

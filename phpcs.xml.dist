@@ -34,24 +34,43 @@
     </properties>
   </rule>
 
-	<!-- Allow multiple parameters on one line for multi-line function calls. -->
-	<rule ref="PEAR.Functions.FunctionCallSignature">
+  <!-- Allow multiple parameters on one line for multi-line function calls. -->
+  <rule ref="PEAR.Functions.FunctionCallSignature">
     <properties>
        <property name="allowMultipleArguments" value="true" />
     </properties>
-	</rule>
+  </rule>
 
-	<!-- Improve code readablilty by allowing the artguments after function call. -->
+  <!-- Improve code readablilty by allowing the artguments after function call. -->
   <rule ref="PEAR.Functions.FunctionCallSignature">
-  	<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
-  	<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
-	</rule>
+    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+  </rule>
 
   <!-- Check valid textdomain. -->
   <rule ref="WordPress.WP.I18n">
     <properties>
       <property name="text_domain" type="array">
         <element value="twentytwenty"/>
+      </property>
+    </properties>
+  </rule>
+
+  <rule ref="WordPress-Extra">
+    <!-- _e() and _ex() are considered safe for core translations. -->
+    <exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction"/>
+  </rule>
+
+  <rule ref="WordPress.Security.EscapeOutput">
+    <properties>
+      <property name="customAutoEscapedFunctions" type="array">
+        <!-- i18n functions are considered safe for core translations. -->
+        <element value="__"/>
+        <element value="_x"/>
+        <element value="_n"/>
+        <element value="_nx"/>
+        <element value="number_format_i18n"/>
+        <element value="date_i18n"/>
       </property>
     </properties>
   </rule>
