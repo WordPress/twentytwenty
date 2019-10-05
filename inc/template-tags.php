@@ -26,6 +26,8 @@
  *
  * @param array   $args Arguments for displaying the site logo either as an image or text.
  * @param boolean $echo Echo or return the html.
+ *
+ * @return string $html Compiled html based on our arguments.
  */
 function twentytwenty_site_logo( $args = array(), $echo = true ) {
 	$logo       = get_custom_logo();
@@ -87,6 +89,8 @@ function twentytwenty_site_logo( $args = array(), $echo = true ) {
  * Displays the site description.
  *
  * @param boolean $echo Echo or return the html.
+ *
+ * @return string $html The HTML to display.
  */
 function twentytwenty_site_description( $echo = true ) {
 	$description = get_bloginfo( 'description' );
@@ -124,6 +128,8 @@ function twentytwenty_site_description( $echo = true ) {
  * Check if the specified comment is written by the author of the post commented on.
  *
  * @param object $comment Comment data.
+ *
+ * @return bool
  */
 function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
