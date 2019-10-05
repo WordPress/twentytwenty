@@ -3366,11 +3366,13 @@ hr.wp-block-separator {
 }
 
 .alignleft {
+	/*rtl:ignore*/
 	float: left;
 	margin: 0.3rem 2rem 2rem 0;
 }
 
 .alignright {
+	/*rtl:ignore*/
 	float: right;
 	margin: 0.3rem 0 2rem 2rem;
 }
@@ -4281,18 +4283,6 @@ a.to-the-top > * {
 	.alignleft,
 	.alignright {
 		max-width: 26rem;
-	}
-
-	.alignleft {
-
-		/*rtl:ignore*/
-		float: left;
-	}
-
-	.alignright {
-
-		/*rtl:ignore*/
-		float: right;
 	}
 }
 
