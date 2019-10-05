@@ -2705,7 +2705,6 @@ h2.entry-title {
 
 .wp-block-archives,
 .wp-block-categories,
-.wp-block-gallery ul,
 .wp-block-latest-posts,
 .wp-block-latest-comments {
 	list-style: none;
@@ -2888,7 +2887,8 @@ ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignl
 }
 
 .wp-block-gallery ul {
-	margin-bottom: -1.6rem;
+	list-style: none;
+	margin: 0 0 -1.6rem 0;
 }
 
 /* Block: Group ------------------------------ */
