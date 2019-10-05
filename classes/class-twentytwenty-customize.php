@@ -90,7 +90,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'header_footer_background_color',
 					array(
-						'label'   => esc_html__( 'Header & Footer Background Color', 'twentytwenty' ),
+						'label'   => __( 'Header &amp; Footer Background Color', 'twentytwenty' ),
 						'section' => 'colors',
 					)
 				)
