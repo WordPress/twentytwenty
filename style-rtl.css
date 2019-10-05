@@ -117,8 +117,6 @@ html {
 
 body {
 	background: #f5efe0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	color: #000;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
@@ -137,8 +135,6 @@ body {
 *,
 *::before,
 *::after {
-	-webkit-box-sizing: inherit;
-	-moz-box-sizing: inherit;
 	box-sizing: inherit;
 	-webkit-font-smoothing: antialiased;
 	word-break: break-word;
@@ -178,7 +174,8 @@ path {
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
+	-webkit-clip-path: inset(50%);
+	        clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
@@ -193,7 +190,8 @@ path {
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip: auto !important;
-	clip-path: none;
+	-webkit-clip-path: none;
+	        clip-path: none;
 	color: #21759b;
 	display: block;
 	font-size: 14px;
@@ -237,8 +235,8 @@ path {
 
 /*
  * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
- * This results in a jumping cursor when typing in both the Classic and block
- * editors. The following font-face override fixes the issue by manually
+ * This results in a jumping cursor when typing in both the classic editor and
+ * block editor. The following font-face override fixes the issue by manually
  * inserting a custom font that includes just a Hoefler Text space replacement
  * for that character instead.
  */
@@ -1004,7 +1002,6 @@ button.toggle {
 .no-select {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
@@ -1217,7 +1214,7 @@ ul.social-icons {
 	display: flex;
 	flex-wrap: wrap;
 	margin: -0.9rem -0.9rem 0 0;
-	width: calc( 100% + 0.9rem );
+	width: calc(100% + 0.9rem);
 }
 
 ul.social-icons li {
@@ -5199,7 +5196,6 @@ a.to-the-top > * {
 		position: static;
 		padding-left: 20px;
 		font-size: 15px;
-		color: #000;
 	}
 
 	/* Menu Modal ---------------------------- */
