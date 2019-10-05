@@ -3227,10 +3227,6 @@ hr.wp-block-separator {
 	max-width: 58rem;
 }
 
-.entry-content > * {
-	margin-bottom: 1.25em;
-}
-
 .entry-content > *:first-child {
 	margin-top: 0;
 }
