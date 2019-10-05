@@ -3001,6 +3001,11 @@ figure.wp-block-gallery.alignfull {
 	width: 4.4rem;
 }
 
+.reduced-spacing .wp-block-pullquote::before {
+	border: .1rem solid currentColor;
+	font-size: 5.9rem;
+}
+
 .wp-block-pullquote blockquote {
 	border: none;
 	margin: 0;
