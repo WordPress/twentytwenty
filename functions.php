@@ -438,13 +438,13 @@ function twentytwenty_block_editor_settings() {
 			array(
 				'name'      => _x( 'Small', 'Name of the small font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'S', 'Short name of the small font size in the block editor.', 'twentytwenty' ),
-				'size'      => 16,
+				'size'      => 18,
 				'slug'      => 'small',
 			),
 			array(
 				'name'      => _x( 'Regular', 'Name of the regular font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'M', 'Short name of the regular font size in the block editor.', 'twentytwenty' ),
-				'size'      => 18,
+				'size'      => 21,
 				'slug'      => 'regular',
 			),
 			array(
