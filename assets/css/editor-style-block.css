@@ -660,7 +660,6 @@ hr.wp-block-separator.is-style-dots::before {
 .wp-block-cover .wp-block-cover-text,
 .wp-block-cover h2 {
 	max-width: 100%;
-	padding: 0;
 }
 
 .editor-styles-wrapper .wp-block-cover a {
