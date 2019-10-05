@@ -663,10 +663,6 @@ hr.wp-block-separator.is-style-dots::before {
 	padding: 0;
 }
 
-.editor-styles-wrapper .wp-block-cover p {
-	font-family: inherit;
-}
-
 .editor-styles-wrapper .wp-block-cover a {
 	color: inherit;
 }
