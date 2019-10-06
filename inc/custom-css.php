@@ -55,14 +55,14 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 	function twentytwenty_get_customizer_css( $type = 'front-end' ) {
 
 		// Get variables.
-		$body           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'text' ) );
-		$body_default   = '#000000';
-		$secondary           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'secondary' ) );
-		$secondary_default   = '#6d6d6d';
+		$body              = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'text' ) );
+		$body_default      = '#000000';
+		$secondary         = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'secondary' ) );
+		$secondary_default = '#6d6d6d';
 		$borders           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'borders' ) );
 		$borders_default   = '#dcd7ca';
-		$accent         = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'accent' ) );
-		$accent_default = '#cd2653';
+		$accent            = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'accent' ) );
+		$accent_default    = '#cd2653';
 		/**
 		 * Filters the CSS selectors targeting button component on frontend to apply common css
 		 *
@@ -176,7 +176,6 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			if ( $borders && $borders !== $borders_default ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor.content pre, body#tinymce.wp-editor.content hr, body#tinymce.wp-editor.content fieldset,body#tinymce.wp-editor.content input, body#tinymce.wp-editor.content textarea', 'border-color', $borders );
 			}
-
 		}
 
 		// Return the results.
