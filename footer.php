@@ -16,25 +16,16 @@
 
 				<div class="section-inner">
 
-					<div class="footer-credits">
-
-						<p class="footer-copyright">&copy;
-							<?php
-							echo date_i18n(
-								/* translators: Copyright date format, see https://secure.php.net/date */
-								_x( 'Y', 'copyright date format', 'twentytwenty' )
-							);
-							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
-						</p>
-
-						<p class="powered-by-wordpress">
-							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
-								<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
-							</a>
-						</p><!-- .powered-by-wordpress -->
-
-					</div><!-- .footer-credits -->
+					<?php 
+					/**
+					 * Website credits using the `twentytwenty_footer_credits` action.
+					 * 
+					 * Hooked:
+					 * twentytwenty_footer_copyright - 10
+					 * twentytwenty_footer_powered_by - 20
+					 */
+					twentytwenty_footer_credits(); 
+					?>
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">

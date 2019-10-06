@@ -15,6 +15,7 @@
  * Menus
  * Classes
  * Archives
+ * Footer
  * Miscellaneous
  */
 
@@ -735,6 +736,87 @@ function twentytwenty_get_the_archive_title( $title ) {
 }
 
 add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+/**
+ * Footer
+ */
+/**
+ * Footer credits area.
+ *
+ * @param boolean $echo Echo or return the value.
+ * @return void|string Outputs the HTML for credits.
+ */
+function twentytwenty_footer_credits( $echo = true ) {
+	/**
+	 * HTML wrapper for credits. Use `%s` for credits contents.
+	 * 
+	 * @since 1.0.0
+	 * @param string $wrapper 
+	 */
+	$wrapper = apply_filters( 
+		'twentytwenty_footer_credits_wrapper',
+		'<div class="footer-credits">%s</div><!-- .footer-credits -->'
+	);
+
+	ob_start();
+
+	/**
+	 * Prints the footer credits. Currently hooked:
+	 * 
+	 * Priority 10 - twentytwenty_footer_copyright
+	 * Priority 20 - twentytwenty_footer_powered_by
+	 * 
+	 * @since 1.0.0
+	 */
+	do_action( 'twentytwenty_footer_credits' );
+
+	$output = ob_get_clean();
+
+	if ( ! $echo ) {
+		return sprintf( $wrapper, $output );
+	}
+
+	printf( $wrapper, $output ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped
+}
+
+/**
+ * Displays the website's copyright disclaimer. 
+ *
+ * @return void
+ */
+function twentytwenty_footer_copyright() {
+	?>
+	<p class="footer-copyright">&copy;
+		<?php
+		echo date_i18n(
+			/* translators: Copyright date format, see https://secure.php.net/date */
+			_x( 'Y', 'copyright date format', 'twentytwenty' )
+		);
+		?>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
+	</p>
+	<?php
+}
+
+add_action( 'twentytwenty_footer_credits', 'twentytwenty_footer_copyright' );
+
+/**
+ * Displays the 'Powered by WordPress' line. 
+ *
+ * @return void
+ */
+function twentytwenty_footer_powered_by() {
+	?>
+	<p class="powered-by-wordpress">
+		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
+			<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
+		</a>
+	</p><!-- .powered-by-wordpress -->
+	<?php
+}
+
+add_action( 'twentytwenty_footer_credits', 'twentytwenty_footer_powered_by', 20 );
+
 
 /**
  * Miscellaneous
