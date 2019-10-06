@@ -427,12 +427,12 @@ body#tinymce.wp-editor.content td {
 	line-height: 1.2;
 	margin: 0;
 	overflow: visible;
-	padding: .5em;
+	padding: 0.5em;
 }
 
 body#tinymce.wp-editor.content caption {
 	text-align: center;
-	padding: .5em;
+	padding: 0.5em;
 }
 
 body#tinymce.wp-editor.content thead {
