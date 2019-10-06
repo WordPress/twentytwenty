@@ -174,8 +174,13 @@ require get_template_directory() . '/inc/starter-content.php';
  */
 function twentytwenty_register_styles() {
 
-	$theme_version = wp_get_theme()->get( 'Version' );
-
+	/**
+	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
+	 * delete `$theme_version = time();` shortly before core merge as explained
+	 * in https://github.com/WordPress/twentytwenty/issues/779
+	 */
+	$theme_version = time();
+	
 	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
 	wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
@@ -194,8 +199,13 @@ add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
  */
 function twentytwenty_register_scripts() {
 
-	$theme_version = wp_get_theme()->get( 'Version' );
-
+	/**
+	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
+	 * delete `$theme_version = time();` shortly before core merge as explained
+	 * in https://github.com/WordPress/twentytwenty/issues/779
+	 */
+	$theme_version = time();
+	
 	if ( ( ! is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -503,8 +513,14 @@ add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
  * @return void
  */
 function twentytwenty_customize_controls_enqueue_scripts() {
-	$theme_version = wp_get_theme()->get( 'Version' );
 
+	/**
+	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
+	 * delete `$theme_version = time();` shortly before core merge as explained
+	 * in https://github.com/WordPress/twentytwenty/issues/779
+	 */
+	$theme_version = time();
+	
 	// Add main customizer js file.
 	wp_enqueue_script( 'twentytwenty-customize', get_template_directory_uri() . '/assets/js/customize.js', array( 'jquery' ), $theme_version, false );
 
@@ -526,8 +542,14 @@ add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_contro
  * @return void
  */
 function twentytwenty_customize_preview_init() {
-	$theme_version = wp_get_theme()->get( 'Version' );
 
+	/**
+	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
+	 * delete `$theme_version = time();` shortly before core merge as explained
+	 * in https://github.com/WordPress/twentytwenty/issues/779
+	 */
+	$theme_version = time();
+	
 	wp_enqueue_script( 'twentytwenty-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview', 'customize-selective-refresh', 'jquery' ), $theme_version, true );
 	wp_localize_script( 'twentytwenty-customize-preview', 'twentyTwentyBgColors', twentytwenty_get_customizer_color_vars() );
 	wp_localize_script( 'twentytwenty-customize-preview', 'twentyTwentyPreviewEls', twentytwenty_get_elements_array() );
