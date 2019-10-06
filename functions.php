@@ -175,6 +175,8 @@ require get_template_directory() . '/inc/starter-content.php';
 function twentytwenty_register_styles() {
 
 	/**
+	 * Adjust version number during theme development.
+	 * 
 	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
 	 * delete `$theme_version = time();` shortly before core merge as explained
 	 * in https://github.com/WordPress/twentytwenty/issues/779
@@ -200,6 +202,8 @@ add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
 function twentytwenty_register_scripts() {
 
 	/**
+	 * Adjust version number during theme development.
+	 * 
 	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
 	 * delete `$theme_version = time();` shortly before core merge as explained
 	 * in https://github.com/WordPress/twentytwenty/issues/779
@@ -515,6 +519,8 @@ add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 function twentytwenty_customize_controls_enqueue_scripts() {
 
 	/**
+	 * Adjust version number during theme development.
+	 * 
 	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
 	 * delete `$theme_version = time();` shortly before core merge as explained
 	 * in https://github.com/WordPress/twentytwenty/issues/779
@@ -544,6 +550,8 @@ add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_contro
 function twentytwenty_customize_preview_init() {
 
 	/**
+	 * Adjust version number during theme development.
+	 * 
 	 * @todo Activate `$theme_version = wp_get_theme()->get( 'Version' );` and
 	 * delete `$theme_version = time();` shortly before core merge as explained
 	 * in https://github.com/WordPress/twentytwenty/issues/779
