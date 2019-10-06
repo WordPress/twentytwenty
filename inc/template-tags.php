@@ -27,7 +27,7 @@
  * @param array   $args Arguments for displaying the site logo either as an image or text.
  * @param boolean $echo Echo or return the html.
  *
- * @return string $html Compiled html based on our arguments.
+ * @return string $html Compiled HTML based on our arguments.
  */
 function twentytwenty_site_logo( $args = array(), $echo = true ) {
 	$logo       = get_custom_logo();
