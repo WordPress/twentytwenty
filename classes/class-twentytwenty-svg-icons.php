@@ -60,6 +60,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 		 * Detects the social network from a URL and returns the SVG code for its icon.
 		 *
 		 * @param string $uri The URL to retrieve SVG for.
+		 * @param string $color The color of the icons.
 		 */
 		public static function get_social_link_svg( $uri, $color = '' ) {
 			static $regex_map; // Only compute regex map once, for performance.
@@ -75,7 +76,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 				 * @param array $arr Array of icons.
 				 * @param string $color Color of the icons.
 				 */
-				$social_icons = apply_filters( "twentytwenty_svg_icons_social", self::$social_icons, $color );
+				$social_icons = apply_filters( 'twentytwenty_svg_icons_social', self::$social_icons, $color );
 
 				foreach ( array_keys( $social_icons ) as $icon ) {
 					$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
