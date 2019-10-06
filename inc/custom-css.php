@@ -148,14 +148,14 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			// Colors.
 			// Accent color.
 			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor a', 'color', $accent );
-				twentytwenty_generate_css( 'body#tinymce.wp-editor blockquote, body#tinymce.wp-editor .wp-block-quote', 'border-color', $accent, '', ' !important' );
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content a', 'color', $accent );
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content blockquote, body#tinymce.wp-editor.content .wp-block-quote', 'border-color', $accent, '', ' !important' );
 				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
 			}
 
 			// Background color.
 			if ( $background && $background !== $background_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor', 'background', '#' . $background );
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content', 'background', '#' . $background );
 			}
 		}
 
