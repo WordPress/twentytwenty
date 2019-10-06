@@ -57,6 +57,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		// Get variables.
 		$body           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'text' ) );
 		$body_default   = '#000000';
+		$secondary           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'secondary' ) );
+		$secondary_default   = '#6d6d6d';
+		$borders           = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'borders' ) );
+		$borders_default   = '#dcd7ca';
 		$accent         = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'accent' ) );
 		$accent_default = '#cd2653';
 		/**
@@ -148,15 +152,31 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 			// Colors.
 			// Accent color.
 			if ( $accent && $accent !== $accent_default ) {
-				twentytwenty_generate_css( 'body#tinymce.wp-editor.content a', 'color', $accent );
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content a, body#tinymce.wp-editor.content a:focus, body#tinymce.wp-editor.content a:hover', 'color', $accent );
 				twentytwenty_generate_css( 'body#tinymce.wp-editor.content blockquote, body#tinymce.wp-editor.content .wp-block-quote', 'border-color', $accent, '', ' !important' );
-				twentytwenty_generate_css( $buttons_targets, 'background-color', $accent );
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content button, body#tinymce.wp-editor.content .faux-button, body#tinymce.wp-editor.content .wp-block-button__link, body#tinymce.wp-editor.content .wp-block-file__button, body#tinymce.wp-editor.content input[type=\'button\'], body#tinymce.wp-editor.content input[type=\'reset\'], body#tinymce.wp-editor.content input[type=\'submit\']', 'background-color', $accent );
 			}
 
 			// Background color.
 			if ( $background && $background !== $background_default ) {
 				twentytwenty_generate_css( 'body#tinymce.wp-editor.content', 'background', '#' . $background );
 			}
+
+			// Text color.
+			if ( $body && $body !== $body_default ) {
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content', 'color', $body );
+			}
+
+			// Secondary color.
+			if ( $secondary && $secondary !== $secondary_default ) {
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content hr:not(.is-style-dots), body#tinymce.wp-editor.content cite, body#tinymce.wp-editor.content figcaption, body#tinymce.wp-editor.content .wp-caption-text, body#tinymce.wp-editor.content .wp-caption-dd, body#tinymce.wp-editor.content .gallery-caption', 'color', $secondary );
+			}
+
+			// Borders color.
+			if ( $borders && $borders !== $borders_default ) {
+				twentytwenty_generate_css( 'body#tinymce.wp-editor.content pre, body#tinymce.wp-editor.content hr, body#tinymce.wp-editor.content fieldset,body#tinymce.wp-editor.content input, body#tinymce.wp-editor.content textarea', 'border-color', $borders );
+			}
+
 		}
 
 		// Return the results.
