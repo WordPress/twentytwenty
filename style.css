@@ -4268,7 +4268,7 @@ a.to-the-top > * {
 	/* BLOCK: COLUMNS */
 
 	.alignfull .wp-block-column > p:not(.has-background-color),
-	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		max-width: calc(100% - 4rem);
 		margin: auto;
 	}
@@ -4281,12 +4281,12 @@ a.to-the-top > * {
 	/* BLOCK: COLUMNS */
 
 	.alignfull .wp-block-column:nth-child(odd) > p:not(.has-background-color),
-	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
 	}
 
 	.alignfull .wp-block-column:nth-child(even) > p:not(.has-background-color),
-	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-right: 2rem;
 	}
 }
@@ -5139,12 +5139,12 @@ a.to-the-top > * {
 	/* BLOCK: COLUMNS */
 
 	.alignfull .wp-block-column:first-child > p,
-	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
 	}
 
 	.alignfull .wp-block-column:last-child > p,
-	.alignfull .wp-block-group__inner-container > p:not(.has-background-color) {
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-right: 2rem;
 	}
 }
