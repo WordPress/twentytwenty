@@ -136,9 +136,9 @@ body#tinymce.wp-editor.content hr {
 }
 
 body#tinymce.wp-editor.content hr:not(.is-style-dots) {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.42) calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), rgba(0, 0, 0, 0.42) calc(50% + 16px));
+	background: linear-gradient(to right, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
 	border: none;
-	color: rgba(0, 0, 0, 0.42);
+	color: #6d6d6d;
 	height: 1px;
 	margin: 80px 0;
 	overflow: visible;
@@ -420,16 +420,15 @@ body#tinymce.wp-editor.content table {
 
 body#tinymce.wp-editor.content th,
 body#tinymce.wp-editor.content td {
-	border-bottom: 1px solid #dcd7ca;
 	line-height: 1.2;
 	margin: 0;
 	overflow: visible;
-	padding: 2%;
+	padding: .5em;
 }
 
 body#tinymce.wp-editor.content caption {
 	text-align: center;
-	padding: 2%;
+	padding: .5em;
 }
 
 body#tinymce.wp-editor.content thead {
