@@ -61,7 +61,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 		 *
 		 * @param string $uri The URL to retrieve SVG for.
 		 */
-		public static function get_social_link_svg( $uri ) {
+		public static function get_social_link_svg( $uri, $color = '' ) {
 			static $regex_map; // Only compute regex map once, for performance.
 			if ( ! isset( $regex_map ) ) {
 				$regex_map = array();
@@ -73,8 +73,9 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 				 * @since 1.0.0
 				 *
 				 * @param array $arr Array of icons.
+				 * @param string $color Color of the icons.
 				 */
-				$social_icons = apply_filters( "twentytwenty_svg_icons_social", self::$social_icons );
+				$social_icons = apply_filters( "twentytwenty_svg_icons_social", self::$social_icons, $color );
 
 				foreach ( array_keys( $social_icons ) as $icon ) {
 					$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
@@ -85,7 +86,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 			}
 			foreach ( $regex_map as $icon => $regex ) {
 				if ( preg_match( $regex, $uri ) ) {
-					return twentytwenty_get_theme_svg( $icon, 'social' );
+					return twentytwenty_get_theme_svg( $icon, 'social', $color );
 				}
 			}
 			return null;
