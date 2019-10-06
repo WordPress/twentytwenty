@@ -23,26 +23,26 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 		 */
 		public static function get_svg( $icon, $group = 'ui', $color = '#000000' ) {
 			if ( 'ui' === $group ) {
-				/**
-				 * Filters Twenty Twenty's array of UI icons.
-				 *
-				 * @since Twenty Twenty 1.0.0
-				 *
-				 * @param array $arr Array of UI icons.
-				 */
-				$arr = apply_filters( 'twentytwenty_svg_ui_icons', self::$ui_icons );
+				$arr = self::$ui_icons;
 			} elseif ( 'social' === $group ) {
-				/**
-				 * Filters Twenty Twenty's array of social icons.
-				 *
-				 * @since Twenty Twenty 1.0.0
-				 *
-				 * @param array $arr Array of social icons.
-				 */
-				$arr = apply_filters( 'twentytwenty_svg_social_icons', self::$social_icons );
+				$arr = self::$social_icons;
 			} else {
 				$arr = array();
 			}
+
+			/**
+			 * Filters Twenty Twenty's array of icons.
+			 *
+			 * The dynamic portion of the hook name, `$group`, refers to
+			 * the name of the group of icons, either "ui" or "social".
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $arr Array of icons.
+			 * @param string $color Color of the icons.
+			 */
+			$arr = apply_filters( "twentytwenty_svg_icons_{$group}", $arr, $color );
+
 			if ( array_key_exists( $icon, $arr ) ) {
 				$repl = '<svg class="svg-icon" aria-hidden="true" role="img" focusable="false" ';
 				$svg  = preg_replace( '/^<svg /', $repl, trim( $arr[ $icon ] ) ); // Add extra attributes to SVG code.
@@ -66,7 +66,17 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 			if ( ! isset( $regex_map ) ) {
 				$regex_map = array();
 				$map       = &self::$social_icons_map; // Use reference instead of copy, to save memory.
-				foreach ( array_keys( self::$social_icons ) as $icon ) {
+				
+				/**
+				 * Filters Twenty Twenty's array of social icons.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param array $arr Array of icons.
+				 */
+				$social_icons = apply_filters( "twentytwenty_svg_icons_social", self::$social_icons );
+
+				foreach ( array_keys( $social_icons ) as $icon ) {
 					$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
 					$domains            = array_map( 'trim', $domains ); // Remove leading/trailing spaces, to prevent regex from failing to match.
 					$domains            = array_map( 'preg_quote', $domains );
