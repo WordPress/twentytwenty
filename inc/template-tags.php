@@ -25,7 +25,7 @@
  * Displays the site logo, either text or image.
  *
  * @param array   $args Arguments for displaying the site logo either as an image or text.
- * @param boolean $echo Echo or return the html.
+ * @param boolean $echo Echo or return the HTML.
  *
  * @return string $html Compiled HTML based on our arguments.
  */
