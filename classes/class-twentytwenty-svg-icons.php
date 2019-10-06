@@ -40,8 +40,9 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 			 *
 			 * @param array $arr Array of icons.
 			 * @param string $color Color of the icons.
+			 * @param string $icon Icon name.
 			 */
-			$arr = apply_filters( "twentytwenty_svg_icons_{$group}", $arr, $color );
+			$arr = apply_filters( "twentytwenty_svg_icons_{$group}", $arr, $color, $icon );
 
 			if ( array_key_exists( $icon, $arr ) ) {
 				$repl = '<svg class="svg-icon" aria-hidden="true" role="img" focusable="false" ';
@@ -75,8 +76,9 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 				 *
 				 * @param array $arr Array of icons.
 				 * @param string $color Color of the icons.
+				 * @param string $uri The URL to retrieve SVG for.
 				 */
-				$social_icons = apply_filters( 'twentytwenty_svg_icons_social', self::$social_icons, $color );
+				$social_icons = apply_filters( 'twentytwenty_svg_icons_social', self::$social_icons, $color, $uri );
 
 				foreach ( array_keys( $social_icons ) as $icon ) {
 					$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
