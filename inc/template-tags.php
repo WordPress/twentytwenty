@@ -9,12 +9,18 @@
 
 /**
  * Table of Contents:
+ * Logo & Description
  * Comments
  * Post Meta
  * Menus
  * Classes
+ * Archives
+ * Miscellaneous
  */
 
+/**
+ * Logo & Description
+ */
 /**
  * Displays the site logo, either text or image.
  *
@@ -169,6 +175,40 @@ function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' )
 	echo twentytwenty_get_post_meta( $post_id, $location ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in twentytwenty_get_post_meta().
 
 }
+
+/**
+ * Filters the edit post link to add an icon and use the post meta structure.
+ *
+ * @param string $link    Anchor tag for the edit link.
+ * @param int    $post_id Post ID.
+ * @param string $text    Anchor text.
+ */
+function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+
+	$edit_url = get_edit_post_link( $post_id );
+
+	if ( ! $edit_url ) {
+		return;
+	}
+
+	$text = sprintf(
+		wp_kses(
+			/* translators: %s: Post title. Only visible to screen readers. */
+			__( 'Edit <span class="screen-reader-text">%s</span>', 'twentytwenty' ),
+			array(
+				'span' => array(
+					'class' => array(),
+				),
+			)
+		),
+		get_the_title( $post_id )
+	);
+
+	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
+
+}
+
+add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 
 /**
  * Get the post meta.
@@ -561,92 +601,6 @@ function twentytwenty_no_js_class() {
 add_action( 'wp_head', 'twentytwenty_no_js_class' );
 
 /**
- * Filters the archive title and styles the word before the first colon.
- *
- * @param string $title Current archive title.
- *
- * @return string $title Current archive title.
- */
-function twentytwenty_get_the_archive_title( $title ) {
-
-	$regex = apply_filters(
-		'twentytwenty_get_the_archive_title_regex',
-		array(
-			'pattern'     => '/(\A[^\:]+\:)/',
-			'replacement' => '<span class="color-accent">$1</span>',
-		)
-	);
-
-	if ( empty( $regex ) ) {
-
-		return $title;
-
-	}
-
-	return preg_replace( $regex['pattern'], $regex['replacement'], $title );
-
-}
-
-add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
-
-/**
- * Get unique ID.
- *
- * This is a PHP implementation of Underscore's uniqueId method. A static variable
- * contains an integer that is incremented with each call. This number is returned
- * with the optional prefix. As such the returned value is not universally unique,
- * but it is unique across the life of the PHP process.
- *
- * @see wp_unique_id() Themes requiring WordPress 5.0.3 and greater should use this instead.
- *
- * @staticvar int $id_counter
- *
- * @param string $prefix Prefix for the returned ID.
- * @return string Unique ID.
- */
-function twentytwenty_unique_id( $prefix = '' ) {
-	static $id_counter = 0;
-	if ( function_exists( 'wp_unique_id' ) ) {
-		return wp_unique_id( $prefix );
-	}
-	return $prefix . (string) ++$id_counter;
-}
-
-/**
- * Filters the edit post link to add an icon and use the post meta structure.
- *
- * @param string $link    Anchor tag for the edit link.
- * @param int    $post_id Post ID.
- * @param string $text    Anchor text.
- */
-function twentytwenty_edit_post_link( $link, $post_id, $text ) {
-
-	$edit_url = get_edit_post_link( $post_id );
-
-	if ( ! $edit_url ) {
-		return;
-	}
-
-	$text = sprintf(
-		wp_kses(
-			/* translators: %s: Post title. Only visible to screen readers. */
-			__( 'Edit <span class="screen-reader-text">%s</span>', 'twentytwenty' ),
-			array(
-				'span' => array(
-					'class' => array(),
-				),
-			)
-		),
-		get_the_title( $post_id )
-	);
-
-	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . twentytwenty_get_theme_svg( 'edit' ) . '</span><span class="meta-text"><a href="' . esc_url( $edit_url ) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
-
-}
-
-add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
-
-/**
  * Add conditional body classes.
  *
  * @param array $classes Classes added to the body tag.
@@ -745,6 +699,41 @@ function twentytwenty_body_classes( $classes ) {
 add_filter( 'body_class', 'twentytwenty_body_classes' );
 
 /**
+ * Archives
+ */
+/**
+ * Filters the archive title and styles the word before the first colon.
+ *
+ * @param string $title Current archive title.
+ *
+ * @return string $title Current archive title.
+ */
+function twentytwenty_get_the_archive_title( $title ) {
+
+	$regex = apply_filters(
+		'twentytwenty_get_the_archive_title_regex',
+		array(
+			'pattern'     => '/(\A[^\:]+\:)/',
+			'replacement' => '<span class="color-accent">$1</span>',
+		)
+	);
+
+	if ( empty( $regex ) ) {
+
+		return $title;
+
+	}
+
+	return preg_replace( $regex['pattern'], $regex['replacement'], $title );
+
+}
+
+add_filter( 'get_the_archive_title', 'twentytwenty_get_the_archive_title' );
+
+/**
+ * Miscellaneous
+ */
+/**
  * Toggle animation duration in milliseconds.
  *
  * @return integer Duration in milliseconds
@@ -760,4 +749,27 @@ function twentytwenty_toggle_duration() {
 	$duration = apply_filters( 'twentytwenty_toggle_duration', 250 );
 
 	return $duration;
+}
+
+/**
+ * Get unique ID.
+ *
+ * This is a PHP implementation of Underscore's uniqueId method. A static variable
+ * contains an integer that is incremented with each call. This number is returned
+ * with the optional prefix. As such the returned value is not universally unique,
+ * but it is unique across the life of the PHP process.
+ *
+ * @see wp_unique_id() Themes requiring WordPress 5.0.3 and greater should use this instead.
+ *
+ * @staticvar int $id_counter
+ *
+ * @param string $prefix Prefix for the returned ID.
+ * @return string Unique ID.
+ */
+function twentytwenty_unique_id( $prefix = '' ) {
+	static $id_counter = 0;
+	if ( function_exists( 'wp_unique_id' ) ) {
+		return wp_unique_id( $prefix );
+	}
+	return $prefix . (string) ++$id_counter;
 }
