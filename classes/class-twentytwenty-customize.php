@@ -191,9 +191,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'       => __( 'Theme Options', 'twentytwenty' ),
-					'priority'    => 40,
-					'capability'  => 'edit_theme_options',
+					'title'      => __( 'Theme Options', 'twentytwenty' ),
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
 				)
 			);
 
@@ -257,7 +257,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			/* Overlay Fixed Background ------ */
-			
+
 			$wp_customize->add_setting(
 				'cover_template_fixed_background',
 				array(
