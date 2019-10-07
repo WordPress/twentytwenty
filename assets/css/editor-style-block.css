@@ -575,7 +575,6 @@ hr.wp-block-separator.is-style-dots::before {
 	border-color: #cd2653;
 	border-style: solid;
 	border-width: 0 0 0 2px;
-	color: inherit;
 	margin: 20px 0;
 	padding: 5px 0 5px 20px;
 }
