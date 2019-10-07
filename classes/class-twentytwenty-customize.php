@@ -194,7 +194,6 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'title'       => __( 'Theme Options', 'twentytwenty' ),
 					'priority'    => 40,
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Specific settings for the Twenty Twenty theme.', 'twentytwenty' ),
 				)
 			);
 
@@ -252,13 +251,13 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'title'       => __( 'Cover Template', 'twentytwenty' ),
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for the "Cover Template" page template.', 'twentytwenty' ),
+					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'twentytwenty' ),
 					'priority'    => 42,
 				)
 			);
 
 			/* Overlay Fixed Background ------ */
-
+			
 			$wp_customize->add_setting(
 				'cover_template_fixed_background',
 				array(
@@ -321,8 +320,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_background_color',
 					array(
-						'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Background Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the overlay. Defaults to the accent color.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -343,8 +342,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_text_color',
 					array(
-						'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Text Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the text in the overlay.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -364,7 +363,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'cover_template_overlay_opacity',
 				array(
-					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
+					'label'       => __( 'Overlay Opacity', 'twentytwenty' ),
 					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
 					'type'        => 'range',
