@@ -1206,6 +1206,7 @@ button.toggle {
 	flex-shrink: 0;
 }
 
+.search-form .search-submit:focus,
 .search-form .search-submit:hover {
 	text-decoration: none;
 }

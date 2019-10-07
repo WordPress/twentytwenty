@@ -20,7 +20,8 @@
 	"devDependencies": {
 		"@wordpress/scripts": "^5.0.0",
 		"concurrently": "^4.1.2",
-		"rtlcss": "^2.4.0"
+		"rtlcss": "^2.4.0",
+		"stylelint-a11y": "^1.2.1"
 	},
 	"rtlcssConfig": {
 		"options": {
