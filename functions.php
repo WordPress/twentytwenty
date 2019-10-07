@@ -229,6 +229,8 @@ add_action( 'init', 'twentytwenty_menus' );
  * Get the information about the logo.
  *
  * @param string $html The HTML output from get_custom_logo (core function).
+ *
+ * @return string $html
  */
 function twentytwenty_get_custom_logo( $html ) {
 
@@ -372,6 +374,8 @@ add_action( 'init', 'twentytwenty_classic_editor_styles' );
  * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
  *
  * @param array $mce_init TinyMCE styles.
+ *
+ * @return array $mce_init TinyMCE styles.
  */
 function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 
