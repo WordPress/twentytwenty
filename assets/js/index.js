@@ -436,39 +436,61 @@ twentytwenty.modalMenu = {
 	// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			var desktopMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
-			var mobileMenuButton = document.querySelector( '.toggle.mobile-nav-toggle' );
-			var isMobileMenu = desktopMenuButton ? window.getComputedStyle( desktopMenuButton, null ).getPropertyValue( 'display' ) === 'none' : false;
-			var firstMenuItem = isMobileMenu ? mobileMenuButton : desktopMenuButton;
+			var closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
+			var mobileMenu = document.querySelector( '.mobile-menu' );
+			var isDesktop = window.getComputedStyle( mobileMenu, null ).getPropertyValue( 'display' ) === 'none';
 
-			var menuLinks = isMobileMenu ?
-				document.querySelectorAll( '.menu-modal .mobile-menu li' ) :
-				document.querySelectorAll( '.menu-modal .expanded-menu li' );
+			var menuLinks = isDesktop ?
+				document.querySelectorAll( '.menu-modal .expanded-menu .modal-menu li' ) :
+				document.querySelectorAll( '.menu-modal .mobile-menu .modal-menu li' );
 
-			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu > li' );
+			var firstLevelmenuLinks = isDesktop ?
+				document.querySelectorAll( '.menu-modal .expanded-menu .modal-menu > li' ) :
+				document.querySelectorAll( '.menu-modal .mobile-menu .modal-menu > li' );
+
+			var lastMenuLinkToggleButton = firstLevelmenuLinks[firstLevelmenuLinks.length - 1].querySelector( '.sub-menu-toggle' ) || undefined;
+			var lastMenuLinkHasSubClosedMenu = lastMenuLinkToggleButton && ! lastMenuLinkToggleButton.classList.contains( 'active' );
+
+			var lastToogleSubMenuLinkNotOpened = isDesktop ?
+				document.querySelector( '.menu-modal .expanded-menu .modal-menu .sub-menu .sub-menu-toggle:not(.active)' ) :
+				document.querySelector( '.menu-modal .mobile-menu .sub-menu .sub-menu-toggle:not(.active)' );
+
+			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu li' );
 			var hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
 			var lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
 			var focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
 			var focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
+
 			var lastMenuItem = lastModalMenuItems[lastModalMenuItems.length - 1];
 
-			var isFirstModalItem = isMobileMenu ?
-				event.target === mobileMenuButton :
-				focusedElementIsInsideModal && event.target === desktopMenuButton;
+			var isFirstModalItem = event.target === closeMenuButton;
 
 			var isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ?
 				focusedElementParentLi[0].className === lastMenuItem.className :
 				undefined;
 
+			if ( lastMenuLinkToggleButton && lastMenuLinkHasSubClosedMenu && ! hasSocialMenu ) { // Last 1st level item has submenu and is closed
+				isLastModalItem = event.target === lastMenuLinkToggleButton;
+				lastMenuItem = lastMenuLinkToggleButton;
+			}
+			if ( lastMenuLinkToggleButton && ! lastMenuLinkHasSubClosedMenu && ! hasSocialMenu ) { // Last 1st level item has submenu is opened
+				isLastModalItem = event.target === lastToogleSubMenuLinkNotOpened || event.target === menuLinks[menuLinks.length - 1].querySelector( 'a' );
+				lastMenuItem = lastToogleSubMenuLinkNotOpened || menuLinks[menuLinks.length - 1].querySelector( 'a' );
+			}
+
 			if ( ! event.shiftKey && event.key === 'Tab' && isLastModalItem ) {
 				// Forward
 				event.preventDefault();
-				firstMenuItem.focus();
+				closeMenuButton.focus();
 			}
 			if ( event.shiftKey && event.key === 'Tab' && isFirstModalItem ) {
 				// Backward
 				event.preventDefault();
-				lastMenuItem.querySelector( 'a' ).focus();
+				if ( lastMenuItem.querySelector( 'a' ) ) {
+					lastMenuItem.querySelector( 'a' ).focus();
+				} else {
+					lastMenuItem.focus();
+				}
 			}
 		} );
 	}
