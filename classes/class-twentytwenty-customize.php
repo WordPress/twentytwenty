@@ -410,6 +410,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 *
 		 * @param string $input The input from the setting.
 		 * @param object $setting The selected setting.
+		 *
+		 * @return string $input|$setting->default The input from the setting or the default setting.
 		 */
 		public static function sanitize_select( $input, $setting ) {
 			$input   = sanitize_key( $input );
@@ -420,7 +422,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		/**
 		 * Sanitize boolean for checkbox.
 		 *
-		 * @param bool $checked Wethere or not a blox is checked.
+		 * @param bool $checked Whether or not a box is checked.
+		 *
+		 * @return bool
 		 */
 		public static function sanitize_checkbox( $checked ) {
 			return ( ( isset( $checked ) && true === $checked ) ? true : false );
