@@ -385,7 +385,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 							<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php _e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
+							<?php _ex( 'In', 'A string that is output before one or more categories', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
 						</span>
 					</li>
 					<?php
