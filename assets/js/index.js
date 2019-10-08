@@ -526,8 +526,8 @@ twentytwenty.primaryMenu = {
 		if ( ! buttons ) {
 			return false;
 		}
-		
-		buttons.forEach( function( button ) { 
+
+		buttons.forEach( function( button ) {
 			button.addEventListener( 'click', function( event ) {
 				event.preventDefault();
 				button.previousSibling.focus();
