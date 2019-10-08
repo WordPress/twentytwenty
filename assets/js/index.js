@@ -528,7 +528,7 @@ twentytwenty.primaryMenu = {
 		}
 
 		buttons.forEach( function( button ) {
-			button.addEventListener( 'click', function( event ) {
+			button.addEventListener( 'touchend', function( event ) {
 				event.preventDefault();
 				button.previousSibling.focus();
 			} );

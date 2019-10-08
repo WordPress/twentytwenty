@@ -1515,6 +1515,7 @@ ul.primary-menu {
 	position: absolute;
 	transform: rotate(-45deg);
 	width: 1.3rem;
+	z-index: 2;
 }
 
 .primary-menu .icon::before,
