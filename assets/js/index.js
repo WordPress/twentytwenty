@@ -519,8 +519,9 @@ twentytwenty.primaryMenu = {
 	},
 
 	toggleSubMenus: function() {
-		var buttons;
+		var buttons, parent;
 
+		parent = document.querySelector( '.primary-menu' );
 		buttons = document.querySelectorAll( '.menu-item > .icon' );
 
 		if ( ! buttons ) {
@@ -528,10 +529,16 @@ twentytwenty.primaryMenu = {
 		}
 
 		buttons.forEach( function( button ) {
-			button.addEventListener( 'touchend', function( event ) {
-				event.preventDefault();
+			button.addEventListener( 'touchend', function( e ) {
+				e.preventDefault();
 				button.previousSibling.focus();
 			} );
+		} );
+
+		document.documentElement.addEventListener( 'touchend', function( e ) {
+			if ( ! parent.contains( e.target ) ) {
+				parent.blur();
+			}
 		} );
 	},
 
