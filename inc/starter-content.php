@@ -122,7 +122,7 @@ function twentytwenty_get_starter_content() {
 						'<p class="has-text-align-center">' . __( 'Members get access to exclusive exhibits and sales. Our memberships cost $99.99 and are billed annually.', 'twentytwenty' ) . '</p>',
 						'<!-- /wp:paragraph -->',
 						'<!-- wp:button {"align":"center"} -->',
-						'<div class="wp-block-button aligncenter"><a class="wp-block-button__link" href="http://local.themereview/?page_id=2">' . __( 'Join the Club', 'twentytwenty' ) . '</a></div>',
+						'<div class="wp-block-button aligncenter"><a class="wp-block-button__link" href="https://make.wordpress.org/core/2019/09/27/block-editor-theme-related-updates-in-wordpress-5-3/">' . __( 'Join the Club', 'twentytwenty' ) . '</a></div>',
 						'<!-- /wp:button --></div></div>',
 						'<!-- /wp:group --></div></div>',
 						'<!-- /wp:group -->',
