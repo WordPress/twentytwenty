@@ -10,7 +10,7 @@
 
 	// When ready, do some magic.
 	api.bind( 'ready', function() {
-		api.previewer.bind( 'get-cover-post', function( queriedPost ) {
+		api.previewer.bind( 'get-cover-post', function( coverPost ) {
 			var coverSection, coverData, description, descElement, info, button;
 
 			coverSection = api.section( 'cover_template_options' );
@@ -20,6 +20,7 @@
 			description = coverSection.params.description;
 			info = description + '<br /><br />' + coverData.load_one + '<br /><br />';
 
+			// Add the preview button & description.
 			function addButton() {
 				button = document.createElement( 'button' );
 				button.type = 'button';
@@ -36,15 +37,18 @@
 				descElement.append( button );
 			}
 
+			// Remove the preview button & description.
 			function removeButton() {
 				descElement.html( description );
 			}
 
-			if ( queriedPost && queriedPost.has_cover ) {
+			// Check if the current post has a cover template.
+			if ( coverPost && coverPost.has_cover ) {
 				removeButton();
 			} else {
 				addButton();
 
+				// Hide all the controls if the current post doesn't match.
 				coverSection.controls().forEach( function( control ) {
 					control.deactivate( { duration: 0 } );
 				} );
