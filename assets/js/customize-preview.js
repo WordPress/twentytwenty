@@ -1,4 +1,4 @@
-/* global twentyTwentyBgColors, twentyTwentyPreviewEls, jQuery, _, wp */
+/* global twentyTwentyBgColors, twentyTwentyPreviewEls, twentyTwentyCoverCheck, jQuery, _, wp */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -8,6 +8,18 @@
  */
 
 ( function( $, api, _ ) {
+	api.bind( 'preview-ready', function() {
+		api.preview.bind( 'active', function() {
+			var info;
+
+			if ( 'undefined' !== typeof twentyTwentyCoverCheck ) {
+				info = twentyTwentyCoverCheck;
+			}
+
+			api.preview.send( 'get-cover-post', info || null );
+		} );
+	} );
+
 	/**
 	 * Return a value for our partial refresh.
 	 *

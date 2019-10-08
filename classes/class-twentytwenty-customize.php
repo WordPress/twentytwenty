@@ -253,6 +253,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'capability'  => 'edit_theme_options',
 					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'twentytwenty' ),
 					'priority'    => 42,
+					'type'        => 'cover_tmpl_options',
 				)
 			);
 

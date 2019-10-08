@@ -203,6 +203,21 @@ function twentytwenty_register_scripts() {
 	wp_enqueue_script( 'twentytwenty-js', get_template_directory_uri() . '/assets/js/index.js', array(), $theme_version, false );
 	wp_script_add_data( 'twentytwenty-js', 'async', true );
 
+	if ( is_customize_preview() && is_singular() ) {
+		$data = get_queried_object();
+		$tmpl = get_post_meta( $data->ID, '_wp_page_template', true );
+
+		wp_add_inline_script(
+			'twentytwenty-js',
+			sprintf(
+				'var twentyTwentyCoverCheck = %s',
+				wp_json_encode( array(
+					'id'        => $data->ID,
+					'has_cover' => 'templates/template-cover.php' === $tmpl,
+				) )
+			)
+		);
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
@@ -514,6 +529,29 @@ function twentytwenty_customize_controls_enqueue_scripts() {
 	// Add script for controls.
 	wp_enqueue_script( 'twentytwenty-customize-controls', get_template_directory_uri() . '/assets/js/customize-controls.js', array( 'twentytwenty-color-calculations', 'customize-controls', 'underscore', 'jquery' ), $theme_version, false );
 	wp_localize_script( 'twentytwenty-customize-controls', 'twentyTwentyBgColors', twentytwenty_get_customizer_color_vars() );
+
+	// Get one post with the cover page template set and make its url available in the Customizer. 
+	$templated = get_posts( array(
+		'numberposts' => 1,
+		'meta_query'  => array(
+			array(
+				'key'   => '_wp_page_template',
+				'value' => 'templates/template-cover.php',
+			),
+		),
+	) );
+
+	$post_url = empty( $templated ) ? 0 : esc_url_raw( get_permalink( $templated[0]->ID ) );
+
+	wp_localize_script( 'twentytwenty-customize', 
+		'twentyTwentyPostWithCover', 
+		array(
+			'post_url'    => $post_url,
+			'load_one'    => esc_html__( 'The current previewed post does not use a Cover template. Load such a post?', 'twentytwenty' ),
+			'load_button' => esc_html__( 'Preview a Post', 'twentytwenty' ),
+			'none_found'  => esc_html__( 'You currently do not have a post/page that uses the Cover template.', 'twentytwenty' ),
+		) 
+	);
 }
 
 add_action( 'customize_controls_enqueue_scripts', 'twentytwenty_customize_controls_enqueue_scripts' );
