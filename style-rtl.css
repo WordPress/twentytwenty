@@ -2257,10 +2257,21 @@ body:not(.singular) main > article:first-of-type {
 }
 
 .entry-categories-inner {
+	margin: -0.5rem -1rem 0 0;
+}
+
+.entry-categories .post-categories {
 	justify-content: center;
 	display: flex;
 	flex-wrap: wrap;
-	margin: -0.5rem -1rem 0 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.entry-categories li {
+	margin: 0;
+	line-height: 1.25;
 }
 
 .entry-categories a {
@@ -2388,6 +2399,15 @@ h2.entry-title {
 .post-meta .post-tags .meta-icon svg {
 	width: 1.8rem;
 	height: 1.8rem;
+}
+
+.post-meta .post-tags .meta-list {
+	margin: 0;
+}
+
+.post-meta .post-tags .meta-list {
+	display: inline-block;
+	margin: 0;
 }
 
 .post-meta svg * {

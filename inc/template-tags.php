@@ -402,9 +402,9 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 							<span class="screen-reader-text"><?php _e( 'Tags', 'twentytwenty' ); ?></span>
 							<?php twentytwenty_the_theme_svg( 'tag' ); ?>
 						</span>
-						<span class="meta-text">
-							<?php the_tags( '', ', ', '' ); ?>
-						</span>
+						<ul class="meta-list">
+							<?php the_tags( '<li>', ',</li> <li> ', '</li>' ); ?>
+						</ul>
 					</li>
 					<?php
 
