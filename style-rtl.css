@@ -5342,6 +5342,7 @@ a.to-the-top > * {
 		position: static;
 		padding-left: 20px;
 		font-size: 15px;
+		color: inherit;
 	}
 
 	/* Menu Modal ---------------------------- */
