@@ -1513,7 +1513,6 @@ ul.primary-menu {
 	display: block;
 	height: 0.7rem;
 	position: absolute;
-	pointer-events: none;
 	transform: rotate(-45deg);
 	width: 1.3rem;
 }
@@ -1549,7 +1548,7 @@ ul.primary-menu {
 }
 
 .primary-menu > li.menu-item-has-children > a {
-	padding-right: 2rem;
+	margin-right: 2rem;
 }
 
 .primary-menu > li > .icon {

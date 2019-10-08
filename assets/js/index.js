@@ -515,6 +515,24 @@ twentytwenty.primaryMenu = {
 
 	init: function() {
 		this.focusMenuWithChildren();
+		this.toggleSubMenus();
+	},
+
+	toggleSubMenus: function() {
+		var buttons;
+
+		buttons = document.querySelectorAll( '.menu-item > .icon' );
+
+		if ( ! buttons ) {
+			return false;
+		}
+		
+		buttons.forEach( function( button ) { 
+			button.addEventListener( 'click', function( event ) {
+				event.preventDefault();
+				button.previousSibling.focus();
+			} );
+		} );
 	},
 
 	// The focusMenuWithChildren() function implements Keyboard Navigation in the Primary Menu
