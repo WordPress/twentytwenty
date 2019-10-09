@@ -11,26 +11,40 @@
 	// When ready, do some magic.
 	api.bind( 'ready', function() {
 		api.previewer.bind( 'get-cover-post', function( coverPost ) {
-			var coverSection, coverData, description, descElement, info, button;
+			var coverSection, coverData, description, descElement, notice, info, button, postUrl, urlCheck;
 
 			coverSection = api.section( 'cover_template_options' );
 			coverData = twentyTwentyPostWithCover;
+			postUrl = coverData.post_url;
+			urlCheck = postUrl === 'none';
+			notice = urlCheck ? coverData.none_found : coverData.load_one;
 			descElement = coverSection.contentContainer.find( '.customize-section-description' );
 
 			description = coverSection.params.description;
-			info = description + '<br /><br />' + coverData.load_one + '<br /><br />';
+			info = description + '<br /><br />' + notice + '<br /><br />';
 
 			// Add the preview button & description.
 			function addButton() {
+				var buttonText;
+
+				buttonText = urlCheck ? coverData.create_button : coverData.load_button;
+
 				button = document.createElement( 'button' );
 				button.type = 'button';
-				button.textContent = coverData.load_button;
+				button.textContent = buttonText;
+				button.setAttribute( 'aria-label', buttonText );
 				button.classList.add( 'button' );
 
 				button.addEventListener( 'click', function( e ) {
 					e.preventDefault();
-					api.previewer.previewUrl.set( coverData.post_url );
-					descElement.html( description );
+
+					if ( urlCheck ) {
+						window.location.href = coverData.new_post;
+						button.disabled = true;
+					} else {
+						api.previewer.previewUrl.set( postUrl );
+						descElement.html( description );
+					}
 				} );
 
 				descElement.html( info );

@@ -16,7 +16,7 @@
 				info = twentyTwentyCoverCheck;
 			}
 
-			api.preview.send( 'get-cover-post', info || null );
+			api.preview.send( 'get-cover-post', info || false );
 		} );
 	} );
 

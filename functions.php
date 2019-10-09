@@ -541,15 +541,17 @@ function twentytwenty_customize_controls_enqueue_scripts() {
 		),
 	) );
 
-	$post_url = empty( $templated ) ? 0 : esc_url_raw( get_permalink( $templated[0]->ID ) );
+	$post_url = empty( $templated ) ? 'none' : esc_url_raw( get_permalink( $templated[0]->ID ) );
 
 	wp_localize_script( 'twentytwenty-customize', 
 		'twentyTwentyPostWithCover', 
 		array(
-			'post_url'    => $post_url,
-			'load_one'    => esc_html__( 'The current previewed post does not use a Cover template. Load such a post?', 'twentytwenty' ),
-			'load_button' => esc_html__( 'Preview a Post', 'twentytwenty' ),
-			'none_found'  => esc_html__( 'You currently do not have a post/page that uses the Cover template.', 'twentytwenty' ),
+			'post_url'      => $post_url,
+			'load_one'      => esc_html__( 'The current previewed post does not use a Cover template. Load such a post?', 'twentytwenty' ),
+			'load_button'   => esc_attr__( 'Preview a Post', 'twentytwenty' ),
+			'none_found'    => esc_html__( 'You currently do not have a post/page that uses the Cover template.', 'twentytwenty' ),
+			'create_button' => esc_attr__( 'Create a Post', 'twentytwenty' ),
+			'new_post'      => esc_url_raw( admin_url( 'post-new.php' ) ),
 		) 
 	);
 }
