@@ -482,28 +482,6 @@ function twentytwenty_block_editor_settings() {
 add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 
 /**
- * Modify the more tag.
- *
- * @param string $link The default HTML output for the more tag.
- *
- * @return string $link The modified more tag.
- */
-function twentytwenty_read_more_tag( $link ) {
-	$search = array(
-		'/class="(.*)"/iU',
-		'/<\/a>/iU',
-	);
-
-	$replace = array(
-		'class="$1 faux-button"',
-		sprintf( '<span class="screen-reader-text">"%1$s"</span></a>', esc_html( get_the_title( get_the_ID() ) ) ),
-	);
-
-	return preg_replace( $search, $replace, $link );
-}
-add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
-
-/**
  * Enqueues scripts for customizer controls & settings.
  *
  * @since 1.0.0
