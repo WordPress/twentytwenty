@@ -490,8 +490,8 @@ add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
  */
 function twentytwenty_read_more_tag( $link ) {
 	$search = array(
-	  '/class="(.*)"/iU',
-	  '/<\/a>/iU',
+		'/class="(.*)"/iU',
+		'/<\/a>/iU',
 	);
 
 	$replace = array(
