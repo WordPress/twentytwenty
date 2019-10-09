@@ -8,7 +8,6 @@
 		}
 	} );
 
-	// When ready, do some magic.
 	api.bind( 'ready', function() {
 		api.previewer.bind( 'get-cover-post', function( coverPost ) {
 			var coverSection, coverData, description, descElement, notice, info, button, postUrl, urlCheck;
@@ -56,16 +55,37 @@
 				descElement.html( description );
 			}
 
+			// Show or hide the controls.
+			// Also, make sure the controls don't reapear for a slight second.
+			function controlsHideShow( show ) {
+				var activeOrigin;
+
+				activeOrigin = api.Control.prototype.onChangeActive;
+
+				coverSection.controls().forEach( function( control ) {
+					control.onChangeActive = activeOrigin;
+
+					if ( show ) {
+						control.container.slideDown();
+					} else {
+						control.deactivate( {
+							completeCallback: function() {
+								control.onChangeActive = function() {};
+							}
+						} );
+					}
+				} );
+			}
+
 			// Check if the current post has a cover template.
 			if ( coverPost && coverPost.has_cover ) {
+				// Show controls and hide action button
 				removeButton();
+				controlsHideShow( true );
 			} else {
+				// Hide controls and show action button
 				addButton();
-
-				// Hide all the controls if the current post doesn't match.
-				coverSection.controls().forEach( function( control ) {
-					control.deactivate( { duration: 0 } );
-				} );
+				controlsHideShow( false );
 			}
 		} );
 
