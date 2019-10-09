@@ -59,4 +59,4 @@ Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  
 
 ### Usage instructions
 
-- After making a change to a CSS, which affects RTL, run `npm run build:rtl` from within the theme directory to build `style-rtl.css` with your changes.
+- After making a change to a CSS, which affects RTL or Browser vendor prefixes, run `npm run build` from within the theme directory to build the CSS and RTL CSS files with your changes.
