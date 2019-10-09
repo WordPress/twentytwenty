@@ -29,11 +29,12 @@ if ( ! Element.prototype.closest ) {
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
 if ( window.NodeList && ! NodeList.prototype.forEach ) {
 	NodeList.prototype.forEach = function( callback, thisArg ) {
-		var i;
+		var i,
+			len = this.length;
 
 		thisArg = thisArg || window;
 
-		for ( i = 0; i < this.length; i++ ) {
+		for ( i = 0; i < len; i++ ) {
 			callback.call( thisArg, this[ i ], i, this );
 		}
 	};
