@@ -489,7 +489,7 @@ add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
  * @return string $link The modified more tag.
  */
 function twentytwenty_read_more_tag( $link ) {
-	return preg_replace( '/class="(.*)"/iU', 'class="$1 faux-button"', $link);
+	return preg_replace( '/class="(.*)"/iU', 'class="$1 faux-button"', $link );
 }
 add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
