@@ -93,10 +93,8 @@ twentytwenty.coverModals = {
 	// Handle cover modals when they're toggled
 	onToggle: function() {
 		document.querySelector( '.cover-modal' ).addEventListener( 'toggled', function( event ) {
-			var modal, body;
-
-			modal = event.target;
-			body = document.body;
+			var modal = event.target,
+				body = document.body;
 
 			if ( modal.classList.contains( 'active' ) ) {
 				body.classList.add( 'showing-modal' );
@@ -138,18 +136,15 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals, htmlStyle, adminBar, _doc, _win;
-
-		_doc = document;
-		_win = window;
-		modals = _doc.querySelectorAll( '.cover-modal' );
-		htmlStyle = _doc.documentElement.style;
-		adminBar = _doc.querySelector( '#wpadminbar' );
+		var _doc = document,
+			_win = window,
+			modals = _doc.querySelectorAll( '.cover-modal' ),
+			htmlStyle = _doc.documentElement.style,
+			adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
-			var currentScroll, height;
-
-			currentScroll = _win.pageYOffset;
+			var height,
+				currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
 				height = currentScroll + adminBar.getBoundingClientRect().height;
@@ -175,12 +170,10 @@ twentytwenty.coverModals = {
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
-				var styles, paddingTop, offsetY, mQuery;
-
-				styles = htmlStyles();
-				offsetY = _win.pageYOffset;
-				paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px';
-				mQuery = _win.matchMedia( '(max-width: 600px)' );
+				var styles = htmlStyles(),
+					offsetY = _win.pageYOffset,
+					paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px',
+					mQuery = _win.matchMedia( '(max-width: 600px)' );
 
 				if ( event.target !== modal ) {
 					return;
@@ -214,9 +207,7 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
-					var clickedEl;
-
-					clickedEl = twentytwenty.toggles.clickedEl;
+					var clickedEl = twentytwenty.toggles.clickedEl;
 
 					modal.classList.remove( 'show-modal' );
 
@@ -244,9 +235,8 @@ twentytwenty.coverModals = {
 
 	// Untoggle a modal
 	untoggleModal: function( modal ) {
-		var modalToggle, modalTargetClass;
-
-		modalToggle = false;
+		var modalTargetClass,
+			modalToggle = false;
 
 		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string
 		// The modal-target-string must match the string toggles use to target the modal
@@ -284,9 +274,8 @@ twentytwenty.intrinsicRatioVideos = {
 
 	makeFit: function() {
 		document.querySelectorAll( 'iframe, object, video' ).forEach( function( video ) {
-			var container, ratio, iTargetWidth;
-
-			container = video.parentNode;
+			var ratio, iTargetWidth,
+				container = video.parentNode;
 
 			// Skip videos we want to ignore
 			if ( video.classList.contains( 'intrinsic-ignore' ) || video.parentNode.classList.contains( 'intrinsic-ignore' ) ) {
@@ -380,10 +369,9 @@ twentytwenty.smoothScroll = {
 
 		if ( scrollToElement ) {
 			scrollToElement.addEventListener( 'click', function( event ) {
-				var target, originalOffset, additionalOffset, scrollOffset, scrollSpeed;
-
-				// Figure out element to scroll to
-				target = event.target.dataset.twentytwentyScrollTo;
+				var originalOffset, additionalOffset, scrollOffset, scrollSpeed,
+					// Figure out element to scroll to
+					target = event.target.dataset.twentytwentyScrollTo;
 
 				// Make sure said element exists
 				if ( target ) {
@@ -436,10 +424,9 @@ twentytwenty.modalMenu = {
 	// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			var closeMenuButton, mobileMenu, isDesktop, menuLinks, firstLevelmenuLinks, lastMenuLinkToggleButton, lastToogleSubMenuLinkNotOpened, lastMenuLinkHasSubClosedMenu, socialLinks, hasSocialMenu, lastModalMenuItems, focusedElementParentLi, focusedElementIsInsideModal, lastMenuItem, isFirstModalItem, isLastModalItem;
-
-			closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
-			mobileMenu = document.querySelector( '.mobile-menu' );
+			var isDesktop, menuLinks, firstLevelmenuLinks, lastMenuLinkToggleButton, lastToogleSubMenuLinkNotOpened, lastMenuLinkHasSubClosedMenu, socialLinks, hasSocialMenu, lastModalMenuItems, focusedElementParentLi, focusedElementIsInsideModal, lastMenuItem, isFirstModalItem, isLastModalItem,
+				closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' ),
+				mobileMenu = document.querySelector( '.mobile-menu' );
 
 			if ( mobileMenu ) {
 				return false;
@@ -521,9 +508,8 @@ twentytwenty.primaryMenu = {
 	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
 	focusMenuWithChildren: function() {
 		// Get all the link elements within the primary menu.
-		var menu, links, i, len;
-
-		menu = document.querySelector( '.primary-menu-wrapper' );
+		var links, i, len,
+			menu = document.querySelector( '.primary-menu-wrapper' );
 
 		if ( ! menu ) {
 			return false;
@@ -577,15 +563,13 @@ twentytwenty.toggles = {
 	},
 
 	performToggle: function( element, instantly ) {
-		var self, toggle, _doc, targetString, target, timeOutTime, classToToggle, activeClass;
-
-		self = this;
-		_doc = document;
-
-		// Get our targets
-		toggle = element;
-		targetString = toggle.dataset.toggleTarget;
-		activeClass = 'active';
+		var target, timeOutTime, classToToggle,
+			self = this,
+			_doc = document,
+			// Get our targets
+			toggle = element,
+			targetString = toggle.dataset.toggleTarget,
+			activeClass = 'active';
 
 		// Elements to focus after modals are closed
 		if ( ! _doc.querySelectorAll( '.show-modal' ).length ) {
@@ -616,11 +600,10 @@ twentytwenty.toggles = {
 		}
 
 		setTimeout( function() {
-			var focusElement, duration, newTarget, subMenued;
-
-			subMenued = target.classList.contains( 'sub-menu' );
-			newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target;
-			duration = toggle.dataset.toggleDuration;
+			var focusElement,
+				subMenued = target.classList.contains( 'sub-menu' ),
+				newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target,
+				duration = toggle.dataset.toggleDuration;
 
 			// Toggle the target of the clicked toggle
 			if ( toggle.dataset.toggleType === 'slidetoggle' && ! instantly && duration !== '0' ) {
@@ -791,11 +774,9 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
  * @param {number} duration
  */
 function twentytwentyMenuToggle( target, duration ) {
-	var initialPositions = [];
-	var finalPositions = [];
-	var initialParentHeight, finalParentHeight;
-	var menu, menuItems;
-	var transitionListener;
+	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
+		initialPositions = [],
+		finalPositions = [];
 
 	if ( ! target ) {
 		return;
