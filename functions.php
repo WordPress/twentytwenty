@@ -482,16 +482,14 @@ function twentytwenty_block_editor_settings() {
 add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 
 /**
- * Read More Link
- * Overwrite default (more ...) tag
+ * Modify the more tag.
+ *
+ * @param string $link The default HTML output for the more tag.
+ *
+ * @return string $link The modified more tag.
  */
-function twentytwenty_read_more_tag() {
-	return sprintf(
-		'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		__( 'Continue reading', 'twentytwenty' ),
-		esc_html( get_the_title( get_the_ID() ) )
-	);
+function twentytwenty_read_more_tag( $link ) {
+	return preg_replace( '/class="(.*)"/iU', 'class="$1 faux-button"', $link);
 }
 add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
