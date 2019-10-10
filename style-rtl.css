@@ -117,8 +117,6 @@ html {
 
 body {
 	background: #f5efe0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	color: #000;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
@@ -137,8 +135,6 @@ body {
 *,
 *::before,
 *::after {
-	-webkit-box-sizing: inherit;
-	-moz-box-sizing: inherit;
 	box-sizing: inherit;
 	-webkit-font-smoothing: antialiased;
 	word-break: break-word;
@@ -178,6 +174,7 @@ path {
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
 	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
@@ -193,6 +190,7 @@ path {
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip: auto !important;
+	-webkit-clip-path: none;
 	clip-path: none;
 	color: #21759b;
 	display: block;
@@ -1004,7 +1002,6 @@ button.toggle {
 .no-select {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
@@ -4325,6 +4322,36 @@ a.to-the-top > * {
 
 }
 
+@media ( max-width: 599px ) {
+
+	/* Blocks -------------------------------- */
+
+	/* BLOCK: COLUMNS */
+
+	.alignfull .wp-block-column > p:not(.has-background-color),
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
+		max-width: calc(100% - 4rem);
+		margin: auto;
+	}
+}
+
+@media ( min-width: 600px ) {
+
+	/* Blocks -------------------------------- */
+
+	/* BLOCK: COLUMNS */
+
+	.alignfull .wp-block-column:nth-child(odd) > p:not(.has-background-color),
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-right: 2rem;
+	}
+
+	.alignfull .wp-block-column:nth-child(even) > p:not(.has-background-color),
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-left: 2rem;
+	}
+}
+
 @media ( min-width: 660px ) {
 
 	/* Blocks -------------------------------- */
@@ -5203,6 +5230,23 @@ a.to-the-top > * {
 
 }
 
+@media (min-width: 782px) {
+
+	/* Blocks -------------------------------- */
+
+	/* BLOCK: COLUMNS */
+
+	.alignfull .wp-block-column:first-child > p,
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-right: 2rem;
+	}
+
+	.alignfull .wp-block-column:last-child > p,
+	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-left: 2rem;
+	}
+}
+
 @media ( min-width: 1000px ) {
 
 
@@ -5345,6 +5389,7 @@ a.to-the-top > * {
 		position: static;
 		padding-left: 20px;
 		font-size: 15px;
+		color: inherit;
 	}
 
 	/* Menu Modal ---------------------------- */
