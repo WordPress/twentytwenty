@@ -9,68 +9,96 @@
 	} );
 
 	api.bind( 'ready', function() {
+		var coverBtn, coverData, postUrl, urlCheck, notice;
+
+		coverData = twentyTwentyPostWithCover;
+		postUrl = coverData.post_url;
+		urlCheck = postUrl === 'none';
+		notice = urlCheck ? coverData.none_found : coverData.load_one;
+
+		// Create a dummy button.
+		coverBtn = new api.Control( 'cover_btn', {
+			section: 'cover_template_options',
+			description: notice,
+			setting: new api.Value(), // Not using it now
+			type: 'button',
+			priority: 0
+		} );
+
+		api.control.add( coverBtn );
+
+		// Get the values from the preview window.
 		api.previewer.bind( 'get-cover-post', function( coverPost ) {
-			var coverSection, coverData, description, descElement, notice, info, button, postUrl, urlCheck;
+			var coverSection, coverBtnWrap, coverBtnEl, coverBtnElDescription;
 
+			coverBtnWrap = coverBtn.container;
+			coverBtnElDescription = coverBtnWrap.find( '.customize-control-description' );
+			coverBtnEl = coverBtnWrap.find( '.button' );
 			coverSection = api.section( 'cover_template_options' );
-			coverData = twentyTwentyPostWithCover;
-			postUrl = coverData.post_url;
-			urlCheck = postUrl === 'none';
-			notice = urlCheck ? coverData.none_found : coverData.load_one;
-			descElement = coverSection.contentContainer.find( '.customize-section-description' );
 
-			description = coverSection.params.description;
-			info = description + '<br /><br />' + notice + '<br /><br />';
+			function changeDetails() {
+				coverBtnEl.text( urlCheck ? coverData.create_button : coverData.load_button );
+				coverBtnElDescription.text( notice );
 
-			// Add the preview button & description.
-			function addButton() {
-				var buttonText;
-
-				buttonText = urlCheck ? coverData.create_button : coverData.load_button;
-
-				button = document.createElement( 'button' );
-				button.type = 'button';
-				button.textContent = buttonText;
-				button.setAttribute( 'aria-label', buttonText );
-				button.classList.add( 'button' );
-
-				button.addEventListener( 'click', function( e ) {
+				coverBtnEl.on( 'click', function( e ) {
 					e.preventDefault();
 
 					if ( urlCheck ) {
 						window.location.href = coverData.new_post;
-						button.disabled = true;
+						coverBtnEl.attr( 'disabled', true );
 					} else {
 						api.previewer.previewUrl.set( postUrl );
-						descElement.html( description );
+						coverBtnEl.text( coverData.loading );
+						coverBtnEl.attr( 'disabled', true );
 					}
 				} );
-
-				descElement.html( info );
-				descElement.append( button );
-			}
-
-			// Remove the preview button & description.
-			function removeButton() {
-				descElement.html( description );
 			}
 
 			// Show or hide the controls.
-			// Also, make sure the controls don't reapear for a slight second.
+			// Also, make sure the controls don't reappear for a slight second.
 			function controlsHideShow( show ) {
-				var activeOrigin;
+				var activeOrigin, controls;
 
+				controls = coverSection.controls();
 				activeOrigin = api.Control.prototype.onChangeActive;
 
-				coverSection.controls().forEach( function( control ) {
+				if ( ! controls.length ) {
+					return false;
+				}
+
+				controls.forEach( function( control, i ) {
+					var focusCondition;
+
+					focusCondition = i === ( controls.length - 1 ) && coverSection.expanded();
 					control.onChangeActive = activeOrigin;
 
+					if ( control.id === 'cover_btn' ) {
+						return false;
+					}
+
 					if ( show ) {
-						control.container.slideDown();
+						control.container.slideDown( 200, function() {
+							coverBtn.deactivate( {
+								completeCallback: function() {
+									if ( focusCondition ) {
+										api.control( 'cover_template_fixed_background' ).focus();
+									}
+								}
+							} );
+						} );
 					} else {
 						control.deactivate( {
 							completeCallback: function() {
 								control.onChangeActive = function() {};
+								changeDetails();
+								coverBtnEl.attr( 'disabled', false );
+								coverBtn.activate( {
+									completeCallback: function() {
+										if ( focusCondition ) {
+											coverBtn.focus();
+										}
+									}
+								} );
 							}
 						} );
 					}
@@ -80,11 +108,10 @@
 			// Check if the current post has a cover template.
 			if ( coverPost && coverPost.has_cover ) {
 				// Show controls and hide action button
-				removeButton();
 				controlsHideShow( true );
 			} else {
 				// Hide controls and show action button
-				addButton();
+				changeDetails();
 				controlsHideShow( false );
 			}
 		} );
