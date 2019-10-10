@@ -34,7 +34,7 @@ function twentytwenty_get_starter_content() {
 
 		// Specify the core-defined pages to create and add custom thumbnails to some of them.
 		'posts'     => array(
-			'front' => array(
+			'front'   => array(
 				'post_type'    => 'page',
 				'post_title'   => __( 'The New UMoMA Opens its Doors', 'twentytwenty' ),
 				'post_content' => join(
@@ -129,8 +129,22 @@ function twentytwenty_get_starter_content() {
 					)
 				),
 			),
-			'about',
-			'contact',
+			'about'   => array(
+				'post_type'    => 'page',
+				'post_title'   => _x( 'About', 'Theme starter content', 'twentytwenty' ),
+				'post_content' => sprintf(
+					'<!-- wp:paragraph --><p>%s</p><!-- /wp:paragraph -->',
+					_x( 'You might be an artist who would like to introduce yourself and your work here or maybe you&rsquo;re a business with a mission to describe.', 'Theme starter content', 'twentytwenty' )
+				),
+			),
+			'contact' => array(
+				'post_type'    => 'page',
+				'post_title'   => _x( 'Contact', 'Theme starter content', 'twentytwenty' ),
+				'post_content' => sprintf(
+					'<!-- wp:paragraph --><p>%s</p><!-- /wp:paragraph -->',
+					_x( 'This is a page with some basic contact information, such as an address and phone number. You might also try a plugin to add a contact form.', 'Theme starter content', 'twentytwenty' )
+				),
+			),
 			'blog',
 		),
 
