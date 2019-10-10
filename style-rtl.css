@@ -4810,16 +4810,16 @@ a.to-the-top > * {
 	
 	.pagination-single-inner .next-post .arrow{
 		transform: rotate(-180deg);
-		-ms-transform: rotate(-180deg); /* IE 9 */
-  		-webkit-transform: rotate(-180deg); /* Safari */
+		-ms-transform: rotate(180deg); /* IE 9 */
+  		-webkit-transform: rotate(180deg); /* Safari */
 	}
 
 	.pagination-single-inner .previous-post .arrow{
 		transform: rotate(180deg);
-		-ms-transform: rotate(180deg); /* IE 9 */
-  		-webkit-transform: rotate(180deg); /* Safari */
+		-ms-transform: rotate(-180deg); /* IE 9 */
+  		-webkit-transform: rotate(-180deg); /* Safari */
 	}
-	
+
 	/* Blocks -------------------------------- */
 
 	/* BLOCK: SHARED MEDIA STYLES */
