@@ -163,10 +163,6 @@ body {
 
 /* Base Transitions -------------------------- */
 
-a,
-path {
-	transition: all 0.15s linear;
-}
 
 
 /* Screen Reader Text ------------------------ */
