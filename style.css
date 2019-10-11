@@ -1562,7 +1562,8 @@ ul.primary-menu {
 }
 
 .primary-menu a:hover,
-.primary-menu a:focus {
+.primary-menu a:focus,
+.primary-menu .current_page_ancestor {
 	text-decoration: underline;
 }
 
