@@ -63,3 +63,8 @@ Version 1.0:
 | @mafzal9 | @phpdocs |
 | @anace | @acalfieri |
 | @itowhid06 | @itowhid06 |
+| @luminuu | @luminuu |
+| @utsavtilava | @utsavtilava |
+| @glauberm | @glauberm |
+| @maheshwaghmare | @mahesh901122 |
+| @amolv | @amolv |
