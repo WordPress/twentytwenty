@@ -4822,20 +4822,24 @@ a.to-the-top > * {
 		margin: 0 0 0 2rem;
 	}
 
-	.pagination-single-inner .next-post .arrow{
+	.pagination-single-inner .next-post .arrow {
+
 		/*rtl:begin:ignore*/
 		transform: rotate(-180deg);
 		-ms-transform: rotate(-180deg); /* IE 9 */
   		-webkit-transform: rotate(-180deg); /* Safari */
 		/*rtl:end:ignore*/
+
 	}
 
-	.pagination-single-inner .previous-post .arrow{
+	.pagination-single-inner .previous-post .arrow {
+
 		/*rtl:begin:ignore*/
 		transform: rotate(180deg);
 		-ms-transform: rotate(180deg); /* IE 9 */
 		-webkit-transform: rotate(180deg); /* Safari */
 		/*rtl:end:ignore*/
+
 	}
 
 	/* Blocks -------------------------------- */
