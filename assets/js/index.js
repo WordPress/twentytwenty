@@ -777,7 +777,7 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
 	if ( falseVal === undefined ) {
 		falseVal = false;
 	}
-	if ( element[ attribute ] !== trueVal ) {
+	if ( element.getAttribute( attribute ) !== trueVal ) {
 		element.setAttribute( attribute, trueVal );
 	} else {
 		element.setAttribute( attribute, falseVal );
