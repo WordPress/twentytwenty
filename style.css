@@ -1668,6 +1668,7 @@ ul.primary-menu {
 
 .primary-menu ul ul::after {
 	border-bottom-color: transparent;
+
 	/*rtl:ignore*/
 	border-left-color: #000;
 	bottom: auto;
