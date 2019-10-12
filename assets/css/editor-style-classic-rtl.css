@@ -30,14 +30,14 @@ Inter variable font. Usage:
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: normal;
-	src: url(../fonts/inter/Inter-upright.var.woff2) format("woff2");
+	src: url(../fonts/inter/Inter-upright-var.woff2) format("woff2");
 }
 
 @font-face {
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: italic;
-	src: url(../fonts/inter/Inter-italic.var.woff2) format("woff2");
+	src: url(../fonts/inter/Inter-italic-var.woff2) format("woff2");
 }
 
 /* Structure --------------------------------- */
@@ -65,8 +65,6 @@ body#tinymce.wp-editor.content { /* stylelint-disable-line no-duplicate-selector
 }
 
 body#tinymce.wp-editor.content * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 }
