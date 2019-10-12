@@ -441,7 +441,7 @@ twentytwenty.modalMenu = {
 			closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
 			mobileMenu = document.querySelector( '.mobile-menu' );
 
-			if ( mobileMenu ) {
+			if ( ! mobileMenu ) {
 				return false;
 			}
 
@@ -455,7 +455,7 @@ twentytwenty.modalMenu = {
 				document.querySelectorAll( '.menu-modal .expanded-menu .modal-menu > li' ) :
 				document.querySelectorAll( '.menu-modal .mobile-menu .modal-menu > li' );
 
-			if ( firstLevelmenuLinks ) {
+			if ( ! firstLevelmenuLinks ) {
 				return false;
 			}
 
