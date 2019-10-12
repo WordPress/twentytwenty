@@ -92,23 +92,25 @@ twentytwenty.coverModals = {
 
 	// Handle cover modals when they're toggled
 	onToggle: function() {
-		document.querySelector( '.cover-modal' ).addEventListener( 'toggled', function( event ) {
-			var modal, body;
+		document.querySelectorAll( '.cover-modal' ).forEach( function( element ) {
+			element.addEventListener( 'toggled', function( event ) {
+				var modal, body;
 
-			modal = event.target;
-			body = document.body;
+				modal = event.target;
+				body = document.body;
 
-			if ( modal.classList.contains( 'active' ) ) {
-				body.classList.add( 'showing-modal' );
-			} else {
-				body.classList.remove( 'showing-modal' );
-				body.classList.add( 'hiding-modal' );
+				if ( modal.classList.contains( 'active' ) ) {
+					body.classList.add( 'showing-modal' );
+				} else {
+					body.classList.remove( 'showing-modal' );
+					body.classList.add( 'hiding-modal' );
 
-				// Remove the hiding class after a delay, when animations have been run
-				setTimeout( function() {
-					body.classList.remove( 'hiding-modal' );
-				}, 500 );
-			}
+					// Remove the hiding class after a delay, when animations have been run
+					setTimeout( function() {
+						body.classList.remove( 'hiding-modal' );
+					}, 500 );
+				}
+			} );
 		} );
 	},
 
@@ -565,6 +567,8 @@ twentytwenty.toggles = {
 
 	clickedEl: false,
 
+	prevToggle: false,
+
 	init: function() {
 		// Do the toggle
 		this.toggle();
@@ -645,9 +649,18 @@ twentytwenty.toggles = {
 			// Toggle aria-expanded on the toggle
 			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
 
+			if ( ! _doc.body.classList.contains( 'showing-modal' ) ) {
+				this.prevToggle = document.activeElement;
+			}
+
+			if ( this.prevToggle && -1 !== toggle.classList.value.indexOf( 'close-' ) ) {
+				twentytwentyToggleAttribute( this.prevToggle, 'aria-expanded', 'true', 'false' );
+				this.prevToggle = false;
+			}
+
 			// Toggle body class
 			if ( toggle.dataset.toggleBodyClass ) {
-				_doc.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
+				_doc.body.classList.toggle( toggle.dataset.toggleBodyClass );
 			}
 
 			// Check whether to set focus
