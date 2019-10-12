@@ -441,7 +441,7 @@ twentytwenty.modalMenu = {
 		document.addEventListener( 'keydown', function( event ) {
 			var clickedEl = twentytwenty.toggles.clickedEl,
 				modal, elements, activeEl, lastEl, firstEl;
-			
+
 			if ( clickedEl ) {
 				modal = document.querySelector( clickedEl.dataset.toggleTarget );
 
