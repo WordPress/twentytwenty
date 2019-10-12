@@ -450,19 +450,19 @@ twentytwenty.modalMenu = {
 				elements = modal.querySelectorAll( 'input, a, button' );
 				elements = Array.prototype.slice.call( elements );
 
-				if( '.menu-modal' === toggleTarget ) {
+				if ( '.menu-modal' === toggleTarget ) {
 					menuCheck = window.matchMedia( '(min-width: 1000px)' ).matches;
 					menuCheck = menuCheck ? '.expanded-menu' : '.mobile-menu';
 
 					elements = elements.filter( function( element ) {
-						return element.closest( menuCheck ) != null;
+						return null !== element.closest( menuCheck );
 					} );
 
 					elements.unshift( _doc.querySelector( '.close-nav-toggle' ) );
 
 					socialMenu = _doc.querySelector( '.menu-bottom > nav' );
 
-					if( socialMenu ) {
+					if ( socialMenu ) {
 						socialMenu.querySelectorAll( 'input, a, button' ).forEach( function( element ) {
 							elements.push( element );
 						} );
@@ -625,7 +625,7 @@ twentytwenty.toggles = {
 
 			// Toggle aria-expanded on the toggle
 			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
-			
+
 			if ( self.clickedEl && -1 !== toggle.getAttribute( 'class' ).indexOf( 'close-' ) ) {
 				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
 			}
