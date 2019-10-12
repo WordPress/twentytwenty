@@ -649,7 +649,6 @@ twentytwenty.toggles = {
 
 			if ( self.clickedEl && -1 !== toggle.classList.value.indexOf( 'close-' ) ) {
 				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
-				self.clickedEl = false;
 			}
 
 			// Toggle body class
