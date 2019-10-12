@@ -415,8 +415,6 @@ twentytwenty.modalMenu = {
 	init: function() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
-		// this.goBackToCloseButton();
-		// this.searchModalKeepFocus();
 		this.keepFocusInModal();
 	},
 
