@@ -414,6 +414,7 @@ twentytwenty.modalMenu = {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
 		this.goBackToCloseButton();
+		this.searchModalKeepFocus();
 	},
 
 	expandLevel: function() {
@@ -429,6 +430,37 @@ twentytwenty.modalMenu = {
 						twentytwenty.toggles.performToggle( subMenuToggle, true );
 					}
 				} );
+			}
+		} );
+	},
+
+	searchModalKeepFocus: function() {
+		document.addEventListener( 'keydown', function( event ) {
+			var searchModal = document.querySelector( '.search-modal' ),
+				body = document.body,
+				elements, activeEl, lastEl, firstEl;
+
+			if ( ! searchModal ) {
+				return false;
+			}
+
+			elements = searchModal.querySelectorAll( 'input, a, button' );
+			elements = Array.prototype.slice.call( elements );
+
+			if ( body.classList.contains( 'showing-search-modal' ) ) {
+				lastEl = elements[ elements.length - 1 ];
+				firstEl = elements[0];
+				activeEl = document.activeElement;
+
+				if ( ! event.shiftKey && event.key === 'Tab' && lastEl === activeEl ) {
+					event.preventDefault();
+					firstEl.focus();
+				}
+
+				if ( event.shiftKey && event.key === 'Tab' && firstEl === activeEl ) {
+					event.preventDefault();
+					lastEl.focus();
+				}
 			}
 		} );
 	},
