@@ -2613,7 +2613,7 @@ h2.entry-title {
 /* Block Typography Classes ------------------ */
 
 .has-text-align-left {
-	text-align: right;
+	text-align: left;
 }
 
 .has-text-align-center {
