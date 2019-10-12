@@ -436,26 +436,50 @@ twentytwenty.modalMenu = {
 	},
 
 	keepFocusInModal: function() {
-		document.addEventListener( 'keydown', function( event ) {
-			var clickedEl = twentytwenty.toggles.clickedEl,
-				modal, elements, activeEl, lastEl, firstEl;
+		var _doc = document;
 
-			if ( clickedEl ) {
-				modal = document.querySelector( clickedEl.dataset.toggleTarget );
+		_doc.addEventListener( 'keydown', function( event ) {
+			var clickedEl = twentytwenty.toggles.clickedEl,
+				toggleTarget, modal, elements, activeEl, lastEl, firstEl, menuCheck, socialMenu, tabKey;
+
+			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
+				toggleTarget = clickedEl.dataset.toggleTarget;
+
+				modal = _doc.querySelector( toggleTarget );
 
 				elements = modal.querySelectorAll( 'input, a, button' );
 				elements = Array.prototype.slice.call( elements );
 
+				if( '.menu-modal' === toggleTarget ) {
+					menuCheck = window.matchMedia( '(min-width: 1000px)' ).matches;
+					menuCheck = menuCheck ? '.expanded-menu' : '.mobile-menu';
+
+					elements = elements.filter( function( element ) {
+						return element.closest( menuCheck ) != null;
+					} );
+
+					elements.unshift( _doc.querySelector( '.close-nav-toggle' ) );
+
+					socialMenu = _doc.querySelector( '.menu-bottom > nav' );
+
+					if( socialMenu ) {
+						socialMenu.querySelectorAll( 'input, a, button' ).forEach( function( element ) {
+							elements.push( element );
+						} );
+					}
+				}
+
 				lastEl = elements[ elements.length - 1 ];
 				firstEl = elements[0];
-				activeEl = document.activeElement;
+				activeEl = _doc.activeElement;
+				tabKey = event.keyCode === 9;
 
-				if ( ! event.shiftKey && event.key === 'Tab' && lastEl === activeEl ) {
+				if ( ! event.shiftKey && tabKey && lastEl === activeEl ) {
 					event.preventDefault();
 					firstEl.focus();
 				}
 
-				if ( event.shiftKey && event.key === 'Tab' && firstEl === activeEl ) {
+				if ( event.shiftKey && tabKey && firstEl === activeEl ) {
 					event.preventDefault();
 					lastEl.focus();
 				}
@@ -601,8 +625,8 @@ twentytwenty.toggles = {
 
 			// Toggle aria-expanded on the toggle
 			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
-
-			if ( self.clickedEl && -1 !== toggle.classList.value.indexOf( 'close-' ) ) {
+			
+			if ( self.clickedEl && -1 !== toggle.getAttribute( 'class' ).indexOf( 'close-' ) ) {
 				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
 			}
 
