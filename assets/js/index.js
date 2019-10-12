@@ -567,8 +567,6 @@ twentytwenty.toggles = {
 
 	clickedEl: false,
 
-	prevToggle: false,
-
 	init: function() {
 		// Do the toggle
 		this.toggle();
@@ -649,13 +647,9 @@ twentytwenty.toggles = {
 			// Toggle aria-expanded on the toggle
 			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
 
-			if ( ! _doc.body.classList.contains( 'showing-modal' ) ) {
-				this.prevToggle = document.activeElement;
-			}
-
-			if ( this.prevToggle && -1 !== toggle.classList.value.indexOf( 'close-' ) ) {
-				twentytwentyToggleAttribute( this.prevToggle, 'aria-expanded', 'true', 'false' );
-				this.prevToggle = false;
+			if ( self.clickedEl && -1 !== toggle.classList.value.indexOf( 'close-' ) ) {
+				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
+				self.clickedEl = false;
 			}
 
 			// Toggle body class
