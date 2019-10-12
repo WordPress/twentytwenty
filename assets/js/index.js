@@ -190,7 +190,7 @@ twentytwenty.coverModals = {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				_win.twentytwenty.scrolled = parseInt( styles.top );
+				_win.twentytwenty.scrolled = parseInt( styles.top, 10 );
 
 				if ( adminBar ) {
 					_doc.body.style.setProperty( 'padding-top', paddingTop );
@@ -436,36 +436,47 @@ twentytwenty.modalMenu = {
 	// If the current menu item is the last one, return to close button when tab
 	goBackToCloseButton: function() {
 		document.addEventListener( 'keydown', function( event ) {
-			var closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
-			var mobileMenu = document.querySelector( '.mobile-menu' );
-			var isDesktop = window.getComputedStyle( mobileMenu, null ).getPropertyValue( 'display' ) === 'none';
+			var closeMenuButton, mobileMenu, isDesktop, menuLinks, firstLevelmenuLinks, lastMenuLinkToggleButton, lastToogleSubMenuLinkNotOpened, lastMenuLinkHasSubClosedMenu, socialLinks, hasSocialMenu, lastModalMenuItems, focusedElementParentLi, focusedElementIsInsideModal, lastMenuItem, isFirstModalItem, isLastModalItem;
 
-			var menuLinks = isDesktop ?
+			closeMenuButton = document.querySelector( '.toggle.close-nav-toggle' );
+			mobileMenu = document.querySelector( '.mobile-menu' );
+
+			if ( mobileMenu ) {
+				return false;
+			}
+
+			isDesktop = window.getComputedStyle( mobileMenu, null ).getPropertyValue( 'display' ) === 'none';
+
+			menuLinks = isDesktop ?
 				document.querySelectorAll( '.menu-modal .expanded-menu .modal-menu li' ) :
 				document.querySelectorAll( '.menu-modal .mobile-menu .modal-menu li' );
 
-			var firstLevelmenuLinks = isDesktop ?
+			firstLevelmenuLinks = isDesktop ?
 				document.querySelectorAll( '.menu-modal .expanded-menu .modal-menu > li' ) :
 				document.querySelectorAll( '.menu-modal .mobile-menu .modal-menu > li' );
 
-			var lastMenuLinkToggleButton = firstLevelmenuLinks[firstLevelmenuLinks.length - 1].querySelector( '.sub-menu-toggle' ) || undefined;
-			var lastMenuLinkHasSubClosedMenu = lastMenuLinkToggleButton && ! lastMenuLinkToggleButton.classList.contains( 'active' );
+			if ( firstLevelmenuLinks ) {
+				return false;
+			}
 
-			var lastToogleSubMenuLinkNotOpened = isDesktop ?
+			lastMenuLinkToggleButton = firstLevelmenuLinks[firstLevelmenuLinks.length - 1].querySelector( '.sub-menu-toggle' ) || undefined;
+			lastMenuLinkHasSubClosedMenu = lastMenuLinkToggleButton && ! lastMenuLinkToggleButton.classList.contains( 'active' );
+
+			lastToogleSubMenuLinkNotOpened = isDesktop ?
 				document.querySelector( '.menu-modal .expanded-menu .modal-menu .sub-menu .sub-menu-toggle:not(.active)' ) :
 				document.querySelector( '.menu-modal .mobile-menu .sub-menu .sub-menu-toggle:not(.active)' );
 
-			var socialLinks = document.querySelectorAll( '.menu-modal .social-menu li' );
-			var hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
-			var lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
-			var focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
-			var focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
+			socialLinks = document.querySelectorAll( '.menu-modal .social-menu li' );
+			hasSocialMenu = document.querySelectorAll( '.menu-modal .social-menu' ).length > 0;
+			lastModalMenuItems = hasSocialMenu ? socialLinks : menuLinks;
+			focusedElementParentLi = twentytwentyFindParents( event.target, 'li' );
+			focusedElementIsInsideModal = twentytwentyFindParents( event.target, '.menu-modal' ).length > 0;
 
-			var lastMenuItem = lastModalMenuItems[lastModalMenuItems.length - 1];
+			lastMenuItem = lastModalMenuItems[lastModalMenuItems.length - 1];
 
-			var isFirstModalItem = event.target === closeMenuButton;
+			isFirstModalItem = event.target === closeMenuButton;
 
-			var isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ?
+			isLastModalItem = focusedElementIsInsideModal && focusedElementParentLi[0] ?
 				focusedElementParentLi[0].className === lastMenuItem.className :
 				undefined;
 
@@ -510,9 +521,15 @@ twentytwenty.primaryMenu = {
 	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
 	focusMenuWithChildren: function() {
 		// Get all the link elements within the primary menu.
-		var menu = document.querySelector( '.primary-menu-wrapper' );
-		var links = menu.getElementsByTagName( 'a' );
-		var i, len;
+		var menu, links, i, len;
+
+		menu = document.querySelector( '.primary-menu-wrapper' );
+
+		if ( ! menu ) {
+			return false;
+		}
+
+		links = menu.getElementsByTagName( 'a' );
 
 		// Each time a menu link is focused or blurred, toggle focus.
 		for ( i = 0, len = links.length; i < len; i++ ) {
