@@ -4020,7 +4020,7 @@ div.comment:first-of-type {
 
 /* Widget: RSS ------------------------------- */
 
-.widget_rss a.rsswidget:first-of-type {
+.widget_rss .widget-title a.rsswidget:first-of-type {
 	display: none;
 }
 
