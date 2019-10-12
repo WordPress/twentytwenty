@@ -81,7 +81,7 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 
 					</footer><!-- .comment-meta -->
 
-					<div class="comment-content">
+					<div class="comment-content entry-content">
 
 						<?php
 
