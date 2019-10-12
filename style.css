@@ -1341,6 +1341,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 .site-logo img {
 	max-height: 6rem;
 	margin: 0 auto;
+	width: auto;
 }
 
 body:not(.enable-search-modal) .site-logo img {
