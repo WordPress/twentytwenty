@@ -5010,6 +5010,14 @@ a.to-the-top > * {
 		margin-top: 4rem;
 	}
 
+	.alignleft {
+		margin: 0.3rem 2rem 2rem 0;
+	}
+
+	.alignright {
+		margin: 0.3rem 0 2rem 2rem;
+	}
+
 	.alignwide,
 	.alignfull {
 		margin-bottom: 6rem;
