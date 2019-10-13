@@ -534,10 +534,14 @@ dd + dt {
 blockquote {
 	border-color: #cd2653;
 	border-style: solid;
+
+	/*rtl:ignore*/
 	border-width: 0 0 0 0.2rem;
 	color: inherit;
 	font-size: 1em;
 	margin: 4rem 0;
+
+	/*rtl:ignore*/
 	padding: 0.5rem 0 0.5rem 2rem;
 }
 
@@ -3175,8 +3179,12 @@ hr.wp-block-separator {
 }
 
 .wp-block-quote[style="text-align:right"] {
+
+	/*rtl:begin:ignore*/
 	border-width: 0 0.2rem 0 0;
 	padding: 0 2rem 0 0;
+
+	/*rtl:end:ignore*/
 }
 
 /* STYLE: LARGE */
