@@ -68,3 +68,5 @@ Version 1.0:
 | @glauberm | @glauberm |
 | @maheshwaghmare | @mahesh901122 |
 | @amolv | @amolv |
+| @Clorith | @Clorith |
+| @josephscott | @josephscott |
