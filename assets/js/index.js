@@ -440,14 +440,14 @@ twentytwenty.modalMenu = {
 
 		_doc.addEventListener( 'keydown', function( event ) {
 			var clickedEl = twentytwenty.toggles.clickedEl,
-				toggleTarget, modal, elements, activeEl, lastEl, firstEl, menuCheck, socialMenu, tabKey;
+				toggleTarget, modal, selectors, elements, menuCheck, socialMenu, activeEl, lastEl, firstEl, tabKey, shiftKey;
 
 			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
 				toggleTarget = clickedEl.dataset.toggleTarget;
-
+				selectors = 'input, a, button';
 				modal = _doc.querySelector( toggleTarget );
 
-				elements = modal.querySelectorAll( 'input, a, button' );
+				elements = modal.querySelectorAll( selectors );
 				elements = Array.prototype.slice.call( elements );
 
 				if ( '.menu-modal' === toggleTarget ) {
@@ -463,7 +463,7 @@ twentytwenty.modalMenu = {
 					socialMenu = _doc.querySelector( '.menu-bottom > nav' );
 
 					if ( socialMenu ) {
-						socialMenu.querySelectorAll( 'input, a, button' ).forEach( function( element ) {
+						socialMenu.querySelectorAll( selectors ).forEach( function( element ) {
 							elements.push( element );
 						} );
 					}
@@ -473,13 +473,14 @@ twentytwenty.modalMenu = {
 				firstEl = elements[0];
 				activeEl = _doc.activeElement;
 				tabKey = event.keyCode === 9;
+				shiftKey = event.shiftKey;
 
-				if ( ! event.shiftKey && tabKey && lastEl === activeEl ) {
+				if ( ! shiftKey && tabKey && lastEl === activeEl ) {
 					event.preventDefault();
 					firstEl.focus();
 				}
 
-				if ( event.shiftKey && tabKey && firstEl === activeEl ) {
+				if ( shiftKey && tabKey && firstEl === activeEl ) {
 					event.preventDefault();
 					lastEl.focus();
 				}
