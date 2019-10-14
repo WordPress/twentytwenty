@@ -257,6 +257,7 @@ Inter variable font. Usage:
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: normal;
+	font-display: swap;
 	src: url(./assets/fonts/inter/Inter-upright-var.woff2) format("woff2");
 }
 
@@ -264,6 +265,7 @@ Inter variable font. Usage:
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: italic;
+	font-display: swap;
 	src: url(./assets/fonts/inter/Inter-italic-var.woff2) format("woff2");
 }
 
@@ -5010,6 +5012,14 @@ a.to-the-top > * {
 	.aligncenter {
 		margin-bottom: 4rem;
 		margin-top: 4rem;
+	}
+
+	.alignleft {
+		margin: 0.3rem 2rem 2rem 0;
+	}
+
+	.alignright {
+		margin: 0.3rem 0 2rem 2rem;
 	}
 
 	.alignwide,
