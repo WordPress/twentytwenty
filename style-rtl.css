@@ -2547,7 +2547,7 @@ h2.entry-title {
 
 .rtl .pagination-single a:hover,
 .rtl .pagination-single a:focus {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .pagination-single a + a {
@@ -2565,7 +2565,7 @@ h2.entry-title {
 
 .rtl .pagination-single a:focus .arrow,
 .rtl .pagination-single a:hover .arrow {
-    text-decoration: overline;
+	text-decoration: overline;
 }
 
 
