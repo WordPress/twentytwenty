@@ -440,7 +440,7 @@ twentytwenty.modalMenu = {
 
 		_doc.addEventListener( 'keydown', function( event ) {
 			var clickedEl = twentytwenty.toggles.clickedEl,
-				toggleTarget, modal, selectors, elements, menuCheck, socialMenu, activeEl, lastEl, firstEl, tabKey, shiftKey;
+				toggleTarget, modal, selectors, elements, menuType, bottomMenu, activeEl, lastEl, firstEl, tabKey, shiftKey;
 
 			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
 				toggleTarget = clickedEl.dataset.toggleTarget;
@@ -451,19 +451,19 @@ twentytwenty.modalMenu = {
 				elements = Array.prototype.slice.call( elements );
 
 				if ( '.menu-modal' === toggleTarget ) {
-					menuCheck = window.matchMedia( '(min-width: 1000px)' ).matches;
-					menuCheck = menuCheck ? '.expanded-menu' : '.mobile-menu';
+					menuType = window.matchMedia( '(min-width: 1000px)' ).matches;
+					menuType = menuType ? '.expanded-menu' : '.mobile-menu';
 
 					elements = elements.filter( function( element ) {
-						return null !== element.closest( menuCheck );
+						return null !== element.closest( menuType ) && null !== element.offsetParent;
 					} );
 
 					elements.unshift( _doc.querySelector( '.close-nav-toggle' ) );
 
-					socialMenu = _doc.querySelector( '.menu-bottom > nav' );
+					bottomMenu = _doc.querySelector( '.menu-bottom > nav' );
 
-					if ( socialMenu ) {
-						socialMenu.querySelectorAll( selectors ).forEach( function( element ) {
+					if ( bottomMenu ) {
+						bottomMenu.querySelectorAll( selectors ).forEach( function( element ) {
 							elements.push( element );
 						} );
 					}
