@@ -459,7 +459,7 @@ function twentytwenty_block_editor_settings() {
 			array(
 				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'L', 'Short name of the large font size in the block editor.', 'twentytwenty' ),
-				'size'      => 24,
+				'size'      => 26.25,
 				'slug'      => 'large',
 			),
 			array(
