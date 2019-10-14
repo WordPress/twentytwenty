@@ -2547,6 +2547,11 @@ h2.entry-title {
 	text-decoration: underline;
 }
 
+.rtl .pagination-single a:hover,
+.rtl .pagination-single a:focus {
+    text-decoration: none;
+}
+
 .pagination-single a + a {
 	margin-top: 1rem;
 }
@@ -2558,6 +2563,11 @@ h2.entry-title {
 .pagination-single a:focus .title,
 .pagination-single a:hover .title {
 	text-decoration: underline;
+}
+
+.rtl .pagination-single a:focus .arrow,
+.rtl .pagination-single a:hover .arrow {
+    text-decoration: overline;
 }
 
 
@@ -4843,6 +4853,7 @@ a.to-the-top > * {
 		/*rtl:end:ignore*/
 
 	}
+
 
 	/* Blocks -------------------------------- */
 
