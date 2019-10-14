@@ -4830,8 +4830,6 @@ a.to-the-top > * {
 
 		/*rtl:begin:ignore*/
 		transform: rotate(-180deg);
-		-ms-transform: rotate(-180deg); /* IE 9 */
-		-webkit-transform: rotate(-180deg); /* Safari */
 
 		/*rtl:end:ignore*/
 
@@ -4841,8 +4839,6 @@ a.to-the-top > * {
 
 		/*rtl:begin:ignore*/
 		transform: rotate(180deg);
-		-ms-transform: rotate(180deg); /* IE 9 */
-		-webkit-transform: rotate(180deg); /* Safari */
 
 		/*rtl:end:ignore*/
 
