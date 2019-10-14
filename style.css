@@ -1688,7 +1688,8 @@ ul.primary-menu {
 	background: #fff;
 	display: none;
 	opacity: 0;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	position: fixed;
 	bottom: 0;
 	left: -99999rem;
