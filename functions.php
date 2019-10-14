@@ -459,7 +459,7 @@ function twentytwenty_block_editor_settings() {
 			array(
 				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'L', 'Short name of the large font size in the block editor.', 'twentytwenty' ),
-				'size'      => 24,
+				'size'      => 26.25,
 				'slug'      => 'large',
 			),
 			array(
@@ -633,7 +633,7 @@ function twentytwenty_get_elements_array() {
 				'background' => array( '.social-icons a', '#site-footer button:not(.toggle)', '#site-footer .button', '#site-footer .faux-button', '#site-footer .wp-block-button__link', '#site-footer .wp-block-file__button', '#site-footer input[type="button"]', '#site-footer input[type="reset"]', '#site-footer input[type="submit"]' ),
 			),
 			'background' => array(
-				'color'      => array( '.social-icons a', '.overlay-header .header-inner', 'body:not(.overlay-header) .primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
+				'color'      => array( '.social-icons a', 'body:not(.overlay-header) .primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
 				'background' => array( '#site-header', '.footer-nav-widgets-wrapper', '#site-footer', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 			),
 			'text'       => array(
