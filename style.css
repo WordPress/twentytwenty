@@ -4826,19 +4826,19 @@ a.to-the-top > * {
 		margin: 0 0 0 2rem;
 	}
 
-	.pagination-single-inner .next-post .arrow {
+	.rtl .pagination-single-inner .next-post .arrow {
 
 		/*rtl:begin:ignore*/
-		transform: rotate(-180deg);
+		transform: rotate(180deg);
 
 		/*rtl:end:ignore*/
 
 	}
 
-	.pagination-single-inner .previous-post .arrow {
+	.rtl .pagination-single-inner .previous-post .arrow {
 
 		/*rtl:begin:ignore*/
-		transform: rotate(180deg);
+		transform: rotate(-180deg);
 
 		/*rtl:end:ignore*/
 

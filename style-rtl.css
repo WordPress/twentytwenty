@@ -4812,13 +4812,13 @@ a.to-the-top > * {
 		margin: 0 2rem 0 0;
 	}
 
-	.pagination-single-inner .next-post .arrow {
-		transform: rotate(-180deg);
+	.rtl .pagination-single-inner .next-post .arrow {
+		transform: rotate(180deg);
 
 	}
 
-	.pagination-single-inner .previous-post .arrow {
-		transform: rotate(180deg);
+	.rtl .pagination-single-inner .previous-post .arrow {
+		transform: rotate(-180deg);
 
 	}
 
