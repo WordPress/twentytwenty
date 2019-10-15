@@ -257,14 +257,16 @@ Inter variable font. Usage:
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: normal;
-	src: url(./assets/fonts/inter/Inter-upright.var.woff2) format("woff2");
+	font-display: swap;
+	src: url(./assets/fonts/inter/Inter-upright-var.woff2) format("woff2");
 }
 
 @font-face {
 	font-family: "Inter var";
 	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
 	font-style: italic;
-	src: url(./assets/fonts/inter/Inter-italic.var.woff2) format("woff2");
+	font-display: swap;
+	src: url(./assets/fonts/inter/Inter-italic-var.woff2) format("woff2");
 }
 
 
@@ -1562,7 +1564,8 @@ ul.primary-menu {
 }
 
 .primary-menu a:hover,
-.primary-menu a:focus {
+.primary-menu a:focus,
+.primary-menu .current_page_ancestor {
 	text-decoration: underline;
 }
 
@@ -1802,7 +1805,8 @@ button.close-nav-toggle .toggle-text {
 
 .modal-menu a:focus,
 .modal-menu a:hover,
-.modal-menu li.current-menu-item > .ancestor-wrapper > a {
+.modal-menu li.current-menu-item > .ancestor-wrapper > a,
+.modal-menu li.current_page_ancestor > .ancestor-wrapper > a {
 	text-decoration: underline;
 }
 
@@ -4018,7 +4022,7 @@ div.comment:first-of-type {
 
 /* Widget: RSS ------------------------------- */
 
-.widget_rss a.rsswidget:first-of-type {
+.widget_rss .widget-title a.rsswidget:first-of-type {
 	display: none;
 }
 
@@ -5004,6 +5008,14 @@ a.to-the-top > * {
 	.aligncenter {
 		margin-bottom: 4rem;
 		margin-top: 4rem;
+	}
+
+	.alignleft {
+		margin: 0.3rem 2rem 2rem 0;
+	}
+
+	.alignright {
+		margin: 0.3rem 0 2rem 2rem;
 	}
 
 	.alignwide,
