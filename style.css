@@ -1675,12 +1675,17 @@ ul.primary-menu {
 
 .primary-menu ul ul::after {
 	border-bottom-color: transparent;
+
+	/*rtl:ignore*/
 	border-left-color: #000;
 	bottom: auto;
 	right: -1.6rem;
 	top: 2rem;
 }
 
+.rtl .primary-menu ul ul::after {
+	transform: rotate(180deg);
+}
 
 /* -------------------------------------------------------------------------- */
 
