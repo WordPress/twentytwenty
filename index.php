@@ -51,6 +51,8 @@ get_header();
 		$archive_title    = get_the_archive_title();
 		$archive_subtitle = get_the_archive_description();
 	}
+	
+	$archive_title = apply_filters( 'twentytwenty_archive_title', $archive_title );
 
 	if ( $archive_title || $archive_subtitle ) {
 		?>
