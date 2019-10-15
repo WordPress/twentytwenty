@@ -536,11 +536,11 @@ dd + dt {
 blockquote {
 	border-color: #cd2653;
 	border-style: solid;
-	border-width: 0 0.2rem 0 0;
+	border-width: 0 0 0 0.2rem;
 	color: inherit;
 	font-size: 1em;
 	margin: 4rem 0;
-	padding: 0.5rem 2rem 0.5rem 0;
+	padding: 0.5rem 0 0.5rem 2rem;
 }
 
 cite {
@@ -2617,7 +2617,7 @@ h2.entry-title {
 /* Block Typography Classes ------------------ */
 
 .has-text-align-left {
-	text-align: right;
+	text-align: left;
 }
 
 .has-text-align-center {
@@ -3175,8 +3175,8 @@ hr.wp-block-separator {
 }
 
 .wp-block-quote[style="text-align:right"] {
-	border-width: 0 0 0 0.2rem;
-	padding: 0 0 0 2rem;
+	border-width: 0 0.2rem 0 0;
+	padding: 0 2rem 0 0;
 }
 
 /* STYLE: LARGE */
