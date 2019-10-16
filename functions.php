@@ -69,7 +69,7 @@ function twentytwenty_theme_support() {
 	$logo_height = 90;
 
 	// If the retina setting is active, double the recommended width and height.
-	if ( get_theme_mod( 'high_resolution_logo', false ) ) {
+	if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
 		$logo_width  = floor( $logo_width * 2 );
 		$logo_height = floor( $logo_height * 2 );
 	}
@@ -81,6 +81,7 @@ function twentytwenty_theme_support() {
 			'width'       => $logo_width,
 			'flex-height' => true,
 			'flex-width'  => true,
+			'header-text' => array( 'site-title', 'site-description' ),
 		)
 	);
 
@@ -247,7 +248,7 @@ function twentytwenty_get_custom_logo( $html ) {
 		$logo_height = esc_attr( $logo[2] );
 
 		// If the retina logo setting is active, reduce the width/height by half.
-		if ( get_theme_mod( 'high_resolution_logo', false ) ) {
+		if ( get_theme_mod( 'retina_logo', false ) ) {
 			$logo_width  = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
 
@@ -261,17 +262,7 @@ function twentytwenty_get_custom_logo( $html ) {
 				"height=\"{$logo_height}\"",
 			);
 
-			// Add a style attribute with the height, or append the height to the style attribute if the style attribute already exists.
-			if ( strpos( $html, ' style=' ) === false ) {
-				$search[]  = '/(src=)/';
-				$replace[] = "style=\"height: {$logo_height}px;\" src=";
-			} else {
-				$search[]  = '/(style="[^"]*)/';
-				$replace[] = "$1 height: {$logo_height}px;";
-			}
-
 			$html = preg_replace( $search, $replace, $html );
-			
 		}
 	}
 
