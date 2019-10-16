@@ -26,6 +26,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
+			/**
+			 * Removes the background image section.
+			 * The theme only supports the background color option.
+			 */
+			$wp_customize->remove_section( 'background_image' );
+
 			$wp_customize->selective_refresh->add_partial(
 				'blogname',
 				array(
@@ -50,13 +56,21 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'high_resolution_logo',
+				array(
+					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+				)
+			);
+
 			/**
 			 * Site Identity
 			 */
 
 			/* 2X Header Logo ---------------- */
 			$wp_customize->add_setting(
-				'retina_logo',
+				'high_resolution_logo',
 				array(
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
@@ -65,7 +79,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'retina_logo',
+				'high_resolution_logo',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
@@ -191,10 +205,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'       => __( 'Theme Options', 'twentytwenty' ),
-					'priority'    => 40,
-					'capability'  => 'edit_theme_options',
-					'description' => __( 'Specific settings for the Twenty Twenty theme.', 'twentytwenty' ),
+					'title'      => __( 'Theme Options', 'twentytwenty' ),
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
 				)
 			);
 
@@ -274,7 +287,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'title'       => __( 'Cover Template', 'twentytwenty' ),
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for the "Cover Template" page template.', 'twentytwenty' ),
+					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'twentytwenty' ),
 					'priority'    => 42,
 				)
 			);
@@ -343,8 +356,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_background_color',
 					array(
-						'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Background Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the overlay. Defaults to the accent color.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -365,8 +378,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_text_color',
 					array(
-						'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Text Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the text in the overlay.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -386,7 +399,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'cover_template_overlay_opacity',
 				array(
-					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
+					'label'       => __( 'Overlay Opacity', 'twentytwenty' ),
 					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
 					'type'        => 'range',
@@ -432,6 +445,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 *
 		 * @param string $input The input from the setting.
 		 * @param object $setting The selected setting.
+		 *
+		 * @return string $input|$setting->default The input from the setting or the default setting.
 		 */
 		public static function sanitize_select( $input, $setting ) {
 			$input   = sanitize_key( $input );
@@ -442,7 +457,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		/**
 		 * Sanitize boolean for checkbox.
 		 *
-		 * @param bool $checked Wethere or not a blox is checked.
+		 * @param bool $checked Whether or not a box is checked.
+		 *
+		 * @return bool
 		 */
 		public static function sanitize_checkbox( $checked ) {
 			return ( ( isset( $checked ) && true === $checked ) ? true : false );

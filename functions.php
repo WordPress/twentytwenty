@@ -69,7 +69,7 @@ function twentytwenty_theme_support() {
 	$logo_height = 90;
 
 	// If the retina setting is active, double the recommended width and height.
-	if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+	if ( get_theme_mod( 'high_resolution_logo', false ) ) {
 		$logo_width  = floor( $logo_width * 2 );
 		$logo_height = floor( $logo_height * 2 );
 	}
@@ -81,7 +81,6 @@ function twentytwenty_theme_support() {
 			'width'       => $logo_width,
 			'flex-height' => true,
 			'flex-width'  => true,
-			'header-text' => array( 'site-title', 'site-description' ),
 		)
 	);
 
@@ -229,6 +228,8 @@ add_action( 'init', 'twentytwenty_menus' );
  * Get the information about the logo.
  *
  * @param string $html The HTML output from get_custom_logo (core function).
+ *
+ * @return string $html
  */
 function twentytwenty_get_custom_logo( $html ) {
 
@@ -246,7 +247,7 @@ function twentytwenty_get_custom_logo( $html ) {
 		$logo_height = esc_attr( $logo[2] );
 
 		// If the retina logo setting is active, reduce the width/height by half.
-		if ( get_theme_mod( 'retina_logo', false ) ) {
+		if ( get_theme_mod( 'high_resolution_logo', false ) ) {
 			$logo_width  = floor( $logo_width / 2 );
 			$logo_height = floor( $logo_height / 2 );
 
@@ -260,7 +261,17 @@ function twentytwenty_get_custom_logo( $html ) {
 				"height=\"{$logo_height}\"",
 			);
 
+			// Add a style attribute with the height, or append the height to the style attribute if the style attribute already exists.
+			if ( strpos( $html, ' style=' ) === false ) {
+				$search[]  = '/(src=)/';
+				$replace[] = "style=\"height: {$logo_height}px;\" src=";
+			} else {
+				$search[]  = '/(style="[^"]*)/';
+				$replace[] = "$1 height: {$logo_height}px;";
+			}
+
 			$html = preg_replace( $search, $replace, $html );
+			
 		}
 	}
 
@@ -372,6 +383,8 @@ add_action( 'init', 'twentytwenty_classic_editor_styles' );
  * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
  *
  * @param array $mce_init TinyMCE styles.
+ *
+ * @return array $mce_init TinyMCE styles.
  */
 function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 
@@ -455,7 +468,7 @@ function twentytwenty_block_editor_settings() {
 			array(
 				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'L', 'Short name of the large font size in the block editor.', 'twentytwenty' ),
-				'size'      => 24,
+				'size'      => 26.25,
 				'slug'      => 'large',
 			),
 			array(
@@ -476,20 +489,6 @@ function twentytwenty_block_editor_settings() {
 }
 
 add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
-
-/**
- * Read More Link
- * Overwrite default (more ...) tag
- */
-function twentytwenty_read_more_tag() {
-	return sprintf(
-		'<a href="%1$s" class="more-link faux-button">%2$s <span class="screen-reader-text">"%3$s"</span></a>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		__( 'Continue reading', 'twentytwenty' ),
-		esc_html( get_the_title( get_the_ID() ) )
-	);
-}
-add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 /**
  * Enqueues scripts for customizer controls & settings.
@@ -643,7 +642,7 @@ function twentytwenty_get_elements_array() {
 				'background' => array( '.social-icons a', '#site-footer button:not(.toggle)', '#site-footer .button', '#site-footer .faux-button', '#site-footer .wp-block-button__link', '#site-footer .wp-block-file__button', '#site-footer input[type="button"]', '#site-footer input[type="reset"]', '#site-footer input[type="submit"]' ),
 			),
 			'background' => array(
-				'color'      => array( '.social-icons a', '.overlay-header .header-inner', 'body:not(.overlay-header) .primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
+				'color'      => array( '.social-icons a', 'body:not(.overlay-header) .primary-menu ul', '.header-footer-group button', '.header-footer-group .button', '.header-footer-group .faux-button', '.header-footer-group .wp-block-button:not(.is-style-outline) .wp-block-button__link', '.header-footer-group .wp-block-file__button', '.header-footer-group input[type="button"]', '.header-footer-group input[type="reset"]', '.header-footer-group input[type="submit"]' ),
 				'background' => array( '#site-header', '.footer-nav-widgets-wrapper', '#site-footer', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '.singular .featured-media:before', '.wp-block-pullquote:before' ),
 			),
 			'text'       => array(
