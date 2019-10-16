@@ -59,7 +59,6 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		$body_default   = '#000000';
 		$accent         = sanitize_hex_color( twentytwenty_get_color_for_area( 'content', 'accent' ) );
 		$accent_default = '#cd2653';
-
 		/**
 		 * Filters the CSS selectors targeting button component on frontend to apply common css
 		 *
@@ -68,6 +67,10 @@ if ( ! function_exists( 'twentytwenty_get_customizer_css' ) ) {
 		 * @param string $string   The comma separated string of all CSS selectors targeting button component
 		 */
 		$buttons_targets = apply_filters( 'twentytwenty_buttons_targets_front_end', 'button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type=\'button\'], input[type=\'reset\'], input[type=\'submit\']' );
+
+		// Header.
+		$header_footer_text   = sanitize_hex_color( twentytwenty_get_color_for_area( 'header-footer', 'text' ) );
+		$header_footer_accent = sanitize_hex_color( twentytwenty_get_color_for_area( 'header-footer', 'accent' ) );
 
 		// Cover.
 		$cover         = sanitize_hex_color( get_theme_mod( 'cover_template_overlay_text_color' ) );
