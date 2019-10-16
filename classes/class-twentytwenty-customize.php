@@ -56,13 +56,21 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'high_resolution_logo',
+				array(
+					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+				)
+			);
+
 			/**
 			 * Site Identity
 			 */
 
 			/* 2X Header Logo ---------------- */
 			$wp_customize->add_setting(
-				'retina_logo',
+				'high_resolution_logo',
 				array(
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
@@ -71,7 +79,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'retina_logo',
+				'high_resolution_logo',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
