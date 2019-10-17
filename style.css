@@ -2402,6 +2402,15 @@ h2.entry-title {
 	height: 1.8rem;
 }
 
+.post-meta .post-tags .meta-list {
+	margin: 0;
+}
+
+.post-meta .post-tags .meta-list {
+	display: inline-block;
+	margin: 0;
+}
+
 .post-meta svg * {
 	fill: currentColor;
 }
@@ -4739,6 +4748,20 @@ a.to-the-top > * {
 
 	.entry-categories-inner {
 		margin: -1rem 0 0 -2rem;
+	}
+
+	.entry-categories .post-categories {
+		justify-content: center;
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.entry-categories li {
+		margin: 0;
+		line-height: 1.25;
 	}
 
 	.entry-categories a {
