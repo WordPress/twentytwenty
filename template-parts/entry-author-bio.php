@@ -26,7 +26,7 @@ if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 		<p class="author-description">
 			<?php the_author_meta( 'description' ); ?>
 			<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-				<?php _e( 'View Archive &rarr;', 'twentytwenty' ); ?>
+				<?php _e( 'View Archive <span aria-hidden="true">&rarr;</span>', 'twentytwenty' ); ?>
 			</a>
 		</p><!-- .author-description -->
 </div><!-- .author-bio -->
