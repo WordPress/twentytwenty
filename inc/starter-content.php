@@ -34,16 +34,16 @@ function twentytwenty_get_starter_content() {
 
 		// Specify the core-defined pages to create and add custom thumbnails to some of them.
 		'posts'     => array(
-			'front',
+			'home',
 			'about',
 			'contact',
 			'blog',
 		),
 
-		// Default to a static front page and assign the front and posts pages.
+		// Default to a static front page and assign the home and posts pages.
 		'options'   => array(
 			'show_on_front'  => 'page',
-			'page_on_front'  => '{{front}}',
+			'page_on_front'  => '{{home}}',
 			'page_for_posts' => '{{blog}}',
 		),
 
