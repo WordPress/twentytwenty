@@ -1287,10 +1287,9 @@ ul.social-icons li {
 /* Header Titles ----------------------------- */
 
 .header-titles-wrapper {
-	align-items: center;
 	display: flex;
-	justify-content: center;
-	padding: 0 4rem;
+	justify-content: space-between;
+	align-items: center;
 	text-align: center;
 }
 
@@ -1398,10 +1397,7 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .header-inner .toggle {
-	align-items: center;
-	display: flex;
 	overflow: visible;
-	padding: 0 2rem;
 }
 
 .header-inner .toggle svg {
@@ -1415,8 +1411,9 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .toggle-inner {
-	height: 2.3rem;
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .toggle-icon {
@@ -1428,11 +1425,9 @@ body:not(.enable-search-modal) .site-logo img {
 	color: #6d6d6d;
 	font-size: 1rem;
 	font-weight: 600;
-	position: absolute;
-	top: calc(100% + 0.5rem);
-	width: auto;
 	white-space: nowrap;
 	word-break: break-all;
+	margin-top: 5px;
 }
 
 .overlay-header .toggle-text {
@@ -1446,12 +1441,6 @@ body:not(.enable-search-modal) .site-logo img {
 
 /* Search Toggle ----------------------------- */
 
-.search-toggle {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	top: 0;
-}
 
 .search-toggle .toggle-icon,
 .search-toggle svg {
@@ -1460,20 +1449,7 @@ body:not(.enable-search-modal) .site-logo img {
 	width: 2.3rem;
 }
 
-.search-toggle .toggle-text {
-	right: 0;
-	text-align: right;
-}
-
 /* Navigation Toggle ------------------------- */
-
-.nav-toggle {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	top: 0;
-	width: 6.6rem;
-}
 
 .nav-toggle .toggle-icon,
 .nav-toggle svg {
@@ -1481,14 +1457,6 @@ body:not(.enable-search-modal) .site-logo img {
 	width: 2.6rem;
 }
 
-.nav-toggle .toggle-inner {
-	padding-top: 0.8rem;
-}
-
-.nav-toggle .toggle-text {
-	left: 0;
-	text-align: left;
-}
 
 /* Primary Menu ---------------------------- */
 
@@ -3015,7 +2983,7 @@ figure.wp-block-gallery.alignfull {
 	background: #fff;
 	border-radius: 50%;
 	color: #cd2653;
-	content: "”";
+	content: "â€";
 	display: block;
 	font-size: 6.2rem;
 	font-weight: 500;
@@ -4041,7 +4009,7 @@ div.comment:first-of-type {
 }
 
 .widget_rss cite::before {
-	content: "— ";
+	content: "â€” ";
 }
 
 /* Widget: Search ---------------------------- */
