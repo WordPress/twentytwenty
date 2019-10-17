@@ -141,11 +141,6 @@ body {
 	word-wrap: break-word;
 }
 
-::selection {
-	background: #000;
-	color: #fff;
-}
-
 #site-content {
 	overflow: hidden;
 }
