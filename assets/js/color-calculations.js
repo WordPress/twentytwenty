@@ -57,8 +57,8 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 				 * @return {number} - 0 is best, higher numbers have bigger difference with the desired scores.
 				 */
 				getScore = function( contrastBackground, contrastSurroundingText ) {
-					var diffBackground = ( 7 >= contrastBackground ) ? 0 : Math.abs( 7 - contrastBackground ),
-						diffSurroundingText = ( 3 >= contrastSurroundingText ) ? 0 : Math.abs( 3 - contrastSurroundingText );
+					var diffBackground = ( 7 >= contrastBackground ) ? 0 : 7 - contrastBackground,
+						diffSurroundingText = ( 3 >= contrastSurroundingText ) ? 0 : 3 - contrastSurroundingText;
 
 					return diffBackground + diffSurroundingText;
 				};
