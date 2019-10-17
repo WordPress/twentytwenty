@@ -35,12 +35,12 @@ function _twentyTwentyColor( backgroundColor, accentHue ) {
  */
 _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 	var self = this,
-		minSaturation = 55,
+		minSaturation = 65,
 		maxSaturation = 100,
-		minLightness = 15,
-		maxLighness = 85,
-		stepSaturation = 2.5,
-		stepLightness = 2.5,
+		minLightness = 30,
+		maxLighness = 80,
+		stepSaturation = 2,
+		stepLightness = 2,
 		pushColor = function() {
 			var colorObj = new Color( {
 					h: self.accentHue,
