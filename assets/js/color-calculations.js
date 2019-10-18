@@ -76,7 +76,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
 
 			// Get a score for this color by multiplying the 2 contrasts.
 			// We'll use that to sort the array.
-			item.score = getScore( item.contrastBackground * item.contrastText );
+			item.score = getScore( item.contrastBackground, item.contrastText );
 
 			self.accentColorsArray.push( item );
 		},
