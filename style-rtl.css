@@ -2466,26 +2466,26 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 }
 
-.hide-avatars .author-bio {
-	padding-right: 0;
+.author-info {
+	flex: 1;
 }
 
-.author-bio-inner p:last-child {
-	margin-bottom: 0;
+.hide-avatars img.avatar {
+	display: none;
 }
 
 .author-bio .avatar {
 	margin-left: 1.5rem;
-	height: 5rem;
 	width: 5rem;
 }
 
 .author-bio .author-title {
-	align-items: center;
-	display: flex;
-	margin: 0 0 1rem 0;
+	margin: 0;
 }
 
 .author-bio .author-link {
@@ -4749,15 +4749,10 @@ a.to-the-top > * {
 	.author-bio {
 		margin-top: 8rem;
 		min-height: 8rem;
-		padding-right: 10rem;
 		position: relative;
 	}
 
 	.author-bio .avatar {
-		position: absolute;
-		right: 0;
-		top: 0;
-		height: 8rem;
 		width: 8rem;
 	}
 
