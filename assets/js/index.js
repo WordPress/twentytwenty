@@ -231,14 +231,14 @@ twentytwenty.coverModals = {
 						modal.style.removeProperty( 'top' );
 					}
 
-					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
-
-					_win.twentytwenty.scrolled = 0;
-
 					if ( clickedEl !== false ) {
 						clickedEl.focus();
 						clickedEl = false;
 					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
+
+					_win.twentytwenty.scrolled = 0;
 				}, 500 );
 			} );
 		} );
