@@ -2486,12 +2486,13 @@ h2.entry-title {
 	flex-wrap: wrap;
 	align-items: flex-start;
 }
+
 .author-info {
 	flex: 1;
 }
 
 .hide-avatars img.avatar {
-	display:none;
+	display: none;
 }
 
 .author-bio .avatar {
