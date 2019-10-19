@@ -190,6 +190,9 @@ function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $text    Anchor text.
  */
 function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
 	$edit_url = get_edit_post_link( $post_id );
 
@@ -385,7 +388,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 							<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php _e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
+							<?php _ex( 'In', 'A string that is output before one or more categories', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
 						</span>
 					</li>
 					<?php
@@ -577,7 +580,7 @@ add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 1
 function twentytwenty_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 	// Change SVG icon inside social links menu if there is supported URL.
 	if ( 'social' === $args->theme_location ) {
-		$svg = TwentyTwenty_SVG_Icons::get_social_link_svg( $item->url, 'social' );
+		$svg = TwentyTwenty_SVG_Icons::get_social_link_svg( $item->url );
 		if ( empty( $svg ) ) {
 			$svg = twentytwenty_get_theme_svg( 'link' );
 		}
