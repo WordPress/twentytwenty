@@ -2841,6 +2841,10 @@ h2.entry-title {
 
 /* Block: Button ----------------------------- */
 
+.wp-block-button {
+	margin: 3rem 0;
+}
+
 .wp-block-button.is-style-outline {
 	color: #cd2653;
 }
