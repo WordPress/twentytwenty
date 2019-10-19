@@ -141,11 +141,6 @@ body {
 	word-wrap: break-word;
 }
 
-::selection {
-	background: #000;
-	color: #fff;
-}
-
 #site-content {
 	overflow: hidden;
 }
@@ -536,10 +531,14 @@ dd + dt {
 blockquote {
 	border-color: #cd2653;
 	border-style: solid;
+
+	/*rtl:ignore*/
 	border-width: 0 0 0 0.2rem;
 	color: inherit;
 	font-size: 1em;
 	margin: 4rem 0;
+
+	/*rtl:ignore*/
 	padding: 0.5rem 0 0.5rem 2rem;
 }
 
@@ -1417,6 +1416,8 @@ body:not(.enable-search-modal) .site-logo img {
 }
 
 .toggle-inner {
+	display: flex;
+	justify-content: center;
 	height: 2.3rem;
 	position: relative;
 }
@@ -1462,11 +1463,6 @@ body:not(.enable-search-modal) .site-logo img {
 	width: 2.3rem;
 }
 
-.search-toggle .toggle-text {
-	left: 0;
-	text-align: left;
-}
-
 /* Navigation Toggle ------------------------- */
 
 .nav-toggle {
@@ -1485,11 +1481,6 @@ body:not(.enable-search-modal) .site-logo img {
 
 .nav-toggle .toggle-inner {
 	padding-top: 0.8rem;
-}
-
-.nav-toggle .toggle-text {
-	right: 0;
-	text-align: right;
 }
 
 /* Primary Menu ---------------------------- */
@@ -1671,12 +1662,17 @@ ul.primary-menu {
 
 .primary-menu ul ul::after {
 	border-bottom-color: transparent;
+
+	/*rtl:ignore*/
 	border-left-color: #000;
 	bottom: auto;
 	right: -1.6rem;
 	top: 2rem;
 }
 
+.rtl .primary-menu ul ul::after {
+	transform: rotate(180deg);
+}
 
 /* -------------------------------------------------------------------------- */
 
@@ -2478,26 +2474,26 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 }
 
-.hide-avatars .author-bio {
-	padding-left: 0;
+.author-info {
+	flex: 1;
 }
 
-.author-bio-inner p:last-child {
-	margin-bottom: 0;
+.hide-avatars img.avatar {
+	display: none;
 }
 
 .author-bio .avatar {
 	margin-right: 1.5rem;
-	height: 5rem;
 	width: 5rem;
 }
 
 .author-bio .author-title {
-	align-items: center;
-	display: flex;
-	margin: 0 0 1rem 0;
+	margin: 0;
 }
 
 .author-bio .author-link {
@@ -2619,6 +2615,8 @@ h2.entry-title {
 /* Block Typography Classes ------------------ */
 
 .has-text-align-left {
+
+	/*rtl:ignore*/
 	text-align: left;
 }
 
@@ -3177,8 +3175,12 @@ hr.wp-block-separator {
 }
 
 .wp-block-quote[style="text-align:right"] {
+
+	/*rtl:begin:ignore*/
 	border-width: 0 0.2rem 0 0;
 	padding: 0 2rem 0 0;
+
+	/*rtl:end:ignore*/
 }
 
 /* STYLE: LARGE */
@@ -4773,15 +4775,10 @@ a.to-the-top > * {
 	.author-bio {
 		margin-top: 8rem;
 		min-height: 8rem;
-		padding-left: 10rem;
 		position: relative;
 	}
 
 	.author-bio .avatar {
-		position: absolute;
-		left: 0;
-		top: 0;
-		height: 8rem;
 		width: 8rem;
 	}
 
