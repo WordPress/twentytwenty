@@ -2845,8 +2845,28 @@ h2.entry-title {
 	color: #cd2653;
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link {
+.wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color) {
 	color: inherit;
+}
+
+.wp-block-button__link.has-accent-color {
+	color: #cd2653;
+}
+
+.wp-block-button__link.has-primary-color {
+	color: #000;
+}
+
+.wp-block-button__link.has-secondary-color {
+	color: #6d6d6d;
+}
+
+.wp-block-button__link.has-subtle-background-color {
+	color: #dcd7ca;
+}
+
+.wp-block-button__link.has-background-color {
+	color: #f5efe0;
 }
 
 /* Block: Columns ---------------------------- */
