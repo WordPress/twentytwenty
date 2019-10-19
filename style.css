@@ -2990,6 +2990,10 @@ figure.wp-block-gallery.alignfull {
 	max-width: none;
 }
 
+.wp-block-media-text__content > *:first-child {
+	margin-top: 0;
+}
+
 .wp-block-media-text__content > *:last-child {
 	margin-bottom: 0;
 }
