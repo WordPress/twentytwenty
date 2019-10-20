@@ -2850,7 +2850,7 @@ h2.entry-title {
 }
 
 .is-style-outline .wp-block-button__link {
-	padding: calc( 1.1em - .2rem ) calc( 1.44em - .2rem );
+	padding: calc(1.1em - 0.2rem) calc(1.44em - 0.2rem);
 }
 
 /* Block: Columns ---------------------------- */
