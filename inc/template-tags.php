@@ -190,6 +190,9 @@ function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $text    Anchor text.
  */
 function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
 	$edit_url = get_edit_post_link( $post_id );
 
@@ -219,7 +222,7 @@ add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 /**
  * Get the post meta.
  *
- * @param int    $post_id The iD of the post.
+ * @param int    $post_id The ID of the post.
  * @param string $location The location where the meta is shown.
  */
 function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' ) {
