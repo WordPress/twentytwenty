@@ -2845,8 +2845,12 @@ h2.entry-title {
 	color: #cd2653;
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color) {
+.is-style-outline .wp-block-button__link:not(.has-text-color) {
 	color: inherit;
+}
+
+.is-style-outline .wp-block-button__link {
+	padding: calc( 1.1em - .2rem ) calc( 1.44em - .2rem );
 }
 
 /* Block: Columns ---------------------------- */
