@@ -2530,11 +2530,6 @@ h2.entry-title {
 	text-decoration: none;
 }
 
-.pagination-single a:hover,
-.pagination-single a:focus {
-	text-decoration: underline;
-}
-
 .pagination-single a + a {
 	margin-top: 1rem;
 }
