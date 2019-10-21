@@ -45,8 +45,8 @@ function twentytwenty_get_starter_content() {
 			'front' => array(
 				'post_type'    => 'page',
 				'post_title'   => __( 'The New UMoMA Opens its Doors', 'twentytwenty' ),
-				// Use the above featured image with the predefined about page
-            	'thumbnail' => '{{image-opening}}',
+				// Use the above featured image with the predefined about page.
+				'thumbnail'    => '{{image-opening}}',
 				'post_content' => join(
 					'',
 					array(
