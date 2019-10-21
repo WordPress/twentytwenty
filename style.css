@@ -5267,6 +5267,10 @@ a.to-the-top > * {
 
 	/* BLOCK: COLUMNS */
 
+	.wp-block-column {
+		margin-bottom: 0;
+	}
+
 	.alignfull .wp-block-column:first-child > p,
 	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
