@@ -45,6 +45,8 @@ function twentytwenty_get_starter_content() {
 			'front' => array(
 				'post_type'    => 'page',
 				'post_title'   => __( 'The New UMoMA Opens its Doors', 'twentytwenty' ),
+				// Use the above featured image with the predefined about page
+            	'thumbnail' => '{{image-opening}}',
 				'post_content' => join(
 					'',
 					array(
@@ -58,7 +60,7 @@ function twentytwenty_get_starter_content() {
 						'<div class="wp-block-column"><!-- wp:group -->',
 						'<div class="wp-block-group"><div class="wp-block-group__inner-container">',
 						'<!-- wp:image {"align":"full","id":37,"sizeSlug":"full"} -->',
-						'<figure class="wp-block-image alignfull size-full"><img src="assets/images/2020-three-quarters-1.png" alt="" class="wp-image-37"/></figure>',
+						'<figure class="wp-block-image alignfull size-full"><img src="' . get_theme_file_uri() . '/assets/images/2020-three-quarters-1.png" alt="" class="wp-image-37"/></figure>',
 						'<!-- /wp:image -->',
 						'<!-- wp:heading {"level":3} -->',
 						'<h3>' . __( 'Works and Days', 'twentytwenty' ) . '</h3>',
@@ -73,7 +75,7 @@ function twentytwenty_get_starter_content() {
 						'<!-- wp:group -->',
 						'<div class="wp-block-group"><div class="wp-block-group__inner-container">',
 						'<!-- wp:image {"align":"full","id":37,"sizeSlug":"full"} -->',
-						'<figure class="wp-block-image alignfull size-full"><img src="assets/images/2020-three-quarters-3.png" alt="" class="wp-image-37"/></figure>',
+						'<figure class="wp-block-image alignfull size-full"><img src="' . get_theme_file_uri() . '/assets/images/2020-three-quarters-3.png" alt="" class="wp-image-37"/></figure>',
 						'<!-- /wp:image -->',
 						'<!-- wp:heading {"level":3} -->',
 						'<h3>' . __( 'Theatre of Operations', 'twentytwenty' ) . '</h3>',
@@ -90,7 +92,7 @@ function twentytwenty_get_starter_content() {
 						'<div class="wp-block-column"><!-- wp:group -->',
 						'<div class="wp-block-group"><div class="wp-block-group__inner-container">',
 						'<!-- wp:image {"align":"full","id":37,"sizeSlug":"full"} -->',
-						'<figure class="wp-block-image alignfull size-full"><img src="assets/images/2020-three-quarters-2.png" alt="" class="wp-image-37"/></figure>',
+						'<figure class="wp-block-image alignfull size-full"><img src="' . get_theme_file_uri() . '/assets/images/2020-three-quarters-2.png" alt="" class="wp-image-37"/></figure>',
 						'<!-- /wp:image -->',
 						'<!-- wp:heading {"level":3} -->',
 						'<h3>' . __( 'The Life I Deserve', 'twentytwenty' ) . '</h3>',
@@ -105,7 +107,7 @@ function twentytwenty_get_starter_content() {
 						'<!-- wp:group -->',
 						'<div class="wp-block-group"><div class="wp-block-group__inner-container">',
 						'<!-- wp:image {"align":"full","id":37,"sizeSlug":"full"} -->',
-						'<figure class="wp-block-image alignfull size-full"><img src="assets/images/2020-three-quarters-4.png" alt="" class="wp-image-37"/></figure>',
+						'<figure class="wp-block-image alignfull size-full"><img src="' . get_theme_file_uri() . '/assets/images/2020-three-quarters-4.png" alt="" class="wp-image-37"/></figure>',
 						'<!-- /wp:image -->',
 						'<!-- wp:heading {"level":3} -->',
 						'<h3>' . __( 'From Signac to Matisse', 'twentytwenty' ) . '</h3>',
@@ -120,7 +122,7 @@ function twentytwenty_get_starter_content() {
 						'<!-- /wp:column --></div>',
 						'<!-- /wp:columns -->',
 						'<!-- wp:image {"align":"full","id":37,"sizeSlug":"full"} -->',
-						'<figure class="wp-block-image alignfull size-full"><img src="assets/images/2020-landscape-2.png" alt="" class="wp-image-37"/></figure>',
+						'<figure class="wp-block-image alignfull size-full"><img src="' . get_theme_file_uri() . '/assets/images/2020-landscape-2.png" alt="" class="wp-image-37"/></figure>',
 						'<!-- /wp:image -->',
 						'<!-- wp:group {"align":"wide"} -->',
 						'<div class="wp-block-group alignwide"><div class="wp-block-group__inner-container"><!-- wp:heading {"align":"center","textColor":"accent"} -->',
@@ -150,7 +152,7 @@ function twentytwenty_get_starter_content() {
 						'<!-- /wp:group --></div></div>',
 						'<!-- /wp:group -->',
 						'<!-- wp:gallery {"ids":[39,38],"align":"wide"} -->',
-						'<figure class="wp-block-gallery alignwide columns-2 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="assets/images/2020-square-2-1024x1024.png" alt="" data-id="39" data-full-url="assets/images/2020-square-2.png" data-link="assets/images/2020-square-2/" class="wp-image-39"/></figure></li><li class="blocks-gallery-item"><figure><img src="assets/images/2020-square-1-1024x1024.png" alt="" data-id="38" data-full-url="assets/images/2020-square-1.png" data-link="assets/images/2020-square-1/" class="wp-image-38"/></figure></li></ul></figure>',
+						'<figure class="wp-block-gallery alignwide columns-2 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="' . get_theme_file_uri() . '/assets/images/2020-square-2-1024x1024.png" alt="" data-id="39" data-full-url="' . get_theme_file_uri() . '/assets/images/2020-square-2.png" data-link="assets/images/2020-square-2/" class="wp-image-39"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . get_theme_file_uri() . '/assets/images/2020-square-1-1024x1024.png" alt="" data-id="38" data-full-url="' . get_theme_file_uri() . '/assets/images/2020-square-1.png" data-link="' . get_theme_file_uri() . '/assets/images/2020-square-1/" class="wp-image-38"/></figure></li></ul></figure>',
 						'<!-- /wp:gallery -->',
 					)
 				),
