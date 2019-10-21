@@ -2571,43 +2571,43 @@ h2.entry-title {
 
 /* CUSTOM COLORS */
 
-.has-accent-color {
+:root .has-accent-color {
 	color: #cd2653;
 }
 
-.has-accent-background-color {
+:root .has-accent-background-color {
 	background-color: #cd2653;
 }
 
-.has-primary-color {
+:root .has-primary-color {
 	color: #000;
 }
 
-.has-primary-background-color {
+:root .has-primary-background-color {
 	background-color: #000;
 }
 
-.has-secondary-color {
+:root .has-secondary-color {
 	color: #6d6d6d;
 }
 
-.has-secondary-background-color {
+:root .has-secondary-background-color {
 	background-color: #6d6d6d;
 }
 
-.has-subtle-background-color {
+:root .has-subtle-background-color {
 	color: #dcd7ca;
 }
 
-.has-subtle-background-background-color {
+:root .has-subtle-background-background-color {
 	background-color: #dcd7ca;
 }
 
-.has-background-color {
+:root .has-background-color {
 	color: #f5efe0;
 }
 
-.has-background-background-color {
+:root .has-background-background-color {
 	background-color: #f5efe0;
 }
 
@@ -2845,8 +2845,12 @@ h2.entry-title {
 	color: #cd2653;
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link {
+.is-style-outline .wp-block-button__link:not(.has-text-color) {
 	color: inherit;
+}
+
+.is-style-outline .wp-block-button__link {
+	padding: calc(1.1em - 0.2rem) calc(1.44em - 0.2rem);
 }
 
 /* Block: Columns ---------------------------- */
