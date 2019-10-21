@@ -21,7 +21,7 @@ function twentytwenty_get_starter_content() {
 
 	// Define and register starter content to showcase the theme on new sites.
 	$starter_content = array(
-		'widgets'   => array(
+		'widgets'     => array(
 			// Place one core-defined widgets in the first footer widget area.
 			'sidebar-1' => array(
 				'text_about',
@@ -41,7 +41,7 @@ function twentytwenty_get_starter_content() {
 		),
 
 		// Specify the core-defined pages to create and add custom thumbnails to some of them.
-		'posts'     => array(
+		'posts'       => array(
 			'front' => array(
 				'post_type'    => 'page',
 				'post_title'   => __( 'The New UMoMA Opens its Doors', 'twentytwenty' ),
@@ -161,14 +161,14 @@ function twentytwenty_get_starter_content() {
 		),
 
 		// Default to a static front page and assign the front and posts pages.
-		'options'   => array(
+		'options'     => array(
 			'show_on_front'  => 'page',
 			'page_on_front'  => '{{front}}',
 			'page_for_posts' => '{{blog}}',
 		),
 
 		// Set up nav menus for each of the two areas registered in the theme.
-		'nav_menus' => array(
+		'nav_menus'   => array(
 			// Assign a menu to the "primary" location.
 			'primary'  => array(
 				'name'  => __( 'Primary', 'twentytwenty' ),
