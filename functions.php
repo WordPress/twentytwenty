@@ -482,6 +482,19 @@ function twentytwenty_block_editor_settings() {
 add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
 
 /**
+ * Overwrite default more tag with styling and screen reader markup.
+ *
+ * @param string $html The default output HTML for the more tag.
+ *
+ * @return string $html
+ */
+function twentytwenty_read_more_tag( $html ) {
+	return preg_replace( '/<a.*>(.*)<\/a>/iU', sprintf( '<span class="faux-button">$1</span> <span class="screen-reader-text">"%1$s"</span>', get_the_title( get_the_ID() ) ), $html );
+}
+
+add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
+
+/**
  * Enqueues scripts for customizer controls & settings.
  *
  * @since 1.0.0
