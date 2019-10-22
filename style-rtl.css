@@ -2528,6 +2528,7 @@ h2.entry-title {
 	font-weight: 600;
 	letter-spacing: -0.0275em;
 	text-decoration: none;
+	flex: 1;
 }
 
 .pagination-single a:hover,
