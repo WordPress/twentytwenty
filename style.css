@@ -2899,10 +2899,6 @@ h2.entry-title {
 	font-size: 3.2rem;
 }
 
-.entry-content .wp-block-cover .wp-block-button {
-	margin: 0;
-}
-
 /* Block: Embed ------------------------------ */
 
 /* Block: File ------------------------------- */
@@ -4407,13 +4403,17 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content .alignleft {
+	.entry-content > .alignleft,
+	.entry-content > p .alignleft,
+	.entry-content > .wp-block-image .alignleft {
 
 		/*rtl:ignore*/
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.entry-content .alignright {
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
+	.entry-content > .wp-block-image .alignright {
 
 		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
@@ -5822,13 +5822,17 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content .alignleft {
+	.entry-content > .alignleft,
+	.entry-content > p .alignleft,
+	.entry-content > .wp-block-image .alignleft  {
 
 		/*rtl:ignore*/
 		margin-left: -31rem;
 	}
 
-	.entry-content .alignright {
+	.entry-content > .alignright, 
+	.entry-content > p .alignright, 
+	.entry-content > .wp-block-image .alignright {
 
 		/*rtl:ignore*/
 		margin-right: -31rem;
