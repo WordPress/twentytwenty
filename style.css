@@ -2899,6 +2899,10 @@ h2.entry-title {
 	font-size: 3.2rem;
 }
 
+.entry-content .wp-block-cover .wp-block-button {
+	margin: 0;
+}
+
 /* Block: Embed ------------------------------ */
 
 /* Block: File ------------------------------- */
