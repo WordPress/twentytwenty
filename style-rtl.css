@@ -2862,6 +2862,10 @@ h2.entry-title {
 	margin-bottom: 0;
 }
 
+.entry-content .wp-block-cover .wp-block-button {
+	margin: 0;
+}
+
 /* Block: Cover ------------------------------ */
 
 .wp-block-cover-image .wp-block-cover__inner-container,
