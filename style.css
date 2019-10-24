@@ -5028,10 +5028,14 @@ a.to-the-top > * {
 	}
 
 	.alignleft {
+		
+		/*rtl:ignore*/
 		margin: 0.3rem 2rem 2rem 0;
 	}
 
 	.alignright {
+		
+		 /*rtl:ignore*/
 		margin: 0.3rem 0 2rem 2rem;
 	}
 
