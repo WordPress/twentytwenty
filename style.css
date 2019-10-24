@@ -2189,6 +2189,7 @@ body.template-cover .entry-header {
 body.template-full-width .entry-content {
 	max-width: none;
 }
+
 body.template-full-width .entry-content .alignleft {
 
 	/*rtl:ignore*/
