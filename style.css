@@ -4816,7 +4816,7 @@ a.to-the-top > * {
 	}
 
 	.pagination-single hr:last-child {
-		margin: 4rem 0 0 0;
+		margin: 4rem 0 0.8rem 0;
 	}
 
 	.pagination-single a + a {
