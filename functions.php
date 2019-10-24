@@ -69,7 +69,7 @@ function twentytwenty_theme_support() {
 	$logo_height = 90;
 
 	// If the retina setting is active, double the recommended width and height.
-	if ( get_theme_mod( 'twentytwenty_retina_logo', false ) ) {
+	if ( get_theme_mod( 'retina_logo', false ) ) {
 		$logo_width  = floor( $logo_width * 2 );
 		$logo_height = floor( $logo_height * 2 );
 	}
@@ -81,7 +81,6 @@ function twentytwenty_theme_support() {
 			'width'       => $logo_width,
 			'flex-height' => true,
 			'flex-width'  => true,
-			'header-text' => array( 'site-title', 'site-description' ),
 		)
 	);
 
@@ -262,7 +261,17 @@ function twentytwenty_get_custom_logo( $html ) {
 				"height=\"{$logo_height}\"",
 			);
 
+			// Add a style attribute with the height, or append the height to the style attribute if the style attribute already exists.
+			if ( strpos( $html, ' style=' ) === false ) {
+				$search[]  = '/(src=)/';
+				$replace[] = "style=\"height: {$logo_height}px;\" src=";
+			} else {
+				$search[]  = '/(style="[^"]*)/';
+				$replace[] = "$1 height: {$logo_height}px;";
+			}
+
 			$html = preg_replace( $search, $replace, $html );
+			
 		}
 	}
 
@@ -480,6 +489,19 @@ function twentytwenty_block_editor_settings() {
 }
 
 add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
+
+/**
+ * Overwrite default more tag with styling and screen reader markup.
+ *
+ * @param string $html The default output HTML for the more tag.
+ *
+ * @return string $html
+ */
+function twentytwenty_read_more_tag( $html ) {
+	return preg_replace( '/<a.*>(.*)<\/a>/iU', sprintf( '<span class="faux-button">$1</span> <span class="screen-reader-text">"%1$s"</span>', get_the_title( get_the_ID() ) ), $html );
+}
+
+add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );
 
 /**
  * Enqueues scripts for customizer controls & settings.
