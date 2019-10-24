@@ -94,8 +94,8 @@
 
 									wp_nav_menu(
 										array(
-											'container'  => '',
-											'items_wrap' => '%3$s',
+											'container'      => '',
+											'items_wrap'     => '%3$s',
 											'theme_location' => 'primary',
 										)
 									);
@@ -104,10 +104,10 @@
 
 									wp_list_pages(
 										array(
-											'match_menu_classes' => true,
+											'match_menu_classes'  => true,
 											'show_sub_menu_icons' => true,
-											'title_li' => false,
-											'walker'   => new TwentyTwenty_Walker_Page(),
+											'title_li'            => false,
+											'walker'              => new TwentyTwenty_Walker_Page(),
 										)
 									);
 
