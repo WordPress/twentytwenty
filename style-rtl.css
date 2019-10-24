@@ -2179,11 +2179,11 @@ body.template-full-width .entry-content {
 }
 
 body.template-full-width .entry-content .alignleft {
-	margin-right: 0;
+	margin-left: 0;
 }
 
 body.template-full-width .entry-content .alignright {
-	margin-left: 0;
+	margin-right: 0;
 }
 
 /* -------------------------------------------------------------------------- */
