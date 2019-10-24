@@ -2189,12 +2189,15 @@ body.template-cover .entry-header {
 body.template-full-width .entry-content {
 	max-width: none;
 }
-
 body.template-full-width .entry-content .alignleft {
+
+	/*rtl:ignore*/
 	margin-left: 0;
 }
 
 body.template-full-width .entry-content .alignright {
+
+	/*rtl:ignore*/
 	margin-right: 0;
 }
 
@@ -5824,14 +5827,14 @@ a.to-the-top > * {
 
 	.entry-content > .alignleft,
 	.entry-content > p .alignleft,
-	.entry-content > .wp-block-image .alignleft  {
+	.entry-content > .wp-block-image .alignleft {
 
 		/*rtl:ignore*/
 		margin-left: -31rem;
 	}
 
-	.entry-content > .alignright, 
-	.entry-content > p .alignright, 
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
 	.entry-content > .wp-block-image .alignright {
 
 		/*rtl:ignore*/
