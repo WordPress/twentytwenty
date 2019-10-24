@@ -9,7 +9,7 @@
 
 ## Description
 
-Default theme for Twenty Twenty
+Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organisations and businesses can create landing pages with dynamic layouts using the group and columns blocks, and the centered content column and fine-tuned typography makes it perfect for traditional blogs as well. Full block editor styles give you a good idea of what the final result will look like before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer, and when you update the color settings, the colors of all elements on your site are automatically calculated based on the colors you pick. This ensures a high, accessible color contrast for your visitors.
 
 ## Installation
 
