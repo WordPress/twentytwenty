@@ -4994,11 +4994,11 @@ a.to-the-top > * {
 	}
 
 	.alignleft {
-		margin: 0.3rem 0 2rem 2rem;
+		margin: 0.3rem 2rem 2rem 0;
 	}
 
 	.alignright {
-		margin: 0.3rem 2rem 2rem 0;
+		margin: 0.3rem 0 2rem 2rem;
 	}
 
 	.alignwide,
