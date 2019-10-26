@@ -9,7 +9,7 @@
 
 ## Description
 
-Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organisations and businesses can create landing pages with dynamic layouts using the group and columns blocks, and the centered content column and fine-tuned typography makes it perfect for traditional blogs as well. Full block editor styles give you a good idea of what the final result will look like before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer, and when you update the color settings, the colors of all elements on your site are automatically calculated based on the colors you pick. This ensures a high, accessible color contrast for your visitors.
+Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Full block editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors.
 
 ## Installation
 
