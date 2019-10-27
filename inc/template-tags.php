@@ -25,7 +25,9 @@
  * Displays the site logo, either text or image.
  *
  * @param array   $args Arguments for displaying the site logo either as an image or text.
- * @param boolean $echo Echo or return the html.
+ * @param boolean $echo Echo or return the HTML.
+ *
+ * @return string $html Compiled HTML based on our arguments.
  */
 function twentytwenty_site_logo( $args = array(), $echo = true ) {
 	$logo       = get_custom_logo();
@@ -87,6 +89,8 @@ function twentytwenty_site_logo( $args = array(), $echo = true ) {
  * Displays the site description.
  *
  * @param boolean $echo Echo or return the html.
+ *
+ * @return string $html The HTML to display.
  */
 function twentytwenty_site_description( $echo = true ) {
 	$description = get_bloginfo( 'description' );
@@ -124,6 +128,8 @@ function twentytwenty_site_description( $echo = true ) {
  * Check if the specified comment is written by the author of the post commented on.
  *
  * @param object $comment Comment data.
+ *
+ * @return bool
  */
 function twentytwenty_is_comment_by_post_author( $comment = null ) {
 
@@ -184,6 +190,9 @@ function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $text    Anchor text.
  */
 function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
 	$edit_url = get_edit_post_link( $post_id );
 
@@ -213,7 +222,7 @@ add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 /**
  * Get the post meta.
  *
- * @param int    $post_id The iD of the post.
+ * @param int    $post_id The ID of the post.
  * @param string $location The location where the meta is shown.
  */
 function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' ) {
@@ -379,7 +388,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 							<?php twentytwenty_the_theme_svg( 'folder' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php _e( 'In', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
+							<?php _ex( 'In', 'A string that is output before one or more categories', 'twentytwenty' ); ?> <?php the_category( ', ' ); ?>
 						</span>
 					</li>
 					<?php
@@ -483,7 +492,7 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $item Comment.
  * @param int    $depth Depth of the current comment.
  * @param array  $args An array of arguments.
- * @param string $current_page Wether or not the item is the current item.
+ * @param string $current_page Whether or not the item is the current item.
  *
  * @return array $css_class CSS Class names.
  */
@@ -537,7 +546,7 @@ function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 			$toggle_duration      = twentytwenty_toggle_duration();
 
 			// Add the sub menu toggle.
-			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '" aria-expanded="false"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
 		}
 
@@ -571,7 +580,7 @@ add_filter( 'nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 1
 function twentytwenty_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 	// Change SVG icon inside social links menu if there is supported URL.
 	if ( 'social' === $args->theme_location ) {
-		$svg = TwentyTwenty_SVG_Icons::get_social_link_svg( $item->url, 'social' );
+		$svg = TwentyTwenty_SVG_Icons::get_social_link_svg( $item->url );
 		if ( empty( $svg ) ) {
 			$svg = twentytwenty_get_theme_svg( 'link' );
 		}
