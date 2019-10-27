@@ -74,14 +74,14 @@ if ( ! class_exists( 'TwentyTwenty_Walker_Comment' ) ) {
 							</a>
 							<?php
 							if ( get_edit_comment_link() ) {
-								echo ' &bull; <a class="comment-edit-link" href="' . esc_url( get_edit_comment_link() ) . '">' . __( 'Edit', 'twentytwenty' ) . '</a>';
+								echo ' <span aria-hidden="true">&bull;</span> <a class="comment-edit-link" href="' . esc_url( get_edit_comment_link() ) . '">' . __( 'Edit', 'twentytwenty' ) . '</a>';
 							}
 							?>
 						</div><!-- .comment-metadata -->
 
 					</footer><!-- .comment-meta -->
 
-					<div class="comment-content">
+					<div class="comment-content entry-content">
 
 						<?php
 
