@@ -127,7 +127,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 		 * @var array
 		 */
 		public static $social_icons_map = array(
-			'amazon'      => array(
+			'amazon'    => array(
 				'amazon.com',
 				'amazon.cn',
 				'amazon.in',
@@ -139,32 +139,32 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 				'amazon.co',
 				'amazon.ca',
 			),
-			'behance'     => array(
+			'behance'   => array(
 				'behance.net',
 			),
-			'codepen'     => array(
+			'codepen'   => array(
 				'codepen.io',
 			),
-			'facebook'    => array(
+			'facebook'  => array(
 				'facebook.com',
 				'fb.me',
 			),
-			'feed'        => array(
+			'feed'      => array(
 				'feed',
 			),
-			'lastfm'      => array(
+			'lastfm'    => array(
 				'last.fm',
 			),
-			'mail'        => array(
+			'mail'      => array(
 				'mailto:',
 			),
-			'pocket'      => array(
+			'pocket'    => array(
 				'getpocket.com',
 			),
-			'twitch'      => array(
+			'twitch'    => array(
 				'twitch.tv',
 			),
-			'wordpress'   => array(
+			'wordpress' => array(
 				'wordpress.com',
 				'wordpress.org',
 			),
