@@ -35,13 +35,13 @@ if ( ! class_exists( 'TwentyTwenty_Non_Latin_Languages' ) ) {
 				array(
 
 					// Arabic.
-					'ar'    => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'ary'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'azb'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'ckb'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'fa-IR' => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'haz'   => array( 'Tahoma', 'Arial', 'sans_serif' ),
-					'ps'    => array( 'Tahoma', 'Arial', 'sans_serif' ),
+					'ar'    => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'ary'   => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'azb'   => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'ckb'   => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'fa-IR' => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'haz'   => array( 'Tahoma', 'Arial', 'sans-serif' ),
+					'ps'    => array( 'Tahoma', 'Arial', 'sans-serif' ),
 
 					// Chinese Simplified (China) - Noto Sans SC.
 					'zh-CN' => array( '\'PingFang SC\'', '\'Helvetica Neue\'', '\'Microsoft YaHei New\'', '\'STHeiti Light\'', 'sans-serif' ),
@@ -56,31 +56,31 @@ if ( ! class_exists( 'TwentyTwenty_Non_Latin_Languages' ) ) {
 					'zh-HK' => array( '\'PingFang HK\'', '\'Helvetica Neue\'', '\'Microsoft YaHei New\'', '\'STHeiti Light\'', 'sans-serif' ),
 
 					// Cyrillic.
-					'bel'   => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'bg-BG' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'kk'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'mk-MK' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'mn'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'ru-RU' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'sah'   => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'sr-RS' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'tt-RU' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
-					'uk'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans_serif' ),
+					'bel'   => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'bg-BG' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'kk'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'mk-MK' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'mn'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'ru-RU' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'sah'   => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'sr-RS' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'tt-RU' => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
+					'uk'    => array( '\'Helvetica Neue\'', 'Helvetica', '\'Segoe UI\'', 'Arial', 'sans-serif' ),
 
 					// Devanagari.
-					'bn-BD' => array( 'Arial', 'sans_serif' ),
-					'hi-IN' => array( 'Arial', 'sans_serif' ),
-					'mr'    => array( 'Arial', 'sans_serif' ),
-					'ne-NP' => array( 'Arial', 'sans_serif' ),
+					'bn-BD' => array( 'Arial', 'sans-serif' ),
+					'hi-IN' => array( 'Arial', 'sans-serif' ),
+					'mr'    => array( 'Arial', 'sans-serif' ),
+					'ne-NP' => array( 'Arial', 'sans-serif' ),
 
 					// Greek.
-					'el'    => array( '\'Helvetica Neue\', Helvetica, Arial, sans_serif' ),
+					'el'    => array( '\'Helvetica Neue\', Helvetica, Arial, sans-serif' ),
 
 					// Gujarati.
-					'gu'    => array( 'Arial', 'sans_serif' ),
+					'gu'    => array( 'Arial', 'sans-serif' ),
 
 					// Hebrew.
-					'he-IL' => array( '\'Arial Hebrew\'', 'Arial', 'sans_serif' ),
+					'he-IL' => array( '\'Arial Hebrew\'', 'Arial', 'sans-serif' ),
 
 					// Japanese.
 					'ja'    => array( 'sans-serif' ),
