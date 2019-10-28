@@ -835,8 +835,15 @@ table {
 	margin: 4rem 0;
 	max-width: 100%;
 	overflow: hidden;
-	table-layout: fixed;
 	width: 100%;
+}
+
+.alignleft > table {
+	margin: 0;
+}
+
+.alignright > table {
+	margin: 0;
 }
 
 th,
@@ -1333,10 +1340,14 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 	display: block;
 }
 
+.header-titles .site-logo .site-logo {
+	margin: 0;
+}
+
 .site-logo img {
 	max-height: 6rem;
-	width: auto;
 	margin: 0 auto;
+	width: auto;
 }
 
 body:not(.enable-search-modal) .site-logo img {
@@ -2460,28 +2471,33 @@ h2.entry-title {
 
 /* Author Bio -------------------------------- */
 
-.avatar {
-	border-radius: 50%;
-}
-
 .author-bio {
 	margin-top: 4rem;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
 }
 
-.author-info {
-	flex: 1;
+.hide-avatars .author-bio {
+	padding-right: 0;
+}
+
+.author-bio .author-title-wrapper {
+	align-items: center;
+	display: flex;
+	margin: 0 0 1rem 0;
+}
+
+.author-bio .avatar {
+	border-radius: 50%;
+	margin-left: 1.5rem;
+	height: 5rem;
+	width: 5rem;
 }
 
 .hide-avatars img.avatar {
 	display: none;
 }
 
-.author-bio .avatar {
-	margin-left: 1.5rem;
-	width: 5rem;
+.author-bio p:last-child {
+	margin-bottom: 0;
 }
 
 .author-bio .author-title {
@@ -4276,6 +4292,12 @@ a.to-the-top > * {
 		max-width: 26rem;
 	}
 
+	/* BLOCK: TABLE WIDTH */
+	.wp-block-table.alignleft,
+	.wp-block-table.alignright {
+		max-width: 100%;
+	}
+
 	/* Entry Content ------------------------- */
 
 	/* ALIGNMENT CLASSES */
@@ -4378,8 +4400,8 @@ a.to-the-top > * {
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
 
-	.entry-content > .alignright, 
-	.entry-content > p .alignright, 
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
 	.entry-content > .wp-block-image .alignright {
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
 	}
@@ -4759,14 +4781,19 @@ a.to-the-top > * {
 	/* AUTHOR BIO */
 
 	.author-bio {
-		margin-top: 8rem;
-		min-height: 8rem;
-		position: relative;
-	}
+ 		margin-top: 8rem;
+ 		min-height: 8rem;
+ 		padding-right: 10rem;
+ 		position: relative;
+ 	}
 
-	.author-bio .avatar {
-		width: 8rem;
-	}
+ 	.author-bio .avatar {
+ 		position: absolute;
+ 		right: 0;
+ 		top: 0;
+ 		height: 8rem;
+ 		width: 8rem;
+ 	}
 
 	/* SINGLE PAGINATION */
 
@@ -4789,7 +4816,7 @@ a.to-the-top > * {
 	}
 
 	.pagination-single hr:last-child {
-		margin: 4rem 0 0 0;
+		margin: 4rem 0 0.8rem 0;
 	}
 
 	.pagination-single a + a {
@@ -5789,8 +5816,8 @@ a.to-the-top > * {
 		margin-left: -31rem;
 	}
 
-	.entry-content > .alignright, 
-	.entry-content > p .alignright, 
+	.entry-content > .alignright,
+	.entry-content > p .alignright,
 	.entry-content > .wp-block-image .alignright {
 		margin-right: -31rem;
 	}
