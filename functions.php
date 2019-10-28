@@ -162,6 +162,9 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-page.php'
 // Custom script loader class.
 require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
+// Non-latin language handling.
+require get_template_directory() . '/classes/class-twentytwenty-non-latin-languages.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
@@ -205,6 +208,23 @@ function twentytwenty_register_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
+
+/**
+ * Enqueue non-latin language styles
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function twentytwenty_non_latin_languages() {
+	$custom_css = TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'front-end' );
+
+	if ( $custom_css ) {
+		wp_add_inline_style( 'twentytwenty-style', $custom_css );
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'twentytwenty_non_latin_languages' );
 
 /**
  * Register navigation menus uses wp_nav_menu in five places.
@@ -357,6 +377,9 @@ function twentytwenty_block_editor_styles() {
 	// Add inline style from the Customizer.
 	wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
+	// Add inline style for non-latin fonts.
+	wp_add_inline_style( 'twentytwenty-block-editor-styles', TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'block-editor' ) );
+
 	// Enqueue the editor script.
 	wp_enqueue_script( 'twentytwenty-block-editor-script', get_theme_file_uri( '/assets/js/editor-script-block.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
@@ -401,6 +424,35 @@ function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 }
 
 add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_customizer_styles' );
+
+/**
+ * Output non-latin font styles in the classic editor.
+ * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
+ *
+ * @param array $mce_init TinyMCE styles.
+ *
+ * @return array $mce_init TinyMCE styles.
+ */
+function twentytwenty_add_classic_editor_non_latin_styles( $mce_init ) {
+
+	$styles = TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'classic-editor' );
+
+	// Return if there are no styles to add.
+	if ( ! $styles ) {
+		return $mce_init;
+	}
+
+	if ( ! isset( $mce_init['content_style'] ) ) {
+		$mce_init['content_style'] = $styles . ' ';
+	} else {
+		$mce_init['content_style'] .= ' ' . $styles . ' ';
+	}
+
+	return $mce_init;
+
+}
+
+add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_non_latin_styles' );
 
 /**
  * Block Editor Settings.
