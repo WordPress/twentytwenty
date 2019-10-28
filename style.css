@@ -2535,7 +2535,7 @@ h2.entry-title {
 }
 
 .pagination-single hr:last-child {
-	margin: 2.8rem 0 0 0;
+	margin: 2.8rem 0 0.8rem 0;
 }
 
 .pagination-single a {
