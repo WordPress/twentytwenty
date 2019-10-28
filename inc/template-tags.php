@@ -232,8 +232,6 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 		return;
 	}
 
-	$page_template = get_page_template_slug( $post_id );
-
 	/**
 	 * Filters post types array
 	 *
