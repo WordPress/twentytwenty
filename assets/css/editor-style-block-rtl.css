@@ -510,11 +510,11 @@ Inter variable font. Usage:
 }
 
 .editor-styles-wrapper .wp-block-table th.has-text-align-right {
-	text-align: right;
+	text-align: left;
 }
 
 .editor-styles-wrapper .wp-block-table th.has-text-align-left {
-	text-align: left;
+	text-align: right;
 }
 
 /* STYLE: STRIPES */
