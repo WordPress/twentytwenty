@@ -64,10 +64,10 @@ License: MIT License, https://opensource.org/licenses/MIT
 Source: https://feathericons.com
 Used for post meta icons, and the link icon in the social menu.
 
-Socicon Icons
-License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
-Source: https://www.socicon.com
-Used for all social menu icons except the link icon.
+Social Icons
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Source: WordPress Social Link Block (See wp-includes\blocks\social-link.php)
 
 Code from Twenty Nineteen
 Copyright (c) 2018 WordPress.org
