@@ -95,7 +95,7 @@ twentytwenty.coverModals = {
 		document.querySelectorAll( '.cover-modal' ).forEach( function( element ) {
 			element.addEventListener( 'toggled', function( event ) {
 				var modal = event.target,
-						body = document.body;
+					body = document.body;
 
 				if ( modal.classList.contains( 'active' ) ) {
 					body.classList.add( 'showing-modal' );
@@ -139,14 +139,14 @@ twentytwenty.coverModals = {
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
 		var _doc = document,
-				_win = window,
-				modals = _doc.querySelectorAll( '.cover-modal' ),
-				htmlStyle = _doc.documentElement.style,
-				adminBar = _doc.querySelector( '#wpadminbar' );
+			_win = window,
+			modals = _doc.querySelectorAll( '.cover-modal' ),
+			htmlStyle = _doc.documentElement.style,
+			adminBar = _doc.querySelector( '#wpadminbar' );
 
 		function getAdminBarHeight( negativeValue ) {
 			var height,
-					currentScroll = _win.pageYOffset;
+				currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
 				height = currentScroll + adminBar.getBoundingClientRect().height;
@@ -173,9 +173,9 @@ twentytwenty.coverModals = {
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
 				var styles = htmlStyles(),
-						offsetY = _win.pageYOffset,
-						paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px',
-						mQuery = _win.matchMedia( '(max-width: 600px)' );
+					offsetY = _win.pageYOffset,
+					paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px',
+					mQuery = _win.matchMedia( '(max-width: 600px)' );
 
 				if ( event.target !== modal ) {
 					return;
@@ -238,7 +238,7 @@ twentytwenty.coverModals = {
 	// Untoggle a modal
 	untoggleModal: function( modal ) {
 		var modalTargetClass,
-				modalToggle = false;
+			modalToggle = false;
 
 		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string
 		// The modal-target-string must match the string toggles use to target the modal
@@ -277,7 +277,7 @@ twentytwenty.intrinsicRatioVideos = {
 	makeFit: function() {
 		document.querySelectorAll( 'iframe, object, video' ).forEach( function( video ) {
 			var ratio, iTargetWidth,
-					container = video.parentNode;
+				container = video.parentNode;
 
 			// Skip videos we want to ignore
 			if ( video.classList.contains( 'intrinsic-ignore' ) || video.parentNode.classList.contains( 'intrinsic-ignore' ) ) {
@@ -372,8 +372,8 @@ twentytwenty.smoothScroll = {
 		if ( scrollToElement ) {
 			scrollToElement.addEventListener( 'click', function( event ) {
 				var originalOffset, additionalOffset, scrollOffset, scrollSpeed,
-						// Figure out element to scroll to
-						target = event.target.dataset.twentytwentyScrollTo;
+					// Figure out element to scroll to
+					target = event.target.dataset.twentytwentyScrollTo;
 
 				// Make sure said element exists
 				if ( target ) {
@@ -428,7 +428,7 @@ twentytwenty.modalMenu = {
 
 		_doc.addEventListener( 'keydown', function( event ) {
 			var toggleTarget, modal, selectors, elements, menuType, bottomMenu, activeEl, lastEl, firstEl, tabKey, shiftKey,
-					clickedEl = twentytwenty.toggles.clickedEl;
+				clickedEl = twentytwenty.toggles.clickedEl;
 
 			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
 				toggleTarget = clickedEl.dataset.toggleTarget;
@@ -492,7 +492,7 @@ twentytwenty.primaryMenu = {
 	focusMenuWithChildren: function() {
 		// Get all the link elements within the primary menu.
 		var links, i, len,
-				menu = document.querySelector( '.primary-menu-wrapper' );
+			menu = document.querySelector( '.primary-menu-wrapper' );
 
 		if ( ! menu ) {
 			return false;
@@ -547,12 +547,12 @@ twentytwenty.toggles = {
 
 	performToggle: function( element, instantly ) {
 		var target, timeOutTime, classToToggle,
-				self = this,
-				_doc = document,
-				// Get our targets
-				toggle = element,
-				targetString = toggle.dataset.toggleTarget,
-				activeClass = 'active';
+			self = this,
+			_doc = document,
+			// Get our targets
+			toggle = element,
+			targetString = toggle.dataset.toggleTarget,
+			activeClass = 'active';
 
 		// Elements to focus after modals are closed
 		if ( ! _doc.querySelectorAll( '.show-modal' ).length ) {
@@ -584,9 +584,9 @@ twentytwenty.toggles = {
 
 		setTimeout( function() {
 			var focusElement,
-					subMenued = target.classList.contains( 'sub-menu' ),
-					newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target,
-					duration = toggle.dataset.toggleDuration;
+				subMenued = target.classList.contains( 'sub-menu' ),
+				newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target,
+				duration = toggle.dataset.toggleDuration;
 
 			// Toggle the target of the clicked toggle
 			if ( toggle.dataset.toggleType === 'slidetoggle' && ! instantly && duration !== '0' ) {
@@ -659,7 +659,7 @@ twentytwenty.toggles = {
 		if ( document.querySelectorAll( '*[data-untoggle-above], *[data-untoggle-below], *[data-toggle-above], *[data-toggle-below]' ).length ) {
 			window.addEventListener( 'resize', function() {
 				var winWidth = window.innerWidth,
-						toggles = document.querySelectorAll( '.toggle' );
+					toggles = document.querySelectorAll( '.toggle' );
 
 				toggles.forEach( function( toggle ) {
 					var unToggleAbove = toggle.dataset.untoggleAbove,
@@ -759,8 +759,8 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
  */
 function twentytwentyMenuToggle( target, duration ) {
 	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
-			initialPositions = [],
-			finalPositions = [];
+		initialPositions = [],
+		finalPositions = [];
 
 	if ( ! target ) {
 		return;
