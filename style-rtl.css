@@ -835,8 +835,15 @@ table {
 	margin: 4rem 0;
 	max-width: 100%;
 	overflow: hidden;
-	table-layout: fixed;
 	width: 100%;
+}
+
+.alignleft > table {
+	margin: 0;
+}
+
+.alignright > table {
+	margin: 0;
 }
 
 th,
@@ -4283,6 +4290,12 @@ a.to-the-top > * {
 	.wp-block-gallery.alignleft,
 	.wp-block-gallery.alignright {
 		max-width: 26rem;
+	}
+
+	/* BLOCK: TABLE WIDTH */
+	.wp-block-table.alignleft,
+	.wp-block-table.alignright {
+		max-width: 100%;
 	}
 
 	/* Entry Content ------------------------- */
