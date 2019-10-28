@@ -3187,7 +3187,7 @@ hr.wp-block-separator {
 }
 
 .wp-block-table.is-style-stripes {
-	border-bottom-color: #dcd7ca;
+	border-bottom: none;
 }
 
 /* Block: Quote ------------------------------ */
