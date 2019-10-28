@@ -31,9 +31,8 @@ Twenty Twenty is derived from the Chaplin Theme, Copyright 2019 Anders Norén. C
 
 Twenty Twenty bundles the following third-party resources:
 
-Image in screenshot.png from PxHere  
+Illustrations in screenshot.png by Tammie Lister
 License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
-URL: https://pxhere.com/en/photo/18153  
 
 Inter Font  
 Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)  
