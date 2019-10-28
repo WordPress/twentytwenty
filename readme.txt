@@ -33,9 +33,8 @@ Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
 
 Twenty Twenty bundles the following third-party resources:
 
-Image in screenshot.png from PxHere
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
-URL: https://pxhere.com/en/photo/18153
+Illustrations in screenshot.png by Tammie Lister
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
 
 Inter Font
 Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)
