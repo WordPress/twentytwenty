@@ -64,7 +64,6 @@ function twentytwenty_theme_support() {
 	add_image_size( 'twentytwenty-fullscreen', 1980, 9999 );
 
 	// Custom logo.
-	$logo_id     = get_theme_mod( 'custom_logo' );
 	$logo_width  = 120;
 	$logo_height = 90;
 
@@ -291,7 +290,7 @@ function twentytwenty_get_custom_logo( $html ) {
 			}
 
 			$html = preg_replace( $search, $replace, $html );
-			
+
 		}
 	}
 
