@@ -190,6 +190,9 @@ function twentytwenty_the_post_meta( $post_id = null, $location = 'single-top' )
  * @param string $text    Anchor text.
  */
 function twentytwenty_edit_post_link( $link, $post_id, $text ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
 	$edit_url = get_edit_post_link( $post_id );
 
@@ -219,7 +222,7 @@ add_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10, 3 );
 /**
  * Get the post meta.
  *
- * @param int    $post_id The iD of the post.
+ * @param int    $post_id The ID of the post.
  * @param string $location The location where the meta is shown.
  */
 function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' ) {
@@ -228,8 +231,6 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 	if ( ! $post_id ) {
 		return;
 	}
-
-	$page_template = get_page_template_slug( $post_id );
 
 	/**
 	 * Filters post types array
@@ -359,16 +360,14 @@ function twentytwenty_get_post_meta( $post_id = null, $location = 'single-top' )
 
 					$has_meta = true;
 					?>
-					<li class="post-date">
-						<a class="meta-wrapper" href="<?php the_permalink(); ?>">
-							<span class="meta-icon">
-								<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); ?></span>
-								<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
-							</span>
-							<span class="meta-text">
-								<?php the_time( get_option( 'date_format' ) ); ?>
-							</span>
-						</a>
+					<li class="post-date meta-wrapper">
+						<span class="meta-icon">
+							<span class="screen-reader-text"><?php _e( 'Post date', 'twentytwenty' ); ?></span>
+							<?php twentytwenty_the_theme_svg( 'calendar' ); ?>
+						</span>
+						<span class="meta-text">
+							<a href="<?php the_permalink(); ?>"><?php the_time( get_option( 'date_format' ) ); ?></a>
+						</span>
 					</li>
 					<?php
 
@@ -543,7 +542,7 @@ function twentytwenty_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
 			$toggle_duration      = twentytwenty_toggle_duration();
 
 			// Add the sub menu toggle.
-			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '" aria-expanded="false"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
 
 		}
 
