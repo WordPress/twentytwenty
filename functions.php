@@ -64,7 +64,6 @@ function twentytwenty_theme_support() {
 	add_image_size( 'twentytwenty-fullscreen', 1980, 9999 );
 
 	// Custom logo.
-	$logo_id     = get_theme_mod( 'custom_logo' );
 	$logo_width  = 120;
 	$logo_height = 90;
 
@@ -162,6 +161,9 @@ require get_template_directory() . '/classes/class-twentytwenty-walker-page.php'
 // Custom script loader class.
 require get_template_directory() . '/classes/class-twentytwenty-script-loader.php';
 
+// Non-latin language handling.
+require get_template_directory() . '/classes/class-twentytwenty-non-latin-languages.php';
+
 // Custom CSS.
 require get_template_directory() . '/inc/custom-css.php';
 
@@ -205,6 +207,40 @@ function twentytwenty_register_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_scripts' );
+
+/**
+ * Fix skip link focus in IE11.
+ *
+ * This does not enqueue the script because it is tiny and because it is only for IE11,
+ * thus it does not warrant having an entire dedicated blocking script being loaded.
+ *
+ * @link https://git.io/vWdr2
+ */
+function twentytwenty_skip_link_focus_fix() {
+	// The following is minified via `terser --compress --mangle -- assets/js/skip-link-focus-fix.js`.
+	?>
+	<script>
+	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+	</script>
+	<?php
+}
+add_action( 'wp_print_footer_scripts', 'twentytwenty_skip_link_focus_fix' );
+
+/** Enqueue non-latin language styles
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function twentytwenty_non_latin_languages() {
+	$custom_css = TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'front-end' );
+	
+	if ( $custom_css ) {
+		wp_add_inline_style( 'twentytwenty-style', $custom_css );
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'twentytwenty_non_latin_languages' );
 
 /**
  * Register navigation menus uses wp_nav_menu in five places.
@@ -271,7 +307,7 @@ function twentytwenty_get_custom_logo( $html ) {
 			}
 
 			$html = preg_replace( $search, $replace, $html );
-			
+
 		}
 	}
 
@@ -357,6 +393,9 @@ function twentytwenty_block_editor_styles() {
 	// Add inline style from the Customizer.
 	wp_add_inline_style( 'twentytwenty-block-editor-styles', twentytwenty_get_customizer_css( 'block-editor' ) );
 
+	// Add inline style for non-latin fonts.
+	wp_add_inline_style( 'twentytwenty-block-editor-styles', TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'block-editor' ) );
+
 	// Enqueue the editor script.
 	wp_enqueue_script( 'twentytwenty-block-editor-script', get_theme_file_uri( '/assets/js/editor-script-block.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
@@ -401,6 +440,35 @@ function twentytwenty_add_classic_editor_customizer_styles( $mce_init ) {
 }
 
 add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_customizer_styles' );
+
+/**
+ * Output non-latin font styles in the classic editor.
+ * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
+ *
+ * @param array $mce_init TinyMCE styles.
+ *
+ * @return array $mce_init TinyMCE styles.
+ */
+function twentytwenty_add_classic_editor_non_latin_styles( $mce_init ) {
+
+	$styles = TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'classic-editor' );
+
+	// Return if there are no styles to add.
+	if ( ! $styles ) {
+		return $mce_init;
+	}
+
+	if ( ! isset( $mce_init['content_style'] ) ) {
+		$mce_init['content_style'] = $styles . ' ';
+	} else {
+		$mce_init['content_style'] .= ' ' . $styles . ' ';
+	}
+
+	return $mce_init;
+
+}
+
+add_filter( 'tiny_mce_before_init', 'twentytwenty_add_classic_editor_non_latin_styles' );
 
 /**
  * Block Editor Settings.
