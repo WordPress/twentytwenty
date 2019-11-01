@@ -234,7 +234,7 @@ add_action( 'wp_print_footer_scripts', 'twentytwenty_skip_link_focus_fix' );
  */
 function twentytwenty_non_latin_languages() {
 	$custom_css = TwentyTwenty_Non_Latin_Languages::get_non_latin_css( 'front-end' );
-	
+
 	if ( $custom_css ) {
 		wp_add_inline_style( 'twentytwenty-style', $custom_css );
 	}
@@ -566,7 +566,7 @@ add_action( 'after_setup_theme', 'twentytwenty_block_editor_settings' );
  * @return string $html
  */
 function twentytwenty_read_more_tag( $html ) {
-	return preg_replace( '/<a.*>(.*)<\/a>/iU', sprintf( '<span class="faux-button">$1</span> <span class="screen-reader-text">"%1$s"</span>', get_the_title( get_the_ID() ) ), $html );
+	return preg_replace( '/<a.*>.*<\/a>/iU', sprintf( '<span class="faux-button">$0</span> <span class="screen-reader-text">"%1$s"</span>', get_the_title( get_the_ID() ) ), $html );
 }
 
 add_filter( 'the_content_more_link', 'twentytwenty_read_more_tag' );

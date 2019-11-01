@@ -696,11 +696,16 @@ button,
 	button,
 	.button,
 	.faux-button,
-	.faux-button.more-link,
+	.faux-button .more-link,
 	.wp-block-button__link,
 	.wp-block-file__button {
 		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
+}
+
+.faux-button .more-link {
+	color: #fff;
+	text-decoration: none;
 }
 
 input,
@@ -811,6 +816,8 @@ button:hover,
 .button:hover,
 .faux-button:focus,
 .faux-button:hover,
+.faux-button .more-link:focus,
+.faux-button .more-link:hover,
 .wp-block-button .wp-block-button__link:focus,
 .wp-block-button .wp-block-button__link:hover,
 .wp-block-file .wp-block-file__button:focus,
