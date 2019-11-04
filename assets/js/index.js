@@ -527,7 +527,7 @@ twentytwenty.primaryMenu = {
 		/**
 		 * Toggles `focus` class to allow submenu access on tablets.
 		 */
-		(function ( menu ) {
+		(function( menu ) {
 			var touchStartFn, i,
 				parentLink = menu.querySelectorAll( '.primary-menu .menu-item-has-children > a' );
 
@@ -554,7 +554,7 @@ twentytwenty.primaryMenu = {
 					parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
 				}
 			}
-		}(menu));
+		} ( menu ) );
 	}
 }; // twentytwenty.primaryMenu
 
