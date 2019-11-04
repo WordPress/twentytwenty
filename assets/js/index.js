@@ -524,22 +524,21 @@ twentytwenty.primaryMenu = {
 			}
 		}
 
-		/**
+				/**
 		 * Toggles `focus` class to allow submenu access on tablets.
 		 */
-		(function( menu ) {
-			var touchStartFn, i,
-				parentLink = menu.querySelectorAll( '.primary-menu .menu-item-has-children > a' );
+		( function( menuObj ) {
+			var touchStartFn, j,
+				parentLink = menuObj.querySelectorAll( '.primary-menu .menu-item-has-children > a' );
 
 			if ( 'ontouchstart' in window ) {
-				touchStartFn = function (e) {
-					var menuItem = this.parentNode,
-						i;
+				touchStartFn = function( e ) {
+					var menuItem = this.parentNode;
 
 					if ( ! menuItem.classList.contains( 'focus' ) ) {
 						e.preventDefault();
-						for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
-							if ( menuItem === menuItem.parentNode.children[i] ) {
+						for ( j = 0; j < menuItem.parentNode.children.length; ++j ) {
+							if ( menuItem === menuItem.parentNode.children[j] ) {
 								continue;
 							}
 							menuItem.parentNode.children[i].classList.remove( 'focus' );
@@ -550,11 +549,11 @@ twentytwenty.primaryMenu = {
 					}
 				};
 
-				for ( i = 0; i < parentLink.length; ++i ) {
-					parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
+				for ( j = 0; j < parentLink.length; ++j ) {
+					parentLink[j].addEventListener( 'touchstart', touchStartFn, false );
 				}
 			}
-		} ( menu ) );
+		}( menu ) );
 	}
 }; // twentytwenty.primaryMenu
 
