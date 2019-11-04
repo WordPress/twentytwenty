@@ -1,59 +1,78 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="TwentyTwenty Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
 
-  <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/.phpcs.xml.dist -->
+	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/.phpcs.xml.dist -->
 
-  <!-- Set a description for this ruleset. -->
-  <description>Coding standards used for checking the TwentyTwenty theme.</description>
+	<!-- Set a description for this ruleset. -->
+	<description>Coding standards used for checking the TwentyTwenty theme.</description>
 
-  <!-- Check the entire theme. -->
-  <file>.</file>
+	<!-- Check the entire theme. -->
+	<file>.</file>
 
-  <!-- Exclude patterns. -->
-  <exclude-pattern>/vendor/*</exclude-pattern>
-  <exclude-pattern>/node_modules/*</exclude-pattern>
+	<!-- Exclude patterns. -->
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
 
-  <!-- Additional arguments. -->
-  <arg value="sp"/>
-  <arg name="basepath" value="."/>
-  <arg name="parallel" value="8"/>
-  <arg name="cache"/>
-  <arg name="extensions" value="php"/>
+	<!-- Additional arguments. -->
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="parallel" value="8"/>
+	<arg name="cache"/>
+	<arg name="extensions" value="php"/>
 
-  <!-- Include the WordPress rulesets. -->
-  <rule ref="WordPress-Extra"/>
-  <rule ref="WordPress-Docs"/>
-  <rule ref="WPThemeReview"/>
+	<!-- Include the WordPress rulesets. -->
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WPThemeReview"/>
 
-  <!-- We want to allow exceptions for the filename naming, since we are working with a theme. -->
-  <!-- See https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#themes-allow-filename-exceptions -->
-  <rule ref="WordPress.Files.FileName">
-    <properties>
-      <property name="is_theme" value="true"/>
-    </properties>
-  </rule>
+	<!-- We want to allow exceptions for the filename naming, since we are working with a theme. -->
+	<!-- See https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#themes-allow-filename-exceptions -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="is_theme" value="true"/>
+		</properties>
+	</rule>
 
 	<!-- Allow multiple parameters on one line for multi-line function calls. -->
 	<rule ref="PEAR.Functions.FunctionCallSignature">
-    <properties>
-       <property name="allowMultipleArguments" value="true" />
-    </properties>
+		<properties>
+			 <property name="allowMultipleArguments" value="true" />
+		</properties>
 	</rule>
 
 	<!-- Improve code readablilty by allowing the artguments after function call. -->
-  <rule ref="PEAR.Functions.FunctionCallSignature">
-  	<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
-  	<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
 	</rule>
 
-  <!-- Check valid textdomain. -->
-  <rule ref="WordPress.WP.I18n">
-    <properties>
-      <property name="text_domain" type="array">
-        <element value="twentytwenty"/>
-      </property>
-    </properties>
-  </rule>
+	<!-- Check valid textdomain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="twentytwenty"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress-Extra">
+		<!-- _e() and _ex() are considered safe for core translations. -->
+		<exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction"/>
+	</rule>
+
+	<rule ref="WordPress.Security.EscapeOutput">
+		<properties>
+			<property name="customAutoEscapedFunctions" type="array">
+				<!-- i18n functions are considered safe for core translations. -->
+				<element value="__"/>
+				<element value="_x"/>
+				<element value="_n"/>
+				<element value="_nx"/>
+				<element value="number_format_i18n"/>
+				<element value="date_i18n"/>
+			</property>
+		</properties>
+	</rule>
 
 </ruleset>

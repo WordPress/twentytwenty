@@ -33,7 +33,7 @@
 			if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) {
 				the_excerpt();
 			} else {
-				the_content();
+				the_content( __( 'Continue reading', 'twentytwenty' ) );
 			}
 			?>
 
@@ -43,11 +43,12 @@
 
 	<div class="section-inner">
 		<?php
-
 		wp_link_pages(
 			array(
-				'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'  => '</nav>',
+				'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'       => '</nav>',
+				'link_before' => '<span class="page-number">',
+				'link_after'  => '</span>',
 			)
 		);
 
@@ -77,7 +78,7 @@
 	 *  Output comments wrapper if it's a post, or if comments are open,
 	 * or if there's a comment number – and check for password.
 	 * */
-	if ( ( 'post' === $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
+	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
 		<div class="comments-wrapper section-inner">
