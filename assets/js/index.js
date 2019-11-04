@@ -527,31 +527,31 @@ twentytwenty.primaryMenu = {
 		/**
 		 * Toggles `focus` class to allow submenu access on tablets.
 		 */
-		(function (menu) {
+		(function ( menu ) {
 			var touchStartFn, i,
-				parentLink = menu.querySelectorAll('.menu-item-has-children > a, .page_item_has_children > a');
+				parentLink = menu.querySelectorAll( '.primary-menu .menu-item-has-children > a' );
 
-			if ('ontouchstart' in window) {
+			if ( 'ontouchstart' in window ) {
 				touchStartFn = function (e) {
 					var menuItem = this.parentNode,
 						i;
 
-					if (!menuItem.classList.contains('focus')) {
+					if ( ! menuItem.classList.contains( 'focus' ) ) {
 						e.preventDefault();
-						for (i = 0; i < menuItem.parentNode.children.length; ++i) {
-							if (menuItem === menuItem.parentNode.children[i]) {
+						for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
+							if ( menuItem === menuItem.parentNode.children[i] ) {
 								continue;
 							}
-							menuItem.parentNode.children[i].classList.remove('focus');
+							menuItem.parentNode.children[i].classList.remove( 'focus' );
 						}
-						menuItem.classList.add('focus');
+						menuItem.classList.add( 'focus' );
 					} else {
-						menuItem.classList.remove('focus');
+						menuItem.classList.remove( 'focus' );
 					}
 				};
 
-				for (i = 0; i < parentLink.length; ++i) {
-					parentLink[i].addEventListener('touchstart', touchStartFn, false);
+				for ( i = 0; i < parentLink.length; ++i ) {
+					parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
 				}
 			}
 		}(menu));
