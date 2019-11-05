@@ -3399,7 +3399,6 @@ hr.wp-block-separator {
 .alignnone,
 .aligncenter,
 .alignleft,
-<<<<<<< HEAD
 .alignright,
 .alignwide,
 .alignfull {
@@ -3469,7 +3468,7 @@ hr.wp-block-separator {
 .entry-content > .alignwide {
 	max-width: calc(100vw - 4rem);
 	position: relative;
-	left: calc(50% - 50vw + 2rem);
+	left: calc(50% - 50vw);
 	width: calc(100vw - 4rem);
 }
 
@@ -4948,8 +4947,8 @@ a.to-the-top > * {
 	.wp-block-quote.is-style-large,
 	.wp-block-verse,
 	.wp-block-video {
-		margin-bottom: 5rem;
-		margin-top: 5rem;
+		margin-bottom: 4rem;
+		margin-top: 4rem;
 	}
 
 	/* BLOCK: COLUMNS */
@@ -5606,7 +5605,7 @@ a.to-the-top > * {
 
 	.wp-block-group.alignwide.has-background,
 	.wp-block-group.alignfull.has-background {
-		padding: 8rem 4rem;
+		padding: 4rem 4rem;
 	}
 
 	/* BLOCK: SEPARATOR */
@@ -5787,7 +5786,7 @@ a.to-the-top > * {
 
 	.wp-block-group.alignwide.has-background,
 	.wp-block-group.alignfull.has-background {
-		padding: 8rem 6rem;
+		padding: 4rem 4rem;
 	}
 
 	/* BLOCK: PULLQUOTE */
