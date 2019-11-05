@@ -3402,8 +3402,10 @@ hr.wp-block-separator {
 .alignright,
 .alignwide,
 .alignfull {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-top: 4rem;
+	margin-right: auto;
+	margin-bottom: 4rem;
+	margin-left: auto;
 }
 
 [class*="__inner-container"] > *:not(.alignwide):not(.alignfull) {
@@ -3411,35 +3413,39 @@ hr.wp-block-separator {
 	margin-right: auto;
 }
 
+/* Full */
+
 .alignfull {
-	margin: 5rem 0;
 	max-width: 100vw;
+	position: relative;
 	width: 100%;
 }
 
 [class*="__inner-container"] > .alignfull {
-	margin-left: auto;
-	margin-right: auto;
 	max-width: 100%;
 }
 
+/* Wide */
+
 .alignwide {
-	max-width: calc(100vw - 4rem);
+	max-width: 120rem;
 	position: relative;
 	width: calc(100% - 4rem);
 }
 
 [class*="__inner-container"] > .alignwide {
-	margin-left: auto;
-	margin-right: auto;
 	width: 100%;
 }
+
+/* Center */
 
 .aligncenter,
 .aligncenter img {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* Left and right */
 
 .alignleft,
 .alignright {
@@ -3459,30 +3465,6 @@ hr.wp-block-separator {
 	float: right;
 	margin: 0.3rem 2rem 2rem 2rem;
 }
-
-.alignwide {
-	margin: 4rem auto;
-	max-width: 120rem;
-}
-
-.entry-content > .alignwide {
-	max-width: calc(100vw - 4rem);
-	position: relative;
-	left: calc(50% - 50vw);
-	width: calc(100vw - 4rem);
-}
-
-.alignfull {
-	margin: 5rem 0;
-}
-
-.entry-content > .alignfull {
-	max-width: 100vw;
-	position: relative;
-	left: calc(50% - 50vw);
-	width: 100vw;
-}
-
 
 /* Entry Media ------------------------------- */
 
