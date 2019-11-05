@@ -3242,9 +3242,8 @@ hr.wp-block-separator {
 
 /* Block: Widget Latest Comments ------------- */
 
-.entry-content .wp-block-latest-comments,
 .entry-content .wp-block-latest-comments li {
-	margin-left: 0;
+	margin: 2rem 0;
 }
 
 .has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-excerpt,
