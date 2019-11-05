@@ -3218,6 +3218,8 @@ hr.wp-block-separator {
 .wp-block-quote.is-style-large {
 	border: none;
 	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .wp-block-quote.is-large p,
