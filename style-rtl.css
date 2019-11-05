@@ -3173,8 +3173,12 @@ hr.wp-block-separator {
 	background: #dcd7ca;
 }
 
-.wp-block-table.is-style-stripes {
+figure.wp-block-table.is-style-stripes {
 	border-bottom: none;
+}
+
+.wp-block-table.is-style-stripes table {
+    border-collapse: inherit;
 }
 
 /* Block: Quote ------------------------------ */
