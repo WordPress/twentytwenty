@@ -2960,10 +2960,6 @@ h2.entry-title {
 
 /* Block: Gallery ---------------------------- */
 
-ul.wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignright):not(.alignleft) {
-	margin-left: 0;
-}
-
 .wp-block-gallery ul {
 	list-style: none;
 	margin: 0 0 -1.6rem 0;
