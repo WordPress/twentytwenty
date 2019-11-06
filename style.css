@@ -2876,6 +2876,12 @@ h2.entry-title {
 
 /* Block: Columns ---------------------------- */
 
+.wp-block-columns.alignfull,
+.alignfull:not(.has-background) .wp-block-columns {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
 .wp-block-column {
 	margin-bottom: 3.2rem;
 }
@@ -3001,6 +3007,11 @@ figure.wp-block-gallery.alignfull {
 .wp-block-group__inner-container,
 .entry-content .wp-block-group p {
 	max-width: 100%;
+}
+
+.alignfull:not(.has-background) > .wp-block-group__inner-container > p:not(.has-background-color) {
+	padding-left: 2rem;
+	padding-right: 2rem;
 }
 
 /* Block: Image ------------------------------ */
@@ -4369,36 +4380,6 @@ a.to-the-top > * {
 
 }
 
-@media ( max-width: 599px ) {
-
-	/* Blocks -------------------------------- */
-
-	/* BLOCK: COLUMNS */
-
-	.alignfull:not(.has-background) .wp-block-column > p:not(.has-background-color),
-	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
-		max-width: calc(100% - 4rem);
-		margin: auto;
-	}
-}
-
-@media ( min-width: 600px ) and ( max-width: 781px ) {
-
-	/* Blocks -------------------------------- */
-
-	/* BLOCK: COLUMNS */
-
-	.alignfull:not(.has-background) .wp-block-column:nth-child(odd) > p:not(.has-background-color),
-	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
-		padding-left: 2rem;
-	}
-
-	.alignfull:not(.has-background) .wp-block-column:nth-child(even) > p:not(.has-background-color),
-	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
-		padding-right: 2rem;
-	}
-}
-
 @media ( min-width: 660px ) {
 
 	/* Blocks -------------------------------- */
@@ -5314,16 +5295,6 @@ a.to-the-top > * {
 	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
 		margin-top: -2.8rem;
-	}
-
-	.alignfull .wp-block-column:first-child > p,
-	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
-		padding-left: 2rem;
-	}
-
-	.alignfull:not(.has-background) .wp-block-column:last-child > p,
-	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
-		padding-right: 2rem;
 	}
 }
 
