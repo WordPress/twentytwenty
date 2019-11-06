@@ -5311,6 +5311,11 @@ a.to-the-top > * {
 		margin-bottom: 0;
 	}
 
+	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
+	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
+		margin-top: -2.8rem;
+	}
+
 	.alignfull .wp-block-column:first-child > p,
 	.alignfull:not(.has-background) .wp-block-group__inner-container > p:not(.has-background-color) {
 		padding-left: 2rem;
@@ -5544,7 +5549,7 @@ a.to-the-top > * {
 
 	.wp-block-columns.alignwide + .wp-block-columns.alignwide,
 	.wp-block-columns.alignfull + .wp-block-columns.alignfull {
-		margin-top: -5.2rem;
+		margin-top: -4.8rem;
 	}
 
 	/* BLOCK: GALLERY */
