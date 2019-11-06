@@ -5,11 +5,11 @@
 **Version:** 1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
-**Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
+**Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks, accessibility-ready
 
 ## Description
 
-Default theme for Twenty Twenty
+Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors.
 
 ## Installation
 
@@ -31,9 +31,8 @@ Twenty Twenty is derived from the Chaplin Theme, Copyright 2019 Anders Norén. C
 
 Twenty Twenty bundles the following third-party resources:
 
-Image in screenshot.png from PxHere  
+Illustrations in screenshot.png by Tammie Lister
 License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
-URL: https://pxhere.com/en/photo/18153  
 
 Inter Font  
 Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)  
@@ -52,10 +51,10 @@ License: MIT License, https://opensource.org/licenses/MIT
 Source: https://feathericons.com  
 Used for post meta icons, and the link icon in the social menu.  
 
-Socicon Icons  
-License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1  
-Source: https://www.socicon.com  
-Used for all social menu icons except the link icon.  
+Social Icons
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Source: WordPress Social Link Block (See wp-includes\blocks\social-link.php)
 
 Code from Twenty Nineteen  
 Copyright (c) 2018 WordPress.org  
@@ -73,6 +72,9 @@ License: GPLv2
 Source: https://wordpress.org/themes/twentyseventeen/  
 Included as part of the following classes and functions:  
 - twentytwenty_unique_id()  
+
+Underscores  
+https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Changelog  
 
