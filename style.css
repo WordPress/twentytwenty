@@ -2492,6 +2492,10 @@ h2.entry-title {
 
 .author-bio {
 	margin-top: 4rem;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 58rem;
+	width: calc(100% - 4rem);
 }
 
 .hide-avatars .author-bio {
@@ -5589,7 +5593,7 @@ a.to-the-top > * {
 
 	.wp-block-group.alignwide.has-background,
 	.wp-block-group.alignfull.has-background {
-		padding: 4rem 4rem;
+		padding: 8rem 4rem;
 	}
 
 	/* BLOCK: SEPARATOR */
@@ -5770,7 +5774,7 @@ a.to-the-top > * {
 
 	.wp-block-group.alignwide.has-background,
 	.wp-block-group.alignfull.has-background {
-		padding: 4rem 4rem;
+		padding: 8rem 6rem;
 	}
 
 	/* BLOCK: PULLQUOTE */
