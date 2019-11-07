@@ -5591,8 +5591,8 @@ a.to-the-top > * {
 
 	/* BLOCK: GROUP */
 
-	.wp-block-group.alignwide.has-background,
-	.wp-block-group.alignfull.has-background {
+	.entry-content > .wp-block-group.alignwide.has-background,
+	.entry-content > .wp-block-group.alignfull.has-background {
 		padding: 8rem 4rem;
 	}
 
@@ -5772,8 +5772,8 @@ a.to-the-top > * {
 
 	/* BLOCK: GROUP */
 
-	.wp-block-group.alignwide.has-background,
-	.wp-block-group.alignfull.has-background {
+	.entry-content > .wp-block-group.alignwide.has-background,
+	.entry-content > .wp-block-group.alignfull.has-background {
 		padding: 8rem 6rem;
 	}
 
