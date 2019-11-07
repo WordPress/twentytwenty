@@ -1687,8 +1687,12 @@ ul.primary-menu {
 	transform: rotate(180deg);
 }
 
-/* Nav submenu expansion on large-viewport touch screens (e.g. tablets) */
-@media (hover: none) and (pointer: coarse) {
+/*
+ * Enable nav submenu expansion with tapping on arrows on large-viewport
+ * touch interfaces (e.g. tablets or laptops with touch screens).
+ * These rules are supported by all browsers (>IE11) and when JS is disabled.
+ */
+@media (any-pointer: coarse) {
 
 	.primary-menu > li.menu-item-has-children > a {
 		padding-right: 0;
