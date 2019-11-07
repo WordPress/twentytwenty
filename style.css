@@ -1703,6 +1703,18 @@ ul.primary-menu {
 
 }
 
+/* Repeat previous rules for IE11 (when JS enabled for polyfill). */
+body.touch-enabled .primary-menu > li.menu-item-has-children > a {
+	padding-right: 0;
+	margin-right: 2rem;
+}
+
+body.touch-enabled .primary-menu ul li.menu-item-has-children > a {
+	margin-right: 4.5rem;
+	padding-right: 0;
+	width: unset;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	5. Menu Modal
