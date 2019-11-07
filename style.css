@@ -1687,6 +1687,22 @@ ul.primary-menu {
 	transform: rotate(180deg);
 }
 
+/* Nav submenu expansion on large-viewport touch screens (e.g. tablets) */
+@media (hover: none) and (pointer: coarse) {
+
+	.primary-menu > li.menu-item-has-children > a {
+		padding-right: 0;
+		margin-right: 2rem;
+	}
+
+	.primary-menu ul li.menu-item-has-children > a {
+		margin-right: 4.5rem;
+		padding-right: 0;
+		width: unset;
+	}
+
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	5. Menu Modal
