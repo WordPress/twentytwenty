@@ -1257,8 +1257,15 @@ hr.wp-block-separator.is-style-dots::before {
 
 	/* BLOCK: GROUP */
 
-	.editor-styles-wrapper .wp-block-group.has-background {
+	.editor-styles-wrapper .wp-block:not([data-align="wide"]):not([data-align="full"]) div:not([class*="__inner-container"]) .wp-block-group.has-background,
+	.editor-styles-wrapper .wp-block div[class*="__inner-container"] .wp-block[data-align="wide"] .wp-block-group.has-background,
+	.editor-styles-wrapper .wp-block div[class*="__inner-container"] .wp-block[data-align="full"] .wp-block-group.has-background {
 		padding: 40px;
+	}
+
+	.editor-styles-wrapper .wp-block[data-align="wide"] .wp-block-group.has-background,
+	.editor-styles-wrapper .wp-block[data-align="full"] .wp-block-group.has-background {
+		padding: 80px;
 	}
 
 	/* BLOCK: LATEST POSTS */
