@@ -3399,8 +3399,7 @@ hr.wp-block-separator {
 .aligncenter,
 .alignleft,
 .alignright,
-.alignwide,
-.alignfull {
+.alignwide {
 	margin-top: 4rem;
 	margin-right: auto;
 	margin-bottom: 4rem;
@@ -3415,6 +3414,10 @@ hr.wp-block-separator {
 /* Full */
 
 .alignfull {
+	margin-top: 5rem;
+	margin-right: auto;
+	margin-bottom: 5rem;
+	margin-left: auto;
 	max-width: 100vw;
 	position: relative;
 	width: 100%;
