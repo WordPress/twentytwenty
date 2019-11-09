@@ -836,7 +836,6 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
-input[type="search"]:focus,
 input[type="number"]:focus,
 input[type="tel"]:focus,
 input[type="range"]:focus,
@@ -848,8 +847,12 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
+	border-color: currentColor;
+}
+
+input[type="search"]:focus {
 	outline: thin dotted;
-	outline-offset: 2px;
+	outline-offset: -4px;
 }
 
 /* Tables ------------------------------------ */
