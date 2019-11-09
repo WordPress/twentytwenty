@@ -4,6 +4,27 @@
 
 var twentytwenty = twentytwenty || {};
 
+// Set a default value for scrolled.
+twentytwenty.scrolled = 0;
+
+// polyfill closest
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+if ( ! Element.prototype.closest ) {
+	Element.prototype.closest = function( s ) {
+		var el = this;
+
+		do {
+			if ( el.matches( s ) ) {
+				return el;
+			}
+
+			el = el.parentElement || el.parentNode;
+		} while ( el !== null && el.nodeType === 1 );
+
+		return null;
+	};
+}
+
 // polyfill forEach
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
 if ( window.NodeList && ! NodeList.prototype.forEach ) {
@@ -19,7 +40,6 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 // event "polyfill"
-
 twentytwenty.createEvent = function( eventName ) {
 	var event;
 	if ( typeof window.Event === 'function' ) {
@@ -30,6 +50,23 @@ twentytwenty.createEvent = function( eventName ) {
 	}
 	return event;
 };
+
+// matches "polyfill"
+// https://developer.mozilla.org/es/docs/Web/API/Element/matches
+if ( ! Element.prototype.matches ) {
+	Element.prototype.matches =
+		Element.prototype.matchesSelector ||
+		Element.prototype.mozMatchesSelector ||
+		Element.prototype.msMatchesSelector ||
+		Element.prototype.oMatchesSelector ||
+		Element.prototype.webkitMatchesSelector ||
+		function( s ) {
+			var matches = ( this.document || this.ownerDocument ).querySelectorAll( s ),
+				i = matches.length;
+			while ( --i >= 0 && matches.item( i ) !== this ) {}
+			return i > -1;
+		};
+}
 
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals
@@ -55,23 +92,23 @@ twentytwenty.coverModals = {
 
 	// Handle cover modals when they're toggled
 	onToggle: function() {
-		document.querySelector( '.cover-modal' ).addEventListener( 'toggled', function( event ) {
-			var modal, body;
+		document.querySelectorAll( '.cover-modal' ).forEach( function( element ) {
+			element.addEventListener( 'toggled', function( event ) {
+				var modal = event.target,
+					body = document.body;
 
-			modal = event.target;
-			body = document.body;
+				if ( modal.classList.contains( 'active' ) ) {
+					body.classList.add( 'showing-modal' );
+				} else {
+					body.classList.remove( 'showing-modal' );
+					body.classList.add( 'hiding-modal' );
 
-			if ( modal.classList.contains( 'active' ) ) {
-				body.classList.add( 'showing-modal' );
-			} else {
-				body.classList.remove( 'showing-modal' );
-				body.classList.add( 'hiding-modal' );
-
-				// Remove the hiding class after a delay, when animations have been run
-				setTimeout( function() {
-					body.classList.remove( 'hiding-modal' );
-				}, 500 );
-			}
+					// Remove the hiding class after a delay, when animations have been run
+					setTimeout( function() {
+						body.classList.remove( 'hiding-modal' );
+					}, 500 );
+				}
+			} );
 		} );
 	},
 
@@ -101,43 +138,66 @@ twentytwenty.coverModals = {
 
 	// Hide and show modals before and after their animations have played out
 	hideAndShowModals: function() {
-		var modals = document.querySelectorAll( '.cover-modal' ),
-			htmlStyle = document.documentElement.style;
+		var _doc = document,
+			_win = window,
+			modals = _doc.querySelectorAll( '.cover-modal' ),
+			htmlStyle = _doc.documentElement.style,
+			adminBar = _doc.querySelector( '#wpadminbar' );
 
-		var getAdminBarHeight = function( negativeValue ) {
-			var adminBar = document.querySelector( '#wpadminbar' );
+		function getAdminBarHeight( negativeValue ) {
+			var height,
+				currentScroll = _win.pageYOffset;
 
 			if ( adminBar ) {
-				return ( negativeValue ? '-' : '' ) + adminBar.getBoundingClientRect().height + 'px';
+				height = currentScroll + adminBar.getBoundingClientRect().height;
+
+				return negativeValue ? -height : height;
 			}
 
-			return 0;
-		};
+			return currentScroll === 0 ? 0 : -currentScroll;
+		}
 
 		function htmlStyles() {
+			var overflow = _win.innerHeight > _doc.documentElement.getBoundingClientRect().height;
+
 			return {
-				'overflow-y': 'scroll',
+				'overflow-y': overflow ? 'hidden' : 'scroll',
 				position: 'fixed',
 				width: '100%',
-				top: getAdminBarHeight( true ),
-				left: 0,
+				top: getAdminBarHeight( true ) + 'px',
+				left: 0
 			};
 		}
 
 		// Show the modal
 		modals.forEach( function( modal ) {
 			modal.addEventListener( 'toggle-target-before-inactive', function( event ) {
+				var styles = htmlStyles(),
+					offsetY = _win.pageYOffset,
+					paddingTop = ( Math.abs( getAdminBarHeight() ) - offsetY ) + 'px',
+					mQuery = _win.matchMedia( '(max-width: 600px)' );
+
 				if ( event.target !== modal ) {
 					return;
 				}
 
-				window.scrollTo( { top: 0 } );
-
-				Object.keys( htmlStyles() ).forEach( function( styleKey ) {
-					htmlStyle.setProperty( styleKey, htmlStyles()[ styleKey ] );
+				Object.keys( styles ).forEach( function( styleKey ) {
+					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				document.body.style.setProperty( 'padding-top', getAdminBarHeight() );
+				_win.twentytwenty.scrolled = parseInt( styles.top, 10 );
+
+				if ( adminBar ) {
+					_doc.body.style.setProperty( 'padding-top', paddingTop );
+
+					if ( mQuery.matches ) {
+						if ( offsetY >= getAdminBarHeight() ) {
+							modal.style.setProperty( 'top', 0 );
+						} else {
+							modal.style.setProperty( 'top', ( getAdminBarHeight() - offsetY ) + 'px' );
+						}
+					}
+				}
 
 				modal.classList.add( 'show-modal' );
 			} );
@@ -149,13 +209,27 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
+					var clickedEl = twentytwenty.toggles.clickedEl;
+
 					modal.classList.remove( 'show-modal' );
 
 					Object.keys( htmlStyles() ).forEach( function( styleKey ) {
 						htmlStyle.removeProperty( styleKey );
 					} );
 
-					document.body.style.removeProperty( 'padding-top' );
+					if ( adminBar ) {
+						_doc.body.style.removeProperty( 'padding-top' );
+						modal.style.removeProperty( 'top' );
+					}
+
+					if ( clickedEl !== false ) {
+						clickedEl.focus();
+						clickedEl = false;
+					}
+
+					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
+
+					_win.twentytwenty.scrolled = 0;
 				}, 500 );
 			} );
 		} );
@@ -163,9 +237,8 @@ twentytwenty.coverModals = {
 
 	// Untoggle a modal
 	untoggleModal: function( modal ) {
-		var modalToggle, modalTargetClass;
-
-		modalToggle = false;
+		var modalTargetClass,
+			modalToggle = false;
 
 		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string
 		// The modal-target-string must match the string toggles use to target the modal
@@ -183,41 +256,9 @@ twentytwenty.coverModals = {
 		} else {
 			modal.classList.remove( 'active' );
 		}
-	},
+	}
 
 }; // twentytwenty.coverModals
-
-/*	-----------------------------------------------------------------------------------------------
-	Focus Management
---------------------------------------------------------------------------------------------------- */
-
-twentytwenty.focusManagement = {
-
-	init: function() {
-		// If the visitor tabs out of the main menu, return focus to the navigation toggle
-		// Also, if the visitor tabs into a hidden element, move the focus to the element after the hidden element
-		this.focusLoop();
-	},
-
-	focusLoop: function() {
-		document.addEventListener( 'focusin', function( event ) {
-			var element = event.target;
-			var menuModal = document.querySelector( '.menu-modal' );
-			var headerToggles = document.querySelector( '.header-toggles' );
-			var searchModal = document.querySelector( '.search-modal' );
-			if ( menuModal && menuModal.classList.contains( '.active' ) ) {
-				if ( ! menuModal.contains( element ) && headerToggles && ! headerToggles.contains( element ) ) {
-					document.querySelector( '.close-nav-toggle' ).focus();
-				}
-			} else if ( searchModal && ! searchModal.classList.contains( '.active' ) ) {
-				if ( ! searchModal.contains( element ) ) {
-					searchModal.querySelector( '.search-field' ).focus();
-				}
-			}
-		} );
-	},
-
-}; // twentytwenty.focusManagement
 
 /*	-----------------------------------------------------------------------------------------------
 	Intrinsic Ratio Embeds
@@ -228,10 +269,6 @@ twentytwenty.intrinsicRatioVideos = {
 	init: function() {
 		this.makeFit();
 
-		window.addEventListener( 'fit-videos', function() {
-			this.makeFit();
-		}.bind( this ) );
-
 		window.addEventListener( 'resize', function() {
 			this.makeFit();
 		}.bind( this ) );
@@ -239,9 +276,8 @@ twentytwenty.intrinsicRatioVideos = {
 
 	makeFit: function() {
 		document.querySelectorAll( 'iframe, object, video' ).forEach( function( video ) {
-			var container, ratio, iTargetWidth;
-
-			container = video.parentNode;
+			var ratio, iTargetWidth,
+				container = video.parentNode;
 
 			// Skip videos we want to ignore
 			if ( video.classList.contains( 'intrinsic-ignore' ) || video.parentNode.classList.contains( 'intrinsic-ignore' ) ) {
@@ -263,7 +299,7 @@ twentytwenty.intrinsicRatioVideos = {
 			video.style.width = iTargetWidth + 'px';
 			video.style.height = ( video.dataset.origheight * ratio ) + 'px';
 		} );
-	},
+	}
 
 }; // twentytwenty.instrinsicRatioVideos
 
@@ -286,7 +322,7 @@ twentytwenty.smoothScroll = {
 		var anchorElements = document.querySelectorAll( 'a[href*="#"]' );
 		var anchorElementsList = Array.prototype.slice.call( anchorElements );
 		anchorElementsList.filter( function( element ) {
-			if ( element.href === '#' || element.href === '#0' || element.classList.contains( '.do-not-scroll' ) || element.classList.contains( 'skip-link' ) ) {
+			if ( element.href === '#' || element.href === '#0' || element.id === 'cancel-comment-reply-link' || element.classList.contains( 'do-not-scroll' ) || element.classList.contains( 'skip-link' ) ) {
 				return false;
 			}
 			return true;
@@ -335,10 +371,9 @@ twentytwenty.smoothScroll = {
 
 		if ( scrollToElement ) {
 			scrollToElement.addEventListener( 'click', function( event ) {
-				var target, originalOffset, additionalOffset, scrollOffset, scrollSpeed;
-
-				// Figure out element to scroll to
-				target = event.target.dataset.twentytwentyScrollTo;
+				var originalOffset, additionalOffset, scrollOffset, scrollSpeed,
+					// Figure out element to scroll to
+					target = event.target.dataset.twentytwentyScrollTo;
 
 				// Make sure said element exists
 				if ( target ) {
@@ -356,40 +391,179 @@ twentytwenty.smoothScroll = {
 				}
 			} );
 		}
-	},
+	}
 
 }; // twentytwenty.smoothScroll
 
 /*	-----------------------------------------------------------------------------------------------
-	Main Menu
+	Modal Menu
 --------------------------------------------------------------------------------------------------- */
 twentytwenty.modalMenu = {
 
 	init: function() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load
 		this.expandLevel();
+		this.keepFocusInModal();
 	},
 
 	expandLevel: function() {
-		var modalMenu = document.querySelector( '.modal-menu' );
-		var activeMenuItem = modalMenu.querySelector( '.current-menu-item' );
+		var modalMenus = document.querySelectorAll( '.modal-menu' );
 
-		if ( activeMenuItem ) {
-			twentytwentyFindParents( activeMenuItem, 'li' ).forEach( function( element ) {
-				var subMenuToggle = element.querySelector( '.sub-menu-toggle' );
-				if ( subMenuToggle ) {
-					subMenuToggle.click();
-				}
-			} );
-		}
+		modalMenus.forEach( function( modalMenu ) {
+			var activeMenuItem = modalMenu.querySelector( '.current-menu-item' );
+
+			if ( activeMenuItem ) {
+				twentytwentyFindParents( activeMenuItem, 'li' ).forEach( function( element ) {
+					var subMenuToggle = element.querySelector( '.sub-menu-toggle' );
+					if ( subMenuToggle ) {
+						twentytwenty.toggles.performToggle( subMenuToggle, true );
+					}
+				} );
+			}
+		} );
 	},
+
+	keepFocusInModal: function() {
+		var _doc = document;
+
+		_doc.addEventListener( 'keydown', function( event ) {
+			var toggleTarget, modal, selectors, elements, menuType, bottomMenu, activeEl, lastEl, firstEl, tabKey, shiftKey,
+				clickedEl = twentytwenty.toggles.clickedEl;
+
+			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
+				toggleTarget = clickedEl.dataset.toggleTarget;
+				selectors = 'input, a, button';
+				modal = _doc.querySelector( toggleTarget );
+
+				elements = modal.querySelectorAll( selectors );
+				elements = Array.prototype.slice.call( elements );
+
+				if ( '.menu-modal' === toggleTarget ) {
+					menuType = window.matchMedia( '(min-width: 1000px)' ).matches;
+					menuType = menuType ? '.expanded-menu' : '.mobile-menu';
+
+					elements = elements.filter( function( element ) {
+						return null !== element.closest( menuType ) && null !== element.offsetParent;
+					} );
+
+					elements.unshift( _doc.querySelector( '.close-nav-toggle' ) );
+
+					bottomMenu = _doc.querySelector( '.menu-bottom > nav' );
+
+					if ( bottomMenu ) {
+						bottomMenu.querySelectorAll( selectors ).forEach( function( element ) {
+							elements.push( element );
+						} );
+					}
+				}
+
+				lastEl = elements[ elements.length - 1 ];
+				firstEl = elements[0];
+				activeEl = _doc.activeElement;
+				tabKey = event.keyCode === 9;
+				shiftKey = event.shiftKey;
+
+				if ( ! shiftKey && tabKey && lastEl === activeEl ) {
+					event.preventDefault();
+					firstEl.focus();
+				}
+
+				if ( shiftKey && tabKey && firstEl === activeEl ) {
+					event.preventDefault();
+					lastEl.focus();
+				}
+			}
+		} );
+	}
 }; // twentytwenty.modalMenu
+
+/*	-----------------------------------------------------------------------------------------------
+	Primary Menu
+--------------------------------------------------------------------------------------------------- */
+
+twentytwenty.primaryMenu = {
+
+	init: function() {
+		this.focusMenuWithChildren();
+	},
+
+	// The focusMenuWithChildren() function implements Keyboard Navigation in the Primary Menu
+	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
+	focusMenuWithChildren: function() {
+		// Get all the link elements within the primary menu.
+		var links, i, len,
+			menu = document.querySelector( '.primary-menu-wrapper' );
+
+		if ( ! menu ) {
+			return false;
+		}
+
+		links = menu.getElementsByTagName( 'a' );
+
+		// Each time a menu link is focused or blurred, toggle focus.
+		for ( i = 0, len = links.length; i < len; i++ ) {
+			links[i].addEventListener( 'focus', toggleFocus, true );
+			links[i].addEventListener( 'blur', toggleFocus, true );
+		}
+
+		//Sets or removes the .focus class on an element.
+		function toggleFocus() {
+			var self = this;
+
+			// Move up through the ancestors of the current link until we hit .primary-menu.
+			while ( -1 === self.className.indexOf( 'primary-menu' ) ) {
+				// On li elements toggle the class .focus.
+				if ( 'li' === self.tagName.toLowerCase() ) {
+					if ( -1 !== self.className.indexOf( 'focus' ) ) {
+						self.className = self.className.replace( ' focus', '' );
+					} else {
+						self.className += ' focus';
+					}
+				}
+				self = self.parentElement;
+			}
+		}
+
+		/**
+		 * Toggles `focus` class to allow submenu access on tablets.
+		 */
+		( function( menuObj ) {
+			var touchStartFn, j,
+				parentLink = menuObj.querySelectorAll( '.primary-menu .menu-item-has-children > a' );
+
+			if ( 'ontouchstart' in window ) {
+				touchStartFn = function( e ) {
+					var menuItem = this.parentNode;
+
+					if ( ! menuItem.classList.contains( 'focus' ) ) {
+						e.preventDefault();
+						for ( j = 0; j < menuItem.parentNode.children.length; ++j ) {
+							if ( menuItem === menuItem.parentNode.children[j] ) {
+								continue;
+							}
+							menuItem.parentNode.children[i].classList.remove( 'focus' );
+						}
+						menuItem.classList.add( 'focus' );
+					} else {
+						menuItem.classList.remove( 'focus' );
+					}
+				};
+
+				for ( j = 0; j < parentLink.length; ++j ) {
+					parentLink[j].addEventListener( 'touchstart', touchStartFn, false );
+				}
+			}
+		}( menu ) );
+	}
+}; // twentytwenty.primaryMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Toggles
 --------------------------------------------------------------------------------------------------- */
 
 twentytwenty.toggles = {
+
+	clickedEl: false,
 
 	init: function() {
 		// Do the toggle
@@ -402,94 +576,111 @@ twentytwenty.toggles = {
 		this.untoggleOnEscapeKeyPress();
 	},
 
+	performToggle: function( element, instantly ) {
+		var target, timeOutTime, classToToggle,
+			self = this,
+			_doc = document,
+			// Get our targets
+			toggle = element,
+			targetString = toggle.dataset.toggleTarget,
+			activeClass = 'active';
+
+		// Elements to focus after modals are closed
+		if ( ! _doc.querySelectorAll( '.show-modal' ).length ) {
+			self.clickedEl = _doc.activeElement;
+		}
+
+		if ( targetString === 'next' ) {
+			target = toggle.nextSibling;
+		} else {
+			target = _doc.querySelector( targetString );
+		}
+
+		// Trigger events on the toggle targets before they are toggled
+		if ( target.classList.contains( activeClass ) ) {
+			target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-active' ) );
+		} else {
+			target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-inactive' ) );
+		}
+
+		// Get the class to toggle, if specified
+		classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : activeClass;
+
+		// For cover modals, set a short timeout duration so the class animations have time to play out
+		timeOutTime = 0;
+
+		if ( target.classList.contains( 'cover-modal' ) ) {
+			timeOutTime = 10;
+		}
+
+		setTimeout( function() {
+			var focusElement,
+				subMenued = target.classList.contains( 'sub-menu' ),
+				newTarget = subMenued ? toggle.closest( '.menu-item' ).querySelector( '.sub-menu' ) : target,
+				duration = toggle.dataset.toggleDuration;
+
+			// Toggle the target of the clicked toggle
+			if ( toggle.dataset.toggleType === 'slidetoggle' && ! instantly && duration !== '0' ) {
+				twentytwentyMenuToggle( newTarget, duration );
+			} else {
+				newTarget.classList.toggle( classToToggle );
+			}
+
+			// If the toggle target is 'next', only give the clicked toggle the active class
+			if ( targetString === 'next' ) {
+				toggle.classList.toggle( activeClass );
+			} else if ( target.classList.contains( 'sub-menu' ) ) {
+				toggle.classList.toggle( activeClass );
+			} else {
+				// If not, toggle all toggles with this toggle target
+				_doc.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( activeClass );
+			}
+
+			// Toggle aria-expanded on the toggle
+			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
+
+			if ( self.clickedEl && -1 !== toggle.getAttribute( 'class' ).indexOf( 'close-' ) ) {
+				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
+			}
+
+			// Toggle body class
+			if ( toggle.dataset.toggleBodyClass ) {
+				_doc.body.classList.toggle( toggle.dataset.toggleBodyClass );
+			}
+
+			// Check whether to set focus
+			if ( toggle.dataset.setFocus ) {
+				focusElement = _doc.querySelector( toggle.dataset.setFocus );
+
+				if ( focusElement ) {
+					if ( target.classList.contains( activeClass ) ) {
+						focusElement.focus();
+					} else {
+						focusElement.blur();
+					}
+				}
+			}
+
+			// Trigger the toggled event on the toggle target
+			target.dispatchEvent( twentytwenty.createEvent( 'toggled' ) );
+
+			// Trigger events on the toggle targets after they are toggled
+			if ( target.classList.contains( activeClass ) ) {
+				target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-active' ) );
+			} else {
+				target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-inactive' ) );
+			}
+		}, timeOutTime );
+	},
+
 	// Do the toggle
 	toggle: function() {
+		var self = this;
+
 		document.querySelectorAll( '*[data-toggle-target]' ).forEach( function( element ) {
-			element.addEventListener( 'click', function() {
-				// Get our targets
-				var toggle, targetString, target, timeOutTime, classToToggle;
-
-				// Get our targets
-				toggle = element;
-				targetString = toggle.dataset.toggleTarget;
-
-				if ( targetString === 'next' ) {
-					target = toggle.nextSibling;
-				} else {
-					target = document.querySelector( targetString );
-				}
-
-				// Trigger events on the toggle targets before they are toggled
-				if ( target.classList.contains( 'active' ) ) {
-					target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-active' ) );
-				} else {
-					target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-inactive' ) );
-				}
-
-				// Get the class to toggle, if specified
-				classToToggle = toggle.dataset.classToToggle ? toggle.dataset.classToToggle : 'active';
-
-				// For cover modals, set a short timeout duration so the class animations have time to play out
-				timeOutTime = 0;
-
-				if ( target.classList.contains( 'cover-modal' ) ) {
-					timeOutTime = 10;
-				}
-
-				setTimeout( function() {
-					var focusElement, duration;
-
-					// Toggle the target of the clicked toggle
-					if ( toggle.dataset.toggleType === 'slidetoggle' ) {
-						duration = toggle.dataset.toggleDuration ? toggle.dataset.toggleDuration : 250;
-						twentytwentySlideToggle( target, duration );
-					} else {
-						target.classList.toggle( classToToggle );
-					}
-
-					// If the toggle target is 'next', only give the clicked toggle the active class
-					if ( targetString === 'next' ) {
-						toggle.classList.toggle( 'active' );
-
-						// If not, toggle all toggles with this toggle target
-					} else {
-						document.querySelector( '*[data-toggle-target="' + targetString + '"]' ).classList.toggle( 'active' );
-					}
-
-					// Toggle aria-expanded on the target
-					twentytwentyToggleAttribute( target, 'aria-expanded', 'true', 'false' );
-
-					// Toggle aria-expanded on the toggle
-					twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
-
-					// Toggle body class
-					if ( toggle.dataset.toggleBodyClass ) {
-						document.querySelector( 'body' ).classList.toggle( toggle.dataset.toggleBodyClass );
-					}
-
-					// Check whether to set focus
-					if ( toggle.dataset.setFocus ) {
-						focusElement = document.querySelector( toggle.dataset.setFocus );
-
-						if ( focusElement ) {
-							if ( target.classList.contains( 'active' ) ) {
-								focusElement.focus();
-							} else {
-								focusElement.blur();
-							}
-						}
-					}
-
-					// Trigger the toggled event on the toggle target
-					target.dispatchEvent( twentytwenty.createEvent( 'toggled' ) );
-
-					// Trigger events on the toggle targets after they are toggled
-					if ( target.classList.contains( 'active' ) ) {
-						target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-active' ) );
-					} else {
-						target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-inactive' ) );
-					}
-				}, timeOutTime );
+			element.addEventListener( 'click', function( event ) {
+				event.preventDefault();
+				self.performToggle( element );
 			} );
 		} );
 	},
@@ -539,7 +730,7 @@ twentytwenty.toggles = {
 				} );
 			}
 		} );
-	},
+	}
 
 }; // twentytwenty.toggles
 
@@ -555,7 +746,7 @@ function twentytwentyDomReady( fn ) {
 		return;
 	}
 
-	if ( document.readyState === 'complete' ) {
+	if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
 		return fn();
 	}
 
@@ -568,7 +759,7 @@ twentytwentyDomReady( function() {
 	twentytwenty.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	twentytwenty.smoothScroll.init();	// Smooth scroll to anchor link or a specific element
 	twentytwenty.modalMenu.init();	// Modal Menu
-	twentytwenty.focusManagement.init();	// Focus Management
+	twentytwenty.primaryMenu.init();	// Primary Menu
 } );
 
 /*	-----------------------------------------------------------------------------------------------
@@ -584,7 +775,7 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
 	if ( falseVal === undefined ) {
 		falseVal = false;
 	}
-	if ( element[ attribute ] !== trueVal ) {
+	if ( element.getAttribute( attribute ) !== trueVal ) {
 		element.setAttribute( attribute, trueVal );
 	} else {
 		element.setAttribute( attribute, falseVal );
@@ -592,96 +783,98 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
 }
 
 /**
- * twentytwentySlideUp
- *
- * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
+ * Toggle a menu item on or off.
  *
  * @param {HTMLElement} target
  * @param {number} duration
  */
-function twentytwentySlideUp( target, duration ) {
-	target.style.transitionProperty = 'height, margin, padding'; /* [1.1] */
-	target.style.transitionDuration = duration + 'ms'; /* [1.2] */
-	target.style.boxSizing = 'border-box'; /* [2] */
-	target.style.height = target.offsetHeight + 'px'; /* [3] */
-	target.style.height = 0; /* [4] */
-	target.style.paddingTop = 0; /* [5.1] */
-	target.style.paddingBottom = 0; /* [5.2] */
-	target.style.marginTop = 0; /* [6.1] */
-	target.style.marginBottom = 0; /* [7.2] */
-	target.style.overflow = 'hidden'; /* [7] */
-	window.setTimeout( function() {
-		target.style.display = 'none'; /* [8] */
-		target.style.removeProperty( 'height' ); /* [9] */
-		target.style.removeProperty( 'padding-top' ); /* [10.1] */
-		target.style.removeProperty( 'padding-bottom' ); /* [10.2] */
-		target.style.removeProperty( 'margin-top' ); /* [11.1] */
-		target.style.removeProperty( 'margin-bottom' ); /* [11.2] */
-		target.style.removeProperty( 'overflow' ); /* [12] */
-		target.style.removeProperty( 'transition-duration' ); /* [13.1] */
-		target.style.removeProperty( 'transition-property' ); /* [13.2] */
-	}, duration );
-}
+function twentytwentyMenuToggle( target, duration ) {
+	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
+		initialPositions = [],
+		finalPositions = [];
 
-/**
- * twentytwentySlideDown
- *
- * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
- *
- * @param {HTMLElement} target
- * @param {number} duration
- */
-function twentytwentySlideDown( target, duration ) {
-	var height, display;
-	target.style.removeProperty( 'display' ); /* [1] */
-	display = window.getComputedStyle( target ).display;
-	if ( display === 'none' ) { /* [2] */
-		display = 'block';
-	}
-	target.style.display = display;
-
-	height = target.offsetHeight; /* [3] */
-	target.style.height = 0; /* [4] */
-	target.style.paddingTop = 0; /* [5.1] */
-	target.style.paddingBottom = 0; /* [5.2] */
-	target.style.marginTop = 0; /* [6.1] */
-	target.style.marginBottom = 0; /* [6.2] */
-	target.style.overflow = 'hidden'; /* [7] */
-
-	target.style.boxSizing = 'border-box'; /* [8] */
-	target.style.transitionProperty = 'height, margin, padding'; /* [9.1] */
-	target.style.transitionDuration = duration + 'ms'; /* [9.2] */
-	target.style.height = height + 'px'; /* [10] */
-	target.style.removeProperty( 'padding-top' ); /* [11.1] */
-	target.style.removeProperty( 'padding-bottom' ); /* [11.2] */
-	target.style.removeProperty( 'margin-top' ); /* [12.1] */
-	target.style.removeProperty( 'margin-bottom' ); /* [12.2] */
-
-	window.setTimeout( function() {
-		target.style.removeProperty( 'height' ); /* [13] */
-		target.style.removeProperty( 'overflow' ); /* [14] */
-		target.style.removeProperty( 'transition-duration' ); /* [15.1] */
-		target.style.removeProperty( 'transition-property' ); /* [15.2] */
-	}, duration );
-}
-
-/**
- * twentytwentySlideToggle
- *
- * this implementation is coming from https://w3bits.com/javascript-slidetoggle/
- *
- * @param {HTMLElement} target
- * @param {number} duration
- */
-function twentytwentySlideToggle( target, duration ) {
-	if ( duration === undefined ) {
-		duration = 500;
+	if ( ! target ) {
+		return;
 	}
 
-	if ( window.getComputedStyle( target ).display === 'none' ) {
-		return twentytwentySlideDown( target, duration );
-	}
-	return twentytwentySlideUp( target, duration );
+	menu = target.closest( '.menu-wrapper' );
+
+	// Step 1: look at the initial positions of every menu item.
+	menuItems = menu.querySelectorAll( '.menu-item' );
+
+	menuItems.forEach( function( menuItem, index ) {
+		initialPositions[ index ] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
+	} );
+	initialParentHeight = target.parentElement.offsetHeight;
+
+	target.classList.add( 'toggling-target' );
+
+	// Step 2: toggle target menu item and look at the final positions of every menu item.
+	target.classList.toggle( 'active' );
+
+	menuItems.forEach( function( menuItem, index ) {
+		finalPositions[ index ] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
+	} );
+	finalParentHeight = target.parentElement.offsetHeight;
+
+	// Step 3: close target menu item again.
+	// The whole process happens without giving the browser a chance to render, so it's invisible.
+	target.classList.toggle( 'active' );
+
+	// Step 4: prepare animation.
+	// Position all the items with absolute offsets, at the same starting position.
+	// Shouldn't result in any visual changes if done right.
+	menu.classList.add( 'is-toggling' );
+	target.classList.toggle( 'active' );
+	menuItems.forEach( function( menuItem, index ) {
+		var initialPosition = initialPositions[ index ];
+		if ( initialPosition.y === 0 && menuItem.parentElement === target ) {
+			initialPosition.y = initialParentHeight;
+		}
+		menuItem.style.transform = 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px)';
+	} );
+
+	// The double rAF is unfortunately needed, since we're toggling CSS classes, and
+	// the only way to ensure layout completion here across browsers is to wait twice.
+	// This just delays the start of the animation by 2 frames and is thus not an issue.
+	requestAnimationFrame( function() {
+		requestAnimationFrame( function() {
+			// Step 5: start animation by moving everything to final position.
+			// All the layout work has already happened, while we were preparing for the animation.
+			// The animation now runs entirely in CSS, using cheap CSS properties (opacity and transform)
+			// that don't trigger the layout or paint stages.
+			menu.classList.add( 'is-animating' );
+			menuItems.forEach( function( menuItem, index ) {
+				var finalPosition = finalPositions[ index ];
+				if ( finalPosition.y === 0 && menuItem.parentElement === target ) {
+					finalPosition.y = finalParentHeight;
+				}
+				if ( duration !== undefined ) {
+					menuItem.style.transitionDuration = duration + 'ms';
+				}
+				menuItem.style.transform = 'translate(' + finalPosition.x + 'px, ' + finalPosition.y + 'px)';
+			} );
+			if ( duration !== undefined ) {
+				target.style.transitionDuration = duration + 'ms';
+			}
+		} );
+
+		// Step 6: finish toggling.
+		// Remove all transient classes when the animation ends.
+		transitionListener = function() {
+			menu.classList.remove( 'is-animating' );
+			menu.classList.remove( 'is-toggling' );
+			target.classList.remove( 'toggling-target' );
+			menuItems.forEach( function( menuItem ) {
+				menuItem.style.transform = '';
+				menuItem.style.transitionDuration = '';
+			} );
+			target.style.transitionDuration = '';
+			target.removeEventListener( 'transitionend', transitionListener );
+		};
+
+		target.addEventListener( 'transitionend', transitionListener );
+	} );
 }
 
 /**

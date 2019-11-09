@@ -42,14 +42,10 @@
 	$color_overlay_opacity  = get_theme_mod( 'cover_template_overlay_opacity' );
 	$color_overlay_opacity  = ( false === $color_overlay_opacity ) ? 80 : $color_overlay_opacity;
 	$color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
-
-	// Get the blend mode of the color overlay (default = multiply).
-	$color_overlay_opacity  = get_theme_mod( 'cover_template_overlay_blend_mode', 'multiply' );
-	$color_overlay_classes .= ' blend-mode-' . $color_overlay_opacity;
 	?>
 
-	<div class="cover-header screen-height screen-width<?php echo esc_attr( $cover_header_classes ); ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
-		<div class="cover-header-inner-wrapper">
+	<div class="cover-header <?php echo $cover_header_classes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>"<?php echo $cover_header_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
+		<div class="cover-header-inner-wrapper screen-height">
 			<div class="cover-header-inner">
 				<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
 
@@ -58,10 +54,20 @@
 
 							<?php
 
-							if ( has_category() ) {
+							/**
+							 * Allow child themes and plugins to filter the display of the categories in the article header.
+							 *
+							 * @since 1.0.0
+							 *
+							 * @param bool Whether to show the categories in article header, Default true.
+							 */
+							$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+
+							if ( true === $show_categories && has_category() ) {
 								?>
 
 								<div class="entry-categories">
+									<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); ?></span>
 									<div class="entry-categories-inner">
 										<?php the_category( ' ' ); ?>
 									</div><!-- .entry-categories-inner -->
@@ -79,7 +85,7 @@
 
 									<a href="#post-inner" class="to-the-content fill-children-current-color">
 										<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-										<div class="screen-reader-text"><?php _e( 'Scroll Down', 'twentytwenty' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></div>
+										<div class="screen-reader-text"><?php _e( 'Scroll Down', 'twentytwenty' ); ?></div>
 									</a><!-- .to-the-content -->
 
 								</div><!-- .to-the-content-wrapper -->
@@ -127,11 +133,12 @@
 
 		</div><!-- .entry-content -->
 		<?php
-
 		wp_link_pages(
 			array(
-				'before' => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'  => '</nav>',
+				'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
+				'after'       => '</nav>',
+				'link_before' => '<span class="page-number">',
+				'link_after'  => '</span>',
 			)
 		);
 
@@ -159,7 +166,7 @@
 	 *  Output comments wrapper if it's a post, or if comments are open,
 	 * or if there's a comment number – and check for password.
 	 * */
-	if ( ( 'post' === $post->post_type || comments_open() || get_comments_number() ) && ! post_password_required() ) {
+	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
 		<div class="comments-wrapper section-inner">

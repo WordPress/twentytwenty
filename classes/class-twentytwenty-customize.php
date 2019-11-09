@@ -50,6 +50,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'retina_logo',
+				array(
+					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+				)
+			);
+
 			/**
 			 * Site Identity
 			 */
@@ -90,9 +98,33 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'header_footer_background_color',
 					array(
-						'label'   => esc_html__( 'Header & Footer Background Color', 'twentytwenty' ),
+						'label'   => __( 'Header &amp; Footer Background Color', 'twentytwenty' ),
 						'section' => 'colors',
 					)
+				)
+			);
+
+			// Enable picking an accent color.
+			$wp_customize->add_setting(
+				'accent_hue_active',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'transport'         => 'postMessage',
+					'default'           => 'default',
+				)
+			);
+
+			$wp_customize->add_control(
+				'accent_hue_active',
+				array(
+					'type'    => 'radio',
+					'section' => 'colors',
+					'label'   => __( 'Primary Color', 'twentytwenty' ),
+					'choices' => array(
+						'default' => __( 'Default', 'twentytwenty' ),
+						'custom'  => __( 'Custom', 'twentytwenty' ),
+					),
 				)
 			);
 
@@ -136,7 +168,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					),
 					'type'              => 'theme_mod',
 					'transport'         => 'postMessage',
-					'sanitize_callback' => array( 'TwentyTwenty_Customize', 'sanitize_accent_accessible_colors' ),
+					'sanitize_callback' => array( __CLASS__, 'sanitize_accent_accessible_colors' ),
 				)
 			);
 
@@ -146,43 +178,16 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'accent_hue',
 					array(
-						'label'    => esc_html__( 'Accent Color Hue', 'twentytwenty' ),
-						'section'  => 'colors',
-						'settings' => 'accent_hue',
-						'mode'     => 'hue',
+						'section'         => 'colors',
+						'settings'        => 'accent_hue',
+						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'twentytwenty' ),
+						'mode'            => 'hue',
+						'active_callback' => function() use ( $wp_customize ) {
+							return ( 'custom' === $wp_customize->get_setting( 'accent_hue_active' )->value() );
+						},
 					)
 				)
 			);
-
-			/**
-			 * Custom Accent Colors.
-			*/
-			$accent_color_options = self::get_color_options();
-
-			// Loop over the color options and add them to the customizer.
-			foreach ( $accent_color_options as $color_option_name => $color_option ) {
-
-				$wp_customize->add_setting(
-					$color_option_name,
-					array(
-						'default'           => $color_option['default'],
-						'sanitize_callback' => 'sanitize_hex_color',
-					)
-				);
-
-				$wp_customize->add_control(
-					new WP_Customize_Color_Control(
-						$wp_customize,
-						$color_option_name,
-						array(
-							'label'    => $color_option['label'],
-							'section'  => 'colors',
-							'priority' => 10,
-						)
-					)
-				);
-
-			}
 
 			// Update background color with postMessage, so inline CSS output is updated as well.
 			$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
@@ -194,10 +199,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'       => __( 'Theme Options', 'twentytwenty' ),
-					'priority'    => 40,
-					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for this theme.', 'twentytwenty' ),
+					'title'      => __( 'Theme Options', 'twentytwenty' ),
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
 				)
 			);
 
@@ -207,7 +211,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'enable_header_search',
 				array(
 					'capability'        => 'edit_theme_options',
-					'default'           => false,
+					'default'           => true,
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
 				)
 			);
@@ -215,11 +219,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'enable_header_search',
 				array(
-					'type'        => 'checkbox',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'Show search in header', 'twentytwenty' ),
-					'description' => __( 'Uncheck to hide the search in the header.', 'twentytwenty' ),
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show search in header', 'twentytwenty' ),
 				)
 			);
 
@@ -237,12 +240,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'blog_content',
 				array(
-					'type'        => 'radio',
-					'section'     => 'options',
-					'priority'    => 10,
-					'label'       => __( 'On archive pages, posts show:', 'twentytwenty' ),
-					'description' => __( 'Search results always show the summary.', 'twentytwenty' ),
-					'choices'     => array(
+					'type'     => 'radio',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'On archive pages, posts show:', 'twentytwenty' ),
+					'choices'  => array(
 						'full'    => __( 'Full text', 'twentytwenty' ),
 						'summary' => __( 'Summary', 'twentytwenty' ),
 					),
@@ -257,7 +259,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'title'       => __( 'Cover Template', 'twentytwenty' ),
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for the "Cover Template" page template.', 'twentytwenty' ),
+					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'twentytwenty' ),
 					'priority'    => 42,
 				)
 			);
@@ -270,6 +272,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'capability'        => 'edit_theme_options',
 					'default'           => true,
 					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+					'transport'         => 'postMessage',
 				)
 			);
 
@@ -280,6 +283,14 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'section'     => 'cover_template_options',
 					'label'       => __( 'Fixed Background Image', 'twentytwenty' ),
 					'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
+				)
+			);
+
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_fixed_background',
+				array(
+					'selector' => '.cover-header',
+					'type'     => 'cover_fixed',
 				)
 			);
 
@@ -317,8 +328,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_background_color',
 					array(
-						'label'       => __( 'Image Overlay Background Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the featured image overlay. Defaults to the accent color.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Background Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the overlay. Defaults to the accent color.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -339,48 +350,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_text_color',
 					array(
-						'label'       => __( 'Image Overlay Text Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the text in the featured image overlay.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Text Color', 'twentytwenty' ),
+						'description' => __( 'The color used for the text in the overlay.', 'twentytwenty' ),
 						'section'     => 'cover_template_options',
 					)
-				)
-			);
-
-			/* Overlay Blend Mode ------------ */
-
-			$wp_customize->add_setting(
-				'cover_template_overlay_blend_mode',
-				array(
-					'default'           => 'multiply',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
-				)
-			);
-
-			$wp_customize->add_control(
-				'cover_template_overlay_blend_mode',
-				array(
-					'label'       => __( 'Image Overlay Blend Mode', 'twentytwenty' ),
-					'description' => __( 'How the overlay color will blend with the image. Some browsers, like Internet Explorer and Edge, only support the "Normal" mode.', 'twentytwenty' ),
-					'section'     => 'cover_template_options',
-					'type'        => 'select',
-					'choices'     => array(
-						'normal'      => __( 'Normal', 'twentytwenty' ),
-						'multiply'    => __( 'Multiply', 'twentytwenty' ),
-						'screen'      => __( 'Screen', 'twentytwenty' ),
-						'overlay'     => __( 'Overlay', 'twentytwenty' ),
-						'darken'      => __( 'Darken', 'twentytwenty' ),
-						'lighten'     => __( 'Lighten', 'twentytwenty' ),
-						'color-dodge' => __( 'Color Dodge', 'twentytwenty' ),
-						'color-burn'  => __( 'Color Burn', 'twentytwenty' ),
-						'hard-light'  => __( 'Hard Light', 'twentytwenty' ),
-						'soft-light'  => __( 'Soft Light', 'twentytwenty' ),
-						'difference'  => __( 'Difference', 'twentytwenty' ),
-						'exclusion'   => __( 'Exclusion', 'twentytwenty' ),
-						'hue'         => __( 'Hue', 'twentytwenty' ),
-						'saturation'  => __( 'Saturation', 'twentytwenty' ),
-						'color'       => __( 'Color', 'twentytwenty' ),
-						'luminosity'  => __( 'Luminosity', 'twentytwenty' ),
-					),
 				)
 			);
 
@@ -389,34 +362,30 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_setting(
 				'cover_template_overlay_opacity',
 				array(
-					'default'           => '80',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'default'           => 80,
+					'sanitize_callback' => 'absint',
+					'transport'         => 'postMessage',
 				)
 			);
 
 			$wp_customize->add_control(
 				'cover_template_overlay_opacity',
 				array(
-					'label'       => __( 'Image Overlay Opacity', 'twentytwenty' ),
-					'description' => __( 'Make sure that the value is high enough that the text is readable.', 'twentytwenty' ),
+					'label'       => __( 'Overlay Opacity', 'twentytwenty' ),
+					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
 					'section'     => 'cover_template_options',
-					'type'        => 'select',
-					'choices'     => array(
-						'0'   => __( '0%', 'twentytwenty' ),
-						'10'  => __( '10%', 'twentytwenty' ),
-						'20'  => __( '20%', 'twentytwenty' ),
-						'30'  => __( '30%', 'twentytwenty' ),
-						'40'  => __( '40%', 'twentytwenty' ),
-						'50'  => __( '50%', 'twentytwenty' ),
-						'60'  => __( '60%', 'twentytwenty' ),
-						'70'  => __( '70%', 'twentytwenty' ),
-						'80'  => __( '80%', 'twentytwenty' ),
-						'90'  => __( '90%', 'twentytwenty' ),
-						'100' => __( '100%', 'twentytwenty' ),
-					),
+					'type'        => 'range',
+					'input_attrs' => twentytwenty_customize_opacity_range(),
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'cover_template_overlay_opacity',
+				array(
+					'selector' => '.cover-color-overlay',
+					'type'     => 'cover_opacity',
+				)
+			);
 		}
 
 		/**
@@ -444,19 +413,12 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		}
 
 		/**
-		 * Return the sitewide color options included.
-		 * Note: These values are shared between the block editor styles and the customizer,
-		 * and abstracted to this function.
-		 */
-		public static function get_color_options() {
-			return apply_filters( 'twentytwenty_accent_color_options', array() );
-		}
-
-		/**
 		 * Sanitize select.
 		 *
 		 * @param string $input The input from the setting.
 		 * @param object $setting The selected setting.
+		 *
+		 * @return string $input|$setting->default The input from the setting or the default setting.
 		 */
 		public static function sanitize_select( $input, $setting ) {
 			$input   = sanitize_key( $input );
@@ -467,7 +429,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		/**
 		 * Sanitize boolean for checkbox.
 		 *
-		 * @param bool $checked Wethere or not a blox is checked.
+		 * @param bool $checked Whether or not a box is checked.
+		 *
+		 * @return bool
 		 */
 		public static function sanitize_checkbox( $checked ) {
 			return ( ( isset( $checked ) && true === $checked ) ? true : false );
@@ -510,4 +474,32 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
 	function twentytwenty_customize_partial_site_logo() {
 		twentytwenty_site_logo();
 	}
+}
+
+
+/**
+ * Input attributes for cover overlay opacity option.
+ *
+ * @return array Array containing attribute names and their values.
+ */
+function twentytwenty_customize_opacity_range() {
+	/**
+	 * Filter the input attributes for opacity
+	 *
+	 * @param array $attrs {
+	 *     The attributes
+	 *
+	 *     @type int $min Minimum value
+	 *     @type int $max Maximum value
+	 *     @type int $step Interval between numbers
+	 * }
+	 */
+	return apply_filters(
+		'twentytwenty_customize_opacity_range',
+		array(
+			'min'  => 0,
+			'max'  => 90,
+			'step' => 5,
+		)
+	);
 }
