@@ -9,7 +9,7 @@
  * @since 1.0.0
  */
 
-?><!DOCTYPE html>
+?><!doctype html>
 
 <html class="no-js" <?php language_attributes(); ?>>
 
