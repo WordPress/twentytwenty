@@ -5,7 +5,7 @@
 **Version:** 1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
-**Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
+**Tags:** blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks, accessibility-ready
 
 ## Description
 
@@ -72,6 +72,9 @@ License: GPLv2
 Source: https://wordpress.org/themes/twentyseventeen/  
 Included as part of the following classes and functions:  
 - twentytwenty_unique_id()  
+
+Underscores  
+https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Changelog  
 
