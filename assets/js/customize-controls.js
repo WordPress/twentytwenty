@@ -1,4 +1,4 @@
-/* global twentyTwentyBgColors, twentyTwentyColor, Color, jQuery, wp, _ */
+/* global twentyTwentyBgColors, twentyTwentyColor, jQuery, wp, _ */
 /**
  * Customizer enhancements for a better user experience.
  *
