@@ -19,9 +19,9 @@
  * Custom Logo
  * WP Body Open
  * Register Sidebars
- * Enqueue block editor assets
- * Enqueue classic editor styles
- * Block editor settings
+ * Enqueue Block Editor Assets
+ * Enqueue Classic Editor Styles
+ * Block Editor Settings
  */
 
 /**
