@@ -832,6 +832,29 @@ input[type="submit"]:hover {
 	text-decoration: underline;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	border-color: currentColor;
+}
+
+input[type="search"]:focus {
+	outline: thin dotted;
+	outline-offset: -4px;
+}
+
 /* Tables ------------------------------------ */
 
 table {
@@ -2699,6 +2722,7 @@ h2.entry-title {
 	font-size: 0.842em;
 }
 
+.entry-content .has-normal-font-size,
 .entry-content .has-regular-font-size {
 	font-size: 1em;
 }
@@ -3200,8 +3224,12 @@ hr.wp-block-separator {
 	background: #dcd7ca;
 }
 
-.wp-block-table.is-style-stripes {
+figure.wp-block-table.is-style-stripes {
 	border-bottom: none;
+}
+
+.wp-block-table.is-style-stripes table {
+	border-collapse: inherit;
 }
 
 /* Block: Quote ------------------------------ */
