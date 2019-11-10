@@ -2708,6 +2708,7 @@ h2.entry-title {
 	font-size: 0.842em;
 }
 
+.entry-content .has-normal-font-size,
 .entry-content .has-regular-font-size {
 	font-size: 1em;
 }
@@ -3198,8 +3199,12 @@ hr.wp-block-separator {
 	background: #dcd7ca;
 }
 
-.wp-block-table.is-style-stripes {
+figure.wp-block-table.is-style-stripes {
 	border-bottom: none;
+}
+
+.wp-block-table.is-style-stripes table {
+	border-collapse: inherit;
 }
 
 /* Block: Quote ------------------------------ */
