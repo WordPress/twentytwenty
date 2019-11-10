@@ -535,7 +535,7 @@ function twentytwenty_block_editor_settings() {
 				'name'      => _x( 'Regular', 'Name of the regular font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'M', 'Short name of the regular font size in the block editor.', 'twentytwenty' ),
 				'size'      => 21,
-				'slug'      => 'regular',
+				'slug'      => 'normal',
 			),
 			array(
 				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
