@@ -19,9 +19,9 @@
  * Custom Logo
  * WP Body Open
  * Register Sidebars
- * Enqueue block editor assets
- * Enqueue classic editor styles
- * Block editor settings
+ * Enqueue Block Editor Assets
+ * Enqueue Classic Editor Styles
+ * Block Editor Settings
  */
 
 /**
@@ -535,7 +535,7 @@ function twentytwenty_block_editor_settings() {
 				'name'      => _x( 'Regular', 'Name of the regular font size in the block editor', 'twentytwenty' ),
 				'shortName' => _x( 'M', 'Short name of the regular font size in the block editor.', 'twentytwenty' ),
 				'size'      => 21,
-				'slug'      => 'regular',
+				'slug'      => 'normal',
 			),
 			array(
 				'name'      => _x( 'Large', 'Name of the large font size in the block editor', 'twentytwenty' ),
