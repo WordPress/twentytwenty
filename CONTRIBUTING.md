@@ -29,8 +29,8 @@ To submit a fix, please [fork the repository](https://help.github.com/articles/f
 Whatever you add, make sure you follow the theme review handbook requirements here: https://make.wordpress.org/themes/handbook/review/required/.
 
 No assets may be added without also including:
-Source, such as a link.
-Copyright information, license, or public domain declaration.
+- Source, such as a link.
+- Copyright information, license, or public domain declaration.
 The assets must be compatible with GPL version 2 or later, with the exception of fonts that may use SIL.
 
 ### Commit Messages
@@ -49,7 +49,7 @@ When you add a pull request, please also add in the description your WordPress.o
 
 ## Create Right-To-Left (RTL) CSS file
 
-Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows to transform the  Left-To-Right (LTR) files,  into the Right-To-Left (RTL) files.
+Twenty Twenty uses [RTLCSS](https://rtlcss.com/) which allows transforming the Left-To-Right (LTR) files, into the Right-To-Left (RTL) files.
 
 ### Installation instructions
 
