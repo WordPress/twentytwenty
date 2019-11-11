@@ -1,10 +1,5 @@
 ---
 name: Create new issues on Trac
-about: Create new issues on Trac
-title: ''
-labels: ''
-assignees: ''
-
 ---
 
 # NEW ISSUES SHOULD BE CREATED ON TRAC
