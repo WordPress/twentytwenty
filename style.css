@@ -6042,22 +6042,8 @@ a.to-the-top > * {
 
 	/* BLOCK: PULLQUOTE */
 
-	.wp-block-pullquote.alignleft::before,
-	.wp-block-pullquote.alignright::before {
-		position: absolute;
-		top: -0.4rem;
-	}
-
 	.wp-block-pullquote.is-style-solid-color.alignleft::before,
 	.wp-block-pullquote.is-style-solid-color.alignright::before {
 		top: 0;
-	}
-
-	.wp-block-pullquote.alignleft::before {
-		right: calc(100% + 1.5rem);
-	}
-
-	.wp-block-pullquote.alignright::before {
-		left: calc(100% + 1.5rem);
 	}
 }

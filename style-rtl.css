@@ -5646,9 +5646,6 @@ a.to-the-top > * {
 		max-width: calc((100% - 58rem) / 2 - 4rem);
 	}
 
-	.entry-content > .alignright,
-	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright,
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .alignleft,
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > p .alignleft,
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .wp-block-image .alignleft {
@@ -5670,7 +5667,8 @@ a.to-the-top > * {
 
 	.entry-content > .alignright,
 	.entry-content > p .alignright,
-	.entry-content > .wp-block-image .alignright {
+	.entry-content > .wp-block-image .alignright,
+	[class*="__inner-container"] > .alignright {
 		position: absolute;
 		right: calc((100vw - 58rem) / 2 + 58rem);
 		max-width: calc((100% - 58rem) / 2 - 4rem);
@@ -5998,22 +5996,8 @@ a.to-the-top > * {
 
 	/* BLOCK: PULLQUOTE */
 
-	.wp-block-pullquote.alignleft::before,
-	.wp-block-pullquote.alignright::before {
-		position: absolute;
-		top: -0.4rem;
-	}
-
 	.wp-block-pullquote.is-style-solid-color.alignleft::before,
 	.wp-block-pullquote.is-style-solid-color.alignright::before {
 		top: 0;
-	}
-
-	.wp-block-pullquote.alignleft::before {
-		left: calc(100% + 1.5rem);
-	}
-
-	.wp-block-pullquote.alignright::before {
-		right: calc(100% + 1.5rem);
 	}
 }
