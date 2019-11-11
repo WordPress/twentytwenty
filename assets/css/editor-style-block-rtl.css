@@ -207,6 +207,30 @@ Inter variable font. Usage:
 	color: #000;
 }
 
+.has-secondary-color {
+	color: #6d6d6d;
+}
+
+.has-secondary-background-color {
+	background-color: #6d6d6d;
+}
+
+.has-subtle-background-color {
+	color: #dcd7ca;
+}
+
+.has-subtle-background-background-color {
+	background-color: #dcd7ca;
+}
+
+.has-background-color {
+	color: #6d6d6d;
+}
+
+.has-background-background-color {
+	background-color: #6d6d6d;
+}
+
 /* GENERAL COLORS */
 
 .has-black-background-color {

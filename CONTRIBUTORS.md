@@ -77,3 +77,4 @@ Version 1.0:
 | @briceduclos | 
 | @bappi | @b-07 |
 | @pierlon | @pierlo |
+| @jasmussen | @joen |
