@@ -30,10 +30,11 @@ if ( ! Element.prototype.closest ) {
 if ( window.NodeList && ! NodeList.prototype.forEach ) {
 	NodeList.prototype.forEach = function( callback, thisArg ) {
 		var i;
+		var len = this.length;
 
 		thisArg = thisArg || window;
 
-		for ( i = 0; i < this.length; i++ ) {
+		for ( i = 0; i < len; i++ ) {
 			callback.call( thisArg, this[ i ], i, this );
 		}
 	};
@@ -67,6 +68,21 @@ if ( ! Element.prototype.matches ) {
 			return i > -1;
 		};
 }
+
+// Add a class to the body for when touch is enabled for browsers that don't support media queries
+// for interaction media features. Adapted from <https://codepen.io/Ferie/pen/vQOMmO>
+( function() {
+	var matchMedia = function() {
+		// Include the 'heartz' as a way to have a non matching MQ to help terminate the join. See <https://git.io/vznFH>.
+		var prefixes = [ '-webkit-', '-moz-', '-o-', '-ms-' ];
+		var query = [ '(', prefixes.join( 'touch-enabled),(' ), 'heartz', ')' ].join( '' );
+		return window.matchMedia && window.matchMedia( query ).matches;
+	};
+
+	if ( ( 'ontouchstart' in window ) || ( window.DocumentTouch && document instanceof window.DocumentTouch ) || matchMedia() ) {
+		document.body.classList.add( 'touch-enabled' );
+	}
+}() );
 
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals

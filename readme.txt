@@ -1,8 +1,6 @@
 === Twenty Twenty ===
 Contributors: the WordPress team
-Requires at least: 4.7
-Tested up to: WordPress 5.3
-Requires PHP: 5.2.4
+Tested up to: 5.3
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -85,3 +83,6 @@ License: GPLv2
 Source: https://wordpress.org/themes/twentyseventeen/
 Included as part of the following classes and functions:
 - twentytwenty_unique_id()
+
+Underscores 
+https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)

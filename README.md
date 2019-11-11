@@ -73,6 +73,9 @@ Source: https://wordpress.org/themes/twentyseventeen/
 Included as part of the following classes and functions:  
 - twentytwenty_unique_id()  
 
+Underscores  
+https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)  
+
 ## Changelog  
 
 ### 1.0  
