@@ -5738,7 +5738,19 @@ a.to-the-top > * {
 		width: 100%;
 	}
 
-	/* Template: [Template Name] ------------- */
+	/* Template: Full Width ------------------ */
+
+	.template-full-width .wp-block-image .alignleft {
+
+		/*rtl:ignore*/
+		margin-right: 2rem;
+	}
+
+	.template-full-width .wp-block-image .alignright {
+
+		/*rtl:ignore*/
+		margin-left: 2rem;
+	}
 
 	/* Post: Archive ------------------------- */
 
@@ -6242,6 +6254,8 @@ a.to-the-top > * {
 		width: 100%;
 	}
 
+	.alignleft,
+	.alignright,
 	.entry-content > .alignleft,
 	.entry-content > p .alignleft,
 	.entry-content > .wp-block-image .alignleft,
