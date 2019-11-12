@@ -6068,7 +6068,8 @@ a.to-the-top > * {
 
 		/*rtl:ignore*/
 		margin-right: calc(( 100vw - 120rem ) / 2);
-	}	
+	}
+
 }
 
 @media ( min-width: 1280px ) {

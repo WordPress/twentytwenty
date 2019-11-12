@@ -6018,7 +6018,8 @@ a.to-the-top > * {
 
 	body.template-full-width .entry-content > .alignright {
 		margin-right: calc(( 100vw - 120rem ) / 2);
-	}	
+	}
+
 }
 
 @media ( min-width: 1280px ) {
