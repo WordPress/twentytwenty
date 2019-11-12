@@ -2648,6 +2648,7 @@ h2.entry-title {
 
 :root .has-accent-background-color {
 	background-color: #cd2653;
+	color: #fff;
 }
 
 :root .has-primary-color {
@@ -2656,6 +2657,7 @@ h2.entry-title {
 
 :root .has-primary-background-color {
 	background-color: #000;
+	color: #f5efe0;
 }
 
 :root .has-secondary-color {
@@ -2664,6 +2666,7 @@ h2.entry-title {
 
 :root .has-secondary-background-color {
 	background-color: #6d6d6d;
+	color: #fff;
 }
 
 :root .has-subtle-background-color {
@@ -2672,6 +2675,7 @@ h2.entry-title {
 
 :root .has-subtle-background-background-color {
 	background-color: #dcd7ca;
+	color: #000;
 }
 
 :root .has-background-color {
@@ -2680,6 +2684,7 @@ h2.entry-title {
 
 :root .has-background-background-color {
 	background-color: #f5efe0;
+	color: #000;
 }
 
 
@@ -5991,22 +5996,8 @@ a.to-the-top > * {
 
 	/* BLOCK: PULLQUOTE */
 
-	.wp-block-pullquote.alignleft::before,
-	.wp-block-pullquote.alignright::before {
-		position: absolute;
-		top: -0.4rem;
-	}
-
 	.wp-block-pullquote.is-style-solid-color.alignleft::before,
 	.wp-block-pullquote.is-style-solid-color.alignright::before {
 		top: 0;
-	}
-
-	.wp-block-pullquote.alignleft::before {
-		left: calc(100% + 1.5rem);
-	}
-
-	.wp-block-pullquote.alignright::before {
-		right: calc(100% + 1.5rem);
 	}
 }
