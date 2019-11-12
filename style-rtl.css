@@ -2969,10 +2969,6 @@ h2.entry-title {
 	padding: calc(1.1em - 0.2rem) calc(1.44em - 0.2rem);
 }
 
-.read-more-button-wrap {
-	margin-top: 1em;
-}
-
 /* Block: Columns ---------------------------- */
 
 .wp-block-columns.alignfull,
@@ -3426,6 +3422,7 @@ figure.wp-block-table.is-style-stripes {
 }
 
 .read-more-button-wrap {
+	margin-top: 1em;
 	text-align: center;
 }
 
