@@ -4442,17 +4442,6 @@ a.to-the-top > * {
 	.wp-block-pullquote.alignleft,
 	.wp-block-pullquote.alignright {
 		float: none;
-		margin: 3rem 0;
-	}
-
-	.wp-block-pullquote.alignleft:first-child,
-	.wp-block-pullquote.alignright:first-child {
-		margin-top: 0;
-	}
-
-	.wp-block-pullquote.alignleft:last-child,
-	.wp-block-pullquote.alignright:last-child {
-		margin-bottom: 0;
 	}
 
 	/* Entry Content ------------------------- */
