@@ -3399,6 +3399,10 @@ figure.wp-block-table.is-style-stripes {
 	margin-bottom: 0;
 }
 
+.read-more-button-wrap {
+	text-align: center;
+}
+
 .entry-content a:hover,
 .entry-content a:focus {
 	text-decoration: none;
