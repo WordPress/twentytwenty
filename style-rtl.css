@@ -3506,7 +3506,7 @@ figure.wp-block-table.is-style-stripes {
 	margin-right: auto;
 }
 
-[class*="__inner-container"] > *:not(.alignwide):not(.alignfull) {
+[class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
 	margin-right: auto;
 	margin-left: auto;
 }
