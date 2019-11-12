@@ -1202,6 +1202,10 @@ button.toggle {
 	}
 }
 
+.wp-block-image.is-resized {
+	margin-right: auto;
+	margin-left: auto;
+}
 
 /* Search Form ------------------------------- */
 

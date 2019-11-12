@@ -1208,6 +1208,10 @@ button.toggle {
 	}
 }
 
+.wp-block-image.is-resized {
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /* Search Form ------------------------------- */
 
