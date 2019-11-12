@@ -3378,12 +3378,6 @@ figure.wp-block-table.is-style-stripes {
 
 /* Block: Widget Latest Posts ---------------- */
 
-.wp-block-latest-posts.is-grid,
-.wp-block-latest-posts.has-dates,
-.wp-block-latest-posts.has-dates li {
-	margin-right: 0;
-}
-
 .wp-block-latest-posts.is-grid li {
 	border-top: 0.2rem solid #dcd7ca;
 	margin-top: 2rem;
