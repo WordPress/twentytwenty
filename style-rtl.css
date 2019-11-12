@@ -2260,32 +2260,32 @@ body.template-full-width .entry-content .alignright {
 }
 
 body.template-full-width .entry-content .alignleft,
-body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft, 
-body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignleft, 
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignleft,
 body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignleft {
 	margin-left: 0;
 	position: static;
 }
 
 body.template-full-width .entry-content > .alignleft,
-body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft, 
-body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft, 
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
 body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
 	margin-left: 2rem;
 	position: static;
 }
 
 body.template-full-width .entry-content .alignright,
-body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignright, 
-body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignright, 
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignright,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignright,
 body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignright {
 	margin-right: 0;
 	position: static;
 }
 
 body.template-full-width .entry-content > .alignright,
-body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright, 
-body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright, 
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
 body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
 	margin-right: 2rem;
 	position: static;
@@ -3138,7 +3138,7 @@ figure.wp-block-gallery.alignfull {
 
 .wp-block-pullquote.alignleft,
 .wp-block-pullquote.alignright {
-	max-width: calc( 100% - 4rem );
+	max-width: calc(100% - 4rem);
 }
 
 .wp-block-pullquote::before {
@@ -4460,7 +4460,6 @@ a.to-the-top > * {
 	.alignright {
 		max-width: 26rem;
 	}
-	
 }
 
 @media ( max-width: 599px ) {
@@ -4844,7 +4843,7 @@ a.to-the-top > * {
 	/* Template: Full Width ------------------ */
 
 	body.template-full-width .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
-		width: calc( 100% - 8rem );
+		width: calc(100% - 8rem);
 	}
 
 	body.template-full-width .alignfull:not(.has-background) > .wp-block-group__inner-container > p:not(.has-background-color) {
@@ -4852,14 +4851,14 @@ a.to-the-top > * {
 		padding-left: 4rem;
 	}
 
-	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft, 
-	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft, 
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
 	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
 		margin-left: 4rem;
 	}
 
-	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright, 
-	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright, 
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
 	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
 		margin-right: 4rem;
 	}
@@ -6019,8 +6018,7 @@ a.to-the-top > * {
 
 	body.template-full-width .entry-content > .alignright {
 		margin-right: calc(( 100vw - 120rem ) / 2);
-	}
-	
+	}	
 }
 
 @media ( min-width: 1280px ) {
