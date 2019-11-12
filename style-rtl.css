@@ -4480,7 +4480,10 @@ a.to-the-top > * {
 
 	/* ALIGNMENT CLASSES */
 
-	.entry-content > .alignleft,
+	.entry-content > .alignleft {
+		margin-left: 4rem;
+	}
+
 	.entry-content > p .alignleft,
 	.entry-content > .wp-block-image .alignleft,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft,
@@ -4498,7 +4501,10 @@ a.to-the-top > * {
 		margin-left: 0;
 	}
 
-	.entry-content > .alignright,
+	.entry-content > .alignright {
+		margin-right: 4rem;
+	}
+
 	.entry-content > p .alignright,
 	.entry-content > .wp-block-image .alignright,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignright,
@@ -5646,7 +5652,7 @@ a.to-the-top > * {
 	.entry-content > p .alignleft,
 	.entry-content > .wp-block-image .alignleft {
 		position: absolute;
-		left: calc((100vw - 58rem) / 2 + 58rem);
+		right: calc((100vw - 58rem) / 2 + 58rem);
 		max-width: calc((100% - 58rem) / 2 - 4rem);
 	}
 
@@ -5654,7 +5660,7 @@ a.to-the-top > * {
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > p .alignleft,
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .wp-block-image .alignleft {
 		position: relative;
-		left: inherit;
+		right: inherit;
 		max-width: inherit;
 	}
 
@@ -5665,7 +5671,7 @@ a.to-the-top > * {
 	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
 	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
 		position: absolute;
-		left: calc((100% - 58rem) / 2 + 58rem);
+		right: calc((100% - 58rem) / 2 + 58rem);
 		max-width: calc((100% - 58rem) / 2 - 4rem);
 	}
 
@@ -5674,7 +5680,7 @@ a.to-the-top > * {
 	.entry-content > .wp-block-image .alignright,
 	[class*="__inner-container"] > .alignright {
 		position: absolute;
-		right: calc((100vw - 58rem) / 2 + 58rem);
+		left: calc((100vw - 58rem) / 2 + 58rem);
 		max-width: calc((100% - 58rem) / 2 - 4rem);
 	}
 
@@ -5682,7 +5688,7 @@ a.to-the-top > * {
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > p .alignright,
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .wp-block-image .alignright {
 		position: relative;
-		right: inherit;
+		left: inherit;
 		max-width: inherit;
 	}
 
@@ -5693,7 +5699,7 @@ a.to-the-top > * {
 	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
 	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
 		position: absolute;
-		right: calc((100% - 58rem) / 2 + 58rem);
+		left: calc((100% - 58rem) / 2 + 58rem);
 		max-width: calc((100% - 58rem) / 2 - 4rem);
 	}
 
@@ -5975,12 +5981,14 @@ a.to-the-top > * {
 	.entry-content > p .alignleft,
 	.entry-content > .wp-block-image .alignleft {
 		margin-left: -31rem;
+		max-width: 29rem;
 	}
 
 	.entry-content > .alignright,
 	.entry-content > p .alignright,
 	.entry-content > .wp-block-image .alignright {
 		margin-right: -31rem;
+		max-width: 29rem;
 	}
 
 	.entry-content > .alignwide {
