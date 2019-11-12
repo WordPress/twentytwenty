@@ -6146,6 +6146,25 @@ a.to-the-top > * {
 		width: 100%;
 	}
 
+	/* Template: Full Width ------------------ */
+
+	body.template-full-width .alignfull:not(.has-background) > .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
+
+		/*rtl:ignore*/
+		margin-left: 0;
+	}
+
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
+
+		/*rtl:ignore*/
+		margin-right: 0;
+	}
+
 }
 
 @media ( min-width: 1330px ) {
