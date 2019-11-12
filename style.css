@@ -2256,21 +2256,57 @@ body.template-cover .entry-header {
 /*	7c. Template: Full Width
 /* -------------------------------------------------------------------------- */
 
-body.template-full-width .entry-content {
-	max-width: none;
+
+body.template-full-width .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+body.template-full-width [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+	max-width: 120rem;
 }
 
-body.template-full-width .entry-content .alignleft {
+body.template-full-width .entry-content .alignleft,
+body.template-full-width .entry-content .alignright {
+	position: static;
+}
+
+body.template-full-width .entry-content .alignleft,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignleft,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignleft {
 
 	/*rtl:ignore*/
 	margin-left: 0;
+	position: static;
 }
 
-body.template-full-width .entry-content .alignright {
+body.template-full-width .entry-content > .alignleft,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
+
+	/*rtl:ignore*/
+	margin-left: 2rem;
+	position: static;
+}
+
+body.template-full-width .entry-content .alignright,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .alignright,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > p .alignright,
+body.template-full-width [class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignright {
 
 	/*rtl:ignore*/
 	margin-right: 0;
+	position: static;
 }
+
+body.template-full-width .entry-content > .alignright,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
+body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
+
+	/*rtl:ignore*/
+	margin-right: 2rem;
+	position: static;
+}
+
 
 /* -------------------------------------------------------------------------- */
 
@@ -3120,7 +3156,7 @@ figure.wp-block-gallery.alignfull {
 
 .wp-block-pullquote.alignleft,
 .wp-block-pullquote.alignright {
-	max-width: 100%;
+	max-width: calc(100% - 4rem);
 }
 
 .wp-block-pullquote::before {
@@ -3670,19 +3706,20 @@ div.comment:first-of-type {
 
 /* COMMENT CONTENT */
 
+.comment-content.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+	width: 100%;
+}
+
 .comment-content.entry-content .alignleft {
+
+	/*rtl:ignore*/
 	margin-left: 0;
 }
 
 .comment-content.entry-content .alignright {
-	margin-right: 0;
-}
 
-.comment-content.entry-content > .alignwide,
-.comment-content.entry-content > .alignfull {
-	left: auto;
-	max-width: 100%;
-	width: auto;
+	/*rtl:ignore*/
+	margin-right: 0;
 }
 
 /* COMMENT FOOTER */
@@ -4846,6 +4883,33 @@ a.to-the-top > * {
 		width: 2.12rem;
 	}
 
+	/* Template: Full Width ------------------ */
+
+	body.template-full-width .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+		width: calc(100% - 8rem);
+	}
+
+	body.template-full-width .alignfull:not(.has-background) > .wp-block-group__inner-container > p:not(.has-background-color) {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
+
+		/*rtl:ignore*/
+		margin-left: 4rem;
+	}
+
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
+	body.template-full-width [class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
+
+		/*rtl:ignore*/
+		margin-right: 4rem;
+	}
+
 	/* Post: Archive ------------------------- */
 
 	.archive-header {
@@ -6002,6 +6066,25 @@ a.to-the-top > * {
 
 	.footer-widgets {
 		margin-left: 6rem;
+	}
+
+}
+
+@media ( min-width: 1240px ) {
+
+
+	/* Blocks -------------------------------- */
+
+	body.template-full-width .entry-content > .alignleft {
+
+		/*rtl:ignore*/
+		margin-left: calc(( 100vw - 120rem ) / 2);
+	}
+
+	body.template-full-width .entry-content > .alignright {
+
+		/*rtl:ignore*/
+		margin-right: calc(( 100vw - 120rem ) / 2);
 	}
 
 }
