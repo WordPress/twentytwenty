@@ -4488,7 +4488,7 @@ a.to-the-top > * {
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignleft,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > p .alignleft,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignleft,
-	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignleft:not(.wp-block-pullquote),
 	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignleft,
 	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignleft {
 		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
@@ -4506,7 +4506,7 @@ a.to-the-top > * {
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .alignright,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > p .alignright,
 	[class*="wp-block"].alignwide [class*="__inner-container"] > .wp-block-image .alignright,
-	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignright,
+	[class*="wp-block"].alignfull [class*="__inner-container"] > .alignright:not(.wp-block-pullquote),
 	[class*="wp-block"].alignfull [class*="__inner-container"] > p .alignright,
 	[class*="wp-block"].alignfull [class*="__inner-container"] > .wp-block-image .alignright {
 		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
