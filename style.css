@@ -3062,6 +3062,8 @@ figure.wp-block-gallery.alignfull {
 
 .wp-block-group.has-background {
 	padding: 2rem;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .wp-block-group__inner-container {
