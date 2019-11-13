@@ -1,5 +1,6 @@
 ---
 name: Create new issues on Trac
+about: Inform contributors to create new issues directly on Trac
 ---
 
 # NEW ISSUES SHOULD BE CREATED ON TRAC
