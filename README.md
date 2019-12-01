@@ -1,3 +1,11 @@
+**This theme has been merged to core. Any future issues or contributions should be created on the WordPress trac instance**
+
+https://core.trac.wordpress.org/search?q=twenty+twenty%3A
+
+**If you open a ticket please prefix it with `Twenty Twenty:` so they are easy to find and work through.**
+
+---
+
 **Theme Name:** Twenty Twenty  
 **Theme URI:** https://wordpress.org/themes/twentytwenty/  
 **Contributors:** the WordPress team  
